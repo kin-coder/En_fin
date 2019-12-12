@@ -1,0 +1,17 @@
+<h1>ACCEUILL</h1>
+
+<!-- LIEN POUR LES CONNEXION CLIENT-->
+<%= link_to "Se connecter", new_client_session_path %><br>
+<%= link_to "Se deconnecter", destroy_client_session_path, method: "delete" %><br>
+<%= link_to "S'inscrire", new_client_registration_path %><br>
+<%= link_to "Editer mon profil", edit_client_registration_path %><br>
+<%= link_to "Mot de passe oublier", new_client_password_path %><br>
+
+<hr>
+
+<h2>LIEN POUR CHAQUE PAGE DE SERVICE</h2>
+
+<%= link_to "Massage", massage_path %><br>
+<%= link_to "Location de spa", spa_path %><br>
+
+<hr>

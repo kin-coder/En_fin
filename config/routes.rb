@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  #page d'acceul
+  root 'static_page#index'
+  
+  # Page pour chaque service
+  get '/reservation-massage', to:'static_page#massage', as: "massage"
+  get '/location-spa', to:'static_page#spa', as: "spa"
+
+  devise_for :clients
+  
 end
