@@ -39,33 +39,6 @@ ActiveRecord::Schema.define(version: 2019_12_12_025609) do
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
 
-  create_table "commande_categories", force: :cascade do |t|
-    t.bigint "category_id"
-    t.bigint "commande_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_commande_categories_on_category_id"
-    t.index ["commande_id"], name: "index_commande_categories_on_commande_id"
-  end
-
-  create_table "commande_sub_categories", force: :cascade do |t|
-    t.bigint "commande_category_id"
-    t.bigint "subcategory_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["commande_category_id"], name: "index_commande_sub_categories_on_commande_category_id"
-    t.index ["subcategory_id"], name: "index_commande_sub_categories_on_subcategory_id"
-  end
-
-  create_table "commandes", force: :cascade do |t|
-    t.bigint "client_id"
-    t.bigint "service_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["client_id"], name: "index_commandes_on_client_id"
-    t.index ["service_id"], name: "index_commandes_on_service_id"
-  end
-
   create_table "countries", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -78,6 +51,33 @@ ActiveRecord::Schema.define(version: 2019_12_12_025609) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["country_id"], name: "index_departments_on_country_id"
+  end
+
+  create_table "order_categories", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "order_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_order_categories_on_category_id"
+    t.index ["order_id"], name: "index_order_categories_on_order_id"
+  end
+
+  create_table "order_sub_categories", force: :cascade do |t|
+    t.bigint "order_category_id"
+    t.bigint "subcategory_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_category_id"], name: "index_order_sub_categories_on_order_category_id"
+    t.index ["subcategory_id"], name: "index_order_sub_categories_on_subcategory_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "client_id"
+    t.bigint "service_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["service_id"], name: "index_orders_on_service_id"
   end
 
   create_table "services", force: :cascade do |t|
