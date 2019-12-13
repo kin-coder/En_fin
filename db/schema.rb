@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_12_025609) do
+ActiveRecord::Schema.define(version: 2019_12_13_145419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "candidates", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "adresse"
+    t.string "email"
+    t.string "telephone"
+    t.string "raison_sociale"
+    t.string "siret"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -72,12 +84,51 @@ ActiveRecord::Schema.define(version: 2019_12_12_025609) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.string "Datetime"
     t.bigint "client_id"
     t.bigint "service_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
     t.index ["service_id"], name: "index_orders_on_service_id"
+  end
+
+  create_table "prestataire_departments", force: :cascade do |t|
+    t.bigint "department_id"
+    t.bigint "prestataire_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["department_id"], name: "index_prestataire_departments_on_department_id"
+    t.index ["prestataire_id"], name: "index_prestataire_departments_on_prestataire_id"
+  end
+
+  create_table "prestataire_orders", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "prestataire_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_prestataire_orders_on_order_id"
+    t.index ["prestataire_id"], name: "index_prestataire_orders_on_prestataire_id"
+  end
+
+  create_table "prestataire_services", force: :cascade do |t|
+    t.bigint "prestataire_id"
+    t.bigint "service_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["prestataire_id"], name: "index_prestataire_services_on_prestataire_id"
+    t.index ["service_id"], name: "index_prestataire_services_on_service_id"
+  end
+
+  create_table "prestataires", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "adresse"
+    t.string "tel"
+    t.string "raison_sociale"
+    t.string "siret"
   end
 
   create_table "services", force: :cascade do |t|

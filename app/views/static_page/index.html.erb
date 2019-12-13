@@ -1,17 +1,26 @@
 <h1>ACCEUILL</h1>
-
 <!-- LIEN POUR LES CONNEXION CLIENT-->
 <%= link_to "Se connecter", new_client_session_path %><br>
 <%= link_to "Se deconnecter", destroy_client_session_path, method: "delete" %><br>
 <%= link_to "S'inscrire", new_client_registration_path %><br>
 <%= link_to "Editer mon profil", edit_client_registration_path %><br>
 <%= link_to "Mot de passe oublier", new_client_password_path %><br>
-
 <hr>
 
 <h2>LIEN POUR CHAQUE PAGE DE SERVICE</h2>
-
 <%= link_to "Massage", massage_path %><br>
 <%= link_to "Location de spa", spa_path %><br>
 
 <hr>
+
+<h2>PANIER DYNAMIQUE</h2>
+<%= link_to "Reserver mon massage", reservation_path('massage-domicile') %><br>
+<%= link_to "Location de spa", reservation_path('location-spa') %>
+<hr>
+
+<h2>Autre lien utiles</h2>
+<%= link_to "Contact", contact_path %><br>
+<%= link_to "Galerie", galerie_path %><br>
+<%= link_to "FAQ", faq_path %><br>
+<%= link_to "Mentions légales", legalnotice_path %><br>
+<%= link_to "CGU", cgu_path %><br>

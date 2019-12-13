@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-sm-9">
+		<h1><%= @service.name %> a domicile </h1>
+		<h4>PRESTATION</h4>
+			<div class="row">
+			<!-- Affiche la liste des différents category possible -->
+			<% @categories.each do |category| %>
+				<div class="col-sm-3" >
+					<%= link_to "-", deletecategory_path(category.id), class: "btn btn-info",remote: true %>
+					
+					<%= link_to "+", addcategory_path(category.id), class: "btn btn-info",remote: true %>
+				</div>
+			<% end %>
+			</div>
+		<hr>
+</div>
