@@ -84,7 +84,9 @@ ActiveRecord::Schema.define(version: 2019_12_13_145419) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "Datetime"
+    t.string "datetime"
+    t.string "adresse"
+    t.text "description"
     t.bigint "client_id"
     t.bigint "service_id"
     t.datetime "created_at", precision: 6, null: false

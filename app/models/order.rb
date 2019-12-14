@@ -9,5 +9,4 @@ class Order < ApplicationRecord
     #relation N-N entre la commande et le prestataire pour sauvgarder les prestataire en attente
     has_many :prestataire_orders
     has_many :prestataires, through: :prestataire_orders
-
 end

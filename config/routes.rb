@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   get '/deletecategory/:id', to: "orders#delcategory", as:"deletecategory"
   put '/subcategory', to: "orders#subcategory", as:"subcategory"
   
+  #Enregistrement des donnés du commande dans les table
+  get '/confirmer-commande', to:'submitorders#save', as: "saved_commande"
+
+
   # Autre page
   get '/contact', to:'static_page#contact', as: "contact"
   get '/galerie-photo', to:'static_page#galerie', as: "galerie"

@@ -1,5 +1,9 @@
 <div class="row">
 	<div class="col-sm-9">
+		<h4>Choix Pays / Ville</h4>
+			<span>Un petit formulaire pour demander le pays et la ville</span>
+		<hr>
+
 		<h1><%= @service.name %> a domicile </h1>
 		<hr>
 		<h2>PRESTATION</h2>
@@ -43,9 +47,14 @@
 		<hr>
 		<div class="reserver">
 			<h2>Confirmer la commande</h2>
-			<p>Se connecter si non conecter</p>
-			<br><br><br>
-			<a class="btn btn-success" href="#">Reserver</a>
+			<p>
+				Se connecter si non conecter<br>
+				(Aprè clic sur reserver) Question suplementaire au produits<br>
+				(Aprè clic sur reserver) Choix d'adresse de livraison<br>
+				(Aprè clic sur reserver) Recapilatif de commande<br>
+			</p>
+			<strong>Lien pour enregistré la commande dans la table</strong><br>
+			<%= link_to "Reserver", saved_commande_path, class: "btn btn-success"%>
 		</div>
 
 	</div>

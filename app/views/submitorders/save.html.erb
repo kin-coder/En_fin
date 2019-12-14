@@ -1,0 +1,14 @@
+<hr>
+<%= session[:service] %><br>
+<hr>
+<%= session[:prestation] %>
+<hr>
+<% session[:prestation].each do |order| %>
+	<% #le category commander %>
+	<%= order["category"][1] %><br>
+	
+	<% #les sous-category commander avec %>
+	<% order["subcategory"].each do |listId| %>
+		<%= listId[0] %><br>
+	<% end %>
+<% end %>
