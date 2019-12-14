@@ -1,20 +1,25 @@
 module OrdersHelper
-	def category(id)
-		return @paniers[id]["category"]
+	def celementCategory(array_index)
+		return @paniers[array_index]["category"]
 	end
-	def subcategories(id)
-		return Category.find(category(id)[1]).subcategories
+
+	def subcategories(array_index)
+		# array_index l'index de l'element dans le @paniers[]
+		return Category.find(celementCategory(array_index)[1]).subcategories
 	end
+
 	def helpsubcategories(category)
 		return category.subcategories
 	end
+
 	def isincommandesubcategory(id,subcategory)
 		return session[:prestation][id]["subcategory"] != nil && session[:prestation][id]["subcategory"].include?([subcategory.id,subcategory.name])
 	end
-	def countnumbre(namec,id)
+
+	def countnumbre(nameCategory,id)
 		num = 0
 		session[:prestation].reverse_each do |presta|
-	      if presta.value?([namec,id])
+	      if presta.value?([nameCategory,id])
 	      	num += 1
 	      end
 	    end

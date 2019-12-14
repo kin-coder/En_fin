@@ -1,10 +1,10 @@
 <div class="row">
 	<div class="col-sm-9">
-		<%= link_to "CCSPA", root_path, class: "btn btn-primary"%>
 		<h1><%= @service.name %> a domicile </h1>
 		<hr>
-		<h4>PRESTATION</h4>
+		<h2>PRESTATION</h2>
 			<div class="row">
+			<!-- Afficher les differents types de category -->
 			<% @categories.each do |category| %>
 				<div class="col-sm-3" >
 					<%= link_to "-", deletecategory_path(category.id), class: "btn btn-info",remote: true %>
@@ -14,17 +14,18 @@
 			<% end %>
 			</div>
 		<hr>
-<!--	PRESTATION PRESTATION PRESTATION PRESTATION PRESTATION
-==============================================================-->
+<!--==========	PRESTATION PRESTATION PRESTATION PRESTATION PRESTATION   =============-->
 		<div id="list-prestation">
-			<h4>INFORMATION DU PRESTATION</h4>
+			<h2>INFORMATION DU PRESTATION</h2>
 		<% unless @paniers == nil %>
 				<% @paniers.each_index do |id| %>
-					<div class="js<%=category(id)[1]%>-prestation-info">
-						<h5><%= category(id)[0] %></h5>
+					<div class="js<%=celementCategory(id)[1]%>-prestation-info">
+						<h5><%= celementCategory(id)[0] %></h5>
 						<ul>
+		<!-- subcategories(): fonction qui retourne la liste de tous les sous categories -->
 						<% subcategories(id).each do |subcategory| %>
-							<li class="<%=id%>tojs<%=subcategory.id%>" ><%= subcategory.name %> <%= subcategory.price %> €
+							<li class="<%=id%>tojs<%=subcategory.id%>" >
+								<%= subcategory.name %> <%= subcategory.price %> €
 								<%= check_box_tag :name, 1, isincommandesubcategory(id,subcategory) , data: { remote: true, url: subcategory_path, params: {key: id, subcategory: subcategory.id}.to_param, method: "put" }%>
 							</li>
 						<% end %>
@@ -35,15 +36,16 @@
 		</div>
 		<hr>
 		<div class="crenaux">
-			<h5>Choix du créneaux horaire</h5>
+			<h2>Choix du créneaux horaire</h2>
 			<p>choisir ici la date et l'heur pour la prestation</p>
 			<br><br><br>
 		</div>
 		<hr>
 		<div class="reserver">
-			<h5>Reservation confirmer</h5>
+			<h2>Confirmer la commande</h2>
 			<p>Se connecter si non conecter</p>
-			<a class="btn btn-success" href="#">Reserver</a><br><br><br>
+			<br><br><br>
+			<a class="btn btn-success" href="#">Reserver</a>
 		</div>
 
 	</div>

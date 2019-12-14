@@ -16,8 +16,8 @@ class OrdersController < ApplicationController
   end
 
   def addcategory
-    @ca = param_permit
-    session[:prestation].push({"category"=>[@ca.name,@ca.id]})
+    @category = param_permit
+    session[:prestation].push({"category"=>[@category.name,@category.id]})
     @arrayid = session[:prestation].length - 1
     respond_to do |format|
       format.html do
@@ -29,9 +29,9 @@ class OrdersController < ApplicationController
   end
 
   def delcategory
-    @ca = param_permit
+    @category = param_permit
     session[:prestation].reverse_each do |presta|
-      if presta.value?([@ca.name,@ca.id])
+      if presta.value?([@category.name,@category.id])
         key = session[:prestation].index(presta)
         session[:prestation].delete_at(key)
         break
@@ -49,6 +49,7 @@ class OrdersController < ApplicationController
 
   def subcategory
     parametre = params.permit(:name,:key,:subcategory)
+    # :key index du tableau session[:prestation]
     @arrayid = parametre[:key]
     @subc = Subcategory.find(parametre[:subcategory].to_i)
     if parametre[:name]
