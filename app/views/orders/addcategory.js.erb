@@ -1,0 +1,17 @@
+function addcategorysubcategory(){
+	let num = document.getElementById("puts-number-<%= @ca.name %>")
+	num.innerHTML = <%= countnumbre(@ca.name,@ca.id) %> /*countnumbre definit dans helper*/
+	/*Ajout des sous category a checked */
+	let prestation = document.getElementById("list-prestation")
+	let div1 = document.createElement("div")
+	div1.classList.add("js<%=@ca.id%>-prestation-info")
+	div1.innerHTML = "<%= j render 'infoaddcategory', infocategory: @ca, arrayid: @arrayid %>"
+	prestation.appendChild(div1)
+	/*Ajout du nom de category dans le panier*/
+	let commande = document.getElementById("list-commande")
+	let div2 = document.createElement("div")
+	div2.classList.add("js<%=@ca.id%>-prestation-order")
+	div2.innerHTML = "<h5><%=@ca.name%></h5><ol id=\"my-order-<%=@arrayid%>tojs\"></ol>"
+	commande.appendChild(div2)
+}
+addcategorysubcategory()

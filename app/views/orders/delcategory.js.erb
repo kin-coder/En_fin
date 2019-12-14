@@ -1,0 +1,15 @@
+function delcategory(){
+	let order = document.getElementsByClassName("js<%=@ca.id%>-prestation-order")
+	let info = document.getElementsByClassName("js<%=@ca.id%>-prestation-info")
+	let num = document.getElementById("puts-number-<%= @ca.name %>")
+	/*countnumbre definit dans helper*/
+	num.innerHTML = <%= countnumbre(@ca.name,@ca.id) %> 
+	if (order.length != 0){
+		order[order.length - 1].remove()
+	}
+	if (info.length != 0){
+		info[info.length - 1].remove()
+	}
+	document.getElementById("js-price").innerHTML = "Somme: <%= totalprice() %> €"
+}
+delcategory()

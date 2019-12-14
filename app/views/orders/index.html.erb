@@ -1,16 +1,74 @@
 <div class="row">
 	<div class="col-sm-9">
+		<%= link_to "CCSPA", root_path, class: "btn btn-primary"%>
 		<h1><%= @service.name %> a domicile </h1>
+		<hr>
 		<h4>PRESTATION</h4>
 			<div class="row">
-			<!-- Affiche la liste des différents category possible -->
 			<% @categories.each do |category| %>
 				<div class="col-sm-3" >
 					<%= link_to "-", deletecategory_path(category.id), class: "btn btn-info",remote: true %>
-					
+					<strong><%= category.name %> <span id="puts-number-<%= category.name %>"><%= countnumbre(category.name,category.id) %></span> </strong>
 					<%= link_to "+", addcategory_path(category.id), class: "btn btn-info",remote: true %>
 				</div>
 			<% end %>
 			</div>
 		<hr>
+<!--	PRESTATION PRESTATION PRESTATION PRESTATION PRESTATION
+==============================================================-->
+		<div id="list-prestation">
+			<h4>INFORMATION DU PRESTATION</h4>
+		<% unless @paniers == nil %>
+				<% @paniers.each_index do |id| %>
+					<div class="js<%=category(id)[1]%>-prestation-info">
+						<h5><%= category(id)[0] %></h5>
+						<ul>
+						<% subcategories(id).each do |subcategory| %>
+							<li class="<%=id%>tojs<%=subcategory.id%>" ><%= subcategory.name %> <%= subcategory.price %> €
+								<%= check_box_tag :name, 1, isincommandesubcategory(id,subcategory) , data: { remote: true, url: subcategory_path, params: {key: id, subcategory: subcategory.id}.to_param, method: "put" }%>
+							</li>
+						<% end %>
+						</ul>
+					</div>
+				<% end	%>
+		<% end	%>
+		</div>
+		<hr>
+		<div class="crenaux">
+			<h5>Choix du créneaux horaire</h5>
+			<p>choisir ici la date et l'heur pour la prestation</p>
+			<br><br><br>
+		</div>
+		<hr>
+		<div class="reserver">
+			<h5>Reservation confirmer</h5>
+			<p>Se connecter si non conecter</p>
+			<a class="btn btn-success" href="#">Reserver</a><br><br><br>
+		</div>
+
+	</div>
+	<!-- PANIER PANIER PANIER PANIER PANIER PANIER PANIER PANIER
+================================================================ -->
+	<div class="col-sm-3">
+		<div id="list-commande">
+			<h2>VOS PANIER</h2>
+			<div class="alert alert-success" id="js-price" role="alert">
+			  Somme: <%= totalprice() %> €
+			</div>
+		<% unless @paniers == nil %>
+			<% @paniers.each_index do |id| %>
+				<div class="js<%=@paniers[id]["category"][1]%>-prestation-order">
+					<h5><%= @paniers[id]["category"][0] %></h5>
+					<ol id="my-order-<%=id%>tojs">
+						<% unless @paniers[id]["subcategory"] == nil %>
+							<% @paniers[id]["subcategory"].each do |subcat| %>
+								<li class="<%=id%>tojs<%=subcat[0]%>"><%= subcat[1] %></li>
+							<% end %>
+						<% end %>
+					</ol>
+				</div>
+			<% end %>
+		<% end	%>
+		</div>
+	</div>
 </div>
