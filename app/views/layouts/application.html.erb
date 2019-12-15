@@ -12,16 +12,18 @@
   </head>
 
   <body>
-    <!-- Alert de devise
-    <div class="notice-devise">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
-    -->
     <div class="container">
-      <spam>Acceul : </spam>
-      <%= link_to "Cocooning Spa", root_path %>  
-      <%= yield %>  
+      <!-- Alert de devise-->
+      <% if notice %>
+        <p class="notice"><%= notice %></p>  
+      <% end %>
+      <% if alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+      <spam>Acceul : </spam><%= link_to "Cocooning Spa", root_path %>
+      
+      <%= yield %>
+
     </div>
     
   </body>

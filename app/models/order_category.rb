@@ -3,6 +3,6 @@ class OrderCategory < ApplicationRecord
     belongs_to :order
     belongs_to :category
     #relation N-N entre commande_category et subcategory
-    has_many :order_sub_categories
+    has_many :order_sub_categories, dependent: :destroy
     has_many :subcategories, through: :order_sub_categories
 end
