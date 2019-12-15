@@ -16,4 +16,29 @@ class StaticPageControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get contact" do
+    get static_page_contact_url
+    assert_response :success
+  end
+
+  test "should get galerie" do
+    get static_page_galerie_url
+    assert_response :success
+  end
+
+  test "should get faq" do
+    get static_page_faq_url
+    assert_response :success
+  end
+
+  test "should get cgu" do
+    get static_page_cgu_url
+    assert_response :success
+  end
+
+  test "should get legalnotice" do
+    get static_page_legalnotice_url
+    assert_response :success
+  end
+
 end

@@ -1,0 +1,85 @@
+<div class="row">
+	<div class="col-sm-9">
+		<h4>Choix Pays / Ville</h4>
+			<span>Un petit formulaire pour demander le pays et la ville</span>
+		<hr>
+
+		<h1><%= @service.name %> a domicile </h1>
+		<hr>
+		<h2>PRESTATION</h2>
+			<div class="row">
+			<!-- Afficher les differents types de category -->
+			<% @categories.each do |category| %>
+				<div class="col-sm-3" >
+					<%= link_to "-", deletecategory_path(category.id), class: "btn btn-info",remote: true %>
+					<strong><%= category.name %> <span id="puts-number-<%= category.name %>"><%= countnumbre(category.name,category.id) %></span> </strong>
+					<%= link_to "+", addcategory_path(category.id), class: "btn btn-info",remote: true %>
+				</div>
+			<% end %>
+			</div>
+		<hr>
+<!--==========	PRESTATION PRESTATION PRESTATION PRESTATION PRESTATION   =============-->
+		<div id="list-prestation">
+			<h2>INFORMATION DU PRESTATION</h2>
+		<% unless @paniers == nil %>
+				<% @paniers.each_index do |id| %>
+					<div class="js<%=celementCategory(id)[1]%>-prestation-info">
+						<h5><%= celementCategory(id)[0] %></h5>
+						<ul>
+		<!-- subcategories(): fonction qui retourne la liste de tous les sous categories -->
+						<% subcategories(id).each do |subcategory| %>
+							<li class="<%=id%>tojs<%=subcategory.id%>" >
+								<%= subcategory.name %> <%= subcategory.price %> €
+								<%= check_box_tag :name, 1, isincommandesubcategory(id,subcategory) , data: { remote: true, url: subcategory_path, params: {key: id, subcategory: subcategory.id}.to_param, method: "put" }%>
+							</li>
+						<% end %>
+						</ul>
+					</div>
+				<% end	%>
+		<% end	%>
+		</div>
+		<hr>
+		<div class="crenaux">
+			<h2>Choix du créneaux horaire</h2>
+			<p>choisir ici la date et l'heur pour la prestation</p>
+			<br><br><br>
+		</div>
+		<hr>
+		<div class="reserver">
+			<h2>Confirmer la commande</h2>
+			<p>
+				Se connecter si non conecter<br>
+				(Aprè clic sur reserver) Question suplementaire au produits<br>
+				(Aprè clic sur reserver) Choix d'adresse de livraison<br>
+				(Aprè clic sur reserver) Recapilatif de commande<br>
+			</p>
+			<strong>Lien pour enregistré la commande dans la table</strong><br>
+			<%= link_to "Reserver", saved_commande_path, class: "btn btn-success"%>
+		</div>
+
+	</div>
+	<!-- PANIER PANIER PANIER PANIER PANIER PANIER PANIER PANIER
+================================================================ -->
+	<div class="col-sm-3">
+		<div id="list-commande">
+			<h2>VOS PANIER</h2>
+			<div class="alert alert-success" id="js-price" role="alert">
+			  Somme: <%= totalprice() %> €
+			</div>
+		<% unless @paniers == nil %>
+			<% @paniers.each_index do |id| %>
+				<div class="js<%=@paniers[id]["category"][1]%>-prestation-order">
+					<h5><%= @paniers[id]["category"][0] %></h5>
+					<ol id="my-order-<%=id%>tojs">
+						<% unless @paniers[id]["subcategory"] == nil %>
+							<% @paniers[id]["subcategory"].each do |subcat| %>
+								<li class="<%=id%>tojs<%=subcat[0]%>"><%= subcat[1] %></li>
+							<% end %>
+						<% end %>
+					</ol>
+				</div>
+			<% end %>
+		<% end	%>
+		</div>
+	</div>
+</div>

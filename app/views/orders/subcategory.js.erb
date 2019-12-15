@@ -1,0 +1,15 @@
+function updatesubcategory(){
+	let infosubcategory = document.getElementsByClassName("<%=@arrayid%>tojs<%=@subc.id%>")
+	if (infosubcategory.length == 2){
+		infosubcategory[1].remove()
+	}
+	else if(infosubcategory.length == 1) {
+		let ol = document.getElementById("my-order-<%=@arrayid%>tojs")
+		let li = document.createElement("li")
+		li.classList.add("<%=@arrayid%>tojs<%=@subc.id%>")
+		li.innerHTML = "<%=@subc.name%>"
+		ol.appendChild(li)
+	}
+	document.getElementById("js-price").innerHTML = "Somme: <%= totalprice() %> €"
+}
+updatesubcategory()

@@ -1,6 +1,9 @@
 Service.destroy_all
 Category.destroy_all
 Subcategory.destroy_all
+Order.destroy_all
+
+Client.create(email: "email@mail.com", password:"email@mail.com",first_name: "Trump", last_name: "Donald", adresse: "Lot 34 Maparue 3009", tel: "03902094902403")
 
 s3 = Service.create(name:"Massage")
 s4 = Service.create(name:"Location spa")

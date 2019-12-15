@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CommandeTest < ActiveSupport::TestCase
+class PrestataireServiceTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
