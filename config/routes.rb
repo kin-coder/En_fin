@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   #Enregistrement des donnés du commande dans les table
   get '/confirmer-commande', to:'submitorders#save', as: "saved_commande"
 
-
   # Autre page
   get '/contact', to:'static_page#contact', as: "contact"
   get '/galerie-photo', to:'static_page#galerie', as: "galerie"
