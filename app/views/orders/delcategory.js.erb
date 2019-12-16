@@ -1,16 +1,16 @@
 function delcategory(){
-	let order = document.getElementsByClassName("js<%=@category.id%>-prestation-order")
-	let info = document.getElementsByClassName("js<%=@category.id%>-prestation-info")
+	let prestation = document.getElementsByClassName("prestation-name-<%= @category.id %>")
+	let basket = document.getElementsByClassName("basket-group-<%= @category.id %>")
 	let numberOfCategories = document.getElementById("puts-number-<%= @category.name %>")
 	/*countnumbre definit dans helper pour calculer le nombre de Categoriie*/
 	numberOfCategories.innerHTML = <%= countnumbre(@category.name,@category.id) %> 
-	/* delete the last element in dom order */
-	if (order.length != 0){
-		order[order.length - 1].remove()
+	/* delete the last element in dom prestation */
+	if (prestation.length != 0){
+		prestation[prestation.length - 1].remove()
 	}
-	/* delete the last element in dom info */
-	if (info.length != 0){
-		info[info.length - 1].remove()
+	/* delete the last element in dom basket */
+	if (basket.length != 0){
+		basket[basket.length - 1].remove()
 	}
 	/* countnumbre definit dans helper pour calculer la total des prix a payer */
 	document.getElementById("js-price").innerHTML = "Somme: <%= totalprice() %> €"
