@@ -50,17 +50,20 @@ class OrdersController < ApplicationController
   def subcategory
     parametre = params.permit(:name,:key,:subcategory)
     # :key index du tableau session[:prestation]
-    @arrayid = parametre[:key]
+    @arrayid = parametre[:key].to_i
     @subc = Subcategory.find(parametre[:subcategory].to_i)
+    # @category utiliser dans le fichier subcategory.js
+    @category = session[:prestation][@arrayid.to_i]["category"]
     if parametre[:name]
-      if session[:prestation][parametre[:key].to_i]["subcategory"] == nil
-        session[:prestation][parametre[:key].to_i]["subcategory"] = [[@subc.id,@subc.name]]
+      if session[:prestation][@arrayid]["subcategory"] == nil
+        session[:prestation][@arrayid]["subcategory"] = [[@subc.id,@subc.name]]
       else
-        session[:prestation][parametre[:key].to_i]["subcategory"].push([@subc.id,@subc.name])
+        session[:prestation][@arrayid]["subcategory"].push([@subc.id,@subc.name])
       end
     else
-      session[:prestation][parametre[:key].to_i]["subcategory"].delete([@subc.id,@subc.name])
+      session[:prestation][@arrayid]["subcategory"].delete([@subc.id,@subc.name])
     end
+
     respond_to do |format|
       format.html do
         redirect_back(fallback_location: root_path)

@@ -1,8 +1,4 @@
 module OrdersHelper
-	def celementCategory(array_index)
-		return @paniers[array_index]["category"]
-	end
-
 	def subcategories(array_index)
 		# array_index l'index de l'element dans le @paniers[]
 		return Category.find(celementCategory(array_index)[1]).subcategories
