@@ -58,7 +58,8 @@ ActiveRecord::Schema.define(version: 2019_12_16_103528) do
   end
 
   create_table "departments", force: :cascade do |t|
-    t.string "name"
+    t.string "code"
+    t.string "namedepartment"
     t.bigint "country_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
