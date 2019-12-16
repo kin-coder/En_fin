@@ -1,0 +1,23 @@
+function delcategory(){
+	let somme_price = <%= totalprice() %>
+	let prestation = document.getElementsByClassName("prestation-name-<%= @category.id %>")
+	let basket = document.getElementsByClassName("basket-group-<%= @category.id %>")
+	let numberOfCategories = document.getElementById("puts-number-<%= @category.name %>")
+	/*countnumbre definit dans helper pour calculer le nombre de Categoriie*/
+	numberOfCategories.innerHTML = <%= countnumbre(@category.name,@category.id) %> 
+	/* delete the last element in dom prestation */
+	if (prestation.length != 0){
+		prestation[prestation.length - 1].remove()
+	}
+	/* delete the last element in dom basket */
+	if (basket.length != 0){
+		basket[basket.length - 1].remove()
+	}
+	/* countnumbre definit dans helper pour calculer la total des prix a payer */
+	document.getElementById("js-price").innerHTML = "Somme: "+ somme_price +" €"
+	
+	if(somme_price == 0){
+		document.getElementById("basket").innerHTML = "<p id=\"no-basket-list\">Vous n'avez pas encore sélectionné de prestation</p>"
+	}
+}
+delcategory()

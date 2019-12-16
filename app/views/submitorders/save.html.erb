@@ -1,0 +1,28 @@
+<!-- l'element de cette page est encore a déplacé -->
+<% if @commande %>
+<div class="commande">
+	<h1>Recapilatif de commande</h1>
+	<h2><%= @commande.service.name %> à domicile, commandé par <strong>
+		<%=@commande.client.first_name %> <%= @commande.client.last_name %></strong></h2>
+	<h2>Prestation</h2>
+	<mark>Information du commande</mark><br>
+	<p class="info">
+		<strong>Date du prestation :</strong> <%= @commande.datetime %><br>
+		<strong>Adresse de livraison :</strong> <%= @commande.adresse %><br>
+		<strong>Description :</strong> <%= @commande.description %>
+	</p>
+	<mark>List de commande</mark><br>
+	<p>
+		<ul>
+		<% @commande.order_categories.each do |cat| %>
+			<li><%= cat.category.name %></li>
+			<ul>
+				<% cat.subcategories.each do |sub| %>
+				<li><%= sub.name %></li>
+				<% end %>
+			</ul>
+		<% end %>	
+		</ul>
+	</p>
+</div>
+<% end %>

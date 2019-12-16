@@ -1,0 +1,13 @@
+function addcategorysubcategory(){
+	/* countnumbre definit dans helper
+	* pour caluculer le nombre de Category selectioné */
+	let num = document.getElementById("puts-number-<%= @category.name %>")
+	num.innerHTML = <%= countnumbre(@category.name,@category.id) %>
+	/*Ajout des liste de sous-category a chequer */
+	let prestation = document.getElementById("list-prestation")
+	let div1 = document.createElement("div")
+	div1.classList.add("prestation-name-<%= @category.id %>")
+	div1.innerHTML = "<%= j render 'infoaddcategory', infocategory: @category, arrayid: @arrayid %>"
+	prestation.appendChild(div1)
+}
+addcategorysubcategory()
