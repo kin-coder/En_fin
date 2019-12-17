@@ -4,7 +4,7 @@ class AdminsController < Application2Controller
 
     def admin_page
 
-
+        @admin = current_admin
     
     end
 

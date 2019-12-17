@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :admins
 
   get "/admin", to: "admins#admin_page", as: "admin_page"
-
+ 
 
 
   devise_for :prestataires
