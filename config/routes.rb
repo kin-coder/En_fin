@@ -5,8 +5,6 @@ Rails.application.routes.draw do
 
   get "/admin", to: "admins#admin_page", as: "admin_page"
  
-
-
   #page d'acceul
   root 'static_page#index'
   
@@ -29,7 +27,6 @@ Rails.application.routes.draw do
   # Autre page
   get '/contact', to:'static_page#contact', as: "contact"
   get '/galerie-photo', to:'static_page#galerie', as: "galerie"
-  get '/help/faq', to:'static_page#faq', as: "faq"
   get '/mentions-legales', to:'static_page#legalnotice', as: "legalnotice"
   get '/conditions-generales', to:'static_page#cgu', as: "cgu"
 

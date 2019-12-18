@@ -16,9 +16,6 @@ class StaticPageController < ApplicationController
   def galerie
   end
 
-  def faq
-  end
-
   def legalnotice
   end
 
