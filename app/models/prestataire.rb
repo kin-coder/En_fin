@@ -10,9 +10,4 @@ class Prestataire < ApplicationRecord
   #relation N-N entre la commande et le prestataire pour sauvgrder les prestataire en attente
   has_many :prestataire_orders
   has_many :orders, through: :prestataire_orders
-
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
 end

@@ -7,7 +7,6 @@ Rails.application.routes.draw do
  
 
 
-  devise_for :prestataires
   #page d'acceul
   root 'static_page#index'
   
