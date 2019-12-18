@@ -3,8 +3,7 @@ Category.destroy_all
 Subcategory.destroy_all
 Order.destroy_all
 Country.destroy_all
-
-Client.create(email: "email@mail.com", password:"email@mail.com",first_name: "Trump", last_name: "Donald", adresse: "Lot 34 Maparue 3009", tel: "03902094902403")
+Prestataire.destroy_all
 
 s3 = Service.create(name:"Massage")
 s4 = Service.create(name:"Location spa")
@@ -26,8 +25,11 @@ listdepartement.each do |listdepartement|
 	puts i
   end
 end
+# ====================== COMMANDE ============================= #
 
-# ====================== MASSAGE ============================= #
+Client.create(email: "email@mail.com", password:"email@mail.com",first_name: "Trump", last_name: "Donald", adresse: "Lot 34 Maparue 3009", tel: "03902094902403")
+
+# ====================== MASSAGE ============================== #
 
 c = []
 ["Homme","Femme"].each do |value|
