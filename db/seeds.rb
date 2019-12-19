@@ -4,6 +4,12 @@ Subcategory.destroy_all
 Order.destroy_all
 Country.destroy_all
 Prestataire.destroy_all
+Client.destroy_all
+Admin.destroy_all
+
+increment = 0
+
+Admin.create(email:"admin@admin.com",password:"admin@admin.com")
 
 s3 = Service.create(name:"Massage")
 s4 = Service.create(name:"Location spa")
@@ -13,41 +19,49 @@ listdepartement = [[ "01", "Ain" ],[ "02", "Aisne" ],[ "03", "Allier" ],[ "04", 
 country = Country.create(name: "France")
 
 # ======================== PRESTATAIRES ====================== #
+		#== creation département et prestataire ==#
 listdepartement.each do |listdepartement|
   d = Department.create(code: listdepartement[0], namedepartment: listdepartement[1], country: country)
-  puts listdepartement[0]
   rand(5).times do |i|
 	p = Prestataire.create(email: Faker::Internet.free_email, first_name: Faker::Name.first_name, last_name: Faker::Name.middle_name , adresse: Faker::Address.full_address, tel: Faker::PhoneNumber.phone_number_with_country_code, raison_sociale: Faker::Commerce.department, siret: Faker::Number.leading_zero_number(digits: 10))
 	# Selection du zone qu'il peut faire
 	p.departments = [d]
 	# Selection des services que le prestataire peut faire
 	p.services = [Service.find(rand(1..2))]
-	puts i
+	puts increment+=1
   end
 end
-# ====================== COMMANDE ============================= #
 
-Client.create(email: "email@mail.com", password:"email@mail.com",first_name: "Trump", last_name: "Donald", adresse: "Lot 34 Maparue 3009", tel: "03902094902403")
-
-# ====================== MASSAGE ============================== #
+# ====================== MASSAGE =============================== #
 
 c = []
 ["Homme","Femme"].each do |value|
 	c.push(Category.create(name: value, service:s3))
-	puts value
+	puts increment+=1
 end
 
 subcategiesFemme = ["Pré natal","Plantaire","Réflexologie Plantaire","Assis","Deep Tissue"]
 
 subcategiesFemme.each do |value|
 	Subcategory.create(name:value, price:rand(9.0 .. 30).to_s[0 .. 4].to_f, category:c[0])
-	puts value
+	puts increment+=1
 end
 
 subcategiesHomme = ["Découverte","Dos","Assis","Relaxant","Lomi-Lomi","Ayuvédique"]
 
 subcategiesHomme.each do |value|
 	Subcategory.create(name:value, price:rand(9.0 .. 30).to_s[0 .. 4].to_f, category:c[1])
-	puts value
+	puts increment+=1
 end
-# ============================================================ #
+
+# ====================== COMMANDE ============================= #
+
+10.times do |i|
+	c = Client.create(email: Faker::Internet.free_email, password:"email@mail.com",first_name: Faker::Name.first_name, last_name: Faker::Name.middle_name, adresse: Faker::Address.full_address, tel: Faker::PhoneNumber.phone_number_with_country_code)
+	o = Order.create(client: c,service:s3)
+	key = rand(2)
+	orderCategory = OrderCategory.create(order: o, category: s3.categories[key])
+	orderCategory.subcategories = s3.categories[key].subcategories[0..rand(4)]
+	puts increment+=1
+end
+# ============================================================== #
