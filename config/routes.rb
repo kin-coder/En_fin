@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   # Lien pour authentification admin
   devise_for :admins
 
-  get "/admin", to: "admins#admin_page", as: "admin_page"
- 
+  get "/admin", to:"admins#admin_page", as:"admin_page"
+  get "/admin/prestataire", to:"admins#prestataire", as:"admin_prestataire"
+
   #page d'acceul
   root 'static_page#index'
   
