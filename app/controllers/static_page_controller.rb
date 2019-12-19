@@ -24,7 +24,7 @@ class StaticPageController < ApplicationController
 
   def cgu  
   end
-
-  def comment_ca_marche
+#page comment-ca-marche
+  def ccm
   end
 end
