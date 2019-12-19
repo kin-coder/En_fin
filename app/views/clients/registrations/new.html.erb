@@ -1,49 +1,60 @@
 <h2>INSCRIPTION D UN CLIENT</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<!-- FORM AREA SECTION -->
+    <section class="clearfix formArea">
+      <div class="container">
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "Nom" %>
-  </div>
+            <div class="panel panel-default formPart">
+              <div class="panel-heading patternbg">Create an <span>account</span></div>
+              <div class="panel-body">
+              <div class="row">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <div class="col-sm-6">
+                <%= render "devise/shared/error_messages", resource: resource %>
+                  <div class="form-group">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <%= f.text_field :last_name, autofocus: true, autocomplete: "Nom", class:"form-control", id:"fullname", placeholder:"Votre nom" %>
+                  </div>
+                  <div class="form-group">
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    <%= f.text_field :first_name, autofocus: true, autocomplete: "Prénom", class:"form-control", id:"fullname", placeholder:"Votre prénom" %>
+                 </div>
+                 <div class="form-group">
+                    <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                    <%= f.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control", id:"fullname", placeholder:"Votre adresse" %>
+                 </div>
+                 <div class="form-group">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <%= f.telephone_field :tel, autofocus: true, autocomplete: "Tel", class:"form-control", id:"fullname", placeholder:"Numéro tél" %>
+                 </div>
+                </div>
+                <div class="col-sm-6">
+                 <div class="form-group">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"Numéro email" %>
+                 </div>
+             
+              
+                 <div class="form-group">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                    <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"fullname", placeholder:"mot de pass" %>
+                 </div>
+                 <div class="form-group">
+                    <i class="fa fa-undo fa-stack-2x"></i>
+                    <i class="fa fa-key fa-stack-1x"></i>
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", id:"fullname", placeholder:"confirmer mot de pass" %>
+                 </div>
+                 <div class="actions">
+                  <%= f.submit "Sign up" %>
+                 </div>
+                
+              <% end %>
+            </div>
+              </div>
+              <%= render "clients/shared/links" %>
+              </div>
+            </div>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "Prénom" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :adresse %><br />
-    <%= f.text_field :adresse, autofocus: true, autocomplete: "Adresse" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :tel %><br />
-    <%= f.telephone_field :tel, autofocus: true, autocomplete: "Tel" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "clients/shared/links" %>
+      </div>
+    </section>
+    
