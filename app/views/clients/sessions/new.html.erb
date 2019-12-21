@@ -1,57 +1,28 @@
-<h2>Se connecter</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+<center>
+<div class="panel panel-default formPart panel-login" >
+  <div class="panel-heading patternbg" ><center> <span>Connectez-vous</span></center></div>
+  <div class="panel-body panel-body-login">
+  <div class="row">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="col-sm-12">
+      <div class="form-group">
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"email" %>
+      </div>
+      <div class="form-group">
+        <i class="fa fa-key" aria-hidden="true"></i>
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"fullname", placeholder:"mot de pass" %>
+      </div>
+      <div class="actions">
+        <center><%= f.submit "Connecter", class:"btn btn-primary btn-block" %></center> </br>
+        <center><p>Pas encore inscris? <%= render "clients/shared/links" %></p></center>
+      </div>
+      <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "clients/shared/links" %>
-
-
-<hr>
-<small class="test">Compte de test: email: "email@mail.com", password:"email@mail.com"</small>
-<hr>
-<h1>ACCEUILL</h1>
-<!-- LIEN POUR LES CONNEXION CLIENT-->
-<%= link_to "Se connecter", new_client_session_path %><br>
-<%= link_to "Se deconnecter", destroy_client_session_path, method: "delete" %><br>
-<%= link_to "S'inscrire", new_client_registration_path %><br>
-<%= link_to "Editer mon profil", edit_client_registration_path %><br>
-<%= link_to "Mot de passe oublier", new_client_password_path %><br>
-<hr>
-
-<h2>LIEN POUR CHAQUE PAGE DE SERVICE</h2>
-<%= link_to "Massage", massage_path %><br>
-<%= link_to "Location de spa", spa_path %><br>
-
-<hr>
-
-<h2>PANIER DYNAMIQUE</h2>
-<%= link_to "Massage à domicile", reservation_path('massage-domicile') %><br>
-<%= link_to "Location de spa", reservation_path('location-spa') %>
-<hr>
-
-<h2>Autre lien utiles</h2>
-<%= link_to "Contact", contact_path %><br>
-<%= link_to "Galerie", galerie_path %><br>
-<%= link_to "FAQ", faq_path %><br>
-<%= link_to "Mentions légales", legalnotice_path %><br>
-<%= link_to "CGU", cgu_path %><br>
+</div>
+</div>
+</center>
