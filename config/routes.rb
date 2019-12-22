@@ -34,4 +34,8 @@ Rails.application.routes.draw do
   get '/mentions-legales', to:'static_page#legalnotice', as: "legalnotice"
   get '/conditions-generales', to:'static_page#cgu', as: "cgu"
 
+
+  #routes page comment ca marche
+  get '/comment-ca-marche', to:'static_page#ccm', as: "ccm"
+
 end
