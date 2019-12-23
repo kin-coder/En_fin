@@ -1,0 +1,21 @@
+#first-btn{
+    color:white;
+    margin-right: 10px;
+ }
+
+ #first-btn:hover, .first-btn:hover {
+    background-color: magenta !important;
+    color: mediumblue;
+  }
+.evenement{
+   font-size: 40px;
+   position: relative;
+   top: 50px;
+   color: #ec5598;
+}
+
+/* page signup */
+.btn-block {
+   display: block;
+   width: 50% !important;
+}

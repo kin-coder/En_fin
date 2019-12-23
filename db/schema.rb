@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_201013) do
     t.string "last_name"
     t.string "adresse"
     t.string "tel"
+    t.string "sexe"
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
