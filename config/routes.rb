@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   get "/admin/prestataire", to:"admins#prestataire", as:"admin_prestataire"
   # Lien pour gerer les prestataire via l'admin
   get "admin/prestataires", to:"prestataires#index", as:"index_prestataires"
-  post "admin/prestataires", to:"prestataires#create", as:"create_prestataires"
   get "admin/prestataires/new", to:"prestataires#new", as:"new_prestataires"
+  post "admin/prestataires/new", to:"prestataires#create", as:"create_prestataires"
   get "admin/prestataires/:id/edit", to:"prestataires#edit", as:"edit_prestataires"
   get "admin/prestataires/:id", to:"prestataires#show", as:"show_prestataires"
-  put "admin/prestataires/:id", to:"prestataires#update", as:"update_prestataires"
+  patch "admin/prestataires/:id", to:"prestataires#update", as:"update_prestataires"
   delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # page d'acceul

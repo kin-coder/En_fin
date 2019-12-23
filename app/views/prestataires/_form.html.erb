@@ -44,10 +44,25 @@
     <%= form.label :siret %>
     <%= form.text_field :siret %>
   </div>
+
   <div class="field">
-    <%= form.collection_check_boxes(nil, nil, Department.all, nil,nil)%>
+    <h6>CHOIX DES SERVICE</h6>
+    <% hidden_field_tag "service[service_ids][]", nil %> 
+    <% @services.each do |service| %>
+      <%= check_box_tag "service[service_ids][]", service.id, @prestataire.service_ids.include?(service.id), id:dom_id(service) %>
+      <%= label_tag dom_id(service), service.name %><br>
+    <% end %>
   </div>
   
+
+  <div class="field">
+    <h6>CHOIX DES SERVICE</h6>
+    <% hidden_field_tag "prestataire[department_ids][]", nil %> 
+    <% @departments.each do |department| %>
+      <%= check_box_tag "prestataire[department_ids][]", department.id, @prestataire.department_ids.include?(department.id), id:dom_id(department) %>
+      <%= label_tag dom_id(department), department.namedepartment %><br>
+    <% end %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
