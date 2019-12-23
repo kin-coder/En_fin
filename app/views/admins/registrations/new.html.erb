@@ -1,9 +1,14 @@
-<h2>Sign up Admin</h2>
+<%
+=begin%>
+ <h2>Sign up Admin</h2> 
+<%
+=end%>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+
+  <%
+=begin%>
+ <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
@@ -23,7 +28,62 @@
 
   <div class="actions">
     <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+  </div> 
+<%
+=end%>
 
-<%= render "admins/shared/links" %>
+
+
+
+
+
+<!--##############################################################-->
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+ <section class="clearfix formArea">
+     
+          <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-4">
+            <div class="panel panel-default formPart">
+              <div class="panel-heading patternbg">Creer compte <span>admin</span></div>
+              <div class="panel-body">
+                <form>
+                  
+                  <div class="form-group">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                      <!--<input type="email" class="form-control" id="email1" placeholder="Email">-->
+                                      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control",placeholder:"Adresse Email" %>
+                  </div>
+                  <div class="form-group">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                        <!--<input type="password" class="form-control" id="pwd1" placeholder="Password">-->
+                                        <%= f.password_field :password, autocomplete: "new-password", class:"form-control",placeholder:"Nouvel Mot de Passe" %>
+                  </div>
+
+
+                
+                  <div class="form-group">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                        <!--<input type="password" class="form-control" id="pwd1" placeholder="Password">-->
+                                        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control",placeholder:" Confirmé Mot de Passe" %>
+                  </div>
+
+
+
+                  <div class="checkbox">
+                    <!--<label><input type="checkbox"> Remember me</label>-->
+                  </div>
+                                          <!--<button type="submit" class="btn btn-primary btn-block">Sign UP</button>-->
+                                          <%= f.submit "S'ENREGISTRER", class:"btn btn-primary btn-block" %>
+                </form>
+              </div>
+              
+            </div>
+              <%= render "admins/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+<% end %>

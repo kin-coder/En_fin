@@ -1,7 +1,9 @@
-<h2>Log in Admin</h2>
+<!--<h2>Log in Admin</h2>-->
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+  <%
+=begin%>
+ <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
@@ -20,7 +22,53 @@
 
   <div class="actions">
     <%= f.submit "Log in" %>
-  </div>
+  </div> 
+<%
+=end%>
+
+
+
+
+
+<!--###################################################-->
+
+ <section class="clearfix formArea">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4 col-sm-6 col-xs-12">
+            <div class="panel panel-default formPart">
+              <div class="panel-heading patternbg">ACCEDER COMPTE <span>admin</span></div>
+              <div class="panel-body">
+                <form>
+                  <div class="form-group">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <!--<input type="email" class="form-control" id="email" placeholder="Email">-->
+
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control",placeholder:"Votre Email" %>
+
+                  </div>
+                  <div class="form-group">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <!--<input type="password" class="form-control" id="pwd" placeholder="Password">-->
+
+                      <%= f.password_field :password, autocomplete: "current-password",class:"form-control",placeholder:"Mot de Passe" %>
+
+                  </div>
+                  <% if devise_mapping.rememberable? %>
+                  <div class="checkbox">
+                    <label><!--<input type="checkbox"> Remember me--><%= f.check_box :remember_me %><%= f.label :Se_souvenir_de_moi %></label>
+                  </div>
+                  <% end %>
+
+                  <!--<button type="submit" class="btn btn-primary btn-block">Log In</button>-->
+                  <%= f.submit "SE CONNECTER ",class:"btn btn-primary btn-block" %>
+                </form>
+              </div>
+            </div>
+            <%= render "admins/shared/links" %>
+          </div>
+         
+    </section>
+
 <% end %>
 
-<%= render "admins/shared/links" %>

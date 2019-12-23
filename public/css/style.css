@@ -572,6 +572,10 @@ body.bodyColor .bb-fixed-header {
   background-color: #ec5598;
 }
 
+.lava{
+  width:  300px!important;
+}
+
 .btn-primary:focus, .btn-primary.active, .btn-primary:active {
   background-color: #ec5598;
 }
@@ -733,7 +737,7 @@ body.bodyColor .bb-fixed-header {
 .btn-theme {
   background-color: #ec5598;
   border-color: #ec5598;
-  color: #ffffff;
+  color: #ffffff!important;
 }
 
 .btn-theme:focus, .btn-theme.active, .btn-theme:active, .btn-theme:hover {
