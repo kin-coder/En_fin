@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Prestataires</h1>
+<%= link_to 'Nouveau prestataire', new_prestataires_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>tel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prestataires.each do |prestataire| %>
+      <tr>
+        <td><%= prestataire.first_name %></td>
+        <td><%= prestataire.last_name %></td>
+        <td><%= prestataire.email %></td>
+        <td><%= prestataire.tel %></td>
+        <td><%= link_to 'Afficher', show_prestataires_path(prestataire.id) %></td>
+        <td><%= link_to 'Modifier', edit_prestataires_path(prestataire.id) %></td>
+        <td><%= link_to 'Supprimer', delete_prestataires_path(prestataire.id), method: :delete, data: { confirm: 'Etes vous sur?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
