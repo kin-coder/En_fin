@@ -103,9 +103,11 @@ ActiveRecord::Schema.define(version: 2019_12_18_201013) do
     t.text "description"
     t.bigint "client_id"
     t.bigint "service_id"
+    t.bigint "department_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["department_id"], name: "index_orders_on_department_id"
     t.index ["service_id"], name: "index_orders_on_service_id"
   end
 

@@ -6,6 +6,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.text :description #question suplementaire au produits
       t.belongs_to :client, index:true
       t.belongs_to :service, index:true
+      t.belongs_to :department, index:true
 
       t.timestamps
     end
