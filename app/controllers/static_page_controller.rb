@@ -27,4 +27,13 @@ class StaticPageController < ApplicationController
 
   def comment_ca_marche
   end
+
+
+  def all_produit
+  end
+
+  def show_produit
+  
+  end
+
 end
