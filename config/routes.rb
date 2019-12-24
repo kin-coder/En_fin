@@ -38,6 +38,9 @@ Rails.application.routes.draw do
   #routes page comment ca marche
   get '/comment-ca-marche', to:'static_page#comment_ca_marche', as: "comment_ca_marche"
 
-  #routes page produit
+  #routes page TOUT produit
   get '/all_produit', to:'static_page#all_produit', as: "all_produit"
+
+  # routes page UN produit
+  get '/show_produit', to:'static_page#show_produit', as: "show_produit"
 end
