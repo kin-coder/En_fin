@@ -36,4 +36,8 @@ class StaticPageController < ApplicationController
   
   end
 
+  def location_spa
+  
+  end
+
 end

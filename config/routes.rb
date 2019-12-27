@@ -43,4 +43,8 @@ Rails.application.routes.draw do
 
   # routes page UN produit
   get '/show_produit', to:'static_page#show_produit', as: "show_produit"
+
+  # routes page Location SPA
+  get '/location_spa', to:'static_page#location_spa', as: "location_spa"
+
 end
