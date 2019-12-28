@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_201013) do
   create_table "prestataire_orders", force: :cascade do |t|
     t.bigint "order_id"
     t.bigint "prestataire_id"
+    t.boolean "accepted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_prestataire_orders_on_order_id"

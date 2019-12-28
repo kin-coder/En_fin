@@ -35,13 +35,18 @@ Rails.application.routes.draw do
   patch "admin/prestataires/:id", to:"prestataires#update", as:"update_prestataires"
   delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+  #Gerer les commande dans le B-O Admin
   get "admin/orders", to:"admin_order#index", as:"index_admin_order"
   get "admin/orders/:id", to:"admin_order#show", as:"show_admin_order"
   get "admin/orders/:id/edit", to:"admin_order#edit", as:"edit_admin_order"
   patch "admin/orders/:id", to:"admin_order#update", as:"update_admin_order"
   delete "admin/orders/:id", to:"admin_order#destroy", as:"destroy_admin_order"
+  #Accepter ou retire un prestataire pour la commande
+  put "admin/accepter-commande/", to:"admin_order#accept", as:"accept_order"
+  put "admin/waiting-commande/", to:"admin_order#waiting", as:"waiting_order"
+  delete "admin/supprimer-in-commande/", to:"admin_order#remove_order", as:"remove_order"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 end
