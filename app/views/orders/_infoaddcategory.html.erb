@@ -2,7 +2,7 @@
 <h5><%= infocategory.name %></h5>
 <ul>
 	<% helpsubcategories(infocategory).each do |subcategory| %>
-	  <li><%= subcategory.name %> <%= subcategory.price %> € <%= check_box_tag :name, 1, isincommandesubcategory(arrayid,subcategory) , data: { remote: true, url: subcategory_path, params: {key: arrayid, subcategory: subcategory.id}.to_param, method: "put" }%>
+	  <li><%= subcategory.name %> <%= subcategory.price %> € <%= check_box_tag :name, 1, isincommandesubcategory(arrayid,subcategory) , data: { remote: true, url: subcategory_path, params: {key: arrayid, subcategory: subcategory.id}.to_param, method: "put" }, class:"check"%>
 	  </li>
 	<% end %>
 </ul>

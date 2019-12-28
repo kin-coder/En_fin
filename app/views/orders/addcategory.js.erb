@@ -7,7 +7,12 @@ function addcategorysubcategory(){
 	let prestation = document.getElementById("list-prestation")
 	let div1 = document.createElement("div")
 	div1.classList.add("prestation-name-<%= @category.id %>")
-	div1.innerHTML = "<%= j render 'infoaddcategory', infocategory: @category, arrayid: @arrayid %>"
-	prestation.appendChild(div1)
+	div1.classList.add("row")
+	let div2 = document.createElement("div")
+	div2.classList.add("col-sm-4")
+	div2.classList.add("categ")
+	div2.classList.add("prestation-info")
+	div2.innerHTML = "<%= j render 'infoaddcategory', infocategory: @category, arrayid: @arrayid %>"
+	prestation.appendChild(div2)
 }
 addcategorysubcategory()
