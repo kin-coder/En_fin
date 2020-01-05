@@ -1,3 +1,31 @@
+
+.heure {
+  color: black !important;
+  font-size: 45px  !important;
+  font-family: Stencil Std, fantasy !important;
+  margin-left: 12px !important;
+  
+}
+
+.optionnal-texte {
+  position: relative;
+  border-style: initial;
+  border-radius: 12px;
+  background-color: white;
+  color: deeppink;
+  
+  height: 36px;
+  z-index: 7;
+top: 17px;
+  text-align: center;
+  margin: 0 auto;
+  width: 372px;
+  font-size: 25px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+
 .aboutInner2 {
   position: relative;
 }
@@ -61,30 +89,7 @@
     margin: -60px 0 60px 60px;
   }
 }
-  .heure {
-    color: black !important;
-    font-size: 45px  !important;
-    font-family: Stencil Std, fantasy !important;
-    margin-left: 12px !important;
-    
-  }
-
-  .optionnal-texte {
-    position: relative;
-    border-style: initial;
-    border-radius: 12px;
-    background-color: white;
-    color: deeppink;
-    
-    height: 36px;
-    z-index: 7;
-  top: 17px;
-    text-align: center;
-    margin: 0 auto;
-    width: 372px;
-    font-size: 25px;
-    font-family: 'Times New Roman', Times, serif;
-  }
+  
 
 
 /* ====== index =====
@@ -315,13 +320,12 @@ a:hover, a:focus {
 @media (min-width: 320px) {
   .secotionTitle {
     padding: 50px 0 30px 0;
-
   }
 }
 
 @media (min-width: 768px) {
   .secotionTitle {
-    padding: 50px 0 30px 0;
+    padding: 100px 0 80px 0;
   }
 }
 
@@ -332,39 +336,29 @@ a:hover, a:focus {
 }
 
 @media (min-width: 320px) {
-
-  .secotionTitle h2 span {
-      display: block;
-      letter-spacing: normal;
-      color: #ec5598;
-      font-family: 'Impact';
-      font-size: 50px;
-      letter-spacing: 4px;
-      line-height: 42px;
-      text-transform: capitalize;
-      font-weight: 400;
-    }
+  .secotionTitle h2 {
+    font-size: 16px;
+    letter-spacing: 4px;
+  }
 }
 
 @media (min-width: 768px) {
-  .secotionTitle h2 span {
-    display: block;
-    letter-spacing: normal;
-    color: #ec5598;
-    font-family: 'Impact';
-    font-size: 90px;
-    letter-spacing: 4px;
-    line-height: 42px;
-    text-transform: capitalize;
-    font-weight: 400;
+  .secotionTitle h2 {
+    font-size: 24px;
+    letter-spacing: 10px;
   }
 }
-@font-face {
-  font-family:'Impact';
-  src: url('Impact') format('truetype');
 
-  }	
-
+.secotionTitle h2 span {
+  display: block;
+  letter-spacing: normal;
+  color: #ec5598;
+  font-family: 'Herr Von Muellerhoff', cursive;
+  font-size: 90px;
+  line-height: 42px;
+  text-transform: capitalize;
+  font-weight: 400;
+}
 
 .patternbg {
   background-image: url(../img/home/pattern-1.jpg);
@@ -596,10 +590,6 @@ body.bodyColor .bb-fixed-header {
 
 .btn-primary:hover {
   background-color: #ec5598;
-}
-
-.lava{
-  width:  300px!important;
 }
 
 .btn-primary:focus, .btn-primary.active, .btn-primary:active {
@@ -3774,15 +3764,10 @@ textarea.form-control {
   }
 }
 
-.reviewInfo .fa-quote-left, .reviewInfo .fa-phone {
+.reviewInfo .fa-quote-left {
   font-size: 25px;
   margin: 0 0 25px 0;
   color: #ec5598;
-}
-.reviewInfo .aboutus{
-  color: black; 
-  font-size: 25px;
-  margin: 0 0 25px 0;
 }
 
 .reviewInfo p {
@@ -4049,7 +4034,6 @@ textarea.form-control {
 
 .priceInfo a {
   width: 133px;
-  color: white !important;
 }
 
 .priceTableWrapper {
@@ -4098,10 +4082,6 @@ textarea.form-control {
   position: relative;
   margin: 0 0 18px 0;
   padding: 0 0 0 25px;
-}
-
-.holdingInfo ul li:hover {
-  color: blue;
 }
 
 @media (min-width: 992px) {
@@ -6467,22 +6447,16 @@ input[type=number]::-webkit-inner-spin-button {
   height: 45px;
 }
 
-
-@media (min-width: 320px) {
-  
-  }
-
-  .productOption li a {
-    width: 45px;
-    height: 45px;
-    line-height: 45px;
-    text-align: center;
-    border: 1px solid #ffffff;
-    color: #ffffff;
-    font-size: 17px;
-    display: block;
-  }
-
+.productOption li a {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-size: 17px;
+  display: block;
+}
 
 .productCaption {
   text-align: center;
@@ -7426,3 +7400,4 @@ input[type=number]::-webkit-inner-spin-button {
     line-height: 50px;
   }
 }
+
