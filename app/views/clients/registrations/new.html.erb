@@ -4,7 +4,7 @@
       <div class="container">
       <%= render "devise/shared/error_messages", resource: resource %>
             <div class="panel panel-default formPart">
-              <div class="panel-heading patternbg">Créer un <span>compte</span></div>
+              <div class="panel-heading patternbg"><center>Créer un <span>compte</span></center></div>
               <div class="panel-body">
               <div class="row">
               <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -54,7 +54,7 @@
                  </div>
               </div>
               <div class="actions">
-                <%= f.submit "Envoyer", class:"btn btn-primary btn-block" %> </br>
+                <center><%= f.submit "Envoyer", class:"btn btn-primary btn-block" %></center> </br>
                 <center><p>Avez-vous un compte? <%= render "clients/shared/links" %></p></center>
               </div>
               <% end %>
