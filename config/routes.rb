@@ -48,5 +48,18 @@ Rails.application.routes.draw do
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 
+  #routes page comment ca marche
+  get '/comment-ca-marche', to:'static_page#comment_ca_marche', as: "comment_ca_marche"
+
+  #routes page TOUT produit
+  get '/all_produit', to:'static_page#all_produit', as: "all_produit"
+
+  # routes page UN produit
+  get '/show_produit', to:'static_page#show_produit', as: "show_produit"
+
+  # routes page Location SPA
+  get '/location_spa', to:'static_page#location_spa', as: "location_spa"
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
 end

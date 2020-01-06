@@ -29,6 +29,17 @@ class SubmitordersController < ApplicationController
 		session[:service] = ""
 		# @commande /variable pour avoirs les donné dans la base de donné
 		@commande = order
+		
+
+		@commande1 = []
+		@commande1 << order
+
+		# ClientMailer.with(client: Client.last, commande: @commande).validation_commande.deliver_now
+		ClientMailer.with(client: Client.last, commande: @commande1).validation_commande.deliver_now
+		
+
+
+
 	  end
 
   private
