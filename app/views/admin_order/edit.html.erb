@@ -1,0 +1,22 @@
+<h1>Commande n°<%= @order.id %>: <small><%= @order.service.name %> à domicile</small></h1>
+<h2>Heure et date de livraison</h2>
+
+<%= form_for(@order, url: update_admin_order_path(@order.id)) do |form| %>
+	<div class="field">
+	    <%= form.label :datetime %>
+	    <%= form.text_field :datetime %>
+	</div>
+	<div class="field">
+	    <%= form.label :adresse %>
+	    <%= form.text_field :adresse %>
+	</div>
+	<div class="field">
+	    <%= form.label :description %>
+	    <%= form.text_area(:description, size: '50x10') %>
+
+	</div>
+	<div class="actions">
+	    <%= form.submit %>
+	  </div>
+<% end %>
+<%= link_to 'Aller dans la commande', show_admin_order_path(@order.id) %>
