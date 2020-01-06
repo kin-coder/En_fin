@@ -7,7 +7,7 @@ ruby '2.6.5'
 gem 'faker'
 # use for beautifull show
 gem 'table_print'
-#
+# user authentification
 gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

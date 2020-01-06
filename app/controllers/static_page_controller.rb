@@ -16,9 +16,6 @@ class StaticPageController < ApplicationController
   def galerie
   end
 
-  def faq
-  end
-
   def legalnotice
   end
 
@@ -27,4 +24,17 @@ class StaticPageController < ApplicationController
 #page comment-ca-marche
   def ccm
   end
+
+
+  def all_produit
+  end
+
+  def show_produit
+  
+  end
+
+  def location_spa
+  
+  end
+
 end
