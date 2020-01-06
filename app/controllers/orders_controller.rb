@@ -15,6 +15,15 @@ class OrdersController < ApplicationController
     end
   end
 
+  def location_spa_reservation
+    @service = Service.where(name:'Location spa')[0]
+    unless @service
+      redirect_to root_path
+    else
+      @categories = @service.categories
+    end
+  end
+
   def addcategory
     @category = param_permit
     session[:prestation].push({"category"=>[@category.name,@category.id]})
@@ -84,11 +93,9 @@ class OrdersController < ApplicationController
     when 'estheticienne-domicile'
       object = Service.where(name:'Beauté')[0]
     when 'massage-domicile'
-      object = Service.where(name:'Massage')[0]
-    when 'location-spa'
-    object = Service.where(name:'Location spa')[0]
-  end
-  return object
+      object = Service.where(name:'Massage')[0]    
+    end
+    return object
   end
   
   def param_permit

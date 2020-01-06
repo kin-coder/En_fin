@@ -1,0 +1,58 @@
+    <section class="clearfix pricingSection">
+      <div class="container">
+        <div class="secotionTitle">
+          <h2><span> Service Spa </span>location</h2>
+        </div>
+
+        <div class="row">
+          <% @categories[0].subcategories.each do |subcategory| %>
+          <div class="col-sm-4 col-xs-12">
+            <div class="priceTableWrapper">
+              <div class="priceImage" style="background-image: url(/img/home/pricing-1.jpg);">
+                <!-- <img src="/img/home/pricing-1.jpg" alt="Image Price" class="img-responsive"> -->
+                <div class="maskImage">
+                  <h3>   </h3>
+                </div>
+                <div class="priceTag">
+                  <h4>€<%= subcategory.price.to_i %></h4>
+                </div>
+              </div>
+              <div class="priceInfo">
+                <ul class="list-unstyled">
+                  
+                    <li class="heure"><%= subcategory.duration %>H</li>
+                  
+                </ul>
+                <a href="#" class="btn btn-common btn-round btn-theme">PANIER</a>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+
+<!--########################################################################@-->
+
+
+<div>
+        <p class="optionnal-texte">OPTIONS SUPLEMENTAIRES</p>
+</div>
+
+    <section class="clearfix offersSection patternbg">
+      <div class="container">
+        <div class="row">
+          <% @categories[1].subcategories.each do |subcategory| %>
+          <div class="col-sm-3 col-xs-12">
+            <!-- div class="col-sm-12 col-xs-12" centrer la dernier element-->
+            <div class="offerContent">
+              <img src="/img/home/offer-1.jpg" alt="Image Offer">
+              <div class="offerMasking">
+                <div class="offerTitle"><h4><a href="#"><%= subcategory.name.upcase %></a></h4></div>
+              </div>
+              <div class="offerPrice"><h5>€<%= subcategory.price.to_i %></h5></div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </section>

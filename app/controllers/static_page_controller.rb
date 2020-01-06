@@ -30,11 +30,6 @@ class StaticPageController < ApplicationController
   end
 
   def show_produit
-  
-  end
-
-  def location_spa
-  
   end
 
 end

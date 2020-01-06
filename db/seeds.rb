@@ -32,6 +32,24 @@ listdepartement.each do |listdepartement|
   end
 end
 
+# ====================== LOCATION SPA ========================== #
+
+c = []
+["prestation","option supplementaire"].each do |value|
+	c.push(Category.create(name: value, service:s4))
+	puts increment+=1
+end
+
+3.times do |i|
+	Subcategory.create(duration:24*(i+1), name:"Location Spa", price:100+(50*i), category:c[0])
+	puts increment+=1
+end
+Subcategory.create(name:"Décoration Romantique",description:"Ballons, pétales de roses, bougies, lumière tamisée",price:20,category:c[1])
+Subcategory.create(name:"Décoration Anniversaire Fête",description:"Ballons hélium & ballons normaux, confettis, lumière d’ambiance",price:20,category:c[1])
+Subcategory.create(name:"Fontaine à chocolat",description:"(fournie avec chocolat)",price:20,category:c[1])
+Subcategory.create(name:"Plateau de fruits frais",description:"(pour deux personnes)",price:20,category:c[1])
+Subcategory.create(name:"Table de massage",description:"(fournie avec huile)",price:25,category:c[1])
+
 # ====================== MASSAGE =============================== #
 
 c = []

@@ -1,11 +1,9 @@
 class SubmitordersController < ApplicationController
 	before_action :is_valide
-
 	# Pour la sauvegarde des commande dans la base de donné
 	# PAYMENT DE 30% DES SOMME A PAYER DOIT ETRE PAYE
 	# AVANT LA SAUVEGARDE EN BASE DE DONNÉ
 	# PAYMENT VIA STRIPE OU PAYPAL
-  
   def save
   	order = Order.new
 		order.service = Service.find_by(name: session[:service])
