@@ -100,7 +100,7 @@
                 <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Réservation/Dévis</a>
                 <ul class="dropdown-menu dropdown-menu-left">
                   <li><%= link_to "Massage à domicile", reservation_path('massage-domicile') %></li>
-                  <li><%= link_to "Location de spa", reservation_path('location-spa') %></li>
+                  <li><%= link_to "Location de spa", resrvation_spa_path %></li>
                 </ul>
               </li>
               <%if client_signed_in?%>

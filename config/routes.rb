@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/location-spa', to:'static_page#spa', as: "spa"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # lien pour le panier dynamique
+  get '/location-spa/prix-reservation', to:'orders#location_spa_reservation', as:'resrvation_spa'
   get ':name/prix-reservation', to:'orders#index', as:"reservation"
   get '/addcategory/:id', to: "orders#addcategory", as:"addcategory"
   get '/deletecategory/:id', to: "orders#delcategory", as:"deletecategory"
@@ -56,9 +57,6 @@ Rails.application.routes.draw do
 
   # routes page UN produit
   get '/show_produit', to:'static_page#show_produit', as: "show_produit"
-
-  # routes page Location SPA
-  get '/location_spa', to:'static_page#location_spa', as: "location_spa"
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
