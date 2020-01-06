@@ -1,0 +1,74 @@
+<h1>Editer un prestataire</h1>
+<%= form_for(@prestataire, url: update_prestataires_path(@prestataire.id)) do |form| %>
+  <% if @prestataire.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@prestataire.errors.count, "error") %> prohibited this prestataire from being saved:</h2>
+      <ul>
+        <% @prestataire.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tel %>
+    <%= form.text_field :tel %>
+  </div>
+
+  <div class="field">
+    <%= form.label :adresse %>
+    <%= form.text_field :adresse %>
+  </div>
+
+  <div class="field">
+    <%= form.label :raison_sociale %>
+    <%= form.text_field :raison_sociale %>
+  </div>
+
+  <div class="field">
+    <%= form.label :siret %>
+    <%= form.text_field :siret %>
+  </div>
+
+  <div class="field">
+    <h6>CHOIX DES SERVICE</h6>
+    <% hidden_field_tag "service[service_ids][]", nil %> 
+    <% @services.each do |service| %>
+      <%= check_box_tag "service[service_ids][]", service.id, @prestataire.service_ids.include?(service.id), id:dom_id(service) %>
+      <%= label_tag dom_id(service), service.name %><br>
+    <% end %>
+  </div>
+  
+
+  <div class="field">
+    <h6>CHOIX DES SERVICE</h6>
+    <% hidden_field_tag "prestataire[department_ids][]", nil %> 
+    <% @departments.each do |department| %>
+      <%= check_box_tag "prestataire[department_ids][]", department.id, @prestataire.department_ids.include?(department.id), id:dom_id(department) %>
+      <%= label_tag dom_id(department), department.namedepartment %><br>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Retour', index_prestataires_path %>

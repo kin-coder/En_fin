@@ -1,0 +1,75 @@
+<h1>Commande n°<%= @order.id %>: <small><%= @order.service.name %> à domicile</small></h1>
+
+<div class="row">
+	<div class="col-sm-6">
+		<h2>Info Comamnde</h2>
+		<ul>
+		<% @orderlist.each do |cat| %>
+			<li><%= cat.category.name %></li>
+			<ul>
+				<% cat.subcategories.each do |sub| %>
+					<li><%= sub.name %></li>
+				<% end %>
+			</ul>
+		<% end %>
+		<li>Prix total: <%= @priceTotal %> €</li>
+		</ul>
+	</div>
+	<div class="col-sm-6">
+		<h2>Heure et date de livraison</h2>
+		<%= link_to 'Modifier la commande', edit_admin_order_path(@order.id) %><br>
+        <strong>Date</strong>: <%= @order.datetime %>.<br>
+		<strong>Departement</strong>: <%= @order.department.namedepartment %>.<br>
+		<strong>Adresse</strong>: <%= @order.adresse %>.<br>
+		<strong>Description</strong>: <%= @order.description %>.
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-6">
+	<h2>Prestataires ivités</h2>
+		<table>
+		<% @all_prestataires.each do |prestataire| %>
+			<tr>
+		        <td><%= prestataire.first_name %> <%= prestataire.last_name %></td>
+		        <td><%= prestataire.email %></td>
+		        <td><%= link_to "Faire la prestation", accept_order_path(presta:prestataire.id,order:@order.id), data: { confirm: "Etes vous sur d'affecter ce prestataire pour faire la prestation?" }, method: :put%></td>
+		        <td><%= link_to "Ajouter dans liste d'attente", waiting_order_path(presta:prestataire.id,order:@order.id), data: { confirm: "Etes vous sur d'ajouter ce prestataire dans la liste d'attente?" }, method: :put %></td>
+		        <td><%= link_to 'Afficher', show_prestataires_path(prestataire.id) %></td>
+		    </tr>
+		<% end %></table>
+	</div>
+	<div class="col-sm-6">
+		<h2>Prestataires qui va livré la commande</h2>
+		<% if @prestatairesAccepted %>
+		<table>
+	        <tr><td><%= @prestatairesAccepted.first_name %> <%= @prestatairesAccepted.last_name %></td>
+	        	<td><%= @prestatairesAccepted.email %></td>
+	        	<td><%= link_to "Ajouter dans liste d'attente", waiting_order_path(presta: @prestatairesAccepted.id,order:@order.id), data: { confirm: "Etes vous sur d'ajouter ce prestataire dans la liste d'attente?" }, method: :put %></td>
+	        	<td><%= link_to 'Retirer', remove_order_path(presta: @prestatairesAccepted.id,order:@order.id), method: :delete, data: { confirm: 'Etes vous sur?' } %></td>
+	        	<td><%= link_to 'Afficher', show_prestataires_path(@prestatairesAccepted.id) %></td>
+	        </tr>
+		</table>
+		<% else %>
+			<p>Aucun prestataire n'a accepter la prestation pour l'instant</p>
+		<% end %>
+
+		<h2>Prestataires qui sont dans la liste d'attente</h2>
+		<% if @prestatairesWaiting.empty? %>
+			<p>Aucun prestataire n'a accepter la prestation pour l'instant</p>
+		<% else %>
+			<table>
+			<% @prestatairesWaiting.each do |prestataire| %>
+		        <tr><td><%= prestataire.first_name %> <%= prestataire.last_name %></td>
+		        <td><%= prestataire.email %></td>
+		        <td><%= link_to "Faire la prestation", accept_order_path(presta:prestataire.id,order:@order.id), data: { confirm: "Etes vous sur d'affecter ce prestataire pour faire la prestation?" }, method: :put%></td>
+		        <td><%= link_to 'Retirer', remove_order_path(presta:prestataire.id,order:@order.id), method: :delete, data: { confirm: 'Etes vous sur?' } %></td>
+		        <td><%= link_to 'Afficher', show_prestataires_path(prestataire.id) %></td>
+		        </tr>
+			<% end %>
+			</table>
+		<% end %>
+	</div>
+</div>
+
+<%= link_to 'Retour', index_admin_order_path %>

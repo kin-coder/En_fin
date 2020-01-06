@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-sm-9">
+		<p>
+		  <strong>Nom:</strong>
+		  <%= @prestataire.first_name %> <%= @prestataire.last_name %>
+		</p>
+
+		<p>
+		  <strong>Email:</strong>
+		  <%= @prestataire.email %>
+		</p>
+
+		<p>
+		  <strong>Numero télephone:</strong>
+		  <%= @prestataire.tel %>
+		</p>
+
+		<p>
+		  <strong>Adresse:</strong>
+		  <%= @prestataire.adresse %>
+		</p>
+
+		<p>
+		  <strong>Raison sociale:</strong>
+		  <%= @prestataire.raison_sociale %>
+		</p>
+
+		<p>
+		  <strong>Raison sociale:</strong>
+		  <%= @prestataire.siret %>
+		</p>
+	</div>
+	<div class="col-sm-3">
+		<strong>Ses services:</strong>
+		<ul>
+			<% @services.each do |service| %>
+				<li><%= service.name %></li>
+			<% end %>
+		</ul>
+		<strong>Departement:</strong>
+		<ul>
+			<% @departments.each do |department| %>
+				<li><%= department.namedepartment %></li>
+			<% end %>
+		</ul>
+		
+	</div>
+</div>
+
+<%= link_to 'Modifier', edit_prestataires_path(@prestataire.id) %><br>
+<%= link_to 'Retour', index_prestataires_path %>

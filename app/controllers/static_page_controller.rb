@@ -16,16 +16,13 @@ class StaticPageController < ApplicationController
   def galerie
   end
 
-  def faq
-  end
-
   def legalnotice
   end
 
   def cgu  
   end
-
-  def comment_ca_marche
+#page comment-ca-marche
+  def ccm
   end
 
 

@@ -21,18 +21,22 @@
 		<h2>INFORMATION DU PRESTATION</h2>
 		<% unless @paniers == nil %>
 		<div id="list-prestation">
+		<div class="row">
 			<% @paniers.each_index do |id| %>
 				<div class="prestation-name-<%= @paniers[id]["category"][1] %>">
+					<div class="col-sm-3">
 					<h5><%= @paniers[id]["category"][0] %></h5>
 					<ul>
 						<% subcategories(id).each do |subcategory| %>
 						<li><%= subcategory.name %> <%= subcategory.price %> € <%= check_box_tag :name, 1, isincommandesubcategory(id,subcategory) , data: { remote: true, url: subcategory_path, params: {key: id, subcategory: subcategory.id}.to_param, method: "put" }%></li>
 						<% end %>
+						</div>
 					</ul>
 				</div>
 			<% end	%>
 		</div>
 		<% end	%>
+		</div>
 
 		<hr>
 
