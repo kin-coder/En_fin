@@ -40,18 +40,26 @@
 		<% unless @paniers == nil %>
 		<div id="list-prestation">
 			<div class="row">
+			<div class="massage-product">
 				<% @paniers.each_index do |id| %>
 					<div class="prestation-name-<%= @paniers[id]["category"][1] %> ">
-						<div class="col-sm-4 categ">
-							<h5><%= @paniers[id]["category"][0] %></h5>
+						<div class="col-sm-6 categ">
+							<h5 class="prestation-category"><%= @paniers[id]["category"][0] %></h5>
 							<ul>
 								<% subcategories(id).each do |subcategory| %>
-								<li><%= subcategory.name %> <%= subcategory.price %> € <%= check_box_tag :name, 1, isincommandesubcategory(id,subcategory) , data: { remote: true, url: subcategory_path, params: {key: id, subcategory: subcategory.id}.to_param, method: "put" }, class:"check"%></li>
-								<% end %>
+								<li><%= subcategory.name %>  <span class="prix"><%= subcategory.price %> € </span> <i class="fa fa-info-circle" aria-hidden="true"></i>
+
+									<%= check_box_tag :name, 1, isincommandesubcategory(id,subcategory) , data: { remote: true, url: subcategory_path, params: {key: id, subcategory: subcategory.id}.to_param, method: "put" }, class:"check", id:"toggle#{subcategory.id}"%>
+									<div class="togggle">
+  										<label for="toggle<%= subcategory.id%>"></label>
+									</div>
+								</li>
+								<% end %> 
 							</ul>
 						</div>	
 					</div>
 				<% end	%>
+			</div>
 			</div>
 		</div>
 		<% end	%>
