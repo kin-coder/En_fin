@@ -26,6 +26,9 @@ class StaticPageController < ApplicationController
   end
 
 
+  def location_spa
+  end
+
   def all_produit
   end
 

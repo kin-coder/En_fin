@@ -47,8 +47,6 @@ Rails.application.routes.draw do
   put "admin/waiting-commande/", to:"admin_order#waiting", as:"waiting_order"
   delete "admin/supprimer-in-commande/", to:"admin_order#remove_order", as:"remove_order"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-
-
   #routes page comment ca marche
   get '/comment-ca-marche', to:'static_page#comment_ca_marche', as: "comment_ca_marche"
 
@@ -58,6 +56,8 @@ Rails.application.routes.draw do
   # routes page UN produit
   get '/show_produit', to:'static_page#show_produit', as: "show_produit"
 
+  # routes page Location SPA
+  get '/locationspa', to:'static_page#location_spa', as: "location_spa"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 end
