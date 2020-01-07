@@ -5120,13 +5120,13 @@ footer {
 /*=== 8.1 ORDER SECTION ===*/
 @media (min-width: 320px) {
   .orderArea {
-    padding: 50px 0 0 0;
+    padding: 10px 0 0 0;
   }
 }
 
 @media (min-width: 768px) {
   .orderArea {
-    padding: 100px 0 0 0;
+    padding: 10px 0 0 0;
   }
 }
 

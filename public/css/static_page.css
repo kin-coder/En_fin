@@ -89,6 +89,7 @@ top: 10%;
       color: #ec5598;
       text-align: center;
       display: inline-block;
+      border: none;
    font-size: 15px;
    }
    .addCateg{
@@ -100,16 +101,18 @@ top: 10%;
       color: #ec5598;
       text-align: center;
       display: inline-block;
+      border: 1px solid white !important;
    font-size: 15px;
    }
    .addCateg{
       margin-right: 50px;
    }  
 }
-/* 
+
 .prestation-info{
    border: 1px darkgrey solid;
-} */
+   border-radius: 10px;
+}
 
 .pageTitle .title-service {
    text-align: left;
@@ -169,7 +172,7 @@ top: 10%;
 
  .prix{
     position: absolute;
-    left: 200px;
+    left: 250px;
  }
 
  .massage-product{
@@ -184,6 +187,41 @@ top: 10%;
    position: relative;
    left: 20%;
  }
+
+
+ .optional-text {
+   position: relative;
+   border-style: initial;
+   
+   border-radius: 12px;
+   background-color: white;
+   color: #ec5598 !important;
+   
+   height: 36px;
+   z-index: 7;
+ top: -30px;
+   text-align: center;
+   margin: 0 auto;
+   width: 372px;
+   font-size: 25px;
+   font-family: 'Times New Roman', Times, serif;
+   border: 1px rgb(102, 101, 97) solid;
+   padding-top: 5px;
+ }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  /* DEBUT CSS POUR LE BOUTTON TOGGLE*/
  /* for the lazy */
@@ -290,3 +328,6 @@ input[type="checkbox"]:checked ~ .togggle label::after{
 }
 
  /* FIN CSS POUR LE BOUTTON TOGGLE*/
+
+
+ 

@@ -10,14 +10,14 @@
 
 
 <!-- ORDER SECTION -->
-    <section class="clearfix orderArea patternbg">
+    <section class="clearfix orderArea g">
       <div class="container">
         <div class="row">
 		  <div class="col-sm-12">
 		  <center>
               <div class="panel panel-default cartInfo">
-                <div class="panel-heading patternbg"><h2>Qui souhaite un massage ?</h2></div>
-				<div class="panel-body tableArea bouton-plus-moin patternbg">
+                <div class="optional-text">Qui souhaite un massage ?</div>
+				<div class="panel-body tableArea bouton-plus-moin">
 						<% @categories.each do |category| %>
 						<%= link_to "-", deletecategory_path(category.id), class: "delCateg btn-moin",remote: true %>
 						<strong><%= category.name %> <span id="puts-number-<%= category.name %>"><%= countnumbre(category.name,category.id) %></span> </strong>
@@ -36,7 +36,7 @@
 	<div class="col-sm-9">
 <!--==========	PRESTATION PRESTATION PRESTATION PRESTATION PRESTATION   =============-->
 	<div class="prestation-info">
-		<h2 class="patternbg"><center>INFORMATION DU PRESTATION</center></h2>
+		<h2><center>INFORMATION DU PRESTATION</center></h2>
 		<% unless @paniers == nil %>
 		<div id="list-prestation">
 			<div class="row">
@@ -48,10 +48,9 @@
 							<ul>
 								<% subcategories(id).each do |subcategory| %>
 								<li><%= subcategory.name %>  <span class="prix"><%= subcategory.price %> € </span> <i class="fa fa-info-circle" aria-hidden="true"></i>
-
-									<%= check_box_tag :name, 1, isincommandesubcategory(id,subcategory) , data: { remote: true, url: subcategory_path, params: {key: id, subcategory: subcategory.id}.to_param, method: "put" }, class:"check", id:"toggle#{subcategory.id}"%>
+									<%= check_box_tag :name, 1, isincommandesubcategory(id,subcategory) , data: { remote: true, url: subcategory_path, params: {key: id, subcategory: subcategory.id}.to_param, method: "put" }, class:"check", id:"toggle#{subcategory.id}#{id}"%>
 									<div class="togggle">
-  										<label for="toggle<%= subcategory.id%>"></label>
+  										<label for="toggle<%=subcategory.id%><%=id%>"></label>
 									</div>
 								</li>
 								<% end %> 
