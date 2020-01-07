@@ -56,3 +56,278 @@ color: #ec5598;
    position: relative;
    top: -50px;
 }
+/* panier*/
+/* #panier{
+position: sticky;
+right: 0px;
+top: 10%;
+} */
+.panier-title{
+   text-align: center;
+}
+#basket{
+   margin-left: 30px;
+}
+.soutitre-panier{
+   color: #ec5598;
+   margin-left: 15px;
+   
+}
+#appointment-submit-btn{
+   text-align: center;
+}
+.categ{
+   margin-top: 20px;
+   /* color: #ec5598; */
+   min-height: 175px;
+   border: 3px #ec5598 ;
+}
+/* bouton_plus */
+
+@media (min-width: 320px) {
+   .bouton-plus-moin{
+      color: #ec5598;
+      text-align: center;
+      display: inline-block;
+      border: none;
+   font-size: 15px;
+   }
+   .addCateg{
+      margin-right: 0px;
+   }  
+}
+@media (min-width: 768px) {
+   .bouton-plus-moin{
+      color: #ec5598;
+      text-align: center;
+      display: inline-block;
+      border: 1px solid white !important;
+   font-size: 15px;
+   }
+   .addCateg{
+      margin-right: 50px;
+   }  
+}
+
+.prestation-info{
+   border: 1px darkgrey solid;
+   border-radius: 10px;
+}
+
+.pageTitle .title-service {
+   text-align: left;
+   font-size: 55px;
+   line-height: 60px;
+   color:#ffffff;
+   text-transform: uppercase;
+   font-family: 'Raleway';
+}
+.pageTitle .description-service {
+   padding-top: 50px;
+   text-align: left;
+   font-size: 15px;
+   line-height: 15px;
+   color:#ffffff;
+   font-family: 'Raleway';
+}
+.massage-btn{
+   position: relative;
+   top: 20px;
+   border-radius: 10px;
+   margin-right: 15px;
+}
+
+
+
+@media (min-width: 700px) {
+   .btn-moin{
+      background-color: khaki;
+      width: 50px !important;
+      display: inline-block;
+      border: 1px khaki solid;
+      border-radius: 10px;
+   }
+   .check{
+      position: absolute;
+      left: 300px !important;
+   }
+   
+   
+ }
+
+ @media (min-width: 320px) {
+   .btn-moin{
+      background-color: khaki;
+      width: 20px;
+      display: inline-block;
+      border: 1px khaki solid;
+      border-radius: 10px;
+   }
+   .check{
+      position: absolute;
+      right: 100px;
+   }
+   
+ }
+
+ .prix{
+    position: absolute;
+    left: 250px;
+ }
+
+ .massage-product{
+    position: relative;
+    left:  100px;
+    font-size: large;
+    
+ }
+
+ .prestation-category{
+   font-size: large;
+   position: relative;
+   left: 20%;
+ }
+
+
+ .optional-text {
+   position: relative;
+   border-style: initial;
+   
+   border-radius: 12px;
+   background-color: white;
+   color: #ec5598 !important;
+   
+   height: 36px;
+   z-index: 7;
+ top: -30px;
+   text-align: center;
+   margin: 0 auto;
+   width: 372px;
+   font-size: 25px;
+   font-family: 'Times New Roman', Times, serif;
+   border: 1px rgb(102, 101, 97) solid;
+   padding-top: 5px;
+ }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* DEBUT CSS POUR LE BOUTTON TOGGLE*/
+ /* for the lazy */
+@import url(https://fonts.googleapis.com/css?family=Sanchez);
+
+*,
+*::before,
+*::after {
+  transition: 400ms all ease-in-out 50ms;
+  box-sizing: border-box;
+  backface-visibility: hidden;
+}
+
+
+input[type="checkbox"] {
+  display: none;
+}
+/*Button is :CHECKED*/
+
+input[type="checkbox"]:checked ~ .togggle {
+  background:#ec5598;
+  box-shadow: 0 0 2px #ec5598;
+}
+
+input[type="checkbox"]:checked ~ .togggle label {
+  left: 25px;
+  transform: rotate(360deg);
+}
+
+
+/*shared*/
+
+.togggle,
+label {
+  border-radius: 50px;
+}
+
+
+/*'un':checked state*/
+
+.togggle {
+  height: 25px;
+  width: 50px;
+  background: rgb(211, 207, 207);
+  position: relative;
+  top: -22px;
+  left: 300px;
+
+  
+  box-shadow: 0 0 2px rgb(211, 207, 207);
+  
+}
+
+label {
+  height: 20px;
+  width: 20px;
+  background: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  cursor: pointer;
+}
+
+label::before {
+  content: '';
+  height: 17px;
+  width: 5px;
+  position: absolute;
+  top: calc(50% - 8px);
+  left: calc(50% - 3.5px);
+  transform: rotate(45deg);
+  font-size: 1px;
+}
+
+label::after {
+  content: '';
+  height: 5px;
+  width: 17px;
+  position: absolute;
+  top: calc(50% - 2px);
+  left: calc(50% - 8px);
+  transform: rotate(45deg);
+}
+
+label::before,
+label::after{
+  background: rgb(211, 207, 207);
+  border-radius: 5px;
+}
+
+/* pesduo class on toggle */
+
+input[type="checkbox"]:checked ~ .togggle label::before{
+  height: 15px;
+  top: calc(55% - 10px);
+  left: calc(60% - 0px);
+  background: #ec5598;
+}
+input[type="checkbox"]:checked ~ .togggle label::after{
+  width: 10px;
+  top: calc(95% - 10px);
+  left: calc(22.5% - 3px);
+  background: #ec5598;
+}
+
+ /* FIN CSS POUR LE BOUTTON TOGGLE*/
+
+
+ 
