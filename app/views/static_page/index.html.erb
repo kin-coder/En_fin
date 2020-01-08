@@ -1,4 +1,40 @@
 <!-- MAIN SLIDER -->
+
+
+<style>
+
+/* Mise en page du texte*/
+.texte-baniere{
+   color:black !important;
+   align:justify; 
+   position:relative; 
+   left:5px!important;
+}
+
+/* font texte N de texte-baniere*/
+.texte-baniere b{
+   font-size:45px;
+   font-family:Brush Script MT, Brush Script Std, cursive!important;
+}
+
+
+/* font texte du titre de texte-baniere*/
+.poli1{
+
+  font-family:Georgia, serif!important;
+}
+
+/* font bouton (massage domicile/location spa) de nos services*/
+.mass{
+
+  color:white!important;
+}
+
+
+
+</style>
+
+
 <section class="main-slider" data-loop="true" data-autoplay="true" data-interval="7000">
   <div class="inner">
     
@@ -6,38 +42,43 @@
     <div class="slide slideResize slide1" style="background-image: url(img/home/home-slider-1.jpg);">
       <div class="container">
         <div class="slide-inner1 common-inner">
-          <span class="h1 from-bottom">Bienvenue chez Cocooning Spa</span><br>
+          <span class="h1 from-bottom poli1">Cocooning Spa...</span><br>
           <span class="h4 from-bottom">
-          Nous vous proposons un service de location de spa, jacuzzi gonflable clé
+
+            <div class="container">
+              <div class="row">
+                
+          <div class="texte-baniere col-12 col-md-7"> <b>N</b>ous vous proposons un service de location de spa, jacuzzi gonflable clé
           en main. À domicile ou sur le lieu de votre choix, profitez d’un instant de
-          détente et de relaxation inoubliable.<br>
-          En Europe : France / Monaco / Belgique / Luxembourg / Suisse <br>
-          En Afrique : Maroc / Tunisie / Algérie / Mali <br>
+          détente et de relaxation inoubliable.</div><br>
+                 
+                </div>
+              </div>
           </span><br>
-          <div  class="btn btn-primary first-btn waves-effect waves-light scale-up"><a href="#service" id="first-btn">Découvrir</a></div>
+          <div ><a href="#service" class="btn btn-primary first-btn waves-effect waves-light scale-up bout" id="first-btn">Découvrir</a></div>
         </div>
       </div>
     </div>
 
     <!-- Slide two -->
-    <div class="slide slideResize slide3" style="background-image: url(img/home/home-slider-3.jpg);">
+    <div class="slide slideResize slide3" style="background-image: url(img/home/variety.jpg);">
       <div class="container">
-        <div class="common-inner slide-inner3">
+        <div class="common-inner slide-inner3  texte-baniere col-12 col-md-7">
           <!--<img src="img/favicon.png" alt="Logo Icon" class="img-responsive">-->  <!-- ICONE -->
-          <span class="h1 from-bottom">Massage</span><br>
-          <span class="h4 from-bottom">The real place of Mindfullness & Healthy body</span><br>
-          <div  class="btn btn-primary first-btn waves-effect waves-light scale-up"><a href="<%= reservation_path('massage-domicile') %>" id="first-btn" >Réserver</a></div>
+          <span class="h1 from-bottom poli1">Massage</span><br>
+          <span class="h4 from-bottom texte-baniere"><b>T</b>he real place of Mindfullness & Healthy body</span><br>
+          <div  ><a href="<%= reservation_path('massage-domicile') %>"class="btn btn-primary first-btn waves-effect waves-light scale-up " id="first-btn" >Réserver</a></div>
         </div>
       </div>
     </div>
 
     <!-- Slide three -->
-    <div class="slide slideResize slide4" style="background-image: url(img/home/home-slider-4.jpg);">
+    <div class="slide slideResize slide4" style="background-image: url(img/home/gallery-2.jpg);">
       <div class="container">
-        <div class="common-inner slide-inner4">
-          <span class="h1 from-bottom">Location Spa</span><br>
-          <span class="h4 from-bottom">The real place of Mindfullness & Healthy body</span><br>
-          <div  class="btn btn-primary first-btn waves-effect waves-light scale-up"><a href="<%= reservation_path('location-spa') %>" id="first-btn" >Réserver</a></div>
+        <div class="common-inner slide-inner4 texte-baniere col-12 col-md-7">   <!--common-inner slide-inner3-->
+          <span class="h1 from-bottom poli1">Location Spa</span><br>
+          <span class="h4 from-bottom texte-baniere"><b>T</b>he real place of Mindfullness & Healthy body</span><br>
+          <div  ><a href="<%= reservation_path('location-spa') %>" class="btn btn-primary first-btn waves-effect waves-light scale-up" id="first-btn" >Réserver</a></div>
         </div>
       </div>
     </div>
@@ -171,7 +212,7 @@
                 <div class="reviewInfo">
                   <center><i class="fa fa-quote-left" aria-hidden="true"> Massage</i></center>
                     <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam co laboris nisi ut aliquip ex ea commodo conse quat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-                    <%= link_to "Massage à domicile", reservation_path('massage-domicile'), class:"btn btn-primary first-btn" %>
+                    <%= link_to "Massage à domicile", reservation_path('massage-domicile'), class:"btn btn-primary first-btn mass" %>
                     <h4>Cocooning Spa</h4>
                   </div>
               </div>
@@ -186,7 +227,7 @@
                 <div class="reviewInfo">
                 <center><i class="fa fa-quote-left" aria-hidden="true"> Location Spa</i></center>
                     <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam co laboris nisi ut aliquip ex ea commodo conse quat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-                    <%= link_to "Location spa à domicile", reservation_path('location-spa'), class:"btn btn-primary first-btn" %>
+                    <%= link_to "Location spa à domicile", reservation_path('location-spa'), class:"btn btn-primary first-btn mass" %>
                     <h4>Cocooning Spa</h4>
                   </div>
               </div>
@@ -355,7 +396,7 @@
                     <p>Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria tur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese runt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
        
                           <p style="text-align: center">
-                            <%= link_to  "ZONE DE LIVRAISON", root_path, class:"btn btn-common btn-full-round btn-theme lava"%>
+                            <%= link_to "LIVRAISON", root_path, class:"btn btn-common btn-full-round btn-theme lava"%>
                           </P>
                   
                   </div>

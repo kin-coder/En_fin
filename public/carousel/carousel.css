@@ -27,7 +27,7 @@ a:hover,
 a:active,
 a:visited {
   transition: color 150ms;
-  color: #95a5a6;
+  
   text-decoration: none;
 }
 a:hover {

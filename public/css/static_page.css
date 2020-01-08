@@ -1,9 +1,9 @@
 #first-btn{
-    color:white;
+    color:white!important;
     margin-right: 10px;
  }
 
- #first-btn:hover, .first-btn:hover {
+ /* #first-btn:hover, .first-btn:hover {
     background-color: magenta !important;
     color: mediumblue;
   }
@@ -12,4 +12,6 @@
    position: relative;
    top: 50px;
    color: #ec5598;
-}
+} */
+
+ 
