@@ -325,7 +325,7 @@ a:hover, a:focus {
 
 @media (min-width: 768px) {
   .secotionTitle {
-    padding: 10px 0 80px 0;
+    padding: 100px 0 80px 0;
   }
 }
 
@@ -1567,22 +1567,13 @@ textarea.form-control {
 
 @media (min-width: 480px) {
   .modalCommon .modal-content {
-    width: 40%;
-    height: 392px ;
-  }
-}
-@media (min-width: 320px) {
-  .modalCommon .modal-content {
-    width: 71%;
-    height: 400px;
+    width: 70%;
   }
 }
 
 @media (min-width: 768px) {
   .modalCommon .modal-content {
-    /* width: 45%; */
-    width: 22%;
-    height: 10px;
+    width: 45%;
   }
 }
 
@@ -5129,13 +5120,13 @@ footer {
 /*=== 8.1 ORDER SECTION ===*/
 @media (min-width: 320px) {
   .orderArea {
-    padding: 10px 0 0 0;
+    padding: 50px 0 0 0;
   }
 }
 
 @media (min-width: 768px) {
   .orderArea {
-    padding: 10px 0 0 0;
+    padding: 100px 0 0 0;
   }
 }
 
@@ -6265,14 +6256,12 @@ input[type=number]::-webkit-inner-spin-button {
 @media (min-width: 320px) {
   .productArea {
     padding: 50px 0;
-    font-size: small;
   }
 }
 
 @media (min-width: 768px) {
   .productArea {
-    padding: 10px 0;
-    font-size: large;
+    padding: 100px 0;
   }
 }
 
