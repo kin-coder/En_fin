@@ -1,3 +1,6 @@
+.h4 .from-bottom{
+   color:green !important;
+}
 
 .heure {
   color: black !important;
@@ -2915,8 +2918,8 @@ textarea.form-control {
   }
 }
 
-.main-slider .common-inner .h4 {
-  color: #222222;
+.main-slider .common-inner .h4{
+  color: black !important;
   margin-bottom: 10px;
   margin-top: 0;
 }
@@ -2926,6 +2929,7 @@ textarea.form-control {
     font-size: 12px;
     line-height: 18px;
     margin-bottom: 0;
+    
   }
 }
 

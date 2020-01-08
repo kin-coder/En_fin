@@ -27,11 +27,11 @@ a:hover,
 a:active,
 a:visited {
   transition: color 150ms;
-  color: #95a5a6;
+  
   text-decoration: none;
 }
 a:hover {
-  color: #7f8c8d;
+  color: #FFFFFF !important;
   text-decoration: underline;
 }
 .contain {
