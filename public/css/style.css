@@ -340,6 +340,17 @@ a:hover, a:focus {
     font-size: 16px;
     letter-spacing: 4px;
   }
+  .secotionTitle h2 span {
+    display: block;
+    letter-spacing: normal;
+    color: #ec5598;
+    font-family: 'Impact';
+    font-size: 50px;
+    letter-spacing: 4px;
+    line-height: 42px;
+    text-transform: capitalize;
+    font-weight: 400;
+  }
 }
 
 @media (min-width: 768px) {
