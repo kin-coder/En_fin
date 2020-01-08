@@ -31,7 +31,6 @@ a:visited {
   text-decoration: none;
 }
 a:hover {
-  color: #FFFFFF !important;
   text-decoration: underline;
 }
 .contain {
