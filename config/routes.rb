@@ -59,5 +59,7 @@ Rails.application.routes.draw do
   # routes page Location SPA
   get '/locationspa', to:'static_page#location_spa', as: "location_spa"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+  # routes page faq
+  get '/faq', to:'static_page#faq', as: "faq"
 
 end

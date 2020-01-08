@@ -35,4 +35,8 @@ class StaticPageController < ApplicationController
   def show_produit
   end
 
+  #page faq
+  def faq
+  end
+
 end
