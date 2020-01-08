@@ -1567,13 +1567,22 @@ textarea.form-control {
 
 @media (min-width: 480px) {
   .modalCommon .modal-content {
-    width: 70%;
+    width: 40%;
+    height: 392px ;
+  }
+}
+@media (min-width: 320px) {
+  .modalCommon .modal-content {
+    width: 71%;
+    height: 400px;
   }
 }
 
 @media (min-width: 768px) {
   .modalCommon .modal-content {
-    width: 45%;
+    /* width: 45%; */
+    width: 22%;
+    height: 10px;
   }
 }
 

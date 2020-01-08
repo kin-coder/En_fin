@@ -111,7 +111,7 @@
               <li class=" dropdown singleDrop">
                 <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Connexion</a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to "Se connecter", new_client_session_path %></li> 
+                  <li><%= link_to "Se connecter", '#', data: { toggle: 'modal', target: '#appoinmentModal'} %></li> 
                   <li><%= link_to "S'inscrire", new_client_registration_path%></li> 
                 </ul>  
               </li>
@@ -235,17 +235,33 @@
     <div class="modal-dialog">
       <!-- MODAL CONTENT-->
       <div class="modal-content">
-      <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-    </div>
-        <div class="modal-body">
-        <div id="appointment-alert" class="my-alert"></div>
      
-        <div class="container">
+<div class="panel panel-default formPart panel-login" >
+<div class="panel-heading patternbg" ><center> <span>Connectez-vous</span></center></div>
+<div class="panel-body panel-body-login">
+<div class="row">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="col-sm-12">
+    <div class="form-group">
+      <i class="fa fa-envelope" aria-hidden="true"></i>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"email" %>
+    </div>
+    <div class="form-group">
+      <i class="fa fa-key" aria-hidden="true"></i>
+      <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"fullname", placeholder:"mot de pass" %>
+    </div>
+    <div class="actions">
+      <center><%= f.submit "Connecter", class:"btn btn-primary btn-block" %></center> </br>
+      <center><p>Pas encore inscris? <%= render "clients/shared/links" %></p></center>
+    </div>
+    <% end %>
 
-              
+</div>
+</div>
+</div>
 
-
+            
         </div>
       </div>
     </div>
