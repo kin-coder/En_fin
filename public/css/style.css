@@ -320,12 +320,13 @@ a:hover, a:focus {
 @media (min-width: 320px) {
   .secotionTitle {
     padding: 50px 0 30px 0;
+
   }
 }
 
 @media (min-width: 768px) {
   .secotionTitle {
-    padding: 100px 0 80px 0;
+    padding: 50px 0 30px 0;
   }
 }
 
@@ -336,40 +337,38 @@ a:hover, a:focus {
 }
 
 @media (min-width: 320px) {
-  .secotionTitle h2 {
-    font-size: 16px;
-    letter-spacing: 4px;
-  }
+
+  .secotionTitle h2 span {
+      display: block;
+      letter-spacing: normal;
+      color: #ec5598;
+      font-family: 'Impact';
+      font-size: 50px;
+      letter-spacing: 4px;
+      line-height: 42px;
+      text-transform: capitalize;
+      font-weight: 400;
+    }
+}
+
+@media (min-width: 768px) {
   .secotionTitle h2 span {
     display: block;
     letter-spacing: normal;
     color: #ec5598;
     font-family: 'Impact';
-    font-size: 50px;
+    font-size: 90px;
     letter-spacing: 4px;
     line-height: 42px;
     text-transform: capitalize;
     font-weight: 400;
   }
 }
+@font-face {
+  font-family:'Impact';
+  src: url('Impact') format('truetype');
 
-@media (min-width: 768px) {
-  .secotionTitle h2 {
-    font-size: 24px;
-    letter-spacing: 10px;
-  }
-}
-
-.secotionTitle h2 span {
-  display: block;
-  letter-spacing: normal;
-  color: #ec5598;
-  font-family: 'Herr Von Muellerhoff', cursive;
-  font-size: 90px;
-  line-height: 42px;
-  text-transform: capitalize;
-  font-weight: 400;
-}
+  }	
 
 .patternbg {
   background-image: url(../img/home/pattern-1.jpg);
@@ -1572,7 +1571,7 @@ textarea.form-control {
 .modalCommon .modal-content {
   padding: 2px 3px;
   border-radius: 0;
-  width: 90%;
+  width: 72%;
   margin: 0 auto;
 }
 
@@ -1584,9 +1583,18 @@ textarea.form-control {
 
 @media (min-width: 768px) {
   .modalCommon .modal-content {
-    width: 45%;
+    width: 23% !important;
+    height: 422px;
   }
 }
+
+@media (min-width: 320px) {
+  .modalCommon .modal-content {
+    width: 69%;
+    height: 402px;
+  }
+}
+
 
 .modalCommon .modal-content .form-right {
   float: left;
