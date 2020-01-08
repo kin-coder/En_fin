@@ -325,7 +325,7 @@ a:hover, a:focus {
 
 @media (min-width: 768px) {
   .secotionTitle {
-    padding: 100px 0 80px 0;
+    padding: 10px 0 80px 0;
   }
 }
 
@@ -6265,12 +6265,14 @@ input[type=number]::-webkit-inner-spin-button {
 @media (min-width: 320px) {
   .productArea {
     padding: 50px 0;
+    font-size: small;
   }
 }
 
 @media (min-width: 768px) {
   .productArea {
-    padding: 100px 0;
+    padding: 10px 0;
+    font-size: large;
   }
 }
 
