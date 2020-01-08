@@ -1,5 +1,5 @@
 class SubmitordersController < ApplicationController
-	before_action :is_valide
+	before_action :is_valide, only:[:save]
 	# Pour la sauvegarde des commande dans la base de donné
 	# PAYMENT DE 30% DES SOMME A PAYER DOIT ETRE PAYE
 	# AVANT LA SAUVEGARDE EN BASE DE DONNÉ
@@ -27,21 +27,18 @@ class SubmitordersController < ApplicationController
 		session[:service] = ""
 		# @commande /variable pour avoirs les donné dans la base de donné
 		@commande = order
-		
-
 		@commande1 = []
 		@commande1 << order
-
 		# ClientMailer.with(client: Client.last, commande: @commande).validation_commande.deliver_now
 		ClientMailer.with(client: Client.last, commande: @commande1).validation_commande.deliver_now
-		
-
-
-
 	  end
 
+	  def spa_reservation
+	  	puts "_"*150
+	  	puts params.inspect
+	  	puts "_"*150
+	  end
   private
-
   #Fonction très important
   def is_valide
     if session[:prestation].empty?

@@ -16,12 +16,7 @@ Rails.application.routes.draw do
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   #Enregistrement des donnés du commande dans les table
   get '/confirmer-commande', to:'submitorders#save', as: "saved_commande"
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-  # Autre page
-  get '/contact', to:'static_page#contact', as: "contact"
-  get '/galerie-photo', to:'static_page#galerie', as: "galerie"
-  get '/mentions-legales', to:'static_page#legalnotice', as: "legalnotice"
-  get '/conditions-generales', to:'static_page#cgu', as: "cgu"
+  post '/confirmer-commande/spa', to:'submitorders#spa_reservation', as: "saved_spa"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
   devise_for :admins
@@ -49,15 +44,17 @@ Rails.application.routes.draw do
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   #routes page comment ca marche
   get '/comment-ca-marche', to:'static_page#comment_ca_marche', as: "comment_ca_marche"
-
   #routes page TOUT produit
   get '/all_produit', to:'static_page#all_produit', as: "all_produit"
-
   # routes page UN produit
   get '/show_produit', to:'static_page#show_produit', as: "show_produit"
-
   # routes page Location SPA
   get '/locationspa', to:'static_page#location_spa', as: "location_spa"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-
+  # Autre page
+  get '/contact', to:'static_page#contact', as: "contact"
+  get '/galerie-photo', to:'static_page#galerie', as: "galerie"
+  get '/mentions-legales', to:'static_page#legalnotice', as: "legalnotice"
+  get '/conditions-generales', to:'static_page#cgu', as: "cgu"
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 end

@@ -15,15 +15,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  def location_spa_reservation
-    @service = Service.where(name:'Location spa')[0]
-    unless @service
-      redirect_to root_path
-    else
-      @categories = @service.categories
-    end
-  end
-
   def addcategory
     @category = param_permit
     session[:prestation].push({"category"=>[@category.name,@category.id]})
@@ -80,6 +71,17 @@ class OrdersController < ApplicationController
       format.js do
 
       end
+    end
+  end
+
+  def location_spa_reservation
+    @service = Service.where(name:'Location spa')[0]
+    @order = Order.new
+    unless @service
+      redirect_to root_path
+    else
+      @prestations = @service.categories.first.subcategories
+      @produits = @service.categories.last.subcategories
     end
   end
 
