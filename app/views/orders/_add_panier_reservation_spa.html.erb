@@ -1,0 +1,7 @@
+<h5>Location spa pour <%= subcategory.duration %>H</h5>
+<div id="info-<%= dom_id(subcategory) %>">
+	<ul>
+	  <li>Nombre de spa gonflable à louer: <span id="nombre-spa-<%= dom_id(subcategory) %>"><%= nombre %></span></li>
+	  <li>Prix total: € <span id="price-<%= dom_id(subcategory) %>"><%= nombre * subcategory.price.to_i %></span></li>
+	</ul>
+</div>

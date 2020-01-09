@@ -15,15 +15,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  def location_spa_reservation
-    @service = Service.where(name:'Location spa')[0]
-    unless @service
-      redirect_to root_path
-    else
-      @categories = @service.categories
-    end
-  end
-
   def addcategory
     @category = param_permit
     session[:prestation].push({"category"=>[@category.name,@category.id]})
@@ -82,7 +73,53 @@ class OrdersController < ApplicationController
       end
     end
   end
+#==================== Tunel d'achat location spa ===============#
+  def location_spa_reservation
+    if session[:params_spa] == nil
+        session[:params_spa] = []
+    end
 
+    @params = session[:params_spa]
+
+    @service = Service.where(name:'Location spa')[0]
+    @order = Order.new
+    unless @service
+      redirect_to root_path
+    else
+      @prestations = @service.categories.first.subcategories
+      @produits = @service.categories.last.subcategories
+    end
+  end
+
+  def add_location_spa
+    id = params.permit(:id)
+    session[:params_spa].push(id[:id].to_i)
+    @index = session[:params_spa].length - 1
+    @subcategory = Subcategory.find(id[:id])
+    respond_to do |format|
+      format.js do
+
+      end
+    end
+  end
+
+  def del_location_spa
+    id = params.permit(:id)
+    @subcategory = Subcategory.find(id[:id])
+    session[:params_spa].reverse!
+    @text_index = session[:params_spa].index(id[:id].to_i)
+    if @text_index
+      session[:params_spa].delete_at(@text_index)
+    end
+    session[:params_spa].reverse!
+    respond_to do |format|
+      format.js do
+
+      end
+    end
+  end
+
+#===============================================================#
   private
 
   def is_service(stringvalue="")

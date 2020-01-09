@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   get '/location-spa', to:'static_page#spa', as: "spa"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # lien pour le panier dynamique
+  # pour le spa
   get '/location-spa/prix-reservation', to:'orders#location_spa_reservation', as:'resrvation_spa'
+  get '/location-spa/prix-reservation/:id/add', to:'orders#add_location_spa', as:"add_order_spa"
+  get '/location-spa/prix-reservation/:id/del', to:'orders#del_location_spa', as:"del_order_spa"
+  # autre
   get ':name/prix-reservation', to:'orders#index', as:"reservation"
   get '/addcategory/:id', to: "orders#addcategory", as:"addcategory"
   get '/deletecategory/:id', to: "orders#delcategory", as:"deletecategory"
@@ -16,12 +20,7 @@ Rails.application.routes.draw do
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   #Enregistrement des donnés du commande dans les table
   get '/confirmer-commande', to:'submitorders#save', as: "saved_commande"
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-  # Autre page
-  get '/contact', to:'static_page#contact', as: "contact"
-  get '/galerie-photo', to:'static_page#galerie', as: "galerie"
-  get '/mentions-legales', to:'static_page#legalnotice', as: "legalnotice"
-  get '/conditions-generales', to:'static_page#cgu', as: "cgu"
+  post '/confirmer-commande/spa', to:'submitorders#spa_reservation', as: "saved_spa"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
   devise_for :admins
@@ -49,17 +48,18 @@ Rails.application.routes.draw do
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   #routes page comment ca marche
   get '/comment-ca-marche', to:'static_page#comment_ca_marche', as: "comment_ca_marche"
-
   #routes page TOUT produit
   get '/all_produit', to:'static_page#all_produit', as: "all_produit"
-
   # routes page UN produit
   get '/show_produit', to:'static_page#show_produit', as: "show_produit"
-
   # routes page Location SPA
   get '/locationspa', to:'static_page#location_spa', as: "location_spa"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-  # routes page faq
+  # Autre page
+  get '/contact', to:'static_page#contact', as: "contact"
+  get '/galerie-photo', to:'static_page#galerie', as: "galerie"
+  get '/mentions-legales', to:'static_page#legalnotice', as: "legalnotice"
+  get '/conditions-generales', to:'static_page#cgu', as: "cgu"
   get '/faq', to:'static_page#faq', as: "faq"
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 end
