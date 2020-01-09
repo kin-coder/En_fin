@@ -1,0 +1,29 @@
+function delspareservationsubcategory(){
+	let list = document.getElementsByClassName("group-form-<%= @subcategory.id %>")
+	<% if @text_index%>
+		list[list.length - 1].remove()
+		document.getElementById("nombre-<%= dom_id(@subcategory) %>").innerHTML= "Nombre: <%= session[:params_spa].count(@subcategory.id) %>"
+	
+		/* Panier */
+		let panier = document.getElementById("panier-<%= dom_id(@subcategory) %>")
+
+		let nombre_spa = document.getElementById("nombre-spa-<%= dom_id(@subcategory) %>")
+		let price_spa = document.getElementById("price-<%= dom_id(@subcategory) %>")
+		let info_nombre = parseInt(nombre_spa.innerHTML) - 1
+		nombre_spa.innerHTML = info_nombre
+		price_spa.innerHTML = parseInt(price_spa.innerHTML) - <%= @subcategory.price %>
+		if (info_nombre == 0){
+			panier.remove()
+		}
+		let price = document.getElementById("prix-total")
+		price.innerHTML = parseInt(price.innerHTML)-<%= @subcategory.price %>
+
+	<% end %>
+	<% if session[:params_spa].empty? %>
+		document.getElementById("information-prestation").innerHTML = "<p id=\"info-45\">Vous n'avez pas encore choisi de prestation spa</p>"
+	<% end %>
+
+	
+
+}
+delspareservationsubcategory()
