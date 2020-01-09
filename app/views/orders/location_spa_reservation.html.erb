@@ -5,7 +5,7 @@
   <section class="clearfix pageTitleArea" style="background-image: url(/img/blog/pageTitle-bg04.jpg);">
         <div class="container">
 	        <div class="pageTitle">
-                <h1>réservation</h1> 
+                <h1 id = "bannerTitle">réservation</h1> 
                 <h1 id="faqTitle">LOCATION SPA à DOMICILE</h1> 
 	        </div>
         </div>
@@ -34,9 +34,13 @@
                   <% @prestations.each do |prestation| %>
                     <tr id="tableContent"><td id="tableContent"><%= prestation.name %> pour <%= prestation.duration %>H €<%= prestation.price.to_i %></td>
                         <td>
-                          <%= link_to "-", del_order_spa_path(prestation.id), class: "",remote: true %>
-                          <strong id="nombre-<%= dom_id(prestation) %>"><%= session[:params_spa].count(prestation.id) %></strong>
-                          <%= link_to "+", add_order_spa_path(prestation.id), class: "",remote: true %>
+                          <%= link_to del_order_spa_path(prestation.id), class: "",remote: true do%>
+                            <i class="fa fa-minus-circle"></i>
+                            <% end %>
+                          <strong class="quantité" id="nombre-<%= dom_id(prestation) %>"><%= session[:params_spa].count(prestation.id) %></strong>
+                          <%= link_to add_order_spa_path(prestation.id), class: "",remote: true  do%>
+                            <i class="fa fa-plus-circle"></i>
+                            <% end %>
                         </td>
                     </tr>
                   <% end %>
@@ -91,7 +95,7 @@
                               <% unless @params.empty? %>
                                 <% @params.uniq.each do |param| %>
                                   <% subcategory = infosubcategory(param) %>
-                                  <div id="panier-<%= dom_id(subcategory) %> ">
+                                  <div id="panier-<%= dom_id(subcategory) %>">
                                     <%= render partial: "add_panier_reservation_spa", locals: { subcategory: subcategory, nombre: session[:params_spa].count(param) } %>
                                   </div>
                                   <% end %>
@@ -128,7 +132,7 @@
           </div>
           <div class="col-sm-5 zoneLivraison">
             <div class="sectionTitle">
-              <h3>Coordonnée</h3>
+              <h3>Coordonnées</h3>
             </div>
             <div>
               <%= label_tag "Adresse" %>
@@ -142,7 +146,7 @@
         </div>
         </div>
         <div class="sectionTitle">
-          <h3>Date et heurs de livraison</h3>
+          <h3>Date et heure de livraison</h3>
         </div>
         <div class="dateSelect form-half form-left">
           <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
@@ -153,7 +157,7 @@
           </div>
         </div>
         <div class="timeSelect form-half form-right" >
-          <%= select_tag "Heurs", options_for_select([["Choisisser l'heur", ""], "06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"]), class:"select-drop",id:'guiest_id1' %>
+          <%= select_tag "Heure", options_for_select([["Choisisser l'heure", ""], "06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"]), class:"select-drop",id:'guiest_id1' %>
         </div>
         <div>
           <%= submit_tag %>

@@ -17,6 +17,15 @@ function delspareservationsubcategory(){
 		}
 		let price = document.getElementById("prix-total")
 		price.innerHTML = parseInt(price.innerHTML)-<%= @subcategory.price %>
+		if (parseInt(price.innerHTML) == 0){
+			let p = document.createElement("p")
+			p.setAttribute('id', 'panier-empty')
+			p.innerHTML = 'Selectionner une prestation'
+			document.getElementById('list-prestation-spa').appendChild(p)
+		}
+
+
+
 
 	<% end %>
 	<% if session[:params_spa].empty? %>

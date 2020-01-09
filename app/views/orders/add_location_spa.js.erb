@@ -15,6 +15,15 @@ function addspareservationsubcategory(){
 		divelement.innerHTML = "<%= j render 'add_panier_reservation_spa', subcategory: @subcategory, nombre: session[:params_spa].count(@subcategory.id) %>"
 		panier.appendChild(divelement)
 	}
+		let panierContent = document.getElementById("panier-empty")
+	if (panierContent){
+		panierContent.remove()
+	}
+	let infoContent = document.getElementById("info-45")
+	if (infoContent){
+		infoContent.remove()
+	}
+
 	let price = document.getElementById("prix-total")
 	price.innerHTML = parseInt(price.innerHTML)+<%= @subcategory.price %>
 }

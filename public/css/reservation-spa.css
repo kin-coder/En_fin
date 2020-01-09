@@ -22,7 +22,7 @@
     position: sticky;
     top: 10px;
     min-height: 200px;
-    color: indigo;
+    color: gray;
 }
 
 .panierTitle{
@@ -34,7 +34,7 @@ margin: 10px 0px 10px 0px;
 
 @media (min-width: 992px) {
     .addCategoriSpa{
-        color: indigo;
+        color: gray;
         
         margin-left: 10px;
         margin-bottom: 12px;
@@ -66,8 +66,7 @@ margin: 10px 0px 10px 0px;
  
   @media (max-width: 780px) {
     .addCategoriSpa{
-        color: indigo;
-        
+        color: gray;
         margin-left: 10px;
         margin-bottom: 14px;
         text-align: left;
@@ -90,15 +89,40 @@ margin: 10px 0px 10px 0px;
         max-width: 128px ;
         margin-bottom: 5px; 
     }
+    #bannerTitle{
+        font-size: 50px;
+    }
   }
  
   #fa{
       color: deeppink;
   }
   #tableContent{
-      color: indigo;
+      color: gray;
+  }
+#panierContent{
+    color: gray;
+    text-align: left;
+    margin-left: 50px ;
+    margin-bottom: 10px;
+}
+  .btn-prix{
+      border-radius: 30px;
+      padding-left: 8px;
+      padding-right: 8px;
   }
 
-  .btn-prix{
-      border-radius: 10px;
+  hr{
+    border-top: 3px solid #eee;
+  }
+
+  .quantité{
+      margin: 0 5px 0 5px;
+  }
+
+  #plus-moins{
+    border:deeppink 1px solid;
+    width: 52px;
+    padding: Opx 0px 0px 0px;
+    border-radius: 10px;
   }
