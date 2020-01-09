@@ -4,7 +4,7 @@ function addspareservationsubcategory(){
 	div1.classList.add("group-form-<%= @subcategory.id %>")
 	div1.innerHTML = "<%= j render 'add_spa_reservation', subcategory: @subcategory, i: @index %>"
 	div.appendChild(div1)
-	document.getElementById("nombre-<%= dom_id(@subcategory) %>").innerHTML= "Nombre: <%= session[:params_spa].count(@subcategory.id) %>"
+	document.getElementById("nombre-<%= dom_id(@subcategory) %>").innerHTML= " <%= session[:params_spa].count(@subcategory.id) %>"
 	let spa = document.getElementById("panier-<%= dom_id(@subcategory) %>")
 	let panier = document.getElementById("list-prestation-spa")
 	if (spa){
@@ -15,6 +15,15 @@ function addspareservationsubcategory(){
 		divelement.innerHTML = "<%= j render 'add_panier_reservation_spa', subcategory: @subcategory, nombre: session[:params_spa].count(@subcategory.id) %>"
 		panier.appendChild(divelement)
 	}
+		let panierContent = document.getElementById("panier-empty")
+	if (panierContent){
+		panierContent.remove()
+	}
+	let infoContent = document.getElementById("info-45")
+	if (infoContent){
+		infoContent.remove()
+	}
+
 	let price = document.getElementById("prix-total")
 	price.innerHTML = parseInt(price.innerHTML)+<%= @subcategory.price %>
 }
