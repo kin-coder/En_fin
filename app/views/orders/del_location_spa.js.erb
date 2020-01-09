@@ -2,7 +2,7 @@ function delspareservationsubcategory(){
 	let list = document.getElementsByClassName("group-form-<%= @subcategory.id %>")
 	<% if @text_index%>
 		list[list.length - 1].remove()
-		document.getElementById("nombre-<%= dom_id(@subcategory) %>").innerHTML= "Nombre: <%= session[:params_spa].count(@subcategory.id) %>"
+		document.getElementById("nombre-<%= dom_id(@subcategory) %>").innerHTML= " <%= session[:params_spa].count(@subcategory.id) %>"
 	
 		/* Panier */
 		let panier = document.getElementById("panier-<%= dom_id(@subcategory) %>")

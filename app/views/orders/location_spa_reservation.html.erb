@@ -1,102 +1,190 @@
-<div class="container">
+<!--==========	css pour cette page  =============-->
+<link href="/css/reservation-spa.css" rel="stylesheet">
 
-  <br><br><br>
-  <div class="row">
-    <div class="col-sm-9">
+<!-- PAGE TITLE SECTION -->
+  <section class="clearfix pageTitleArea" style="background-image: url(/img/blog/pageTitle-bg04.jpg);">
+        <div class="container">
+	        <div class="pageTitle">
+                <h1>réservation</h1> 
+                <h1 id="faqTitle">LOCATION SPA à DOMICILE</h1> 
+	        </div>
+        </div>
+  </section>
 
-      <h2>Reservation SPA</h2>
-    <ul>
-      <% @prestations.each do |prestation| %>
-        <li>
-          <%= link_to "moins", del_order_spa_path(prestation.id), class: "",remote: true %>
-          <%= prestation.name %> pour <%= prestation.duration %>H €<%= prestation.price.to_i %>
-          <%= link_to "plus", add_order_spa_path(prestation.id), class: "",remote: true %>
-          <strong id="nombre-<%= dom_id(prestation) %>">Nombre: <%= session[:params_spa].count(prestation.id) %></strong>
-        </li>
-      <% end %>
-    </ul>
 
-    <%= form_tag(saved_spa_path) do %>
-      <h3>Information pour la location</h3>
-      <div id="information-prestation">
-        <% if @params.empty? %>
-          <p id="info-45">Vous n'avez pas encore choisi de prestation spa</p>
-        <% else %>
-          <% @params.each_index do |index| %>
-            <% subcategory = infosubcategory(@params[index]) %>
-            <div class="group-form-<%= subcategory.id %>">
-              <%= render partial: "add_spa_reservation", locals: { subcategory: subcategory, i: index } %>
+    <!-- ORDER SECTION -->
+  <section class="clearfix orderSection padding">
+      <div class="container">
+      <div class="orderBox  patternbg">
+      Faites vos réservations
+    </div>
+        <div class="row">
+          <div class="col-sm-9">
+            <div class="innerWrapper">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th id="tableHead">Type de location spa</th>
+                      
+                      <th id="tableHead">Quantités</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <% @prestations.each do |prestation| %>
+                    <tr id="tableContent"><td id="tableContent"><%= prestation.name %> pour <%= prestation.duration %>H €<%= prestation.price.to_i %></td>
+                        <td>
+                          <%= link_to "-", del_order_spa_path(prestation.id), class: "",remote: true %>
+                          <strong id="nombre-<%= dom_id(prestation) %>"><%= session[:params_spa].count(prestation.id) %></strong>
+                          <%= link_to "+", add_order_spa_path(prestation.id), class: "",remote: true %>
+                        </td>
+                    </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th id="tableHead">Informations sur la location</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                        <td>
+                          <%= form_tag(saved_spa_path) do %>
+                            <div id="information-prestation">
+                              <% if @params.empty? %>
+                                <p id="info-45">Vous n'avez pas encore choisi de prestation spa</p>
+                              <% else %>
+                                <% @params.each_index do |index| %>
+                                  <% subcategory = infosubcategory(@params[index]) %>
+                                  <div class="group-form-<%= subcategory.id %>">
+                                    <%= render partial: "add_spa_reservation", locals: { subcategory: subcategory, i: index } %>
+                                  </div>
+                                <% end %>
+                              <% end %>
+                          </div>
+                        </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          <% end %>
-        <% end %>
-      </div>
-
-      <h3>Zone de livrasion</h3>
-      <div>
-        <%= label_tag 'Pays' %>
-        <%= text_field_tag 'Pays' %>
-      </div>
-      <div>
-        <%= label_tag "Department" %>
-        <%= text_field_tag "Department" %>
-      </div>
-      <h3>Date et heurs de livraison</h3>
-      <div class="dateSelect form-half form-left">
-        <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
-          <%= text_field_tag "Date", nil ,required: true, class: "form-control", placeholder:"MM/DD/YYYY"%>
-          <div class="input-group-addon">
-            <span class="fa fa-calendar"></span>
+          </div>
+          <div class="col-sm-3" id="panierTable">
+            <div class="innerWrapper">
+              <div class="table-responsive " >
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th id="tableHead">Panier</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                        <td>
+                          <div id="panier">
+                            <h4 class="panierTitle"><i class="fa fa-shopping-basket" aria-hidden="true" id="fa"></i> Vos commandes <i class="fa fa-shopping-basket" aria-hidden="true" id="fa"></i></h4>
+                            <div id="list-prestation-spa" >
+                              <% unless @params.empty? %>
+                                <% @params.uniq.each do |param| %>
+                                  <% subcategory = infosubcategory(param) %>
+                                  <div id="panier-<%= dom_id(subcategory) %> ">
+                                    <%= render partial: "add_panier_reservation_spa", locals: { subcategory: subcategory, nombre: session[:params_spa].count(param) } %>
+                                  </div>
+                                  <% end %>
+                              <%else%>
+                                <p id="panier-empty">Selectionner une prestation</p>
+                              <% end %>
+                            </div>
+                            <div>
+                              <strong class="btn btn-primary btn-prix">PRIX TOTAL: €<span id = "prix-total"><%= prixTotal() %></span></strong>
+                            </div>
+                          </div>
+                        </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="timeSelect form-half form-right" >
-        <%= select_tag "Heurs", options_for_select([["Choisisser l'heur", ""], "06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"]), class:"select-drop",id:'guiest_id1' %>
-      </div>
-
-      <h3>Coordonnée</h3>
-      <div>
-        <%= label_tag "Adresse" %>
-        <%= text_field_tag "Adresse" %>
-      </div>
-
-      <div>
-        <%= label_tag "Un message particulier ?" %>
-        <%= text_field_tag "Un message particulier ?" %>
-      </div>
-      
-      <div>
-        <%= submit_tag %>
-      </div>
-    <% end %>
-      
-    </div>
-    <div class="col-sm-3">
-      <h2>Panier</h2>
-      <div id="panier">
-        <h4>List de vos spa selon l'heur de location : </h4>
-        <div id="list-prestation-spa">
-          <% unless @params.empty? %>
-              <% @params.uniq.each do |param| %>
-                <% subcategory = infosubcategory(param) %>
-                <div id="panier-<%= dom_id(subcategory) %>">
-                  <%= render partial: "add_panier_reservation_spa", locals: { subcategory: subcategory, nombre: session[:params_spa].count(param) } %>
-                </div>
-              <% end %>
-          <%else%>
-            <p id="panier-empty">Selectionner une prestation</p>
-          <% end %>
+        <div class="container ">
+        <div class="row zoneDeLivraison">
+          <div class="col-sm-6 zoneLivraison">
+            <div class="sectionTitle">
+              <h3>Zone de livrasion</h3>
+            </div>
+            <div>
+              <%= label_tag 'Pays' %>
+              <%= text_field_tag 'Pays' %>
+            </div>
+            <div>
+              <%= label_tag "Department" %>
+              <%= text_field_tag "Department" %>
+            </div>
+          </div>
+          <div class="col-sm-5 zoneLivraison">
+            <div class="sectionTitle">
+              <h3>Coordonnée</h3>
+            </div>
+            <div>
+              <%= label_tag "Adresse" %>
+              <%= text_field_tag "Adresse" %>
+            </div>
+            <div>
+              <%= label_tag "Un message particulier ?" %>
+              <%= text_field_tag "Un message particulier ?" %>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="sectionTitle">
+          <h3>Date et heurs de livraison</h3>
+        </div>
+        <div class="dateSelect form-half form-left">
+          <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
+            <%= text_field_tag "Date", nil ,required: true, class: "form-control", placeholder:"MM/DD/YYYY"%>
+            <div class="input-group-addon">
+              <span class="fa fa-calendar"></span>
+            </div>
+          </div>
+        </div>
+        <div class="timeSelect form-half form-right" >
+          <%= select_tag "Heurs", options_for_select([["Choisisser l'heur", ""], "06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"]), class:"select-drop",id:'guiest_id1' %>
         </div>
         <div>
-          <strong>PRIX TOTAL: €<span id = "prix-total"><%= prixTotal() %></span></strong>
+          <%= submit_tag %>
         </div>
-      </div>
+      <% end %>
     </div>
-  </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <div>
     <% @produits.each do |produit| %>
 
         
     <% end %>
   </div>
-</div>
+
 
