@@ -48,6 +48,12 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+<style>
+  .mail{
+    Color:white !important;
+  }
+
+</style>
 </head>
 
 <body class="body-wrapper static">
@@ -61,7 +67,7 @@
         <div class="container">
           <div class="top-bar-right">
             <ul class="list-inline">
-              <li><a href=""><i class="fa fa-envelope" aria-hidden="true"></i> info@yourdomain.com</a></li>
+              <li><a href="" class="mail"><i class="fa fa-envelope mail" aria-hidden="true"></i> info@yourdomain.com</a></li>
               <li><span><i class="fa fa-phone" aria-hidden="true"></i>+1 234 567 8900</span></li>
             </ul>
           </div>
@@ -111,7 +117,7 @@
               <li class=" dropdown singleDrop">
                 <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Connexion</a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to "Se connecter", new_client_session_path %></li> 
+                  <li><%= link_to "Se connecter", '#', data: { toggle: 'modal', target: '#appoinmentModal'} %></li> 
                   <li><%= link_to "S'inscrire", new_client_registration_path%></li> 
                 </ul>  
               </li>
@@ -154,13 +160,13 @@
             </div>
             <div class="col-sm-3 col-xs-12 paddingLeft">
               <div class="footerInfoTitle">
-                <h4>Useful Links</h4>
+                <h4>Liens utiles</h4>
               </div>
               <div class="useLink">
                 <ul class="list-unstyled">
-                  <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Web Design</a></li>
-                  <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>About Anzel Beauty Spa</a></li>
-                  <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Mobile</a></li>
+                  <li><a href="<%=faq_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>FAQ</a></li>
+                  <li><a href="<%=comment_ca_marche_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Comment ça marche?</a></li>
+                  <li><a href="#service"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Nos services</a></li>
                   <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Why Anzel Beauty Spa</a></li>
                   <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Social Media</a></li>
                 </ul>
@@ -172,22 +178,22 @@
               </div>
               <div class="footerGallery row">
                 <div class="col-xs-4">
-                  <a href="gallery-v2.html" style="background-image: url(img/home/footer-gallery-1.jpg);"></a>
+                  <a href="gallery-v2.html" style="background-image: url(/img/home/footer-gallery-1.jpg);"></a>
                 </div>
                 <div class="col-xs-4">
-                  <a href="gallery-v2.html" style="background-image: url(img/home/footer-gallery-2.jpg);"></a>
+                  <a href="gallery-v2.html" style="background-image: url(/img/home/footer-gallery-2.jpg);"></a>
                 </div>
                 <div class="col-xs-4">
-                  <a href="gallery-v2.html" style="background-image: url(img/home/footer-gallery-3.jpg);"></a>
+                  <a href="gallery-v2.html" style="background-image: url(/img/home/footer-gallery-3.jpg);"></a>
                 </div>
                 <div class="col-xs-4">
-                  <a href="gallery-v2.html" style="background-image: url(img/home/footer-gallery-4.jpg);"></a>
+                  <a href="gallery-v2.html" style="background-image: url(/img/home/footer-gallery-4.jpg);"></a>
                 </div>
                 <div class="col-xs-4">
-                  <a href="gallery-v2.html" style="background-image: url(img/home/footer-gallery-5.jpg);"></a>
+                  <a href="gallery-v2.html" style="background-image: url(/img/home/footer-gallery-5.jpg);"></a>
                 </div>
                 <div class="col-xs-4">
-                  <a href="gallery-v2.html" style="background-image: url(img/home/footer-gallery-6.jpg);"></a>
+                  <a href="gallery-v2.html" style="background-image: url(/img/home/footer-gallery-6.jpg);"></a>
                 </div>
               </div>
             </div>
@@ -235,17 +241,33 @@
     <div class="modal-dialog">
       <!-- MODAL CONTENT-->
       <div class="modal-content">
-      <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-    </div>
-        <div class="modal-body">
-        <div id="appointment-alert" class="my-alert"></div>
      
-        <div class="container">
+<div class="panel panel-default formPart panel-login" >
+<div class="panel-heading patternbg" ><center> <span>Connectez-vous</span></center></div>
+<div class="panel-body panel-body-login">
+<div class="row">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="col-sm-12">
+    <div class="form-group">
+      <i class="fa fa-envelope" aria-hidden="true"></i>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"email" %>
+    </div>
+    <div class="form-group">
+      <i class="fa fa-key" aria-hidden="true"></i>
+      <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"fullname", placeholder:"mot de pass" %>
+    </div>
+    <div class="actions">
+      <center><%= f.submit "Connecter", class:"btn btn-primary btn-block" %></center> </br>
+      <center><p>Pas encore inscris? <%= render "clients/shared/links" %></p></center>
+    </div>
+    <% end %>
 
-              
+</div>
+</div>
+</div>
 
-
+            
         </div>
       </div>
     </div>

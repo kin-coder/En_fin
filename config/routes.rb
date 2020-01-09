@@ -60,5 +60,6 @@ Rails.application.routes.draw do
   get '/galerie-photo', to:'static_page#galerie', as: "galerie"
   get '/mentions-legales', to:'static_page#legalnotice', as: "legalnotice"
   get '/conditions-generales', to:'static_page#cgu', as: "cgu"
+  get '/faq', to:'static_page#faq', as: "faq"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 end

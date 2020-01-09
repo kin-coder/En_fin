@@ -1,69 +1,76 @@
+<!-- accroche général-->
+<section class="clearfix pageTitleArea" style="background-image: url(/img/blog/pageTitle-bg02.jpg);">
+<div class="container">
+    <div class="pageTitle">
+        <span class="title-service">Massage</span><br>
+        <span class="description-service">The real place of Mindfullness & Healthy body</span><br>
+    </div>
+</div>
+</section>
+
+
+<!-- ORDER SECTION -->
+    <section class="clearfix orderArea g">
+      <div class="container">
+        <div class="row">
+		  <div class="col-sm-12">
+		  <center>
+              <div class="panel panel-default cartInfo">
+                <div class="optional-text">Qui souhaite un massage ?</div>
+				<div class="panel-body tableArea bouton-plus-moin">
+						<% @categories.each do |category| %>
+						<%= link_to "-", deletecategory_path(category.id), class: "delCateg btn-moin",remote: true %>
+						<strong><%= category.name %> <span id="puts-number-<%= category.name %>"><%= countnumbre(category.name,category.id) %></span> </strong>
+						<%= link_to "+", addcategory_path(category.id), class: "addCateg btn-moin",remote: true %>
+						<% end %>
+                </div>
+              	</div>
+		  	  </div>
+		  </center>
+        </div>
+      </div>
+    </section>
+
+
 <div class="row">
 	<div class="col-sm-9">
-		<h4 type="hidden">Choix Pays / Ville</h4>
-			<span>Un petit formulaire pour demander le pays et la ville</span>
-		<hr>
-		<h1><%= @service.name %> a domicile </h1>
-		<hr>
-		<h2>PRESTATION</h2>
-			<div class="row">
-			<!-- Afficher les differents types de category -->
-			<% @categories.each do |category| %>
-				<div class="col-sm-3" >
-					<%= link_to "-", deletecategory_path(category.id), class: "btn btn-info",remote: true %>
-					<strong><%= category.name %> <span id="puts-number-<%= category.name %>"><%= countnumbre(category.name,category.id) %></span> </strong>
-					<%= link_to "+", addcategory_path(category.id), class: "btn btn-info",remote: true %>
-				</div>
-			<% end %>
-			</div>
-		<hr>
 <!--==========	PRESTATION PRESTATION PRESTATION PRESTATION PRESTATION   =============-->
-		<h2>INFORMATION DU PRESTATION</h2>
+	<div class="prestation-info">
+		<h2><center>INFORMATION DU PRESTATION</center></h2>
 		<% unless @paniers == nil %>
 		<div id="list-prestation">
-		<div class="row">
-			<% @paniers.each_index do |id| %>
-				<div class="prestation-name-<%= @paniers[id]["category"][1] %>">
-					<div class="col-sm-3">
-					<h5><%= @paniers[id]["category"][0] %></h5>
-					<ul>
-						<% subcategories(id).each do |subcategory| %>
-						<li><%= subcategory.name %> <%= subcategory.price %> € <%= check_box_tag :name, 1, isincommandesubcategory(id,subcategory) , data: { remote: true, url: subcategory_path, params: {key: id, subcategory: subcategory.id}.to_param, method: "put" }%></li>
-						<% end %>
-						</div>
-					</ul>
-				</div>
-			<% end	%>
+			<div class="row">
+			<div class="massage-product">
+				<% @paniers.each_index do |id| %>
+					<div class="prestation-name-<%= @paniers[id]["category"][1] %> ">
+						<div class="col-sm-6 categ">
+							<h5 class="prestation-category"><%= @paniers[id]["category"][0] %></h5>
+							<ul>
+								<% subcategories(id).each do |subcategory| %>
+								<li><%= subcategory.name %>  <span class="prix"><%= subcategory.price %> € </span> <i class="fa fa-info-circle" aria-hidden="true"></i>
+									<%= check_box_tag :name, 1, isincommandesubcategory(id,subcategory) , data: { remote: true, url: subcategory_path, params: {key: id, subcategory: subcategory.id}.to_param, method: "put" }, class:"check", id:"toggle#{subcategory.id}#{id}"%>
+									<div class="togggle">
+  										<label for="toggle<%=subcategory.id%><%=id%>"></label>
+									</div>
+								</li>
+								<% end %> 
+							</ul>
+						</div>	
+					</div>
+				<% end	%>
+			</div>
+			</div>
 		</div>
 		<% end	%>
-		</div>
-
-		<hr>
-
-		<div class="crenaux">
-			<h2>Choix du créneaux horaire</h2>
-			<p>choisir ici la date et l'heur pour la prestation</p>
-			<br><br><br>
-		</div>
-		<hr>
-		<div class="reserver">
-			<h2>Confirmer la commande</h2>
-			<p>
-				Se connecter si non conecter<br>
-				(Aprè clic sur reserver) Question suplementaire au produits<br>
-				(Aprè clic sur reserver) Choix d'adresse de livraison<br>
-				(Aprè clic sur reserver) Recapilatif de commande<br>
-			</p>
-			<strong>Lien pour enregistré la commande dans la table</strong><br>
-			<%= link_to "Reserver", saved_commande_path, class: "btn btn-success"%>
-		</div>
-
+	</div>
 	</div>
 	<!-- PANIER PANIER PANIER PANIER PANIER PANIER PANIER PANIER
 ================================================================ -->
-	<div class="col-sm-3">
-		<h2>VOS PANIER</h2>
+	<div class="col-sm-3" id="panier">
+		<div class="prestation-info ">
+		<h2 class="patternbg panier-title">VOS PANIER</h2>
 		<div class="alert alert-success" id="js-price" role="alert">Somme: <%= totalprice() %> €</div>
+		<h5 class="soutitre-panier">Vos commandes</h5>
 		<div id="basket">
 			<% unless @paniers.empty? || totalprice() == 0 %>
 				<% @paniers.each_index do |id| %>
@@ -82,6 +89,33 @@
 				<p id="no-basket-list">Vous n'avez pas encore sélectionné de prestation</p>
 			<% end	%>
 		</div>
+		<form action="mail/appointment-form.php" method="post" id="appoinmentModalForm">
+            <!--Response Holder-->
+            <div class="form-group categoryTitle">
+              <h5 class="soutitre-panier">Date et heure de préstation</h5>
+            </div>
+            <div class="dateSelect form-half form-left">
+              <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
+                <input type="text" name="appointment-form-date" class="form-control" placeholder="MM/DD/YYYY" required>
+                <div class="input-group-addon">
+                  <span class="fa fa-calendar"></span>
+                </div>
+              </div>
+            </div>
+            <div class="timeSelect form-half form-right">
+              <select id="guiest_id1" name="appointment-form-time" class="select-drop">
+                <option value="10.00 AM">10.00 AM</option>
+                <option value="9.00 AM">9.00 AM</option>
+                <option value="8.00 AM">8.00 AM</option>
+                <option value="11.00 AM">11.00 AM</option>
+              </select>
+            </div>
+            <div class="form-group" id="appointment-submit-btn">
+              <button type="submit"  class="btn btn-primary first-btn">Réserver</button>
+            </div>
+          </form>
+		</div>
 	</div>
 
 </div>
+
