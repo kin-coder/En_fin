@@ -1,0 +1,13 @@
+<h4><%= subcategory.name %> pour <%= subcategory.duration %>H €<%= subcategory.price.to_i %></h4>
+<div>
+<%= label_tag "logement#{i}", 'Type de logement' %>
+<%= select_tag "logement[]", options_for_select([["Appartement","0"],["Villa - Maison","1"]]), class:"", id:"logement#{i}" %>
+</div>
+<div>
+<%= label_tag "installation#{i}","Type d'installation" %>
+<%= select_tag "installation[]", options_for_select([["Intérieur","0"],["Extérieur","1"]]), class:"", id:"installation#{i}" %>
+</div>
+<div>
+<%= label_tag "eau#{i}","Système d'eau" %>
+<%= select_tag "eau[]", options_for_select([["Cumulus - Ballon d'eau (eau chaude limitée)","0"],["Chaudière (eau chaude continue)","1"]]), class:"", id:"eau#{i}" %>
+</div>
