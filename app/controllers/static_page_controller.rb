@@ -39,4 +39,8 @@ class StaticPageController < ApplicationController
   def faq
   end
 
+  def engagement
+  
+  end
+
 end

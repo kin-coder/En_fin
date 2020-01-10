@@ -61,5 +61,6 @@ Rails.application.routes.draw do
   get '/mentions-legales', to:'static_page#legalnotice', as: "legalnotice"
   get '/conditions-generales', to:'static_page#cgu', as: "cgu"
   get '/faq', to:'static_page#faq', as: "faq"
+  get "/engagement", to:'static_page#engagement', as: "engagement"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 end
