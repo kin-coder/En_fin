@@ -1,0 +1,276 @@
+
+
+<hr>
+<small class="test">Compte de test: email: "email@mail.com", password:"email@mail.com"</small>
+<hr>
+<h1>ACCEUILL</h1>
+<!-- LIEN POUR LES CONNEXION CLIENT-->
+<%= link_to "Se connecter", new_client_session_path %><br>
+<%= link_to "Se deconnecter", destroy_client_session_path, method: "delete" %><br>
+<%= link_to "S'inscrire", new_client_registration_path %><br>
+<%= link_to "Editer mon profil", edit_client_registration_path %><br>
+<%= link_to "Mot de passe oublier", new_client_password_path %><br>
+<hr>
+
+<h2>LIEN POUR CHAQUE PAGE DE SERVICE</h2>
+<%= link_to "Massage", massage_path %><br>
+<%= link_to "Location de spa", spa_path %><br>
+
+<hr>
+
+<h2>PANIER DYNAMIQUE</h2>
+<%= link_to "Massage à domicile", reservation_path('massage-domicile') %><br>
+<%= link_to "Location de spa", reservation_path('location-spa') %>
+<hr>
+
+<h2>Autre lien utiles</h2>
+<%= link_to "Contact", contact_path %><br>
+<%= link_to "Galerie", galerie_path %><br>
+<%= link_to "FAQ", faq_path %><br>
+<%= link_to "Mentions légales", legalnotice_path %><br>
+<%= link_to "CGU", cgu_path %><br>
+
+
+
+
+<!-- APPOINMENT MODAL -->
+<div id="appoinmentModal" class="modal fade modalCommon" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <!-- MODAL CONTENT-->
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+  </div>
+      <div class="modal-body">
+      <div id="appointment-alert" class="my-alert"></div>
+   
+      <div class="container">
+
+            <div class="panel panel-default formPart panel-login" >
+              <div class="panel-heading patternbg" ><center> <span>Connectez-vous</span></center></div>
+              <div class="panel-body panel-body-login">
+                <form>
+                  <div class="form-group">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <input type="email" class="form-control" id="email" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <input type="password" class="form-control" id="pwd" placeholder="Password">
+                  </div>
+                  <div class="checkbox">
+                    <label><input type="checkbox"> Remember me</label>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                </form>
+              </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<hr>
+<div class="row">
+<div class="col-sm-12">
+<div class="crenaux">
+  <h2>Choix du créneaux horaire</h2>
+  <p>choisir ici la date et l'heur pour la prestation</p>
+  <br><br><br>
+</div>
+</div>
+</div>
+<hr>
+<div class="reserver">
+  <h2>Confirmer la commande</h2>
+  <p>
+    Se connecter si non conecter<br>
+    (Aprè clic sur reserver) Question suplementaire au produits<br>
+    (Aprè clic sur reserver) Choix d'adresse de livraison<br>
+    (Aprè clic sur reserver) Recapilatif de commande<br>
+  </p>
+  <strong>Lien pour enregistré la commande dans la table</strong><br>
+  <%= link_to "Reserver", saved_commande_path, class: "btn btn-success"%>
+</div>
+
+
+
+
+
+
+
+
+
+<!--==========	css pour cette page  =============-->
+<link href="/css/reservation-spa.css" rel="stylesheet">
+
+<!-- PAGE TITLE SECTION -->
+    <section class="clearfix pageTitleArea" style="background-image: url(/img/blog/pageTitle-bg04.jpg);">
+        <div class="container">
+	        <div class="pageTitle">
+                <h1>resérvation</h1> 
+                <h1 id="faqTitle">LOCATION SPA à DOMICILE</h1> 
+	        </div>
+        </div>
+    </section>
+
+
+    <!-- ORDER SECTION -->
+    <section class="clearfix orderSection padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="innerWrapper">
+              <div class="orderBox  patternbg">
+                All Order
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Type de location spa</th>
+                      
+                      <th>Quantités</th>
+                      <th>Informations</th>
+                      <th>Total Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <% @prestations.each do |prestation| %>
+                    <tr><td><%= prestation.name %> pour <%= prestation.duration %>H €<%= prestation.price.to_i %></td>
+                        <td>
+                          <%= link_to "moins", del_order_spa_path(prestation.id), class: "",remote: true %>
+                          <strong id="nombre-<%= dom_id(prestation) %>">Nombre: <%= session[:params_spa].count(prestation.id) %></strong>
+                          <%= link_to "plus", add_order_spa_path(prestation.id), class: "",remote: true %>
+                        </td>
+
+                        <td>
+                        <%= form_tag(saved_spa_path) do %>
+                          <h3>Information pour la location</h3>
+                          <div id="information-prestation">
+                            <% if @params.empty? %>
+                              <p id="info-45">Vous n'avez pas encore choisi de prestation spa</p>
+                            <% else %>
+                              <% @params.each_index do |index| %>
+                                <% subcategory = infosubcategory(@params[index]) %>
+                                <div class="group-form-<%= subcategory.id %>">
+                                  <%= render partial: "add_spa_reservation", locals: { subcategory: subcategory, i: index } %>
+                                </div>
+                              <% end %>
+                            <% end %>
+                          </div>
+                    
+                        </td>
+                    </tr>
+                  <% end %>
+                    <tr>
+                      <td>#451231</td>
+                      <td>2</td>
+                      <td>$99.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+<div class="container">
+
+  <br><br><br>
+  <div class="row">
+    <div class="col-sm-9">
+
+      <h2>Reservation SPA</h2>
+    <ul>
+      <% @prestations.each do |prestation| %>
+        <li>
+          <%= link_to "moins", del_order_spa_path(prestation.id), class: "",remote: true %>
+          <%= prestation.name %> pour <%= prestation.duration %>H €<%= prestation.price.to_i %>
+          <%= link_to "plus", add_order_spa_path(prestation.id), class: "",remote: true %>
+          <strong id="nombre-<%= dom_id(prestation) %>">Nombre: <%= session[:params_spa].count(prestation.id) %></strong>
+        </li>
+      <% end %>
+    </ul>
+
+    
+
+      <h3>Zone de livrasion</h3>
+      <div>
+        <%= label_tag 'Pays' %>
+        <%= text_field_tag 'Pays' %>
+      </div>
+      <div>
+        <%= label_tag "Department" %>
+        <%= text_field_tag "Department" %>
+      </div>
+      <h3>Date et heurs de livraison</h3>
+      <div class="dateSelect form-half form-left">
+        <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
+          <%= text_field_tag "Date", nil ,required: true, class: "form-control", placeholder:"MM/DD/YYYY"%>
+          <div class="input-group-addon">
+            <span class="fa fa-calendar"></span>
+          </div>
+        </div>
+      </div>
+      <div class="timeSelect form-half form-right" >
+        <%= select_tag "Heurs", options_for_select([["Choisisser l'heur", ""], "06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"]), class:"select-drop",id:'guiest_id1' %>
+      </div>
+
+      <h3>Coordonnée</h3>
+      <div>
+        <%= label_tag "Adresse" %>
+        <%= text_field_tag "Adresse" %>
+      </div>
+
+      <div>
+        <%= label_tag "Un message particulier ?" %>
+        <%= text_field_tag "Un message particulier ?" %>
+      </div>
+      
+      <div>
+        <%= submit_tag %>
+      </div>
+    <% end %>
+      
+    </div>
+    <div class="col-sm-3">
+      <h2>Panier</h2>
+      <div id="panier">
+        <h4>List de vos spa selon l'heur de location : </h4>
+        <div id="list-prestation-spa">
+          <% unless @params.empty? %>
+              <% @params.uniq.each do |param| %>
+                <% subcategory = infosubcategory(param) %>
+                <div id="panier-<%= dom_id(subcategory) %>">
+                  <%= render partial: "add_panier_reservation_spa", locals: { subcategory: subcategory, nombre: session[:params_spa].count(param) } %>
+                </div>
+              <% end %>
+          <%else%>
+            <p id="panier-empty">Selectionner une prestation</p>
+          <% end %>
+        </div>
+        <div>
+          <strong>PRIX TOTAL: €<span id = "prix-total"><%= prixTotal() %></span></strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <% @produits.each do |produit| %>
+
+        
+    <% end %>
+  </div>
+</div>
+

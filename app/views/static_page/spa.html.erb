@@ -1,6 +1,146 @@
-<h1>LOCATION DE SPA</h1>
+<%
+=begin%>
+ <h1>LOCATION DE SPA</h1>
 <p>Page pour les location de spa</p>
 
 <p>Bouton pour la location : 
 <%= link_to "Location de spa", reservation_path('location-spa') %>
-</p>
+</p> 
+<%
+=end%>
+
+<!--########################################################################-->
+<section class="clearfix pricingSection">
+      <div class="container">
+        <div class="secotionTitle">
+          <h2><span> Service Spa </span>location</h2>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 col-xs-12">
+            <div class="priceTableWrapper">
+              <div class="priceImage" style="background-image: url(img/home/pricing-1.jpg);">
+                <!-- <img src="img/home/pricing-1.jpg" alt="Image Price" class="img-responsive"> -->
+                <div class="maskImage">
+                  <h3>   </h3>
+                </div>
+                <div class="priceTag">
+                  <h4>€100</h4>
+                </div>
+              </div>
+              <div class="priceInfo">
+                <ul class="list-unstyled">
+                  
+                    <li class="heure">24H</li>
+                  
+                </ul>
+                <!--<a href="#" class="btn btn-common btn-round btn-theme">reservé</a>-->
+                <%= link_to "Reservé", reservation_path('location-spa'), class:"btn btn-common btn-round btn-theme" %>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <div class="priceTableWrapper">
+              <div class="priceImage" style="background-image: url(img/home/pricing-2.jpg);">
+                <!-- <img src="img/home/pricing-2.jpg" alt="Image Price" class="img-responsive"> -->
+                <div class="maskImage">
+                  <h3>     </h3>
+                </div>
+                <div class="priceTag">
+                  <h4>€150</h4>
+                </div>
+              </div>
+              <div class="priceInfo">
+                <ul class="list-unstyled">
+                  <li class="heure">48H</li>
+                </ul>
+                <!--<a href="#" class="btn btn-common btn-round btn-theme">reservé</a>-->
+                <%= link_to "Reservé", reservation_path('location-spa'), class:"btn btn-common btn-round btn-theme" %>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <div class="priceTableWrapper">
+              <div class="priceImage" style="background-image: url(img/home/pricing-3.jpg);">
+                <!-- <img src="img/home/pricing-3.jpg" alt="Image Price" class="img-responsive"> -->
+                <div class="maskImage">
+                  <h3>     </h3>
+                </div>
+                <div class="priceTag">
+                  <h4>€200</h4>
+                </div>
+              </div>
+              <div class="priceInfo">
+                <ul class="list-unstyled">
+                  <li class="heure">72H</li>
+                </ul>
+                <!--<a href="#" class="btn btn-common btn-round btn-theme">reservé</a>-->
+                <%= link_to "Reservé", reservation_path('location-spa'), class:"btn btn-common btn-round btn-theme" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!--########################################################################-->
+
+
+<div>
+        <p class="optionnal-texte">OPTIONS SUPLEMENTAIRES</p>
+</div>
+
+    <section class="clearfix offersSection patternbg">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3 col-xs-12">
+            <div class="offerContent">
+              <img src="img/home/offer-1.jpg" alt="Image Offer">
+              <div class="offerMasking">
+                <div class="offerTitle"><h4><a href="#"> Décoration romantique</a></h4></div>
+              </div>
+              <div class="offerPrice"><h5>€20</h5></div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-xs-12">
+            <div class="offerContent">
+              <img src="img/home/offer-2.jpg" alt="Image Offer">
+              <div class="offerMasking">
+                <div class="offerTitle"><h4><a href="#">Anniverssaires fêtes</a></h4></div>
+              </div>
+              <div class="offerPrice"><h5>€20</h5></div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-xs-12">
+            <div class="offerContent">
+              <img src="img/home/offer-3.jpg" alt="Image Offer">
+              <div class="offerMasking">
+                <div class="offerTitle"><h4><a href="">Fontaine à chocolat</a></h4></div>
+              </div>
+              <div class="offerPrice"><h5>€20</h5></div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-xs-12">
+            <div class="offerContent">
+              <img src="img/home/offer-4.jpg" alt="Image Offer">
+              <div class="offerMasking">
+                <div class="offerTitle"><h4><a href="#">Plateau de fruits frais</a></h4></div>
+              </div>
+              <div class="offerPrice"><h5>€20</h5></div>
+            </div>
+          </div>
+          
+
+            <div class="col-sm-12 col-xs-12">
+            <div class="offerContent">
+              <img src="img/home/offer-3.jpg" alt="Image Offer">
+              <div class="offerMasking">
+                <div class="offerTitle"><h4><a href="">Des Tables de massages</a></h4></div>
+              </div>
+              <div class="offerPrice"><h5>€20</h5></div>
+            </div>
+
+        </div>
+        
+      </div>
+      
+    </section>

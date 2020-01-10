@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_16_103528) do
+ActiveRecord::Schema.define(version: 2020_01_08_154100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
 
   create_table "candidates", force: :cascade do |t|
     t.string "first_name"
@@ -47,6 +59,7 @@ ActiveRecord::Schema.define(version: 2019_12_16_103528) do
     t.string "last_name"
     t.string "adresse"
     t.string "tel"
+    t.string "sexe"
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
@@ -75,6 +88,16 @@ ActiveRecord::Schema.define(version: 2019_12_16_103528) do
     t.index ["order_id"], name: "index_order_categories_on_order_id"
   end
 
+  create_table "order_spa_info_subcategories", force: :cascade do |t|
+    t.string "logement"
+    t.string "installation"
+    t.string "systeme_eau"
+    t.bigint "order_sub_category_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_sub_category_id"], name: "index_order_spa_info_subcategories_on_order_sub_category_id"
+  end
+
   create_table "order_sub_categories", force: :cascade do |t|
     t.bigint "order_category_id"
     t.bigint "subcategory_id"
@@ -90,9 +113,11 @@ ActiveRecord::Schema.define(version: 2019_12_16_103528) do
     t.text "description"
     t.bigint "client_id"
     t.bigint "service_id"
+    t.bigint "department_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["department_id"], name: "index_orders_on_department_id"
     t.index ["service_id"], name: "index_orders_on_service_id"
   end
 
@@ -108,6 +133,7 @@ ActiveRecord::Schema.define(version: 2019_12_16_103528) do
   create_table "prestataire_orders", force: :cascade do |t|
     t.bigint "order_id"
     t.bigint "prestataire_id"
+    t.boolean "accepted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_prestataire_orders_on_order_id"
@@ -124,11 +150,7 @@ ActiveRecord::Schema.define(version: 2019_12_16_103528) do
   end
 
   create_table "prestataires", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
@@ -137,8 +159,6 @@ ActiveRecord::Schema.define(version: 2019_12_16_103528) do
     t.string "tel"
     t.string "raison_sociale"
     t.string "siret"
-    t.index ["email"], name: "index_prestataires_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_prestataires_on_reset_password_token", unique: true
   end
 
   create_table "services", force: :cascade do |t|

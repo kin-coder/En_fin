@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.6.5'
 
 # use for  example of attribute
 gem 'faker'
 # use for beautifull show
 gem 'table_print'
-#
+# user authentification
 gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
