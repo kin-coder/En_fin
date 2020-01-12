@@ -367,6 +367,7 @@ a:hover, a:focus {
     text-transform: capitalize;
     font-weight: 400;
     padding-bottom: 25px;
+    padding-top: 25px;
   }
 }
 @font-face {

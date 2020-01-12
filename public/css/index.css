@@ -1,0 +1,26 @@
+/* Mise en page du texte*/
+.texte-baniere{
+    color:black !important;
+    align:justify; 
+    position:relative; 
+    left:5px!important;
+ }
+ 
+ /* font texte N de texte-baniere*/
+ .texte-baniere b{
+    font-size:45px;
+    font-family:Brush Script MT, Brush Script Std, cursive!important;
+ }
+ 
+ 
+ /* font texte du titre de texte-baniere*/
+ .poli1{
+ 
+   font-family:Georgia, serif!important;
+ }
+ 
+ /* font bouton (massage domicile/location spa) de nos services*/
+ .mass{
+ 
+   color:white!important;
+ }

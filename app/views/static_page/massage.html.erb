@@ -6,18 +6,84 @@
   font-family: Jazz LET, fantasy;
   z-index: -4;
 }
-
-
-
+@media (min-width: 992px){
+    .h1 {
+        font-size: 55px;
+        line-height: 55px;
+         margin: 0 0 10px;
+      }
+        .poli2{
+     
+       font-family:Georgia, serif!important;
+       text-align: left !important;
+       
+      } 
+      .police_spa{
+    
+      font-family: Jazz LET, fantasy!important;
+      z-index: -4;
+    }
+    }
+    @media (min-width: 768px){
+    .h1 {
+        font-size: 50px;
+        line-height: 50px;
+        margin: 0 0 10px;
+      }
+        .poli2{
+     
+       font-family:Georgia, serif!important;
+       text-align: left !important;
+       color:black!important ;
+      }
+    
+      .poli2 b{
+     
+       font-family:Brush Script MT, Brush Script Std, cursive!important;
+       text-align: left !important;
+       color:black!important ;
+       font-size: 30px;
+       
+      }
+      .police_spa{
+    
+      font-family: Jazz LET, fantasy!important;
+      z-index: -4;
+    }
+    }
+    
+    @media (min-width: 320px){
+    .h1 {
+        font-size: 20px;
+        line-height: 20px;
+        margin: 0;
+        
+      }
+     
+      .poli2{
+     
+       font-family:Georgia, serif!important;
+       text-align: left !important;
+       margin-bottom:1px !important;
+       
+      }
+    
+      .police_spa{
+    
+      font-family: Jazz LET, fantasy!important;
+      z-index: -4;
+      }
+    
+    }
 </style>
 
 
 <!-- accroche général-->
-<section class="clearfix pageTitleArea" style="background-image: url(img/blog/pageTitle-bg02.jpg);">
+<section class="clearfix pageTitleArea" style="background-image: url(img/blog/massage1.jpg);">
 <div class="container">
     <div class="pageTitle">
-        <span class="title-service">Massage</span><br>
-        <span class="description-service">The real place of Mindfullness & Healthy body</span><br>
+        <span class="title-service poli2">Massage</span><br>
+        <span class="description-service poli2"><b>T</b>he real place of Mindfullness & Healthy body</span><br>
     </div>
     <%= link_to "Découvrir", reservation_path('massage-domicile'), class:"btn btn-primary massage-btn" %>
     <%= link_to "Réserver", reservation_path('massage-domicile'), class:"btn btn-primary massage-btn" %>
@@ -687,6 +753,3 @@
     </section>
 
 
-<p>Bouton pour la reservation : 
-<%= link_to "Reserver mon massage", reservation_path('massage-domicile') %><br>
-</p>
