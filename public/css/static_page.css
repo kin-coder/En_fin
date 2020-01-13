@@ -148,7 +148,7 @@ top: 10%;
 .pageTitle .description-service {
    padding-top: 50px;
    text-align: left;
-   font-size: 15px;
+   /* font-size: 5px!important; */
    line-height: 15px;
    color:#ffffff;
    font-family: 'Raleway';
@@ -225,7 +225,7 @@ top: 10%;
    width: 372px;
    font-size: 25px;
    font-family: 'Times New Roman', Times, serif;
-   border: 1px rgb(102, 101, 97) solid;
+   /* border: 1px rgb(102, 101, 97) solid; */
    padding-top: 5px;
  }
  

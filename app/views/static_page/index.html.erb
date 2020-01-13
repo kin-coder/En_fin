@@ -1,41 +1,89 @@
-<!-- MAIN SLIDER -->
-
-
 <style>
-
-
-
-/* Mise en page du texte*/
+  /* Mise en page du texte*/
 .texte-baniere{
-   color:black !important;
-   align:justify; 
-   position:relative; 
-   left:5px!important;
+    color:black !important;
+    align:justify; 
+    position:relative; 
+    left:5px!important;
+ }
+ 
+ /* font texte N de texte-baniere*/
+ .texte-baniere b{
+    font-size:45px;
+    font-family:Brush Script MT, Brush Script Std, cursive!important;
+ }
+ 
+ 
+ /* font texte du titre de texte-baniere*/
+ .poli1{
+ 
+   font-family:Georgia, serif!important;
+ }
+ 
+ /* font bouton (massage domicile/location spa) de nos services*/
+ .mass{
+ 
+   color:white!important;
+ }
+
+
+ @media (min-width: 320px) {
+
+  .secotionTitle h2 span {
+      display: block;
+      letter-spacing: normal;
+      color: #ec5598;
+      font-family: 'Bradley Hand, cursive'!important;
+      font-size: 50px;
+      letter-spacing: 4px;
+      line-height: 42px;
+      text-transform: capitalize;
+      font-weight: 400;
+      padding-bottom: 25px;
+    }
 }
 
-/* font texte N de texte-baniere*/
-.texte-baniere b{
-   font-size:45px;
-   font-family:Brush Script MT, Brush Script Std, cursive!important;
+@media (min-width: 768px) {
+  .secotionTitle h2 span {
+    display: block;
+    letter-spacing: normal;
+    color: #ec5598;
+    font-family: 'Bradley Hand, cursive'!important;
+    font-size: 90px;
+    letter-spacing: 4px;
+    line-height: 42px;
+    text-transform: capitalize;
+    font-weight: 400;
+    padding-bottom: 25px;
+    padding-top: 25px;
+  }
 }
+@font-face {
+  font-family:'Bradley Hand, cursive'!important;
+  src: url('Bradley Hand, cursive') format('truetype')!important;
 
+  }	
 
-/* font texte du titre de texte-baniere*/
-.poli1{
+  .police_massage{
 
-  font-family:Georgia, serif!important;
+  font-family: Jazz LET, fantasy;
+  z-index: -4;
 }
-
-/* font bouton (massage domicile/location spa) de nos services*/
-.mass{
-
-  color:white!important;
-}
-
-
-
 </style>
 
+
+
+
+
+
+
+<!-- MAIN SLIDER -->
+
+<%
+=begin%>
+ <link rel="stylesheet" href="/css/index.css"> 
+<%
+=end%>
 
 <section class="main-slider" data-loop="true" data-autoplay="true" data-interval="7000">
   <div class="inner">
@@ -202,7 +250,7 @@
     <section class="clearfix reviewSection patternbg">
       <div class="container">
         <div class="secotionTitle">
-          <h2 id="service"><span>Nos services </span></h2>
+          <h2 id="service" class="poli1"><span>Nos services </span></h2>
         </div>
         <div class="row">
           <div class="col-sm-6 col-xs-12">
@@ -244,7 +292,7 @@
 <section class="container-fluid clearfix productArea">
   <div class="container">
     <div class="secotionTitle">
-      <h2><span>Nos produits </span>à vendre</h2>
+      <h2 class="police_massage"><span>Nos produits </span>à vendre</h2>
     </div>
     <div class="row row-product">
       <div class="col-md-3 col-sm-6 col-xs-12">
@@ -319,7 +367,7 @@
         </div>
       </div>
 
-    <div class="text-down"><a href="/all_produit">LOAD MORE...</a></div>
+    <div class="text-down"><a href="/all_produit">Voir plus...</a></div>
       <div class="arrows-down">
         <div class="small-arrow-down"></div>
         <div class="medium-arrow-down"></div>
@@ -332,7 +380,7 @@
 <section class="clearfix productSection">
   <div class="container">
     <div class="secotionTitle">
-      <h2><span>Concept</span>comment ca marche</h2>
+      <h2 class="police_massage"><span>Concept</span>comment ca marche</h2>
     </div>
     <div class="row">
       <div class="col-xs-12">
@@ -426,7 +474,7 @@
 <section class="clearfix reviewSection patternbg">
   <div class="container">
     <div class="secotionTitle">
-      <h2 id="a-propos"><span>A PROPOS </span>de nous</h2>
+      <h2 id="a-propos" class="police_massage"><span>A PROPOS </span>de nous</h2>
     </div>
     <div class="row">
       <div class="col-sm-6 col-xs-12">
@@ -460,7 +508,7 @@
     <section class="clearfix expertSection">
       <div class="container">
         <div class="secotionTitle">
-          <h2 ><span>Contacter </span>Nos experts</h2>
+          <h2 class="police_massage"><span>Contacter </span>Nos experts</h2>
         </div>
         <div class="row">
           <div class="col-xs-12">
@@ -692,7 +740,7 @@
 
 <!-- CONTACT US SECTION -->
 <div class="secotionTitle">
-  <h2 id="contacter"><span>INFOS ? </span>Contactez-nous</h2>
+  <h2 id="contacter" class="police_massage"><span>INFOS</span>Contactez-nous</h2>
 </div>
     <section class="clearfix contactSection">
       <div class="container">
@@ -801,7 +849,7 @@
     <div class="clearfix homeGalleryTitle">
       <div class="container">
         <div class="secotionTitle">
-          <h2><span>Galéries </span>ccspa en photo</h2>
+          <h2 class="police_massage"><span>Galéries </span>ccspa en photo</h2>
         </div>
       </div>
     </div>
