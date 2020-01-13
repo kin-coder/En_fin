@@ -5,3 +5,9 @@
     width: 1450px;
     height: 280px;
 }
+
+.police_massage{
+
+    font-family: Jazz LET, fantasy;
+    z-index: -4;
+  }
