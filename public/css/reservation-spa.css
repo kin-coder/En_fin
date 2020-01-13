@@ -70,13 +70,13 @@
 
     @media (max-width: 700px) {
       .labelle{
-  position: absolute;
-  left: 10px;
-}
-.field{
-position: relative;
-left: 50px;
-}
+        position: absolute;
+        left: 10px;
+      }
+      .field{
+        position: relative;
+        left: 50px;
+      }
       .addCategoriSpa{
         color: gray;
         margin-left: 10px;
@@ -141,8 +141,13 @@ left: 50px;
       border-radius: 10px;
     }
 
-h4, h5{
-    /*font-size: 18px;*/
-    margin-bottom: 20px;
-    text-transform: none !important;
-}
+    h4, h5{
+      /*font-size: 18px;*/
+      margin-bottom: 20px;
+      text-transform: none !important;
+    }
+
+    .confirm-command{
+      position:relative;
+      left:365px;
+    }
