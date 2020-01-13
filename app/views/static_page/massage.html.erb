@@ -1,90 +1,90 @@
 <style>
 
 
-.police_massage{
+  .police_massage{
 
-  font-family: Jazz LET, fantasy;
+    font-family: Jazz LET, fantasy;
+    z-index: -4;
+  }
+  @media (min-width: 992px){
+    .h1 {
+      font-size: 55px;
+      line-height: 55px;
+      margin: 0 0 10px;
+    }
+    .poli2{
+     
+     font-family:Georgia, serif!important;
+     text-align: left !important;
+     
+     
+   } 
+   .police_spa{
+    
+    font-family: Jazz LET, fantasy!important;
+    z-index: -4;
+  }
+}
+@media (min-width: 768px){
+  .h1 {
+    font-size: 50px;
+    line-height: 50px;
+    margin: 0 0 10px;
+  }
+  .poli2{
+   
+   font-family:Georgia, serif!important;
+   text-align: left !important;
+   color:black!important ;
+ }
+ 
+ .poli2 b{
+   
+   font-family:Brush Script MT, Brush Script Std, cursive!important;
+   text-align: left !important;
+   color:black!important ;
+   font-size: 30px;
+   
+ }
+ .police_spa{
+  
+  font-family: Jazz LET, fantasy!important;
   z-index: -4;
 }
-@media (min-width: 992px){
-    .h1 {
-        font-size: 55px;
-        line-height: 55px;
-         margin: 0 0 10px;
-      }
-        .poli2{
-     
-       font-family:Georgia, serif!important;
-       text-align: left !important;
-        
-       
-      } 
-      .police_spa{
+}
+
+@media (min-width: 320px){
+  .h1 {
+    font-size: 20px;
+    line-height: 20px;
+    margin: 0;
     
-      font-family: Jazz LET, fantasy!important;
-      z-index: -4;
-    }
-    }
-    @media (min-width: 768px){
-    .h1 {
-        font-size: 50px;
-        line-height: 50px;
-        margin: 0 0 10px;
-      }
-        .poli2{
-     
-       font-family:Georgia, serif!important;
-       text-align: left !important;
-       color:black!important ;
-      }
-    
-      .poli2 b{
-     
-       font-family:Brush Script MT, Brush Script Std, cursive!important;
-       text-align: left !important;
-       color:black!important ;
-       font-size: 30px;
-       
-      }
-      .police_spa{
-    
-      font-family: Jazz LET, fantasy!important;
-      z-index: -4;
-    }
-    }
-    
-    @media (min-width: 320px){
-    .h1 {
-        font-size: 20px;
-        line-height: 20px;
-        margin: 0;
-        
-      }
-     
-      .poli2{
-     
-       font-family:Georgia, serif!important;
-       text-align: left !important;
-       margin-bottom:1px !important;
-       
-      }
-    
-      .police_spa{
-    
-      font-family: Jazz LET, fantasy!important;
-      z-index: -4;
-      }
-    }
+  }
+  
+  .poli2{
    
+   font-family:Georgia, serif!important;
+   text-align: left !important;
+   margin-bottom:1px !important;
+   
+ }
+ 
+ .police_spa{
+  
+  font-family: Jazz LET, fantasy!important;
+  z-index: -4;
+}
+}
+
 </style>
 
 
 <!-- accroche général-->
 <section class="clearfix pageTitleArea" style="background-image: url(img/blog/massage1.jpg);">
-<div class="container">
+  <div class="container">
     <div class="pageTitle">
-        <span class="title-service poli2">Massage</span><br>
-        <span class="description-service poli2"><b>T</b>he real place of Mindfullness & Healthy body</span><br>
+      <span class="title-service poli2">Massage</span><br>
+      <span class="description-service poli2"><b>T</b>he real place of Mindfullness & Healthy body</span><br>
     </div>
     <a href="#service" class="btn btn-primary massage-btn">Découvrir</a>
     <%= link_to "Réserver", reservation_path('massage-domicile'), class:"btn btn-primary massage-btn" %>
@@ -203,11 +203,13 @@
 
 
 <!-- SERVICES SECTION -->
-    <section class="clearfix reviewSection patternbg">
-      <div class="container">
-        <div class="secotionTitle">
-          <h2 class="police_massage"><span>Description</span>Concept</h2>
-        </div>
+<section class="clearfix reviewSection patternbg">
+  <div class="container">
+    <div class="secotionTitle">
+      <h2 class="police_massage"><span>Description</span>Concept</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12">
         <div class="row">
           <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
             <div class="reviewImage hidden-xs">
@@ -217,31 +219,32 @@
               <center><i class="fa fa-quote-left" aria-hidden="true"> Massage</i></center>
               <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam co laboris nisi ut aliquip ex ea commodo conse quat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
               <div class="a-btn">
-                <%= link_to "Massage à domicile", reservation_path('massage-domicile'), class:"btn btn-primary first-btn mass text-btn" %>
-              </div>
-              
-            </div>
+               <%= link_to "Massage à domicile", reservation_path('massage-domicile'), class:"btn btn-primary first-btn mass text-btn" %>
+
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="col-sm-6 col-xs-12">
+      <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
+          <div class="reviewImage hidden-xs">
+            <img src="img/home/home-about.jpg" alt="Image review" class="img-responsive">
           </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-xs-12">
-        <div class="row">
-          <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
-            <div class="reviewImage hidden-xs">
-              <img src="img/home/home-about.jpg" alt="Image review" class="img-responsive">
-            </div>
-            <div class="reviewInfo">
-              <center><i class="fa fa-quote-left" aria-hidden="true"> Location Spa</i></center>
-              <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam co laboris nisi ut aliquip ex ea commodo conse quat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-              <div class="a-btn">
-                <%= link_to "Location spa à domicile", reservation_path('location-spa'), class:"btn btn-primary first-btn mass text-btn" %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="reviewInfo">
+            <center><i class="fa fa-quote-left" aria-hidden="true"> Location Spa</i></center>
+            <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam co laboris nisi ut aliquip ex ea commodo conse quat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+            <div class="a-btn">
+             <%= link_to "Location spa à domicile", reservation_path('location-spa'), class:"btn btn-primary first-btn mass text-btn" %>
+
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
 </section>
 
 
@@ -646,10 +649,10 @@
       </div>
     </section>
 
-<!-- CONTACT US SECTION -->
-<div class="secotionTitle">
-  <h2 class="police_massage"><span>Informations</span>Contactez-nous</h2>
-</div>
+    <!-- CONTACT US SECTION -->
+    <div class="secotionTitle">
+      <h2 id="contacter" class="police_massage"><span>Infos</span>Contactez-nous</h2>
+    </div>
     <section class="clearfix contactSection">
       <div class="container">
         <div class="row">
@@ -658,107 +661,95 @@
               <h3></br></h3>
             </div>
 
-        <!-- CONTACT US SECTION -->
-        <div class="secotionTitle">
-          <h2><span>INFOS</span>Contactez-nous</h2>
+            <div class="contactForm">
+              <div id="alert"></div><!--Response Holder-->
+              <form action="mail/contact-form.php" id="angelContactForm" method="post">
+                <div class="form-group">
+                  <input type="text" name="contact-form-name" class="form-control" placeholder="Votre nom" required>
+                </div>
+                <div class="form-group">
+                  <input type="email" name="contact-form-email" class="form-control" placeholder="Votre Email" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="contact-form-mobile" class="form-control" placeholder="Votre Mobile" required>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="contact-form-message" placeholder="Laisser votre Message" required></textarea>
+                </div>
+                <div class="form-group">
+                  <button type="submit" id="contact-submit-btn" class="btn btn-primary first-btn">Envoyer</button>
+
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-5 col-xs-12">
+
+            <div class="holdingInfo patternbg">
+              <div class="contactTitle">
+                <h3><center>Réseaux sociaux</center></h3>
+              </div>
+              <ul>
+                <a href="#" class="btn"><li><i class="fa fa-facebook" aria-hidden="true"></i> Cocooning Spa officiel </li></a>
+                <a href="#" class="btn"><li><i class="fa fa-instagram" aria-hidden="true"></i> Cocooning Spa </li></a>
+                <a href="#" class="btn"><li><i class="fa fa-pinterest" aria-hidden="true"></i> Cocooning Spa printerest </li></a>
+                <a href="#" class="btn"><li><i class="fa fa-twitter" aria-hidden="true"></i> Cocooning Spa tweet </li></a>
+                <a href="#" class="btn"> <li><i class="fa fa-users" aria-hidden="true"></i> Cocooning Spa blog</li> </a>
+              </ul>
+            </div>
+          </div>
         </div>
-        <section class="clearfix contactSection">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-sm-7 col-xs-12">
-                <div class="contactTitle">
-                  <h3></br></h3>
+      </div>
+    </section>
+
+    <!-- PARTNER LOGO SECTION -->
+    <section class="clearfix brandArea patternbg">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="owl-carousel partnersLogoSlider">
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <img src="img/home/brand-1.png" alt="Image Partner">
                 </div>
-
-                <div class="contactForm">
-                  <div id="alert"></div><!--Response Holder-->
-                  <form action="mail/contact-form.php" id="angelContactForm" method="post">
-                    <div class="form-group">
-                      <input type="text" name="contact-form-name" class="form-control" placeholder="Votre nom" required>
-                    </div>
-                    <div class="form-group">
-                      <input type="email" name="contact-form-email" class="form-control" placeholder="Votre Email" required>
-                    </div>
-                    <div class="form-group">
-                      <input type="text" name="contact-form-mobile" class="form-control" placeholder="Votre Mobile" required>
-                    </div>
-                    <div class="form-group">
-                      <textarea class="form-control" name="contact-form-message" placeholder="Laisser votre Message" required></textarea>
-                    </div>
-                    <div class="form-group">
-                      <button type="submit" id="contact-submit-btn" class="btn btn-primary first-btn">Envoyer</button>
-
-                    </div>
-                  </form>
+              </div>  
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <img src="img/home/brand-2.png" alt="Image Partner">
                 </div>
               </div>
-              <div class="col-md-4 col-sm-5 col-xs-12">
-
-                <div class="holdingInfo patternbg">
-                  <div class="contactTitle">
-                    <h3><center>Réseaux sociaux</center></h3>
-                  </div>
-                  <ul>
-                    <a href="#" class="btn"><li><i class="fa fa-facebook" aria-hidden="true"></i> Cocooning Spa officiel </li></a>
-                    <a href="#" class="btn"><li><i class="fa fa-instagram" aria-hidden="true"></i> Cocooning Spa </li></a>
-                    <a href="#" class="btn"><li><i class="fa fa-pinterest" aria-hidden="true"></i> Cocooning Spa printerest </li></a>
-                    <a href="#" class="btn"><li><i class="fa fa-twitter" aria-hidden="true"></i> Cocooning Spa tweet </li></a>
-                    <a href="#" class="btn"> <li><i class="fa fa-users" aria-hidden="true"></i> Cocooning Spa blog</li> </a>
-                  </ul>
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <img src="img/home/brand-3.png" alt="Image Partner">
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- PARTNER LOGO SECTION -->
-        <section class="clearfix brandArea patternbg">
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="owl-carousel partnersLogoSlider">
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-1.png" alt="Image Partner">
-                    </div>
-                  </div>  
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-2.png" alt="Image Partner">
-                    </div>
-                  </div>
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-3.png" alt="Image Partner">
-                    </div>
-                  </div>
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-4.png" alt="Image Partner">
-                    </div>
-                  </div>
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-1.png" alt="Image Partner">
-                    </div>
-                  </div>  
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-2.png" alt="Image Partner">
-                    </div>
-                  </div>
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-3.png" alt="Image Partner">
-                    </div>
-                  </div>
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-4.png" alt="Image Partner">
-                    </div>
-                  </div>
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <img src="img/home/brand-4.png" alt="Image Partner">
+                </div>
+              </div>
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <img src="img/home/brand-1.png" alt="Image Partner">
+                </div>
+              </div>  
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <img src="img/home/brand-2.png" alt="Image Partner">
+                </div>
+              </div>
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <img src="img/home/brand-3.png" alt="Image Partner">
+                </div>
+              </div>
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <img src="img/home/brand-4.png" alt="Image Partner">
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </section>

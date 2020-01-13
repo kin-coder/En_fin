@@ -74,69 +74,71 @@ class OrdersController < ApplicationController
     end
   end
 #==================== Tunel d'achat location spa ===============#
-  def location_spa_reservation
-    if session[:params_spa] == nil
-        session[:params_spa] = []
-    end
-
-    @params = session[:params_spa]
-
-    @service = Service.where(name:'Location spa')[0]
-    @order = Order.new
-    unless @service
-      redirect_to root_path
-    else
-      @prestations = @service.categories.first.subcategories
-      @produits = @service.categories.last.subcategories
-    end
+def location_spa_reservation
+  @pays = Country.all
+  @departements = 
+  if session[:params_spa] == nil
+    session[:params_spa] = []
   end
 
-  def add_location_spa
-    id = params.permit(:id)
-    session[:params_spa].push(id[:id].to_i)
-    @index = session[:params_spa].length - 1
-    @subcategory = Subcategory.find(id[:id])
-    respond_to do |format|
-      format.js do
+  @params = session[:params_spa]
 
-      end
+  @service = Service.where(name:'Location spa')[0]
+  @order = Order.new
+  unless @service
+    redirect_to root_path
+  else
+    @prestations = @service.categories.first.subcategories
+    @produits = @service.categories.last.subcategories
+  end
+end
+
+def add_location_spa
+  id = params.permit(:id)
+  session[:params_spa].push(id[:id].to_i)
+  @index = session[:params_spa].length - 1
+  @subcategory = Subcategory.find(id[:id])
+  respond_to do |format|
+    format.js do
+
     end
   end
+end
 
-  def del_location_spa
-    id = params.permit(:id)
-    @subcategory = Subcategory.find(id[:id])
-    session[:params_spa].reverse!
-    @text_index = session[:params_spa].index(id[:id].to_i)
-    if @text_index
-      session[:params_spa].delete_at(@text_index)
-    end
-    session[:params_spa].reverse!
-    respond_to do |format|
-      format.js do
+def del_location_spa
+  id = params.permit(:id)
+  @subcategory = Subcategory.find(id[:id])
+  session[:params_spa].reverse!
+  @text_index = session[:params_spa].index(id[:id].to_i)
+  if @text_index
+    session[:params_spa].delete_at(@text_index)
+  end
+  session[:params_spa].reverse!
+  respond_to do |format|
+    format.js do
 
-      end
     end
   end
+end
 
 #===============================================================#
-  private
+private
 
-  def is_service(stringvalue="")
-    object = false
-    case stringvalue
-    when 'coiffure-domicile'
-      object = Service.where(name:'Coiffure')[0]
-    when 'estheticienne-domicile'
-      object = Service.where(name:'Beauté')[0]
-    when 'massage-domicile'
-      object = Service.where(name:'Massage')[0]    
-    end
-    return object
+def is_service(stringvalue="")
+  object = false
+  case stringvalue
+  when 'coiffure-domicile'
+    object = Service.where(name:'Coiffure')[0]
+  when 'estheticienne-domicile'
+    object = Service.where(name:'Beauté')[0]
+  when 'massage-domicile'
+    object = Service.where(name:'Massage')[0]    
   end
-  
-  def param_permit
-    id = params.permit(:id)
-    ca = Category.find(id[:id])
-  end
+  return object
+end
+
+def param_permit
+  id = params.permit(:id)
+  ca = Category.find(id[:id])
+end
 end
