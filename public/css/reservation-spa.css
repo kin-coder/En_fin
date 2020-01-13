@@ -1,128 +1,148 @@
-.labele{
-    height: auto;
-    width: auto;
-    background:
-    rgba(255, 255, 255, 1);
-    display: none;
-}
 
 .patternbg{
-    text-align: center;
+  text-align: center;
 }
 
 #tableHead{
-    text-align: center;
+  text-align: center;
 }
 .sectionTitle{
-    margin: 30px 30px 30px 0px;
+  margin: 30px 30px 30px 0px;
 }
 
 
 #panierTable{
-    position: sticky;
-    top: 10px;
-    min-height: 200px;
-    color: gray;
+  position: sticky;
+  top: 10px;
+  min-height: 200px;
+  color: gray;
 }
 
 .panierTitle{
-color: #ec5598;
-margin: 10px 0px 10px 0px;
+  color: #ec5598;
+  margin: 10px 0px 10px 0px;
 }
 
 
 
 @media (min-width: 992px) {
-    .addCategoriSpa{
-        color: gray;
-        
-        margin-left: 10px;
-        margin-bottom: 12px;
-        text-align: left;
-        display: inline;
-    }
-    
-    .allCategoriSpa{
+  .labelle{
+    position: absolute;
+    left: 200px;
+  }
+  .addCategoriSpa{
+    color: gray;
+
+    margin-left: 10px;
+    margin-bottom: 12px;
+    text-align: left;
+    display: inline;
+  }
+
+  .allCategoriSpa{
         /* position: relative;
         left: 270px; */
         margin-bottom: 22px;
-    }
-    .zoneLivraison{
+        font-size: 13px;
+      }
+      .zoneLivraison{
         text-align: center;
         border: 1px solid rgb(214, 207, 207) ;
         padding-bottom: 30px;
         width: 847px;
-    }
-    
-    .selectElement{
+      }
+
+      .selectElement{
         /* position: absolute;
         left: 150px; */
         text-align: left;
-        max-width: 128px;
-        
+        max-width: 128px;   
+      }
+      #panierContent{
+        color: gray;
+        text-align: left;
+        margin-left: 40px ;
+        margin-bottom: 10px;
+        font-size: 13px;
+      }
+
     }
-    
-  }
- 
-  @media (max-width: 780px) {
-    .addCategoriSpa{
+
+    @media (max-width: 700px) {
+      .labelle{
+  position: absolute;
+  left: 10px;
+}
+.field{
+position: relative;
+left: 50px;
+}
+      .addCategoriSpa{
         color: gray;
         margin-left: 10px;
         margin-bottom: 14px;
         text-align: left;
-    }
-    
-    .allCategoriSpa{
+      }
+
+      .allCategoriSpa{
         position: relative;
         left: 8px;
         margin-bottom: 20px;
-    }
-    .zoneLivraison{
+      }
+      .zoneLivraison{
         text-align: center;
         border: 1px solid rgb(214, 207, 207) ;
         padding-bottom: 30px;
-    }
-    
-    .selectElement{
+
+      }
+
+      .selectElement{
         position: absolute;
         left: 170px;
         max-width: 128px ;
         margin-bottom: 5px; 
+      }
+      #bannerTitle{
+        font-size: 40px;
+      }
+      #panierContent{
+        color: gray;
+        text-align: left;
+        margin-left: 70px ;
+        margin-bottom: 10px;
+        font-size: 13px;
+      }
     }
-    #bannerTitle{
-        font-size: 50px;
-    }
-  }
- 
-  #fa{
+
+    #fa{
       color: deeppink;
-  }
-  #tableContent{
+    }
+    #tableContent{
       color: gray;
-  }
-#panierContent{
-    color: gray;
-    text-align: left;
-    margin-left: 50px ;
-    margin-bottom: 10px;
-}
-  .btn-prix{
+    }
+    .btn-prix{
       border-radius: 10px;
       padding-left: 8px;
       padding-right: 8px;
-  }
+    }
 
-  hr{
-    border-top: 3px solid #eee;
-  }
+    hr{
+      border-top: 3px solid #eee;
+    }
 
-  .quantité{
+    .quantité{
       margin: 0 5px 0 5px;
-  }
+    }
 
-  #plus-moins{
-    border:deeppink 1px solid;
-    width: 52px;
-    padding: Opx 0px 0px 0px;
-    border-radius: 10px;
-  }
+    #plus-moins{
+      border:deeppink 1px solid;
+      width: 52px;
+      padding: Opx 0px 0px 0px;
+      border-radius: 10px;
+    }
+
+h4, h5{
+    /*font-size: 18px;*/
+    margin-bottom: 20px;
+    text-transform: none !important;
+}

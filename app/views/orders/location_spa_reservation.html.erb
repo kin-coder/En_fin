@@ -35,7 +35,7 @@
                     <tr id="tableContent"><td id="tableContent"><%= prestation.name %> pour <%= prestation.duration %>H €<%= prestation.price.to_i %></td>
                         <td>
                           <%= link_to del_order_spa_path(prestation.id), class: "",remote: true do%>
-                            <i class="fa fa-minus-circle"></i>
+                            </i><i class="fa fa-minus-circle"></i>
                             <% end %>
                           <strong class="quantité" id="nombre-<%= dom_id(prestation) %>"><%= session[:params_spa].count(prestation.id) %></strong>
                           <%= link_to add_order_spa_path(prestation.id), class: "",remote: true  do%>
@@ -77,17 +77,17 @@
               </div>
               <div class="container ">
               <div class="row zoneDeLivraison">
-                <div class="col-sm-6 zoneLivraison">
+                <div class="col-sm-9 zoneLivraison">
                   <div class="sectionTitle">
                     <h3>Zone de livrasion</h3>
                   </div>
                   <div>
-                    <%= label_tag 'Pays' %>
-                    <%= text_field_tag 'Pays' %>
+                    <%= label_tag 'Pays', nil, class:"labelle" %>
+                    <%= text_field_tag 'Pays', nil, class:"field" %>
                   </div>
                   <div>
-                    <%= label_tag "Department" %>
-                    <%= text_field_tag "Department" %>
+                    <%= label_tag "Department", nil, class:"labelle" %>
+                    <%= text_field_tag "Department", nil, class:"field" %>
                   </div>
                 </div>
                 <div class="col-sm-5 zoneLivraison">
@@ -95,12 +95,12 @@
                     <h3>Coordonnées</h3>
                   </div>
                   <div>
-                    <%= label_tag "Adresse" %>
-                    <%= text_field_tag "Adresse" %>
+                    <%= label_tag "Adresse", nil, class:"labelle" %>
+                    <%= text_field_tag "Adresse", nil, class:"field" %>
                   </div>
                   <div>
-                    <%= label_tag "Un message particulier ?" %>
-                    <%= text_field_tag "Un message particulier ?" %>
+                    <%= label_tag "Un message particulier ?", nil, class:"labelle"%> <br>
+                    <%= text_area_tag "Un message particulier ?", nil, class:"field", placeholder:"Laisser votre message ici" %>
                   </div>
                 </div>
               </div>

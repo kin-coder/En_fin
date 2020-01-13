@@ -158,6 +158,9 @@ top: 10%;
    top: 20px;
    border-radius: 10px;
    margin-right: 15px;
+   padding-right: 15px;
+   padding-left: 15px;
+
 }
 @media (min-width: 700px) {
    .btn-moin{
@@ -383,3 +386,13 @@ top: 10%;
     color: #ec5598;
     font-size: xx-large;
  }
+
+
+
+.a-btn{
+text-align: center;
+}
+.text-btn{
+  padding-left: 15px;
+  padding-right: 15px;
+}

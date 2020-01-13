@@ -1,5 +1,5 @@
 .h4 .from-bottom{
-   color:green !important;
+ color:green !important;
 }
 
 .heure {
@@ -19,7 +19,7 @@
   
   height: 36px;
   z-index: 7;
-top: 17px;
+  top: 17px;
   text-align: center;
   margin: 0 auto;
   width: 372px;
@@ -92,7 +92,7 @@ top: 17px;
     margin: -60px 0 60px 60px;
   }
 }
-  
+
 
 
 /* ====== index =====
@@ -322,14 +322,14 @@ a:hover, a:focus {
 
 @media (min-width: 320px) {
   .secotionTitle {
-    padding: 50px 0 30px 0;
+    padding: 30px 0 30px 0;
 
   }
 }
 
 @media (min-width: 768px) {
   .secotionTitle {
-    padding: 50px 0 30px 0;
+    padding: 30px 0 30px 0;
   }
 }
 
@@ -342,16 +342,16 @@ a:hover, a:focus {
 @media (min-width: 320px) {
 
   .secotionTitle h2 span {
-      display: block;
-      letter-spacing: normal;
-      color: #ec5598;
-      font-family: 'Impact';
-      font-size: 50px;
-      letter-spacing: 4px;
-      line-height: 42px;
-      text-transform: capitalize;
-      font-weight: 400;
-    }
+    display: block;
+    letter-spacing: normal;
+    color: #ec5598;
+    font-family: 'Impact';
+    font-size: 50px;
+    letter-spacing: 4px;
+    line-height: 42px;
+    text-transform: capitalize;
+    font-weight: 400;
+  }
 }
 
 @media (min-width: 768px) {
@@ -371,7 +371,7 @@ a:hover, a:focus {
   font-family:'Impact';
   src: url('Impact') format('truetype');
 
-  }	
+}	
 
 .patternbg {
   background-image: url(../img/home/pattern-1.jpg);
@@ -729,7 +729,7 @@ body.bodyColor .bb-fixed-header {
 .btn-common {
   color: #222222;
   border: 1px solid #dedede;
-  padding: 14px 38px;
+  /*  padding: 14px 38px;*/ 
   background-color: transparent;
   border-radius: 0;
   letter-spacing: 1px;
@@ -743,7 +743,7 @@ body.bodyColor .bb-fixed-header {
 @media (min-width: 320px) {
   .btn-common {
     margin: 0 auto 20px auto;
-    padding: 14px 38px;
+    /*padding: 14px 38px;*/
     font-size: 14px;
   }
 }
@@ -758,7 +758,7 @@ body.bodyColor .bb-fixed-header {
 
 @media (min-width: 992px) {
   .btn-common {
-    padding: 14px 38px;
+    /*    padding: 14px 38px;*/   
     font-size: 14px;
   }
 }
@@ -1364,7 +1364,7 @@ textarea.form-control {
   background-color: #ec5598;
   height: 3px;
   -webkit-transform: scale(0);
-          transform: scale(0);
+  transform: scale(0);
   position: absolute;
   width: 100%;
   left: 0px;
@@ -1374,7 +1374,7 @@ textarea.form-control {
 
 .tabCommon.tabThree .nav-tabs li.active a:before {
   -webkit-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
 }
 
 .tabCommon.singleTab .nav-tabs {
@@ -3735,7 +3735,7 @@ textarea.form-control {
 
 /*================= 5.5 REVIEW SECTION ==================*/
 .reviewSection {
-  padding: 0 0 80px 0;
+  padding: 0 0 30px 0;
   width: 100%;
   float: none;
 }
@@ -4317,14 +4317,14 @@ figure {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease-in-out;
@@ -6278,13 +6278,13 @@ input[type=number]::-webkit-inner-spin-button {
 /*=== 9.4 PRODUCT ===*/
 @media (min-width: 320px) {
   .productArea {
-    padding: 50px 0;
+    padding: 1px 0;
   }
 }
 
 @media (min-width: 768px) {
   .productArea {
-    padding: 100px 0;
+    padding: 10px 0;
   }
 }
 
