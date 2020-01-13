@@ -372,8 +372,7 @@ a:hover, a:focus {
 }
 @font-face {
   font-family:'Bradley Hand, cursive'!important;
-  src: url('Bradley Hand, cursive') format('truetype')!important
-  ;
+  src: url('Bradley Hand, cursive') format('truetype')!important;
 
   }	
 
