@@ -1,8 +1,18 @@
-<h5><i class="fa fa-hand-o-right" aria-hidden="true" id="fa"></i>
-Location spa pour <%= subcategory.duration %>H</h5>
-<div id="info-<%= dom_id(subcategory) %>">
-	<ul id="panierContent">
-	  <li>Nombre de spa gonflable: <span id="nombre-spa-<%= dom_id(subcategory) %>"><%= nombre %></span></li>
-	  <li>Prix: € <span id="price-<%= dom_id(subcategory) %>"><%= nombre * subcategory.price.to_i %></span></li>
-	</ul>
-</div>
+
+<h5 class="prestation-category"><%= @category.name %></h5>
+
+<ul>
+	<% subcategories.each do |subcategory| %>
+
+	<li><%= subcategory.name %> <span class="prix"><%= subcategory.price %> € </span>
+	
+	<%= check_box_tag :name, 1, true , data: { remote: true, url: subcategory_path, params: { subcategory: subcategory.id}.to_param, method: "put" }, class:"check", id:"toggle#{subcategory.id}" %>
+
+		<div class="togggle">
+			<label for="toggle<%=subcategory.id%>"> </label>
+		</div>
+
+	</li>
+	<% end %>
+</ul>
+

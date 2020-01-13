@@ -1,16 +1,16 @@
 function addcategorysubcategory(){
-	/* countnumbre definit dans helper
-	* pour caluculer le nombre de Category selectioné */
-	let num = document.getElementById("puts-number-<%= @category.name %>")
-	num.innerHTML = <%= countnumbre(@category.name,@category.id) %>
-	/*Ajout des liste de sous-category a chequer */
-	let prestation = document.getElementById("list-prestation")
-	let div0 = document.createElement("div")
-	div0.classList.add("prestation-name-<%= @category.id %>")
-	div0.classList.add("row")
-	let div2 = document.createElement("div")
-	div2.classList.add("col-sm-6")
-	div2.innerHTML = "<%= j render 'infoaddcategory', infocategory: @category, arrayid: @arrayid %>"
-	prestation.appendChild(div2)
+	let div_principale = document.getElementById("list-prestation")
+	let div = document.createElement("div")
+	div.classList.add("group-form-<%= @category.id %>")
+	div_principale.appendChild(div)
+	div.innerHTML = "<%= j render 'add_panier_reservation_spa', subcategories: @subcategories %>"
+	
+	/* json pour sauver les prestation dans la session */
+	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestation"))
+	sessionPrestation.push({ "category":["<%= @category.name %>",<%= @category.id %>],"prestations":[] })
+	sessionStorage.setItem("prestation",JSON.stringify(sessionPrestation))
+	
 }
 addcategorysubcategory()
+
+//<%= @subcategories %>
