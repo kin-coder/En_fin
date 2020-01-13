@@ -103,5 +103,21 @@ input[type="checkbox"]:checked ~ .togggle label::after{
  background: #ec5598;
 }
 
+.poli2{
+     
+    font-family:Georgia, serif!important;
+    text-align: left !important;
+    
+   } 
+
+   .poli2 b{
+     
+    font-family:Brush Script MT, Brush Script Std, cursive!important;
+    text-align: left !important;
+    color:black!important ;
+    font-size: 30px;
+    
+   }
+
 /* FIN CSS POUR LE BOUTTON TOGGLE*/
 

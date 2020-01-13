@@ -1,9 +1,90 @@
+<style>
+
+
+.police_massage{
+
+  font-family: Jazz LET, fantasy;
+  z-index: -4;
+}
+@media (min-width: 992px){
+    .h1 {
+        font-size: 55px;
+        line-height: 55px;
+         margin: 0 0 10px;
+      }
+        .poli2{
+     
+       font-family:Georgia, serif!important;
+       text-align: left !important;
+        
+       
+      } 
+      .police_spa{
+    
+      font-family: Jazz LET, fantasy!important;
+      z-index: -4;
+    }
+    }
+    @media (min-width: 768px){
+    .h1 {
+        font-size: 50px;
+        line-height: 50px;
+        margin: 0 0 10px;
+      }
+        .poli2{
+     
+       font-family:Georgia, serif!important;
+       text-align: left !important;
+       color:black!important ;
+      }
+    
+      .poli2 b{
+     
+       font-family:Brush Script MT, Brush Script Std, cursive!important;
+       text-align: left !important;
+       color:black!important ;
+       font-size: 30px;
+       
+      }
+      .police_spa{
+    
+      font-family: Jazz LET, fantasy!important;
+      z-index: -4;
+    }
+    }
+    
+    @media (min-width: 320px){
+    .h1 {
+        font-size: 20px;
+        line-height: 20px;
+        margin: 0;
+        
+      }
+     
+      .poli2{
+     
+       font-family:Georgia, serif!important;
+       text-align: left !important;
+       margin-bottom:1px !important;
+       
+      }
+    
+      .police_spa{
+    
+      font-family: Jazz LET, fantasy!important;
+      z-index: -4;
+      }
+    }
+   
+</style>
+
+
 <!-- accroche général-->
-<section class="clearfix pageTitleArea" style="background-image: url(img/blog/pageTitle-bg02.jpg);">
-  <div class="container">
+<section class="clearfix pageTitleArea" style="background-image: url(img/blog/massage1.jpg);">
+<div class="container">
     <div class="pageTitle">
-      <span class="title-service">Massage</span><br>
-      <span class="description-service">The real place of Mindfullness & Healthy body</span><br>
+        <span class="title-service poli2">Massage</span><br>
+        <span class="description-service poli2"><b>T</b>he real place of Mindfullness & Healthy body</span><br>
     </div>
     <a href="#service" class="btn btn-primary massage-btn">Découvrir</a>
     <%= link_to "Réserver", reservation_path('massage-domicile'), class:"btn btn-primary massage-btn" %>
@@ -122,13 +203,11 @@
 
 
 <!-- SERVICES SECTION -->
-<section class="clearfix reviewSection patternbg">
-  <div class="container">
-    <div class="secotionTitle">
-      <h2 id="service"><span> Concept </span>Description</h2>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 col-xs-12">
+    <section class="clearfix reviewSection patternbg">
+      <div class="container">
+        <div class="secotionTitle">
+          <h2 class="police_massage"><span>Description</span>Concept</h2>
+        </div>
         <div class="row">
           <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
             <div class="reviewImage hidden-xs">
@@ -170,7 +249,7 @@
 <section class="clearfix productSection">
   <div class="container">
     <div class="secotionTitle">
-      <h2><span>Concept</span>comment ca marche</h2>
+      <h2 class="police_massage"><span>comment ça marche</span>Concept</h2>
     </div>
     <div class="row">
       <div class="col-xs-12">
@@ -252,7 +331,7 @@
 <section class="container-fluid clearfix productArea">
   <div class="container">
     <div class="secotionTitle">
-      <h2><span>Nos produits </span>à vendre</h2>
+      <h2 class="police_massage"><span>Nos produits </span>à vendre</h2>
     </div>
     <div class="row row-product">
       <div class="col-md-3 col-sm-6 col-xs-12">
@@ -563,7 +642,21 @@
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </section>
+
+<!-- CONTACT US SECTION -->
+<div class="secotionTitle">
+  <h2 class="police_massage"><span>Informations</span>Contactez-nous</h2>
+</div>
+    <section class="clearfix contactSection">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-7 col-xs-12">
+            <div class="contactTitle">
+              <h3></br></h3>
+            </div>
 
         <!-- CONTACT US SECTION -->
         <div class="secotionTitle">

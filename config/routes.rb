@@ -62,5 +62,6 @@ Rails.application.routes.draw do
   get '/conditions-generales', to:'static_page#cgu', as: "cgu"
   get '/faq', to:'static_page#faq', as: "faq"
   get "/engagement", to:'static_page#engagement', as: "engagement"
+  get "/propos", to:'static_page#propos', as: "propos"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 end
