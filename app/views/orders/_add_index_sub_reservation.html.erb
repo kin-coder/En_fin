@@ -1,0 +1,24 @@
+<h5 class="prestation-category"><%= @category.name %></h5>
+
+<ul>
+	<% test = true %>
+	<% subcategories.each do |subcategory| %>
+		
+		<% if test %>
+			<input type="hidden" name="category[]" value="<%= @category.id %>">
+			<% test = false %>
+		<% end %>
+
+		<li><span class="prix"><%= subcategory.price %> € </span>
+
+		<input type="checkbox" name="name[][]" id="toggle14" value="<%= subcategory.id %>" data-remote="true" data-url="/subcategory" data-params="subcategory=14" data-method="put" class="check" checked="checked">
+
+		<div class="togggle">
+			<label for="toggle<%=subcategory.id%>"><%= subcategory.name %></label>
+		</div>
+
+		</li>
+
+	<% end %>
+</ul>
+

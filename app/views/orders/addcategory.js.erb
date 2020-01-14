@@ -1,15 +1,19 @@
 function addcategorysubcategory(){
-	let div_principale = document.getElementById("list-prestation")
-	let div = document.createElement("div")
-	div.classList.add("group-form-<%= @category.id %>")
-	div_principale.appendChild(div)
-	div.innerHTML = "<%= j render 'add_panier_reservation_spa', subcategories: @subcategories %>"
-	
 	/* json pour sauver les prestation dans la session */
 	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestation"))
 	sessionPrestation.push({ "category":["<%= @category.name %>",<%= @category.id %>],"prestations":[] })
 	sessionStorage.setItem("prestation",JSON.stringify(sessionPrestation))
+
+	/* Ajouter l'element dans le dom */
+
+	let div_principale = document.getElementById("list-prestation")
+	let div = document.createElement("div")
+	div.classList.add("group-form-<%= @category.id %>")
+	div_principale.appendChild(div)
+	div.innerHTML = "<%= j render 'add_index_sub_reservation', subcategories: @subcategories %>"
 	
+	
+
 }
 addcategorysubcategory()
 

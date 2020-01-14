@@ -1,24 +1,18 @@
 function delcategory(){
 	/*Trouver et supprimer l'élement non utile */
-	let divs = document.getElementsByClassName("group-form-<%= @category.id %>");
-	if(divs){
-		divs[divs.length-1].remove();	
+	let divs = document.getElementsByClassName("group-form-<%= @category.id %>")
+	if(divs.length > 0){
+		divs[divs.length-1].remove()
 	}
-	
-
 	/* Supprimer la prestation dans la session */
-
 	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestation"))
-	
-	
-
-
-
-	//sessionStorage.setItem("prestation",JSON.stringify(sessionPrestation))
-
-
-
-
+	for (var i = sessionPrestation.length - 1; i >= 0; i--) {
+		if (sessionPrestation[i].category[0] == "<%= @category.name %>" && sessionPrestation[i].category[1] == <%= @category.id %>){
+			sessionPrestation.splice(i,1)
+			sessionStorage.setItem("prestation",JSON.stringify(sessionPrestation))
+			break
+		}
+	}
 
 }
 delcategory();

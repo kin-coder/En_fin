@@ -34,7 +34,9 @@ class OrdersController < ApplicationController
   end
 
   def subcategory
-
+    puts "*"*50
+    puts params.inspect
+    puts "*"*50
     respond_to do |format|
       format.html do
         redirect_back(fallback_location: root_path)

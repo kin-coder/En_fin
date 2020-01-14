@@ -9,11 +9,12 @@
 		<%= link_to "PLUS", addcategory_path(category.id), class: "addCateg btn-primary",remote: true %>
 	<% end %>
 
-	<div id="list-prestation">
-		
-		
-		
-	</div>
+	<%= form_tag(saved_spa_path, class:"google", id:"form", 'data-zones': "[{}]") do %>
+		<div id="list-prestation">
+
+		</div>
+		<%= submit_tag("Reserver") %>
+	<% end %>
 
 </div>
 <br><br><br><br><br><br>
