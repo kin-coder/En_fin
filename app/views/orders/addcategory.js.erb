@@ -7,17 +7,31 @@ function addcategorysubcategory(){
 	let longeurs = sessionPrestation.length - 1
 	
 	/* Ajouter l'element dans le dom */
-
 	let div_principale = document.getElementById("list-prestation")
 	let div = document.createElement("div")
 	div.classList.add("group-form-<%= @category.id %>")
-	div.setAttribute("data-index", longeurs)
-
 
 	div_principale.appendChild(div)
 	div.innerHTML = "<%= j render 'add_index_sub_reservation', subcategories: @subcategories %>"
 	
+	/* List de tous les input + Ajout de class + Ajout de id */
+	const inpuptlist = document.querySelectorAll('.check-tmp')
+	inpuptlist.forEach(input => {
+		input.dataset.params += "&index=" + longeurs
+		input.setAttribute("class","form-input")
+		let id = input.getAttribute("id")
+		input.setAttribute("id",id + longeurs) // pour la relation label input
+		input.setAttribute("name","prestations[" + longeurs + "][]")
+		input.setAttribute("data-index", longeurs)
+	});
+
+	/* List de tous les label + Ajout de class + Ajout de id pour la liaison */
+	const label_list = document.querySelectorAll('.label-chek-tmp')
+	label_list.forEach(label => {
+		let fors = label.getAttribute("for")
+		label.setAttribute("for",fors + longeurs) // pour la relation label input
+		label.setAttribute("class","form-label")
+	});
+
 }
 addcategorysubcategory()
-
-//<%= @subcategories %>
