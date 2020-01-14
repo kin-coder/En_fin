@@ -1,5 +1,19 @@
+
 <h5 class="prestation-category"><%= @category.name %></h5>
 
+<ul>
+	<% subcategories.each do |subcategory| %>
+		<li><span class="prix"><%= subcategory.price %> € </span>
+		<%= check_box_tag :name, 1, true , data: { remote: true, url: subcategory_path, params: { subcategory: subcategory.id }.to_param, method: "put" }, class:"check", id:"toggle#{subcategory.id}" %>
+		<div class="togggle">
+			<label for="toggle<%=subcategory.id%>"><%= subcategory.name %></label>
+		</div>
+		</li>
+	<% end %>
+</ul>
+
+<!-- 
+<h5 class="prestation-category"><%= @category.name %></h5>
 <ul>
 	<% test = true %>
 	<% subcategories.each do |subcategory| %>
@@ -11,7 +25,7 @@
 
 		<li><span class="prix"><%= subcategory.price %> € </span>
 
-		<input type="checkbox" name="name[][]" id="toggle14" value="<%= subcategory.id %>" data-remote="true" data-url="/subcategory" data-params="subcategory=14" data-method="put" class="check" checked="checked">
+		<input type="checkbox" name="list[prestations][][]" id="toggle14" value="<%= subcategory.id %>" data-remote="true" data-url="/subcategory" data-params="subcategory=14" data-method="put" class="check" checked="checked">
 
 		<div class="togggle">
 			<label for="toggle<%=subcategory.id%>"><%= subcategory.name %></label>
@@ -22,3 +36,5 @@
 	<% end %>
 </ul>
 
+
+-->

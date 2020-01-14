@@ -4,16 +4,19 @@ function addcategorysubcategory(){
 	sessionPrestation.push({ "category":["<%= @category.name %>",<%= @category.id %>],"prestations":[] })
 	sessionStorage.setItem("prestation",JSON.stringify(sessionPrestation))
 
+	let longeurs = sessionPrestation.length - 1
+	
 	/* Ajouter l'element dans le dom */
 
 	let div_principale = document.getElementById("list-prestation")
 	let div = document.createElement("div")
 	div.classList.add("group-form-<%= @category.id %>")
+	div.setAttribute("data-index", longeurs)
+
+
 	div_principale.appendChild(div)
 	div.innerHTML = "<%= j render 'add_index_sub_reservation', subcategories: @subcategories %>"
 	
-	
-
 }
 addcategorysubcategory()
 
