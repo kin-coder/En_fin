@@ -49,8 +49,6 @@ class OrdersController < ApplicationController
     end
   end
 
-
-
 #==================== Tunel d'achat location spa ===============#
   def location_spa_reservation
     if session[:params_spa] == nil
