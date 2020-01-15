@@ -108,7 +108,7 @@
               </div>
               <div>
                 <%= label_tag "Department", nil, class:"labelle" %>
-                <%= text_field_tag "Department", nil, class:"field" %>
+                <%= select_tag "department_id", options_for_select(@departments.collect{ |d| ["#{d.code}-#{d.namedepartment} "] }),class:"field"%>
               </div>
             </div>
             <div class="col-sm-5 zoneLivraison">
