@@ -1,37 +1,44 @@
-function updatesubcategory(){
-	let basket = document.getElementById("basket-list-<%= @arrayid %>")
-	let somme_price = <%= totalprice() %>
-	let is_empty_prestation = <%=session[:prestation][@arrayid]["subcategory"].empty?%>
+function addsubcategoryAtSession(){
+	// @category @subcategory @index format int
+	let inArray = [<%= @subcategory.id %>,"<%= @subcategory.name %>",<%= @subcategory.price %>]
+	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestations"))
 	
-	if (somme_price == 0){
-		document.getElementById("basket").innerHTML = "<p id=\"no-basket-list\">Vous n'avez pas encore sélectionné de prestation</p>"
-	}
-	else{
-		let p = document.getElementById("no-basket-list")
-		if(p){
-			p.remove()
-		}
-		if (basket){
-			if (is_empty_prestation){
-				basket.parentNode.remove()
-			}
-			else{
-				basket.innerHTML = "<%= j render 'infoupdatesubcategory' %>"
-			}
-		}	
-		else{
-			/* Crée l'element s'il n'y en a pas encore */
-			let commande = document.getElementById("basket")
-			let div2 = document.createElement("div")
-			div2.classList.add("basket-group-<%= @category[1] %>")
-			div2.innerHTML = "<h5><%= @category[0] %></h5><ul id=\"basket-list-<%= @arrayid %>\"></ul>"
-			commande.appendChild(div2)
-			basket = document.getElementById("basket-list-<%= @arrayid %>")
-			/* Mettre a jours les sous-categories */
-			basket.innerHTML = "<%= j render 'infoupdatesubcategory' %>"
+	
+	for (var j = sessionPrestation.length - 1; j >= 0; j--) {
+		if(sessionPrestation[j].id == <%= @index %>){
+			var indexTab = j
+			break
 		}
 	}
-
-	document.getElementById("js-price").innerHTML = "Somme: " + somme_price + " €"
+	
+	// Récuperer la liste de tous les prestations
+	let	listPrestation = sessionPrestation[indexTab].prestation
+	if(listPrestation.length == 0){
+		sessionPrestation[indexTab].prestation.push(inArray)
+		sessionStorage.setItem("prestations",JSON.stringify(sessionPrestation))
+	}else{
+		// Vérifier si l'element est déjat dans le tableau
+		for ( var i = 0; i < listPrestation.length ; i++ ) {
+		    if ( listPrestation[i][0] === inArray[0] ) {
+		        var index_array = i
+		        break;
+		    }
+		}
+		// Si la sous-category est déjat à l'intérieur
+		if(index_array != undefined){ // Suppression de l'element
+			listPrestation.splice(index_array,1)
+			sessionPrestation[indexTab].prestation = listPrestation
+			sessionStorage.setItem("prestations",JSON.stringify(sessionPrestation))
+		}else{ // Si non!
+			sessionPrestation[indexTab].prestation.push(inArray)
+			sessionStorage.setItem("prestations",JSON.stringify(sessionPrestation))
+		}
+	}
 }
-updatesubcategory()
+
+function addSubcategoryAtDom(){
+
+}
+
+addsubcategoryAtSession()
+addSubcategoryAtDom()
