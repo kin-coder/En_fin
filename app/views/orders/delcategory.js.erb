@@ -1,18 +1,21 @@
-function delcategory(){
+function delCategoryInputInSession(){
 	/*Trouver et supprimer l'élement non utile */
-	let divs = document.getElementsByClassName("group-form-<%= @category.id %>")
+	let divs = document.getElementsByClassName("group-form-<%= @category.name %>")
 	if(divs.length > 0){
 		divs[divs.length-1].remove()
 	}
 	/* Supprimer la prestation dans la session */
-	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestation"))
+	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestations"))
 	for (var i = sessionPrestation.length - 1; i >= 0; i--) {
 		if (sessionPrestation[i].category[0] == "<%= @category.name %>" && sessionPrestation[i].category[1] == <%= @category.id %>){
+			// supprimer le dom dans le panier
+			let card = document.getElementsByClassName("card-<%= @category.name %>")
+			card[card.length-1].remove()
+			
 			sessionPrestation.splice(i,1)
-			sessionStorage.setItem("prestation",JSON.stringify(sessionPrestation))
+			sessionStorage.setItem("prestations",JSON.stringify(sessionPrestation))
 			break
 		}
 	}
-
 }
-delcategory();
+delCategoryInputInSession();

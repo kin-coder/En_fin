@@ -1,10 +1,14 @@
 function initSession(){
-	sessionStorage.setItem("prestation","[]")
-	sessionStorage.setItem("service","")
+	sessionStorage.setItem("prestations","[]")
+	sessionStorage.setItem("input",0)
 }
 
-if(sessionStorage.getItem("prestation") == null || sessionStorage.getItem("service") == null){
-	initSession();
-}else{
+function addDomIndex(){
+	
+}
 
+if(sessionStorage.getItem("prestations") == null){
+	initSession()
+}else{
+	addDomIndex()
 }

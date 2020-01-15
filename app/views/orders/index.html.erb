@@ -1,28 +1,42 @@
+<%= javascript_pack_tag 'orders_index' %>
 <br><br><br><br><br><br>
+
 <div class="container">
 	<h1>Reservation <%= @service.name %></h1>
-	<%= javascript_pack_tag 'orders_index' %>
 
-	<% @categories.each do |category| %>
-		<%= link_to "MOINS", deletecategory_path(category.id), class: "delCateg btn-primary",remote: true %>
-		<strong><%= category.name %> <span id="puts-number-<%= category.name %>"> 0 </span></strong>
-		<%= link_to "PLUS", addcategory_path(category.id), class: "addCateg btn-primary",remote: true %>
-	<% end %>
+	<div class="row">
+		<div class="col-sm-9">
 
-	<%= form_tag(saved_spa_path, class:"google", id:"form", 'data-zones': "[{}]") do %>
-		<div id="list-prestation">
+			<!-- ****** BOUTTON POUR L'AJOUT ET LA SUPPRESSION DE CARD ***** -->
+			<% @categories.each do |category| %>
+				<%= link_to "MOINS", deletecategory_path(category.id), class: "delCateg btn-primary",remote: true %>
+				<strong><%= category.name %> <span id="puts-number-<%= category.name %>"> 0 </span></strong>
+				<%= link_to "PLUS", addcategory_path(category.id), class: "addCateg btn-primary",remote: true %>
+			<% end %>
+			<!-- *************** FORMULAIRE POUR LA PRESTATION ************* -->
+			<%= form_tag(saved_spa_path, class:"google", id:"form") do %>
+				<div id="list-prestation">
+					
+
+
+				</div>
+				<%= submit_tag("Reserver") %>
+			<% end %>
 			
-
-
 		</div>
-		<%= submit_tag("Reserver") %>
-	<% end %>
+		<div class="col-sm-3">
+			<!-- ************************* PANIER ************************** -->
+			<div id="card">
+				<h2>Panier</h2>
 
+				
+				
+			</div>
+		</div>
+	</div>
 </div>
+
 <br><br><br><br><br><br>
-
-
-
 
 
 <!--

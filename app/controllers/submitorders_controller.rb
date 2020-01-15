@@ -34,6 +34,11 @@ class SubmitordersController < ApplicationController
 	  end
 
 	  def spa_reservation
+	  	puts "_"*150
+	  	puts "_"*150
+	  	puts params.inspect
+	  	puts "_"*150
+	  	puts "_"*150
 	  	@categories = params[:category]
 	  	@subcategories = params[:prestations]
 	  	puts "_"*150

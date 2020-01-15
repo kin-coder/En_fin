@@ -34,9 +34,11 @@ class OrdersController < ApplicationController
   end
 
   def subcategory
-    puts "*"*50
-    puts params.inspect
-    puts "*"*50
+    parameters = params.permit(:category,:subcategory,:index)
+    @category = parameters[:category].to_i
+    @subcategory = Subcategory.find(parameters[:subcategory].to_i)
+    @index = parameters[:index].to_i
+
     respond_to do |format|
       format.html do
         redirect_back(fallback_location: root_path)
