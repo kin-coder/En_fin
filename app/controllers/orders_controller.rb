@@ -76,7 +76,8 @@ class OrdersController < ApplicationController
 #==================== Tunel d'achat location spa ===============#
 def location_spa_reservation
   @pays = Country.all
-  @departements = 
+  @departments = Department.all
+  
   if session[:params_spa] == nil
     session[:params_spa] = []
   end
