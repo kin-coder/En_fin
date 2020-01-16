@@ -389,10 +389,47 @@ top: 10%;
 
 
 
-.a-btn{
-text-align: center;
-}
 .text-btn{
   padding-left: 15px;
   padding-right: 15px;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+.a-btn{
+text-align: center;
+position: relative;
+right: 10px;
+}
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+.a-btn{
+text-align: center;
+position: relative;
+right: 10px;
+}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+.a-btn{
+position: relative;
+right: 40px;
+}
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+.a-btn{
+text-align: center;
+}
+
 }
