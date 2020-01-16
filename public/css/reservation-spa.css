@@ -1,3 +1,8 @@
+.coordonnee{
+  color: gray  !important;
+}
+
+
 
 .patternbg{
   text-align: center;
@@ -23,55 +28,54 @@
   margin: 10px 0px 10px 0px;
 }
 
+#fa{
+  color: deeppink;
+}
+#tableContent{
+  color: gray;
+}
 
+hr{
+  border-top: 3px solid #eee;
+}
 
-@media (min-width: 992px) {
-  .labelle{
-    position: absolute;
-    left: 200px;
-  }
-  .addCategoriSpa{
-    color: gray;
+.quantité{
+  margin: 0 5px 0 5px;
+}
 
-    margin-left: 10px;
-    margin-bottom: 12px;
-    text-align: left;
-    display: inline;
-  }
+#plus-moins{
+  border:deeppink 1px solid;
+  width: 52px;
+  padding: 0px 0px 0px 0px;
+  border-radius: 10px;
+}
 
-  .allCategoriSpa{
-        /* position: relative;
-        left: 270px; */
-        margin-bottom: 22px;
-        font-size: 13px;
-      }
-      .zoneLivraison{
-        text-align: center;
-        border: 1px solid rgb(214, 207, 207) ;
-        padding-bottom: 30px;
-        width: 847px;
-      }
+h4, h5{
+  /*font-size: 18px;*/
+  margin-bottom: 20px;
+  text-transform: none !important;
+}
 
-      .selectElement{
-        /* position: absolute;
-        left: 150px; */
-        text-align: left;
-        max-width: 128px;   
-      }
-      #panierContent{
-        color: gray;
-        text-align: left;
-        margin-left: 40px ;
-        margin-bottom: 10px;
-        font-size: 13px;
-      }
-
+/*    .confirm-command{
+      position:relative;
+      left:365px;
     }
+    */
 
-    @media (max-width: 700px) {
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+      .select-dro{
+        width: 100%;
+        color: #666666;
+      }
+      .btn-prix{
+        border-radius: 10px;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
       .labelle{
         position: absolute;
-        left: 10px;
+        left: 21px;
       }
       .field{
         position: relative;
@@ -112,42 +116,160 @@
         margin-bottom: 10px;
         font-size: 13px;
       }
+      .confirm-command{
+        text-align: center;
+        position: relative;
+        left: 100px;
+        top: 10px;
+      }
+
     }
 
-    #fa{
-      color: deeppink;
-    }
-    #tableContent{
-      color: gray;
-    }
-    .btn-prix{
-      border-radius: 10px;
-      padding-left: 8px;
-      padding-right: 8px;
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+
+      .select-dro{
+        width: 100%;
+        color: #666666;
+        height: 45px;
+      }
+
+      h4, h5 {
+        font-size: 18px;
+        margin-bottom: 5px;
+        text-transform: none !important;
+        font-size: 12px;
+      }
+
+      .panierTitle {
+        color: 
+        #ec5598;
+        margin: 10px 0px 10px 0px;
+        font-size: 12px;
+      }
+
+      .table > tbody > tr > td{
+        padding: 0px 0px 0px 0px;
+      }
+      .btn-prix{
+        border-radius: 10px;
+        padding-left: 8px;
+        padding-right: 8px;
+        position: relative;
+        left: -6px;
+      }
+      .labelle{
+        position: absolute;
+        left: 100px;
+      }
+      .field{
+        position: relative;
+        left: 50px;
+      }
+      .addCategoriSpa{
+        color: gray;
+
+        margin-left: 10px;
+        margin-bottom: 12px;
+        text-align: left;
+        display: inline;
+      }
+
+      .allCategoriSpa{
+        /* position: relative;
+        left: 270px; */
+        margin-bottom: 22px;
+        font-size: 13px;
+      }
+      .zoneLivraison{
+        text-align: center;
+        border: 1px solid rgb(214, 207, 207) ;
+        padding-bottom: 30px;
+        width: 480px;
+      }
+
+      .selectElement{
+        /* position: absolute;
+        left: 150px; */
+        text-align: left;
+        max-width: 128px;   
+      }
+      #panierContent{
+        color: gray;
+        text-align: left;
+        margin-left: 2px ;
+        margin-bottom: 10px;
+        font-size: 10px;
+        position: relative;
+        left: 5px;
+      }
+      .confirm-command{
+        text-align: center;
+        position: relative;
+        left: 210px;px;
+        top: 10px;
+      }
     }
 
-    hr{
-      border-top: 3px solid #eee;
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {...}
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+      .select-dro{
+        width: 100%;
+        color: #666666;
+        height: 45px;
+      }
+      .btn-prix{
+        border-radius: 10px;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+      .labelle{
+        position: absolute;
+        left: 200px;
+      }
+      .addCategoriSpa{
+        color: gray;
+
+        margin-left: 10px;
+        margin-bottom: 12px;
+        text-align: left;
+        display: inline;
+      }
+
+      .allCategoriSpa{
+        /* position: relative;
+        left: 270px; */
+        margin-bottom: 22px;
+        font-size: 13px;
+      }
+      .zoneLivraison{
+        text-align: center;
+        border: 1px solid rgb(214, 207, 207) ;
+        padding-bottom: 30px;
+        width: 847px;
+      }
+
+      .selectElement{
+        /* position: absolute;
+        left: 150px; */
+        text-align: left;
+        max-width: 128px;   
+      }
+      #panierContent{
+        color: gray;
+        text-align: left;
+        margin-left: 40px ;
+        margin-bottom: 10px;
+        font-size: 13px;
+      }
+      .confirm-command{
+        text-align: center;
+        position: relative;
+        left: 365px;
+        top: 10px;
+      }
     }
 
-    .quantité{
-      margin: 0 5px 0 5px;
-    }
-
-    #plus-moins{
-      border:deeppink 1px solid;
-      width: 52px;
-      padding: Opx 0px 0px 0px;
-      border-radius: 10px;
-    }
-
-    h4, h5{
-      /*font-size: 18px;*/
-      margin-bottom: 20px;
-      text-transform: none !important;
-    }
-
-    .confirm-command{
-      position:relative;
-      left:365px;
-    }
