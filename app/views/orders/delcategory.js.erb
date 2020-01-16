@@ -18,4 +18,18 @@ function delCategoryInputInSession(){
 		}
 	}
 }
-delCategoryInputInSession();
+
+function totalPrice(){
+	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestations"))
+	let price = 0
+	for (var j = sessionPrestation.length - 1; j >= 0; j--) {
+		let prestations = sessionPrestation[j].prestation
+		for (var i = prestations.length - 1; i >= 0; i--) {
+			price += prestations[i][2]
+		}
+	}
+	document.getElementById("priceTotale").innerHTML = price.toFixed(2)
+}
+
+delCategoryInputInSession()
+totalPrice()

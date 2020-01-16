@@ -3,7 +3,6 @@ function addsubcategoryAtSession(){
 	let inArray = [<%= @subcategory.id %>,"<%= @subcategory.name %>",<%= @subcategory.price %>]
 	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestations"))
 	
-	
 	for (var j = sessionPrestation.length - 1; j >= 0; j--) {
 		if(sessionPrestation[j].id == <%= @index %>){
 			var indexTab = j
@@ -34,11 +33,44 @@ function addsubcategoryAtSession(){
 			sessionStorage.setItem("prestations",JSON.stringify(sessionPrestation))
 		}
 	}
+	// Une fonction pour calculer les prix d'une category
+	calculPrice(sessionPrestation[indexTab].prestation);
 }
 
 function addSubcategoryAtDom(){
+	let ul = document.getElementById("list-card-<%= @category.name %>-<%= @index %>")
 
+	let li = document.getElementById("posibilities-<%= @subcategory.name %>-<%= @index %>")
+	if (li){
+		li.remove()
+	}else{
+		let list = document.createElement("li")
+		list.setAttribute("id","posibilities-<%= @subcategory.name %>-<%= @index %>") // pour la relation label input
+		list.innerHTML = "<%= @subcategory.name %>"
+		ul.appendChild(list)
+	}
+}
+
+function calculPrice(arrayOfPrestation){
+	let price = 0
+	for (var i = arrayOfPrestation.length - 1; i >= 0; i--) {
+		price += arrayOfPrestation[i][2]
+	}
+	document.getElementById("price-<%= @index %>").innerHTML = price.toFixed(2)
+}
+
+function totalPrice(){
+	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestations"))
+	let price = 0
+	for (var j = sessionPrestation.length - 1; j >= 0; j--) {
+		let prestations = sessionPrestation[j].prestation
+		for (var i = prestations.length - 1; i >= 0; i--) {
+			price += prestations[i][2]
+		}
+	}
+	document.getElementById("priceTotale").innerHTML = price.toFixed(2)
 }
 
 addsubcategoryAtSession()
 addSubcategoryAtDom()
+totalPrice()

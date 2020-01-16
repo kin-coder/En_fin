@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
 
   def subcategory
     parameters = params.permit(:category,:subcategory,:index)
-    @category = parameters[:category].to_i
+    @category = Category.find(parameters[:category].to_i)
     @subcategory = Subcategory.find(parameters[:subcategory].to_i)
     @index = parameters[:index].to_i
 
