@@ -47,4 +47,8 @@ class StaticPageController < ApplicationController
   
   end
 
+  def service
+  
+  end
+
 end
