@@ -40,7 +40,7 @@
       Faites vos réservations
     </div>
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-sm-9 sm-9-spa">
         <div class="innerWrapper">
           <div class="table-responsive">
             <table class="table">
@@ -96,55 +96,71 @@
             </tbody>
           </table>
         </div>
-        <div class="container ">
-          <div class="row zoneDeLivraison">
-            <div class="col-sm-9 zoneLivraison">
-              <div class="sectionTitle">
-                <h3>Zone de livrasion</h3>
-              </div>
-              <div>
-                <%= label_tag 'Pays', nil, class:"labelle" %>
-                <%=select_tag 'country_id', options_for_select(@pays.collect{ |u| [u.name] }),class:"field"%>
-              </div>
-              <div>
-                <%= label_tag "Department", nil, class:"labelle" %>
-                <%= text_field_tag "Department", nil, class:"field" %>
-              </div>
-            </div>
-            <div class="col-sm-5 zoneLivraison">
-              <div class="sectionTitle">
-                <h3>Coordonnées</h3>
-              </div>
-              <div>
-                <%= label_tag "Adresse", nil, class:"labelle" %>
-                <%= text_field_tag "Adresse", nil, class:"field" %>
-              </div>
-              <div>
-                <%= label_tag "Un message particulier ?", nil, class:"labelle"%> <br>
-                <%= text_area_tag "Un message particulier ?", nil, class:"field", placeholder:"Laisser votre message ici" %>
-              </div>
-            </div>
-          </div>
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th id="tableHead">Zone de livraison</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="coordonnee">
+                  <div>
+                    <%= label_tag 'Pays', nil, class:"labelle" %>
+                    <%=select_tag 'country_id', options_for_select(@pays.collect{ |u| [u.name] }),class:"field"%>
+                  </div>
+                  <div>
+                    <%= label_tag "Department", nil, class:"labelle" %>
+                    <%= select_tag "department_id", options_for_select(@departments.collect{ |d| ["#{d.code}-#{d.namedepartment} "] }),class:"field"%>
+                  </div>
+                  <div>
+                    <%= label_tag "Adresse", nil, class:"labelle" %>
+                    <%= text_field_tag "Adresse", nil, class:"field" %>
+                  </div>
+                  <div>
+                    <%= label_tag "Un message particulier ?", nil, class:"labelle"%> <br>
+                    <%= text_area_tag "Un message particulier ?", nil, class:"field", placeholder:"Laisser votre message ici" %>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="sectionTitle">
-          <h3>Date et heure de livraison</h3>
-        </div>
-        <div class="dateSelect form-half form-left">
-          <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
-            <%= text_field_tag "Date", nil ,required: true, class: "form-control", placeholder:"MM/DD/YYYY"%>
-            <div class="input-group-addon">
-              <span class="fa fa-calendar"></span>
-            </div>
-          </div>
-        </div>
-        <div class="timeSelect form-half form-right" >
-          <%= select_tag "Heure", options_for_select([["Choisisser l'heure", ""], "06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"]), class:"select-drop",id:'guiest_id1' %>
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th id="tableHead">Date et heure de livraison</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="dateSelect form-half form-left">
+                    <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
+                      <%= text_field_tag "Date", nil ,required: true, class: "form-control", placeholder:"MM/DD/YYYY"%>
+                      <div class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="timeSelect form-half form-right" >
+                    <%= select_tag "Heure", options_for_select([["Choisisser l'heure", ""], "06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"]), class:"select-dro",id:'guiest_id1' %>
+                  </div>
+                  
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <%= submit_tag "Confirmer", class:"confirm-command btn btn-primary a-btn text-btn" %>
         <% end %>
       </div>
     </div>
-    <div class="col-sm-3" id="panierTable">
+    <div class="col-sm-3 sm-3-spa" id="panierTable">
       <div class="innerWrapper">
         <div class="table-responsive " >
           <table class="table">

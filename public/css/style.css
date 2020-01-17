@@ -19,6 +19,25 @@
   
   height: 36px;
   z-index: 7;
+  top: 10px;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+<!-- media query -->
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+.optionnal-texte {
+  position: relative;
+  border-style: initial;
+  border-radius: 12px;
+  background-color: white;
+  color: deeppink;
+  
+  height: 36px;
+  z-index: 7;
   top: 17px;
   text-align: center;
   margin: 0 auto;
@@ -26,6 +45,60 @@
   font-size: 25px;
   font-family: 'Times New Roman', Times, serif;
 }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+.optionnal-texte {
+  position: relative;
+  border-style: initial;
+  border-radius: 12px;
+  background-color: white;
+  color: deeppink;
+  
+  height: 36px;
+  z-index: 7;
+  top: 17px;
+  text-align: center;
+  margin: 0 auto;
+  width: 372px;
+  font-size: 25px;
+  font-family: 'Times New Roman', Times, serif;
+}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+.optionnal-texte {
+  position: relative;
+  border-style: initial;
+  border-radius: 12px;
+  background-color: white;
+  color: deeppink;
+  
+  height: 36px;
+  z-index: 7;
+  top: 17px;
+  text-align: center;
+  margin: 0 auto;
+  width: 372px;
+  font-size: 25px;
+  font-family: 'Times New Roman', Times, serif;
+}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3874,7 +3947,7 @@ textarea.form-control {
 
 /*================= 5.7 PRICING SECTION ==================*/
 .pricingSection {
-  padding: 0 0 80px 0;
+  padding: 0 0 10px 0;
 }
 
 .priceImage {
