@@ -54,6 +54,8 @@ Rails.application.routes.draw do
   get '/show_produit', to:'static_page#show_produit', as: "show_produit"
   # routes page Location SPA
   get '/locationspa', to:'static_page#location_spa', as: "location_spa"
+  # routes page Service SPA
+  get '/service', to:'static_page#service', as: "service"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Autre page
   get '/contact', to:'static_page#contact', as: "contact"

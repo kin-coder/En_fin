@@ -66,8 +66,8 @@
         <div class="container">
           <div class="top-bar-right">
             <ul class="list-inline">
-              <li><a href="" class="mail"><i class="fa fa-envelope mail" aria-hidden="true"></i>cocooningspa@outlook.com</a></li>
-              <li><span><i class="fa fa-phone" aria-hidden="true"></i>+33 6 67 07 65 87</span></li>
+              <!--<li><a href="" class="mail"><i class="fa fa-envelope mail" aria-hidden="true"></i>     </a></li>-->
+              <!--<li><span><i class="fa fa-phone" aria-hidden="true"></i>    </span></li>-->
             </ul>
           </div>
         </div>
@@ -95,7 +95,7 @@
                 <%= link_to "Accueil", root_path %>
               </li>
               <li class=" dropdown singleDrop">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
+                <a href="<%=service_path%>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
                 <ul class="dropdown-menu dropdown-menu-left">
                   <li><%= link_to "Massage", massage_path %></li>
                   <li><%= link_to "Location de spa", spa_path %></li>
@@ -165,7 +165,7 @@
                 <ul class="list-unstyled">
                   <li><a href="<%=faq_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>FAQ</a></li>
                   <li><a href="<%=comment_ca_marche_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Comment ça marche?</a></li>
-                  <li><a href="#service"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Nos services</a></li>
+                  <li><a href="<%=service_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Nos services</a></li>
                   <li><a href="<%=cgu_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Conditions génerales CGU</a></li>
                   <li><a href="<%=engagement_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Nos engagements</a></li>
                   <li><a href="<%=contact_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Contactez-nous</a></li>
