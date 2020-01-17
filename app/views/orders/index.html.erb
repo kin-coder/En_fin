@@ -1,4 +1,3 @@
-<%= javascript_pack_tag 'orders_index' %>
 <br><br><br><br><br><br>
 
 <div class="container">
@@ -14,7 +13,7 @@
 				<%= link_to "PLUS", addcategory_path(category.id), class: "addCateg btn-primary",remote: true %>
 			<% end %>
 			<!-- *************** FORMULAIRE POUR LA PRESTATION ************* -->
-			<%= form_tag(saved_spa_path, class:"google", id:"form") do %>
+			<%= form_tag(saved_spa_path, class:"google", id:"form", 'data-zones':"#{@listPrestation}") do %>
 				<div id="list-prestation">
 					
 
@@ -26,18 +25,24 @@
 		</div>
 		<div class="col-sm-3">
 			<!-- ************************* PANIER ************************** -->
-			<div id="card">
-				<h2>Panier</h2>
+			<div>
+				<div id="card">
+					<h2>Panier</h2>
 
-				
-				
+					
+
+					
+				</div>
+				<div>
+					Total <span id="priceTotale">0</span> €
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
 <br><br><br><br><br><br>
-
+<%= javascript_pack_tag 'orders_index' %>
 
 <!--
 

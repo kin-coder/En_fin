@@ -33,7 +33,6 @@ function addCategoryInputInSession(){
 		label.setAttribute("for",fors + longeurs) // pour la relation label input
 		label.setAttribute("class","form-label")
 	});
-
 }
 
 function addCategoryInputPanier(){
@@ -41,11 +40,9 @@ function addCategoryInputPanier(){
 	let number = JSON.parse(sessionStorage.getItem("input"))
 	let div_card = document.createElement("div")
 	div_card.classList.add("card-<%= @category.name %>")
-	div_card.setAttribute("id","list-card-<%= @category.name %>-"+number)
-	
-	div_card.innerHTML = "<div><%= @category.name %></div>"
+	let ul = "list-card-<%= @category.name %>-"+number
+	div_card.innerHTML = "<div><%= @category.name %> <span id=\"price-"+number+"\">0</span> €</div><ul id=\""+ ul +"\"></ul>"
 	principale.appendChild(div_card)
-
 }
 
 addCategoryInputInSession()

@@ -8,6 +8,14 @@ class OrdersController < ApplicationController
       redirect_to root_path
     else
       @categories = @service.categories # Liste de tous les categories
+      @listPrestation = []
+      @categories.each do |c|
+        @listPrestation.push([[c.name,c.id]])
+        c.subcategories.each do |s|
+          @listPrestation[@listPrestation.length-1].push([s.id,s.name,s.price])
+        end
+      end
+
     end
   end
 
@@ -35,7 +43,7 @@ class OrdersController < ApplicationController
 
   def subcategory
     parameters = params.permit(:category,:subcategory,:index)
-    @category = parameters[:category].to_i
+    @category = Category.find(parameters[:category].to_i)
     @subcategory = Subcategory.find(parameters[:subcategory].to_i)
     @index = parameters[:index].to_i
 
