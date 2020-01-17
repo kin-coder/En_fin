@@ -14,7 +14,7 @@
 				<%= link_to "PLUS", addcategory_path(category.id), class: "addCateg btn-primary",remote: true %>
 			<% end %>
 			<!-- *************** FORMULAIRE POUR LA PRESTATION ************* -->
-			<%= form_tag(saved_spa_path, class:"google", id:"form") do %>
+			<%= form_tag(saved_spa_path, class:"google", id:"form", 'data-zones':"#{@listPrestation}") do %>
 				<div id="list-prestation">
 					
 

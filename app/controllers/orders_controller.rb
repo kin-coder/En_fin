@@ -8,6 +8,14 @@ class OrdersController < ApplicationController
       redirect_to root_path
     else
       @categories = @service.categories # Liste de tous les categories
+      @listPrestation = []
+      @categories.each do |c|
+        @listPrestation.push([[c.name,c.id]])
+        c.subcategories.each do |s|
+          @listPrestation[@listPrestation.length-1].push([s.id,s.name,s.price])
+        end
+      end
+
     end
   end
 

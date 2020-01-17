@@ -6,11 +6,12 @@ if(sessionStorage.getItem("prestations") == null){
 
 function addDomIndex(){	
 	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestations"))
-	var divForm = document.getElementById("list-prestation")
-	
+	let divForm = document.getElementById("form")
+	console.log(divForm)
+	/*
 	for (var j = 0 ; j < sessionPrestation.length ; j++) {
 
-		let index = sessionPrestation[j].id //l'index
+		let index = sessionPrestation[j]divForm.id //l'index
 		let categories = sessionPrestation[j].category //le category
 		let prestations = sessionPrestation[j].prestation //les sous-category
 		// ["Femme", 4]
@@ -27,7 +28,7 @@ function addDomIndex(){
 		console.log(div)
 		console.log(list)
 	}
-
+	*/
 }
 
 function initSession(){
