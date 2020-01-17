@@ -6,8 +6,11 @@ if(sessionStorage.getItem("prestations") == null){
 
 function addDomIndex(){	
 	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestations"))
-	let divForm = document.getElementById("form")
-	console.log(divForm)
+	let form = document.getElementById("form")
+	let categoryAndSubCategory = JSON.parse(form.dataset.zones)
+	console.log("---------------------------------------------")
+	console.log(form)
+	console.log("---------------------------------------------")
 	/*
 	for (var j = 0 ; j < sessionPrestation.length ; j++) {
 
