@@ -3,6 +3,7 @@ function delCategoryInputInSession(){
 	let divs = document.getElementsByClassName("group-form-<%= @category.name %>")
 	if(divs.length > 0){
 		divs[divs.length-1].remove()
+		document.getElementById("puts-number-<%= @category.name %>").innerHTML = divs.length
 	}
 	/* Supprimer la prestation dans la session */
 	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestations"))

@@ -33,6 +33,8 @@ function addCategoryInputInSession(){
 		label.setAttribute("for",fors + longeurs) // pour la relation label input
 		label.setAttribute("class","form-label")
 	});
+	// Nombre de category
+	document.getElementById("puts-number-<%= @category.name %>").innerHTML = document.getElementsByClassName("group-form-<%= @category.name %>").length
 }
 
 function addCategoryInputPanier(){

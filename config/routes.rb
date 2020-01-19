@@ -19,8 +19,9 @@ Rails.application.routes.draw do
   put '/subcategory', to: "orders#subcategory", as:"subcategory"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   #Enregistrement des donnés du commande dans les table
-  get '/confirmer-commande', to:'submitorders#save', as: "saved_commande"
+  post '/confirmer-commande', to:'submitorders#save', as: "saved_commande"
   post '/confirmer-commande/spa', to:'submitorders#spa_reservation', as: "saved_spa"
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
   devise_for :admins

@@ -46,15 +46,15 @@ class OrdersController < ApplicationController
     @category = Category.find(parameters[:category].to_i)
     @subcategory = Subcategory.find(parameters[:subcategory].to_i)
     @index = parameters[:index].to_i
-
+    
     respond_to do |format|
       format.html do
         redirect_back(fallback_location: root_path)
       end
       format.js do
-
       end
     end
+
   end
 
 #==================== Tunel d'achat location spa ===============#
