@@ -1,0 +1,45 @@
+<br><br><br><br><br><br>
+
+<div class="container">
+  <h1>Reservation <%= @service.name %></h1>
+
+  <div class="row">
+    <div class="col-sm-9">
+      <!-- ****** BOUTTON POUR L'AJOUT ET LA SUPPRESSION DE CARD ***** -->
+      <% @subcategories.each do |subcategory| %>
+        <%= link_to "MOINS", del_spa_path(subcategory.id), class: "delCateg btn-primary",remote: true %>
+        <strong> pour <%= subcategory.name %>H<span id="puts-number-<%= subcategory.name %>"> 0 </span></strong>
+        <%= link_to "PLUS", add_spa_path(subcategory.id), class: "addCateg btn-primary",remote: true %>
+      <% end %>
+      <!-- *************** FORMULAIRE POUR LA PRESTATION ************* -->
+      
+      <%= form_tag(saved_spa_path, class:"google", id:"form") do %>
+        <div id="list-prestation">
+          
+
+
+        </div>
+        <%= submit_tag("Reserver", id:"submi-tag") %>
+      <% end %>
+      
+    </div>
+    <div class="col-sm-3">
+      <!-- ************************* PANIER ************************** -->
+      <div>
+        <div id="card">
+          <h2>Panier</h2>
+
+          
+
+          
+        </div>
+        <div>
+          Total <span id="priceTotale">0</span> €
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br><br><br><br><br>
+<%= javascript_pack_tag 'orders_index' %>

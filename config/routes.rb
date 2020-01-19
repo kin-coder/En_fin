@@ -9,19 +9,18 @@ Rails.application.routes.draw do
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # lien pour le panier dynamique
   # pour le spa
-  get '/location-spa/prix-reservation', to:'orders#location_spa_reservation', as:'resrvation_spa'
-  get '/location-spa/prix-reservation/:id/add', to:'orders#add_location_spa', as:"add_order_spa"
-  get '/location-spa/prix-reservation/:id/del', to:'orders#del_location_spa', as:"del_order_spa"
+  get '/location-spa/prix-reservation', to:'orders#spa_reservation', as:'resrvation_spa'
+  get '/location-spa/prix-reservation/:id/add', to:'orders#spa_addsubcategory', as:"add_spa"
+  get '/location-spa/prix-reservation/:id/del', to:'orders#spa_delsubcategory', as:"del_spa"
   # autre
   get ':name/prix-reservation', to:'orders#index', as:"reservation"
-  get '/addcategory/:id', to: "orders#addcategory", as:"addcategory"
-  get '/deletecategory/:id', to: "orders#delcategory", as:"deletecategory"
-  put '/subcategory', to: "orders#subcategory", as:"subcategory"
+  get '/addcategory/:id', to: "orders#index_addcategory", as:"addcategory"
+  get '/deletecategory/:id', to: "orders#index_delcategory", as:"deletecategory"
+  put '/subcategory', to: "orders#index_subcategory", as:"subcategory"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   #Enregistrement des donnés du commande dans les table
-  post '/confirmer-commande', to:'submitorders#save', as: "saved_commande"
+  post '/confirmer-commande', to:'submitorders#index_save', as: "saved_commande"
   post '/confirmer-commande/spa', to:'submitorders#spa_reservation', as: "saved_spa"
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
   devise_for :admins

@@ -13,7 +13,7 @@ function addCategoryInputInSession(){
 	div.classList.add("group-form-<%= @category.name %>")
 
 	div_principale.appendChild(div)
-	div.innerHTML = "<%= j render 'add_index_sub_reservation', subcategories: @subcategories %>"
+	div.innerHTML = "<%= j render 'index_sub_reservation', subcategories: @subcategories %>"
 	
 	/* List de tous les input + Ajout de class + Ajout de id */
 	const inpuptlist = document.querySelectorAll('.check-tmp')
