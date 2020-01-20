@@ -1,8 +1,5 @@
-<br><br><br><br><br><br>
-
 <div class="container">
   <h1>Reservation <%= @service.name %></h1>
-
   <div class="row">
     <div class="col-sm-9">
       <!-- ****** BOUTTON POUR L'AJOUT ET LA SUPPRESSION DE CARD ***** -->
@@ -16,18 +13,8 @@
         </li>
       <% end %>
       </ul>
-      <!-- *************** FORMULAIRE POUR LA PRESTATION ************* -->
-      <%= form_tag(saved_spa_path, 'data-zones':"#{@data}", id:"form", 'data-service':"#{@service.name}") do %>
-        <div id="list-prestation">
-          <p id="info-spa" class=""> Selectionner une prestation</p>
-
-        </div>
-        <div id="all-produits">
-
-        </div>
-        <%= submit_tag("Reserver", id:"submi-tag") %>
-      <% end %>
-
+      <hr>
+      <!-- ****** BOUTTON POUR L'AJOUT ET LA SUPPRESSION DE PRODUIT ***** -->
       <div class="others-produits">
         <ul>
         <% @products.each do |product| %>
@@ -39,6 +26,18 @@
         <% end %>
         </ul>
       </div>
+      <hr>
+      <!-- *************** FORMULAIRE POUR LA PRESTATION ************* -->
+      <%= form_tag(saved_spa_path, 'data-zones':"#{@data}", id:"form", 'data-service':"#{@service.name}") do %>
+        <div id="list-prestation">
+          <p id="info-spa" class=""> Selectionner une prestation</p>
+
+        </div>
+        <div id="all-produits">
+
+        </div>
+        <%= submit_tag("Reserver", id:"submi-tag") %>
+      <% end %>
 
     </div>
     <div class="col-sm-3">
@@ -90,6 +89,4 @@
 
   </div>
 </div>
-
-<br><br><br><br><br><br>
 <%= javascript_pack_tag 'orders_spa' %>

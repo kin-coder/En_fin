@@ -1,7 +1,7 @@
 runJS()
 function runJS(){
 	const service_name = document.getElementById("form").dataset.service
-	if(sessionStorage.getItem("prestations") == [] || sessionStorage.getItem("service") != service_name ){
+	if(sessionStorage.getItem("service") != service_name ){
 		initSession()
 	}else{
 		addDomIndex()
@@ -107,12 +107,19 @@ function totalPrice(){
 		let subcategory = sessionPrestation[i].list
 		prixTotal += subcategory[2]
 	}
+
+	let sessionProduits = JSON.parse(sessionStorage.getItem("products"))
+	for (var i = 0 ; i < sessionProduits.length ; i++) {
+		prixTotal += sessionProduits[i].list[2]
+	}
+
 	if (prixTotal == 0){
 		document.getElementById("info-spa").className =""
 	}
 	document.getElementById("priceTotale").innerHTML = prixTotal.toFixed(2)
 }
 
+/*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/
 /* Ajouts et suppresion d'element dans la liste des produits */
 const products = document.querySelectorAll('.btn-produits');
@@ -151,11 +158,14 @@ function addProduitOnSubmit(){
 				addp.innerHTML = listInputProduit(currentProduit,nombres)
 			}
 		}
+		// Prix total
+		totalPrice()
 	}
 
 }
 
 function addProduitInDom(currentProduit){
+	totalPrice()
 	// Ajout dans le formulaire
 	let divp = document.getElementById("all-produits")
 	let input = document.createElement("input")
