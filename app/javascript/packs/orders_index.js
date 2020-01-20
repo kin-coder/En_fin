@@ -1,14 +1,18 @@
-if(sessionStorage.getItem("prestations") == null){
-	initSession()
-}else{
-	addDomIndex()
+runJS()
+function runJS(){
+	const service_name = document.getElementById("form").dataset.service
+	if(sessionStorage.getItem("prestations") == [] || sessionStorage.getItem("service") != service_name ){
+		initSession()
+	}else{
+		addDomIndex()
+	}
 }
-
-// document.getElementById("submi-tag")
 
 function initSession(){
 	sessionStorage.setItem("prestations","[]")
 	sessionStorage.setItem("input",0)
+	let form = document.getElementById("form")
+	sessionStorage.setItem("service",form.dataset.service)
 }
 
 function addDomIndex(){	

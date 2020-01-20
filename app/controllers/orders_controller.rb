@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
       redirect_to root_path
     else
       @categories = @service.categories # Liste de tous les categories
+      @products = @service.products # Liste de tous les produits
       @listPrestation = []
       @categories.each do |c|
         @listPrestation.push([[c.name,c.id]])
@@ -58,17 +59,12 @@ class OrdersController < ApplicationController
   def spa_reservation
     @service = Service.find_by(name:'Location spa')
     @subcategories = @service.categories[0].subcategories
-
+    @products = @service.products # liste de tous les produits
+    @data = []
+    @subcategories.each do |subcategory|
+      @data.push([subcategory.id,subcategory.name,subcategory.price])
+    end
   end
-
-  def spa_addsubcategory
-    
-  end
-
-  def spa_delsubcategory
-    
-  end
-
 #===============================================================#
   private
 

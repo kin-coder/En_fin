@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   # lien pour le panier dynamique
   # pour le spa
   get '/location-spa/prix-reservation', to:'orders#spa_reservation', as:'resrvation_spa'
-  get '/location-spa/prix-reservation/:id/add', to:'orders#spa_addsubcategory', as:"add_spa"
-  get '/location-spa/prix-reservation/:id/del', to:'orders#spa_delsubcategory', as:"del_spa"
   # autre
   get ':name/prix-reservation', to:'orders#index', as:"reservation"
   get '/addcategory/:id', to: "orders#index_addcategory", as:"addcategory"
