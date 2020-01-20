@@ -1,7 +1,7 @@
 runJS()
 function runJS(){
 	const service_name = document.getElementById("form").dataset.service
-	if(sessionStorage.getItem("prestations") == [] || sessionStorage.getItem("service") != service_name ){
+	if(sessionStorage.getItem("service") != service_name ){
 		initSession()
 	}else{
 		addDomIndex()
