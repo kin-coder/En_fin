@@ -57,6 +57,8 @@ class OrdersController < ApplicationController
 
 #==================== Tunel d'achat location spa ===============#
   def spa_reservation
+    @departments = Department.all
+    @pays = Country.all
     @service = Service.find_by(name:'Location spa')
     @subcategories = @service.categories[0].subcategories
     @products = @service.products # liste de tous les produits
