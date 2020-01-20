@@ -28,7 +28,6 @@ function addDomIndex(){
 	for (var i = 0 ; i < sessionProduits.length ; i++) {
 		addProduitInDom(sessionProduits[i].list)
 	}
-
 }
 
 /* Ajouts et suppresion d'element dans la liste prestations */
