@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   before_action :param_permit, only: [:index_addcategory, :index_delcategory]
   def index
+    @pays = Country.all
+    @departments = Department.all
     params.permit(:name)
     @service = is_service(params[:name]) # un objet de type service
     unless @service
@@ -20,6 +22,7 @@ class OrdersController < ApplicationController
 
   def index_addcategory
     @subcategories = @category.subcategories
+
     respond_to do |format|
       format.html do
         redirect_back(fallback_location: root_path)

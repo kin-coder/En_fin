@@ -61,14 +61,20 @@ function calculPrice(arrayOfPrestation){
 
 function totalPrice(){
 	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestations"))
-	let price = 0
-	for (var j = sessionPrestation.length - 1; j >= 0; j--) {
-		let prestations = sessionPrestation[j].prestation
-		for (var i = prestations.length - 1; i >= 0; i--) {
-			price += prestations[i][2]
+
+	let prixTotal = 0
+	for (var i = 0 ; i < sessionPrestation.length ; i++) {
+		let prestations = sessionPrestation[i].prestation
+		for (var g = 0 ; g < prestations.length ; g++) {
+			prixTotal += prestations[g][2]
 		}
 	}
-	document.getElementById("priceTotale").innerHTML = price.toFixed(2)
+
+	let sessionProduits = JSON.parse(sessionStorage.getItem("products"))
+	for (var i = 0 ; i < sessionProduits.length ; i++) {
+		prixTotal += sessionProduits[i].list[2]
+	}
+	document.getElementById("priceTotale").innerHTML = prixTotal.toFixed(2)
 }
 
 addsubcategoryAtSession()

@@ -12,6 +12,22 @@
 				<strong><%= category.name %> <span id="puts-number-<%= category.name %>"> 0 </span></strong>
 				<%= link_to "PLUS", addcategory_path(category.id), class: "addCateg btn-primary",remote: true %>
 			<% end %>
+			<hr>
+
+			<div class="others-produits">
+				<ul>
+				<% @products.each do |product| %>
+				  <li>
+				  	<%= product.name %> <%= product.price %> €
+				    <button class="btn-produits" data-zones="[<%= product.id %>,&quot;<%= product.name %>&quot;,<%= product.price %>]" data-action="delete">MOINS</button>
+				    <strong><span id="produits-number-<%= product.id %>">0</span></strong>
+				    <button class="btn-produits" data-zones="[<%= product.id %>,&quot;<%= product.name %>&quot;,<%= product.price %>]" data-action="new">PLUS</button>
+				  </li>
+				<% end %>
+				</ul>
+			</div>
+
+			<hr>
 			<!-- *************** FORMULAIRE POUR LA PRESTATION ************* -->
 			<%= form_tag(saved_commande_path, id:"form", 'data-zones':"#{@listPrestation}", 'data-service':"#{@service.name}") do %>
 				<div id="list-prestation">
@@ -19,6 +35,44 @@
 
 
 				</div>
+				<div id="all-produits">
+
+				</div>
+
+				<div class="coordonnee">
+					<div>
+						<%= label_tag 'Pays', nil, class:"labelle" %>
+						<%= select_tag 'country_id', options_for_select(@pays.collect{ |u| [u.name] }),class:"field"%>
+					</div>
+					<div>
+						<%= label_tag "Department", nil, class:"labelle" %>
+						<%= select_tag "department_id", options_for_select(@departments.collect{ |d| ["#{d.code}-#{d.namedepartment} "] }),class:"field"%>
+					</div>
+					<div>
+						<%= label_tag "Adresse", nil, class:"labelle" %>
+						<%= text_field_tag "Adresse", nil, class:"field" %>
+					</div>
+					<div>
+						<%= label_tag "Un message particulier ?", nil, class:"labelle"%> <br>
+						<%= text_area_tag "Un message particulier ?", nil, class:"field", placeholder:"Laisser votre message ici" %>
+					</div>
+				</div>
+
+				<li>Date et heure de livraison</li>
+				<div class="dateSelect form-half form-left">
+					<div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
+						<%= text_field_tag "Date", nil ,required: true, class: "form-control", placeholder:"MM/DD/YYYY"%>
+						<div class="input-group-addon">
+							<span class="fa fa-calendar"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="timeSelect form-half form-right" >
+				<%= select_tag "Heure", options_for_select([["Choisisser l'heure", ""], "06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"]), class:"select-dro",id:'guiest_id1' %>
+				</div>
+
+
 				<%= submit_tag("Reserver", id:"submi-tag") %>
 			<% end %>
 			
@@ -32,6 +86,10 @@
 					
 
 					
+				</div>
+				<div id="list-produits">
+					<div id="info-produit" class="hidden">Autre produits : </div>
+
 				</div>
 				<div>
 					Total <span id="priceTotale">0</span> €
@@ -71,3 +129,13 @@
 </div>
 </section>
 -->
+
+
+
+
+
+
+
+
+
+

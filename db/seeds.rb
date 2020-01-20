@@ -16,7 +16,7 @@ s4 = Service.create(name:"Location spa")
 
 # =================== PRODUITS ========================== #
 
-listProduits1 = ["Lorem","ipsum","dolor","sit","amet","consectetur","adipisicing","elit","sed","do","eiusmod","tempor","incididunt","ut","labore","et","dolore"]
+listProduits1 = ["HUILE VEGETALE DE RICIN BIO 100ML","PROPOS'NATURE HUILE VEGETALE DE RICIN BIO 100ML"  ,"Huile végétale de Ricin Bio  Ricinus communis","HUILE VEGETALE DE COCO BIO 100ML","PROPOS'NATURE HUILE VEGETALE DE COCO BIO 100ML","Huile végétale de Coco Bio  Coco nucifera","URGO CREME CHAUFFANTE MASSAGE 100ML","URGO URGO CREME CHAUFFANTE MASSAGE 100ML"]
 
 listProduits1.each do |produit|
 	Product.create(name: produit, price: rand(9.0 .. 30).to_s[0 .. 4].to_f, service: s3)
@@ -66,18 +66,18 @@ c = []
 	puts increment+=1
 end
 
-subcategiesFemme = ["Pré natal","Plantaire","Réflexologie Plantaire","Assis","Deep Tissue"]
+["30"].each do |heurs|
+	subcategiesFemme = ["Pré natal","Plantaire","Réflexologie Plantaire","Assis","Deep Tissue"]
+	subcategiesFemme.each do |value|
+		Subcategory.create(name:value, hours:heurs, price:rand(9.0 .. 30).to_s[0 .. 4].to_f, category:c[1])
+		puts increment+=1
+	end
 
-subcategiesFemme.each do |value|
-	Subcategory.create(name:value, price:rand(9.0 .. 30).to_s[0 .. 4].to_f, category:c[0])
-	puts increment+=1
-end
-
-subcategiesHomme = ["Découverte","Dos","Assis","Relaxant","Lomi-Lomi","Ayuvédique"]
-
-subcategiesHomme.each do |value|
-	Subcategory.create(name:value, price:rand(9.0 .. 30).to_s[0 .. 4].to_f, category:c[1])
-	puts increment+=1
+	subcategiesHomme = ["Découverte","Dos","Assis","Relaxant","Lomi-Lomi","Ayuvédique"]
+	subcategiesHomme.each do |value|
+		Subcategory.create(name:value, hours:heurs, price:rand(9.0 .. 30).to_s[0 .. 4].to_f, category:c[0])
+		puts increment+=1
+	end
 end
 
 # ====================== COMMANDE ============================= #

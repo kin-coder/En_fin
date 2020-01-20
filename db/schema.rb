@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(version: 2020_01_19_111341) do
     t.string "name"
     t.text "description"
     t.float "price"
+    t.string "hours"
     t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
