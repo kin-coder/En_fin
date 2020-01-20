@@ -1,0 +1,92 @@
+<div class="container">
+  <h1>Reservation <%= @service.name %></h1>
+  <div class="row">
+    <div class="col-sm-9">
+      <!-- ****** BOUTTON POUR L'AJOUT ET LA SUPPRESSION DE CARD ***** -->
+      <ul>
+      <% @subcategories.each do |subcategory| %>
+        <li>
+          Location Spa pour <%= subcategory.name %>H à <%= subcategory.price %> €
+          <button class="posibilities-presation" data-hourse="<%= subcategory.name %>" data-action="delete">MOINS</button>
+          <strong><span id="puts-number-<%= subcategory.name %>h">0</span></strong>
+          <button class="posibilities-presation" data-hourse="<%= subcategory.name %>" data-action="new">PLUS</button>
+        </li>
+      <% end %>
+      </ul>
+      <hr>
+      <!-- ****** BOUTTON POUR L'AJOUT ET LA SUPPRESSION DE PRODUIT ***** -->
+      <div class="others-produits">
+        <ul>
+        <% @products.each do |product| %>
+          <li><%= product.name %> <%= product.price %> €
+            <button class="btn-produits" data-zones="[<%= product.id %>,&quot;<%= product.name %>&quot;,<%= product.price %>]" data-action="delete">MOINS</button>
+            <strong><span id="produits-number-<%= product.id %>">0</span></strong>
+            <button class="btn-produits" data-zones="[<%= product.id %>,&quot;<%= product.name %>&quot;,<%= product.price %>]" data-action="new">PLUS</button>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+      <hr>
+      <!-- *************** FORMULAIRE POUR LA PRESTATION ************* -->
+      <%= form_tag(saved_spa_path, 'data-zones':"#{@data}", id:"form", 'data-service':"#{@service.name}") do %>
+        <div id="list-prestation">
+          <p id="info-spa" class=""> Selectionner une prestation</p>
+
+        </div>
+        <div id="all-produits">
+
+        </div>
+        <%= submit_tag("Reserver", id:"submi-tag") %>
+      <% end %>
+
+    </div>
+    <div class="col-sm-3">
+      <!-- ************************* PANIER ************************** -->
+        <div id="card">
+          <h4 class="panierTitle"><i class="fa fa-shopping-basket" aria-hidden="true" id="fa"></i> Vos commandes <i class="fa fa-shopping-basket" aria-hidden="true" id="fa"></i></h4>
+
+          <div id="group-panier-24h" class="hidden">
+            <h5><i class="fa fa-hand-o-right" aria-hidden="true" id="fa"></i>Location spa pour 24H</h5>
+            <div>
+              <ul class="panierContent">
+                <li>Nombre de spa gonflable: <span id="number-panier-24h"></span></li>
+                <li>Prix: <span id="price-panier-24h"></span> €</li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="group-panier-48h" class="hidden">
+            <h5><i class="fa fa-hand-o-right" aria-hidden="true" id="fa"></i>Location spa pour 48H</h5>
+            <div>
+              <ul class="panierContent">
+                <li>Nombre de spa gonflable: <span id="number-panier-48h"></span></li>
+                <li>Prix: <span id="price-panier-48h"></span> €</li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="group-panier-72h" class="hidden">
+            <h5><i class="fa fa-hand-o-right" aria-hidden="true" id="fa"></i>Location spa pour 72H</h5>
+            <div>
+              <ul class="panierContent">
+                <li>Nombre de spa gonflable: <span id="number-panier-72h"></span></li>
+                <li>Prix: <span id="price-panier-72h"></span> €</li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="list-produits">
+            <p id="info-produit" class="hidden">Autre produits : </p>
+            
+          </div>
+
+        </div>
+
+        <div class="totalPrix">
+          Total : <span id="priceTotale">0</span> €
+        </div>
+    </div>
+
+  </div>
+</div>
+<%= javascript_pack_tag 'orders_spa' %>

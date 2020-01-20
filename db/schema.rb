@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_08_154100) do
+ActiveRecord::Schema.define(version: 2020_01_19_111341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -161,6 +161,16 @@ ActiveRecord::Schema.define(version: 2020_01_08_154100) do
     t.string "siret"
   end
 
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.float "price"
+    t.bigint "service_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["service_id"], name: "index_products_on_service_id"
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -171,7 +181,6 @@ ActiveRecord::Schema.define(version: 2020_01_08_154100) do
     t.string "name"
     t.text "description"
     t.float "price"
-    t.integer "duration"
     t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
