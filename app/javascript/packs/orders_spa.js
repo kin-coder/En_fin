@@ -135,6 +135,7 @@ function addProduitOnSubmit(){
 		sessionStorage.setItem("products",JSON.stringify(sessionPrestation))
 		addProduitInDom(currentProduit)
 	}
+
 	// Suppression
 	if (this.dataset.action == "delete") {
 		let sessionPrestation = JSON.parse(sessionStorage.getItem("products"))
@@ -153,10 +154,16 @@ function addProduitOnSubmit(){
 			let addp = document.getElementById("name-"+currentProduit[0])
 			if (nombres.length == 0) {
 				addp.remove()
-			}else{
+			}
+			else{
 				addp.innerHTML = listInputProduit(currentProduit,nombres)
 			}
 		}
+
+		if (sessionPrestation.length == 0) {
+			document.getElementById("info-produit").className ="hidden"
+		}
+
 		// Prix total
 		totalPrice()
 	}
@@ -185,12 +192,13 @@ function addProduitInDom(currentProduit){
 		addp.setAttribute("id","name-"+currentProduit[0])
 		addp.innerHTML = listInputProduit(currentProduit,nombres)
 		panier.appendChild(addp)
+		document.getElementById("info-produit").className =""
 	}
 }
 
 
 function listInputProduit(currentProduit,nombres){
-	return "<li>"+ currentProduit[1] +"</li><li>nombre : "+nombres.length+" Prix: "+ (nombres.length*currentProduit[2]).toFixed(2) +"</li>"
+	return "<li>"+ currentProduit[1] +": <br>"+nombres.length+"x"+currentProduit[2]+"="+(nombres.length*currentProduit[2]).toFixed(2) +"€ </li>"
 }
 /*
 

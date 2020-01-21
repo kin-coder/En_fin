@@ -64,6 +64,10 @@ h4, h5{
 
     /* Extra small devices (phones, 600px and down) */
     @media only screen and (max-width: 600px) {
+
+      #panierTable{
+        display:none;
+      }
       .select-dro{
         width: 100%;
         color: #666666;
@@ -116,10 +120,17 @@ h4, h5{
         margin-bottom: 10px;
         font-size: 13px;
       }
+      .panierContent{
+        color: gray;
+        text-align: left;
+        margin-left: 70px ;
+        margin-bottom: 10px;
+        font-size: 13px;
+      }
       .confirm-command{
         text-align: center;
         position: relative;
-        left: 100px;
+        left: 63px;
         top: 10px;
       }
 
@@ -127,7 +138,11 @@ h4, h5{
 
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media only screen and (min-width: 600px) {
-
+      .description-produit{
+        min-height: 100px;
+        color: gray;
+        width:80px;
+      }
       .select-dro{
         width: 100%;
         color: #666666;
@@ -203,6 +218,15 @@ h4, h5{
         position: relative;
         left: 5px;
       }
+      .panierContent{
+        color: gray;
+        text-align: left;
+        margin-left: 2px ;
+        margin-bottom: 10px;
+        font-size: 10px;
+        position: relative;
+        left: 5px;
+      }
       .confirm-command{
         text-align: center;
         position: relative;
@@ -216,6 +240,11 @@ h4, h5{
 
     /* Large devices (laptops/desktops, 992px and up) */
     @media only screen and (min-width: 992px) {
+      .description-produit{
+        min-height: 100px;
+        color: gray;
+        width:auto;
+      }
       .select-dro{
         width: 100%;
         color: #666666;
@@ -265,6 +294,13 @@ h4, h5{
         margin-bottom: 10px;
         font-size: 13px;
       }
+      .panierContent{
+        color: gray;
+        text-align: left;
+        margin-left: 40px ;
+        margin-bottom: 10px;
+        font-size: 13px;
+      }
       .confirm-command{
         text-align: center;
         position: relative;
@@ -273,3 +309,17 @@ h4, h5{
       }
     }
 
+    li{
+      list-style-type: none;
+    }
+
+
+    .image-produit{
+      height: 150px;
+      width: 120px;
+    }
+
+    .description-produit{
+      min-height: 100px;
+      color: gray;
+    }
