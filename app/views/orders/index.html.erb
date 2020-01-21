@@ -42,19 +42,15 @@
 				<div class="coordonnee">
 					<div>
 						<%= label_tag 'Pays', nil, class:"labelle" %>
-						<%= select_tag 'country_id', options_for_select(@pays.collect{ |u| [u.name] }),class:"field"%>
+						<%= select_tag 'country', options_for_select(@pays.collect{ |u| [u.name,u.id] }),class:"field",id:"Pays" %>
 					</div>
 					<div>
 						<%= label_tag "Department", nil, class:"labelle" %>
-						<%= select_tag "department_id", options_for_select(@departments.collect{ |d| ["#{d.code}-#{d.namedepartment} "] }),class:"field"%>
+						<%= select_tag "department", options_for_select(@departments.collect{ |d| ["#{d.code}-#{d.namedepartment}",d.id] }),class:"field",id:"Department"%>
 					</div>
 					<div>
 						<%= label_tag "Adresse", nil, class:"labelle" %>
-						<%= text_field_tag "Adresse", nil, class:"field" %>
-					</div>
-					<div>
-						<%= label_tag "Un message particulier ?", nil, class:"labelle"%> <br>
-						<%= text_area_tag "Un message particulier ?", nil, class:"field", placeholder:"Laisser votre message ici" %>
+						<%= text_field_tag "Adresse", nil, class:"field", required: true %>
 					</div>
 				</div>
 
@@ -72,6 +68,10 @@
 				<%= select_tag "Heure", options_for_select([["Choisisser l'heure", ""], "06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"]), class:"select-dro",id:'guiest_id1' %>
 				</div>
 
+				<div>
+					<%= label_tag "Un message particulier ?", nil, class:"labelle",for:"message"%> <br>
+					<%= text_area_tag "message", nil, class:"field", placeholder:"Laisser votre message ici" %>
+				</div>
 
 				<%= submit_tag("Reserver", id:"submi-tag") %>
 			<% end %>
