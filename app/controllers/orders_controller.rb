@@ -1,9 +1,6 @@
 class OrdersController < ApplicationController
   before_action :param_permit, only: [:index_addcategory, :index_delcategory]
   def index
-
-    session[:orderlist] = []
-
     @pays = Country.all
     @departments = Department.all
     params.permit(:name)
