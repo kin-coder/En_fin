@@ -66,7 +66,7 @@ h4, h5{
     @media only screen and (max-width: 600px) {
 
       #panierTable{
-display:none;
+        display:none;
       }
       .select-dro{
         width: 100%;
@@ -120,7 +120,7 @@ display:none;
         margin-bottom: 10px;
         font-size: 13px;
       }
-            .panierContent{
+      .panierContent{
         color: gray;
         text-align: left;
         margin-left: 70px ;
@@ -138,11 +138,11 @@ display:none;
 
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media only screen and (min-width: 600px) {
-.description-produit{
-min-height: 100px;
-color: gray;
-width:80px;
-}
+      .description-produit{
+        min-height: 100px;
+        color: gray;
+        width:80px;
+      }
       .select-dro{
         width: 100%;
         color: #666666;
@@ -218,7 +218,7 @@ width:80px;
         position: relative;
         left: 5px;
       }
-            .panierContent{
+      .panierContent{
         color: gray;
         text-align: left;
         margin-left: 2px ;
@@ -241,10 +241,10 @@ width:80px;
     /* Large devices (laptops/desktops, 992px and up) */
     @media only screen and (min-width: 992px) {
       .description-produit{
-min-height: 100px;
-color: gray;
-width:auto;
-}
+        min-height: 100px;
+        color: gray;
+        width:auto;
+      }
       .select-dro{
         width: 100%;
         color: #666666;
@@ -294,7 +294,7 @@ width:auto;
         margin-bottom: 10px;
         font-size: 13px;
       }
-            .panierContent{
+      .panierContent{
         color: gray;
         text-align: left;
         margin-left: 40px ;
@@ -309,17 +309,17 @@ width:auto;
       }
     }
 
-li{
-list-style-type: none;
-}
+    li{
+      list-style-type: none;
+    }
 
 
-.image-produit{
-height: 150px;
-width: 120px;
-}
+    .image-produit{
+      height: 150px;
+      width: 120px;
+    }
 
-.description-produit{
-min-height: 100px;
-color: gray;
-}
+    .description-produit{
+      min-height: 100px;
+      color: gray;
+    }

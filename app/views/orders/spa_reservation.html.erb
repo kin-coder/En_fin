@@ -88,6 +88,40 @@
         </table>
       </div>
 
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th id="tableHead">Produits supplémentaires à vendre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="row">
+                  <% @products.each do |product| %>
+                  <div class="col-sm-3">
+
+                    <div><img src="/img/products/<%= product.name %>.jpg" alt="" class="image-produit"> 
+                    </div>
+                    <div class="description-produit">
+                      <%= product.name %> <br>
+                      Prix : <%= product.price %> € <br>
+                      <strong>Nombres: </strong>   <i id="fa" class="fa fa-minus-circle btn-produits" data-zones="[<%= product.id %>,&quot;<%= product.name %>&quot;,<%= product.price %>]" data-action="delete"></i>
+                      <strong><span id="produits-number-<%= product.id %>">0</span></strong>
+                      <i id="fa" class="fa fa-plus-circle btn-produits" data-zones="[<%= product.id %>,&quot;<%= product.name %>&quot;,<%= product.price %>]" data-action="new"></i>
+                    </div>
+
+                  </div>
+                  <% end %>
+                </div>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
 
       <div class="table-responsive">
         <table class="table">
@@ -150,110 +184,80 @@
       </div>
 
 
-      <div class="table-responsive">
+
+
+      
+      <%= submit_tag("Confirmer commandes", id:"submi-tag",  class:"confirm-command btn btn-primary a-btn text-btn") %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-sm-3 sm-3-spa" id="panierTable">
+    <div class="innerWrapper">
+      <div class="table-responsive " >
         <table class="table">
           <thead>
             <tr>
-              <th id="tableHead">Produits supplémentaires à vendre</th>
+              <th id="tableHead">Votre Panier</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
-                <div class="row">
-                  <% @products.each do |product| %>
-                  <div class="col-sm-3">
+                <div id="card">
+                  <h4 class="panierTitle"><i class="fa fa-shopping-basket" aria-hidden="true" id="fa"></i> Vos commandes <i class="fa fa-shopping-basket" aria-hidden="true" id="fa"></i></h4>
 
-                    <div><img src="/img/products/<%= product.name %>.jpg" alt="" class="image-produit"> 
+                  <div id="group-panier-24h" class="hidden">
+                    <h5><i class="fa fa-hand-o-right" aria-hidden="true" id="fa"></i>Location spa pour 24H</h5>
+                    <div>
+                      <ul id="panierContent">
+                        <li>Nombre de spa gonflable: <span id="number-panier-24h"></span></li>
+                        <li>Prix: <span id="price-panier-24h"></span> €</li>
+                      </ul>
                     </div>
-                    <div class="description-produit">
-                      <%= product.name %> <br>
-                      Prix : <%= product.price %> € <br>
-                      <strong>Nombres: </strong>   <i id="fa" class="fa fa-minus-circle btn-produits" data-zones="[<%= product.id %>,&quot;<%= product.name %>&quot;,<%= product.price %>]" data-action="delete"></i>
-                      <strong><span id="produits-number-<%= product.id %>">0</span></strong>
-                      <i id="fa" class="fa fa-plus-circle btn-produits" data-zones="[<%= product.id %>,&quot;<%= product.name %>&quot;,<%= product.price %>]" data-action="new"></i>
+                  </div>
+
+                  <div id="group-panier-48h" class="hidden">
+                    <h5><i class="fa fa-hand-o-right" aria-hidden="true" id="fa"></i>Location spa pour 48H</h5>
+                    <div>
+                      <ul id="panierContent">
+                        <li>Nombre de spa gonflable: <span id="number-panier-48h"></span></li>
+                        <li>Prix: <span id="price-panier-48h"></span> €</li>
+                      </ul>
                     </div>
-
                   </div>
-                  <% end %>
-                </div>
 
-             </td>
-           </tr>
-         </tbody>
-       </table>
-     </div>
-     <%= submit_tag("Confirmer commandes", id:"submi-tag",  class:"confirm-command btn btn-primary a-btn text-btn") %>
-     <% end %>
-   </div>
- </div>
-
- <div class="col-sm-3 sm-3-spa" id="panierTable">
-  <div class="innerWrapper">
-    <div class="table-responsive " >
-      <table class="table">
-        <thead>
-          <tr>
-            <th id="tableHead">Votre Panier</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <div id="card">
-                <h4 class="panierTitle"><i class="fa fa-shopping-basket" aria-hidden="true" id="fa"></i> Vos commandes <i class="fa fa-shopping-basket" aria-hidden="true" id="fa"></i></h4>
-
-                <div id="group-panier-24h" class="hidden">
-                  <h5><i class="fa fa-hand-o-right" aria-hidden="true" id="fa"></i>Location spa pour 24H</h5>
-                  <div>
-                    <ul id="panierContent">
-                      <li>Nombre de spa gonflable: <span id="number-panier-24h"></span></li>
-                      <li>Prix: <span id="price-panier-24h"></span> €</li>
-                    </ul>
+                  <div id="group-panier-72h" class="hidden">
+                    <h5><i class="fa fa-hand-o-right" aria-hidden="true" id="fa"></i>Location spa pour 72H</h5>
+                    <div>
+                      <ul id="panierContent">
+                        <li>Nombre de spa gonflable: <span id="number-panier-72h"></span></li>
+                        <li>Prix: <span id="price-panier-72h"></span> €</li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
-
-                <div id="group-panier-48h" class="hidden">
-                  <h5><i class="fa fa-hand-o-right" aria-hidden="true" id="fa"></i>Location spa pour 48H</h5>
-                  <div>
-                    <ul id="panierContent">
-                      <li>Nombre de spa gonflable: <span id="number-panier-48h"></span></li>
-                      <li>Prix: <span id="price-panier-48h"></span> €</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div id="group-panier-72h" class="hidden">
-                  <h5><i class="fa fa-hand-o-right" aria-hidden="true" id="fa"></i>Location spa pour 72H</h5>
-                  <div>
-                    <ul id="panierContent">
-                      <li>Nombre de spa gonflable: <span id="number-panier-72h"></span></li>
-                      <li>Prix: <span id="price-panier-72h"></span> €</li>
-                    </ul>
-                  </div>
-                </div>
-               
-                <div id="list-produits" class="panierContent">
-                  <div id="info-produit" class="hidden">
+                  
+                  <div id="list-produits" class="panierContent">
+                    <div id="info-produit" class="hidden">
                       <h5><i class="fa fa-hand-o-right" aria-hidden="true" id="fa"></i>Vos produits</h5>
 
-                   </div>
+                    </div>
+
+                  </div>
 
                 </div>
 
-              </div>
+                <div class="totalPrix">
+                  <strong class="btn btn-primary btn-prix">Total : <span id="priceTotale">0</span> €</strong>
+                </div>
 
-              <div class="totalPrix">
-                <strong class="btn btn-primary btn-prix">Total : <span id="priceTotale">0</span> €</strong>
-              </div>
-
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 </div>
 </div>
 </section>
