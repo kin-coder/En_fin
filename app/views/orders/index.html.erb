@@ -1,17 +1,96 @@
-<br><br><br><br><br><br>
-
+<!-- css pour cette page  -->
+<link href="/css/reservation-spa.css" rel="stylesheet">
+<!-- accroche général -->
+<section class="clearfix pageTitleArea" style="background-image: url(/img/blog/massage3.jpg);">
 <div class="container">
-	<h1>Reservation <%= @service.name %></h1>
+    <div class="pageTitle">
+        <span class="title-service poli2">Reservation</span><br>
+        <span class="description-service poli2"><b>T</b>he real place of Mindfullness & Healthy body</span><br>
+    </div>
+</div>
+</section>
+<section class="clearfix orderSection padding">
+	<div class="container">
+		<div class="orderBox  patternbg">
+			Faites vos réservations
+		</div>
+		<div class="row">
+			<div class="col-sm-9 sm-9-spa">
+				<div class="innerWrapper">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th id="tableHead">Massage pour qui?</th>
 
-	<div class="row">
-		<div class="col-sm-9">
+									<th id="tableHead">Nombres</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% @categories.each do |category| %>
+								<tr id="tableContent">
+									<td id="tableContent"><%= category.name %></td>
+									<td>
+										<%= link_to raw('<i class="fa fa-minus-circle"></i>'), deletecategory_path(category.id), class: "delCateg",remote: true %>
+										<strong> <span id="puts-number-<%= category.name %>">  0  </span></strong>
+										<%= link_to raw('<i class="fa fa-plus-circle"></i>'), addcategory_path(category.id), class: "addCateg",remote: true %>
+									</td>
+								</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
 
-			<!-- ****** BOUTTON POUR L'AJOUT ET LA SUPPRESSION DE CARD ***** -->
-			<% @categories.each do |category| %>
-				<%= link_to "MOINS", deletecategory_path(category.id), class: "delCateg btn-primary",remote: true %>
-				<strong><%= category.name %> <span id="puts-number-<%= category.name %>"> 0 </span></strong>
-				<%= link_to "PLUS", addcategory_path(category.id), class: "addCateg btn-primary",remote: true %>
-			<% end %>
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th id="tableHead">Informations sur la préstation</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr id="tableContent">
+									<td>
+										<!-- *************** FORMULAIRE POUR LA PRESTATION ************* -->
+										<%= form_tag(saved_commande_path, id:"form", 'data-zones':"#{@listPrestation}", 'data-service':"#{@service.name}") do %>
+										<div id="list-prestation">
+											
+
+
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
 			<hr>
 
 			<div class="others-produits">
@@ -28,13 +107,7 @@
 			</div>
 
 			<hr>
-			<!-- *************** FORMULAIRE POUR LA PRESTATION ************* -->
-			<%= form_tag(saved_commande_path, id:"form", 'data-zones':"#{@listPrestation}", 'data-service':"#{@service.name}") do %>
-				<div id="list-prestation">
-					
 
-
-				</div>
 				<div id="all-produits">
 
 				</div>
