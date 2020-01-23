@@ -89,9 +89,10 @@ end
 10.times do |i|
 	c = Client.create(email: Faker::Internet.free_email, password:"email@mail.com",first_name: Faker::Name.first_name, last_name: Faker::Name.middle_name, adresse: Faker::Address.full_address, tel: Faker::PhoneNumber.phone_number_with_country_code)
 	o = Order.create(client: c,service:s3)
-	o.datetime = "20/01/20 12:30"
+	o.date = "20/01/20"
+    o.hours = "12:30"
 	o.adresse = c.adresse
-	o.description = Faker::Quotes::Shakespeare.king_richard_iii_quote
+	o.message = Faker::Quotes::Shakespeare.king_richard_iii_quote
 	o.save
 	o.department = Department.find(rand(Department.first.id .. Department.last.id))
 	key = rand(2)
