@@ -194,8 +194,8 @@ top: 10%;
  }
 
  .prix{
-    position: absolute;
-    left: 250px;
+/*    position: absolute;
+    left: 250px;*/
  }
 
  .massage-product{
@@ -205,11 +205,6 @@ top: 10%;
     
  }
 
- .prestation-category{
-   font-size: large;
-   position: relative;
-   left: 20%;
- }
 
 
  .optional-text {
@@ -431,5 +426,17 @@ right: 40px;
 .a-btn{
 text-align: center;
 }
+
+}
+
+.form-label{
+  position:absolute;
+  left:200px;
+}
+
+ .prestation-category{
+   font-size: large;
+ }
+
 
 }

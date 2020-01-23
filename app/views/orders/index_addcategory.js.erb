@@ -43,7 +43,7 @@ function addCategoryInputPanier(){
 	let div_card = document.createElement("div")
 	div_card.classList.add("card-<%= @category.name %>")
 	let ul = "list-card-<%= @category.name %>-"+number
-	div_card.innerHTML = "<div><%= @category.name %> <span id=\"price-"+number+"\">0</span> €</div><ul id=\""+ ul +"\"></ul>"
+	div_card.innerHTML = "<div><h5><i class=\"fa fa-hand-o-right\" aria-hidden=\"true\" id=\"fa\"></i> <%= @category.name %>: <span id=\"price-"+number+"\">0</span> €</h5></div><ul class=\"panierContentMassage\" id=\""+ ul +"\"></ul>"
 	principale.appendChild(div_card)
 }
 

@@ -49,24 +49,24 @@ function addDomIndex(){
 					isChecked = "checked"
 				}
 			}
-			listLi += "<li><span class=\"prix\">"+ categoryAdd[h][2] +" €</span><input type=\"checkbox\" value=\""+ categoryAdd[h][0] +"\" "+ isChecked +" id=\"toggle-label-"+ categoryAdd[h][0] +""+ index +"\" data-remote=\"true\" data-title=\""+ categoryAdd[h][1] +"\" data-category=\""+ categories[0] +"\" data-price=\""+ categoryAdd[h][2] +"\" data-url=\"/subcategory\" data-params=\"category="+ categories[1] +"&amp;subcategory="+ categoryAdd[h][0] +"&amp;index="+ index +"\" data-method=\"put\" class=\"form-input\" name=\"prestations["+ index +"][]\" data-index=\""+ index +"\"><div class=\"toggle\"><label class=\"form-label\" for=\"toggle-label-"+ categoryAdd[h][0] +""+ index +"\">"+ categoryAdd[h][1] +"</label></div></li>"
+			listLi += "<li><span class=\"prix\">"+ categoryAdd[h][2] +" €</span><input type=\"checkbox\" value=\""+ categoryAdd[h][0] +"\" "+ isChecked +" id=\"toggle-label-"+ categoryAdd[h][0] +""+ index +"\" data-remote=\"true\" data-title=\""+ categoryAdd[h][1] +"\" data-category=\""+ categories[0] +"\" data-price=\""+ categoryAdd[h][2] +"\" data-url=\"/subcategory\" data-params=\"category="+ categories[1] +"&amp;subcategory="+ categoryAdd[h][0] +"&amp;index="+ index +"\" data-method=\"put\" class=\"form-input\" name=\"prestations["+ index +"][]\" data-index=\""+ index +"\"><label class=\"form-label\" for=\"toggle-label-"+ categoryAdd[h][0] +""+ index +"\"><span class=\"text-label\">"+ categoryAdd[h][1] +"</span></label></li>"
 		}
 		let divAdd = document.createElement("div")
 		divAdd.classList.add("group-form-"+ categories[0])
-		divAdd.innerHTML = "<h5 class=\"prestation-category\">"+ categories[0] +"</h5><input type=\"hidden\" name=\"category[]\" value=\""+ categories[1] +"\"><ul>"+ listLi +"</ul>"
+		divAdd.innerHTML = "<h5 class=\"prestation-category\">"+ categories[0] +"</h5><input type=\"hidden\" name=\"category[]\" value=\""+ categories[1] +"\"><ul class=\"prestations\">"+ listLi +"</ul>"
 		addListPrestations.appendChild(divAdd)
 		// Ajoutes tous les sous category dans le panier
 		let listLiCard = ""
 		let totalCardPrice = 0
 		for (var g = 0 ; g < prestations.length ; g++) {
-			listLiCard += "<li id=\"posibilities-"+ prestations[g][1] +"-"+ index +"\">"+ prestations[g][1] +"</li>"
+			listLiCard += "<li class=\"listMassage\" id=\"posibilities-"+ prestations[g][1] +"-"+ index +"\">"+ prestations[g][1] +"</li>"
 			totalCardPrice += prestations[g][2]
 		}
 
 		// Ajout dans la liste des panniers
 		let divPanier = document.createElement("div")
 		divPanier.classList.add("card-"+ categories[0])
-		divPanier.innerHTML = "<div>"+ categories[0] +" <span id=\"price-"+ index +"\">"+ totalCardPrice.toFixed(2) +"</span> €</div><ul id=\"list-card-"+ categories[0] +"-"+ index +"\">"+ listLiCard +"</ul>"
+		divPanier.innerHTML = "<div><h5><i class=\"fa fa-hand-o-right\" aria-hidden=\"true\" id=\"fa\"></i>"+ categories[0] +": <span id=\"price-"+ index +"\">"+ totalCardPrice.toFixed(2) +"</span> €</h5></div><ul class=\"panierContentMassage\" id=\"list-card-"+ categories[0] +"-"+ index +"\">"+ listLiCard +"</ul>"
 		addListPanier.appendChild(divPanier)
 	} // fin pour la boucle sessionPrestation
 	totalPrice()
@@ -76,6 +76,8 @@ function addDomIndex(){
 		document.getElementById("puts-number-"+sessionPrestation[l].category[0]).innerHTML = document.getElementsByClassName("group-form-"+sessionPrestation[l].category[0]).length
 	}
 }
+
+
 
 
 

@@ -45,6 +45,7 @@ function addSubcategoryAtDom(){
 		li.remove()
 	}else{
 		let list = document.createElement("li")
+		list.classList.add("listMassage")
 		list.setAttribute("id","posibilities-<%= @subcategory.name %>-<%= @index %>") // pour la relation label input
 		list.innerHTML = "<%= @subcategory.name %>"
 		ul.appendChild(list)
