@@ -119,10 +119,12 @@
 											<%= label_tag 'Pays', nil, class:"labelle" %>
 											<%=select_tag 'country_id', options_for_select(@pays.collect{ |u| [u.name] }),class:"field"%>
 										</div>
+
 										<div>
-											<%= label_tag "Department", nil, class:"labelle" %>
-											<%= select_tag "department_id", options_for_select(@departments.collect{ |d| ["#{d.code}-#{d.namedepartment} "] }),class:"field"%>
-										</div>
+						                  <%= label_tag "Departement", nil, class:"labelle" %>
+						                  <%= select_tag "department", options_for_select(@departments.collect{ |d| ["#{d.code}-#{d.namedepartment} ",d.id] }),class:"field",id:"Departement"%>
+						                </div>
+
 										<div>
 											<%= label_tag "Adresse", nil, class:"labelle" %>
 											<%= text_field_tag "Adresse", nil, class:"field" %>
