@@ -1,6 +1,6 @@
 <br><br><br><br>
 <div class="container">
-	<h1>Recapitulatif de commande</h1>
+	<h1>Recapitulatif de commande: Reservation Massage</h1>
 	<h2>Prestations</h2>
 	<% @categoryAndSubCategory.each do |category| %>
 		<div class="prestation">
@@ -18,7 +18,7 @@
 	<% @produitList.each do |produit| %>
 		<%= produit[1].name %> : <%= produit[0] %> x <%= produit[1].price %> € = <%= (produit[1].price*produit[0]).round(2) %> €<br>
 	<% end %>
-
+	
 	<hr>
 	<h2>Autre information</h2>
 	pays : <%= @pays.name %> <br>
