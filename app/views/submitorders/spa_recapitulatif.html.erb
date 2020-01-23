@@ -2,23 +2,28 @@
 <div class="container">
 	<h1>Recapitulatif de commande</h1>
 	<h2>Prestations</h2>
-	<% @categoryAndSubCategory.each do |category| %>
+	
+	<% @subPrestations.each do |sub| %>
 		<div class="prestation">
-			<li><%= category[0].name %></li>
+			<li>Location SPA pour <%= sub[0].name %>h à <%= sub[0].price %> €</li>
 			<ul>
-			<% category[ 1 .. category.length-1 ].each do |subcategory| %>
-				<li><%= subcategory.name %>: <%= subcategory.price %> €</li>
-			<% end %>
+				<li>Type de logement: <%= sub[1][0] %></li>
+				<li>Type d'installation: <%= sub[1][1] %></li>
+				<li>Système d'eau: <%= sub[1][2] %></li>
 			</ul>
 		</div>
 	<% end %>
 	<hr>
 
 	<h2>Produits</h2>
-	<% @produitList.each do |produit| %>
-		<%= produit[1].name %> : <%= produit[0] %> x <%= produit[1].price %> € = <%= (produit[1].price*produit[0]).round(2) %> €<br>
+	<% if @produitList.length != 0 %>
+		<% @produitList.each do |produit| %>
+			<%= produit[1].name %> : <%= produit[0] %> x <%= produit[1].price %> € = <%= (produit[1].price*produit[0]).round(2) %> €<br>
+		<% end %>
+	<% else %>
+		<p>Aucun produit selectionné</p>
 	<% end %>
-	
+
 	<hr>
 	<h2>Autre information</h2>
 	pays : <%= @pays.name %> <br>

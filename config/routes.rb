@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   post '/confirmer-commande', to:'submitorders#index_save', as: "saved_commande"
   post '/confirmer-commande/spa', to:'submitorders#spa_reservation', as: "saved_spa"
   #Enregistrement dans une table
-  get '/confirmer-commande/recapitulatif', to: "submitorders#index_recapitulatif", as:"recapitulatif"
+  get '/confirmer-commande/recapitulatif-reservation', to: "submitorders#index_recapitulatif", as:"recapitulatif_index"
+  get '/confirmer-commande/recapitulatif-spa', to: "submitorders#spa_recapitulatif", as:"recapitulatif_spa"
   
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
