@@ -16,9 +16,13 @@ Rails.application.routes.draw do
   get '/deletecategory/:id', to: "orders#index_delcategory", as:"deletecategory"
   put '/subcategory', to: "orders#index_subcategory", as:"subcategory"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-  #Enregistrement des donnés du commande dans les table
+  #Enregistrement des donnés du commande dans une session
   post '/confirmer-commande', to:'submitorders#index_save', as: "saved_commande"
   post '/confirmer-commande/spa', to:'submitorders#spa_reservation', as: "saved_spa"
+  #Enregistrement dans une table
+  get '/confirmer-commande/recapitulatif-reservation', to: "submitorders#index_recapitulatif", as:"recapitulatif_index"
+  get '/confirmer-commande/recapitulatif-spa', to: "submitorders#spa_recapitulatif", as:"recapitulatif_spa"
+  
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
   devise_for :admins
