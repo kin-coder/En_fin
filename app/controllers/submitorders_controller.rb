@@ -220,7 +220,7 @@ class SubmitordersController < ApplicationController
       produits.each do |produit| # [nb,objet_produit]
         current_price += produit[0]*produit[1].price
       end
-      return current_price
+      return current_price.round(2)
     end
 
     def totalPriceSpa(prestations,produits) # [[Subcategory.find(sub[0]),info]]
@@ -231,6 +231,6 @@ class SubmitordersController < ApplicationController
       produits.each do |produit| # [nb,objet_produit]
         current_price += produit[0]*produit[1].price
       end
-      return current_price
+      return current_price.round(2)
     end
 end
