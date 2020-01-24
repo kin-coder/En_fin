@@ -43,14 +43,14 @@
 	      </div>
 	    <% end %>
 	    <label class="amount">
-	      <span>Amount: € <%= @priceTotal %></span>
+	      <span>Prix Total: <%= @priceTotal %> € + Un Acompte de 20 € = <%= @priceTotal+20 %> €</span>
 	    </label>
 	  </article>
 
 	  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 	          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-	          data-description="A month's subscription"
-	          data-amount="<%= (@priceTotal*100).to_i %>"
+	          data-description="Paiement"
+	          data-amount="<%= (@priceTotal*100 + 2000).to_i %> €"
 	          data-currency="eur"
 	          data-locale="auto">
 	   </script>

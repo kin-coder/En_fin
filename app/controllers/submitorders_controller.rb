@@ -50,8 +50,8 @@ class SubmitordersController < ApplicationController
 # ------------------------- SAVE IN TABLE IF PAYED ----------------------- #
 
   def index_pay_reservation
-     # Amount in cents
-    @amount = (@priceTotal*100).to_i
+    # Amount in cents
+    @amount = (@priceTotal*100 + 2000).to_i
 
     customer = Stripe::Customer.create({
       email: params[:stripeEmail],
@@ -138,7 +138,7 @@ class SubmitordersController < ApplicationController
 # ------------------------- SAVE IN TABLE IF PAYED ----------------------- #
   def spa_pay_reservation
     # Amount in cents
-      @amount = (@priceTotal*100).to_i
+      @amount = (@priceTotal*100+2000).to_i
       customer = Stripe::Customer.create({
         email: params[:stripeEmail],
         source: params[:stripeToken],

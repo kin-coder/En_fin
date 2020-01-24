@@ -200,9 +200,5 @@ function addProduitInDom(currentProduit){
 function listInputProduit(currentProduit,nombres){
 	return "<li>"+ currentProduit[1] +": <br>"+nombres.length+"x"+currentProduit[2]+"="+(nombres.length*currentProduit[2]).toFixed(2) +"€ </li>"
 }
-/*
 
-<input type="hidden" name="products[]" value="2" class="hidden-2">
-<input type="hidden" name="products[]" value="1" class="hidden-1">
-<input type="hidden" name="products[]" value="2" class="hidden-2">
-*/
+console.log(document.getElementById("submi-tag"))

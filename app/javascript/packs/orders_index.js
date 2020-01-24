@@ -77,13 +77,6 @@ function addDomIndex(){
 	}
 }
 
-
-
-
-
-
-
-
 /*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/
 /* Ajouts et suppresion d'element dans la liste des produits */
@@ -180,3 +173,8 @@ function totalPrice(){
 	}
 	document.getElementById("priceTotale").innerHTML = prixTotal.toFixed(2)
 }
+
+console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+document.getElementById("submi-tag")
+console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
