@@ -16,7 +16,7 @@ s4 = Service.create(name:"Location spa")
 
 # =================== PRODUITS ========================== #
 
-listProduits1 = ["HUILE VEGETALE DE RICIN BIO 100ML","PROPOS'NATURE HUILE VEGETALE DE RICIN BIO 100ML"  ,"Huile végétale de Ricin Bio  Ricinus communis","HUILE VEGETALE DE COCO BIO 100ML","PROPOS'NATURE HUILE VEGETALE DE COCO BIO 100ML","Huile végétale de Coco Bio  Coco nucifera","URGO CREME CHAUFFANTE MASSAGE 100ML","URGO URGO CREME CHAUFFANTE MASSAGE 100ML"]
+listProduits1 = ["HUILE DE RICIN 100ML","PROPOS'NATURE HUILE DE RICIN100ML"  ,"Huile Ricinus communis","HUILE DE COCO 100ML","PROPOS'NATURE BIO 100ML","Huile Coco nucifera","URGO CREME MASSAGE 100ML","CREME CHAUFFANTE 100ML"]
 
 listProduits1.each do |produit|
 	Product.create(name: produit, price: rand(9.0 .. 30).to_s[0 .. 4].to_f, service: s3)
