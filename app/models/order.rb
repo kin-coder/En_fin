@@ -8,6 +8,7 @@ class Order < ApplicationRecord
   #relation N-N entre la commande et le prestataire pour sauvgarder les prestataire en attente
   has_many :prestataire_orders, dependent: :destroy
   has_many :prestataires, through: :prestataire_orders
-  #pour la création d'une commande spa
-  has_one :orderinfo
+  #pour la sauvegarde des produits N-N produit - order
+  has_many :order_products, dependent: :destroy
+  has_many :products, through: :order_products
 end

@@ -43,4 +43,12 @@ class StaticPageController < ApplicationController
   
   end
 
+  def propos
+  
+  end
+
+  def service
+  
+  end
+
 end

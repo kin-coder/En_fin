@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cocooning</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -47,12 +47,11 @@
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+<![endif]-->
 <style>
   .mail{
     Color:white !important;
   }
-
 </style>
 </head>
 
@@ -67,15 +66,15 @@
         <div class="container">
           <div class="top-bar-right">
             <ul class="list-inline">
-              <li><a href="" class="mail"><i class="fa fa-envelope mail" aria-hidden="true"></i> info@yourdomain.com</a></li>
-              <li><span><i class="fa fa-phone" aria-hidden="true"></i>+1 234 567 8900</span></li>
+              <li><a href="" class="mail"><i class=" " aria-hidden="true"></i></a></li>
+              <li><span><i class=" " aria-hidden="true"></i></span></li>
             </ul>
           </div>
         </div>
       </div>
 
       <!-- NAVBAR -->
-      <nav id="menuBar" class="navbar navbar-default lightHeader" >
+      <nav id="menuBar" class="navbar navbar-default lightHeader">
         <div class="container">
 
           <!-- Brand and toggle get grouped for better mobile display -->
@@ -93,10 +92,10 @@
           <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
               <li class="active">
-              <%= link_to "Accueil", root_path %>
+                <%= link_to "Accueil", root_path %>
               </li>
               <li class=" dropdown singleDrop">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
+                <a href="<%=service_path%>" class="dropdown-toggle">Services</a>
                 <ul class="dropdown-menu dropdown-menu-left">
                   <li><%= link_to "Massage", massage_path %></li>
                   <li><%= link_to "Location de spa", spa_path %></li>
@@ -111,13 +110,13 @@
               </li>
               <%if client_signed_in?%>
               <li>
-              <%= link_to "Se deconnecter", destroy_client_session_path, method:"delete"  %>
+                <%= link_to "Se deconnecter", destroy_client_session_path, method:"delete"  %>
               </li>
               <% else %>
               <li class=" dropdown singleDrop">
                 <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Connexion</a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to "Se connecter", '#', data: { toggle: 'modal', target: '#appoinmentModal'} %></li> 
+                  <li><%= link_to "Se connecter", new_client_session_path%></li> 
                   <li><%= link_to "S'inscrire", new_client_registration_path%></li> 
                 </ul>  
               </li>
@@ -166,17 +165,17 @@
                 <ul class="list-unstyled">
                   <li><a href="<%=faq_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>FAQ</a></li>
                   <li><a href="<%=comment_ca_marche_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Comment ça marche?</a></li>
-                  <li><a href="#service"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Nos services</a></li>
+                  <li><a href="<%=service_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Nos services</a></li>
                   <li><a href="<%=cgu_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Conditions génerales CGU</a></li>
                   <li><a href="<%=engagement_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Nos engagements</a></li>
-                  <li><a href="#contacter"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Contactez-nous</a></li>
-                  <li><a href="#a-propos"><i class="fa fa-angle-double-right" aria-hidden="true"></i>A propos de nous</a></li>
+                  <li><a href="<%=contact_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Contactez-nous</a></li>
+                  <li><a href="<%=propos_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>A propos de nous</a></li>
                 </ul>
               </div>
             </div>
             <div class="col-sm-3 col-xs-12">
               <div class="footerInfoTitle">
-                <h4>Gallerie Photo</h4>
+                <h4>Galerie Photos</h4>
               </div>
               <div class="footerGallery row">
                 <div class="col-xs-4">
@@ -243,33 +242,33 @@
     <div class="modal-dialog">
       <!-- MODAL CONTENT-->
       <div class="modal-content">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-     
-<div class="panel panel-default formPart panel-login" >
-<div class="panel-heading patternbg" ><center> <span>Connectez-vous</span></center></div>
-<div class="panel-body panel-body-login">
-<div class="row">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="col-sm-12">
-    <div class="form-group">
-      <i class="fa fa-envelope" aria-hidden="true"></i>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"email" %>
-    </div>
-    <div class="form-group">
-      <i class="fa fa-key" aria-hidden="true"></i>
-      <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"fullname", placeholder:"mot de pass" %>
-    </div>
-    <div class="actions">
-      <center><%= f.submit "Connecter", class:"btn btn-primary btn-block" %></center> </br>
-      <center><p>Pas encore inscris? <%= render "clients/shared/links" %></p></center>
-    </div>
-    <% end %>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+        <div class="panel panel-default formPart panel-login" >
+          <div class="panel-heading patternbg" ><center> <span>Connectez-vous</span></center></div>
+          <div class="panel-body panel-body-login">
+            <div class="row">
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"email" %>
+                </div>
+                <div class="form-group">
+                  <i class="fa fa-key" aria-hidden="true"></i>
+                  <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"fullname", placeholder:"mot de pass" %>
+                </div>
+                <div class="actions">
+                  <center><%= f.submit "Connecter", class:"btn btn-primary btn-block" %></center> </br>
+                  <center><p>Pas encore inscris? <%= render "clients/shared/links" %></p></center>
+                </div>
+                <% end %>
 
-</div>
-</div>
-</div>
+              </div>
+            </div>
+          </div>
 
-            
+          
         </div>
       </div>
     </div>

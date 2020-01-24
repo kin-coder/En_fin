@@ -1,0 +1,51 @@
+function addCategoryInputInSession(){
+	let longeurs = JSON.parse(sessionStorage.getItem("input")) + 1
+	sessionStorage.setItem("input",longeurs)
+
+	/* json pour sauver les prestation dans la session */
+	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestations"))
+	sessionPrestation.push({ "id":longeurs,"category":["<%= @category.name %>",<%= @category.id %>],"prestation":[] })
+	sessionStorage.setItem("prestations",JSON.stringify(sessionPrestation))
+
+	/* Ajouter l'element dans le dom */
+	let div_principale = document.getElementById("list-prestation")
+	let div = document.createElement("div")
+	div.classList.add("group-form-<%= @category.name %>")
+
+	div_principale.appendChild(div)
+	div.innerHTML = "<%= j render 'index_sub_reservation', subcategories: @subcategories %>"
+	
+	/* List de tous les input + Ajout de class + Ajout de id */
+	const inpuptlist = document.querySelectorAll('.check-tmp')
+	inpuptlist.forEach(input => {
+		input.dataset.params += "&index=" + longeurs
+		input.setAttribute("class","form-input")
+		let id = input.getAttribute("id")
+		input.setAttribute("id",id + longeurs) // pour la relation label input
+		input.setAttribute("name","prestations["+longeurs+"][]")
+		input.setAttribute("data-index", longeurs)
+	});
+
+	/* List de tous les label + Ajout de class + Ajout de id pour la liaison */
+	const label_list = document.querySelectorAll('.label-chek-tmp')
+	label_list.forEach(label => {
+		let fors = label.getAttribute("for")      // toggle-label-142
+		label.setAttribute("for",fors + longeurs) // pour la relation label input
+		label.setAttribute("class","form-label")
+	});
+	// Nombre de category
+	document.getElementById("puts-number-<%= @category.name %>").innerHTML = document.getElementsByClassName("group-form-<%= @category.name %>").length
+}
+
+function addCategoryInputPanier(){
+	let principale = document.getElementById("card")
+	let number = JSON.parse(sessionStorage.getItem("input"))
+	let div_card = document.createElement("div")
+	div_card.classList.add("card-<%= @category.name %>")
+	let ul = "list-card-<%= @category.name %>-"+number
+	div_card.innerHTML = "<div><h5><i class=\"fa fa-hand-o-right\" aria-hidden=\"true\" id=\"fa\"></i> <%= @category.name %>: <span id=\"price-"+number+"\">0</span> €</h5></div><ul class=\"panierContentMassage\" id=\""+ ul +"\"></ul>"
+	principale.appendChild(div_card)
+}
+
+addCategoryInputInSession()
+addCategoryInputPanier()

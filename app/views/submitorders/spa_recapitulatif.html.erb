@@ -1,0 +1,60 @@
+<br><br><br><br>
+<div class="container">
+	<h1>Recapitulatif de commande: Location Spa à Domicile</h1>
+	<h2>Prestations</h2>
+	
+	<% @subPrestations.each do |sub| %>
+		<div class="prestation">
+			<li>Location SPA pour <%= sub[0].name %>h à <%= sub[0].price %> €</li>
+			<ul>
+				<li>Type de logement: <%= sub[1][0] %></li>
+				<li>Type d'installation: <%= sub[1][1] %></li>
+				<li>Système d'eau: <%= sub[1][2] %></li>
+			</ul>
+		</div>
+	<% end %>
+	<hr>
+
+	<h2>Produits</h2>
+	<% if @produitList.length != 0 %>
+		<% @produitList.each do |produit| %>
+			<%= produit[1].name %> : <%= produit[0] %> x <%= produit[1].price %> € = <%= (produit[1].price*produit[0]).round(2) %> €<br>
+		<% end %>
+	<% else %>
+		<p>Aucun produit selectionné</p>
+	<% end %>
+
+	<hr>
+	<h2>Autre information</h2>
+	pays : <%= @pays.name %> <br>
+	departement : <%= @departement.namedepartment %> <br>
+	adresse : <%= @adresse %> <br>
+	date : <%= @date %> <br>
+	heurs : <%= @heure %> <br>
+	<hr>
+
+	<strong>Prix Total :</strong> <%= @priceTotal %> € <br>
+
+	<%= form_tag validation_spa_path do %>
+	  <article>
+	    <% if flash[:error].present? %>
+	      <div id="error_explanation">
+	        <p><%= flash[:error] %></p>
+	      </div>
+	    <% end %>
+	    <label class="amount">
+	      <span>Prix Total: <%= @priceTotal %> € + Un Acompte de 20 € = <%= @priceTotal+20 %> €</span>
+	    </label>
+	  </article>
+
+	  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+	          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+	          data-description="Paiement"
+	          data-amount="<%= (@priceTotal*100 + 2000).to_i %> €"
+	          data-currency="eur"
+	          data-locale="auto">
+	   </script>
+	<% end %>
+
+</div>
+<br><br><br><br>

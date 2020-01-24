@@ -1,0 +1,77 @@
+.bak{
+
+    background-image: url("http://localhost:3000/img/home/engagement.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+}
+
+#ok{
+display: inline-block;
+font: normal normal normal 14px/1 FontAwesome;
+font-size: xxx-large;
+text-rendering: auto;
+/* -webkit-font-smoothing: antialiased; */
+color: rgb(238, 17, 190);
+
+}
+
+#bath{
+display: inline-block;
+font: normal normal normal 14px/1 FontAwesome;
+font-size: xxx-large;
+text-rendering: auto;
+/* -webkit-font-smoothing: antialiased; */
+color: rgb(238, 17, 190);
+
+}
+
+#key{
+display: inline-block;
+font: normal normal normal 14px/1 FontAwesome;
+font-size: xxx-large;
+text-rendering: auto;
+/* -webkit-font-smoothing: antialiased; */
+color: rgb(238, 17, 190);
+
+}
+
+#tarif{
+display: inline-block;
+font: normal normal normal 14px/1 FontAwesome;
+font-size: xxx-large;
+text-rendering: auto;
+/* -webkit-font-smoothing: antialiased; */
+color: rgb(238, 17, 190);
+
+}
+
+#respect{
+display: inline-block;
+font: normal normal normal 14px/1 FontAwesome;
+font-size: xxx-large;
+text-rendering: auto;
+/* -webkit-font-smoothing: antialiased; */
+color: rgb(238, 17, 190);
+
+}
+
+#flexible{
+display: inline-block;
+font: normal normal normal 14px/1 FontAwesome;
+font-size: xxx-large;
+text-rendering: auto;
+/* -webkit-font-smoothing: antialiased; */
+color: rgb(238, 17, 190);
+
+}
+
+.contenu{
+    text-align: left;
+    position: relative;
+    top:50px;
+    left:80px;
+    margin-bottom:50px;
+
+}

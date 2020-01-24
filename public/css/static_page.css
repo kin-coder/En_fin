@@ -148,7 +148,7 @@ top: 10%;
 .pageTitle .description-service {
    padding-top: 50px;
    text-align: left;
-   font-size: 15px;
+   /* font-size: 5px!important; */
    line-height: 15px;
    color:#ffffff;
    font-family: 'Raleway';
@@ -158,6 +158,9 @@ top: 10%;
    top: 20px;
    border-radius: 10px;
    margin-right: 15px;
+   padding-right: 15px;
+   padding-left: 15px;
+
 }
 @media (min-width: 700px) {
    .btn-moin{
@@ -191,8 +194,8 @@ top: 10%;
  }
 
  .prix{
-    position: absolute;
-    left: 250px;
+/*    position: absolute;
+    left: 250px;*/
  }
 
  .massage-product{
@@ -202,11 +205,6 @@ top: 10%;
     
  }
 
- .prestation-category{
-   font-size: large;
-   position: relative;
-   left: 20%;
- }
 
 
  .optional-text {
@@ -225,7 +223,7 @@ top: 10%;
    width: 372px;
    font-size: 25px;
    font-family: 'Times New Roman', Times, serif;
-   border: 1px rgb(102, 101, 97) solid;
+   /* border: 1px rgb(102, 101, 97) solid; */
    padding-top: 5px;
  }
  
@@ -383,3 +381,62 @@ top: 10%;
     color: #ec5598;
     font-size: xx-large;
  }
+
+
+
+.text-btn{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+.a-btn{
+text-align: center;
+position: relative;
+right: 10px;
+}
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+.a-btn{
+text-align: center;
+position: relative;
+right: 10px;
+}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+.a-btn{
+position: relative;
+right: 40px;
+}
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+.a-btn{
+text-align: center;
+}
+
+}
+
+.form-label{
+  position:absolute;
+  left:200px;
+}
+
+ .prestation-category{
+   font-size: large;
+ }
+
+
+}

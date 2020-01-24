@@ -1,0 +1,16 @@
+<h5 class="prestation-category"><%= @category.name %></h5>
+<ul class="prestations">
+	<% text = true %>
+	<% subcategories.each do |subcategory| %>
+	<% if text %>
+	<% text = false %>
+	<input type="hidden" name="category[]" value="<%= @category.id %>">
+	<% end %>
+	<li><span class="prix"><%= subcategory.price %> € </span>
+		<input type="checkbox" value="<%= subcategory.id %>" id="toggle-label-<%= subcategory.id %>" data-remote="true" data-title="<%= subcategory.name %>" data-category="<%= @category.name %>" data-price="<%= subcategory.price %>" data-url="/subcategory" data-params="category=<%= @category.id %>&amp;subcategory=<%= subcategory.id %>" data-method="put" class="check-tmp" >
+		<label class="label-chek-tmp" for="toggle-label-<%= subcategory.id %>"> <span class="text-label"><%= subcategory.name %></span> </label>
+	</li>
+	<% end %>
+</ul>
+
+

@@ -1,0 +1,13 @@
+.faq{
+    background-image: url(http://localhost:3000/img/blog/faq6.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 1450px;
+    height: 280px;
+}
+
+.police_massage{
+
+    font-family: Jazz LET, fantasy;
+    z-index: -4;
+  }

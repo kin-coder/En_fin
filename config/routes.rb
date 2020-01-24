@@ -9,18 +9,22 @@ Rails.application.routes.draw do
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # lien pour le panier dynamique
   # pour le spa
-  get '/location-spa/prix-reservation', to:'orders#location_spa_reservation', as:'resrvation_spa'
-  get '/location-spa/prix-reservation/:id/add', to:'orders#add_location_spa', as:"add_order_spa"
-  get '/location-spa/prix-reservation/:id/del', to:'orders#del_location_spa', as:"del_order_spa"
+  get '/location-spa/prix-reservation', to:'orders#spa_reservation', as:'resrvation_spa'
   # autre
   get ':name/prix-reservation', to:'orders#index', as:"reservation"
-  get '/addcategory/:id', to: "orders#addcategory", as:"addcategory"
-  get '/deletecategory/:id', to: "orders#delcategory", as:"deletecategory"
-  put '/subcategory', to: "orders#subcategory", as:"subcategory"
+  get '/addcategory/:id', to: "orders#index_addcategory", as:"addcategory"
+  get '/deletecategory/:id', to: "orders#index_delcategory", as:"deletecategory"
+  put '/subcategory', to: "orders#index_subcategory", as:"subcategory"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-  #Enregistrement des donnés du commande dans les table
-  get '/confirmer-commande', to:'submitorders#save', as: "saved_commande"
+  # Enregistrement des donnés du commande dans une session
+  post '/confirmer-commande', to:'submitorders#index_save', as: "saved_commande"
   post '/confirmer-commande/spa', to:'submitorders#spa_reservation', as: "saved_spa"
+  # Page pour les recap des commande
+  get '/recapitulatif-commande/', to: "submitorders#index_recapitulatif", as:"recapitulatif_index"
+  get '/recapitulatif-commande/locationspa', to: "submitorders#spa_recapitulatif", as:"recapitulatif_spa"
+  # Routes pour la sauvegarde des donné après le payment
+  post '/validation-commande/', to: "submitorders#index_pay_reservation", as:"validation_index"
+  post '/validation-commande/locationspa', to: "submitorders#spa_pay_reservation", as:"validation_spa"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
   devise_for :admins
@@ -54,6 +58,8 @@ Rails.application.routes.draw do
   get '/show_produit', to:'static_page#show_produit', as: "show_produit"
   # routes page Location SPA
   get '/locationspa', to:'static_page#location_spa', as: "location_spa"
+  # routes page Service SPA
+  get '/service', to:'static_page#service', as: "service"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Autre page
   get '/contact', to:'static_page#contact', as: "contact"
@@ -62,5 +68,6 @@ Rails.application.routes.draw do
   get '/conditions-generales', to:'static_page#cgu', as: "cgu"
   get '/faq', to:'static_page#faq', as: "faq"
   get "/engagement", to:'static_page#engagement', as: "engagement"
+  get "/propos", to:'static_page#propos', as: "propos"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 end
