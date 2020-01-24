@@ -1,10 +1,10 @@
 class SubmitordersController < ApplicationController
 # ------------------------- SAVE AT SESSION SUBMIT ----------------------- #
-  before_action :index_validate_session, only: [:index_recapitulatif, :index_pay_reservation]
-  before_action :spa_validate_session, only: [:spa_recapitulatif, :spa_pay_reservation]
+before_action :index_validate_session, only: [:index_recapitulatif, :index_pay_reservation]
+before_action :spa_validate_session, only: [:spa_recapitulatif, :spa_pay_reservation]
 
-  def index_save
-    @categoryAndSubCategory = []
+def index_save
+  @categoryAndSubCategory = []
     # ---------------- Enregistreer la category_id et les souscategory_id 
     # dans un tableau [4,"5,4"] "  " soucategory
     subcategories = params[:prestations]
@@ -43,13 +43,13 @@ class SubmitordersController < ApplicationController
 
 # --------------------- VIEW RECAPITULATIF COMMANDE ----------------------- #
 
-  def index_recapitulatif
+def index_recapitulatif
 
-  end
+end
 
 # ------------------------- SAVE IN TABLE IF PAYED ----------------------- #
 
-  def index_pay_reservation
+def index_pay_reservation
     # Amount in cents
     @amount = (@priceTotal*100 + 2000).to_i
 
@@ -77,19 +77,19 @@ class SubmitordersController < ApplicationController
       order.save
       # table en relation pour la prestations
         # @categoryAndSubCategory # [4,[5,4]]"
-      @categoryAndSubCategory.each do |catAsub|
-        orderCategory = OrderCategory.create(order: order, category: catAsub[0])
-        orderCategory.subcategories = catAsub[1 .. catAsub.length-1]
-      end
+        @categoryAndSubCategory.each do |catAsub|
+          orderCategory = OrderCategory.create(order: order, category: catAsub[0])
+          orderCategory.subcategories = catAsub[1 .. catAsub.length-1]
+        end
         # @produitList [nb,objet_produit]"
-      @produitList.each do |produit|
-        OrderProduct.create(number: produit[0], product: produit[1], order: order)
-      end
+        @produitList.each do |produit|
+          OrderProduct.create(number: produit[0], product: produit[1], order: order)
+        end
       # ClientMailer.with(client: Client.last, commande: order).validation_commande.deliver_now
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to recapitulatif_index_path
-  end
+    end
 
 # ----------------------------------------------------------------------- #
 # ----------------------------------------------------------------------- #
@@ -97,9 +97,9 @@ class SubmitordersController < ApplicationController
 # ----------------------------------------------------------------------- #
 
 # ------------------------- SAVE AT SESSION SUBMIT ----------------------- #
-  def spa_reservation
-    subcategory = params[:subcategory]
-    if subcategory
+def spa_reservation
+  subcategory = params[:subcategory]
+  if subcategory
       # ~~~~~~~~~~~~~~~~ PRESTATION SPA ~~~~~~~~~~~~~~~~~~~~~
       @prestations = []
       n = 0
@@ -131,24 +131,24 @@ class SubmitordersController < ApplicationController
   end
 
 # --------------------- VIEW RECAPITULATIF COMMANDE ------------------- #
-  def spa_recapitulatif
+def spa_recapitulatif
 
-  end
+end
 
 # ------------------------- SAVE IN TABLE IF PAYED ----------------------- #
-  def spa_pay_reservation
+def spa_pay_reservation
     # Amount in cents
-      @amount = (@priceTotal*100+2000).to_i
-      customer = Stripe::Customer.create({
-        email: params[:stripeEmail],
-        source: params[:stripeToken],
-      })
-      charge = Stripe::Charge.create({
-        customer: customer.id,
-        amount: @amount,
-        description: 'Payment pour lutilisateur no 1',
-        currency: 'eur',
-      })
+    @amount = (@priceTotal*100+2000).to_i
+    customer = Stripe::Customer.create({
+      email: params[:stripeEmail],
+      source: params[:stripeToken],
+    })
+    charge = Stripe::Charge.create({
+      customer: customer.id,
+      amount: @amount,
+      description: 'Payment pour lutilisateur no 1',
+      currency: 'eur',
+    })
       # Enregistrement des valeur dans la table Commande"
       # table order
       client = Client.first # normalement current_user
@@ -171,20 +171,20 @@ class SubmitordersController < ApplicationController
       session[:prestations] = nil
       session[:information] = nil
 
-      rescue Stripe::CardError => e
-        flash[:error] = e.message
-        redirect_to recapitulatif_spa_path
-  end
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to recapitulatif_spa_path
+    end
 
 # ----------------------------------------------------------------------- #
 # ----------------------------------------------------------------------- #
 # ----------------------------------------------------------------------- #
 # ----------------------------------------------------------------------- #
 
-  private
+private
 # --------------------INDEXINDEXINDEXINDEXINDEXINDEXINDEX-------------------- #
-    def totalPrice(prestations,produits)
-      current_price = 0
+def totalPrice(prestations,produits)
+  current_price = 0
       prestations.each do |catAsub| # [4,"5,4"] "  " soucategory
         catAsub[1 .. catAsub.length-1].each do |sub|
           current_price += sub.price
@@ -240,7 +240,7 @@ class SubmitordersController < ApplicationController
     # for befor_action
     def spa_validate_session
       if session[:prestations] == nil || session[:information] == nil
-      redirect_to root_path
+        redirect_to root_path
       else
         @subPrestations = []
         session[:prestations][0].each do |sub|
@@ -279,4 +279,4 @@ class SubmitordersController < ApplicationController
         @priceTotal = totalPriceSpa(@subPrestations,@produitList)
       end
     end
-end
+  end

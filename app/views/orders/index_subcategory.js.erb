@@ -18,16 +18,16 @@ function addsubcategoryAtSession(){
 	}else{
 		// Vérifier si l'element est déjat dans le tableau
 		for ( var i = 0; i < listPrestation.length ; i++ ) {
-		    if ( listPrestation[i][0] === inArray[0] ) {
-		        var index_array = i
-		        break;
-		    }
+			if ( listPrestation[i][0] === inArray[0] ) {
+				var index_array = i
+				break;
+			}
 		}
 		// Si la sous-category est déjat à l'intérieur
 		if(index_array != undefined){ // Suppression de l'element
 			listPrestation.splice(index_array,1)
-			sessionPrestation[indexTab].prestation = listPrestation
-			sessionStorage.setItem("prestations",JSON.stringify(sessionPrestation))
+		sessionPrestation[indexTab].prestation = listPrestation
+		sessionStorage.setItem("prestations",JSON.stringify(sessionPrestation))
 		}else{ // Si non!
 			sessionPrestation[indexTab].prestation.push(inArray)
 			sessionStorage.setItem("prestations",JSON.stringify(sessionPrestation))
