@@ -16,13 +16,15 @@ Rails.application.routes.draw do
   get '/deletecategory/:id', to: "orders#index_delcategory", as:"deletecategory"
   put '/subcategory', to: "orders#index_subcategory", as:"subcategory"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-  #Enregistrement des donnés du commande dans une session
+  # Enregistrement des donnés du commande dans une session
   post '/confirmer-commande', to:'submitorders#index_save', as: "saved_commande"
   post '/confirmer-commande/spa', to:'submitorders#spa_reservation', as: "saved_spa"
-  #Enregistrement dans une table
-  get '/confirmer-commande/recapitulatif-reservation', to: "submitorders#index_recapitulatif", as:"recapitulatif_index"
-  get '/confirmer-commande/recapitulatif-spa', to: "submitorders#spa_recapitulatif", as:"recapitulatif_spa"
-  
+  # Page pour les recap des commande
+  get '/recapitulatif-commande/', to: "submitorders#index_recapitulatif", as:"recapitulatif_index"
+  get '/recapitulatif-commande/locationspa', to: "submitorders#spa_recapitulatif", as:"recapitulatif_spa"
+  # Routes pour la sauvegarde des donné après le payment
+  post '/validation-commande/', to: "submitorders#index_pay_reservation", as:"validation_index"
+  post '/validation-commande/locationspa', to: "submitorders#spa_pay_reservation", as:"validation_spa"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
   devise_for :admins
