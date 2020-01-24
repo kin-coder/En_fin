@@ -36,14 +36,14 @@
    
    font-family:Georgia, serif!important;
    text-align: left !important;
-   color:black!important ;
+   color:white!important ;
  }
  
  .poli2 b{
    
    font-family:Brush Script MT, Brush Script Std, cursive!important;
    text-align: left !important;
-   color:black!important ;
+   color:white!important ;
    font-size: 30px;
    
  }
@@ -79,6 +79,16 @@
 
 </style>
 
+<!-- accroche général-->
+<section class="clearfix pageTitleArea" style="background-image: url(img/blog/pageTitle-bg02.jpg);">
+  <div class="container">
+    <div class="pageTitle">
+      <span class="title-service poli2">services</span><br>
+      <span class="description-service poli2"><b>T</b>he real place of Mindfullness & Healthy body</span><br>
+    </div>
+
+  </div>
+</section>
 
 <!-- SERVICES SECTION -->
 <section class="clearfix reviewSection patternbg">
@@ -97,7 +107,7 @@
               <center><i class="fa fa-quote-left" aria-hidden="true"> Massage</i></center>
               <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam co laboris nisi ut aliquip ex ea commodo conse quat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
               <div class="a-btn">
-               <%= link_to "Massage à domicile", reservation_path('massage-domicile'), class:"btn btn-primary first-btn mass text-btn" %>
+               <%= link_to "Massage", massage_path(), class:"btn btn-primary first-btn mass text-btn" %>
 
              </div>
            </div>
@@ -114,7 +124,7 @@
             <center><i class="fa fa-quote-left" aria-hidden="true"> Location Spa</i></center>
             <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam co laboris nisi ut aliquip ex ea commodo conse quat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
             <div class="a-btn">
-             <%= link_to "Location spa à domicile", reservation_path('location-spa'), class:"btn btn-primary first-btn mass text-btn" %>
+             <%= link_to "Location spa", spa_path(), class:"btn btn-primary first-btn mass text-btn" %>
 
            </div>
          </div>
