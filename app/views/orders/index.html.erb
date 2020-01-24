@@ -59,6 +59,10 @@
 
 
 										</div>
+										<div id="all-produits">
+
+										</div>
+
 									</td>
 								</tr>
 							</tbody>
@@ -89,9 +93,6 @@
 													<strong><span id="produits-number-<%= product.id %>">0</span></strong>
 													<i id="fa" class="fa fa-plus-circle btn-produits" data-zones="[<%= product.id %>,&quot;<%= product.name %>&quot;,<%= product.price %>]" data-action="new"></i>
 												</div>
-
-											</div>
-											<div id="all-produits">
 
 											</div>
 
@@ -165,6 +166,7 @@
 							</tbody>
 						</table>
 					</div>
+
 					<%= submit_tag("Confirmer commandes", id:"submi-tag",  class:"confirm-command btn btn-primary a-btn text-btn") %>
 
 					<% end %>
