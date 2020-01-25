@@ -1,3 +1,4 @@
+<%= javascript_pack_tag 'delete' %>
 <br><br><br><br>
 <div class="container">
 	<h1>Recapitulatif de commande: Location Spa à Domicile</h1>
@@ -43,7 +44,7 @@
 	      </div>
 	    <% end %>
 	    <label class="amount">
-	      <span>Prix Total: <%= @priceTotal %> € + Un Acompte de 20 € = <%= @priceTotal+20 %> €</span>
+	      <span>Prix Total: <%= @priceTotal %> € + Un Acompte de 20 € = <%= (@priceTotal+20).round(2) %> €</span>
 	    </label>
 	  </article>
 
