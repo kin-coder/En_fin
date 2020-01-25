@@ -85,10 +85,15 @@ def index_pay_reservation
         @produitList.each do |produit|
           OrderProduct.create(number: produit[0], product: produit[1], order: order)
         end
+      redirect_to thanks_index_path
       # ClientMailer.with(client: Client.last, commande: order).validation_commande.deliver_now
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to recapitulatif_index_path
+    end
+
+    def thanks
+      
     end
 
 # ----------------------------------------------------------------------- #
@@ -170,7 +175,7 @@ def spa_pay_reservation
       end
       session[:prestations] = nil
       session[:information] = nil
-
+      redirect_to thanks_index_path
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to recapitulatif_spa_path
