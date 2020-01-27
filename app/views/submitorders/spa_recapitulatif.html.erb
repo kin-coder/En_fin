@@ -111,14 +111,15 @@
 									</center>
 								</article>
 
-
-								<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-								data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-								data-description="Paiement"
-								data-amount="<%= (@priceTotal*100 + 2000).to_i %> €"
-								data-currency="eur"
-								data-locale="auto">
-							</script>
+								<center>
+									<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+									data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+									data-description="Paiement"
+									data-amount="<%= (@priceTotal*100 + 2000).to_i %> €"
+									data-currency="eur"
+									data-locale="auto">
+								</script>
+							</center>
 							<% end %>
 						</div>
 

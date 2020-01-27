@@ -54,7 +54,7 @@
 
 
 
- -->
+-->
 
 <section class="clearfix orderSection padding">
 	<div class="container">
@@ -81,12 +81,14 @@
 									<td><%= category[0].name %></td>
 									<td>
 										<ul>
+											<%prix = 0%>
 											<% category[ 1 .. category.length-1 ].each do |subcategory| %>
-											<li><%= subcategory.name %><%= subcategory.price %> €</li>
+											<%prix += subcategory.price%>
+											<li><%= subcategory.name %>: <%= subcategory.price %> €</li>
 											<% end %>
 										</ul>
 									</td>
-									<td>0 €</td>
+									<td><%= prix.round(2)%>€</td>
 								</tr>
 								<% end %>
 							</tbody>
@@ -173,14 +175,15 @@
 									</center>
 								</article>
 
-
-								<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-								data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-								data-description="Paiement"
-								data-amount="<%= (@priceTotal*100 + 2000).to_i %> €"
-								data-currency="eur"
-								data-locale="auto">
-							</script>
+								<center>
+									<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+									data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+									data-description="Paiement"
+									data-amount="<%= (@priceTotal*100 + 2000).to_i %> €"
+									data-currency="eur"
+									data-locale="auto">
+								</script>
+							</center>
 							<% end %>
 						</div>
 					</div>
