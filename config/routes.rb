@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   # Routes pour la sauvegarde des donné après le payment
   post '/validation-commande/', to: "submitorders#index_pay_reservation", as:"validation_index"
   post '/validation-commande/locationspa', to: "submitorders#spa_pay_reservation", as:"validation_spa"
+  # Remerciment
+  get '/payed-commande/', to: "submitorders#thanks", as:"thanks_index"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
   devise_for :admins
