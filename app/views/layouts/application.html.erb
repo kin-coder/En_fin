@@ -50,9 +50,20 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 <style>
-  .mail{
-    Color:white !important;
-  }
+ .no-js #loader { display: none;  }
+ .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+ .se-pre-con {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url(plugins/simple-pre-loader/images/loader-64x/Preloader_2.gif) center no-repeat #fff;
+}
+.mail{
+  Color:white !important;
+}
 </style>
 </head>
 
@@ -95,20 +106,16 @@
               <li class="active">
                 <%= link_to "Accueil", root_path %>
               </li>
-              <li class=" dropdown singleDrop">
-                <a href="<%=service_path%>" class="dropdown-toggle">Services</a>
-                <ul class="dropdown-menu dropdown-menu-left">
-                  <li><%= link_to "Massage", massage_path %></li>
-                  <li><%= link_to "Location de spa", spa_path %></li>
-                </ul>
+              <li>
+                <%= link_to "Massages", massage_path %>
               </li>
-              <li class=" dropdown singleDrop">
-                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Réservation/Dévis</a>
-                <ul class="dropdown-menu dropdown-menu-left">
-                  <li><%= link_to "Massage à domicile", reservation_path('massage-domicile') %></li>
-                  <li><%= link_to "Location de spa", resrvation_spa_path %></li>
-                </ul>
+              <li>
+                <%= link_to "Location Spa", spa_path %>
               </li>
+              <li>
+                <%= link_to "Réservation", spa_path %>
+              </li>
+
               <%if client_signed_in?%>
               <li>
                 <%= link_to "Se deconnecter", destroy_client_session_path, method:"delete"  %>
