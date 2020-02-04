@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :param_permit, only: [:index_addcategory, :index_delcategory]
+  # DEVELOPPEMENT DE CORRECTION
   def index
     @pays = Country.all
     @departments = Department.all
