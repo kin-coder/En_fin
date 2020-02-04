@@ -1,52 +1,138 @@
-<br><br><br><br>
-<div class="container">
-	<h1>Recapitulatif de commande: Reservation Massage</h1>
-	<h2>Prestations</h2>
-	<% @categoryAndSubCategory.each do |category| %>
-		<div class="prestation">
-			<li><%= category[0].name %></li>
-			<ul>
-			<% category[ 1 .. category.length-1 ].each do |subcategory| %>
-				<li><%= subcategory.name %>: <%= subcategory.price %> €</li>
-			<% end %>
-			</ul>
-		</div>
-	<% end %>
-	<hr>
 
-	<h2>Produits</h2>
-	<% @produitList.each do |produit| %>
-		<%= produit[1].name %> : <%= produit[0] %> x <%= produit[1].price %> € = <%= (produit[1].price*produit[0]).round(2) %> €<br>
-	<% end %>
-	
-	<hr>
-	<h2>Autre information</h2>
-	pays : <%= @pays.name %> <br>
-	departement : <%= @departement.namedepartment %> <br>
-	adresse : <%= @adresse %> <br>
-	date : <%= @date %> <br>
-	heurs : <%= @heure %> <br>
-	<hr>
-	
-	<%= form_tag validation_index_path do %>
-	  <article>
-	    <% if flash[:error].present? %>
-	      <div id="error_explanation">
-	        <p><%= flash[:error] %></p>
-	      </div>
-	    <% end %>
-	    <label class="amount">
-	      <span>Prix Total: <%= @priceTotal %> € + Un Acompte de 20 € = <%= @priceTotal+20 %> €</span>
-	    </label>
-	  </article>
-	  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-	          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-	          data-description="Paiement"
-	          data-amount="<%= (@priceTotal*100 + 2000).to_i %> €"
-	          data-currency="eur"
-	          data-locale="auto">
-	   </script>
-	<% end %>
+<%= javascript_pack_tag 'delete' %>
+<section class="clearfix orderSection padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="innerWrapper">
+					<div class="orderBox  patternbg">
+						<center>Voici les informations sur vos commandes</center>
+					</div>
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th></th>
+									<th>Genre</th>
+									<th>Type de massage</th>
+									<th>Prix</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td rowspan="<%= @categoryAndSubCategory.length%>"><strong>Préstations</strong></td>
+									<% @categoryAndSubCategory.each do |category| %>
+									<td><%= category[0].name %></td>
+									<td>
+										<ul>
+											<%prix = 0%>
+											<% category[ 1 .. category.length-1 ].each do |subcategory| %>
+											<%prix += subcategory.price%>
+											<li><%= subcategory.name %>: <%= subcategory.price %> €</li>
+											<% end %>
+										</ul>
+									</td>
+									<td><%= prix.round(2)%>€</td>
+								</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+					<br> <br>
 
-</div>
-<br><br><br><br>
+
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th></th>
+									<th>Nom du produit</th>
+									<th>Quantités</th>
+									<th>Prix</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<% if @produitList.length != 0 %>
+
+								<td rowspan="<%= @produitList.length+1%>"><strong>Produits</strong></td>
+								<% @produitList.each do |produit| %>
+								<tr>
+									<td>
+										<img src="/img/products/<%= produit[1].name %>.jpg" alt="" style="width: 100px; height: 100px"> 								<%= produit[1].name %></td>
+										<td><%= produit[0] %></td>
+										<td><%= (produit[1].price*produit[0]).round(2) %> €</td>
+										<% end %>
+									</tr>
+
+									<% else %>
+									<tr>
+										<td><strong>Produits</strong></td>
+										<td colspan="3">Aucun produit sélectionné</td>
+									</tr>
+									<% end %>
+								</tbody>
+							</table>
+						</div>
+						<div class="orderBox  patternbg" style="text-align: right; background: deeppink;">
+							<strong>Prix Total :</strong> <%= @priceTotal %> € <br>
+						</div>
+						<br><br>
+
+						<div class="orderBox  patternbg">
+							<center>Apropos de la livraison</center>
+						</div>
+						<div class="table-responsive">
+							<table class="table">
+
+								<tbody>
+
+									<tr>
+										<td><strong>Lieux</strong></td>
+										<td style="text-align: left;">Pays: <%= @pays.name %> <br>
+											Département: <%= @departement.namedepartment %> <br>Adresse: <%= @adresse %></td>
+										</tr>
+										<tr>
+											<td><strong>Date et heure</strong></td>
+											<td style="text-align: left;">Date: <%= @date %> <br>Heure: <%= @heure %></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<br>
+
+							<div>
+								<%= form_tag validation_spa_path do %>
+								<article>
+									<% if flash[:error].present? %>
+									<div id="error_explanation">
+										<p><%= flash[:error] %></p>
+									</div>
+									<% end %>
+									<center>
+										<label class="amount">
+											<div class="orderBox  patternbg">
+												<span>Net à payer: <%= @priceTotal+20 %> €</span>
+											</div>
+										</label>
+									</center>
+								</article>
+
+								<center>
+									<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+									data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+									data-description="Paiement"
+									data-amount="<%= (@priceTotal*100 + 2000).to_i %> €"
+									data-currency="eur"
+									data-locale="auto">
+								</script>
+							</center>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
