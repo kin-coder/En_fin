@@ -1,7 +1,29 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  Datetime: MyString
+  date: MyString
+  prestation_date: 2020-02-05
+  prestation_time: 2020-02-05 05:32:12
+  billing_pays: MyString
+  billing_ville: MyString
+  billing_code_postal: MyString
+  billing_adresse: MyString
+  delivery_pays: MyString
+  delivery_ville: MyString
+  delivery_code_postal: MyString
+  delivery_adresse: MyString
+  message: MyText
 
 two:
-  Datetime: MyString
+  date: MyString
+  prestation_date: 2020-02-05
+  prestation_time: 2020-02-05 05:32:12
+  billing_pays: MyString
+  billing_ville: MyString
+  billing_code_postal: MyString
+  billing_adresse: MyString
+  delivery_pays: MyString
+  delivery_ville: MyString
+  delivery_code_postal: MyString
+  delivery_adresse: MyString
+  message: MyText

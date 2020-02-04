@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_21_193520) do
+ActiveRecord::Schema.define(version: 2020_02_05_023605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,17 +79,27 @@ ActiveRecord::Schema.define(version: 2020_01_21_193520) do
     t.index ["country_id"], name: "index_departments_on_country_id"
   end
 
-  create_table "order_categories", force: :cascade do |t|
-    t.bigint "category_id"
-    t.bigint "order_id"
+  create_table "devis_prestation_subcategories", force: :cascade do |t|
+    t.bigint "subcategory_id"
+    t.bigint "devis_prestation_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_order_categories_on_category_id"
-    t.index ["order_id"], name: "index_order_categories_on_order_id"
+    t.index ["devis_prestation_id"], name: "index_devis_prestation_subcategories_on_devis_prestation_id"
+    t.index ["subcategory_id"], name: "index_devis_prestation_subcategories_on_subcategory_id"
+  end
+
+  create_table "devis_prestations", force: :cascade do |t|
+    t.integer "hours"
+    t.float "exceptional_price"
+    t.float "ordinary_price"
+    t.float "exceptional_acompte"
+    t.float "ordinary_acompte"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "order_products", force: :cascade do |t|
-    t.integer "number"
+    t.integer "nombre"
     t.bigint "product_id"
     t.bigint "order_id"
     t.datetime "created_at", precision: 6, null: false
@@ -98,29 +108,56 @@ ActiveRecord::Schema.define(version: 2020_01_21_193520) do
     t.index ["product_id"], name: "index_order_products_on_product_id"
   end
 
-  create_table "order_spa_info_subcategories", force: :cascade do |t|
+  create_table "order_service_ca_spas", force: :cascade do |t|
     t.string "logement"
     t.string "installation"
-    t.string "systeme_eau"
-    t.bigint "order_sub_category_id"
+    t.string "syteme_eau"
+    t.bigint "order_service_ca_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_sub_category_id"], name: "index_order_spa_info_subcategories_on_order_sub_category_id"
+    t.index ["order_service_ca_id"], name: "index_order_service_ca_spas_on_order_service_ca_id"
   end
 
-  create_table "order_sub_categories", force: :cascade do |t|
-    t.bigint "order_category_id"
+  create_table "order_service_ca_sus", force: :cascade do |t|
     t.bigint "subcategory_id"
+    t.bigint "order_service_ca_id"
+    t.bigint "devis_prestation_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_category_id"], name: "index_order_sub_categories_on_order_category_id"
-    t.index ["subcategory_id"], name: "index_order_sub_categories_on_subcategory_id"
+    t.index ["devis_prestation_id"], name: "index_order_service_ca_sus_on_devis_prestation_id"
+    t.index ["order_service_ca_id"], name: "index_order_service_ca_sus_on_order_service_ca_id"
+    t.index ["subcategory_id"], name: "index_order_service_ca_sus_on_subcategory_id"
+  end
+
+  create_table "order_service_cas", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "order_service_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_order_service_cas_on_category_id"
+    t.index ["order_service_id"], name: "index_order_service_cas_on_order_service_id"
+  end
+
+  create_table "order_services", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "service_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_order_services_on_order_id"
+    t.index ["service_id"], name: "index_order_services_on_service_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "date"
-    t.string "hours"
-    t.string "adresse"
+    t.date "prestation_date"
+    t.time "prestation_time"
+    t.string "billing_pays"
+    t.string "billing_ville"
+    t.string "billing_code_postal"
+    t.string "billing_adresse"
+    t.string "delivery_pays"
+    t.string "delivery_ville"
+    t.string "delivery_code_postal"
+    t.string "delivery_adresse"
     t.text "message"
     t.bigint "client_id"
     t.bigint "service_id"
@@ -139,16 +176,6 @@ ActiveRecord::Schema.define(version: 2020_01_21_193520) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["department_id"], name: "index_prestataire_departments_on_department_id"
     t.index ["prestataire_id"], name: "index_prestataire_departments_on_prestataire_id"
-  end
-
-  create_table "prestataire_orders", force: :cascade do |t|
-    t.bigint "order_id"
-    t.bigint "prestataire_id"
-    t.boolean "accepted", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_prestataire_orders_on_order_id"
-    t.index ["prestataire_id"], name: "index_prestataire_orders_on_prestataire_id"
   end
 
   create_table "prestataire_services", force: :cascade do |t|
@@ -174,12 +201,10 @@ ActiveRecord::Schema.define(version: 2020_01_21_193520) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.string "description"
+    t.text "description"
     t.float "price"
-    t.bigint "service_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["service_id"], name: "index_products_on_service_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -192,7 +217,7 @@ ActiveRecord::Schema.define(version: 2020_01_21_193520) do
     t.string "name"
     t.text "description"
     t.float "price"
-    t.string "hours"
+    t.string "duration"
     t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

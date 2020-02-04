@@ -1,32 +1,6 @@
 Rails.application.routes.draw do
-  # page d'acceul
-  root 'static_page#index'
   # Lien pour l'authentification du client, Logign, ...
   devise_for :clients
-  # Page pour chaque service
-  get '/reservation-massage', to:'static_page#massage', as: "massage"
-  get '/location-spa', to:'static_page#spa', as: "spa"
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-  # lien pour le panier dynamique
-  # pour le spa
-  get '/location-spa/prix-reservation', to:'orders#spa_reservation', as:'resrvation_spa'
-  # autre
-  get ':name/prix-reservation', to:'orders#index', as:"reservation"
-  get '/addcategory/:id', to: "orders#index_addcategory", as:"addcategory"
-  get '/deletecategory/:id', to: "orders#index_delcategory", as:"deletecategory"
-  put '/subcategory', to: "orders#index_subcategory", as:"subcategory"
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-  # Enregistrement des donnés du commande dans une session
-  post '/confirmer-commande', to:'submitorders#index_save', as: "saved_commande"
-  post '/confirmer-commande/spa', to:'submitorders#spa_reservation', as: "saved_spa"
-  # Page pour les recap des commande
-  get '/recapitulatif-commande/', to: "submitorders#index_recapitulatif", as:"recapitulatif_index"
-  get '/recapitulatif-commande/locationspa', to: "submitorders#spa_recapitulatif", as:"recapitulatif_spa"
-  # Routes pour la sauvegarde des donné après le payment
-  post '/validation-commande/', to: "submitorders#index_pay_reservation", as:"validation_index"
-  post '/validation-commande/locationspa', to: "submitorders#spa_pay_reservation", as:"validation_spa"
-  # Remerciment
-  get '/payed-commande/', to: "submitorders#thanks", as:"thanks_index"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
   devise_for :admins
@@ -40,36 +14,37 @@ Rails.application.routes.draw do
   get "admin/prestataires/:id/edit", to:"prestataires#edit", as:"edit_prestataires"
   patch "admin/prestataires/:id", to:"prestataires#update", as:"update_prestataires"
   delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-  #Gerer les commande dans le B-O Admin
-  get "admin/orders", to:"admin_order#index", as:"index_admin_order"
-  get "admin/orders/:id", to:"admin_order#show", as:"show_admin_order"
-  get "admin/orders/:id/edit", to:"admin_order#edit", as:"edit_admin_order"
-  patch "admin/orders/:id", to:"admin_order#update", as:"update_admin_order"
-  delete "admin/orders/:id", to:"admin_order#destroy", as:"destroy_admin_order"
-  #Accepter ou retire un prestataire pour la commande
-  put "admin/accepter-commande/", to:"admin_order#accept", as:"accept_order"
-  put "admin/waiting-commande/", to:"admin_order#waiting", as:"waiting_order"
-  delete "admin/supprimer-in-commande/", to:"admin_order#remove_order", as:"remove_order"
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-  #routes page comment ca marche
-  get '/comment-ca-marche', to:'static_page#comment_ca_marche', as: "comment_ca_marche"
-  #routes page TOUT produit
-  get '/all_produit', to:'static_page#all_produit', as: "all_produit"
-  # routes page UN produit
-  get '/show_produit', to:'static_page#show_produit', as: "show_produit"
-  # routes page Location SPA
-  get '/locationspa', to:'static_page#location_spa', as: "location_spa"
-  # routes page Service SPA
-  get '/service', to:'static_page#service', as: "service"
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-  # Autre page
+#STATIC_PAGE_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+  # Lien pour les page static dans le static_page
+  # page d'acceul
+  root 'static_page#index'
+
   get '/contact', to:'static_page#contact', as: "contact"
-  get '/galerie-photo', to:'static_page#galerie', as: "galerie"
+
   get '/mentions-legales', to:'static_page#legalnotice', as: "legalnotice"
+
   get '/conditions-generales', to:'static_page#cgu', as: "cgu"
+
   get '/faq', to:'static_page#faq', as: "faq"
+
   get "/engagement", to:'static_page#engagement', as: "engagement"
-  get "/propos", to:'static_page#propos', as: "propos"
+
+  get "/qui-sommes-nous", to:'static_page#propos', as: "propos"
+
+  get '/comment-ca-marche', to:'static_page#comment_ca_marche', as: "comment_ca_marche"
+
+# Page pour chaque service
+  get '/service', to:'static_page#service', as: "service"
+  get '/reservation-massage', to:'static_page#massage', as: "massage"
+  get '/location-spa', to:'static_page#location_spa', as: "spa"
+
+#ORDERS_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+  # Lien pour les page tunelle d'achats dans le controller ORDERS
+
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Tsy ilaina ierovana conflit
+  get ':name/prix-reservation', to:'orders#index', as:"reservation"
+  get '/location-spa/prix-reservation', to:'orders#spa_reservation', as:'resrvation_spa'
+
 end
