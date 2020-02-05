@@ -1,0 +1,2 @@
+class MassageSu < ApplicationRecord
+end

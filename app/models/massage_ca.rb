@@ -1,0 +1,2 @@
+class MassageCa < ApplicationRecord
+end

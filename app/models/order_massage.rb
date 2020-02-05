@@ -1,0 +1,2 @@
+class OrderMassage < ApplicationRecord
+end

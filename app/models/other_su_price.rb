@@ -1,0 +1,2 @@
+class OtherSuPrice < ApplicationRecord
+end

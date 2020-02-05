@@ -1,9 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  date: MyString
   prestation_date: 2020-02-05
-  prestation_time: 2020-02-05 05:32:12
+  prestation_time: 2020-02-05 17:34:20
   billing_pays: MyString
   billing_ville: MyString
   billing_code_postal: MyString
@@ -15,9 +14,8 @@ one:
   message: MyText
 
 two:
-  date: MyString
   prestation_date: 2020-02-05
-  prestation_time: 2020-02-05 05:32:12
+  prestation_time: 2020-02-05 17:34:20
   billing_pays: MyString
   billing_ville: MyString
   billing_code_postal: MyString

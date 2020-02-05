@@ -1,0 +1,2 @@
+class MassageSuPrice < ApplicationRecord
+end

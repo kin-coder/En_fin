@@ -1,0 +1,2 @@
+class Spa < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class OrderSpa < ApplicationRecord
+end
