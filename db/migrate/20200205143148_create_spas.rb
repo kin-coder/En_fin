@@ -6,7 +6,8 @@ class CreateSpas < ActiveRecord::Migration[6.0]
       t.float :ordinary_price
       t.float :exceptional_acompte
       t.float :ordinary_acompte
-
+      t.belongs_to :service, index:true
+      
       t.timestamps
     end
   end
