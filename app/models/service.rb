@@ -3,7 +3,7 @@ class Service < ApplicationRecord
 	has_many :categories, dependent: :destroy 
 	has_many :products, dependent: :destroy
     #une commande N --- 1 service
-    has_many :orders
+    #has_many :orders
     #relation Service N-N Prestataire
     has_many :prestataire_services
     has_many :prestataires, through: :prestataire_services

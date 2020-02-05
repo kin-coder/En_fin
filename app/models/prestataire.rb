@@ -8,6 +8,6 @@ class Prestataire < ApplicationRecord
   has_many :departments, through: :prestataire_departments
 
   #relation N-N entre la commande et le prestataire pour sauvgrder les prestataire en attente
-  has_many :prestataire_orders
-  has_many :orders, through: :prestataire_orders
+  #has_many :prestataire_orders
+  #has_many :orders, through: :prestataire_orders
 end

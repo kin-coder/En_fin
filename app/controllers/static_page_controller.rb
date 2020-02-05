@@ -6,14 +6,10 @@ class StaticPageController < ApplicationController
   def massage
   end
 
-  def spa
+  def location_spa
   end
-
 #Autre page
   def contact
-  end
-
-  def galerie
   end
 
   def legalnotice
@@ -21,34 +17,19 @@ class StaticPageController < ApplicationController
 
   def cgu  
   end
-#page comment-ca-marche
+  #page comment-ca-marche
   def ccm
   end
-
-
-  def location_spa
-  end
-
-  def all_produit
-  end
-
-  def show_produit
-  end
-
   #page faq
   def faq
   end
 
   def engagement
-  
   end
 
   def propos
-  
   end
 
   def service
-  
   end
-
 end

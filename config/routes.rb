@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "admin/prestataires/:id/edit", to:"prestataires#edit", as:"edit_prestataires"
   patch "admin/prestataires/:id", to:"prestataires#update", as:"update_prestataires"
   delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#STATIC_PAGE_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page static dans le static_page
   # page d'acceul
   root 'static_page#index'
@@ -36,7 +36,12 @@ Rails.application.routes.draw do
 # Page pour chaque service
   get '/service', to:'static_page#service', as: "service"
   get '/reservation-massage', to:'static_page#massage', as: "massage"
-  get '/location-spa', to:'static_page#spa', as: "spa"
+  get '/location-spa', to:'static_page#location_spa', as: "spa"
+
+#ORDERS_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+  # Lien pour les page tunelle d'achats dans le controller ORDERS
+
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Tsy ilaina ierovana conflit
   get ':name/prix-reservation', to:'orders#index', as:"reservation"
