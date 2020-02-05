@@ -2,7 +2,7 @@ jQuery(document).ready(function(){
   'use strict';
 
   //============================== MENU SCROLL =========================
-   $(window).load(function(){
+  $(window).load(function(){
     $('.body-wrapper').each(function(){
       var header_area = $('.header');
       var main_area = header_area.children('.navbar-default');
@@ -41,33 +41,33 @@ jQuery(document).ready(function(){
   //============================== header =========================
 
   $('.navbar a.dropdown-toggle').on('click', function(e) {
-      var elmnt = $(this).parent().parent();
-      if (!elmnt.hasClass('nav')) {
-          var li = $(this).parent();
-          var heightParent = parseInt(elmnt.css('height').replace('px', ''), 10) / 2;
-          var widthParent = parseInt(elmnt.css('width').replace('px', ''), 10) - 10;
+    var elmnt = $(this).parent().parent();
+    if (!elmnt.hasClass('nav')) {
+      var li = $(this).parent();
+      var heightParent = parseInt(elmnt.css('height').replace('px', ''), 10) / 2;
+      var widthParent = parseInt(elmnt.css('width').replace('px', ''), 10) - 10;
 
-          if(!li.hasClass('open')) {
-            li.addClass('open');
-          } else {
-            li.removeClass('open');
-          }
-          $(this).next().css('top', heightParent + 'px');
-          $(this).next().css('left', widthParent + 'px');
-
-          return false;
+      if(!li.hasClass('open')) {
+        li.addClass('open');
+      } else {
+        li.removeClass('open');
       }
+      $(this).next().css('top', heightParent + 'px');
+      $(this).next().css('left', widthParent + 'px');
+
+      return false;
+    }
   });
 
   //============================== ALL DROPDOWN ON HOVER =========================
   if($('.navbar').width() > 1007)
   {
     $('.nav .dropdown').on('mouseover', function() {
-          $(this).addClass('open');
-      }),
+      $(this).addClass('open');
+    }),
     $('.nav .dropdown').on('mouseleave', function() {
-          $(this).removeClass('open');
-      });
+      $(this).removeClass('open');
+    });
   }
 
   //============================== MAIN SLIDER =========================
@@ -75,9 +75,9 @@ jQuery(document).ready(function(){
   if ( $heroSlider.length > 0 ) {
     $heroSlider.each( function () {
 
-    var loop = $(this).parent().data('loop'),
-        autoplay = $(this).parent().data('autoplay'),
-        interval = $(this).parent().data('interval') || 3000;
+      var loop = $(this).parent().data('loop'),
+      autoplay = $(this).parent().data('autoplay'),
+      interval = $(this).parent().data('interval') || 3000;
 
       $(this).owlCarousel({
         items: 1,
@@ -123,40 +123,40 @@ jQuery(document).ready(function(){
 
   //============================== OWL-CAROUSEL =========================
   var owl = $('.owl-carousel.partnersLogoSlider');
-    owl.owlCarousel({
-      loop:true,
-      margin:28,
-      autoplay:true,
-      autoplayTimeout:6000,
-      autoplayHoverPause:true,
-      nav:true,
-      dots: false,
-      smartSpeed:500,
-      responsive:{
-        320:{
-          slideBy: 1,
-          items:1
-        },
-        768:{
-          slideBy: 1,
-          items:3
-        },
-        992:{
-          slideBy: 1,
-          items:4
-        }
+  owl.owlCarousel({
+    loop:true,
+    margin:28,
+    autoplay:true,
+    autoplayTimeout:6000,
+    autoplayHoverPause:true,
+    nav:true,
+    dots: false,
+    smartSpeed:500,
+    responsive:{
+      320:{
+        slideBy: 1,
+        items:1
+      },
+      768:{
+        slideBy: 1,
+        items:3
+      },
+      992:{
+        slideBy: 1,
+        items:4
       }
-    });
+    }
+  });
 
-    $('.owl-carousel.partnersLogoSlider').owlCarousel({
-      rtl: true
-    });
+  $('.owl-carousel.partnersLogoSlider').owlCarousel({
+    rtl: true
+  });
 
   //============================== EXPERT SLIDER =========================
   $('#myCarousel').carousel({
     interval: 3000,
-     cycle: true
-   });
+    cycle: true
+  });
 
    //============================== BACK TO TOP =========================
    $(window).scroll(function(){
@@ -168,11 +168,11 @@ jQuery(document).ready(function(){
    });
 
    //============================== BACK TO TOP SMOOTH SCROLL=========================
-  $('a[href="#pageTop"]').on('click', function (e) {
+   $('a[href="#pageTop"]').on('click', function (e) {
     e.preventDefault();
     e.stopPropagation();
     $('html, body').animate({ scrollTop: 0 }, 1500);
-      return false;
+    return false;
   });
 
   //============================== SMOOTH SCROLLING TO SECTION =========================
@@ -226,19 +226,19 @@ jQuery(document).ready(function(){
 
   //============================== BOOTSTRAP CAROUSEL SWIEP =========================
   $('#productSlider, #thubmnailTeamSlider').on('touchstart', function(event){
-      var xClick = event.originalEvent.touches[0].pageX;
-      $(this).one('touchmove', function(event){
-          var xMove = event.originalEvent.touches[0].pageX;
-          if( Math.floor(xClick - xMove) < -5 ){
-              $('#productSlider, #thubmnailTeamSlider').carousel('prev');
-          }
-          else if( Math.floor(xClick - xMove) > 5 ){
-              $('#productSlider, #thubmnailTeamSlider').carousel('next');
-          }
-      });
-      $('.carousel').on('touchend', function(){
-              $(this).off('touchmove');
-      });
+    var xClick = event.originalEvent.touches[0].pageX;
+    $(this).one('touchmove', function(event){
+      var xMove = event.originalEvent.touches[0].pageX;
+      if( Math.floor(xClick - xMove) < -5 ){
+        $('#productSlider, #thubmnailTeamSlider').carousel('prev');
+      }
+      else if( Math.floor(xClick - xMove) > 5 ){
+        $('#productSlider, #thubmnailTeamSlider').carousel('next');
+      }
+    });
+    $('.carousel').on('touchend', function(){
+      $(this).off('touchmove');
+    });
   });
 
   //============================== BOOTSTRAP THUMBNAIL SLIDER =========================
@@ -247,18 +247,18 @@ jQuery(document).ready(function(){
   });
 
   $('#thubmnailTeamSlider .item').each(function(){
-      var itemToClone = $(this);
-      for (var i=1;i<4;i++) {
-        itemToClone = itemToClone.next();
+    var itemToClone = $(this);
+    for (var i=1;i<4;i++) {
+      itemToClone = itemToClone.next();
 
-          if (!itemToClone.length) {
-              itemToClone = $(this).siblings(':first');
-            }
-
-        itemToClone.children(':first-child').clone()
-        .addClass('cloneditem-'+(i))
-        .appendTo($(this));
+      if (!itemToClone.length) {
+        itemToClone = $(this).siblings(':first');
       }
+
+      itemToClone.children(':first-child').clone()
+      .addClass('cloneditem-'+(i))
+      .appendTo($(this));
+    }
   });
 
   //============================== SINGLE SERVICE LEFT TAB =========================
@@ -281,7 +281,7 @@ jQuery(document).ready(function(){
 
   //============================== ACCRODION =========================
   $('.content-collapse li').on('click', function () {
-      $(this).toggleClass('active').siblings().removeClass('active');
+    $(this).toggleClass('active').siblings().removeClass('active');
   });
 
 });
@@ -313,10 +313,10 @@ $('#angelContactForm').submit(function(e){
       $('#alert').html(response.message).slideDown();
       window.setTimeout(function() {
         $('#alert').alert('close'); }, 3000);
-      }
-    });
-    e.preventDefault();
+    }
   });
+  e.preventDefault();
+});
 
   // =========================== Contact Form =========================
   $('#angelContactForm').submit(function(e){
@@ -346,44 +346,102 @@ $('#angelContactForm').submit(function(e){
         $('#alert').html(response.message).slideDown();
         window.setTimeout(function() {
           $('#alert').alert('close'); }, 3000);
-        }
-      });
-      e.preventDefault();
-    });
-
-    // =========================== Appoinment Form =========================
-  $('#appoinmentModalForm').submit(function(e){
-    var contactdata  =  $(this).serializeArray();
-    var submiturl    =  $(this).attr('action');
-    var submitbtn 	 =  $('#appointment-submit-btn');
-    submitbtn.val('Sending...');
-    $('#appoinmentModalForm :input').prop('disabled', true);
-    $.ajax({
-      url: submiturl,
-      type: 'POST',
-      dataType: 'json',
-      data : contactdata,
-      success: function(response){
-        $('#appointment-alert').removeClass('alert alert-success');
-        $('#appointment-alert').removeClass('alert alert-danger');
-        if(response.status=== 'true'){
-          $('#appointment-alert').addClass('alert alert-success');
-          $('#appoinmentModalForm :input').prop('disabled', false);
-          $('#appoinmentModalForm')[0].reset();
-          submitbtn.val('Send');
-        }else{
-          $('#appointment-alert').addClass('alert alert-danger');
-          $('#appoinmentModalForm :input').prop('disabled', false);
-          submitbtn.val('Send');
-        }
-        $('#appointment-alert').html(response.message).slideDown();
-        window.setTimeout(function() {
-          $('#appointment-alert').alert('close');
-        }, 3000);
       }
     });
     e.preventDefault();
   });
 
+    // =========================== Appoinment Form =========================
+    $('#appoinmentModalForm').submit(function(e){
+      var contactdata  =  $(this).serializeArray();
+      var submiturl    =  $(this).attr('action');
+      var submitbtn 	 =  $('#appointment-submit-btn');
+      submitbtn.val('Sending...');
+      $('#appoinmentModalForm :input').prop('disabled', true);
+      $.ajax({
+        url: submiturl,
+        type: 'POST',
+        dataType: 'json',
+        data : contactdata,
+        success: function(response){
+          $('#appointment-alert').removeClass('alert alert-success');
+          $('#appointment-alert').removeClass('alert alert-danger');
+          if(response.status=== 'true'){
+            $('#appointment-alert').addClass('alert alert-success');
+            $('#appoinmentModalForm :input').prop('disabled', false);
+            $('#appoinmentModalForm')[0].reset();
+            submitbtn.val('Send');
+          }else{
+            $('#appointment-alert').addClass('alert alert-danger');
+            $('#appoinmentModalForm :input').prop('disabled', false);
+            submitbtn.val('Send');
+          }
+          $('#appointment-alert').html(response.message).slideDown();
+          window.setTimeout(function() {
+            $('#appointment-alert').alert('close');
+          }, 3000);
+        }
+      });
+      e.preventDefault();
+    });
 
 
+// accordeon page d'accueil
+$(document).ready(function(){
+ $(".accordion").on("click", ".heading", function() {
+
+   $(this).toggleClass("active").next().slideToggle();
+
+   $(".contents").not($(this).next()).slideUp(300);
+   
+   $(this).siblings().removeClass("active");
+ });
+});
+
+
+// section avis slider 
+
+jQuery(document).ready(function ($) {
+
+  setInterval(function () {
+    moveRight();
+  }, 7000);
+  
+  var slideCount = $('#slider ul li').length;
+  var slideWidth = $('#slider ul li').width();
+  var slideHeight = $('#slider ul li').height();
+  var sliderUlWidth = slideCount * slideWidth;
+  
+  $('#slider').css({ width: slideWidth, height: slideHeight });
+  
+  $('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+  
+  $('#slider ul li:last-child').prependTo('#slider ul');
+
+  function moveLeft() {
+    $('#slider ul').animate({
+      left: + slideWidth
+    }, 200, function () {
+      $('#slider ul li:last-child').prependTo('#slider ul');
+      $('#slider ul').css('left', '');
+    });
+  };
+
+  function moveRight() {
+    $('#slider ul').animate({
+      left: - slideWidth
+    }, 200, function () {
+      $('#slider ul li:first-child').appendTo('#slider ul');
+      $('#slider ul').css('left', '');
+    });
+  };
+
+  $('a.control_prev').click(function () {
+    moveLeft();
+  });
+
+  $('a.control_next').click(function () {
+    moveRight();
+  });
+
+});    
