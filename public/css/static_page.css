@@ -392,6 +392,33 @@ left: 250px;*/
 
   /* Extra small devices (phones, 600px and down) */
   @media only screen and (max-width: 600px) {
+    .secotionTitle h2 span{
+      font-size: 45px !important;
+    }
+    .lire-btn{
+      text-transform: lowercase;
+    }
+    #more{
+      color: #ec5598;
+      font-weight: 12px;
+    }
+    .aboutus{
+      color: #ec5598;
+    }
+    .ccm{
+      position: relative;
+      top: 20px;
+    }
+    #ok{
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: xxx-large;
+      text-rendering: auto;
+      /* -webkit-font-smoothing: antialiased; */
+      color: rgb(238, 17, 190) !important;
+      border: 3px solid #dedede;
+      padding: 10px;
+    }
     .a-btn{
       text-align: center;
       position: relative;
@@ -416,6 +443,30 @@ left: 250px;*/
 
   /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (min-width: 600px) {
+    .lire-btn{
+      text-transform: lowercase;
+    }
+    #more{
+      color: #ec5598;
+      font-weight: 12px;
+    }
+    .aboutus{
+      color: #ec5598;
+    }
+    .ccm{
+      position: relative;
+      top: 20px;
+    }
+    #ok{
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: xxx-large;
+      text-rendering: auto;
+      /* -webkit-font-smoothing: antialiased; */
+      color: rgb(238, 17, 190) !important;
+      
+      padding: 10px;
+    }
 
     .a-btn{
       text-align: center;
@@ -426,6 +477,30 @@ left: 250px;*/
 
   /* Medium devices (landscape tablets, 768px and up) */
   @media only screen and (min-width: 768px) {
+    .lire-btn{
+      text-transform: lowercase;
+    }
+    #more{
+      color: #ec5598;
+      font-weight: 12px;
+    }
+    .aboutus{
+      color: #ec5598;
+    }
+    .ccm{
+      position: relative;
+      top: 20px;
+    }
+    #ok{
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: xxx-large;
+      text-rendering: auto;
+      /* -webkit-font-smoothing: antialiased; */
+      color: rgb(238, 17, 190) !important;
+      
+      padding: 10px;
+    }
 
     .a-btn{
       position: relative;
@@ -453,12 +528,19 @@ left: 250px;*/
 
   /* Large devices (laptops/desktops, 992px and up) */
   @media only screen and (min-width: 992px) {
+    .lire-btn{
+      text-transform: lowercase;
+    }
+    #more{
+      color: #ec5598;
+      font-weight: 12px;
+    }
     .aboutus{
-color: #ec5598;
+      color: #ec5598;
     }
     .ccm{
-position: relative;
-top: 20px;
+      position: relative;
+      top: 20px;
     }
     #ok{
       display: inline-block;
@@ -467,8 +549,9 @@ top: 20px;
       text-rendering: auto;
       /* -webkit-font-smoothing: antialiased; */
       color: rgb(238, 17, 190) !important;
-      border: 3px solid #dedede;
       padding: 10px;
+      position: relative;
+      top: 12px;
     }
 
     .a-btn{
