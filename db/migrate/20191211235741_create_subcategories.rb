@@ -4,7 +4,7 @@ class CreateSubcategories < ActiveRecord::Migration[6.0]
       t.string :name
       t.text :description
       t.float :price
-      t.string :hours
+      t.string :duration
       t.belongs_to :category, index:true
       
       t.timestamps
