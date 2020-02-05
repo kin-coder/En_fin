@@ -10,4 +10,8 @@ class Order < ApplicationRecord
 	#pour la sauvegarde des produits N-N produit - order
 	has_many :order_products, dependent: :destroy
 	has_many :products, through: :order_products
+	# relation order 1-N order_massage
+	has_many :order_massages, dependent: :destroy
+	# relation order 1-N order_spa
+	has_many :order_spas, dependent: :destroy
 end
