@@ -1,6 +1,6 @@
-class CreateCategories < ActiveRecord::Migration[6.0]
+class CreateMassageCas < ActiveRecord::Migration[6.0]
   def change
-    create_table :categories do |t|
+    create_table :massage_cas do |t|
       t.string :name
       t.belongs_to :service, index:true
       

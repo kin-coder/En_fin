@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  nombre: 1
+  number: 1
 
 two:
-  nombre: 1
+  number: 1

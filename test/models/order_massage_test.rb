@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SubcategoryTest < ActiveSupport::TestCase
+class OrderMassageTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

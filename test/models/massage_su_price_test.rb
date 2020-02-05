@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DevisPrestationSubcategoryTest < ActiveSupport::TestCase
+class MassageSuPriceTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
