@@ -4,7 +4,7 @@ class CreateOrderProducts < ActiveRecord::Migration[6.0]
       t.integer :nombre
       t.belongs_to :product, index:true
       t.belongs_to :order, index:true
-      
+
       t.timestamps
     end
   end
