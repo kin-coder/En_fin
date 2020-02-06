@@ -3,7 +3,7 @@ class Order < ApplicationRecord
 	belongs_to :department  #plusieur commande dans une region
 	#relation Order N---N Service
 	has_many :order_services
-	has_many :service, through: :order_services
+	has_many :services, through: :order_services
 	#relation N-N entre la commande et le prestataire pour sauvgarder les prestataire en attente
 	has_many :prestataire_orders, dependent: :destroy
 	has_many :prestataires, through: :prestataire_orders
