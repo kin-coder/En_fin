@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
 	belongs_to :client      #un client 1 ---- N  commande
-	belongs_to :department  #plusieur commande dans une region
+	belongs_to :department, optional: true  #plusieur commande dans une region
+	belongs_to :country #plusieur commande dans un pays
 	#relation Order N---N Service
 	has_many :order_services
 	has_many :services, through: :order_services

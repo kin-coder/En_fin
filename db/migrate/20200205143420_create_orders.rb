@@ -11,9 +11,11 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.string :delivery_ville
       t.string :delivery_code_postal
       t.string :delivery_adresse
+      t.string :praticien
       t.text :message
       t.belongs_to :client, index:true
       t.belongs_to :department, index:true
+      t.belongs_to :country, index:true
 
       t.timestamps
     end
