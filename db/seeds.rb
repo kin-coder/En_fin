@@ -28,9 +28,12 @@ s1 = Service.create(name:"Massage")
 s2 = Service.create(name:"Location spa")
 
 # ==================== CREATION DE DEPARTEMENT ET PAYS =================== #
-listdepartement = [[ "01", "Ain" ],[ "02", "Aisne" ],[ "03", "Allier" ],[ "04", "Alpes-de-Haute-Provence" ],[ "05", "Hautes-alpes" ],[ "06", "Alpes-maritimes" ],[ "07", "Ardèche" ],[ "08", "Ardennes" ],[ "09", "Ariège" ],[ "10", "Aube" ],[ "11", "Aude" ],[ "12", "Aveyron" ],[ "13", "Bouches-du-Rhône" ],[ "14", "Calvados" ],[ "15", "Cantal" ],[ "16", "Charente" ],[ "17", "Charente-maritime" ],[ "18", "Cher" ],[ "19", "Corrèze" ],[ "2a", "Corse-du-sud" ],[ "2b", "Haute-Corse" ],[ "21", "Côte-d'Or" ],[ "22", "Côtes-d'Armor" ],[ "23", "Creuse" ],[ "24", "Dordogne" ],[ "25", "Doubs" ],[ "26", "Drôme" ],[ "27", "Eure" ],[ "28", "Eure-et-loir" ],[ "29", "Finistère" ],[ "30", "Gard" ],[ "31", "Haute-garonne" ],[ "32", "Gers" ],[ "33", "Gironde" ],[ "34", "Hérault" ],[ "35", "Ille-et-vilaine" ],[ "36", "Indre" ],[ "37", "Indre-et-loire" ],[ "38", "Isère" ],[ "39", "Jura" ],[ "40", "Landes" ],[ "41", "Loir-et-cher" ],[ "42", "Loire" ],[ "43", "Haute-loire" ],[ "44", "Loire-atlantique" ],[ "45", "Loiret" ],[ "46", "Lot" ],[ "47", "Lot-et-garonne" ],[ "48", "Lozère" ],[ "49", "Maine-et-loire" ],[ "50", "Manche" ],[ "51", "Marne" ],[ "52", "Haute-marne" ],[ "53", "Mayenne" ],[ "54", "Meurthe-et-moselle" ],[ "55", "Meuse" ],[ "56", "Morbihan" ],[ "57", "Moselle" ],[ "58", "Nièvre" ],[ "59", "Nord" ],[ "60", "Oise" ],[ "61", "Orne" ],[ "62", "Pas-de-calais" ],[ "63", "Puy-de-dôme" ],[ "64", "Pyrénées-atlantiques" ],[ "65", "Hautes-Pyrénées" ],[ "66", "Pyrénées-orientales" ],[ "67", "Bas-rhin" ],[ "68", "Haut-rhin" ],[ "69", "Rhône" ],[ "70", "Haute-saône" ],[ "71", "Saône-et-loire" ],[ "72", "Sarthe" ],[ "73", "Savoie" ],[ "74", "Haute-savoie" ],[ "75", "Paris" ],[ "76", "Seine-maritime" ],[ "77", "Seine-et-marne" ],[ "78", "Yvelines" ],[ "79", "Deux-sèvres" ],[ "80", "Somme" ],[ "81", "Tarn" ],[ "82", "Tarn-et-garonne" ],[ "83", "Var" ],[ "84", "Vaucluse" ],[ "85", "Vendée" ],[ "86", "Vienne" ],[ "87", "Haute-vienne" ],[ "88", "Vosges" ],[ "89", "Yonne" ],[ "90", "Territoire de belfort" ],[ "91", "Essonne" ],[ "92", "Hauts-de-seine" ],[ "93", "Seine-Saint-Denis" ],[ "94", "Val-de-marne" ],[ "95", "Val-d'oise" ]]
-country = Country.create(name: "France")
+listdepartement = [[ "01", "Ain" ],[ "02", "Aisne" ],[ "03", "Allier" ],[ "04", "Alpes-de-Haute-Provence" ],[ "05", "Hautes-alpes" ],[ "06", "Alpes-maritimes" ],[ "07", "Ardèche" ],[ "08", "Ardennes" ],[ "09", "Ariège" ],[ "10", "Aube" ],[ "11", "Aude" ],[ "12", "Aveyron" ],[ "13", "Bouches-du-Rhône" ],[ "14", "Calvados" ],[ "15", "Cantal" ],[ "16", "Charente" ],[ "17", "Charente-maritime" ],[ "18", "Cher" ],[ "19", "Corrèze" ],[ "2a", "Corse-du-sud" ],[ "2b", "Haute-Corse" ],[ "21", "Côte-d'Or" ],[ "22", "Côtes-d'Armor" ],[ "23", "Creuse" ],[ "24", "Dordogne" ],[ "25", "Doubs" ],[ "26", "Drôme" ],[ "27", "Eure" ],[ "28", "Eure-et-loir" ],[ "29", "Finistère" ],[ "30", "Gard" ],[ "31", "Haute-garonne" ],[ "32", "Gers" ],[ "33", "Gironde" ],[ "34", "Hérault" ],[ "35", "Ille-et-vilaine" ],[ "36", "Indre" ],[ "37", "Indre-et-loire" ],[ "38", "Isère" ],[ "39", "Jura" ],[ "40", "Landes" ],[ "41", "Loir-et-cher" ],[ "42", "Loire" ],[ "43", "Haute-loire" ],[ "44", "Loire-atlantique" ],[ "45", "Loiret" ],[ "46", "Lot" ],[ "47", "Lot-et-garonne" ],[ "48", "Lozère" ],[ "49", "Maine-et-loire" ],[ "50", "Manche" ],[ "51", "Marne" ],[ "52", "Haute-marne" ],[ "53", "Mayenne" ],[ "54", "Meurthe-et-moselle" ],[ "55", "Meuse" ],[ "56", "Morbihan" ],[ "57", "Moselle" ],[ "58", "Nièvre" ],[ "59", "Nord" ],[ "60", "Oise" ],[ "61", "Orne" ],[ "62", "Pas-de-calais" ],[ "63", "Puy-de-dôme" ],[ "64", "Pyrénées-atlantiques" ],[ "65", "Hautes-Pyrénées" ],[ "66", "Pyrénées-orientales" ],[ "67", "Bas-rhin" ],[ "68", "Haut-rhin" ],[ "69", "Rhône" ],[ "70", "Haute-saône" ],[ "71", "Saône-et-loire" ],[ "72", "Sarthe" ],[ "73", "Savoie" ],[ "74", "Haute-savoie" ],[ "75", "Paris" ],[ "76", "Seine-maritime" ],[ "77", "Seine-et-marne" ],[ "78", "Yvelines" ],[ "79", "Deux-sèvres" ],[ "80", "Somme" ],[ "81", "Tarn" ],[ "82", "Tarn-et-garonne" ],[ "83", "Var" ],[ "84", "Vaucluse" ],[ "85", "Vendée" ],[ "86", "Vienne" ],[ "87", "Haute-vienne" ],[ "88", "Vosges" ],[ "89", "Yonne" ],[ "90", "Territoire de belfort" ],[ "91", "Essonne" ],[ "92", "Hauts-de-seine" ],[ "93", "Seine-Saint-Denis" ],[ "94", "Val-de-marne" ],[ "95", "Val-d'oise" ],["971","guadeloupe"],["972","martinique"],["973","guyane"],["974","La Réunion"],["976","Mayotte"]]
 
+["Belgique","Luxembourg","Suisse"].each do |pays|
+	Country.create(name: pays)
+end
+country = Country.create(name: "France")
 # ======================== PRESTATAIRES ====================== #
 		#creation département et prestataire
 listdepartement.each do |listdepartement|
@@ -44,6 +47,32 @@ listdepartement.each do |listdepartement|
 		puts increment+=1
 	end
 end
+
+
+=begin
+
+
+Selection pays : France, Belgique, Luxembourg ou suisse
+Si France sélectionné, selection du département:
+	-les dpts du 01 au 95 
+	971 guadeloupe, 972martinique, 973 guyane, 974 La Réunion, 976 Mayotte
+
+Affichage des services en fonction de la zone sélectionnée
+
+LES SERVICES NE S’AFFICHENT QUE SI ILS SONT PRESENTS DANS LA ZONE SELECTIONNEE. 
+Si seulement l’un ou l’autre est present, n’afficher que celui ci. 
+Si aucun service dans la zone, afficher le message suivant : 
+“ Oups, le service n’est pas disponible actuellement dans votre zone ! 
+Nous oeuvrons pour qu’il le soit prochainement. “
+
+
+=end
+
+
+
+
+
+
 
 # ======================= CREE LES SERVICE MASSAGE ======================= #
 sus = [["Massage Classique / découverte","Le massage classique est un traitement qui agit sur chaque partie du corps les unes après les autres. Il se pratique par pétrissage, lissage, vibration ou par des mouvements plus petits et plus subtils sur les points de tension. Il s’agit d’un massage global relaxant qui en plus de soulager les tensions musculaires superficielles et profondes, possède de multiples actions thérapeutiques. Il permet de renforcer le système immunitaire, d’améliorer les fonctions digestives, de stimuler la vitalité des tissus, favoriser une bonne circulation sanguine et d’apaiser les tensions nerveuses. Le massage classique est recommandé pour les insomnies, les angoisses, le stress, la nervosité, la constipation, les migraines."],
@@ -119,14 +148,14 @@ Product.create(name: "Cadeau 4", description: "#####", price: 20)
 # OrderSpa
 
 # ~~~~~ Order 1
-o1 = Order.create(prestation_date: Date.new, prestation_time: Time.now, billing_pays: "Madagascar", billing_ville: "Antananarivo", billing_code_postal: "301", billing_adresse: "Lot Ter Mandona JS", delivery_pays: "Madagascar", delivery_ville: "Antananarivo", delivery_code_postal: "490", delivery_adresse: "Lot KDD 34 ld", message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", client: Client.first, department: Department.first, praticien:"Homme")
+o1 = Order.create(prestation_date: Date.new, prestation_time: Time.now, billing_pays: "Madagascar", billing_ville: "Antananarivo", billing_code_postal: "301", billing_adresse: "Lot Ter Mandona JS", delivery_pays: "Madagascar", delivery_ville: "Antananarivo", delivery_code_postal: "490", delivery_adresse: "Lot KDD 34 ld", message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", client: Client.first, department: Department.first, praticien:"Homme",country:Country.last)
 OrderService.create(order: o1, service: Service.first)
 OrderMassage.create(order: o1, massage_ca:MassageSu.first.massage_ca, massage_su: MassageSu.first, massage_su_price: MassageSu.first.massage_su_prices[0])
 OrderMassage.create(order: o1, massage_ca:MassageSu.first.massage_ca, massage_su: MassageSu.first, massage_su_price: MassageSu.first.massage_su_prices[1])
 OrderProduct.create(number: 4, product: Product.find(6), order: o1)
 OrderProduct.create(number: 1, product: Product.find(7), order: o1)
 # ~~~~~ Order 2
-o2 = Order.create(prestation_date: Date.new, prestation_time: Time.now, billing_pays: "France", billing_ville: "Paris", billing_code_postal: "301", billing_adresse: "Lot Ter Mandona JS", delivery_pays: "France", delivery_ville: "Paris", delivery_code_postal: "490", delivery_adresse: "Lot KDD 34 ld", message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", client: Client.first, department: Department.first, praticien:"Femme")
+o2 = Order.create(prestation_date: Date.new, prestation_time: Time.now, billing_pays: "France", billing_ville: "Paris", billing_code_postal: "301", billing_adresse: "Lot Ter Mandona JS", delivery_pays: "France", delivery_ville: "Paris", delivery_code_postal: "490", delivery_adresse: "Lot KDD 34 ld", message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", client: Client.first, department: Department.first, praticien:"Femme",country:Country.last)
 OrderService.create(order: o2, service: Service.first)
 OrderService.create(order: o2, service: Service.last)
 OrderMassage.create(order: o2, massage_ca:MassageSu.last.massage_ca, massage_su: MassageSu.last, massage_su_price: MassageSu.last.massage_su_prices[0])
@@ -141,7 +170,51 @@ OrderProduct.create(number: 4, product: Product.find(7), order: o1, order_spa:os
 OrderProduct.create(number: 4, product: Product.find(8), order: o1, order_spa:os1)
 OrderProduct.create(number: 1, product: Product.find(7), order: o1, order_spa:os2)
 
+
+
+
 =begin
+
+(les services spa et massage s’affichent si activés dans la zone, les produits upsell s’affichent tout le temps pour n’importe quelle zone géographique)
+Selection pays : France, Belgique, Luxembourg ou suisse
+Si France sélectionné, selection du département (tous les dpts du 01 au 95 et dom tom : 971 guadeloupe, 972martinique, 973 guyane, 974 La Réunion, 976 Mayotte)
+
+Affichage des services en fonction de la zone sélectionnée
+
+LES SERVICES NE S’AFFICHENT QUE SI ILS SONT PRESENTS DANS LA ZONE SELECTIONNEE. Si seulement l’un ou l’autre est present, n’afficher que celui ci. Si aucun service dans la zone, afficher le message suivant : 
+
+“ Oups, le service n’est pas disponible actuellement dans votre zone ! Nous oeuvrons pour qu’il le soit prochainement. “
+
+
+
+
+
+
+
+Texte en dessous en petit : Notre service massage à domicile est 
+disponible partout en France, Belgique, Luxembourg & Suisse
+Alors n’attendez plus, nous ne sommes pas loin de chez vous !
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Liste des table
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

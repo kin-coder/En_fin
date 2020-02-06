@@ -159,9 +159,11 @@ ActiveRecord::Schema.define(version: 2020_02_05_151906) do
     t.text "message"
     t.bigint "client_id"
     t.bigint "department_id"
+    t.bigint "country_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["country_id"], name: "index_orders_on_country_id"
     t.index ["department_id"], name: "index_orders_on_department_id"
   end
 
