@@ -1,0 +1,117 @@
+
+
+<!-- media query -->
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+	.reviewImageMassage1 {
+		position: absolute;
+		top: 170px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+	.reviewImageMassage2 {
+		position: absolute;
+		top: 80px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+	.reviewImageMassage3 {
+		position: absolute;
+		top: 50px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+
+
+	.text-p-massage{
+		text-align: justify !important;
+	}
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {.reviewImageMassage1 {
+	position: absolute;
+	top: 170px;
+	width: 165px;
+	height: 160px;
+	border: 5px solid 
+	rgba(255, 255, 255, 0.7);
+	left:-150px;
+}
+.reviewImageMassage2 {
+	position: absolute;
+	top: 80px;
+	width: 165px;
+	height: 160px;
+	border: 5px solid 
+	rgba(255, 255, 255, 0.7);
+	left:-150px;
+}
+.reviewImageMassage3 {
+	position: absolute;
+	top: 50px;
+	width: 165px;
+	height: 160px;
+	border: 5px solid 
+	rgba(255, 255, 255, 0.7);
+	left:-150px;
+}
+
+
+.text-p-massage{
+	position: relative;
+	left: 0px;
+	text-align: justify
+}
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+	.reviewImageMassage1 {
+		position: absolute;
+		top: 170px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+	.reviewImageMassage2 {
+		position: absolute;
+		top: 80px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+	.reviewImageMassage3 {
+		position: absolute;
+		top: 50px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+
+
+	.text-p-massage{
+		position: relative;
+		left: 120px;
+		text-align: justify
+	}
+
+}
+

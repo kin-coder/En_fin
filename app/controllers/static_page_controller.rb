@@ -4,6 +4,7 @@ class StaticPageController < ApplicationController
   end
 #Differents service {+ Page Service Par Departement}
   def massage
+    @massages = MassageSu.all
   end
 
   def location_spa
