@@ -1,8 +1,77 @@
 <div class="container">
 	<br><br><br><br>
+<hr class="hr.new5">
+	<div class="set-zones">
+		<h2>Je choisi ma zone géographique</h2>
+		<%= form_tag(order_path,remote: true) do %>
+			<div class="pays">
+				<%= label_tag "Choix pays", nil, class:"labelle",for:"country-choice" %>
+				<%= select_tag "country", options_for_select(@countries.collect{ |d| [d.name,d.name] }), include_blank: "Choix pays",class:"field",id:"country-choice"%>
+			</div>
+			<div id="list-department" class="hidden">
+				<%= label_tag "Departement", nil, class:"labelle" %>
+				<%= select_tag "department", options_for_select(@departments.collect{ |d| ["#{d.code}-#{d.name} ",d.id] }),include_blank: "Liste departement",disabled:true,class:"field",id:"Departement"%>
+			</div>
 
-	<h2>Je choisi ma zone géographique</h2>
+			<%= text_field_tag "Date", nil ,required: true, class: "form-control", placeholder:"MM/DD/YYYY"%>
 
-	
+			<%= select_tag "Heure", options_for_select([["Choisisser l'heure", ""], "06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"]), class:"select-dro",id:'guiest_id1' %>
+
+			<%= submit_tag("Je valide") %>
+		<% end %>
+	</div>
+<hr class="hr.new5">
+
+	<div id="prestation-list">
+
+		<div class="spa">
+			
+			<h1>LOCATION SPA A DOMICILE</h1>
+			
+		</div>
+<hr class="hr.new5">
+		<div class="massage">
+			
+			<h1>MASSAGE A DOMICILE</h1>
+<hr class="hr.new5">
+			<div>
+				<h3>Infos complementaires</h3>
+				<label>Type de praticien</label>
+				<div>
+				  <input type="radio" id="man" name="praticien" value="Homme">
+				  <label for="man">Homme</label>
+				</div>
+
+				<div>
+				  <input type="radio" id="woman" name="praticien" value="Femme">
+				  <label for="woman">Femme</label>
+				</div>
+
+				<div>
+				  <input type="radio" id="other" name="praticien" value="Peu importe">
+				  <label for="other">Peu importe</label>
+				</div>
+			</div>
+<hr class="hr.new5">
+		</div>
+	</div>
+
 	<br><br><br><br>
 </div>
+
+<script type="text/javascript">
+	document.getElementById("country-choice").addEventListener("change", myFunction);
+
+	function myFunction() {
+	  var x = document.getElementById("country-choice").value;
+	  var input_dptm = document.getElementById("Departement")
+	  var div_dptm = document.getElementById("list-department")
+	  if (x == "France") {
+	  	input_dptm.removeAttribute("disabled")
+	  	div_dptm.removeAttribute("class")
+	  }else{
+	  	input_dptm.setAttribute("disabled","disabled")
+	  	div_dptm.classList.add("hidden")
+	  }
+	}
+</script>

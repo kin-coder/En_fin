@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_02_05_151906) do
 
   create_table "departments", force: :cascade do |t|
     t.string "code"
-    t.string "namedepartment"
+    t.string "name"
     t.bigint "country_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
