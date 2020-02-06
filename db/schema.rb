@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(version: 2020_02_05_151906) do
     t.string "delivery_ville"
     t.string "delivery_code_postal"
     t.string "delivery_adresse"
+    t.string "praticien"
     t.text "message"
     t.bigint "client_id"
     t.bigint "department_id"

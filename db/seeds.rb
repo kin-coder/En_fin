@@ -119,14 +119,14 @@ Product.create(name: "Cadeau 4", description: "#####", price: 20)
 # OrderSpa
 
 # ~~~~~ Order 1
-o1 = Order.create(prestation_date: Date.new, prestation_time: Time.now, billing_pays: "Madagascar", billing_ville: "Antananarivo", billing_code_postal: "301", billing_adresse: "Lot Ter Mandona JS", delivery_pays: "Madagascar", delivery_ville: "Antananarivo", delivery_code_postal: "490", delivery_adresse: "Lot KDD 34 ld", message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", client: Client.first, department: Department.first)
+o1 = Order.create(prestation_date: Date.new, prestation_time: Time.now, billing_pays: "Madagascar", billing_ville: "Antananarivo", billing_code_postal: "301", billing_adresse: "Lot Ter Mandona JS", delivery_pays: "Madagascar", delivery_ville: "Antananarivo", delivery_code_postal: "490", delivery_adresse: "Lot KDD 34 ld", message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", client: Client.first, department: Department.first, praticien:"Homme")
 OrderService.create(order: o1, service: Service.first)
 OrderMassage.create(order: o1, massage_ca:MassageSu.first.massage_ca, massage_su: MassageSu.first, massage_su_price: MassageSu.first.massage_su_prices[0])
 OrderMassage.create(order: o1, massage_ca:MassageSu.first.massage_ca, massage_su: MassageSu.first, massage_su_price: MassageSu.first.massage_su_prices[1])
 OrderProduct.create(number: 4, product: Product.find(6), order: o1)
 OrderProduct.create(number: 1, product: Product.find(7), order: o1)
 # ~~~~~ Order 2
-o2 = Order.create(prestation_date: Date.new, prestation_time: Time.now, billing_pays: "France", billing_ville: "Paris", billing_code_postal: "301", billing_adresse: "Lot Ter Mandona JS", delivery_pays: "France", delivery_ville: "Paris", delivery_code_postal: "490", delivery_adresse: "Lot KDD 34 ld", message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", client: Client.first, department: Department.first)
+o2 = Order.create(prestation_date: Date.new, prestation_time: Time.now, billing_pays: "France", billing_ville: "Paris", billing_code_postal: "301", billing_adresse: "Lot Ter Mandona JS", delivery_pays: "France", delivery_ville: "Paris", delivery_code_postal: "490", delivery_adresse: "Lot KDD 34 ld", message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", client: Client.first, department: Department.first, praticien:"Femme")
 OrderService.create(order: o2, service: Service.first)
 OrderService.create(order: o2, service: Service.last)
 OrderMassage.create(order: o2, massage_ca:MassageSu.last.massage_ca, massage_su: MassageSu.last, massage_su_price: MassageSu.last.massage_su_prices[0])
@@ -140,8 +140,6 @@ OrderProduct.create(number: 4, product: Product.find(6), order: o1, order_spa:os
 OrderProduct.create(number: 4, product: Product.find(7), order: o1, order_spa:os1)
 OrderProduct.create(number: 4, product: Product.find(8), order: o1, order_spa:os1)
 OrderProduct.create(number: 1, product: Product.find(7), order: o1, order_spa:os2)
-
-
 
 =begin
 
