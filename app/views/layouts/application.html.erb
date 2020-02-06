@@ -50,9 +50,20 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 <style>
-  .mail{
-    Color:white !important;
-  }
+ .no-js #loader { display: none;  }
+ .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+ .se-pre-con {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url(plugins/simple-pre-loader/images/loader-64x/Preloader_2.gif) center no-repeat #fff;
+}
+.mail{
+  Color:white !important;
+}
 </style>
 </head>
 
@@ -92,23 +103,16 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li class="active">
-                <%= link_to "Accueil", root_path %>
+              <li>
+                <%= link_to "Massages", massage_path %>
               </li>
-              <li class=" dropdown singleDrop">
-                <a href="<%=service_path%>" class="dropdown-toggle">Services</a>
-                <ul class="dropdown-menu dropdown-menu-left">
-                  <li><%= link_to "Massage", massage_path %></li>
-                  <li><%= link_to "Location de spa", spa_path %></li>
-                </ul>
+              <li>
+                <%= link_to "Location Spa", spa_path %>
               </li>
-              <li class=" dropdown singleDrop">
-                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Réservation/Dévis</a>
-                <ul class="dropdown-menu dropdown-menu-left">
-                  <li><%= link_to "Massage à domicile", reservation_path('massage-domicile') %></li>
-                  <li><%= link_to "Location de spa", resrvation_spa_path %></li>
-                </ul>
+              <li>
+                <%= link_to "Réservation", zone_path %>
               </li>
+
               <%if client_signed_in?%>
               <li>
                 <%= link_to "Se deconnecter", destroy_client_session_path, method:"delete"  %>
@@ -144,7 +148,9 @@
       <div class="clearfix footerInfo">
         <div class="container">
           <div class="row">
-            <div class="col-sm-3 col-xs-12">
+           
+
+            <div class="col-sm-4 col-xs-12">
               <div class="footerText">
                 <a href="index.html" class="footerLogo">
                   <svg xmlns="http://www.w3.org/2000/svg" width="362" height="99" preserveAspectRatio="xMidYMid" viewBox="0 0 362 99" >
@@ -158,6 +164,8 @@
                 <p>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
               </div>
             </div>
+            <div class="col-sm-1 col-xs-12">
+            </div>
             <div class="col-sm-3 col-xs-12 paddingLeft">
               <div class="footerInfoTitle">
                 <h4>Liens utiles</h4>
@@ -165,14 +173,16 @@
               <div class="useLink">
                 <ul class="list-unstyled">
                   <li><a href="<%=faq_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>FAQ</a></li>
-                  <li><a href="<%=comment_ca_marche_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Comment ça marche?</a></li>
-                  <li><a href="<%=service_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Nos services</a></li>
+                  <!--  <li><a href="<%=comment_ca_marche_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Comment ça marche?</a></li> -->
+                  <!--    <li><a href="<%=service_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Nos services</a></li> -->
+                  <li><a href="<%=contact_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Qui sommes-nous?</a></li>
                   <li><a href="<%=cgu_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Conditions génerales CGU</a></li>
-                  <li><a href="<%=engagement_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Nos engagements</a></li>
+                  <li><a href="<%=root_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Devenez partenaires</a></li>
                   <li><a href="<%=contact_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Contactez-nous</a></li>
-                  <li><a href="<%=propos_path%>"><i class="fa fa-angle-double-right" aria-hidden="true"></i>A propos de nous</a></li>
                 </ul>
               </div>
+            </div>
+            <div class="col-sm-1 col-xs-12">
             </div>
             <div class="col-sm-3 col-xs-12">
               <div class="footerInfoTitle">
@@ -199,18 +209,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-3 col-xs-12">
-              <div class="footerInfoTitle">
-                <h4>Newsletters</h4>
-              </div>
-              <div class="footerText">
-                <p>Sign up for our mailing list to get latest updates and offers.</p>
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Email address" aria-describedby="basic-addon21">
-                  <button type="submit" class="input-group-addon" id="basic-addon21">Envoyer</button>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>

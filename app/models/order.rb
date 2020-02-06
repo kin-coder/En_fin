@@ -1,14 +1,18 @@
 class Order < ApplicationRecord
-  belongs_to :service     #une commande N --- 1 service
-  belongs_to :client      #un client 1 ---- N  commande
-  belongs_to :department  #plusieur commande dans une region
-  #relation N-N entre category et commande
-  has_many :order_categories, dependent: :destroy
-  has_many :categories, through: :order_categories
-  #relation N-N entre la commande et le prestataire pour sauvgarder les prestataire en attente
-  has_many :prestataire_orders, dependent: :destroy
-  has_many :prestataires, through: :prestataire_orders
-  #pour la sauvegarde des produits N-N produit - order
-  has_many :order_products, dependent: :destroy
-  has_many :products, through: :order_products
+	belongs_to :client      #un client 1 ---- N  commande
+	belongs_to :department, optional: true  #plusieur commande dans une region
+	belongs_to :country #plusieur commande dans un pays
+	#relation Order N---N Service
+	has_many :order_services
+	has_many :services, through: :order_services
+	#relation N-N entre la commande et le prestataire pour sauvgarder les prestataire en attente
+	has_many :prestataire_orders, dependent: :destroy
+	has_many :prestataires, through: :prestataire_orders
+	#pour la sauvegarde des produits N-N produit - order
+	has_many :order_products, dependent: :destroy
+	has_many :products, through: :order_products
+	# relation order 1-N order_massage
+	has_many :order_massages, dependent: :destroy
+	# relation order 1-N order_spa
+	has_many :order_spas, dependent: :destroy
 end

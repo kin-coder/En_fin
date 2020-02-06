@@ -1,3 +1,7 @@
+<link href="/css/accordeon-index.css" rel="stylesheet">
+<link href="/css/avisslider.css" rel="stylesheet">
+
+
 <style>
   /* Mise en page du texte*/
   .texte-baniere{
@@ -9,7 +13,7 @@
 
   /* font texte N de texte-baniere*/
   .texte-baniere b{
-    font-size:45px;
+    font-size:25px;
     font-family:Brush Script MT, Brush Script Std, cursive!important;
   }
 
@@ -18,6 +22,7 @@
   .poli1{
 
    font-family:Georgia, serif!important;
+   font-size: 20px !important;
  }
  
  /* font bouton (massage domicile/location spa) de nos services*/
@@ -92,15 +97,13 @@
     <div class="slide slideResize slide1" style="background-image: url(img/home/home-slider-1.jpg);">
       <div class="container">
         <div class="slide-inner1 common-inner">
-          <span class="h1 from-bottom poli1">Cocooning Spa...</span><br>
           <span class="h4 from-bottom">
 
             <div class="container">
               <div class="row">
 
-                <div class="texte-baniere col-12 col-md-7"> <b>N</b>ous vous proposons un service de location de spa, jacuzzi gonflable clé
-                  en main. À domicile ou sur le lieu de votre choix, profitez d’un instant de
-                détente et de relaxation inoubliable.</div><br>
+                <div class="texte-baniere col-12 col-md-7"> <b>C</b>ocooning Spa, le nouveau partenaire de vos instants bien-être à domicile !
+                En quelques clics, il est désormais possible de réserver vos prestations Spa & Massage où que vous soyez </div><br>
 
               </div>
             </div>
@@ -115,9 +118,11 @@
       <div class="container">
         <div class="common-inner slide-inner3  texte-baniere col-12 col-md-7">
           <!--<img src="img/favicon.png" alt="Logo Icon" class="img-responsive">-->  <!-- ICONE -->
-          <span class="h1 from-bottom poli1">Massage</span><br>
-          <span class="h4 from-bottom texte-baniere"><b>T</b>he real place of Mindfullness & Healthy body</span><br>
-          <div  ><a href="<%= reservation_path('massage-domicile') %>"class="btn btn-primary first-btn waves-effect waves-light scale-up " id="first-btn" >Réserver</a></div>
+          <span class="h1 from-bottom poli1">Louez votre spa / jacuzzi à domicile</span><br>
+          <span class="h4 from-bottom texte-baniere"><b>N</b>ous vous proposons un service de location de spa, jacuzzi gonflable clé
+            en main. À domicile ou sur le lieu de votre choix, profitez d’un instant de
+          détente et de relaxation inoubliable.</span><br>
+          <div  ><a href="#"class="btn btn-primary first-btn waves-effect waves-light scale-up " id="first-btn" >Réserver</a></div>
         </div>
       </div>
     </div>
@@ -126,8 +131,8 @@
     <div class="slide slideResize slide4" style="background-image: url(img/home/gallery-2.jpg);">
       <div class="container">
         <div class="common-inner slide-inner4 texte-baniere col-12 col-md-7">   <!--common-inner slide-inner3-->
-          <span class="h1 from-bottom poli1">Location Spa</span><br>
-          <span class="h4 from-bottom texte-baniere"><b>T</b>he real place of Mindfullness & Healthy body</span><br>
+          <span class="h1 from-bottom poli1">Bookez votre Massage et sentez-vous au top!</span><br>
+          <span class="h4 from-bottom texte-baniere"><b>A</b> domicile, à l’hôtel ou encore au bureau…Le massage vient à vous, où vous le voulez, quand vous le souhaitez !</span><br>
           <div  ><a href="<%= reservation_path('location-spa') %>" class="btn btn-primary first-btn waves-effect waves-light scale-up" id="first-btn" >Réserver</a></div>
         </div>
       </div>
@@ -138,111 +143,31 @@
 
 
 
-<!-- DEbut Carousel-->
-
-<section class="container-fluid clearfix aboutSection patternbg" >
-  <div class="contain">
-    <div class="carous" style="margin-bottom: -9%;">
-
-      <div class="row__inner">
-
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="/carousel/img/evenementiel.jpg" alt=""  />
-
+<!-- SECTION CCSPA-->
+<section class="clearfix reviewSection patternbg">
+  <div class="container">
+    <div class="secotionTitle">
+    </div>
+    <div class="col-sm-10 col-xs-12">
+      <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
+          <div class="reviewImage hidden-xs">
+            <img src="/img/ccspa.png" alt="Image review" class="img-responsive" alt="Massage">
           </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              <p style="color: white;">Top Gear</p>
-            </div>
+          <div class="reviewInfo">
+            <center class="sansfa">Bienvenu chez Cocooning Spa !</center>
+            <p>La plateforme web n°1 en Europe au service de votre détente.
+            Notre mission est de vous permettre de réserver en deux clics des prestations de bien-être à domicile et de vous inciter à passer du bon temps et à penser à vous. </p>
           </div>
         </div>
-
-
-
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="/carousel/img/dsc_00221.jpg" alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              Anniverssaire 
-            </div>
-          </div>
-        </div>
-
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="/carousel/img/images.jpeg" alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              Week-end en Famille
-            </div>
-          </div>
-        </div>
-
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="/carousel/img/IMG_0167.jpg" alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              Festival
-            </div>
-          </div>
-        </div>
-
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="/carousel/img/couple-mariage-hotel-otl-gouverneur_2_orig.jpg" alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              Mariage
-            </div>
-          </div>
-        </div>
-
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="/carousel/img/6261167-9355943.jpg" alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              Saint-Valentin
-            </div>
-          </div>
-        </div>
-
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="/carousel/img/11160444.jpg" alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              Voyage de noce
-            </div>
-          </div>
-        </div>
-
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="/carousel/img/698f32_f69eda0937464180b4f17330cf12f51f~mv2.jpg" alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              Enterrement de jeune fille
-            </div>
-          </div>
-        </div>      
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ========== Fin CAROUSEL============ -->
+
+
 
 
 
@@ -257,13 +182,13 @@
         <div class="row">
           <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
             <div class="reviewImage hidden-xs">
-              <img src="img/home/offer-2.jpg" alt="Image review" class="img-responsive" alt="Massage">
+              <img src="img/home/home-about.jpg" alt="Image review" class="img-responsive" alt="Massage">
             </div>
-            <div class="reviewInfo">
-              <center><i class="fa fa-quote-left" aria-hidden="true"> Massage</i></center>
-              <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam co laboris nisi ut aliquip ex ea commodo conse quat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-              <div class="a-btn">
-               <%= link_to "Massage à domicile", reservation_path('massage-domicile'), class:"btn btn-primary first-btn mass text-btn" %>
+            <div class="reviewInfo service-single">
+              <center class="sansfa">Location spa à domicile</center>
+              <p class="text-p-index"> Un concept inédit et original : nous installons et mettons en service un jacuzzi gonflable sur le lieu de votre choix afin de vous faire vivre un moment qui vous apportera à coup sûr détente, bien-être et convivialité. En été comme en hiver, en intérieur ou en extérieur, n’hésitez plus et tentez cette expérience unique en couple, entre amis ou encore en famille. Louer un spa/jacuzzi à domicile, c’est maintenant possible avec Cocooning Spa !</p>
+              <div class="a-btn btn-a">
+               <%= link_to "Découvrir", spa_path, class:"btn btn-primary first-btn mass text-btn" %>
 
              </div>
            </div>
@@ -274,13 +199,13 @@
       <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
           <div class="reviewImage hidden-xs">
-            <img src="img/home/home-about.jpg" alt="Image review" class="img-responsive">
+            <img src="img/home/offer-2.jpg" alt="Image review" class="img-responsive">
           </div>
           <div class="reviewInfo">
-            <center><i class="fa fa-quote-left" aria-hidden="true"> Location Spa</i></center>
-            <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam co laboris nisi ut aliquip ex ea commodo conse quat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+            <center class="sansfa">Massage à domicile</center>
+            <p class="text-p-index">Imaginez profiter d’un massage sans avoir à vous déplacer ou à attendre... Ça donne envie, non? Avec Cocooning Spa, ce rêve devient réalité : c'est le bien-être qui vient à vous au moment où vous l'avez décidé. Que ce soit pour un massage classique, sportif ou encore relaxant, vous pouvez réserver celui-ci quand vous voulez. Commandez en quelques secondes un massage de qualité à domicile, à l’hôtel, au bureau, dans un parc, à la plage…Il est temps que le monde du massage s’adapte à vous !</p>
             <div class="a-btn">
-             <%= link_to "Location spa à domicile", reservation_path('location-spa'), class:"btn btn-primary first-btn mass text-btn" %>
+             <%= link_to "Découvrir", massage_path, class:"btn btn-primary first-btn mass text-btn" %>
 
            </div>
          </div>
@@ -291,593 +216,289 @@
 </div>
 </section>
 
-        <!-- comment ca marche SECTION -->
-        <section class="clearfix productSection">
-          <div class="container">
-            <div class="secotionTitle">
-              <h2 class="police_massage"><span>Concept</span>comment ca marche</h2>
-            </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <div id="productSlider" class="carousel slide" data-ride="carousel">
-                  <!-- Indicators -->
-                  <ol class="carousel-indicators">
-                    <li data-target="#productSlider" data-slide-to="0" class="active"></li>
-                    <li data-target="#productSlider" data-slide-to="1"></li>
-                  </ol>
 
-                  <!-- Wrapper for slides -->
-                  <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                      <div class="row">
-                        <div class="col-sm-6 col-xs-12">
-                          <div class="productImage">
-                            <img src="img/home/home-product.jpg" alt="Image Product" class="img-responsive">
-                          </div>
-                        </div>
-                        <div class="col-sm-6 col-xs-12">
-                          <div class="productInfo">
-                            <h3>Traditional Massage</h3>
-                            <h4>$25.00 Per Head</h4>
-                            <ul class="list-inline rating">
-                              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                              <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                            </ul>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria tur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese runt mollit anim id est laborum. </p>
-
-
-
-                            <p style="text-align: center">
-                              <%= link_to  "RESERVER", root_path, class:"btn btn-common btn-full-round btn-theme"%>
-                            </P>
-
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item">
-                      <div class="row">
-                        <div class="col-sm-6 col-xs-12">
-                          <div class="productImage">
-                            <img src="img/home/home-product.jpg" alt="Image Product" class="img-responsive">
-                          </div>
-                        </div>
-                        <div class="col-sm-6 col-xs-12">
-                          <div class="productInfo">
-                            <h3>Body Massage</h3>
-                            <h4>$55.00 Per Head</h4>
-                            <ul class="list-inline rating">
-                              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                              <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                            </ul>
-                            <p>Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria tur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese runt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <p style="text-align: center">
-                              <%= link_to "LIVRAISON", root_path, class:"btn btn-common btn-full-round btn-theme lava"%>
-                            </P>
-
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Left and right controls -->
-                  <a class="left carousel-control" href="#productSlider" role="button" data-slide="prev">
-                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="right carousel-control" href="#productSlider" role="button" data-slide="next">
-                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </div>
-              </div>
-            </div>
+<!-- comment ca marche SECTION -->
+<section class="container-fluid clearfix productArea">
+  <div class="container">
+    <div class="secotionTitle">
+      <h2 class="police_massage"><span>Comment</span>ça marche?</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="produtSingle">
+          <div class="produtImage">
+            <img src="img/localisationn.jpg" alt="Image Product" class="img-responsive">
+            <div class="productMask"></div>
           </div>
-        </section>
+          <div class="productCaption">
+            <p class="ccm">Réservez vos prestations bien-être en un clic partout en France, Belgique, Luxembourg et Suisse.</p>
 
-
-        <!-- ABOUT SECTION -->
-        <section class="clearfix reviewSection patternbg">
-          <div class="container">
-            <div class="secotionTitle">
-              <h2 id="a-propos" class="police_massage"><span>A propos </span>de nous</h2>
-            </div>
-            <div class="row">
-              <div class="col-sm-6 col-xs-12">
-                <div class="row">
-                  <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
-                    <div class="reviewInfo">
-                      <center><i class="fa aboutus" aria-hidden="true"> QUI SOMMES-NOUS?</i></center>
-                      <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam co laboris nisi ut aliquip ex ea commodo conse quat. Duis aute irure dolor in reprehenderit  in voluptate  velit esse  <a href="#">Lire la suite...</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-xs-12">
-                <div class="row">
-                  <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
-                    <div class="reviewInfo">
-                      <center><i class="fa fa-phone aboutus" aria-hidden="true"> REJOIGNEZ-NOUS</i></center>
-                      <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam co laboris nisi ut aliquip ex ea commodo conse quat. Duis aute irure dolor in reprehenderit in voluptate velit esse <a href="#">Lire la suite...</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-        </section>
-
-
-
-        <!-- EXPERT SECTION -->
-        <section class="clearfix expertSection">
-          <div class="container">
-            <div class="secotionTitle">
-              <h2 class="police_massage"><span>Nos experts</span>à votre service</h2>
-            </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <div id="thubmnailTeamSlider" class="carousel slide thumbnailCarousel">
-
-                  <ol class="carousel-indicators">
-                    <li data-target="#thubmnailTeamSlider" data-slide-to="0" class="active"></li>
-                    <li data-target="#thubmnailTeamSlider" data-slide-to="1"></li>
-                    <li data-target="#thubmnailTeamSlider" data-slide-to="2"></li>
-                    <li data-target="#thubmnailTeamSlider" data-slide-to="3"></li>
-                    <li data-target="#thubmnailTeamSlider" data-slide-to="4"></li>
-                    <li data-target="#thubmnailTeamSlider" data-slide-to="5"></li>
-                    <li data-target="#thubmnailTeamSlider" data-slide-to="6"></li>
-                    <li data-target="#thubmnailTeamSlider" data-slide-to="7"></li>
-                  </ol>
-
-                  <!-- Carousel items -->
-                  <div class="carousel-inner">
-
-                    <div class="item active">
-                      <div class="item-inner">
-                        <div class="expertBox">
-                          <div class="expertImage">
-                            <img src="img/home/team-1.jpg" alt="Image expert">
-                            <div class="expertMask">
-                              <div class="socialArea">
-                                <ul class="list-inline">
-                                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="expertCaption ">
-                            <h2>Linda Smith</h2>
-                            <p>Founder, Angel Beauty Spa</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item">
-                      <div class="item-inner">
-                        <div class="expertBox">
-                          <div class="expertImage">
-                            <img src="img/home/team-2.jpg" alt="Image expert">
-                            <div class="expertMask">
-                              <div class="socialArea">
-                                <ul class="list-inline">
-                                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="expertCaption ">
-                            <h2>Linda Smith</h2>
-                            <p>Founder, Angel Beauty Spa</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item">
-                      <div class="item-inner">
-                        <div class="expertBox">
-                          <div class="expertImage">
-                            <img src="img/home/team-3.jpg" alt="Image expert">
-                            <div class="expertMask">
-                              <div class="socialArea">
-                                <ul class="list-inline">
-                                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="expertCaption ">
-                            <h2>Linda Smith</h2>
-                            <p>Founder, Angel Beauty Spa</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item">
-                      <div class="item-inner">
-                        <div class="expertBox">
-                          <div class="expertImage">
-                            <img src="img/home/team-4.jpg" alt="Image expert">
-                            <div class="expertMask">
-                              <div class="socialArea">
-                                <ul class="list-inline">
-                                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="expertCaption ">
-                            <h2>Linda Smith</h2>
-                            <p>Founder, Angel Beauty Spa</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item">
-                      <div class="item-inner">
-                        <div class="expertBox">
-                          <div class="expertImage">
-                            <img src="img/home/team-1.jpg" alt="Image expert">
-                            <div class="expertMask">
-                              <div class="socialArea">
-                                <ul class="list-inline">
-                                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="expertCaption ">
-                            <h2>Linda Smith</h2>
-                            <p>Founder, Angel Beauty Spa</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item">
-                      <div class="item-inner">
-                        <div class="expertBox">
-                          <div class="expertImage">
-                            <img src="img/home/team-2.jpg" alt="Image expert">
-                            <div class="expertMask">
-                              <div class="socialArea">
-                                <ul class="list-inline">
-                                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="expertCaption ">
-                            <h2>Linda Smith</h2>
-                            <p>Founder, Angel Beauty Spa</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item">
-                      <div class="item-inner">
-                        <div class="expertBox">
-                          <div class="expertImage">
-                            <img src="img/home/team-3.jpg" alt="Image expert">
-                            <div class="expertMask">
-                              <div class="socialArea">
-                                <ul class="list-inline">
-                                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="expertCaption ">
-                            <h2>Linda Smith</h2>
-                            <p>Founder, Angel Beauty Spa</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item">
-                      <div class="item-inner">
-                        <div class="expertBox">
-                          <div class="expertImage">
-                            <img src="img/home/team-4.jpg" alt="Image expert">
-                            <div class="expertMask">
-                              <div class="socialArea">
-                                <ul class="list-inline">
-                                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="expertCaption ">
-                            <h2>Linda Smith</h2>
-                            <p>Founder, Angel Beauty Spa</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <a class="left carousel-control" href="#thubmnailTeamSlider" data-slide="prev">‹</a>
-                  <a class="right carousel-control" href="#thubmnailTeamSlider" data-slide="next">›</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- CONTACT US SECTION -->
-        <div class="secotionTitle">
-          <h2 id="contacter" class="police_massage"><span>Infos</span>Contactez-nous</h2>
         </div>
-        <section class="clearfix contactSection">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-sm-7 col-xs-12">
-                <div class="contactTitle">
-                  <h3></br></h3>
-                </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="produtSingle">
+          <div class="produtImage">
+            <img src="img/calendar.jpg" alt="Image Product" class="img-responsive">
+            <div class="productMask"></div>
+          </div>
+          <div class="productCaption">
+            <p class="ccm">Nos services sont disponibles de 8h à 22h, tous les jours de l’année, même au dernier moment ! On s’adapte à vous</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="produtSingle">
+          <div class="produtImage">
+            <img src="img/relaxr.jpg" alt="Image Product" class="img-responsive">
+            <div class="productMask"> </div>
+          </div>
+          <div class="productCaption">
+            <p class="ccm">Vous vous relaxez ! Vous n’avez plus qu’à vous détendre et à profiter de l’instant présent !</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                <div class="contactForm">
-                  <div id="alert"></div><!--Response Holder-->
-                  <form action="mail/contact-form.php" id="angelContactForm" method="post">
-                    <div class="form-group">
-                      <input type="text" name="contact-form-name" class="form-control" placeholder="Votre nom" required>
-                    </div>
-                    <div class="form-group">
-                      <input type="email" name="contact-form-email" class="form-control" placeholder="Votre Email" required>
-                    </div>
-                    <div class="form-group">
-                      <input type="text" name="contact-form-mobile" class="form-control" placeholder="Votre Mobile" required>
-                    </div>
-                    <div class="form-group">
-                      <textarea class="form-control" name="contact-form-message" placeholder="Laisser votre Message" required></textarea>
-                    </div>
-                    <div class="form-group">
-                      <button type="submit" id="contact-submit-btn" class="btn btn-primary first-btn">Envoyer</button>
+<!-- 
+  <section class="clearfix productSection">
+    <div class="container">
+      <div class="secotionTitle">
+        <h2 class="police_massage"><span>Comment ça marche?</span></h2>
+      </div>
+      <div class="row">
 
-                    </div>
-                  </form>
-                </div>
-              </div>
-              <div class="col-md-4 col-sm-5 col-xs-12">
+        <div class="col-sm-6">
+          <img src="/img/local.svg" alt="" style="width:100px; height: 100px;">
+          <span>Réservez vos prestations bien-être en un clic partout en France, Belgique, Luxembourg et Suisse.</span>
+        </div>
 
-                <div class="holdingInfo patternbg">
-                  <div class="contactTitle">
-                    <h3><center>Réseaux sociaux</center></h3>
-                  </div>
-                  <ul>
-                    <a href="#" class="btn"><li><i class="fa fa-facebook" aria-hidden="true"></i> Cocooning Spa officiel </li></a>
-                    <a href="#" class="btn"><li><i class="fa fa-instagram" aria-hidden="true"></i> Cocooning Spa </li></a>
-                    <a href="#" class="btn"><li><i class="fa fa-pinterest" aria-hidden="true"></i> Cocooning Spa printerest </li></a>
-                    <a href="#" class="btn"><li><i class="fa fa-twitter" aria-hidden="true"></i> Cocooning Spa tweet </li></a>
-                    <a href="#" class="btn"> <li><i class="fa fa-users" aria-hidden="true"></i> Cocooning Spa blog</li> </a>
-                  </ul>
-                </div>
-              </div>
+        <div class="col-sm-6">
+          <i class="fa fa-calendar" aria-hidden="true" id="ok"></i><br>
+          <span>Nos services sont disponibles de 8h à 22h, tous les jours de l’année, même au dernier moment ! On s’adapte à vous</span>
+        </div>
+
+      </div> 
+      <center> 
+        <div class="">
+          <i class="fa fa-bed" aria-hidden="true" id="ok"></i> <br>  
+          <span>Vous vous relaxez ! Vous n’avez plus qu’à vous détendre et à profiter de l’instant présent !</span>
+        </div>
+      </center>
+    </div>
+  </section>
+-->
+
+<!-- ABOUT SECTION -->
+<section class="clearfix reviewSection patternbg">
+  <div class="container">
+    <div class="secotionTitle">
+      <h2 id="a-propos" class="police_massage"><span>A propos </span>de nous</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
+            <div class="reviewInfo">
+              <center><i class="fa aboutus" aria-hidden="true"> QUI SOMMES-NOUS?</i></center>
+              <p class="text-p-index">Cocooning Spa est une start-up française qui propose LA solution aux personnes intéressées par les prestations de bien-être à domicile. Nous vous proposons une plateforme web sur laquelle vous pouvez commander en quelques secondes une location de spa/jacuzzi ou un massage sur le lieu de votre choix et au moment voulu. <span id="lirelasuite" style="display:none;"> Une flexibilité sans égale. Cocooning Spa surfe sur une nouvelle tendance de consommation, celle du plaisir immédiat et sans restriction. 
+              Nous entendons bien, à travers ce concept totalement novateur, révolutionner l’univers du bien-être. </span> <i class="btn lire-btn" id="more" aria-hidden="true" onclick="document.getElementById('lirelasuite').style.display = 'block'; this.style.display = 'none';">lire la suite</i>
+            </p>
+            <div class="a-btn">
+              <%= link_to "En savoir plus", propos_path, class:"btn btn-primary first-btn mass text-btn" %>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
+          <div class="reviewInfo">
+            <center><i class="fa aboutus" aria-hidden="true">DEVENEZ PARTENAIRES</i></center>
+            <p class="text-p-index">Vous êtes déjà professionnels dans le domaine du massage ou de la location de spa ? Vous n’êtes pas encore en activité et vous souhaitez vous lancer, devenir indépendant ? Cocooning Spa est le tremplin qu’il vous faut. Nous avons besoin de partenaires comme vous ! <br>
+            Alors rejoignez vous aussi l’aventure Cocooning Spa.</p>
+            <div class="a-btn">
+             <%= link_to "En savoir plus", contact_path, class:"btn btn-primary first-btn mass text-btn" %>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+</section>
+
+
+<!-- NOS ENGAGEMENTS -->
+<div class="secotionTitle">
+  <h2 id="contacter" class="police_massage"><span>Nos engagements</span></h2>
+</div>
+<section class="clearfix contactSection">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+
+        <div>
+          <b><span><i class="fa fa-check-square-o" aria-hidden="true" id="ok"></i></span> Ecoute, disponibilité & réactivité</b>
+        </div>
+        <p class='text-p-index'>De la réservation jusqu’au suivi de votre satisfaction, nous comptons bien vous cocooner</p>
+
+      </div>
+      <div class="col-sm-6">
+        <div>
+          <b><span><i class="fa fa-thumbs-up" aria-hidden="true" id="ok"></i></span> Professionnels sélectionnés, formés et diplômés</b>
+        </div>
+        <p class='text-p-index'>Toutes nos prestations sont réalisées par des professionnels sélectionnés, formés et diplômés. Ils s’occuperont de vous avec talent et gentillesse !</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+
+        <div>
+          <b><span><i class="fa fa-clock-o" aria-hidden="true" id="ok"></i></span> Prestations sur mesure </b>
+        </div>
+        <p class='text-p-index'>C’est vous qui choisissez votre prestation et vos horaires, nous qui nous adaptons. Vous pouvez personnaliser votre moment en fonction de vos envies.</p>
+
+
+      </div>
+      <div class="col-sm-6">
+        <div>
+          <b><span><i class="fa fa-lock" aria-hidden="true" id="ok"></i></span> Paiement CB sécurisé </b>
+        </div>
+        <p class='text-p-index'>Grâce à nos partenaires Mercanet by BNP Paribas et Paypal, vous pourrez commander en toute tranquillité. Nous vous demandons seulement un acompte lors de votre réservation en ligne, puis le reste du paiement se fait directement sur place auprès du professionnel</p>
+      </div>
+    </div>  
+  </div>
+</section>
+
+
+<!-- ZONE CONCERNES -->
+<section class="clearfix brandArea patternbg">
+  <div class="container">
+    <div class="secotionTitle">
+      <h2 id="a-propos" class="police_massage"><span>Où bénéficier </span>de nos services ?</h2>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="owl-carousel partnersLogoSlider">
+          <div class="slide">
+            <div class="partnersLogo clearfix">
+              <img src="img/home/france.png" alt="Image Partner">
+            </div>
+          </div>  
+          <div class="slide">
+            <div class="partnersLogo clearfix">
+              <img src="img/home/luxembourg.png" alt="Image Partner">
             </div>
           </div>
-        </section>
-
-        <!-- PARTNER LOGO SECTION -->
-        <section class="clearfix brandArea patternbg">
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="owl-carousel partnersLogoSlider">
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-1.png" alt="Image Partner">
-                    </div>
-                  </div>  
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-2.png" alt="Image Partner">
-                    </div>
-                  </div>
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-3.png" alt="Image Partner">
-                    </div>
-                  </div>
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-4.png" alt="Image Partner">
-                    </div>
-                  </div>
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-1.png" alt="Image Partner">
-                    </div>
-                  </div>  
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-2.png" alt="Image Partner">
-                    </div>
-                  </div>
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-3.png" alt="Image Partner">
-                    </div>
-                  </div>
-                  <div class="slide">
-                    <div class="partnersLogo clearfix">
-                      <img src="img/home/brand-4.png" alt="Image Partner">
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div class="slide">
+            <div class="partnersLogo clearfix">
+              <img src="img/home/belgique.jpg" alt="Image Partner">
             </div>
           </div>
-        </section>
-
-
-        <!-- HOME GALLERY SECTION -->
-        <section>
-          <div class="clearfix homeGalleryTitle">
-            <div class="container">
-              <div class="secotionTitle">
-                <h2 class="police_massage"><span>Galerie </span>ccspa en photo</h2>
-              </div>
+          <div class="slide">
+            <div class="partnersLogo clearfix">
+              <img src="img/home/suisse.png" alt="Image Partner">
             </div>
           </div>
-          <div class="container-fluid clearfix homeGallery">
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="filter-container isotopeFilters">
-                  <ul class="list-inline filter">
-                    <li class="active"><a href="#" data-filter="*">all item</a></li>
-                    <li><a href="#" data-filter=".hair">hair</a></li>
-                    <li><a href="#" data-filter=".makeup">Make Up</a></li>
-                    <li><a href="#" data-filter=".facial">Facial</a></li>
-                    <li><a href="#" data-filter=".massage">Massage</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="row isotopeContainer" id="container">
-              <div class="col-sm-3 isotopeSelector hair">
-                <div class="card">
-                  <div class="card-img">
-                    <img class="img-full" src="img/home/gallery-1.jpg" alt="Image" >
-                    <div class="overlay-content">
-                      <a href="img/home/gallery-1.jpg" data-fancybox="images" >
-                        <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3 isotopeSelector makeup">
-                <div class="card">
-                  <div class="card-img">
-                    <img class="img-full" src="img/home/gallery-2.jpg" alt="Image" >
-                    <div class="overlay-content">
-                      <a href="img/home/gallery-2.jpg" data-fancybox="images" >
-                        <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3 isotopeSelector massage">
-                <div class="card">
-                  <div class="card-img">
-                    <img class="img-full" src="img/home/gallery-3.jpg" alt="Image" >
-                    <div class="overlay-content">
-                      <a href="img/home/gallery-3.jpg" data-fancybox="images" >
-                        <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3 isotopeSelector hair">
-                <div class="card">
-                  <div class="card-img">
-                    <img class="img-full" src="img/home/gallery-5.jpg" alt="Image" >
-                    <div class="overlay-content">
-                      <a href="img/home/gallery-5.jpg" data-fancybox="images" >
-                        <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3 isotopeSelector makeup">
-                <div class="card">
-                  <div class="card-img">
-                    <img class="img-full" src="img/home/gallery-5.jpg" alt="Image" >
-                    <div class="overlay-content">
-                      <a href="img/home/gallery-5.jpg" data-fancybox="images" >
-                        <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3 isotopeSelector facial">
-                <div class="card">
-                  <div class="card-img">
-                    <img class="img-full" src="img/home/gallery-6.jpg" alt="Image" >
-                    <div class="overlay-content">
-                      <a href="img/home/gallery-6.jpg" data-fancybox="images" >
-                        <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3 isotopeSelector facial">
-                <div class="card">
-                  <div class="card-img">
-                    <img class="img-full" src="img/home/gallery-7.jpg" alt="Image" >
-                    <div class="overlay-content">
-                      <a href="img/home/gallery-7.jpg" data-fancybox="images" >
-                        <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3 isotopeSelector massage">
-                <div class="card">
-                  <div class="card-img">
-                    <img class="img-full" src="img/home/gallery-8.jpg" alt="Image" >
-                    <div class="overlay-content">
-                      <a href="img/home/gallery-8.jpg" data-fancybox="images">
-                        <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-12">
+        <center>Nos services sont disponibles partout en France, Belgique, Luxembourg & Suisse. Alors n’attendez plus, nous ne sommes pas loin de chez vous ! <br><br>
+          <div class="accordion">
+            <div class="heading"><b>DÉCOUVRIR NOS SERVICES</b></div>
+            <div class="contents">
+              <ul>
+                <li><b><a href="#">JACUZZI À DOMICILE</a></b></li> <br>
+                <li><b><a href="#">MASSAGE À DOMICILE</a></b></li>
+              </ul>
+
             </div>
           </div>
-        </section>
+        </center>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- section avis -->
+<section class="clearfix contactSection patternbg">
+  <div class="container">
+    <div class="secotionTitle">
+      <h2 id="contacter" class="police_massage"><span>Avis</span>des clients</h2>
+    </div>
+    <div id="slider">
+      <a class="control_next">></a>
+      <a class="control_prev"><</a>
+      <ul>
+        <li>SLIDE 1</li>
+        <li style="background: #aaa;">SLIDE 2</li>
+        <li>SLIDE 3</li>
+        <li style="background: #aaa;">SLIDE 4</li>
+      </ul>  
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT US SECTION -->
+<section class="clearfix contactSection">
+  <div class="container">
+    <div class="secotionTitle">
+      <h2 id="contacter" class="police_massage"><span>Infos</span>Contactez-nous</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-sm-7 col-xs-12">
+        <div class="contactTitle">
+          <h3></br></h3>
+        </div>
+
+        <div class="contactForm">
+          <div id="alert"></div><!--Response Holder-->
+          <form action="mail/contact-form.php" id="angelContactForm" method="post">
+            <div class="form-group">
+              <input type="text" name="contact-form-name" class="form-control" placeholder="Votre nom" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="contact-form-email" class="form-control" placeholder="Votre Email" required>
+            </div>
+            <div class="form-group">
+              <input type="text" name="contact-form-mobile" class="form-control" placeholder="Votre Mobile" required>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="contact-form-message" placeholder="Laisser votre Message" required></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" id="contact-submit-btn" class="btn btn-primary first-btn">Envoyer</button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-5 col-xs-12">
+
+        <div class="holdingInfo patternbg">
+          <div class="contactTitle">
+            <h3><center>Réseaux sociaux</center></h3>
+          </div>
+          <ul>
+            <a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa fa-facebook" aria-hidden="true"></i> Cocooning Spa officiel </li></a>
+            <a href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa fa-instagram" aria-hidden="true"></i> Cocooning Spa </li></a>
+            <a href="#" class="btn"> <li><i class="fa fa-users" aria-hidden="true"></i> Cocooning Spa blog</li> </a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

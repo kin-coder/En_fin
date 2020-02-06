@@ -1,0 +1,6 @@
+class Spa < ApplicationRecord
+	#relation service-(1-N)-spa
+	belongs_to :service
+	# relation spa -(1-N)- order_massage
+	has_many :order_massages
+end
