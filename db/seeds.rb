@@ -37,7 +37,7 @@ country = Country.create(name: "France")
 # ======================== PRESTATAIRES ====================== #
 		#creation département et prestataire
 listdepartement.each do |listdepartement|
-	d = Department.create(code: listdepartement[0], namedepartment: listdepartement[1], country: country)
+	d = Department.create(code: listdepartement[0], name: listdepartement[1], country: country)
 	rand(5).times do |i|
 		p = Prestataire.create(email: Faker::Internet.free_email, first_name: Faker::Name.first_name, last_name: Faker::Name.middle_name , adresse: Faker::Address.full_address, tel: Faker::PhoneNumber.phone_number_with_country_code, raison_sociale: Faker::Commerce.department, siret: Faker::Number.leading_zero_number(digits: 10))
 		# Selection du zone qu'il peut faire
@@ -119,6 +119,8 @@ i = 1
 sus.each do |su|
 	sub = MassageSu.create(name:su[0], description:su[1], massage_ca:ca1)
 	addprice(i,sub)
+	sub = MassageSu.create(name:su[0], description:su[1], massage_ca:ca2)
+	addprice(i,sub)
 	i += 1
 	puts increment+=1
 end
@@ -185,35 +187,9 @@ LES SERVICES NE S’AFFICHENT QUE SI ILS SONT PRESENTS DANS LA ZONE SELECTIONNEE
 
 “ Oups, le service n’est pas disponible actuellement dans votre zone ! Nous oeuvrons pour qu’il le soit prochainement. “
 
-
-
-
-
-
-
 Texte en dessous en petit : Notre service massage à domicile est 
 disponible partout en France, Belgique, Luxembourg & Suisse
 Alors n’attendez plus, nous ne sommes pas loin de chez vous !
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 Liste des table

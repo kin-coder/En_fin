@@ -40,8 +40,8 @@ Rails.application.routes.draw do
 
 #ORDERS_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page tunelle d'achats dans le controller ORDERS
-  get 'orders/zone'
-  get 'orders/order'
+  get '/reservation-prestation', to:'orders#zone', as: "zone"
+  post '/b', to:'orders#order', as: "order"
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Tsy ilaina ierovana conflit

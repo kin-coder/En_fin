@@ -1,9 +1,33 @@
 class OrdersController < ApplicationController
   def zone
-
+    @countries = Country.all
+    @departments = Department.all
   end
 
   def order
+    parameters = params.permit(:country, :department)
+    if parameters[:country] == "" || (parameters[:country] == "France" && parameters[:department] == "")
+      redirect_back(fallback_location: root_path)
+    end
+
+    @services = Service.all
+
+    # service location spa
+    @spas = Spa.all
+    @spaoptions = Product.where(is_option_spa:true)
+
+    # service massage
+    @massages = MassageCa.all #.massage_sus liste sub sub[0].massage_su_prices //differen heurse
+    @cadeaus = Product.where(is_option_spa:false)
+ 
+    respond_to do |format|
+      format.html do
+        redirect_back(fallback_location: root_path)
+      end
+      format.js do
+
+      end
+    end
 
   end
 end
