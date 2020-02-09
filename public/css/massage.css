@@ -39,7 +39,10 @@
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {.reviewImageMassage1 {
+@media only screen and (min-width: 600px) {
+
+
+.reviewImageMassage1 {
 	position: absolute;
 	top: 170px;
 	width: 165px;
@@ -78,6 +81,11 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+
+
+
+
+
 	.reviewImageMassage1 {
 		position: absolute;
 		top: 170px;
@@ -115,3 +123,18 @@
 
 }
 
+.areserver{
+position: fixed;
+right: 5px;
+z-index: 100;
+top: 50%;
+}
+.btn-full-roundd {
+
+    border-radius: 25px;
+    width: 100px;
+    font-size: 8px;
+
+padding-left: 10px;
+
+}
