@@ -1,14 +1,9 @@
 class OrdersController < ApplicationController
-  def zone
+  def index
     @countries = Country.all
     @departments = Department.all
-  end
 
-  def order
-    parameters = params.permit(:country, :department)
-    if parameters[:country] == "" || (parameters[:country] == "France" && parameters[:department] == "")
-      redirect_back(fallback_location: root_path)
-    end
+    # ========================================== #
 
     @services = Service.all
 
@@ -19,20 +14,56 @@ class OrdersController < ApplicationController
     # service massage
     @massages = MassageCa.all #.massage_sus liste sub sub[0].massage_su_prices //differen heurse
     @cadeaus = Product.where(is_option_spa:false)
- 
-    respond_to do |format|
-      format.html do
-        redirect_back(fallback_location: root_path)
-      end
-      format.js do
 
-      end
-    end
+    # ========================================== #
 
   end
+
 end
 
 =begin
+
+
+@services = Service.all
+# service location spa
+@spas = Spa.all
+@spaoptions = Product.where(is_option_spa:true)
+# service massage
+@massages = MassageCa.all #.massage_sus liste sub sub[0].massage_su_prices //differen heurse
+@cadeaus = Product.where(is_option_spa:false)
+
+
+# @categories = @service.categories # Liste de tous les categories
+
+# @products = @service.products # Liste de tous les produits
+
+# @listPrestation = []
+
+# @categories.each do |c|
+
+#   @listPrestation.push([[c.name,c.id]])
+
+#   c.subcategories.each do |s|
+#     @listPrestation[@listPrestation.length-1].push([s.id,s.name,s.price])
+#   end
+
+# end
+
+# <%= form_tag(saved_commande_path, id:"form", 'data-zones':"#{@listPrestation}", 'data-service':"#{@service.name}") do %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 get 'orders/zone'
   get 'orders/order'
