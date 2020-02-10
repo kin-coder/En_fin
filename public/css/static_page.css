@@ -392,290 +392,295 @@ left: 250px;*/
 
   /* Extra small devices (phones, 600px and down) */
   @media only screen and (max-width: 600px) {
-
-.p-slider{
-position: relative;
-max-width:300px !important;
-left: 10%;
-padding-bottom: 30px;
-
-
-}
-.productInfo p {
-  font-size: 16px;
-  line-height: 26px;
-  color: #666666;
-  margin: 0 0 0px 0 !important;
-}
-
-.productSection{
-background-image: linear-gradient(white, white);
-}
+    #btn-reserve-fixe{
+      position: relative;
+      left: -60px;
+    }
+  }
+  .p-slider{
+    position: relative;
+    max-width:300px !important;
+    left: 10%;
+    padding-bottom: 30px;
 
 
-#productSlider .carousel-control.left i.fa-arrow-circle-left {
+  }
+  .productInfo p {
+    font-size: 16px;
+    line-height: 26px;
+    color: #666666;
+    margin: 0 0 0px 0 !important;
+  }
+
+  .productSection{
+    background-image: linear-gradient(white, white);
+  }
+
+
+  #productSlider .carousel-control.left i.fa-arrow-circle-left {
     text-shadow: none;
     position: absolute;
     right: 100px;
     top: 30px;
+  }
+
+  #fleche{
+    position: absolute;
+    right: -160px;
+
+    top: 30px;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+
+  #iconetitle{
+    margin-top: 20px;
+    font-size: xx-large;
+  }
+  .slide0{
+    font-size: 20px;
+    text-transform: none;
+  }
+  .slide1{
+    color: #48D1CC;
+    font-size: 20px;
+    text-transform: none;
+  }
+  .slide2{
+    color: black;
+    font-size: 20px;
+    text-transform: none;
+  }
+
+  .slide3{
+    color: #9400D3;
+    font-size: 20px;
+    text-transform: none;
+  }
+  .slide4{
+    color: deeppink;
+    font-size: 20px;
+    text-transform: none;
+  }
+  .slide5{
+    color: #0000FF;
+    font-size: 20px;
+    text-transform: none;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  .secotionTitle h2 span{
+    font-size: 45px !important;
+  }
+  .lire-btn{
+    text-transform: lowercase;
+  }
+  #more{
+    color: #ec5598;
+    font-weight: 12px;
+  }
+  .aboutus{
+    color: #ec5598;
+  }
+  .ccm{
+    position: relative;
+    top: 20px;
+  }
+  #ok{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: xxx-large;
+    text-rendering: auto;
+    /* -webkit-font-smoothing: antialiased; */
+    color: rgb(238, 17, 190) !important;
+    
+    padding: 10px;
+  }
+  .a-btn{
+    text-align: center;
+    position: relative;
+    right: 10px;
+  }
+
+  .reviewInfo .sansfa {
+    font-size: 25px;
+    margin: 0 0 25px 0;
+    color: #ec5598;
+    font-family: 'Bradley Hand, cursive' !important;
+  }
+  .text-p-index{
+    text-align: justify;
+    line-height: 26px !important;
+    padding: 5px;
+  }
+  .service-single{
+    height: 541px;
+  }
+
 }
 
-#fleche{
-  position: absolute;
-right: -160px;
-
-top: 30px;
-  display: inline-block;
-font: normal normal normal 14px/1 FontAwesome;
-    font-size: 14px;
-font-size: xxx-large;
-text-rendering: auto;
-color:
-rgb(238, 17, 190) !important;
-padding: 10px;
-    }
-
-    #iconetitle{
-margin-top: 20px;
-font-size: xx-large;
-    }
-    .slide0{
-font-size: 20px;
-text-transform: none;
-    }
-    .slide1{
-color: #48D1CC;
-font-size: 20px;
-text-transform: none;
-    }
-        .slide2{
-color: black;
-font-size: 20px;
-text-transform: none;
-    }
-
-            .slide3{
-color: #9400D3;
-font-size: 20px;
-text-transform: none;
-    }
-                .slide4{
-color: deeppink;
-font-size: 20px;
-text-transform: none;
-    }
-                    .slide5{
-color: #0000FF;
-font-size: 20px;
-text-transform: none;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-    .secotionTitle h2 span{
-      font-size: 45px !important;
-    }
-    .lire-btn{
-      text-transform: lowercase;
-    }
-    #more{
-      color: #ec5598;
-      font-weight: 12px;
-    }
-    .aboutus{
-      color: #ec5598;
-    }
-    .ccm{
-      position: relative;
-      top: 20px;
-    }
-    #ok{
-      display: inline-block;
-      font: normal normal normal 14px/1 FontAwesome;
-      font-size: xxx-large;
-      text-rendering: auto;
-      /* -webkit-font-smoothing: antialiased; */
-      color: rgb(238, 17, 190) !important;
-     
-      padding: 10px;
-    }
-    .a-btn{
-      text-align: center;
-      position: relative;
-      right: 10px;
-    }
-
-    .reviewInfo .sansfa {
-      font-size: 25px;
-      margin: 0 0 25px 0;
-      color: #ec5598;
-      font-family: 'Bradley Hand, cursive' !important;
-    }
-    .text-p-index{
-      text-align: justify;
-      line-height: 26px !important;
-    }
-    .service-single{
-      height: 541px;
-    }
-
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .lire-btn{
+    text-transform: lowercase;
+  }
+  #more{
+    color: #ec5598;
+    font-weight: 12px;
+  }
+  .aboutus{
+    color: #ec5598;
+  }
+  .ccm{
+    position: relative;
+    top: 20px;
+  }
+  #ok{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: xxx-large;
+    text-rendering: auto;
+    /* -webkit-font-smoothing: antialiased; */
+    color: rgb(238, 17, 190) !important;
+    
+    padding: 10px;
   }
 
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 600px) {
-    .lire-btn{
-      text-transform: lowercase;
-    }
-    #more{
-      color: #ec5598;
-      font-weight: 12px;
-    }
-    .aboutus{
-      color: #ec5598;
-    }
-    .ccm{
-      position: relative;
-      top: 20px;
-    }
-    #ok{
-      display: inline-block;
-      font: normal normal normal 14px/1 FontAwesome;
-      font-size: xxx-large;
-      text-rendering: auto;
-      /* -webkit-font-smoothing: antialiased; */
-      color: rgb(238, 17, 190) !important;
-      
-      padding: 10px;
-    }
+  .a-btn{
+    text-align: center;
+    position: relative;
+    right: 10px;
+  }
+}
 
-    .a-btn{
-      text-align: center;
-      position: relative;
-      right: 10px;
-    }
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .lire-btn{
+    text-transform: lowercase;
+  }
+  #more{
+    color: #ec5598;
+    font-weight: 12px;
+  }
+  .aboutus{
+    color: #ec5598;
+  }
+  .ccm{
+    position: relative;
+    top: 20px;
+  }
+  #ok{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: xxx-large;
+    text-rendering: auto;
+    /* -webkit-font-smoothing: antialiased; */
+    color: rgb(238, 17, 190) !important;
+    
+    padding: 10px;
   }
 
-  /* Medium devices (landscape tablets, 768px and up) */
-  @media only screen and (min-width: 768px) {
-    .lire-btn{
-      text-transform: lowercase;
-    }
-    #more{
-      color: #ec5598;
-      font-weight: 12px;
-    }
-    .aboutus{
-      color: #ec5598;
-    }
-    .ccm{
-      position: relative;
-      top: 20px;
-    }
-    #ok{
-      display: inline-block;
-      font: normal normal normal 14px/1 FontAwesome;
-      font-size: xxx-large;
-      text-rendering: auto;
-      /* -webkit-font-smoothing: antialiased; */
-      color: rgb(238, 17, 190) !important;
-      
-      padding: 10px;
-    }
-
-    .a-btn{
-      position: relative;
-      right: 40px;
-    }
-    .reviewInfo .sansfa {
-      font-size: 25px;
-      margin: 0 0 25px 0;
-      color: #ec5598;
-      font-family: 'Bradley Hand, cursive' !important;
-    }
-    .text-p-index{
-      text-align: justify;
-      line-height: 26px !important;
-      padding-right: 10px;
-      padding-left: 10px;
-    }
-    .service-single{
-      height: 900px;
-    }
-    .btn-a{
-      position:relative;
-      top: 53px;
-    }
-
+  .a-btn{
+    position: relative;
+    right: 40px;
+  }
+  .reviewInfo .sansfa {
+    font-size: 25px;
+    margin: 0 0 25px 0;
+    color: #ec5598;
+    font-family: 'Bradley Hand, cursive' !important;
+  }
+  .text-p-index{
+    text-align: justify;
+    line-height: 26px !important;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .service-single{
+    height: 900px;
+  }
+  .btn-a{
+    position:relative;
+    top: 53px;
   }
 
-  /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 992px) {
-    .lire-btn{
-      text-transform: lowercase;
-    }
-    #more{
-      color: #ec5598;
-      font-weight: 12px;
-    }
-    .aboutus{
-      color: #ec5598;
-    }
-    .ccm{
-      position: relative;
-      top: 20px;
-    }
-    #ok{
-      display: inline-block;
-      font: normal normal normal 14px/1 FontAwesome;
-      font-size: xxx-large;
-      text-rendering: auto;
-      /* -webkit-font-smoothing: antialiased; */
-      color: rgb(238, 17, 190) !important;
-      padding: 10px;
-      position: relative;
-      top: 12px;
-    }
+}
 
-    .a-btn{
-      text-align: center;
-    }
-    .reviewInfo .sansfa {
-      font-size: 25px;
-      margin: 0 0 25px 0;
-      color: #ec5598;
-      font-family: 'Bradley Hand, cursive' !important;
-    }
-    .text-p-index{
-      text-align: justify;
-      line-height: 26px !important;
-    }
-    .service-single{
-      height: 541px;
-    }
-    .btn-a{
-      position:relative;
-      top: 53px;
-    }
-
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .lire-btn{
+    text-transform: lowercase;
+  }
+  #more{
+    color: #ec5598;
+    font-weight: 12px;
+  }
+  .aboutus{
+    color: #ec5598;
+  }
+  .ccm{
+    position: relative;
+    top: 20px;
+  }
+  #ok{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: xxx-large;
+    text-rendering: auto;
+    /* -webkit-font-smoothing: antialiased; */
+    color: rgb(238, 17, 190) !important;
+    padding: 10px;
+    position: relative;
+    top: 12px;
   }
 
-  .form-label{
-    position:absolute;
-    left:200px;
+  .a-btn{
+    text-align: center;
+  }
+  .reviewInfo .sansfa {
+    font-size: 25px;
+    margin: 0 0 25px 0;
+    color: #ec5598;
+    font-family: 'Bradley Hand, cursive' !important;
+  }
+  .text-p-index{
+    text-align: justify;
+    line-height: 26px !important;
+  }
+  .service-single{
+    height: 541px;
+  }
+  .btn-a{
+    position:relative;
+    top: 53px;
   }
 
-  .prestation-category{
-   font-size: large;
- }
+}
+
+.form-label{
+  position:absolute;
+  left:200px;
+}
+
+.prestation-category{
+ font-size: large;
+}
 
 }
 
