@@ -1,4 +1,57 @@
-// alert("dfsfqdsfdsf")
+function scriptPrincipal(){
+	// let data = document.getElementById('form-data').dataset
+	// let dataMassages = JSON.parse(data.massages)
+
+	let removeSpa = document.getElementsByClassName("remove-spa")[0]
+	let addSpa = document.getElementsByClassName("add-spa")[0]
+
+	removeSpa.addEventListener('click',removeSpaList)
+	addSpa.addEventListener('click',addSpaList)
+
+	let prestations = sessionStorage.getItem("prestations")
+	if( prestations == undefined || prestations ){
+		initSession()
+	}else{
+		addDomIndex()
+	}
+}
+
+scriptPrincipal()
+
+function initSession(){
+	sessionStorage.setItem("prestations","[]")
+	sessionStorage.setItem("spa","[]")
+	sessionStorage.setItem("massages","[]")
+	sessionStorage.setItem("input",0)
+}
+// remettre les elements si un l'user a actualisé
+function addDomIndex(){
+	// body...
+}
+
+// evenement on click
+function addSpaList(){
+	let data = document.getElementById('form-data').dataset
+	let dataSpas = JSON.parse(data.spas)
+	// spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte
+	let dataSpaoptions = JSON.parse(data.spaoptions)
+	
+
+	let div = document.createElement('div')
+	div.classList.add('spa-list-prestations')
+
+
+
+
+	document.getElementById('spa-input').appendChild(div)
+}
+// evenement on click
+function removeSpaList(){
+	alert("Mete le mamafa")
+}
+
+
+// JSON.stringify()
 
 /*
 runJS()
@@ -181,5 +234,56 @@ function totalPrice(){
 console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 document.getElementById("submi-tag")
 console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+
+==========================================================================================
+
+<h4>Durée location</h4>
+
+<div>
+  <input type="radio" id="h24" name="timeSpa[1][]" value="24">
+  <label for="h24">24h</label>
+</div>
+
+<div>
+  <input type="radio" id="h48" name="timeSpa[1][]" value="48">
+  <label for="h48">48h</label>
+</div>
+
+<div>
+  <input type="radio" id="h72" name="timeSpa[1][]" value="72">
+  <label for="h72">72h</label>
+</div>
+
+
+
+<h4>options</h4>
+<input type="checkbox" name="optionSpa[1][]" value="Bike" id="vehicle1">
+<label for="vehicle1"> Table de massage</label><br>
+<input type="checkbox" name="optionSpa[1][]" value="Car" id="vehicle2">
+<label for="vehicle2"> Decoration</label><br>
+<input type="checkbox" name="optionSpa[1][]" value="Boat" id="vehicle3">
+<label for="vehicle3"> Plateau</label><br><br>
+
+<h4>Informations sur la location</h4>
+<label for="logement1">Type de logement</label>
+<select name="prestations[1][]" id="logement1" class="selectElement">
+	<option value="Appartement">Appartement</option>
+	<option value="Villa - Maison">Villa - Maison</option>
+</select>
+
+<label for="installation1">Type d'installation</label>
+<select name="prestations[1][]" id="installation1" class="selectElement">
+	<option value="Intérieur">Intérieur</option>
+	<option value="Extérieur">Extérieur</option>
+</select>
+
+<label for="eau1">Système d'eau</label>
+<select name="prestations[1][]" id="eau1" class="selectElement">
+	<option value="Cumulus - Ballon d'eau (eau chaude limitée)">Cumulus - Ballon d'eau (eau chaude limitée)</option>
+	<option value="Chaudière (eau chaude continue)">Chaudière (eau chaude continue)</option>
+</select>
+
+==========================================================================================
 
 */

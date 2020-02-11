@@ -76,17 +76,20 @@
 
 	<%= form_tag(save_session_path,id:"form-data", 'data-spas':"#{@spas}",'data-spaoptions':"#{@spaoptions}",'data-massages':"#{@massages}") do %>
 
-	
-
 	<div id="prestation-list">
 		<div class="spa">
-			<h1>LOCATION SPA A DOMICILE</h1>
+			<h2>LOCATION SPA A DOMICILE</h2>
+			<div class="spa-click">
+				<p>Je souhaite reserver <button class="remove-spa">-</button><span id="number-spa">0</span><button class="add-spa">+</button> spa</p>
+			</div>
+			<div id="spa-input">
 
-			
+				
+			</div>
 		</div>
 <!-- ======================================================================== -->
 		<div class="massage">
-			<h1>MASSAGE A DOMICILE</h1>
+			<h2>MASSAGE A DOMICILE</h2>
 			
 			<!-- #################### -->
 			<div id="select-prestation">
@@ -147,4 +150,8 @@
 	  	div_dptm.classList.add("hidden")
 	  }
 	}
+</script>
+
+
+<script id="pro-choice" type="text/html">
 </script>

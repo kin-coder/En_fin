@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     @spas = []
     tmpspa = Spa.all
     tmpspa.each do |spa|
-      @spas.push([spa.duration,spa.exceptional_price,spa.exceptional_acompte,spa.ordinary_price,spa.ordinary_acompte])
+      @spas.push([spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte])
     end
     # options pour location spa
     @spaoptions = []

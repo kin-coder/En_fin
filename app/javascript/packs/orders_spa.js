@@ -1,3 +1,4 @@
+/*
 runJS()
 function runJS(){
 	const service_name = document.getElementById("form").dataset.service
@@ -31,6 +32,8 @@ function addDomIndex(){
 }
 
 /* Ajouts et suppresion d'element dans la liste prestations */
+
+/*
 const prestations = document.querySelectorAll('.posibilities-presation');
 prestations.forEach(prestation => {
 	prestation.addEventListener('click',addChoiceSubCategory);
@@ -121,6 +124,9 @@ function totalPrice(){
 /*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/
 /* Ajouts et suppresion d'element dans la liste des produits */
+
+
+/*
 const products = document.querySelectorAll('.btn-produits');
 products.forEach(product => {
 	product.addEventListener('click',addProduitOnSubmit);
@@ -202,3 +208,5 @@ function listInputProduit(currentProduit,nombres){
 }
 
 console.log(document.getElementById("submi-tag"))
+
+*/
