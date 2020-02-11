@@ -1,3 +1,6 @@
+// alert("dfsfqdsfdsf")
+
+/*
 runJS()
 function runJS(){
 	const service_name = document.getElementById("form").dataset.service
@@ -79,7 +82,8 @@ function addDomIndex(){
 
 /*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/
-/* Ajouts et suppresion d'element dans la liste des produits */
+/* Ajouts et suppresion d'element dans la liste des produits 
+
 const products = document.querySelectorAll('.btn-produits');
 products.forEach(product => {
 	product.addEventListener('click',addProduitOnSubmit);
@@ -178,3 +182,4 @@ console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 document.getElementById("submi-tag")
 console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
+*/
