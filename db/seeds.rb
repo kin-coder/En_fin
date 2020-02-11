@@ -18,6 +18,7 @@ OrderMassage.destroy_all
 OrderProduct.destroy_all
 OrderService.destroy_all
 OrderSpa.destroy_all
+Comment.destroy_all
 
 increment = 0
 Admin.create(email:"admin@admin.com",password:"admin@admin.com")
@@ -172,7 +173,9 @@ OrderProduct.create(number: 4, product: Product.find(7), order: o1, order_spa:os
 OrderProduct.create(number: 4, product: Product.find(8), order: o1, order_spa:os1)
 OrderProduct.create(number: 1, product: Product.find(7), order: o1, order_spa:os2)
 
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+	# Seed pour les comments
+Comment.create(note:3, content: "dsfqdsqfsdfsdf")
 
 
 =begin

@@ -1,6 +1,7 @@
 class StaticPageController < ApplicationController
 #page d'acceuil
   def index
+    comments = Comment.all
   end
 #Differents service {+ Page Service Par Departement}
   def massage
