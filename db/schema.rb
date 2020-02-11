@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_02_11_153537) do
   create_table "comments", force: :cascade do |t|
     t.integer "note"
     t.text "content"
+    t.string "user_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
