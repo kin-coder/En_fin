@@ -41,6 +41,29 @@
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+	.productInfoindex{
+
+		background: white;
+	}
+	#flecheindex{
+		position: absolute;
+		right:5px;
+		top: 40%;
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: 14px;
+		font-size: xxx-large;
+		text-rendering: auto;
+		color:
+		rgb(238, 17, 190) !important;
+		padding: 10px;
+	}
+	.username{
+		position: relative;
+		left: 300px;
+		top: -25px;
+	}
+
 
 	.p-slider{
 		position: relative;
@@ -157,6 +180,24 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+	.productInfoindex{
+
+		background: white;
+	}
+	#flecheindex{
+		position: absolute;
+		right:120px;
+		top: 40%;
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: 14px;
+		font-size: xxx-large;
+		text-rendering: auto;
+		color:
+		rgb(238, 17, 190) !important;
+		padding: 10px;
+	}
+
 
 	.btn-teme{
 		margin-left: 150px;
@@ -215,6 +256,11 @@
 		color: #48D1CC;
 		font-size: 20px;
 		text-transform: none;
+	}
+	.username{
+		position: relative;
+		left: 800px;
+		top: -20px;
 	}
 	.slide2{
 		color: black;
@@ -276,6 +322,12 @@
 
 }
 
+@-webkit-keyframes clignote {
+	0%{box-shadow:0px 0px 15px #4183C4;}
+	50%{box-shadow:0px 0px 0px #4183C4;}
+	100%{box-shadow:0px 0px 15px #4183C4;}
+}
+
 .areserver{
 	position: fixed;
 	right: 5px;
@@ -286,9 +338,15 @@
 
 	border-radius: 25px;
 	width: 100px;
-	font-size: 8px;
+	font-size: 10px;
 
 	padding-left: 10px;
+
+	box-shadow:0px 0px 15px #4183C4;
+	-webkit-animation-name: clignote; /*on affecte l'animation clignote à notre bouton*/
+	-webkit-animation-duration: 1s; /*on définit la durée de l'animation à 1s*/
+	-webkit-animation-iteration-count:infinite; /*on dit que l'animation se répétera à l'infini.*/
+
 
 }
 

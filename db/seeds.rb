@@ -175,9 +175,24 @@ OrderProduct.create(number: 1, product: Product.find(7), order: o1, order_spa:os
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 	# Seed pour les comments
-Comment.create(note:3, content: "dsfqdsqfsdfsdf")
+listavis = [
+	[5, "Super prestation effet de surprise garantie Décoration exceptionnelle mais je tiens surtout à souligner le professionnalisme de cette société Comme On en voit très peu de nos jours. Merci encore a toutes l'équipe.", "Vanessa Guez"], 
+	[5, "Prestation au top.. rapidité extrême. Ayant réservé à 13h pour être en place à 19h.. top qualité, 24h de bonheur dans son salon. Je recommande à ceux qui veulent passer un bon moment chez eux. Honnêtement c'est génial je recommencerais.", "Sami Tessier"],
+	[5,"Idée originale, très bon service et efficace","Michouu Moukengué"],
+	[5, "Excellent juste parfait pour notre part ! Bonne organisation et montage propre rien à dire ,nous avons passés un excellent moment à notre domicile avec le j'acuzzi et la personne qui monte le j'acuzzi est au top !!", "Cameron LO RE"], 
+	[5, "24h de magie à domicile . Ponctuel, professionnel, discret, n'hésitez pas à contacter Cocooning spa pour une surprise sur mesure. Nous avons passé des moments inoubliables dans l'intimité d'un chez soi, c'est mieux qu'à l'hôtel !", "Angé Lique"],
+	[5, "Effet de surprise garantie pour ce pack cocooning. 3 jours ou nous avons apprécié ce moment de détente absolu chez soi. A refaire très vite!! Equipe dynamique et commerciale!!! A recommander vivement", "Silvia La Toune"], 
+	[5, "Merci beaucoup pour cette prestation, service professionnel et rapide, je recommande à 100%.", "Nicolas Altenburger"]
+]
+listavis.each do |avis|
+	c = Comment.create(note: avis[0], content: avis[1], user_name: avis[2])
+	puts "Comment-#{c.id}"
+end
 
 
+
+
+ 
 =begin
 
 (les services spa et massage s’affichent si activés dans la zone, les produits upsell s’affichent tout le temps pour n’importe quelle zone géographique)
