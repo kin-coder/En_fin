@@ -1,4 +1,200 @@
-// alert("dfsfqdsfdsf")
+function scriptPrincipal(){
+/*==========================================================================*/
+	/*~~~~~~~~~~~~~~~~~~~~~~~~~SPA~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	let removeSpa = document.getElementById("remove-spa")
+	let addSpa = document.getElementById("add-spa")
+	removeSpa.addEventListener('click',removeSpaList)
+	addSpa.addEventListener('click',addSpaList)
+/*==========================================================================*/
+	/*~~~~~~~~~~~~~~~~~~~~~~~Massage~~~~~~~~~~~~~~~~~~~~~~~*/
+
+	let buttonRmvs = document.querySelectorAll('.remove-massage');
+	buttonRmvs.forEach(buttonRmv => {
+		buttonRmv.addEventListener('click',removeCategoryMassage);
+	});
+
+	let buttonAdds = document.querySelectorAll('.add-massage');
+	buttonAdds.forEach(buttonAdd => {
+		buttonAdd.addEventListener('click',addCategoryMassage);
+	});
+
+/*==========================================================================*/
+	/*~~~~~~~~~~~~~~~~~~~~~~~~Autre~~~~~~~~~~~~~~~~~~~~~~~~*/
+	let prestations = sessionStorage.getItem("prestations")
+	if( 1 /*prestations == undefined || prestations == 0*/ ){
+		initSession()
+	}else{
+		addDomIndex()
+	}
+}
+
+scriptPrincipal()
+/*==========================================================================*/
+
+function initSession(){
+	sessionStorage.setItem("prestations","[]")
+	sessionStorage.setItem("spa","[]")
+	sessionStorage.setItem("massages","[]")
+	sessionStorage.setItem("inc","0")
+}
+// remettre les elements si un l'user a actualisé
+function addDomIndex(){
+	// body...
+}
+/*==========================================================================*/
+	// les fonctions primaire utilisé dans SPA et massage
+function incrementeInc(){ /*incremente la valeur inc pour les params*/
+	let inc = JSON.parse(sessionStorage.getItem("inc"))
+	inc++
+	sessionStorage.setItem("inc",JSON.stringify(inc))
+	return inc
+}
+
+/*==========================================================================*/
+	// les fonctions primaire SPA
+function valueToHtmlSpa(id,div){ /* code html pour l'ajout d'un spa */
+	let data = document.getElementById('form-data').dataset
+	let dataSpas = JSON.parse(data.spas)
+	let dataSpaoptions = JSON.parse(data.spaoptions)
+
+	// spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte
+
+	let typeSpa = "<div><h4>Durée location</h4>"
+	for (var i = 0; i < dataSpas.length ; i++) {
+		typeSpa += "<div><input type=\"radio\" id=\""+id+"h"+dataSpas[i][0]+"\" name=\"timeSpa["+id+"][]\" value=\""+ dataSpas[i][0] +"\" data-prices=\"["+dataSpas[i][1]+","+dataSpas[i][2]+"]\" data-acompte=\"["+dataSpas[i][3]+","+dataSpas[i][4]+"]\" data-index=\""+id+"\"><label for=\""+id+"h"+dataSpas[i][0]+"\">"+ dataSpas[i][0] +"h</label></div>"
+	}
+	typeSpa += "</div><div><h4>options</h4>"
+	for (var i = 0; i < dataSpaoptions.length ; i++) {
+		typeSpa += "<div><input type=\"checkbox\" name=\"optionSpa["+id+"][]\" value=\""+dataSpaoptions[i][0]+"\" id=\"opt"+dataSpaoptions[i][0]+""+id+"\" data-price=\""+dataSpaoptions[i][2]+"\" data-index=\""+id+"\"><label for=\"opt"+dataSpaoptions[i][0]+""+id+"\">"+dataSpaoptions[i][1]+"</label></div>"
+	}
+	
+	typeSpa += "</div><div><h4>Informations sur la location</h4><label for=\"logement"+id+"\">Type de logement</label><select data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"logement"+id+"\" class=\"selectElement\"><option value=\"Appartement\">Appartement</option><option value=\"Villa - Maison\">Villa - Maison</option></select><label for=\"installation"+id+"\">Type d'installation</label><select data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"installation"+id+"\" class=\"selectElement\"><option value=\"Intérieur\">Intérieur</option><option value=\"Extérieur\">Extérieur</option></select><label for=\"eau"+id+"\">Système d'eau</label><select data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"eau"+id+"\" class=\"selectElement\"><option value=\"Cumulus - Ballon d'eau (eau chaude limitée)\">Cumulus - Ballon d\'eau (eau chaude limitée)</option><option value=\"Chaudière (eau chaude continue)\">Chaudière (eau chaude continue)</option></select></div>"
+
+	div.innerHTML = typeSpa
+
+	// &quot;&quot;&quot;&quot;
+}
+
+function numberSpaSelected(){
+	let list = document.getElementsByClassName("spa-list-prestations")
+	document.getElementById("number-spa").innerHTML = list.length
+}
+
+/*==========================================================================*/
+	// les fonctions primaire MASSAGE
+function numberMassageSelected(name) {
+	let list = document.getElementsByClassName("massage-list-"+name)
+	document.getElementById("number-"+name).innerHTML = list.length
+}
+function valueToHtmlMassage(name,id){
+	let data = document.getElementById('form-data').dataset
+	let dataMassages = JSON.parse(data.massages)
+	let categories = []
+	if ( name == "Homme") {
+		categories = dataMassages[0]
+	}else{
+		categories = dataMassages[1]
+	}
+	
+	console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+	for (var i = 0; i < categories.length ; i++) {
+		console.log(categories[i])
+	}
+	console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+}
+
+/*==========================================================================*/
+	// fonction principale SPA
+// evenement on click
+function addSpaList(){
+	let id = incrementeInc() // Augmente de 1 la session
+	
+	// Enregistrement dans la session
+	let sessionSpa = JSON.parse(sessionStorage.getItem("spa"))
+	sessionSpa.push({id:id,time:"",option:[],info:[]})
+	sessionStorage.setItem("spa",JSON.stringify(sessionSpa))
+	
+	// Modification dans le DOM
+
+	let div = document.createElement('div')
+	div.classList.add('spa-list-prestations')
+
+	valueToHtmlSpa(id,div)
+
+	document.getElementById('spa-input').appendChild(div)
+	// nombre de spa - 0 +
+	numberSpaSelected()
+}
+
+
+// evenement on click
+function removeSpaList(){
+	// Enregistrement dans la session
+	let sessionSpa = JSON.parse(sessionStorage.getItem("spa"))
+	sessionSpa.pop()
+	sessionStorage.setItem("spa",JSON.stringify(sessionSpa))
+	// Modification dans le DOM
+	let list = document.getElementsByClassName("spa-list-prestations")
+	if (list.length > 0) {
+		list[list.length-1].remove()	
+	}
+	numberSpaSelected()
+}
+
+/*==========================================================================*/
+	// fonction principale MASSAGE
+function addCategoryMassage(){
+	let id = incrementeInc()
+	let data = document.getElementById('form-data').dataset
+	let dataMassages = JSON.parse(data.massages)
+	let categories = []
+	if ( this.dataset.cat == "Homme") {
+		categories = dataMassages[0]
+	}else{
+		categories = dataMassages[1]
+	}
+	
+	// Enregistrement dans la session
+	let sessionSpa = JSON.parse(sessionStorage.getItem("massages"))
+	sessionSpa.push({id:id,cat:categories[0],list:[],time:"",price:""})
+	sessionStorage.setItem("massages",JSON.stringify(sessionSpa))
+	// Modification dans le DOM
+
+	let div = document.createElement('div')
+	div.classList.add('massage-list-'+this.dataset.cat)
+
+	valueToHtmlMassage(this.dataset.cat,id)
+	
+	document.getElementById('massage-input').appendChild(div)
+	// nombre de massage pour homme et femme
+	numberMassageSelected(this.dataset.cat)
+}
+
+function removeCategoryMassage(){
+	// Enregistrement dans la session
+	let sessionMassage = JSON.parse(sessionStorage.getItem("massages"))
+	for (var i = sessionMassage.length - 1; i >= 0; i--) {
+		if(sessionMassage[i].cat == this.dataset.cat){
+			sessionMassage.splice(i,1)
+			break
+		}
+	}
+	sessionStorage.setItem("massages",JSON.stringify(sessionMassage))
+	// Modification dans le DOM
+	let list = document.getElementsByClassName('massage-list-'+this.dataset.cat)
+	if (list.length > 0) {
+		list[list.length-1].remove()
+	}
+	// nombre de massage pour homme et femme
+	numberMassageSelected(this.dataset.cat)
+
+}
+/*==========================================================================*/
+
+
+
+// JSON.stringify()
 
 /*
 runJS()
@@ -181,5 +377,37 @@ function totalPrice(){
 console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 document.getElementById("submi-tag")
 console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+
+==========================================================================================
+
+<h4>Durée location</h4>
+
+<div>
+  <input type="radio" id="h24" name="timeSpa[1][]" value="24">
+  <label for="h24">24h</label>
+</div>
+
+<div>
+  <input type="radio" id="h48" name="timeSpa[1][]" value="48">
+  <label for="h48">48h</label>
+</div>
+
+<div>
+  <input type="radio" id="h72" name="timeSpa[1][]" value="72">
+  <label for="h72">72h</label>
+</div>
+
+<h4>options</h4>
+<input type="checkbox" name="optionSpa[1][]" value="Bike" id="vehicle1">
+<label for="vehicle1"> Table de massage</label><br>
+<input type="checkbox" name="optionSpa[1][]" value="Car" id="vehicle2">
+<label for="vehicle2"> Decoration</label><br>
+<input type="checkbox" name="optionSpa[1][]" value="Boat" id="vehicle3">
+<label for="vehicle3"> Plateau</label><br><br>
+
+
+
+==========================================================================================
 
 */
