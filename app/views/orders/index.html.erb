@@ -2,7 +2,7 @@
 	<br><br><br><br>
 <hr class="hr.new5">
 	<div class="set-zones">
-		<h2>Je choisi ma zone géographique</h2>
+		<h2>Je choisi ma zone géographique </h2>
 
 		<form>
 			<div class="pays">
@@ -80,7 +80,8 @@
 		<div class="spa">
 			<h2>LOCATION SPA A DOMICILE</h2>
 			<div class="spa-click">
-				<p>Je souhaite reserver <button class="remove-spa">-</button><span id="number-spa">0</span><button class="add-spa">+</button> spa</p>
+				<p>Je souhaite reserver <i class="fa fa-minus-circle" id="remove-spa"></i><span id="number-spa">0</span><i class="fa fa-plus-circle" id="add-spa"></i> spa</p>
+
 			</div>
 			<div id="spa-input">
 
@@ -130,6 +131,7 @@
 
 
 	<%= submit_tag("Confirmer commandes", id:"submi-tag",  class:"confirm-command btn btn-primary a-btn text-btn") %>
+
 	<% end %> <!-- Fin formulaire -->
 <!-- ======================================================================== -->
 	<br><br><br><br>

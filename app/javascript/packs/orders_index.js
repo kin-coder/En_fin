@@ -2,14 +2,14 @@ function scriptPrincipal(){
 	// let data = document.getElementById('form-data').dataset
 	// let dataMassages = JSON.parse(data.massages)
 
-	let removeSpa = document.getElementsByClassName("remove-spa")[0]
-	let addSpa = document.getElementsByClassName("add-spa")[0]
+	let removeSpa = document.getElementById("remove-spa")
+	let addSpa = document.getElementById("add-spa")
 
 	removeSpa.addEventListener('click',removeSpaList)
 	addSpa.addEventListener('click',addSpaList)
 
 	let prestations = sessionStorage.getItem("prestations")
-	if( prestations == undefined || prestations ){
+	if( 1 /*prestations == undefined || prestations == 0*/ ){
 		initSession()
 	}else{
 		addDomIndex()
@@ -17,37 +17,91 @@ function scriptPrincipal(){
 }
 
 scriptPrincipal()
+/*==========================================================================*/
 
 function initSession(){
 	sessionStorage.setItem("prestations","[]")
 	sessionStorage.setItem("spa","[]")
 	sessionStorage.setItem("massages","[]")
-	sessionStorage.setItem("input",0)
+	sessionStorage.setItem("inc","0")
 }
 // remettre les elements si un l'user a actualisé
 function addDomIndex(){
 	// body...
 }
 
-// evenement on click
-function addSpaList(){
+/*==========================================================================*/
+	// les fonctions primaire
+function incrementeInc(){ /*incremente la valeur inc pour les params*/
+	let inc = JSON.parse(sessionStorage.getItem("inc"))
+	inc++
+	sessionStorage.setItem("inc",JSON.stringify(inc))
+	return inc
+}
+
+function valueToHtmlSpa(id,div){ /* code html pour l'ajout d'un spa */
 	let data = document.getElementById('form-data').dataset
 	let dataSpas = JSON.parse(data.spas)
-	// spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte
 	let dataSpaoptions = JSON.parse(data.spaoptions)
+
+	// spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte
+
+	let typeSpa = "<div><h4>Durée location</h4>"
+	for (var i = 0; i < dataSpas.length ; i++) {
+		typeSpa += "<div><input type=\"radio\" id=\""+id+"h"+dataSpas[i][0]+"\" name=\"timeSpa["+id+"][]\" value=\""+ dataSpas[i][0] +"\" data-prices=\"["+dataSpas[i][1]+","+dataSpas[i][2]+"]\" data-acompte=\"["+dataSpas[i][3]+","+dataSpas[i][4]+"]\" data-index=\""+id+"\"><label for=\""+id+"h"+dataSpas[i][0]+"\">"+ dataSpas[i][0] +"h</label></div>"
+	}
+	typeSpa += "</div><div><h4>options</h4>"
+	for (var i = 0; i < dataSpaoptions.length ; i++) {
+		typeSpa += "<div><input type=\"checkbox\" name=\"optionSpa["+id+"][]\" value=\""+dataSpaoptions[i][0]+"\" id=\"opt"+dataSpaoptions[i][0]+""+id+"\" data-price=\""+dataSpaoptions[i][2]+"\" data-index=\""+id+"\"><label for=\"opt"+dataSpaoptions[i][0]+""+id+"\">"+dataSpaoptions[i][1]+"</label></div>"
+	}
 	
+	typeSpa += "</div><div><h4>Informations sur la location</h4><label for=\"logement"+id+"\">Type de logement</label><select name=\"typeSpa["+id+"][]\" id=\"logement"+id+"\" class=\"selectElement\"><option value=\"Appartement\">Appartement</option><option value=\"Villa - Maison\">Villa - Maison</option></select><label for=\"installation"+id+"\">Type d'installation</label><select name=\"typeSpa["+id+"][]\" id=\"installation"+id+"\" class=\"selectElement\"><option value=\"Intérieur\">Intérieur</option><option value=\"Extérieur\">Extérieur</option></select><label for=\"eau"+id+"\">Système d'eau</label><select name=\"typeSpa["+id+"][]\" id=\"eau"+id+"\" class=\"selectElement\"><option value=\"Cumulus - Ballon d'eau (eau chaude limitée)\">Cumulus - Ballon d\'eau (eau chaude limitée)</option><option value=\"Chaudière (eau chaude continue)\">Chaudière (eau chaude continue)</option></select></div>"
+
+	div.innerHTML = typeSpa
+
+	// &quot;&quot;&quot;&quot;
+}
+
+function numberSpaSelected(){
+	let list = document.getElementsByClassName("spa-list-prestations")
+	document.getElementById("number-spa").innerHTML = list.length
+}
+/*==========================================================================*/
+	// fonction principale
+// evenement on click
+function addSpaList(){
+	let id = incrementeInc() // Augmente de 1 la session
+	
+	// Enregistrement dans la session
+	let sessionSpa = JSON.parse(sessionStorage.getItem("spa"))
+	sessionSpa.push({id:id,time:"",option:[],info:[]})
+	sessionStorage.setItem("spa",JSON.stringify(sessionSpa))
+	
+	// Modification dans le DOM
 
 	let div = document.createElement('div')
 	div.classList.add('spa-list-prestations')
 
-
-
+	valueToHtmlSpa(id,div)
 
 	document.getElementById('spa-input').appendChild(div)
+	// nombre de spa - 0 +
+	numberSpaSelected()
 }
+
+
 // evenement on click
 function removeSpaList(){
-	alert("Mete le mamafa")
+	// Enregistrement dans la session
+	let sessionSpa = JSON.parse(sessionStorage.getItem("spa"))
+	sessionSpa.pop()
+	sessionStorage.setItem("spa",JSON.stringify(sessionSpa))
+	// Modification dans le DOM
+	let list = document.getElementsByClassName("spa-list-prestations")
+	if (list.length > 0) {
+		list[list.length-1].remove()	
+	}
+	numberSpaSelected()
 }
 
 
@@ -255,8 +309,6 @@ console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
   <label for="h72">72h</label>
 </div>
 
-
-
 <h4>options</h4>
 <input type="checkbox" name="optionSpa[1][]" value="Bike" id="vehicle1">
 <label for="vehicle1"> Table de massage</label><br>
@@ -265,24 +317,7 @@ console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 <input type="checkbox" name="optionSpa[1][]" value="Boat" id="vehicle3">
 <label for="vehicle3"> Plateau</label><br><br>
 
-<h4>Informations sur la location</h4>
-<label for="logement1">Type de logement</label>
-<select name="prestations[1][]" id="logement1" class="selectElement">
-	<option value="Appartement">Appartement</option>
-	<option value="Villa - Maison">Villa - Maison</option>
-</select>
 
-<label for="installation1">Type d'installation</label>
-<select name="prestations[1][]" id="installation1" class="selectElement">
-	<option value="Intérieur">Intérieur</option>
-	<option value="Extérieur">Extérieur</option>
-</select>
-
-<label for="eau1">Système d'eau</label>
-<select name="prestations[1][]" id="eau1" class="selectElement">
-	<option value="Cumulus - Ballon d'eau (eau chaude limitée)">Cumulus - Ballon d'eau (eau chaude limitée)</option>
-	<option value="Chaudière (eau chaude continue)">Chaudière (eau chaude continue)</option>
-</select>
 
 ==========================================================================================
 
