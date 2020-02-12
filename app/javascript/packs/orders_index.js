@@ -1,13 +1,25 @@
 function scriptPrincipal(){
-	// let data = document.getElementById('form-data').dataset
-	// let dataMassages = JSON.parse(data.massages)
-
+/*==========================================================================*/
+	/*~~~~~~~~~~~~~~~~~~~~~~~~~SPA~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	let removeSpa = document.getElementById("remove-spa")
 	let addSpa = document.getElementById("add-spa")
-
 	removeSpa.addEventListener('click',removeSpaList)
 	addSpa.addEventListener('click',addSpaList)
+/*==========================================================================*/
+	/*~~~~~~~~~~~~~~~~~~~~~~~Massage~~~~~~~~~~~~~~~~~~~~~~~*/
 
+	let buttonRmvs = document.querySelectorAll('.remove-massage');
+	buttonRmvs.forEach(buttonRmv => {
+		buttonRmv.addEventListener('click',removeCategoryMassage);
+	});
+
+	let buttonAdds = document.querySelectorAll('.add-massage');
+	buttonAdds.forEach(buttonAdd => {
+		buttonAdd.addEventListener('click',addCategoryMassage);
+	});
+
+/*==========================================================================*/
+	/*~~~~~~~~~~~~~~~~~~~~~~~~Autre~~~~~~~~~~~~~~~~~~~~~~~~*/
 	let prestations = sessionStorage.getItem("prestations")
 	if( 1 /*prestations == undefined || prestations == 0*/ ){
 		initSession()
@@ -29,9 +41,8 @@ function initSession(){
 function addDomIndex(){
 	// body...
 }
-
 /*==========================================================================*/
-	// les fonctions primaire
+	// les fonctions primaire utilisé dans SPA et massage
 function incrementeInc(){ /*incremente la valeur inc pour les params*/
 	let inc = JSON.parse(sessionStorage.getItem("inc"))
 	inc++
@@ -39,6 +50,8 @@ function incrementeInc(){ /*incremente la valeur inc pour les params*/
 	return inc
 }
 
+/*==========================================================================*/
+	// les fonctions primaire SPA
 function valueToHtmlSpa(id,div){ /* code html pour l'ajout d'un spa */
 	let data = document.getElementById('form-data').dataset
 	let dataSpas = JSON.parse(data.spas)
@@ -55,7 +68,7 @@ function valueToHtmlSpa(id,div){ /* code html pour l'ajout d'un spa */
 		typeSpa += "<div><input type=\"checkbox\" name=\"optionSpa["+id+"][]\" value=\""+dataSpaoptions[i][0]+"\" id=\"opt"+dataSpaoptions[i][0]+""+id+"\" data-price=\""+dataSpaoptions[i][2]+"\" data-index=\""+id+"\"><label for=\"opt"+dataSpaoptions[i][0]+""+id+"\">"+dataSpaoptions[i][1]+"</label></div>"
 	}
 	
-	typeSpa += "</div><div><h4>Informations sur la location</h4><label for=\"logement"+id+"\">Type de logement</label><select name=\"typeSpa["+id+"][]\" id=\"logement"+id+"\" class=\"selectElement\"><option value=\"Appartement\">Appartement</option><option value=\"Villa - Maison\">Villa - Maison</option></select><label for=\"installation"+id+"\">Type d'installation</label><select name=\"typeSpa["+id+"][]\" id=\"installation"+id+"\" class=\"selectElement\"><option value=\"Intérieur\">Intérieur</option><option value=\"Extérieur\">Extérieur</option></select><label for=\"eau"+id+"\">Système d'eau</label><select name=\"typeSpa["+id+"][]\" id=\"eau"+id+"\" class=\"selectElement\"><option value=\"Cumulus - Ballon d'eau (eau chaude limitée)\">Cumulus - Ballon d\'eau (eau chaude limitée)</option><option value=\"Chaudière (eau chaude continue)\">Chaudière (eau chaude continue)</option></select></div>"
+	typeSpa += "</div><div><h4>Informations sur la location</h4><label for=\"logement"+id+"\">Type de logement</label><select data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"logement"+id+"\" class=\"selectElement\"><option value=\"Appartement\">Appartement</option><option value=\"Villa - Maison\">Villa - Maison</option></select><label for=\"installation"+id+"\">Type d'installation</label><select data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"installation"+id+"\" class=\"selectElement\"><option value=\"Intérieur\">Intérieur</option><option value=\"Extérieur\">Extérieur</option></select><label for=\"eau"+id+"\">Système d'eau</label><select data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"eau"+id+"\" class=\"selectElement\"><option value=\"Cumulus - Ballon d'eau (eau chaude limitée)\">Cumulus - Ballon d\'eau (eau chaude limitée)</option><option value=\"Chaudière (eau chaude continue)\">Chaudière (eau chaude continue)</option></select></div>"
 
 	div.innerHTML = typeSpa
 
@@ -66,8 +79,33 @@ function numberSpaSelected(){
 	let list = document.getElementsByClassName("spa-list-prestations")
 	document.getElementById("number-spa").innerHTML = list.length
 }
+
 /*==========================================================================*/
-	// fonction principale
+	// les fonctions primaire MASSAGE
+function numberMassageSelected(name) {
+	let list = document.getElementsByClassName("massage-list-"+name)
+	document.getElementById("number-"+name).innerHTML = list.length
+}
+function valueToHtmlMassage(name,id){
+	let data = document.getElementById('form-data').dataset
+	let dataMassages = JSON.parse(data.massages)
+	let categories = []
+	if ( name == "Homme") {
+		categories = dataMassages[0]
+	}else{
+		categories = dataMassages[1]
+	}
+	
+	console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+	for (var i = 0; i < categories.length ; i++) {
+		console.log(categories[i])
+	}
+	console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+}
+
+/*==========================================================================*/
+	// fonction principale SPA
 // evenement on click
 function addSpaList(){
 	let id = incrementeInc() // Augmente de 1 la session
@@ -103,6 +141,57 @@ function removeSpaList(){
 	}
 	numberSpaSelected()
 }
+
+/*==========================================================================*/
+	// fonction principale MASSAGE
+function addCategoryMassage(){
+	let id = incrementeInc()
+	let data = document.getElementById('form-data').dataset
+	let dataMassages = JSON.parse(data.massages)
+	let categories = []
+	if ( this.dataset.cat == "Homme") {
+		categories = dataMassages[0]
+	}else{
+		categories = dataMassages[1]
+	}
+	
+	// Enregistrement dans la session
+	let sessionSpa = JSON.parse(sessionStorage.getItem("massages"))
+	sessionSpa.push({id:id,cat:categories[0],list:[],time:"",price:""})
+	sessionStorage.setItem("massages",JSON.stringify(sessionSpa))
+	// Modification dans le DOM
+
+	let div = document.createElement('div')
+	div.classList.add('massage-list-'+this.dataset.cat)
+
+	valueToHtmlMassage(this.dataset.cat,id)
+	
+	document.getElementById('massage-input').appendChild(div)
+	// nombre de massage pour homme et femme
+	numberMassageSelected(this.dataset.cat)
+}
+
+function removeCategoryMassage(){
+	// Enregistrement dans la session
+	let sessionMassage = JSON.parse(sessionStorage.getItem("massages"))
+	for (var i = sessionMassage.length - 1; i >= 0; i--) {
+		if(sessionMassage[i].cat == this.dataset.cat){
+			sessionMassage.splice(i,1)
+			break
+		}
+	}
+	sessionStorage.setItem("massages",JSON.stringify(sessionMassage))
+	// Modification dans le DOM
+	let list = document.getElementsByClassName('massage-list-'+this.dataset.cat)
+	if (list.length > 0) {
+		list[list.length-1].remove()
+	}
+	// nombre de massage pour homme et femme
+	numberMassageSelected(this.dataset.cat)
+
+}
+/*==========================================================================*/
+
 
 
 // JSON.stringify()
