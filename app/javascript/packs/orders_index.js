@@ -18,6 +18,7 @@ function scriptPrincipal(){
 		buttonAdd.addEventListener('click',addCategoryMassage);
 	});
 
+	
 /*==========================================================================*/
 	/*~~~~~~~~~~~~~~~~~~~~~~~~Autre~~~~~~~~~~~~~~~~~~~~~~~~*/
 	let prestations = sessionStorage.getItem("prestations")
@@ -86,6 +87,7 @@ function numberMassageSelected(name) {
 	let list = document.getElementsByClassName("massage-list-"+name)
 	document.getElementById("number-"+name).innerHTML = list.length
 }
+
 function valueToHtmlMassage(name,id){
 	let data = document.getElementById('form-data').dataset
 	let dataMassages = JSON.parse(data.massages)
@@ -95,17 +97,41 @@ function valueToHtmlMassage(name,id){
 	}else{
 		categories = dataMassages[1]
 	}
-	
-	console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-	for (var i = 0; i < categories.length ; i++) {
-		console.log(categories[i])
+	let heurs = []
+	let htmlSub = ""
+	let htmlTime = ""
+	for (var i = 0; i < categories[1].length ; i++) {
+		htmlSub += "<div class=\"\">"
+		htmlSub += "<input type=\"radio\" value=\""+ categories[1][i][0] +"\" id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label>"
+		htmlSub += "</div>"
+		heurs = categories[1][i][1] // liste des heurs possibles
+
+		htmlTime += "<div class=\"times-massage hidden\" data-info=\"["+ [id,i] +"]\" ><ul>"
+		for (var j = 0; j < heurs.length ; j++) {
+			htmlTime += "<li><input type=\"radio\" value=\""+ heurs[j][0] +"\" id=\"time"+j+i+id+"\" name=\"massageSuPrice["+id+"][]\" data-info=\"["+ [id,i] +"]\" data-price=\"["+[heurs[j][1],heurs[j][2],heurs[j][3],heurs[j][4]]+"]\"><label class=\"form\" for=\"time"+j+i+id+"\"> "+ heurs[j][0] +" </label></li>"
+		}
+		htmlTime += "</ul></div>"
 	}
-	console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+	return "<h4>"+name+"</h4><div class=\"1row\"><h5>Massages</h5>"+ htmlSub +"</div><div class=\"2row\"><h5>Durée(min)</h5>"+htmlTime+"</div>"
+}
+
+function showTimesOnClickMassageSu(){
+	let timeList = document.getElementsByClassName("times-massage")
+
+	for (var i = 0; i < timeList.length ; i++) {
+		if (timeList[i].dataset.info == this.dataset.info){
+			timeList[i].className = "times-massage"
+		}else{
+			timeList[i].className = "times-massage hidden"
+		}
+	}
+
 
 }
 
+
 /*==========================================================================*/
-	// fonction principale SPA
+// fonction principale SPA
 // evenement on click
 function addSpaList(){
 	let id = incrementeInc() // Augmente de 1 la session
@@ -164,11 +190,16 @@ function addCategoryMassage(){
 	let div = document.createElement('div')
 	div.classList.add('massage-list-'+this.dataset.cat)
 
-	valueToHtmlMassage(this.dataset.cat,id)
+	div.innerHTML = valueToHtmlMassage(this.dataset.cat,id)
 	
 	document.getElementById('massage-input').appendChild(div)
 	// nombre de massage pour homme et femme
 	numberMassageSelected(this.dataset.cat)
+	// evement pour afficher les horaires disponible pour un massages
+	let checkRadio = document.querySelectorAll('.massage-su');
+	checkRadio.forEach(checkR => {
+		checkR.addEventListener('change',showTimesOnClickMassageSu);
+	});
 }
 
 function removeCategoryMassage(){
@@ -194,9 +225,44 @@ function removeCategoryMassage(){
 
 
 
+
 // JSON.stringify()
 
 /*
+
+
+
+
+
+
+
+
+
+var rad = document.myForm.myRadios;
+var prev = null;
+for (var i = 0; i < rad.length; i++) {
+    rad[i].addEventListener('change', function() {
+        (prev) ? console.log(prev.value): null;
+        if (this !== prev) {
+            prev = this;
+        }
+        console.log(this.value)
+    });
+}
+<form name="myForm">
+  <input type="radio" name="myRadios"  value="1" />
+  <input type="radio" name="myRadios"  value="2" />
+</form>
+
+
+
+
+
+
+
+
+
+
 runJS()
 function runJS(){
 	const service_name = document.getElementById("form").dataset.service
@@ -377,36 +443,6 @@ function totalPrice(){
 console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 document.getElementById("submi-tag")
 console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-
-
-==========================================================================================
-
-<h4>Durée location</h4>
-
-<div>
-  <input type="radio" id="h24" name="timeSpa[1][]" value="24">
-  <label for="h24">24h</label>
-</div>
-
-<div>
-  <input type="radio" id="h48" name="timeSpa[1][]" value="48">
-  <label for="h48">48h</label>
-</div>
-
-<div>
-  <input type="radio" id="h72" name="timeSpa[1][]" value="72">
-  <label for="h72">72h</label>
-</div>
-
-<h4>options</h4>
-<input type="checkbox" name="optionSpa[1][]" value="Bike" id="vehicle1">
-<label for="vehicle1"> Table de massage</label><br>
-<input type="checkbox" name="optionSpa[1][]" value="Car" id="vehicle2">
-<label for="vehicle2"> Decoration</label><br>
-<input type="checkbox" name="optionSpa[1][]" value="Boat" id="vehicle3">
-<label for="vehicle3"> Plateau</label><br><br>
-
-
 
 ==========================================================================================
 
