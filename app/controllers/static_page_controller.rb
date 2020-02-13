@@ -1,9 +1,12 @@
 class StaticPageController < ApplicationController
 #page d'acceuil
   def index
+    @comments = Comment.all
   end
 #Differents service {+ Page Service Par Departement}
   def massage
+    @massages = MassageSu.all
+    @comments = Comment.all
   end
 
   def location_spa

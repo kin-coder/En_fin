@@ -1,4 +1,16 @@
+
+
+
+
+<link href="/css/massage.css" rel="stylesheet">
+<link href="/css/avisslider.css" rel="stylesheet">
+
 <style>
+  .police_massage{
+
+    font-family: Jazz LET, fantasy;
+    z-index: -4;
+  }
   @media (min-width: 992px){
     .h1 {
       font-size: 55px;
@@ -9,7 +21,8 @@
 
      font-family:Georgia, serif!important;
      text-align: left !important;
-
+     
+     
    } 
    .police_spa{
 
@@ -29,14 +42,14 @@
    text-align: left !important;
    color:black!important ;
  }
-
+ 
  .poli2 b{
 
    font-family:Brush Script MT, Brush Script Std, cursive!important;
    text-align: left !important;
    color:black!important ;
    font-size: 30px;
-
+   
  }
  .police_spa{
 
@@ -50,287 +63,862 @@
     font-size: 20px;
     line-height: 20px;
     margin: 0;
-
+    
   }
-
+  
   .poli2{
 
    font-family:Georgia, serif!important;
    text-align: left !important;
    margin-bottom:1px !important;
-
+   
  }
-
+ 
  .police_spa{
 
   font-family: Jazz LET, fantasy!important;
   z-index: -4;
 }
-
 }
+.elsebg{
+  background-color: white;
+  padding: 50px;
+}
+
 </style>
-
-
-<link rel="stylesheet" href="/css/index.css">
-<link rel="stylesheet" href="/css/spa.css">
-<!-- accroche général-->
-<section class="clearfix pageTitleArea" style="background-image: url(img/blog/spa2.jpg);">
-  <div class="container">
-    <div class="pageTitle">
-      <h1 class="from-bottom poli2">Spa</h1><br>
-      <span class="description-service poli2"><b>T</b>he real place of Mindfullness & Healthy body</span><br>
-    </div>
-    <%= link_to "Découvrir", reservation_path('massage-domicile'), class:"btn btn-primary massage-btn" %>
-    <%= link_to "Réserver", reservation_path('massage-domicile'), class:"btn btn-primary massage-btn" %>
-
+<!-- SERVICES SECTION -->
+<div class="container">
+  <div class="areserver">
+    <ul>
+      <li class="li"><a href="javascript:void(0)" class="btn btn-common btn-full-roundd btn-theme">JE RÉSERVE</a></li>
+    </ul>
   </div>
-</section>
 
-
-
-
-<!-- DEbut Carousel-->
-
-<section class="container-fluid clearfix aboutSection patternbg" >
-  <div class="contain">
-    <div class="carous" style="margin-bottom: -9%;">
-
-      <div class="row__inner">
-
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="https://www.ville-vieux-conde.fr/images/votre_mairie/evenementiel.jpg" alt=""  />
-
+  <section class="clearfix reviewSection patternbg">
+    <div class="container">
+      <div class="secotionTitle">
+        <h2 class="police_massage"><span>Description</span></h2>
+      </div>
+      <center class="elsebg">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-8">
+            <span>Nous vous proposons un service de location de spa, jacuzzi gonflable clé
+              en main. À domicile ou sur le lieu de votre choix, profitez d’un instant de
+            détente et de relaxation inoubliable.</span> <br><br>
+            <div>
+              <ul class="list-inline fullRoundBtn">
+                <li class="li"><a href="javascript:void(0)" class="btn btn-common btn-full-round btn-theme" id="btn-reserve-fixe">RÉSERVER MON SPA À DOMICILE</a></li>
+              </ul>
+            </div>
           </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              <p style="color: white;">Top Gear</p>
+          <div class="col-sm-3"></div>
+        </div>
+      </center>
+      <br><br>
+      <div class="row">
+        <div class="col-sm-12 col-xs-12">
+          <div class="row">
+            <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
+              <div class="reviewImageMassage1 hidden-xs">
+                <img src="img/home/offer-1.jpg" alt="Image review" class="img-responsive" alt="Massage">
+              </div>
+              <div class="reviewInfo">
+                <center><i class="sansfa" aria-hidden="true">Innovez avec un jacuzzi privatif à domicile</i></center>
+                <p class="text-p-massage">Cocooning Spa vous propose un service complet afin de rendre exceptionnelle votre soirée, journée ou week-end : commandez votre spa à domicile pour la durée de votre choix et personnalisez votre événement avec nos différentes options afin de passer un pur moment de détente. Plus besoin de se déplacer, nos prestations vous permettront de vivre un instant magique chez vous.</p>
+              </div>
             </div>
           </div>
         </div>
-
-
-
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="https://s3-eu-west-1.amazonaws.com/images-ca-1-0-1-eu/recipe_photos/slide/131862/dsc_00221.jpg" alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              Anniverssaire 
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-12 col-xs-12">
+          <div class="row">
+            <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
+              <div class="reviewImageMassage2 hidden-xs">
+                <img src="img/home/offer-2.jpg" alt="Image review" class="img-responsive" alt="Massage">
+              </div>
+              <div class="reviewInfo">
+                <center><i class="sansfa" aria-hidden="true">Profitez d’un moment de détente à la maison en toute intimité : quel luxe !</i></center>
+                <p class="text-p-massage">
+                  Pas de stress, vous ne vous occupez de rien, nous nous chargeons de tout, vous aurez seulement à profiter de votre instant jacuzzi ! Un professionnel sélectionné et formé se charge d’installer un spa dans la pièce de votre choix (salon, terrasse, jardin, etc…), en intérieur ou extérieur, en appartement ou maison. N’attendez plus, transformez et réinventez votre chez-vous le temps de 24H ou plus grâce à nos spas !
+                </p>
+              </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ3fgN5QKscPB1lXP3-qMWAyxUCS2pgx39SQj4xHvkK8DzgZGLf" alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              Week-end en Famille
+      <br>
+      <div class="row">
+        <div class="col-sm-12 col-xs-12">
+          <div class="row">
+            <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
+              <div class="reviewImageMassage3 hidden-xs">
+                <img src="img/home/offer-4.jpg" alt="Image review" class="img-responsive" alt="Massage">
+              </div>
+              <div class="reviewInfo">
+                <center><i class="sansfa" aria-hidden="true">Surprenez avec un spa à domicile et offrez le cadeau parfait qui fera plaisir à vos proches</i></center>
+                <p class="text-p-massage">
+                  Un jacuzzi à domicile pour une journée, une soirée ou un week-end, c’est maintenant possible avec Cocooning Spa ! Toutes les raisons sont bonnes pour s’offrir un instant spa à domicile : Fêtes, Anniversaires, Relaxation-détente, EVJF, Journée Girly, Occasions spéciales, Moment romantique en amoureux, etc…
+                </p>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="https://s3.eu-west-2.amazonaws.com/media.edfoodfest.com/images/IMG_0167.jpg" alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              Festival
+
+  <!--offre spa-->
+  <section class="clearfix pricingSection">
+    <div class="container">
+      <div class="secotionTitle">
+        <h2 class="police_spa"><span> Service Spa </span>location</h2>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 col-xs-12">
+          <div class="priceTableWrapper">
+            <div class="priceImage" style="background-image: url(img/home/pricing-1.jpg);">
+              <!-- <img src="img/home/pricing-1.jpg" alt="Image Price" class="img-responsive"> -->
+              <div class="maskImage">
+                <h3>   </h3>
+              </div>
+              <div class="priceTag">
+                <h4>€100</h4>
+              </div>
+            </div>
+            <div class="priceInfo">
+              <ul class="list-unstyled">
+
+                <li class="heure">24H</li>
+
+              </ul>
+              <!--<a href="#" class="btn btn-common btn-round btn-theme">reservé</a>-->
+              <%= link_to "Réserver", spa_path, class:"btn btn-common btn-round btn-theme" %>
             </div>
           </div>
         </div>
-
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="https://www.otlhotelsaguenay.ca/uploads/1/0/6/8/106825145/couple-mariage-hotel-otl-gouverneur_2_orig.jpg" alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              Mariage
+        <div class="col-sm-4 col-xs-12">
+          <div class="priceTableWrapper">
+            <div class="priceImage" style="background-image: url(img/home/pricing-2.jpg);">
+              <!-- <img src="img/home/pricing-2.jpg" alt="Image Price" class="img-responsive"> -->
+              <div class="maskImage">
+                <h3>     </h3>
+              </div>
+              <div class="priceTag">
+                <h4>€150</h4>
+              </div>
+            </div>
+            <div class="priceInfo">
+              <ul class="list-unstyled">
+                <li class="heure">48H</li>
+              </ul>
+              <!--<a href="#" class="btn btn-common btn-round btn-theme">reservé</a>-->
+              <%= link_to "Réserver", spa_path, class:"btn btn-common btn-round btn-theme" %>
             </div>
           </div>
         </div>
-
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="https://www.tourmag.com/photo/art/grande/6261167-9355943.jpg?v=1390573666" alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              Saint-Valentin
+        <div class="col-sm-4 col-xs-12">
+          <div class="priceTableWrapper">
+            <div class="priceImage" style="background-image: url(img/home/pricing-3.jpg);">
+              <!-- <img src="img/home/pricing-3.jpg" alt="Image Price" class="img-responsive"> -->
+              <div class="maskImage">
+                <h3>     </h3>
+              </div>
+              <div class="priceTag">
+                <h4>€200</h4>
+              </div>
+            </div>
+            <div class="priceInfo">
+              <ul class="list-unstyled">
+                <li class="heure">72H</li>
+              </ul>
+              <!--<a href="#" class="btn btn-common btn-round btn-theme">reservé</a>-->
+              <%= link_to "Réserver", spa_path, class:"btn btn-common btn-round btn-theme" %>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="https://img-4.linternaute.com/F9ORsdPUty3tJjTjEcAPH8hlwTg=/1240x/smart/f8069c068c7646558f639b3a325a419a/ccmcms-linternaute/11160444.jpg" alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              Voyage de noce
+  <!--########################################################################-->
+
+  <div>
+    <p class="optionnal-texte">OPTIONS SUPLEMENTAIRES</p>
+  </div>
+
+  <section class="clearfix offersSection patternbg">
+    <div class="container">
+      <div class="row spa-suppl">
+        <div class="col-sm-3 col-xs-12">
+          <a href="#" data-toggle="modal" data-target="#decoration"> 
+            <div class="offerContent">
+              <img src="img/home/offer-1.jpg" alt="Image Offer">
+              <div class="offerMasking">
+                <div class="offerTitle"><h4> Décoration <br>romantique</h4></div>
+              </div>
+              <div class="offerPrice"><h5>€20</h5></div>
             </div>
-          </div>
+          </a>
+        </div>
+        <div class="col-sm-3 col-xs-12">
+          <a href="#" data-toggle="modal" data-target="#anniversaire">
+            <div class="offerContent">
+              <img src="img/home/offer-2.jpg" alt="Image Offer">
+              <div class="offerMasking">
+                <div class="offerTitle"><h4>Anniversaires <br> fêtes</h4></div>
+              </div>
+              <div class="offerPrice"><h5>€20</h5></div>
+            </div>
+          </a>
+        </div>
+        <div class="col-sm-3 col-xs-12">
+          <a href="#" data-toggle="modal" data-target="#fontaine">
+            <div class="offerContent">
+              <img src="img/home/offer-3.jpg" alt="Image Offer">
+              <div class="offerMasking">
+                <div class="offerTitle"><h4>Fontaine à <br>chocolat</h4></div>
+              </div>
+              <div class="offerPrice"><h5>€20</h5></div>
+            </div>
+          </a>
+        </div>
+        <div class="col-sm-3 col-xs-12">
+          <a href="#" data-toggle="modal" data-target="#plateau">
+            <div class="offerContent">
+              <img src="img/home/offer-4.jpg" alt="Image Offer">
+              <div class="offerMasking">
+                <div class="offerTitle"><h4>Plateau de <br>fruits frais</h4></div>
+              </div>
+              <div class="offerPrice"><h5>€20</h5></div>
+            </div>
+          </a>
         </div>
 
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="https://static.wixstatic.com/media/698f32_f69eda0937464180b4f17330cf12f51f~mv2.jpg" alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tile__title">
-              Enterrement de jeune fille
+
+        <div class="col-sm-12 col-xs-12">
+          <a href="#" data-toggle="modal" data-target="#table">
+            <div class="offerContent">
+              <img src="img/home/offer-3.jpg" alt="Image Offer">
+              <div class="offerMasking">
+                <div class="offerTitle"><h4>Des Tables <br>de massages</h4></div>
+              </div>
+              <div class="offerPrice"><h5>€20</h5></div>
             </div>
-          </div>
-        </div>      
+          </a>
+        </div>
+
       </div>
     </div>
 
+  </section>
+
+  <!-- comment ca marche SECTION -->
+  <div class="secotionTitle">
+    <h2 id="contacter" class="police_massage"><span>Comment ça</span>marche?</h2>
   </div>
-</section>
-
-<!-- ========== Fin CAROUSEL============ -->
-
-
-
-
-
-<!--########################################################################-->
-<section class="clearfix pricingSection">
-  <div class="container">
-    <div class="secotionTitle">
-      <h2 class="police_spa"><span> Service Spa </span>location</h2>
-    </div>
+  <section class="clearfix contactSection">
     <div class="row">
-      <div class="col-sm-4 col-xs-12">
-        <div class="priceTableWrapper">
-          <div class="priceImage" style="background-image: url(img/home/pricing-1.jpg);">
-            <!-- <img src="img/home/pricing-1.jpg" alt="Image Price" class="img-responsive"> -->
-            <div class="maskImage">
-              <h3>   </h3>
-            </div>
-            <div class="priceTag">
-              <h4>€100</h4>
-            </div>
-          </div>
-          <div class="priceInfo">
-            <ul class="list-unstyled">
+      <div class="col-sm-6">
 
-              <li class="heure">24H</li>
+        <div>
+          <b><span><i class="fa fa-mouse-pointer" aria-hidden="true" id="ok"></i></span> Réservation</b>
+        </div>
+        <p class='text-p-index'>Choisissez vos prestations et réservez le jour et l’heure de votre choix directement en ligne</p>
+        <%= link_to "Réserver", spa_path, class:"btn btn-common btn-round btn-theme" %>
 
-            </ul>
-            <!--<a href="#" class="btn btn-common btn-round btn-theme">reservé</a>-->
-            <%= link_to "Réserver", reservation_path('location-spa'), class:"btn btn-common btn-round btn-theme" %>
-          </div>
+
+      </div>
+      <div class="col-sm-6">
+        <div>
+          <b><span><i class="fa fa-truck" aria-hidden="true" id="ok"></i></span> Livraison</b>
+        </div>
+        <p class='text-p-index'>Un professionnel sélectionné et formé se charge de la livraison de votre spa.</p>
+        <%= link_to "Plus d'infos", faq_path, class:"btn btn-common btn-round btn-theme" %>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div>
+          <b><span><i class="fa fa-check" aria-hidden="true" id="ok"></i></span> Installation </b>
+        </div>
+        <p class='text-p-index'>Un professionnel sélectionné et formé effectue l’installation de votre spa (nettoyage & remplissage compris) en vérifiant et respectant les normes d’hygiène, de sécurité et de qualité. Il met également en place les différentes prestations choisies (décorations, table de massage, etc…). Il se charge de tout, vous ne vous occupez de rien. En moins de 1h30, vous pourrez utiliser votre jacuzzi !</p>
+        <%= link_to "Plus d'infos", faq_path, class:"btn btn-common btn-round btn-theme" %>
+
+      </div>
+      <div class="col-sm-6">
+
+        <div>
+          <b><span><i class="fa fa-heart" aria-hidden="true" id="ok"></i></span> Détente </b>
+        </div>
+        <p class='text-p-index'>La chaleur et les bulles de nos spas permettront de vous détendre et de passer un moment magique en couple, entre amis ou encore en famille !</p>
+
+        <a href="#galerie" class="btn btn-common btn-round btn-theme">Galerie photo</a>
+
+      </div>
+
+    </div> 
+    <div class="row">
+      <div class="col-sm-12">
+        <center>
+          <b><span><i class="fa fa-unlock" aria-hidden="true" id="ok"></i></span> Désinstallation</b>
+        </center>
+        <p class='text-p-index'> Un professionnel sélectionné et formé effectue la désinstallation de votre spa (vidange et nettoyage compris) en vérifiant et respectant les normes d’hygiène, de sécurité et de qualité. Il enlève et range les différentes prestations choisies (décorations, table de massage, etc…). Il se charge de tout, vous ne vous occupez de rien. En moins de 1h, le démontage sera fini ! <br> <%= link_to "Plus d'infos", faq_path, class:"btn btn-common btn-round btn-theme btn-teme" %></p>
+        
+
+      </div> 
+    </div>
+  </section>
+
+
+
+  <!-- NOS ENGAGEMENTS -->
+  <div class="secotionTitle">
+    <h2 id="contacter" class="police_massage"><span>Nos engagements</span></h2>
+  </div>
+  <section class="clearfix contactSection">
+    
+    <div class="row">
+      <div class="col-sm-6">
+
+        <div>
+          <b><span><i class="fa fa-check-square-o" aria-hidden="true" id="ok"></i></span> Ecoute, disponibilité & réactivité</b>
+        </div>
+        <p class='text-p-index'>De la réservation jusqu’au suivi de votre satisfaction, nous comptons bien vous cocooner</p>
+
+      </div>
+      <div class="col-sm-6">
+        <div>
+          <b><span><i class="fa fa-thumbs-up" aria-hidden="true" id="ok"></i></span> Professionnels sélectionnés, formés et diplômés</b>
+        </div>
+        <p class='text-p-index'>Toutes nos prestations sont réalisées par des professionnels sélectionnés, formés et diplômés. Ils s’occuperont de vous avec talent et gentillesse !</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div>
+          <b><span><i class="fa fa-coffee" aria-hidden="true" id="ok"></i></span> Service clé en main  </b>
+        </div>
+        <p class='text-p-index'>Vous ne vous occupez de rien, un professionnel formé et agréé se charge de tout (livraison, installation, remplissage, vidange et démontage du spa)</p>
+        <div>
+          <b><span><i class="fa fa-thumbs-up" aria-hidden="true" id="ok"></i></span> Respect des normes de qualité et de sécurité  </b>
         </div>
       </div>
-      <div class="col-sm-4 col-xs-12">
-        <div class="priceTableWrapper">
-          <div class="priceImage" style="background-image: url(img/home/pricing-2.jpg);">
-            <!-- <img src="img/home/pricing-2.jpg" alt="Image Price" class="img-responsive"> -->
-            <div class="maskImage">
-              <h3>     </h3>
-            </div>
-            <div class="priceTag">
-              <h4>€150</h4>
-            </div>
-          </div>
-          <div class="priceInfo">
-            <ul class="list-unstyled">
-              <li class="heure">48H</li>
-            </ul>
-            <!--<a href="#" class="btn btn-common btn-round btn-theme">reservé</a>-->
-            <%= link_to "Réserver", reservation_path('location-spa'), class:"btn btn-common btn-round btn-theme" %>
-          </div>
+      <div class="col-sm-6">
+
+        <div>
+          <b><span><i class="fa fa-clock-o" aria-hidden="true" id="ok"></i></span> Prestations sur mesure et flexibilité</b>
+        </div>
+        <p class='text-p-index'>C’est vous qui choisissez votre prestation et vos horaires, nous qui nous adaptons. Vous pouvez personnaliser votre moment en fonction de vos envies. <br>
+          Installation possible tous les jours de l’année, en appartement ou villa, en intérieur ou extérieur.
+        </p>
+      </div>
+
+    </div> 
+
+    <div class="row">
+
+      <div class="col-sm-6">
+        <div>
+          <b><span><i class="fa fa-eur" aria-hidden="true" id="ok"></i></span> Prix attractifs </b>
         </div>
       </div>
-      <div class="col-sm-4 col-xs-12">
-        <div class="priceTableWrapper">
-          <div class="priceImage" style="background-image: url(img/home/pricing-3.jpg);">
-            <!-- <img src="img/home/pricing-3.jpg" alt="Image Price" class="img-responsive"> -->
-            <div class="maskImage">
-              <h3>     </h3>
-            </div>
-            <div class="priceTag">
-              <h4>€200</h4>
-            </div>
+      <div class="col-sm-6">
+        <div>
+          <b><span><i class="fa fa-bath" aria-hidden="true" id="ok"></i></span> Hygiène garantie  </b>
+        </div>
+      </div>
+    </div>  
+    
+
+  </section>
+
+ <!-- avis SECTION -->
+  <section class="container-fluid clearfix productArea patternbg">
+    <div class="container">
+      <div class="secotionTitle">
+        <h2 class="police_massage"><span>Idées originales</span></h2>
+      </div>
+      
+    </div>
+  </section>
+
+
+ 
+  <section class="clearfix productSection">
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="productSlider" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#productSlider" data-slide-to="0" class="active"></li>
+            <li data-target="#productSlider" data-slide-to="1"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <div class="row">
+
+                <div class="col-sm-12 col-xs-12">
+                  <div class="productInfo">
+
+                    <h4>
+                      <center class="slide0">
+                        <i class="fa fa-heart" aria-hidden="true" id="iconetitle"></i> <br>
+                      Un week-end en amoureux ave jacuzzi !</center> </h4>
+                      <p class="p-slider">Surprise à votre moitié ? Anniversaire de rencontre ou de mariage ? Une nuit de noces ? <br>Surprenez votre partenaire et retrouvez-vous en amoureux pour une soirée romantique unique ! </p>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="row">
+                  <div class="col-sm-12 col-xs-12">
+                    <div class="productInfo">
+                      <h4>
+                        <center class="slide1">
+                          <i class="fa fa-female" aria-hidden="true" id="iconetitle1"></i> <br>
+                        Spa entre copines !</center> </h4>
+                        <p class="p-slider">Passez du bon temps entre les filles, une pause bien-etre pour vivre un moment de <br>relaxation et de complicité ! </p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                      <div class="productInfo">
+                        <h4>
+                          <center class="slide2">
+                            <i class="fa fa-check-square" aria-hidden="true" id="iconetitle2"></i> <br>
+                          Toute occasion est bonne pour un instant inoubliable !</center> </h4>
+                          <p class="p-slider">Passez du bon temps entre les filles, une pause bien-etre pour vivre un moment de <br>relaxation et de complicité ! </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div class="row">
+                      <div class="col-sm-12 col-xs-12">
+                        <div class="productInfo">
+                          <h4>
+                            <center class="slide3">
+                              <i class="fa fa-glass" aria-hidden="true" id="iconetitle3"></i> <br>
+                            Louer un spa pour une soirée, un moment festif !</center> </h4>
+                            <p class="p-slider">Que ce soit pour une fête entre amis ou en famille, pour un apéritif, un barbecue, une cremaillère, offrez-vous un moment de détente et de convivialité originale ravira tous vos convives ! </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="item">
+                      <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                          <div class="productInfo">
+                            <h4>
+                              <center class="slide4">
+                                <i class="fa fa-gratipay" aria-hidden="true" id="iconetitle4"></i> <br>
+                              Un spa pour un enterrement de vie de jeune fille ! </center> </h4>
+                              <p class="p-slider">Une très bonne idée pour immortaiser votre enterrement de vie de jeune fille ! </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="item">
+                        <div class="row">
+                          <div class="col-sm-12 col-xs-12">
+                            <div class="productInfo">
+                              <h4>
+                                <center class="slide5">
+                                  <i class="fa fa-birthday-cake" aria-hidden="true" id="iconetitle5"></i> <br>
+                                Un jacuzzi pour fêter un anniversaire ! </center> </h4>
+                                <p class="p-slider">Vous cherchez une idée de cadeau unique ? Mais aussi, une idée qui soit fun originale ? Quelque chose qui marque ? Que vous cherchiez un cadeau d'anniversaire por vos parents, vos amis, vos enfants, vous les surprendrez à coup sûr avec un spa o domicile !</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Left and right controls -->
+                      <div class="vaetvient">
+                        <a class="left carousel-control" href="#productSlider" role="button" data-slide="prev">
+                          <i class="fa fa-arrow-circle-left" aria-hidden="true" id="ok"></i>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#productSlider" role="button" data-slide="next">
+                          <i class="fa fa-arrow-circle-right ok" aria-hidden="true" id='fleche'></i>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </section>
+
+
+              <!-- HOME GALLERY SECTION -->
+              <section>
+                <div class="clearfix homeGalleryTitle">
+                  <div class="container">
+                    <div class="secotionTitle">
+                      <h2 class="police_massage"><span>Galerie </span>ccspa en photo</h2>
+                    </div>
+                  </div>
+                </div>
+                <div class="container-fluid clearfix homeGallery">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="filter-container isotopeFilters">
+                        <ul class="list-inline filter">
+                          <li class="active"><a href="#" data-filter="*">all item</a></li>
+                          <li><a href="#" data-filter=".hair">hair</a></li>
+                          <li><a href="#" data-filter=".makeup">Make Up</a></li>
+                          <li><a href="#" data-filter=".facial">Facial</a></li>
+                          <li><a href="#" data-filter=".massage">Massage</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row isotopeContainer" id="container">
+                    <div class="col-sm-3 isotopeSelector hair">
+                      <div class="card">
+                        <div class="card-img">
+                          <img class="img-full" src="img/home/gallery-1.jpg" alt="Image" >
+                          <div class="overlay-content">
+                            <a href="img/home/gallery-1.jpg" data-fancybox="images" >
+                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 isotopeSelector makeup">
+                      <div class="card">
+                        <div class="card-img">
+                          <img class="img-full" src="img/home/gallery-2.jpg" alt="Image" >
+                          <div class="overlay-content">
+                            <a href="img/home/gallery-2.jpg" data-fancybox="images" >
+                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 isotopeSelector massage">
+                      <div class="card">
+                        <div class="card-img">
+                          <img class="img-full" src="img/home/gallery-3.jpg" alt="Image" >
+                          <div class="overlay-content">
+                            <a href="img/home/gallery-3.jpg" data-fancybox="images" >
+                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 isotopeSelector hair">
+                      <div class="card">
+                        <div class="card-img">
+                          <img class="img-full" src="img/home/gallery-5.jpg" alt="Image" >
+                          <div class="overlay-content">
+                            <a href="img/home/gallery-5.jpg" data-fancybox="images" >
+                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 isotopeSelector makeup">
+                      <div class="card">
+                        <div class="card-img">
+                          <img class="img-full" src="img/home/gallery-5.jpg" alt="Image" >
+                          <div class="overlay-content">
+                            <a href="img/home/gallery-5.jpg" data-fancybox="images" >
+                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 isotopeSelector facial">
+                      <div class="card">
+                        <div class="card-img">
+                          <img class="img-full" src="img/home/gallery-6.jpg" alt="Image" >
+                          <div class="overlay-content">
+                            <a href="img/home/gallery-6.jpg" data-fancybox="images" >
+                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 isotopeSelector facial">
+                      <div class="card">
+                        <div class="card-img">
+                          <img class="img-full" src="img/home/gallery-7.jpg" alt="Image" >
+                          <div class="overlay-content">
+                            <a href="img/home/gallery-7.jpg" data-fancybox="images" >
+                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 isotopeSelector massage">
+                      <div class="card">
+                        <div class="card-img">
+                          <img class="img-full" src="img/home/gallery-8.jpg" alt="Image" >
+                          <div class="overlay-content">
+                            <a href="img/home/gallery-8.jpg" data-fancybox="images">
+                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- section avis -->
+<!--   <section class="clearfix contactSection patternbg">
+    <div class="container">
+      <div class="secotionTitle">
+        <h2 id="contacter" class="police_massage"><span>Avis</span>des clients</h2>
+      </div>
+      <div id="slider">
+        <a class="control_next">></a>
+        <a class="control_prev"><</a>
+        <ul>
+          <li>SLIDE 1</li>
+          <li style="background: #aaa;">SLIDE 2</li>
+          <li>SLIDE 3</li>
+          <li style="background: #aaa;">SLIDE 4</li>
+        </ul>  
+      </div>
+    </div>
+  </section>
+-->
+
+<!-- ZONE CONCERNES -->
+<section class="clearfix brandArea patternbg">
+
+  <div class="secotionTitle">
+    <h2 id="a-propos" class="police_massage"><span>Où bénéficier </span>de nos services ?</h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="owl-carousel partnersLogoSlider">
+        <div class="slide">
+          <div class="partnersLogo clearfix">
+            <img src="img/home/france.png" alt="Image Partner">
           </div>
-          <div class="priceInfo">
-            <ul class="list-unstyled">
-              <li class="heure">72H</li>
-            </ul>
-            <!--<a href="#" class="btn btn-common btn-round btn-theme">reservé</a>-->
-            <%= link_to "Réserver", reservation_path('location-spa'), class:"btn btn-common btn-round btn-theme" %>
+        </div>  
+        <div class="slide">
+          <div class="partnersLogo clearfix">
+            <img src="img/home/luxembourg.png" alt="Image Partner">
+          </div>
+        </div>
+        <div class="slide">
+          <div class="partnersLogo clearfix">
+            <img src="img/home/belgique.jpg" alt="Image Partner">
+          </div>
+        </div>
+        <div class="slide">
+          <div class="partnersLogo clearfix">
+            <img src="img/home/suisse.png" alt="Image Partner">
           </div>
         </div>
       </div>
     </div>
   </div>
+  <br>
+  <div class="row">
+    <div class="col-sm-12">
+      <center>Notre service de location de jacuzzi à domicile est disponible partout en France, Belgique, Luxembourg & Suisse
+        Alors n’attendez plus, <br>nous ne sommes pas loin de chez vous !<br><br>
+      </center>
+    </div>
+  </div>
+
 </section>
 
-<!--########################################################################-->
 
-<div>
-  <p class="optionnal-texte">OPTIONS SUPLEMENTAIRES</p>
+<!-- CONTACT US SECTION -->
+<section class="clearfix contactSection">
+
+  <div class="secotionTitle">
+    <h2 id="contacter" class="police_massage"><span>Infos</span>Contactez-nous</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-sm-7 col-xs-12">
+      <div class="contactTitle">
+        <h3></br></h3>
+      </div>
+
+      <div class="contactForm">
+        <div id="alert"></div><!--Response Holder-->
+        <form action="mail/contact-form.php" id="angelContactForm" method="post">
+          <div class="form-group">
+            <input type="text" name="contact-form-name" class="form-control" placeholder="Votre nom" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="contact-form-email" class="form-control" placeholder="Votre Email" required>
+          </div>
+          <div class="form-group">
+            <input type="text" name="contact-form-mobile" class="form-control" placeholder="Votre Mobile" required>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="contact-form-message" placeholder="Laisser votre Message" required></textarea>
+          </div>
+          <div class="form-group">
+            <button type="submit" id="contact-submit-btn" class="btn btn-primary first-btn">Envoyer</button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-5 col-xs-12">
+
+      <div class="holdingInfo patternbg">
+        <div class="contactTitle">
+          <h3><center>Réseaux sociaux</center></h3>
+        </div>
+        <ul>
+          <a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa fa-facebook" aria-hidden="true"></i> Cocooning Spa officiel </li></a>
+          <a href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa fa-instagram" aria-hidden="true"></i> Cocooning Spa </li></a>
+          <a href="#" class="btn"> <li><i class="fa fa-users" aria-hidden="true"></i> Cocooning Spa blog</li> </a>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- BUTTONS SECTION -->
+<section class="clearfix buttonArea">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="buttonPart">
+          <ul class="list-inline fullRoundBtn">
+            <li class="li"><a href="javascript:void(0)" class="btn btn-common btn-full-round btn-theme" id="btn-reserve-fixe">RÉSERVER MON JACUZZI À DOMICILE</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 </div>
 
-<section class="clearfix offersSection patternbg">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-3 col-xs-12">
-        <div class="offerContent">
-          <img src="img/home/offer-1.jpg" alt="Image Offer">
-          <div class="offerMasking">
-            <div class="offerTitle"><h4><a href="#"> Décoration romantique</a></h4></div>
-          </div>
-          <div class="offerPrice"><h5>€20</h5></div>
-        </div>
-      </div>
-      <div class="col-sm-3 col-xs-12">
-        <div class="offerContent">
-          <img src="img/home/offer-2.jpg" alt="Image Offer">
-          <div class="offerMasking">
-            <div class="offerTitle"><h4><a href="#">Anniverssaires fêtes</a></h4></div>
-          </div>
-          <div class="offerPrice"><h5>€20</h5></div>
-        </div>
-      </div>
-      <div class="col-sm-3 col-xs-12">
-        <div class="offerContent">
-          <img src="img/home/offer-3.jpg" alt="Image Offer">
-          <div class="offerMasking">
-            <div class="offerTitle"><h4><a href="">Fontaine à chocolat</a></h4></div>
-          </div>
-          <div class="offerPrice"><h5>€20</h5></div>
-        </div>
-      </div>
-      <div class="col-sm-3 col-xs-12">
-        <div class="offerContent">
-          <img src="img/home/offer-4.jpg" alt="Image Offer">
-          <div class="offerMasking">
-            <div class="offerTitle"><h4><a href="#">Plateau de fruits frais</a></h4></div>
-          </div>
-          <div class="offerPrice"><h5>€20</h5></div>
-        </div>
-      </div>
 
 
-      <div class="col-sm-12 col-xs-12">
-        <div class="offerContent">
-          <img src="img/home/offer-3.jpg" alt="Image Offer">
-          <div class="offerMasking">
-            <div class="offerTitle"><h4><a href="">Des Tables de massages</a></h4></div>
-          </div>
-          <div class="offerPrice"><h5>€20</h5></div>
-        </div>
 
+
+
+
+
+
+
+<!-- decoration MODAL -->
+<div id="decoration" class="modal fade modalCommon" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <!-- MODAL CONTENT-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title ">Décoration fontaine</h4>
       </div>
-
+      <div class="modal-body">
+        <div id="appointment-alert" class="my-alert"></div>
+        <p class="text-p-index">la décoration romantique est composée de ballons, pétales de roses, bougies, lumière tamisée & spot lumineux dans le spa.</p>
+      </div>
     </div>
   </div>
+</div>
+<!-- anniversaire MODAL -->
+<div id="anniversaire" class="modal fade modalCommon" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <!-- MODAL CONTENT-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title ">Décoration anniversaire / fête </h4>
+      </div>
+      <div class="modal-body">
+        <div id="appointment-alert" class="my-alert"></div>
+        <p class="text-p-index">la décoration anniversaire/fête est composée de ballons, masques anniversaire/fête, lumière d’ambiance & spot lumineux dans le spa.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- fontaine MODAL -->
+<div id="fontaine" class="modal fade modalCommon" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <!-- MODAL CONTENT-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title ">Fontaine chocolat</h4>
+      </div>
+      <div class="modal-body">
+        <div id="appointment-alert" class="my-alert"></div>
+        <p class="text-p-index">Fournie avec chocolat</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- plateau MODAL -->
+<div id="plateau" class="modal fade modalCommon" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <!-- MODAL CONTENT-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title ">Plateau de fruits frais</h4>
+      </div>
+      <div class="modal-body">
+        <div id="appointment-alert" class="my-alert"></div>
+        <p class="text-p-index">Pour 2 personnes</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- table de massage MODAL -->
+<div id="table" class="modal fade modalCommon" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <!-- MODAL CONTENT-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title ">Table de massage</h4>
+      </div>
+      <div class="modal-body">
+        <div id="appointment-alert" class="my-alert"></div>
+        <p class="text-p-index">Fournie avec huile de massage</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-</section>
+
+
+

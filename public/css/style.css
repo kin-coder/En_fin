@@ -1637,14 +1637,16 @@ textarea.form-control {
 
 .modalCommon .modal-title {
   letter-spacing: 1px;
-  font-size: 16px;
+      font-size: 10px;
+    text-align: center;
   color: #ffffff;
   text-transform: uppercase;
 }
 
 @media (min-width: 768px) {
   .modalCommon .modal-title {
-    font-size: 20px;
+    font-size: 10px;
+    text-align: center;
   }
 }
 
@@ -1664,14 +1666,14 @@ textarea.form-control {
 @media (min-width: 768px) {
   .modalCommon .modal-content {
     width: 23% !important;
-    height: 422px;
+    height: auto;
   }
 }
 
 @media (min-width: 320px) {
   .modalCommon .modal-content {
     width: 69%;
-    height: 402px;
+    height: auto;
   }
 }
 
@@ -4168,6 +4170,7 @@ textarea.form-control {
 .holdingInfo {
   padding: 40px 50px 30px 30px;
   margin: 45px 0 0 0;
+  border: 3px white solid;
 }
 
 .holdingInfo p {

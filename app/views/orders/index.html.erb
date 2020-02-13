@@ -1,0 +1,205 @@
+<div class="container">
+<br><br><br><br>
+<hr class="hr.new5">
+	<div class="set-zones">
+		<h2>Je choisi ma zone géographique </h2>
+
+		<form>
+			<div class="pays">
+				<label class="labelle" for="country-choice">Choix pays</label>
+				<select name="country" id="country-choice" class="field">
+					<option value="">Choix pays</option>
+					<% @countries.collect do |d| %>
+						<option value="<%=d.name%>"><%=d.name%></option>
+					<% end %>
+				</select>
+			</div>
+
+			<div id="list-department" class="hidden">
+				<label class="labelle" for="Departement">Departement</label>
+				<select name="department" id="Departement" class="field">
+					<option value="">Liste departement</option>
+					<% @departments.collect do |d| %>
+						<option value="<%= d.id %>"><%="#{d.code}-#{d.name}"%></option>
+					<% end %>
+				</select>
+			</div>
+
+			<div>
+				<label for="Date">Date</label>
+				<input type="text" name="Date" id="Date" placeholder="MM/DD/YYYY">
+			</div>
+
+			<div>
+				<label class="labelle" for="guiest_id1">Choisisser l'heure</label>
+				<select name="Heure" id="guiest_id1" class="select-dro">
+					<option value="">Choisisser l'heure</option>
+					<option value="08:00">08:00</option>
+					<option value="08:30">08:30</option>
+					<option value="09:00">09:00</option>
+					<option value="09:30">09:30</option>
+					<option value="10:00">10:00</option>
+					<option value="10:30">10:30</option>
+					<option value="11:00">11:00</option>
+					<option value="11:30">11:30</option>
+					<option value="12:00">12:00</option>
+					<option value="12:30">12:30</option>
+					<option value="13:00">13:00</option>
+					<option value="13:30">13:30</option>
+					<option value="14:00">14:00</option>
+					<option value="14:30">14:30</option>
+					<option value="15:00">15:00</option>
+					<option value="15:30">15:30</option>
+					<option value="16:00">16:00</option>
+					<option value="16:30">16:30</option>
+					<option value="17:00">17:00</option>
+					<option value="17:30">17:30</option>
+					<option value="18:00">18:00</option>
+					<option value="18:30">18:30</option>
+					<option value="19:00">19:00</option>
+					<option value="19:30">19:30</option>
+					<option value="20:00">20:00</option>
+					<option value="20:30">20:30</option>
+					<option value="21:00">21:00</option>
+					<option value="21:30">21:30</option>
+					<option value="22:00">22:00</option>
+				</select>
+			</div>
+			<div>
+				<input type="submit" name="commit" value="Je valide" data-disable-with="Je valide">
+			</div>
+		</form>
+	</div>
+
+<hr class="hr.new5">
+<!-- ======================================================================== -->
+
+	<%= form_tag(save_session_path,id:"form-data", 'data-spas':"#{@spas}",'data-spaoptions':"#{@spaoptions}",'data-massages':"#{@massages}") do %>
+
+	<div id="prestation-list">
+		<div class="spa">
+			<h2>LOCATION SPA A DOMICILE</h2>
+			<div class="spa-click">
+				<p>Je souhaite reserver <i class="fa fa-minus-circle" id="remove-spa"></i><span id="number-spa">0</span><i class="fa fa-plus-circle" id="add-spa"></i> spa</p>
+
+			</div>
+			<div id="spa-input">
+
+				
+			</div>
+		</div>
+<!-- ======================================================================== -->
+		<div class="massage">
+			<h2>MASSAGE A DOMICILE</h2>
+			
+			<!-- #################### -->
+			<div id="select-prestation">
+				<h4>Je souhaite reserver pour :</h4>
+				<div>
+					<p>Homme<i class="fa fa-minus-circle remove-massage" data-cat="Homme"></i><span id="number-Homme">0</span><i class="fa fa-plus-circle add-massage" data-cat="Homme"></i></p>
+				</div>
+				<div>
+					<p>Femme<i class="fa fa-minus-circle remove-massage" data-cat="Femme"></i><span id="number-Femme">0</span><i class="fa fa-plus-circle add-massage" data-cat="Femme"></i></p>
+				</div>
+
+
+			</div>
+
+			<div id="massage-input">
+				
+
+			</div>
+
+			<!-- #################### -->
+			<div class="praticien">
+				<h4>Infos complementaires</h4>
+				<label>Type de praticien</label>
+				<div>
+				  <input type="radio" id="man" name="praticien" value="Homme">
+				  <label for="man">Homme</label>
+				</div>
+
+				<div>
+				  <input type="radio" id="woman" name="praticien" value="Femme">
+				  <label for="woman">Femme</label>
+				</div>
+
+				<div>
+				  <input type="radio" id="other" name="praticien" value="Peu importe">
+				  <label for="other">Peu importe</label>
+				</div>
+			</div>
+		</div>
+<!-- ======================================================================== -->
+		<div class="cadeaux">
+			<h2>FAITE PLAISIR AVEC NOS IDEES CADEAUX</h2>
+			<ul>
+				<% @cadeaus.each do |cadeau| %>
+					<li><%= cadeau.name %>: <%= cadeau.price %>€
+						<i class="fa fa-minus-circle" id="<%= cadeau.id %>-rmv"></i>
+						<span id="<%= cadeau.id %>-nbr">0</span>
+						<i class="fa fa-plus-circle" id="<%= cadeau.id %>-add" data-cadeau="[<%= cadeau.id %>,<%= cadeau.name %>,<%= cadeau.price %>]"></i>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+
+	</div>
+
+
+	<%= submit_tag("Confirmer commandes", id:"submi-tag",  class:"confirm-command btn btn-primary a-btn text-btn") %>
+
+	<% end %> <!-- Fin formulaire -->
+<!-- ======================================================================== -->
+	<br><br><br><br>
+</div>
+<%= javascript_pack_tag 'orders_index' %>
+<script type="text/javascript">
+	document.getElementById("country-choice").addEventListener("change", myFunction);
+
+	function myFunction() {
+	  var x = document.getElementById("country-choice").value;
+	  var input_dptm = document.getElementById("Departement")
+	  var div_dptm = document.getElementById("list-department")
+	  if (x == "France") {
+	  	input_dptm.removeAttribute("disabled")
+	  	div_dptm.removeAttribute("class")
+	  }else{
+	  	input_dptm.setAttribute("disabled","disabled")
+	  	div_dptm.classList.add("hidden")
+	  }
+	}
+</script>
+
+
+<script id="pro-choice" type="text/html">
+</script>
+
+<!-- 
+	<ul class="prestations">
+		<li>
+			<input type="radio" value="9" id="toggle-label-91"class="form-input" name="prestations[32][]" data-index="1">
+			<label class="form-label" for="toggle-label-91"> <span class="text-label">Découverte</span> </label>
+		</li>
+		<li>
+			<input type="radio" value="10" id="toggle-label-101" class="form-input" name="prestations[32][]" data-index="1">
+			<label class="form-label" for="toggle-label-101"> <span class="text-label">Dos</span> </label>
+		</li>
+		<li>
+			<input type="radio" value="11" id="toggle-label-111" class="form-input" name="prestations[32][]" data-index="1">
+			<label class="form-label" for="toggle-label-111"> <span class="text-label">Assis</span> </label>
+		</li>
+		<li>
+			<input type="radio" value="12" id="toggle-label-121" class="form-input" name="prestations[32][]" data-index="1">
+			<label class="form-label" for="toggle-label-121"> <span class="text-label">Relaxant</span> </label>
+		</li>
+		<li>
+			<input type="radio" value="13" id="toggle-label-131" class="form-input" name="prestations[32][]" data-index="1">
+			<label class="form-label" for="toggle-label-131"> <span class="text-label">Lomi-Lomi</span> </label>
+		</li>
+		<li>
+			<input type="radio" value="14" id="toggle-label-141" class="form-input" name="prestations[32][]" data-index="1">
+			<label class="form-label" for="toggle-label-141"> <span class="text-label">Ayuvédique</span> </label>
+		</li>
+	</ul>
+	<br><br><br><br> -->

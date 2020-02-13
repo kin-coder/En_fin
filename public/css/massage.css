@@ -1,0 +1,380 @@
+
+
+<!-- media query -->
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+	.reviewImageMassage1 {
+		position: absolute;
+		top: 170px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+	.reviewImageMassage2 {
+		position: absolute;
+		top: 80px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+	.reviewImageMassage3 {
+		position: absolute;
+		top: 50px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+
+
+	.text-p-massage{
+		text-align: justify !important;
+	}
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+	.productInfoindex{
+
+		background: white;
+	}
+	#flecheindex{
+		position: absolute;
+		right:5px;
+		top: 40%;
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: 14px;
+		font-size: xxx-large;
+		text-rendering: auto;
+		color:
+		rgb(238, 17, 190) !important;
+		padding: 10px;
+	}
+	.username{
+		position: relative;
+		left: 300px;
+		top: -25px;
+	}
+
+
+	.p-slider{
+		position: relative;
+		max-width:580px !important;
+		left: 10%;
+		padding-bottom: 30px;
+
+
+	}
+	.productInfo p {
+		font-size: 16px;
+		line-height: 26px;
+		color: #666666;
+		margin: 0 0 0px 0 !important;
+	}
+
+	.productSection{
+		background-image: linear-gradient(white, white);
+	}
+
+
+	#productSlider .carousel-control.left i.fa-arrow-circle-left {
+		text-shadow: none;
+		position: absolute;
+		right: 630px;
+		top: 40%;
+	}
+
+	#fleche{
+		position: absolute;
+		right:0px;
+		top: 40%;
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: 14px;
+		font-size: xxx-large;
+		text-rendering: auto;
+		color:
+		rgb(238, 17, 190) !important;
+		padding: 10px;
+	}
+
+	#iconetitle{
+		margin-top: 20px;
+		font-size: xx-large;
+	}
+	.slide0{
+		font-size: 20px;
+		text-transform: none;
+	}
+	.slide1{
+		color: #48D1CC;
+		font-size: 20px;
+		text-transform: none;
+	}
+	.slide2{
+		color: black;
+		font-size: 20px;
+		text-transform: none;
+	}
+
+	.slide3{
+		color: #9400D3;
+		font-size: 20px;
+		text-transform: none;
+	}
+	.slide4{
+		color: deeppink;
+		font-size: 20px;
+		text-transform: none;
+	}
+	.slide5{
+		color: #0000FF;
+		font-size: 20px;
+		text-transform: none;
+	}
+
+	.reviewImageMassage1 {
+		position: absolute;
+		top: 170px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+	.reviewImageMassage2 {
+		position: absolute;
+		top: 80px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+	.reviewImageMassage3 {
+		position: absolute;
+		top: 50px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+
+
+	.text-p-massage{
+		position: relative;
+		left: 0px;
+		text-align: justify
+	}
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+	.productInfoindex{
+
+		background: white;
+	}
+	#flecheindex{
+		position: absolute;
+		right:120px;
+		top: 40%;
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: 14px;
+		font-size: xxx-large;
+		text-rendering: auto;
+		color:
+		rgb(238, 17, 190) !important;
+		padding: 10px;
+	}
+
+
+	.btn-teme{
+		margin-left: 150px;
+	}
+
+	.p-slider{
+		position: relative;
+		max-width:900px !important;
+		left: 10%;
+		padding-bottom: 30px;
+
+
+	}
+	.productInfo p {
+		font-size: 16px;
+		line-height: 26px;
+		color: #666666;
+		margin: 0 0 0px 0 !important;
+	}
+
+	.productSection{
+		background-image: linear-gradient(white, white);
+	}
+
+
+	#productSlider .carousel-control.left i.fa-arrow-circle-left {
+		text-shadow: none;
+		position: absolute;
+		right: 1050px;
+		top: 40%;
+	}
+
+	#fleche{
+		position: absolute;
+		right:0px;
+		top: 40%;
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: 14px;
+		font-size: xxx-large;
+		text-rendering: auto;
+		color:
+		rgb(238, 17, 190) !important;
+		padding: 10px;
+	}
+
+	#iconetitle{
+		margin-top: 20px;
+		font-size: xx-large;
+	}
+	.slide0{
+		font-size: 20px;
+		text-transform: none;
+	}
+	.slide1{
+		color: #48D1CC;
+		font-size: 20px;
+		text-transform: none;
+	}
+	.username{
+		position: relative;
+		left: 800px;
+		top: -20px;
+	}
+	.slide2{
+		color: black;
+		font-size: 20px;
+		text-transform: none;
+	}
+
+	.slide3{
+		color: #9400D3;
+		font-size: 20px;
+		text-transform: none;
+	}
+	.slide4{
+		color: deeppink;
+		font-size: 20px;
+		text-transform: none;
+	}
+	.slide5{
+		color: #0000FF;
+		font-size: 20px;
+		text-transform: none;
+	}
+
+
+	.reviewImageMassage1 {
+		position: absolute;
+		top: 170px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+	.reviewImageMassage2 {
+		position: absolute;
+		top: 80px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+	.reviewImageMassage3 {
+		position: absolute;
+		top: 50px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+
+
+	.text-p-massage{
+		position: relative;
+		left: 120px;
+		text-align: justify
+	}
+
+}
+
+@-webkit-keyframes clignote {
+	0%{box-shadow:0px 0px 15px #4183C4;}
+	50%{box-shadow:0px 0px 0px #4183C4;}
+	100%{box-shadow:0px 0px 15px #4183C4;}
+}
+
+.areserver{
+	position: fixed;
+	right: 5px;
+	z-index: 100;
+	top: 50%;
+}
+.btn-full-roundd {
+
+	border-radius: 25px;
+	width: 100px;
+	font-size: 10px;
+
+	padding-left: 10px;
+
+	box-shadow:0px 0px 15px #4183C4;
+	-webkit-animation-name: clignote; /*on affecte l'animation clignote à notre bouton*/
+	-webkit-animation-duration: 1s; /*on définit la durée de l'animation à 1s*/
+	-webkit-animation-iteration-count:infinite; /*on dit que l'animation se répétera à l'infini.*/
+
+
+}
+
+.spa-suppl{
+	border: 3px white solid;
+	padding: 20px;
+}
+.optionnal-texte{
+	position: relative;
+	top: 100px;
+}
+
+.offerContent{
+	margin-bottom:40px;
+}
+.offerContent .offerTitle h4 {
+	margin: 0;
+	color: 
+	white;
+}
+
+#iconetitle1, #iconetitle2, #iconetitle3, #iconetitle4,#iconetitle5 {
+	margin-top: 20px;
+	font-size: xx-large;
+}
+
+.btn-theme{
+	margin-left: 40px;
+
+}
+
