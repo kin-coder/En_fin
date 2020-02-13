@@ -1,5 +1,4 @@
 <link href="/css/accordeon-index.css" rel="stylesheet">
-<link href="/css/massage.css" rel="stylesheet">
 <link href="/css/avisslider.css" rel="stylesheet">
 
 
@@ -229,7 +228,7 @@
         <div class="produtSingle">
           <div class="produtImage">
             <img src="img/localisationn.jpg" alt="Image Product" class="img-responsive">
-            <div class="productMas"></div>
+            <div class="productMask"></div>
           </div>
           <div class="productCaption">
             <p class="ccm">Réservez vos prestations bien-être en un clic partout en France, Belgique, Luxembourg et Suisse.</p>
@@ -241,7 +240,7 @@
         <div class="produtSingle">
           <div class="produtImage">
             <img src="img/calendar.jpg" alt="Image Product" class="img-responsive">
-            <div class="productMas"></div>
+            <div class="productMask"></div>
           </div>
           <div class="productCaption">
             <p class="ccm">Nos services sont disponibles de 8h à 22h, tous les jours de l’année, même au dernier moment ! On s’adapte à vous</p>
@@ -252,7 +251,7 @@
         <div class="produtSingle">
           <div class="produtImage">
             <img src="img/relaxr.jpg" alt="Image Product" class="img-responsive">
-            <div class="productMas"> </div>
+            <div class="productMask"> </div>
           </div>
           <div class="productCaption">
             <p class="ccm">Vous vous relaxez ! Vous n’avez plus qu’à vous détendre et à profiter de l’instant présent !</p>
@@ -431,139 +430,75 @@
 </section>
 
 
-
-<!-- avis SECTION -->
-<section class="container-fluid clearfix productArea patternbg">
-  <div class="secotionTitle">
-    <h2 class="police_massage"><span>Avis et notes</span>Clients</h2>
-  </div>
-</div>
-</section>
-<section class="clearfix productSection patternbg">
-  <div class="container patternbg">
-    <div class="row">
-      <div class="col-xs-12">
-        <div id="productSlider" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#productSlider" data-slide-to="0" class="active"></li>
-            <li data-target="#productSlider" data-slide-to="1"></li>
-          </ol>
-
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <div class="container">
-                <div class="row">
-                  <div class="col-sm-12 col-xs-12">
-                    <div class="productInfo productInfoindex">
-
-
-                      <center class="slide1">
-                        <i class="stars" aria-hidden="true" id="iconetitle1"></i> <br>
-
-                      </center> 
-                      <p class="p-slider">Merci beaucoup à Cocooningspa ! Très bonne service !</p>
-                      <i class="slide1 username">Alex</i>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <% @comments.each do |comment| %>
-            <div class="item">
-              <div class="container">
-                <div class="row">
-                  <div class="col-sm-12 col-xs-12">
-                    <div class="productInfo productInfoindex">
-
-                      <center class="slide1">
-                        <i class="stars" aria-hidden="true" id="iconetitle1"></i> 
-
-                      </center> 
-                      <p class="p-slider"><%=comment.content%></p>
-                      <i class="slide1 username"><%=comment.user_name%></i>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <%end%>
-            <!-- Left and right controls -->
-            <div class="vaetvient">
-              <a class="left carousel-control" href="#productSlider" role="button" data-slide="prev">
-                <i class="fa fa-arrow-circle-left" aria-hidden="true" id="ok"></i>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="right carousel-control" href="#productSlider" role="button" data-slide="next">
-                <i class="fa fa-arrow-circle-right ok" aria-hidden="true" id='flecheindex'></i>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- CONTACT US SECTION -->
-  <section class="container-fluid clearfix productArea patternbg">
-
+<!-- section avis -->
+<section class="clearfix contactSection patternbg">
+  <div class="container">
     <div class="secotionTitle">
-      <h2 class="police_massage"><span>Infos</span>Contactez-nous</h2>
+      <h2 id="contacter" class="police_massage"><span>Avis</span>des clients</h2>
     </div>
-
+    <div id="slider">
+      <a class="control_next">></a>
+      <a class="control_prev"><</a>
+      <ul>
+        <li>SLIDE 1</li>
+        <li style="background: #aaa;">SLIDE 2</li>
+        <li>SLIDE 3</li>
+        <li style="background: #aaa;">SLIDE 4</li>
+      </ul>  
+    </div>
   </div>
 </section>
 
+
+<!-- CONTACT US SECTION -->
 <section class="clearfix contactSection">
   <div class="container">
     <div class="secotionTitle">
-      <div class="row">
-        <div class="col-md-8 col-sm-7 col-xs-12">
-          <div class="contactTitle">
-            <h3></br></h3>
-          </div>
-
-          <div class="contactForm">
-            <div id="alert"></div><!--Response Holder-->
-            <form action="mail/contact-form.php" id="angelContactForm" method="post">
-              <div class="form-group">
-                <input type="text" name="contact-form-name" class="form-control" placeholder="Votre nom" required>
-              </div>
-              <div class="form-group">
-                <input type="email" name="contact-form-email" class="form-control" placeholder="Votre Email" required>
-              </div>
-              <div class="form-group">
-                <input type="text" name="contact-form-mobile" class="form-control" placeholder="Votre Mobile" required>
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" name="contact-form-message" placeholder="Laisser votre Message" required></textarea>
-              </div>
-              <div class="form-group">
-                <button type="submit" id="contact-submit-btn" class="btn btn-primary first-btn">Envoyer</button>
-
-              </div>
-            </form>
-          </div>
+      <h2 id="contacter" class="police_massage"><span>Infos</span>Contactez-nous</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-sm-7 col-xs-12">
+        <div class="contactTitle">
+          <h3></br></h3>
         </div>
-        <div class="col-md-4 col-sm-5 col-xs-12">
 
-          <div class="holdingInfo patternbg">
-            <div class="contactTitle">
-              <h3><center>Réseaux sociaux</center></h3>
+        <div class="contactForm">
+          <div id="alert"></div><!--Response Holder-->
+          <form action="mail/contact-form.php" id="angelContactForm" method="post">
+            <div class="form-group">
+              <input type="text" name="contact-form-name" class="form-control" placeholder="Votre nom" required>
             </div>
-            <ul>
-              <a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa fa-facebook" aria-hidden="true"></i> Cocooning Spa officiel </li></a>
-              <a href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa fa-instagram" aria-hidden="true"></i> Cocooning Spa </li></a>
-              <a href="#" class="btn"> <li><i class="fa fa-users" aria-hidden="true"></i> Cocooning Spa blog</li> </a>
-            </ul>
+            <div class="form-group">
+              <input type="email" name="contact-form-email" class="form-control" placeholder="Votre Email" required>
+            </div>
+            <div class="form-group">
+              <input type="text" name="contact-form-mobile" class="form-control" placeholder="Votre Mobile" required>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="contact-form-message" placeholder="Laisser votre Message" required></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" id="contact-submit-btn" class="btn btn-primary first-btn">Envoyer</button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-5 col-xs-12">
+
+        <div class="holdingInfo patternbg">
+          <div class="contactTitle">
+            <h3><center>Réseaux sociaux</center></h3>
           </div>
+          <ul>
+            <a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa fa-facebook" aria-hidden="true"></i> Cocooning Spa officiel </li></a>
+            <a href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa fa-instagram" aria-hidden="true"></i> Cocooning Spa </li></a>
+            <a href="#" class="btn"> <li><i class="fa fa-users" aria-hidden="true"></i> Cocooning Spa blog</li> </a>
+          </ul>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <%= javascript_pack_tag 'index-js' %>
+

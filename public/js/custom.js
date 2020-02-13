@@ -445,7 +445,3 @@ jQuery(document).ready(function ($) {
   });
 
 });    
-
-
-
-
