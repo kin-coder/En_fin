@@ -283,7 +283,15 @@
 		font-size: 20px;
 		text-transform: none;
 	}
-
+	.reviewImageMassage1spa {
+		position: absolute;
+		top: 80px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
 
 	.reviewImageMassage1 {
 		position: absolute;
