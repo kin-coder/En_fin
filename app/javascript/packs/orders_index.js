@@ -65,7 +65,7 @@ function incrementeInc(){ /*incremente la valeur inc pour les params*/
 
 /*==========================================================================*/
 	// les fonctions primaire SPA
-function valueToHtmlSpa(id,div){ /* code html pour l'ajout d'un spa */
+function valueToHtmlSpa(id){ /* code html pour l'ajout d'un spa */
 	let data = document.getElementById('form-data').dataset
 	let dataSpas = JSON.parse(data.spas)
 	let dataSpaoptions = JSON.parse(data.spaoptions)
@@ -74,18 +74,14 @@ function valueToHtmlSpa(id,div){ /* code html pour l'ajout d'un spa */
 
 	let typeSpa = "<div><h4>Durée location</h4>"
 	for (var i = 0; i < dataSpas.length ; i++) {
-		typeSpa += "<div><input type=\"radio\" id=\""+id+"h"+dataSpas[i][0]+"\" name=\"timeSpa["+id+"][]\" value=\""+ dataSpas[i][0] +"\" data-prices=\"["+dataSpas[i][1]+","+dataSpas[i][2]+"]\" data-acompte=\"["+dataSpas[i][3]+","+dataSpas[i][4]+"]\" data-index=\""+id+"\"><label for=\""+id+"h"+dataSpas[i][0]+"\">"+ dataSpas[i][0] +"h</label></div>"
+		typeSpa += "<div><input class=\"time-spa-list\" type=\"radio\" id=\""+id+"h"+dataSpas[i][0]+"\" name=\"timeSpa["+id+"][]\" value=\""+ dataSpas[i][0] +"\" data-i=\""+i+"\" data-prices=\"["+dataSpas[i][1]+","+dataSpas[i][2]+"]\" data-acompte=\"["+dataSpas[i][3]+","+dataSpas[i][4]+"]\" data-index=\""+id+"\"><label for=\""+id+"h"+dataSpas[i][0]+"\">"+ dataSpas[i][0] +"h</label></div>"
 	}
 	typeSpa += "</div><div><h4>options</h4>"
 	for (var i = 0; i < dataSpaoptions.length ; i++) {
-		typeSpa += "<div><input type=\"checkbox\" name=\"optionSpa["+id+"][]\" value=\""+dataSpaoptions[i][0]+"\" id=\"opt"+dataSpaoptions[i][0]+""+id+"\" data-price=\""+dataSpaoptions[i][2]+"\" data-index=\""+id+"\"><label for=\"opt"+dataSpaoptions[i][0]+""+id+"\">"+dataSpaoptions[i][1]+"</label></div>"
+		typeSpa += "<div><input class=\"option-spa-list\" type=\"checkbox\" name=\"optionSpa["+id+"][]\" value=\""+dataSpaoptions[i][0]+"\" id=\"opt"+dataSpaoptions[i][0]+""+id+"\" data-i=\""+i+"\" data-price=\""+dataSpaoptions[i][2]+"\" data-index=\""+id+"\"><label for=\"opt"+dataSpaoptions[i][0]+""+id+"\">"+dataSpaoptions[i][1]+"</label></div>"
 	}
-	
 	typeSpa += "</div><div><h4>Informations sur la location</h4><label for=\"logement"+id+"\">Type de logement</label><select data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"logement"+id+"\" class=\"selectElement\"><option value=\"Appartement\">Appartement</option><option value=\"Villa - Maison\">Villa - Maison</option></select><label for=\"installation"+id+"\">Type d'installation</label><select data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"installation"+id+"\" class=\"selectElement\"><option value=\"Intérieur\">Intérieur</option><option value=\"Extérieur\">Extérieur</option></select><label for=\"eau"+id+"\">Système d'eau</label><select data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"eau"+id+"\" class=\"selectElement\"><option value=\"Cumulus - Ballon d'eau (eau chaude limitée)\">Cumulus - Ballon d\'eau (eau chaude limitée)</option><option value=\"Chaudière (eau chaude continue)\">Chaudière (eau chaude continue)</option></select></div>"
-
-	div.innerHTML = typeSpa
-
-	// &quot;&quot;&quot;&quot;
+	return typeSpa
 }
 
 function numberSpaSelected(){
@@ -183,13 +179,23 @@ function addSpaList(){
 	let div = document.createElement('div')
 	div.classList.add('spa-list-prestations')
 
-	valueToHtmlSpa(id,div)
+	div.innerHTML = valueToHtmlSpa(id)
 
 	document.getElementById('spa-input').appendChild(div)
 
+	// Ajout des sous element dans la session et dans le panier
+	let timeSpa = document.querySelectorAll(".time-spa-list")
+	timeSpa.forEach(tSpa => {
+		tSpa.addEventListener('change',addRmvTimSpaInOrder);
+	});
+
+	let optionSpa = document.querySelectorAll(".option-spa-list")
+	optionSpa.forEach(oSpa => {
+		oSpa.addEventListener('change',addRmvOptionSpaInOrder);
+	});
+
 	// Ajout dans le panier
 	addSpaInOrder(id)
-
 	// nombre de spa - 0 +
 	numberSpaSelected()
 }
@@ -223,17 +229,13 @@ function rmvSpaInOrder(){
 	a[a.length-1].remove()
 }
 
-/*
-<p id="nbr-order-spa">Prestation : 2 spa</p>
+function addRmvTimSpaInOrder(){
+	/* ========================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================*/
+}
 
-<div >
-	<p>Pour 24h</p>
-	<ul>
-		<li>option 1</li>
-		<li>option 2</li>
-	</ul>
-</div>
-*/
+function addRmvOptionSpaInOrder(){
+	/* ========================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================*/
+}
 
 /*==========================================================================*/
 	// fonction principale MASSAGE
