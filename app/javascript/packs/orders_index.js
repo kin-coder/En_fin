@@ -17,8 +17,19 @@ function scriptPrincipal(){
 	buttonAdds.forEach(buttonAdd => {
 		buttonAdd.addEventListener('click',addCategoryMassage);
 	});
+/*==========================================================================*/
+	/*~~~~~~~~~~~~~~~~~~~~~~~Cadeau~~~~~~~~~~~~~~~~~~~~~~~*/
 
-	
+	let rmvCadeau = document.querySelectorAll(".cadeau-rmv")
+	rmvCadeau.forEach(rmv => {
+		rmv.addEventListener('click',removeCadeau);
+	});
+
+	let addCadeau = document.querySelectorAll(".cadeau-add")
+	addCadeau.forEach(add => {
+		add.addEventListener('click',aDDCadeau);
+	});
+
 /*==========================================================================*/
 	/*~~~~~~~~~~~~~~~~~~~~~~~~Autre~~~~~~~~~~~~~~~~~~~~~~~~*/
 	let prestations = sessionStorage.getItem("prestations")
@@ -36,6 +47,7 @@ function initSession(){
 	sessionStorage.setItem("prestations","[]")
 	sessionStorage.setItem("spa","[]")
 	sessionStorage.setItem("massages","[]")
+	sessionStorage.setItem("cadeau","[]")
 	sessionStorage.setItem("inc","0")
 }
 // remettre les elements si un l'user a actualisé
@@ -125,8 +137,6 @@ function showTimesOnClickMassageSu(){
 			timeList[i].className = "times-massage hidden"
 		}
 	}
-
-
 }
 
 
@@ -222,13 +232,52 @@ function removeCategoryMassage(){
 
 }
 /*==========================================================================*/
+	// fonction principale CADEAU
+function removeCadeau(){
+	let id = JSON.parse(this.dataset.id)
+	let cadeau = JSON.parse(sessionStorage.getItem("cadeau"))
+	for (var i = cadeau.length - 1; i >= 0; i--) {
+		if(cadeau[i][0] == id){
+			cadeau[i][1]--
+			document.getElementById(id+"-nbr").innerHTML = cadeau[i][1]
+			if(cadeau[i][1] == 0){
+				cadeau.splice(i,1)
+			}
+			break
+		}
+	}
+	sessionStorage.setItem("cadeau",JSON.stringify(cadeau))
+	document.getElementById("cadeau-id").value = JSON.stringify(cadeau)
+}
 
 
+function aDDCadeau(){
+	let id = JSON.parse(this.dataset.id)
+	let cadeau = JSON.parse(sessionStorage.getItem("cadeau"))
+	let test = true
+	for (var i = cadeau.length - 1; i >= 0; i--) {
+		if(cadeau[i][0] == id){
+			test = false
+			cadeau[i][1]++
+			document.getElementById(id+"-nbr").innerHTML = cadeau[i][1]
+			break
+		}
+	}
+	if (test) {
+		cadeau.push([id,1])
+		document.getElementById(id+"-nbr").innerHTML = 1
+	}
+	sessionStorage.setItem("cadeau",JSON.stringify(cadeau))
+	document.getElementById("cadeau-id").value = JSON.stringify(cadeau)
+}
 
 
 // JSON.stringify()
 
 /*
+
+
+<input type="text" value="" name="cadeau" id="cadeau-input">
 
 
 

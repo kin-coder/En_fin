@@ -3,7 +3,6 @@
 <hr class="hr.new5">
 	<div class="set-zones">
 		<h2>Je choisi ma zone géographique </h2>
-
 		<form>
 			<div class="pays">
 				<label class="labelle" for="country-choice">Choix pays</label>
@@ -136,12 +135,13 @@
 			<ul>
 				<% @cadeaus.each do |cadeau| %>
 					<li><%= cadeau.name %>: <%= cadeau.price %>€
-						<i class="fa fa-minus-circle" id="<%= cadeau.id %>-rmv"></i>
+						<i class="fa fa-minus-circle cadeau-rmv" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
 						<span id="<%= cadeau.id %>-nbr">0</span>
-						<i class="fa fa-plus-circle" id="<%= cadeau.id %>-add" data-cadeau="[<%= cadeau.id %>,<%= cadeau.name %>,<%= cadeau.price %>]"></i>
+						<i class="fa fa-plus-circle cadeau-add" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
 					</li>
 				<% end %>
 			</ul>
+			<input type="text" value="[]" name="cadeau" id="cadeau-id">
 		</div>
 
 	</div>
