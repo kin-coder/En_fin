@@ -47,7 +47,7 @@
 	}
 	#flecheindex{
 		position: absolute;
-		right:5px;
+		right:-6px;
 		top: 40%;
 		display: inline-block;
 		font: normal normal normal 14px/1 FontAwesome;
@@ -88,7 +88,7 @@
 	#productSlider .carousel-control.left i.fa-arrow-circle-left {
 		text-shadow: none;
 		position: absolute;
-		right: 630px;
+		right: 590px;
 		top: 40%;
 	}
 
@@ -186,7 +186,7 @@
 	}
 	#flecheindex{
 		position: absolute;
-		right:120px;
+		/*right:120px;*/
 		top: 40%;
 		display: inline-block;
 		font: normal normal normal 14px/1 FontAwesome;
@@ -226,7 +226,7 @@
 	#productSlider .carousel-control.left i.fa-arrow-circle-left {
 		text-shadow: none;
 		position: absolute;
-		right: 1050px;
+		right: 1000px;
 		top: 40%;
 	}
 
