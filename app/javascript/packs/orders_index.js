@@ -1,3 +1,4 @@
+
 function scriptPrincipal(){
 /*==========================================================================*/
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~SPA~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -77,10 +78,31 @@ function valueToHtmlSpa(id){ /* code html pour l'ajout d'un spa */
 	}
 	typeSpa += "</div><div><h4>options</h4>"
 	for (var i = 0; i < dataSpaoptions.length ; i++) {
-		typeSpa += "<div><input class=\"option-spa-list\" type=\"checkbox\" name=\"optionSpa["+id+"][]\" value=\""+dataSpaoptions[i][1]+"\" id=\"opt"+dataSpaoptions[i][0]+""+id+"\" data-array=\""+i+"\" data-price=\""+dataSpaoptions[i][2]+"\" data-index=\""+id+"\"><label for=\"opt"+dataSpaoptions[i][0]+""+id+"\">"+dataSpaoptions[i][1]+"</label></div>"
+		typeSpa += "<div><input class=\"option-spa-list\" type=\"checkbox\" name=\"optionSpa["+id+"][]\" value=\""+dataSpaoptions[i][1]+"\" id=\"opt"+dataSpaoptions[i][0]+""+id+"\" data-array=\""+i+"\" data-price=\""+dataSpaoptions[i][2]+"\" data-index=\""+id+"\" disabled ><label for=\"opt"+dataSpaoptions[i][0]+""+id+"\">"+dataSpaoptions[i][1]+"</label></div>"
 	}
 	typeSpa += "</div><div><h4>Informations sur la location</h4><label for=\"logement"+id+"\">Type de logement</label><select data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"logement"+id+"\" class=\"selectElement\"><option value=\"Appartement\">Appartement</option><option value=\"Villa - Maison\">Villa - Maison</option></select><label for=\"installation"+id+"\">Type d'installation</label><select data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"installation"+id+"\" class=\"selectElement\"><option value=\"Intérieur\">Intérieur</option><option value=\"Extérieur\">Extérieur</option></select><label for=\"eau"+id+"\">Système d'eau</label><select data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"eau"+id+"\" class=\"selectElement\"><option value=\"Cumulus - Ballon d'eau (eau chaude limitée)\">Cumulus - Ballon d\'eau (eau chaude limitée)</option><option value=\"Chaudière (eau chaude continue)\">Chaudière (eau chaude continue)</option></select></div>"
 	return typeSpa
+
+/*
+document.getElementById("country-choice").addEventListener("change", myFunction);
+
+	function myFunction() {
+	  var x = document.getElementById("country-choice").value;
+	  var input_dptm = document.getElementById("Departement")
+	  var div_dptm = document.getElementById("list-department")
+	  if (x == "France") {
+	  	input_dptm.removeAttribute("disabled")
+	  	div_dptm.removeAttribute("class")
+	  }else{
+	  	input_dptm.setAttribute("disabled","disabled")
+	  	div_dptm.classList.add("hidden")
+	  }
+	}
+
+
+*/
+
+
 }
 
 function numberSpaSelected(){
@@ -200,6 +222,8 @@ function addSpaList(){
 }
 // evenement on click
 function removeSpaList(){
+	let dataForm = JSON.parse(document.getElementById('form-data').dataset.spas)
+	let dataOption = JSON.parse(document.getElementById('form-data').dataset.spaoptions)
 	// Enregistrement dans la session
 	let sessionSpa = JSON.parse(sessionStorage.getItem("spa"))
 	sessionSpa.pop()
@@ -209,7 +233,9 @@ function removeSpaList(){
 	if (list.length > 0) {
 		list[list.length-1].remove()
 		// supprimer l'element dans le panier
-		rmvSpaInOrder()	
+		rmvSpaInOrder()
+		// recalculer le prix total
+		priceTotalForAllSpa(dataOption,dataForm)
 	}
 	numberSpaSelected()
 }
@@ -223,6 +249,7 @@ function addSpaInOrder(id){
 	div.innerHTML = "<p>Pour <span id=\"spa-time-"+id+"\"></span> h <span id=\"spa-price-"+id+"\"></span></p><ul></ul>"
 	divOrder.appendChild(div)
 }
+
 function rmvSpaInOrder(){
 	let a = document.getElementsByClassName("spa-order")
 	a[a.length-1].remove()
@@ -232,16 +259,15 @@ function rmvSpaInOrder(){
 }
 
 function addRmvTimSpaInOrder(){ //checkbox na option spa
-/*
-<input class="time-spa-list" type="radio" id="1h24" name="timeSpa[1][]" value="24" data-prices="[180,100]" data-acompte="[50,30]" data-index="1">
-options
-<input class="option-spa-list" type="checkbox" name="optionSpa[1][]" value="Fontaine chocolat (fournie avec chocolat)" id="opt31" data-i="2" data-price="20" data-index="1">
-facture
-id total : 	spa-price-total
-Id manokana : spa-price-+id+
-*/
+	let dataForm = JSON.parse(document.getElementById('form-data').dataset.spas)
+	let dataOption = JSON.parse(document.getElementById('form-data').dataset.spaoptions)
 	let index = this.dataset.index
 	let sessionSpa = JSON.parse(sessionStorage.getItem("spa"))
+	// Activer les checkbox pour les options spa
+	let inputList = document.querySelectorAll(".option-spa-list[data-index=\'"+index+"\']")
+	for (var i = inputList.length - 1; i >= 0; i--) {
+		inputList[i].removeAttribute("disabled")
+	}
 	for (var i = sessionSpa.length - 1; i >= 0; i--) {
 		if (sessionSpa[i].id == index) {
 			sessionSpa[i].time = this.dataset.array
@@ -253,73 +279,26 @@ Id manokana : spa-price-+id+
 	document.getElementById("spa-list-"+index).classList.remove('hidden');
 	document.getElementById("spa-time-"+index).innerHTML = this.value
 
-	// calcul prix
-	
+	// calcul prix pour un spa selectionné
 	let pricesSpa = JSON.parse(this.dataset.prices)[1]
 	let acompteSpa = JSON.parse(this.dataset.acompte)[1]
-
-	addPriceToSpaTotalPrice(this.dataset.array,index,[pricesSpa,acompteSpa])
-
-
+	priceTotalForOneSpa(index,dataOption,dataForm)
+	// total prix pours les spas selectionné
+	priceTotalForAllSpa(dataOption,dataForm)
 }
-
-function addPriceToSpaTotalPrice(array,id,data){
-
-	let dataForm = JSON.parse(document.getElementById('form-data').dataset.spas)
-	
-	// data-array
-	// spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte
-	// [[24, 180.0, 100.0, 50.0, 30.0], [48, 230.0, 150.0, 65.0, 45.0], [72, 280.0, 200.0, 75.0, 60.0]]
-	
-	let spaPrice = document.getElementById("spa-price-"+id)
-	let spanPriceTotal = document.getElementById("spa-price-total")
-
-	//[{"id":1,"time":"2","option":["Décoration romantique","Décoration anniversaire / fête"],"info":[]}]
-
-	let sessionSpa = JSON.parse(sessionStorage.getItem("spa"))
-	for (var i = sessionSpa.length - 1; i >= 0; i--) {
-		if (sessionSpa[i].id == id) {
-			spaPrice.innerHTML = "prix: "+dataForm[array][2]+"€ acompte: "+dataForm[array][4]+"€"
-		}
-	}
-
-/*
-
-	if (JSON.parse(spaPrice.dataset.facture).length > 0){
-		spaPrice.dataset.facture = JSON.stringify([(JSON.parse(spaPrice.dataset.facture)[0]+data[0]),(JSON.parse(spaPrice.dataset.facture)[1]+data[1])])
-		
-	}else{
-		spaPrice.dataset.facture = JSON.stringify([data[0],data[1]])
-		spaPrice.innerHTML = "prix: "+data[0]+" acompte: "+data[1]
-	}
-
-	if (JSON.parse(spanPriceTotal.dataset.facture).length > 0){
-		spanPriceTotal.dataset.facture = JSON.stringify([JSON.parse(spanPriceTotal.dataset.facture)[0]+data[0],JSON.parse(spanPriceTotal.dataset.facture)[1]+data[1]])
-		spanPriceTotal.innerHTML = "prix: "+(JSON.parse(spanPriceTotal.dataset.facture)[0]+data[0])+" acompte: "+JSON.parse(spanPriceTotal.dataset.facture)[1]+data[1]
-	}else{
-		spanPriceTotal.dataset.facture = JSON.stringify([data[0],data[1]])
-		spanPriceTotal.innerHTML = "prix: "+data[0]+" acompte: "+data[1]
-	}
-*/
-
-}
-
-
 
 function addRmvOptionSpaInOrder(){ //checkbox na option spa
-	/* ========================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================*/
+	let dataForm = JSON.parse(document.getElementById('form-data').dataset.spas)
+	let dataOption = JSON.parse(document.getElementById('form-data').dataset.spaoptions)
 	let index = this.dataset.index
-
+	let id = JSON.parse(this.dataset.array)
+	// Ajout ou supression d'element dans la session
 	let sessionSpa = JSON.parse(sessionStorage.getItem("spa"))
-
-// value="Table de massage (fournie avec huile de massage)" id="opt51" data-fi="4" data-price="25" data-index="1">
-	
 	let listOptions = []
-
 	if(this.checked){
 		for (var i = sessionSpa.length - 1; i >= 0; i--) {
 			if (sessionSpa[i].id == index) {
-				sessionSpa[i].option.push(this.value)
+				sessionSpa[i].option.push(id)
 				listOptions = sessionSpa[i].option
 				break
 			}
@@ -327,30 +306,70 @@ function addRmvOptionSpaInOrder(){ //checkbox na option spa
 	}else{
 		for (var i = sessionSpa.length - 1; i >= 0; i--) {
 			if (sessionSpa[i].id == index) {
-				sessionSpa[i].option.splice( sessionSpa[i].option.indexOf(this.value), 1 )
+				sessionSpa[i].option.splice( sessionSpa[i].option.indexOf(id), 1 )
 				listOptions = sessionSpa[i].option
 				break
 			}
 		}
 	}
-
 	sessionStorage.setItem("spa",JSON.stringify(sessionSpa))
-
+	// Ajout des element dans le dom
 	let ulList = (document.getElementById("spa-list-"+index).getElementsByTagName("ul"))
 	let liList = ""
-
+	// [1, "Décoration romantique", 20] agencement dans la dataOption
 	for (var i = 0; i < listOptions.length; i++) {
-		liList += "<li>"+listOptions[i]+"</li>"
+		liList += "<li>"+dataOption[listOptions[i]][1]+"</li>"
 	}
-
 	ulList[0].innerHTML = liList
-
+	// modifier la petite some
+	priceTotalForOneSpa(index,dataOption,dataForm)
+	// modifier la somme total
+	priceTotalForAllSpa(dataOption,dataForm)
 	/*
 	<div class="spa-order hidden" id="spa-list-12">
 		<p>Pour <span id="spa-time-12"></span>h </p>
 		<ul></ul>
 	</div>
 	*/
+}
+
+function priceTotalForOneSpa(index,dataOption,dataForm){
+	let spaPrice = document.getElementById("spa-price-"+index)
+	//[{"id":1,"time":"2","option":[1,0],"info":[]}]
+	let price = [0,0]
+	let sessionSpa = JSON.parse(sessionStorage.getItem("spa"))
+	for (var i = sessionSpa.length - 1; i >= 0; i--) {
+		if (sessionSpa[i].id == index) {
+			price[0] += dataForm[sessionSpa[i].time][2] // prix
+			price[1] += dataForm[sessionSpa[i].time][4] // acompte
+			let spa = sessionSpa[i].option
+			for (var j = spa.length - 1; j >= 0; j--) {
+				price[1] += dataOption[spa[j]][2]
+			}
+			spaPrice.innerHTML = "prix: "+price[0]+"€ acompte: "+price[1]+"€"
+			break
+		}
+	}
+}
+
+function priceTotalForAllSpa(dataOption,dataForm){
+	let spanPriceTotal = document.getElementById("spa-price-total")
+	let prixSomme = [0,0]
+	let sessionSpa = JSON.parse(sessionStorage.getItem("spa"))
+	let tmp = ""
+	for (var i = sessionSpa.length - 1; i >= 0; i--) {
+		// somme heurs des spa
+		if (sessionSpa[i].time != "") {
+			prixSomme[0] += dataForm[sessionSpa[i].time][2] // prix
+			prixSomme[1] += dataForm[sessionSpa[i].time][4] // acompte
+			// some prix pour les options déco
+			tmp = sessionSpa[i].option
+			for (var j = tmp.length - 1; j >= 0; j--) {
+				prixSomme[1] += dataOption[tmp[j]][2]
+			}
+		}
+	}
+	spanPriceTotal.innerHTML = "prix: "+prixSomme[0]+"€ acompte: "+prixSomme[1]+"€"
 }
 
 /*==========================================================================*/
