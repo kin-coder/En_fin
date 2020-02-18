@@ -365,6 +365,7 @@ width: 96%;
 .spa-suppl{
 	border: 3px white solid;
 	padding: 20px;
+	border-radius: 10px;
 }
 .optionnal-texte{
 	position: relative;
@@ -461,4 +462,19 @@ border-radius: 50px;
   background-color: white;
   padding: 50px;
   border-radius:8px;
+}
+
+.btn-teme{
+height: 30px;
+padding: 7px !important;
+position: relative;
+left: 150px;
+top: -25px;
+}
+.btn-temeintru{
+height: 30px;
+padding: 7px !important;
+position: relative;
+left: 125px;
+top: 0px;
 }
