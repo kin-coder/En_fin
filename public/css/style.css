@@ -982,6 +982,8 @@ body.bodyColor .bb-fixed-header {
   padding-left: 18px;
   border-color: #dedede;
   color: #666666;
+  margin-left: 10px;
+  border-radius: 8px;
 }
 
 .form-control:focus {
@@ -1003,7 +1005,7 @@ body.bodyColor .bb-fixed-header {
 }
 
 textarea.form-control {
-  height: 150px;
+  height: 99px;
 }
 
 .formPart {
@@ -3863,6 +3865,7 @@ textarea.form-control {
 @media (min-width: 992px) {
   .reviewInfo {
     margin: 0;
+    border-radius: 10px;
   }
 }
 
@@ -4158,6 +4161,7 @@ textarea.form-control {
 .contactSection {
   padding: 0 0 80px 0;
   background-color: #ffffff;
+  border-radius: 8px;
 }
 
 .contactTitle h3 {
@@ -4171,6 +4175,7 @@ textarea.form-control {
   padding: 40px 50px 30px 30px;
   margin: 45px 0 0 0;
   border: 3px white solid;
+  border-radius: 10px;
 }
 
 .holdingInfo p {
@@ -6506,6 +6511,7 @@ input[type=number]::-webkit-inner-spin-button {
 @media (min-width: 768px) {
   .produtSingle {
     margin-bottom: 50px;
+    border-radius: 10px;
   }
 }
 

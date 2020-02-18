@@ -658,6 +658,8 @@ left: 250px;*/
   .ccm{
     position: relative;
     top: 20px;
+    padding-left: 5px;
+padding-right: 5px;
   }
   #ok{
     display: inline-block;
