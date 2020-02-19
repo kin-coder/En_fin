@@ -104,6 +104,7 @@ left: 5%;
 	background: white;
 	width: 100%;
 	margin-top: 50px;
+	border-radius: 10px;
 }
 .phonetext{
 	position: relative;
@@ -139,11 +140,12 @@ left: 5%;
 .texteareabutton{
 	position: relative;
 	left: 40px;
-	top: 100px;
+	top: 45px;
 	background: #ec5598;
 	padding: 8px;
 	color:white;
 	font-weight: bold; 
+	border-radius: 10px
 }}
 
 
