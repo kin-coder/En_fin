@@ -17,6 +17,7 @@
 #first-btn{
   color:white!important;
   margin-right: 10px;
+  border-radius: 10px;
 }
 
  /* #first-btn:hover, .first-btn:hover {
@@ -33,7 +34,7 @@
 /* page signup  signin*/
 .btn-block {
  display: block;
- width: 50% !important;
+ width: 200px !important;
 }
 .genre{
  display: none;
@@ -45,7 +46,7 @@
 }
 @media (min-width: 480px) {
  .panel-login, .panel-body-login{
-  width: 300px !important;
+  width: 300px;
 }
 
 }
@@ -495,17 +496,6 @@ left: 250px;*/
   text-transform: none;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .secotionTitle h2 span{
   font-size: 45px !important;
 }
@@ -645,6 +635,18 @@ left: 250px;*/
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  #contact-submit-btn{
+    width: auto;
+    text-align: center;
+  
+    border-radius: 50px;
+  }
+    #contact-submit-btnn{
+    width: auto;
+    text-align: center;
+  margin-left: 60px;
+    border-radius: 50px;
+  }
   .lire-btn{
     text-transform: lowercase;
   }
@@ -659,7 +661,7 @@ left: 250px;*/
     position: relative;
     top: 20px;
     padding-left: 5px;
-padding-right: 5px;
+    padding-right: 5px;
   }
   #ok{
     display: inline-block;
@@ -706,4 +708,5 @@ padding-right: 5px;
 }
 
 }
+
 
