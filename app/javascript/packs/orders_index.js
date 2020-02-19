@@ -234,7 +234,6 @@ function showTimesOnClickMassageSu(){
 // evenement on click
 function addSpaList(){
 	let id = incrementeInc() // Augmente de 1 la session
-	
 	// Enregistrement dans la session
 	let sessionSpa = JSON.parse(sessionStorage.getItem("spa"))
 	sessionSpa.push({id:id,time:"",option:[],info:[]})
@@ -264,6 +263,8 @@ function addSpaList(){
 	addSpaInOrder(id)
 	// nombre de spa - 0 +
 	numberSpaSelected()
+	// Grand prix total
+	bigTotalPrice()
 }
 // evenement on click
 function removeSpaList(){
@@ -283,6 +284,8 @@ function removeSpaList(){
 		priceTotalForAllSpa(dataOption,dataForm)
 	}
 	numberSpaSelected()
+	// Grand prix total
+	bigTotalPrice()
 }
 ////////////////////////////////////////////////////////
 // fonction principale commande SPA
@@ -415,6 +418,9 @@ function priceTotalForAllSpa(dataOption,dataForm){
 		}
 	}
 	spanPriceTotal.innerHTML = "prix: "+prixSomme[0]+"€ acompte: "+prixSomme[1]+"€"
+	spanPriceTotal.dataset.price = "["+[prixSomme[0],prixSomme[1]]+"]"
+	// Grand prix total
+	bigTotalPrice()
 }
 
 /*==========================================================================*/
@@ -453,7 +459,8 @@ function addCategoryMassage(){
 	checkRadioList.forEach(checkR => {
 		checkR.addEventListener('change',addMassageInOrder);
 	});
-
+	// Grand prix total
+	bigTotalPrice()
 }
 /* ########################################################################################################################################################################## */
 /* ########################################################################################################################################################################## */
@@ -525,10 +532,13 @@ function priceTotalForAllMassage(dataMassages){
 			acompte += categories[1][sessionMassage[i].sub][1][sessionMassage[i].time][4]
 		}
 	}
-	document.getElementById("massage-price-total").innerHTML = "prix: "+price+"€ acompte: "+acompte+"€"	
+	document.getElementById("massage-price-total").innerHTML = "prix: "+price+"€ acompte: "+acompte+"€"
+	document.getElementById("massage-price-total").dataset.price = "["+[price,acompte]+"]"
 	if (price == 0 && acompte == 0) {
 		document.getElementById("massage-order").classList.add('hidden')
 	}
+	// Grand prix total
+	bigTotalPrice()
 }
 
 /* ########################################################################################################################################################## */
@@ -554,7 +564,8 @@ function removeCategoryMassage(){
 	}
 	// nombre de massage pour homme et femme
 	numberMassageSelected(this.dataset.cat)
-
+	// Grand prix total
+	bigTotalPrice()
 }
 /*==========================================================================*/
 	// fonction principale CADEAU
@@ -620,12 +631,45 @@ function priceForAllCadeau(){
 	if (totalPrice == 0) {
 		orderCadeau.classList.remove("hidden")
 		orderCadeau.classList.add("hidden")
+		document.getElementById("cadeau-price-total").innerHTML = ""
 	}else{
 		orderCadeau.classList.remove("hidden")
-		document.getElementById("cadeau-price-total").innerHTML = totalPrice+"€"
+		document.getElementById("cadeau-price-total").innerHTML = totalPrice
 		orderCadeau.getElementsByTagName("div")[0].innerHTML = elementDom+"</ul>"
 	}
+	// Grand prix total
+	bigTotalPrice()
 }
+
+function bigTotalPrice(){
+
+	let spa = document.getElementById("spa-price-total").dataset.price
+
+	let massage = document.getElementById("massage-price-total").dataset.price
+
+	let cadeau = document.getElementById("cadeau-price-total").innerHTML
+
+	if ((spa == "" || spa == "[0,0]") && (massage == "" || massage == "[0,0]")) {
+		document.getElementById("empty-order").classList.remove("hidden")
+	}else{
+		document.getElementById("empty-order").classList.add("hidden")
+	}
+
+	if (spa != "") {
+		spa = JSON.parse(spa)
+	}else{
+		spa = [0,0]
+	}
+	if (massage != "") {
+		massage = JSON.parse(massage)
+	}else{
+		massage = [0,0]
+	}
+	document.getElementById("total-price").innerHTML = spa[0]+massage[0] 
+	document.getElementById("total-acompte").innerHTML =  spa[1]+massage[1]+parseFloat(cadeau)
+}
+
+
 
 /*
 ========================================================================================================
