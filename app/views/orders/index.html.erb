@@ -3,8 +3,9 @@
 <hr class="hr.new5">
 	<div class="set-zones">
 		<h2>Je choisi ma zone géographique </h2>
-		<form>
-			<div class="pays">
+
+		 <%= form_tag(zone_path, remote: true) do %>
+		 	<div class="pays">
 				<label class="labelle" for="country-choice">Choix pays</label>
 				<select name="country" id="country-choice" class="field">
 					<option value="">Choix pays</option>
@@ -26,12 +27,12 @@
 
 			<div>
 				<label for="Date">Date</label>
-				<input type="text" name="Date" id="Date" placeholder="MM/DD/YYYY">
+				<input type="text" name="date" id="Date" placeholder="MM/DD/YYYY">
 			</div>
 
 			<div>
 				<label class="labelle" for="guiest_id1">Choisisser l'heure</label>
-				<select name="Heure" id="guiest_id1" class="select-dro">
+				<select name="heure" id="guiest_id1" class="select-dro">
 					<option value="">Choisisser l'heure</option>
 					<option value="08:00">08:00</option>
 					<option value="08:30">08:30</option>
@@ -65,9 +66,9 @@
 				</select>
 			</div>
 			<div>
-				<input type="submit" name="commit" value="Je valide" data-disable-with="Je valide">
+				<%= submit_tag("Je valide") %>	
 			</div>
-		</form>
+		 <% end %>
 	</div>
 
 <hr class="hr.new5">
@@ -86,7 +87,6 @@
 			</div>
 			<div id="spa-input">
 
-				
 			</div>
 		</div>
 <!-- ======================================================================== -->
@@ -168,8 +168,9 @@
 		</div>
 
 		<div id="cadeau-order" class="hidden">
-			<h3>Vos cadeau</h3>
-
+			<h3>Vos cadeau <span id="cadeau-price-total"></span></h3>
+			<div>
+			</div>
 		</div>
 
 		<div id="code-promo" class="hidden">
@@ -186,22 +187,7 @@
 </div>
 
 <%= javascript_pack_tag 'orders_index' %>
-<script type="text/javascript">
-	document.getElementById("country-choice").addEventListener("change", myFunction);
 
-	function myFunction() {
-	  var x = document.getElementById("country-choice").value;
-	  var input_dptm = document.getElementById("Departement")
-	  var div_dptm = document.getElementById("list-department")
-	  if (x == "France") {
-	  	input_dptm.removeAttribute("disabled")
-	  	div_dptm.removeAttribute("class")
-	  }else{
-	  	input_dptm.setAttribute("disabled","disabled")
-	  	div_dptm.classList.add("hidden")
-	  }
-	}
-</script>
 
 
 <script id="pro-choice" type="text/html">

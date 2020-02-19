@@ -40,6 +40,8 @@ Rails.application.routes.draw do
 
 #ORDERS_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page tunelle d'achats dans le controller ORDERS
+  post 'filter' => 'controller_name#filter'
+  post 'validate-zone', to:"orders#zone", as:"zone"
   get '/reservation-prestation', to:'orders#index', as: "reservation"
   post '/reservation-prestation/save', to:'orders#saveSession', as: "save_session"
   
