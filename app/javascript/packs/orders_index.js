@@ -31,6 +31,9 @@ function scriptPrincipal(){
 	});
 
 /*==========================================================================*/
+	/*~~~~~~~~~~~~Date Heurs Pays Departement Praticient ~~~~~~~~~~~~~~~~~*/
+	document.getElementById("country-choice").addEventListener("change", showDepartementIfFrance);
+/*==========================================================================*/
 	/*~~~~~~~~~~~~~~~~~~~~~~~~Autre~~~~~~~~~~~~~~~~~~~~~~~~*/
 	let prestations = sessionStorage.getItem("prestations")
 	if( 1 /*prestations == undefined || prestations == 0*/ ){
@@ -38,13 +41,14 @@ function scriptPrincipal(){
 	}else{
 		addDomIndex()
 	}
+
 }
 
 scriptPrincipal()
 /*==========================================================================*/
 
 function initSession(){
-	sessionStorage.setItem("prestations","[]")
+	sessionStorage.setItem("prestations","{}")
 	sessionStorage.setItem("spa","[]")
 	sessionStorage.setItem("massages","[]")
 	sessionStorage.setItem("cadeau","[]")
@@ -54,6 +58,39 @@ function initSession(){
 function addDomIndex(){
 	// body...
 }
+
+/*==========================================================================*/
+	// les fonctions concernatant Date Heurs Pays Departement Praticient
+function showDepartementIfFrance() {
+	var x = this.value
+	var input_dptm = document.getElementById("Departement")
+	var div_dptm = document.getElementById("list-department")
+	if (x == "France") {
+		input_dptm.removeAttribute("disabled")
+		div_dptm.removeAttribute("class")
+	}else{
+		input_dptm.setAttribute("disabled","disabled")
+		div_dptm.classList.add("hidden")
+	}
+/*
+	// ajouter le pays dans la session
+	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
+	if (x != "") {
+		prestations.pays = x
+		delete prestations.departement
+		sessionStorage.setItem("prestations",JSON.stringify(prestations))
+	}
+
+	prestations.pays = ""
+	prestations.departement = ""
+	prestations.date = ""
+	prestations.heurs = ""
+	prestations.praticient = ""
+*/
+}
+
+
+
 /*==========================================================================*/
 	// les fonctions primaire utilisé dans SPA et massage
 function incrementeInc(){ /*incremente la valeur inc pour les params*/
@@ -197,7 +234,6 @@ function showTimesOnClickMassageSu(){
 // evenement on click
 function addSpaList(){
 	let id = incrementeInc() // Augmente de 1 la session
-	
 	// Enregistrement dans la session
 	let sessionSpa = JSON.parse(sessionStorage.getItem("spa"))
 	sessionSpa.push({id:id,time:"",option:[],info:[]})
@@ -227,6 +263,8 @@ function addSpaList(){
 	addSpaInOrder(id)
 	// nombre de spa - 0 +
 	numberSpaSelected()
+	// Grand prix total
+	bigTotalPrice()
 }
 // evenement on click
 function removeSpaList(){
@@ -246,6 +284,8 @@ function removeSpaList(){
 		priceTotalForAllSpa(dataOption,dataForm)
 	}
 	numberSpaSelected()
+	// Grand prix total
+	bigTotalPrice()
 }
 ////////////////////////////////////////////////////////
 // fonction principale commande SPA
@@ -378,6 +418,9 @@ function priceTotalForAllSpa(dataOption,dataForm){
 		}
 	}
 	spanPriceTotal.innerHTML = "prix: "+prixSomme[0]+"€ acompte: "+prixSomme[1]+"€"
+	spanPriceTotal.dataset.price = "["+[prixSomme[0],prixSomme[1]]+"]"
+	// Grand prix total
+	bigTotalPrice()
 }
 
 /*==========================================================================*/
@@ -416,7 +459,8 @@ function addCategoryMassage(){
 	checkRadioList.forEach(checkR => {
 		checkR.addEventListener('change',addMassageInOrder);
 	});
-
+	// Grand prix total
+	bigTotalPrice()
 }
 /* ########################################################################################################################################################################## */
 /* ########################################################################################################################################################################## */
@@ -488,10 +532,13 @@ function priceTotalForAllMassage(dataMassages){
 			acompte += categories[1][sessionMassage[i].sub][1][sessionMassage[i].time][4]
 		}
 	}
-	document.getElementById("massage-price-total").innerHTML = "prix: "+price+"€ acompte: "+acompte+"€"	
+	document.getElementById("massage-price-total").innerHTML = "prix: "+price+"€ acompte: "+acompte+"€"
+	document.getElementById("massage-price-total").dataset.price = "["+[price,acompte]+"]"
 	if (price == 0 && acompte == 0) {
 		document.getElementById("massage-order").classList.add('hidden')
 	}
+	// Grand prix total
+	bigTotalPrice()
 }
 
 /* ########################################################################################################################################################## */
@@ -517,7 +564,8 @@ function removeCategoryMassage(){
 	}
 	// nombre de massage pour homme et femme
 	numberMassageSelected(this.dataset.cat)
-
+	// Grand prix total
+	bigTotalPrice()
 }
 /*==========================================================================*/
 	// fonction principale CADEAU
@@ -536,6 +584,8 @@ function removeCadeau(){
 	}
 	sessionStorage.setItem("cadeau",JSON.stringify(cadeau))
 	document.getElementById("cadeau-id").value = JSON.stringify(cadeau)
+	// calcul du prix
+	priceForAllCadeau()
 }
 function aDDCadeau(){
 	let id = JSON.parse(this.dataset.id)
@@ -555,306 +605,77 @@ function aDDCadeau(){
 	}
 	sessionStorage.setItem("cadeau",JSON.stringify(cadeau))
 	document.getElementById("cadeau-id").value = JSON.stringify(cadeau)
+	// calcul du prix
+	priceForAllCadeau()
 }
 
-/*==========================================================================*/
+function priceForAllCadeau(){
+	let addCadeau = document.querySelectorAll(".cadeau-add")
+	infoCadeau = []
+	addCadeau.forEach(listCadeau => {
+		infoCadeau.push([JSON.parse(listCadeau.dataset.id),listCadeau.dataset.name,JSON.parse(listCadeau.dataset.price)])
+	});
+	let cadeau = JSON.parse(sessionStorage.getItem("cadeau"))
+	let orderCadeau = document.getElementById("cadeau-order")
+	let totalPrice = 0
+	let elementDom = "<ul>"
+	for (var i = 0; i < cadeau.length; i++) {
+		for (var j = infoCadeau.length - 1; j >= 0; j--) {
+			if (cadeau[i][0] == infoCadeau[j][0]){
+				totalPrice += cadeau[i][1]*infoCadeau[j][2] /* isany * prix */ /* infoCadeau[i][1] anarany*/
+				elementDom += "<li>"+ infoCadeau[i][1] +" nb: "+ cadeau[i][1] +" prix: "+ cadeau[i][1]*infoCadeau[j][2] +"€</li>"
+				break
+			}
+		}
+	}
+	if (totalPrice == 0) {
+		orderCadeau.classList.remove("hidden")
+		orderCadeau.classList.add("hidden")
+		document.getElementById("cadeau-price-total").innerHTML = ""
+	}else{
+		orderCadeau.classList.remove("hidden")
+		document.getElementById("cadeau-price-total").innerHTML = totalPrice
+		orderCadeau.getElementsByTagName("div")[0].innerHTML = elementDom+"</ul>"
+	}
+	// Grand prix total
+	bigTotalPrice()
+}
+
+function bigTotalPrice(){
+
+	let spa = document.getElementById("spa-price-total").dataset.price
+
+	let massage = document.getElementById("massage-price-total").dataset.price
+
+	let cadeau = document.getElementById("cadeau-price-total").innerHTML
+
+	if ((spa == "" || spa == "[0,0]") && (massage == "" || massage == "[0,0]")) {
+		document.getElementById("empty-order").classList.remove("hidden")
+	}else{
+		document.getElementById("empty-order").classList.add("hidden")
+	}
+
+	if (spa != "") {
+		spa = JSON.parse(spa)
+	}else{
+		spa = [0,0]
+	}
+	if (massage != "") {
+		massage = JSON.parse(massage)
+	}else{
+		massage = [0,0]
+	}
+	document.getElementById("total-price").innerHTML = spa[0]+massage[0] 
+	document.getElementById("total-acompte").innerHTML =  spa[1]+massage[1]+parseFloat(cadeau)
+}
+
+
 
 /*
-
-Vous n'avez pas encore sélectionné de prestation
-
-
-
-<div class="col-sm-3">
-		<h2>Votre commande</h2>
-		<div id="spa-order">
-			<h3>Location spa</h3>
-			<p id="nbr-order-spa">Prestation : 2 spa</p>
-
-			<div >
-				<p>Pour 24h</p>
-				Les options 
-				<ul>
-					<li>option 1 34€ </li>
-					<li>option 2 34€ </li>
-				</ul>
-			</div>
-
-			<div>
-				<p>Pour 24h</p>
-				<ul>
-					<li>option 1</li>
-					<li>option 2</li>
-				</ul>
-			</div>
-
-		</div>
-
-		<div id="massage-order">
-			<h3>Massage</h3>
-			<p>Prestation : 2 massage</p>
-			<div>
-				<p>nom sous category 1</p>
-				<ul>
-					<li>heurs: 2h</li>
-					<li>prix: 23€ acompte: 10€</li>
-				</ul>
-			</div>
-			<div>
-				<p>nom sous category 2</p>
-				<ul>
-					<li>heurs: 9h</li>
-					<li>prix: 12€ acompte: 4€</li>
-				</ul>
-			</div>
-		</div>
-
-		<div id="cadeau-order">
-			<h3>Vos cadeau</h3>
-			<div>
-				<li>nom cadeau 1 nb:3 prix:23€</li>
-			</div>
-			<div>
-				<li>nom cadeau 1 nb:3 prix:23€</li>
-			</div>
-		</div>
-
-		<div id="code-promo">
-			<h3>Code Promo</h3>
-			<label for="codeP">code promo : </label>
-			<input type="text" name="code" id="codeP">
-		</div>
-		<div id="total-price">
-			<strong>PRIX TOTAL: 125 euros</strong>
-		</div>
-	</div>
+========================================================================================================
+Doc mety ho ilaina
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<input type="text" value="" name="cadeau" id="cadeau-input">
-
-var rad = document.myForm.myRadios;
-var prev = null;
-for (var i = 0; i < rad.length; i++) {
-    rad[i].addEventListener('change', function() {
-        (prev) ? console.log(prev.value): null;
-        if (this !== prev) {
-            prev = this;
-        }
-        console.log(this.value)
-    });
-}
-<form name="myForm">
-  <input type="radio" name="myRadios"  value="1" />
-  <input type="radio" name="myRadios"  value="2" />
-</form>
-
-
-
-
-
-
-
-
-
-
-runJS()
-function runJS(){
-	const service_name = document.getElementById("form").dataset.service
-	if(sessionStorage.getItem("service") != service_name ){
-		initSession()
-	}else{
-		addDomIndex()
-	}
-}
-
-function initSession(){
-	let form = document.getElementById("form")
-	sessionStorage.setItem("service",form.dataset.service)
-	sessionStorage.setItem("products","[]")
-	sessionStorage.setItem("prestations","[]")
-	sessionStorage.setItem("input",0)
-}
-
-function addDomIndex(){	
-	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestations"))
-	let form = document.getElementById("form")
-	let categoryAndSubCategory = JSON.parse(form.dataset.zones)
-	let addListPrestations = document.getElementById("list-prestation")
-	let addListPanier = document.getElementById("card")
-
-	let sessionProduits = JSON.parse(sessionStorage.getItem("products"))
-	for (var i = 0 ; i < sessionProduits.length ; i++) {
-		addProduitInDom(sessionProduits[i].list)
-	}
-
-	for (var j = 0 ; j < sessionPrestation.length ; j++) {
-		let index = sessionPrestation[j].id //l'index
-		let categories = sessionPrestation[j].category //le category = ["Femme", 4]
-		let prestations = sessionPrestation[j].prestation //les sous-category
-		// Quelle category est dans la prestations
-		for (var i = 0 ; i < categoryAndSubCategory.length ; i++) {
-			if (categories[1] == categoryAndSubCategory[i][0][1]){
-				var categoryAdd = categoryAndSubCategory[i]
-				break
-			}
-		}
-		// Ajoutes tous les sous category a selectionné dans la li
-		let listLi = ""
-		for (var h = 1 ; h < categoryAdd.length ; h++) {
-			let isChecked = ""
-			// verifier si la sous category est déja dans la session
-			for (var a = 0 ; a < prestations.length ; a++) {
-				if(categoryAdd[h][0] == prestations[a][0]){
-					isChecked = "checked"
-				}
-			}
-			listLi += "<li><span class=\"prix\">"+ categoryAdd[h][2] +" €</span><input type=\"checkbox\" value=\""+ categoryAdd[h][0] +"\" "+ isChecked +" id=\"toggle-label-"+ categoryAdd[h][0] +""+ index +"\" data-remote=\"true\" data-title=\""+ categoryAdd[h][1] +"\" data-category=\""+ categories[0] +"\" data-price=\""+ categoryAdd[h][2] +"\" data-url=\"/subcategory\" data-params=\"category="+ categories[1] +"&amp;subcategory="+ categoryAdd[h][0] +"&amp;index="+ index +"\" data-method=\"put\" class=\"form-input\" name=\"prestations["+ index +"][]\" data-index=\""+ index +"\"><label class=\"form-label\" for=\"toggle-label-"+ categoryAdd[h][0] +""+ index +"\"><span class=\"text-label\">"+ categoryAdd[h][1] +"</span></label></li>"
-		}
-		let divAdd = document.createElement("div")
-		divAdd.classList.add("group-form-"+ categories[0])
-		divAdd.innerHTML = "<h5 class=\"prestation-category\">"+ categories[0] +"</h5><input type=\"hidden\" name=\"category[]\" value=\""+ categories[1] +"\"><ul class=\"prestations\">"+ listLi +"</ul>"
-		addListPrestations.appendChild(divAdd)
-		// Ajoutes tous les sous category dans le panier
-		let listLiCard = ""
-		let totalCardPrice = 0
-		for (var g = 0 ; g < prestations.length ; g++) {
-			listLiCard += "<li class=\"listMassage\" id=\"posibilities-"+ prestations[g][1] +"-"+ index +"\">"+ prestations[g][1] +"</li>"
-			totalCardPrice += prestations[g][2]
-		}
-
-		// Ajout dans la liste des panniers
-		let divPanier = document.createElement("div")
-		divPanier.classList.add("card-"+ categories[0])
-		divPanier.innerHTML = "<div><h5><i class=\"fa fa-hand-o-right\" aria-hidden=\"true\" id=\"fa\"></i>"+ categories[0] +": <span id=\"price-"+ index +"\">"+ totalCardPrice.toFixed(2) +"</span> €</h5></div><ul class=\"panierContentMassage\" id=\"list-card-"+ categories[0] +"-"+ index +"\">"+ listLiCard +"</ul>"
-		addListPanier.appendChild(divPanier)
-	} // fin pour la boucle sessionPrestation
-	totalPrice()
-
-	// Nombre de category
-	for (var l = 0 ; l < sessionPrestation.length ; l++) {
-		document.getElementById("puts-number-"+sessionPrestation[l].category[0]).innerHTML = document.getElementsByClassName("group-form-"+sessionPrestation[l].category[0]).length
-	}
-}
-
-/*------------------------------------------------------------------*/
-/*------------------------------------------------------------------*/
-/* Ajouts et suppresion d'element dans la liste des produits 
-
-const products = document.querySelectorAll('.btn-produits');
-products.forEach(product => {
-	product.addEventListener('click',addProduitOnSubmit);
-});
-
-function addProduitOnSubmit(){
-	let currentProduit = JSON.parse(this.dataset.zones)
-	// Ajout
-	if (this.dataset.action == "new") {
-		let sessionPrestation = JSON.parse(sessionStorage.getItem("products"))
-		sessionPrestation.push({ "list":currentProduit})
-		sessionStorage.setItem("products",JSON.stringify(sessionPrestation))
-		addProduitInDom(currentProduit)
-	}
-	// Suppression
-	if (this.dataset.action == "delete") {
-		let sessionPrestation = JSON.parse(sessionStorage.getItem("products"))
-		for (var i = sessionPrestation.length - 1; i >= 0; i--) {
-			if (sessionPrestation[i].list[0] == currentProduit[0]){
-				sessionPrestation.splice(i,1)
-				break
-			}
-		}
-		sessionStorage.setItem("products",JSON.stringify(sessionPrestation))
-		// Suppresion in panier et formulaire
-		let nombres = document.getElementsByClassName("hidden-"+currentProduit[0])
-		if (nombres.length > 0) {
-			nombres[nombres.length - 1 ].remove()
-			document.getElementById("produits-number-"+currentProduit[0]).innerHTML = nombres.length
-			let addp = document.getElementById("name-"+currentProduit[0])
-			if (nombres.length == 0) {
-				addp.remove()
-			}else{
-				addp.innerHTML = listInputProduit(currentProduit,nombres)
-			}
-		}
-		if (sessionPrestation == 0) {
-			document.getElementById("info-produit").className = "hidden"
-		}
-		// Prix total
-		totalPrice()
-	}
-
-}
-
-function addProduitInDom(currentProduit){
-	totalPrice()
-	// Ajout dans le formulaire
-	let divp = document.getElementById("all-produits")
-	let input = document.createElement("input")
-	input.classList.add("hidden-"+currentProduit[0])
-	input.setAttribute("value",currentProduit[0])
-	input.setAttribute("name","products[]")
-	input.setAttribute("type","hidden")
-	divp.appendChild(input)
-	// Ajout dans le panier
-	let panier = document.getElementById("list-produits")
-	let nombres = document.getElementsByClassName("hidden-"+currentProduit[0])
-	document.getElementById("produits-number-"+currentProduit[0]).innerHTML = nombres.length
-	if( nombres.length > 1 ){
-		let addp = document.getElementById("name-"+currentProduit[0])
-		addp.innerHTML = listInputProduit(currentProduit,nombres)
-	}else{
-		let addp = document.createElement("div")
-		addp.setAttribute("id","name-"+currentProduit[0])
-		addp.innerHTML = listInputProduit(currentProduit,nombres)
-		panier.appendChild(addp)
-		document.getElementById("info-produit").className = ""
-	}
-}
-
-
-function listInputProduit(currentProduit,nombres){
-	return "<li>"+ currentProduit[1] +"</li><li>nombre : "+nombres.length+" Prix: "+ (nombres.length*currentProduit[2]).toFixed(2) +"€</li>"
-}
-
-function totalPrice(){
-	let sessionPrestation = JSON.parse(sessionStorage.getItem("prestations"))
-
-	let prixTotal = 0
-	for (var i = 0 ; i < sessionPrestation.length ; i++) {
-		let prestations = sessionPrestation[i].prestation
-		for (var g = 0 ; g < prestations.length ; g++) {
-			prixTotal += prestations[g][2]
-		}
-	}
-
-	let sessionProduits = JSON.parse(sessionStorage.getItem("products"))
-	for (var i = 0 ; i < sessionProduits.length ; i++) {
-		prixTotal += sessionProduits[i].list[2]
-	}
-	document.getElementById("priceTotale").innerHTML = prixTotal.toFixed(2)
-}
-
-console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-document.getElementById("submi-tag")
-console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-
-==========================================================================================
+https://www.youtube.com/watch?v=pPK_C7DKyJo
 
 */
-
