@@ -431,7 +431,7 @@ a:hover, a:focus {
     display: block;
     letter-spacing: normal;
     color: #ec5598;
-    font-size: 50px;
+    font-size: 40px !important;
     letter-spacing: 4px;
     line-height: 42px;
     text-transform: capitalize;
@@ -448,7 +448,7 @@ a:hover, a:focus {
     letter-spacing: normal;
     color: #ec5598;
     font-family: 'Bradley Hand, cursive'!important;
-    font-size: 90px;
+    font-size: 50px;
     letter-spacing: 4px;
     line-height: 42px;
     text-transform: capitalize;
@@ -997,6 +997,7 @@ body.bodyColor .bb-fixed-header {
   color: #666666;
   margin-left: 10px;
   border-radius: 8px;
+  width: 750px;
 }
 
 .form-control:focus {
