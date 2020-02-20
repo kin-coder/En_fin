@@ -19,7 +19,6 @@ function scriptPrincipal(){
 	});
 /*==========================================================================*/
 	/*~~~~~~~~~~~~~~~~~~~~~~~Cadeau~~~~~~~~~~~~~~~~~~~~~~~*/
-
 	let rmvCadeau = document.querySelectorAll(".cadeau-rmv")
 	rmvCadeau.forEach(rmv => {
 		rmv.addEventListener('click',removeCadeau);
@@ -29,24 +28,59 @@ function scriptPrincipal(){
 	addCadeau.forEach(add => {
 		add.addEventListener('click',aDDCadeau);
 	});
-
 /*==========================================================================*/
 	/*~~~~~~~~~~~~Date Heurs Pays Departement Praticient ~~~~~~~~~~~~~~~~~*/
 	document.getElementById("country-choice").addEventListener("change", showDepartementIfFrance);
 /*==========================================================================*/
-	/*~~~~~~~~~~~~~~~~~~~~~~~~Autre~~~~~~~~~~~~~~~~~~~~~~~~*/
-	let prestations = sessionStorage.getItem("prestations")
-	if( 1 /*prestations == undefined || prestations == 0*/ ){
-		initSession()
-	}else{
-		addDomIndex()
-	}
-
+	/*~~~~~~~~~~~~Verifier si il y a un truc dans la session ~~~~~~~~~~~~~*/
+	verifySession()
 }
 
 scriptPrincipal()
 /*==========================================================================*/
-
+// verifier si la session est vide ou pas
+function verifySession(){
+	// ajouter le pays dans la session
+	let isHasSpaMassage = false
+	let spa = sessionStorage.getItem("spa")
+	let massages = sessionStorage.getItem("massages")
+	let cadeau = sessionStorage.getItem("cadeau")
+	// prestations.pays = "" // prestations.departement = "" // prestations.date = "" // prestations.heurs = "" // prestations.praticient = ""	
+	let prestations = sessionStorage.getItem("prestations")
+	if ( (spa == null || spa == "") && (massages == null || massages == "") ){
+		initSession()
+		return
+	}else{
+		if (spa != null && spa != "") {
+			spa = JSON.parse(spa)
+			for (var i = spa.length - 1; i >= 0; i--) {
+				if (spa[i].id == null || spa[i].time == "") {
+					spa.splice(i,1) // null daholo ny spa ato
+				}else{
+					isHasSpaMassage = true //nisy spa tsy null le aza
+				}
+			}
+			sessionStorage.setItem("spa",JSON.stringify(spa))
+		}
+		if ( massages != null && massages != "") {
+			massages = JSON.parse(massages)
+			for (var i = massages.length - 1; i >= 0; i--) {
+				if (massages[i].id == null || massages[i].cat == "" || typeof(massages[i].sub) == "string" || typeof(massages[i].time) == "string"){
+					massages.splice(i,1) // null daholo ny massages
+				}else{
+					isHasSpaMassage = true // nisy massages tsy null le aza
+				}
+			}
+			sessionStorage.setItem("massages",JSON.stringify(massages))
+		}
+	}
+	if (isHasSpaMassage) {
+		addDomIndex()
+	}else{
+		initSession()
+	}
+}
+// initialiser la session
 function initSession(){
 	sessionStorage.setItem("prestations","{}")
 	sessionStorage.setItem("spa","[]")
@@ -54,9 +88,26 @@ function initSession(){
 	sessionStorage.setItem("cadeau","[]")
 	sessionStorage.setItem("inc","0")
 }
+/*==========================================================================*/
 // remettre les elements si un l'user a actualisé
 function addDomIndex(){
-	// body...
+	let spa = JSON.parse(sessionStorage.getItem("spa"))
+	let massages = JSON.parse(sessionStorage.getItem("massages"))
+	let cadeau = JSON.parse(sessionStorage.getItem("cadeau"))
+	// prestations.pays = "" // prestations.departement = "" // prestations.date = "" // prestations.heurs = "" // prestations.praticient = ""	
+	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
+// Ajouter les spa selectionné dans le dom
+	if (spa.length != 0) {
+		console.log(spa)
+	}
+// Ajouter les massages selectionné dans le dom
+	if (massages.length != 0) {
+		console.log(massages)
+	}
+// Ajouter le cadeau selectionné dans le dom
+	if (cadeau.length != 0) {
+		console.log(cadeau)
+	}
 }
 
 /*==========================================================================*/
@@ -72,24 +123,7 @@ function showDepartementIfFrance() {
 		input_dptm.setAttribute("disabled","disabled")
 		div_dptm.classList.add("hidden")
 	}
-/*
-	// ajouter le pays dans la session
-	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
-	if (x != "") {
-		prestations.pays = x
-		delete prestations.departement
-		sessionStorage.setItem("prestations",JSON.stringify(prestations))
-	}
-
-	prestations.pays = ""
-	prestations.departement = ""
-	prestations.date = ""
-	prestations.heurs = ""
-	prestations.praticient = ""
-*/
 }
-
-
 
 /*==========================================================================*/
 	// les fonctions primaire utilisé dans SPA et massage
@@ -236,7 +270,7 @@ function addSpaList(){
 	let id = incrementeInc() // Augmente de 1 la session
 	// Enregistrement dans la session
 	let sessionSpa = JSON.parse(sessionStorage.getItem("spa"))
-	sessionSpa.push({id:id,time:"",option:[],info:[]})
+	sessionSpa.push({id:id,time:"",option:[]})
 	sessionStorage.setItem("spa",JSON.stringify(sessionSpa))
 	
 	// Modification dans le DOM
