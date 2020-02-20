@@ -739,6 +739,9 @@ top: -2px;
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+    .form-group {
+    position: relative;
+    width: 100% !important;}
   #contact-submit-btn{
     width: auto;
     text-align: center;
@@ -789,7 +792,7 @@ top: -2px;
     font-family: 'Bradley Hand, cursive' !important;
   }
   .text-p-index{
-    text-align: justify;
+    text-align: center;
     line-height: 26px !important;
   }
   .modalText {

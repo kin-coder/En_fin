@@ -1,5 +1,5 @@
 .panelloginhead{
-background: #ec5598 !important;
+color: #ec5598 !important;
 margin-top: 30px;
 }
 .inscript{
@@ -448,7 +448,7 @@ a:hover, a:focus {
     letter-spacing: normal;
     color: #ec5598;
     font-family: 'Bradley Hand, cursive'!important;
-    font-size: 50px;
+    font-size: 90px !important;
     letter-spacing: 4px;
     line-height: 42px;
     text-transform: capitalize;
