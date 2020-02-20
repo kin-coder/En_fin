@@ -388,115 +388,88 @@ left: 250px;*/
   .text-btn{
     padding-left: 15px;
     padding-right: 15px;
+    font-family: Quicksand, 'Open Sans' !important;
   }
 
 
   /* Extra small devices (phones, 600px and down) */
   @media only screen and (max-width: 600px) {
 
+    .btn-block {
+      display: block;
+      width: 200px !important;
+      border-radius: 100px;
+    }
 
 
+    .inscript {
+      margin-left: 0px;
+    }
+    .panel-login, .panel-body-login {
+      width: 325px !important;
+    }
 
+    .a-descendre {
+      margin-top: 50px !important;
+      position: relative;
+      left: 0px;
+      width: 325px;
+    }
+    .btn-common {
+      margin: 0;
+      padding: 14px !important;
+      font-size: 9px;
+      border-radius: 100px;
+      margin-left: 60px;
+    }
+    .formPart .panel-body {
+      padding: 20px !important;
+      border: 1px solid 
+      #dedede;
+      border-top-color: rgb(222, 222, 222);
+      border-top-style: solid;
+      border-top-width: 1px;
+      border-top: none;
+    }
 
-
-
-.btn-block {
-    display: block;
-    width: 200px !important;
-    border-radius: 100px;
-}
-
-
-.inscript {
-    margin-left: 0px;
-}
-.panel-login, .panel-body-login {
-    width: 325px !important;
-}
-
-.a-descendre {
-margin-top: 50px !important;
-position: relative;
-left: 0px;
-width: 325px;
-}
-.btn-common {
-    margin: 0;
-    padding: 14px !important;
-    font-size: 9px;
-    border-radius: 100px;
-    margin-left: 60px;
-}
-.formPart .panel-body {
-    padding: 20px !important;
-    border: 1px solid 
-    #dedede;
-        border-top-color: rgb(222, 222, 222);
-        border-top-style: solid;
-        border-top-width: 1px;
-    border-top: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.form-control {
-  height: 43px;
-  box-shadow: none;
-  border-radius: 0;
-  padding-left: 18px;
-  border-color: #dedede;
-  color: #666666;
-  margin-left: 10px;
-  border-radius: 8px;
-  width: 95%;
-}
-  #contact-submit-btn{
-  width: 172px;
-  text-align: center;
-  position: absolute;
-  left: 27%;
-  border-radius: 50px;
-}
+    .form-control {
+      height: 43px;
+      box-shadow: none;
+      border-radius: 0;
+      padding-left: 18px;
+      border-color: #dedede;
+      color: #666666;
+      margin-left: 10px;
+      border-radius: 8px;
+      width: 95%;
+    }
+    #contact-submit-btn{
+      width: 172px;
+      text-align: center;
+      position: absolute;
+      left: 27%;
+      border-radius: 50px;
+    }
 
     .btn-teme{
-height: 30px;
-padding: 7px !important;
-position: relative;
-left: 20% !important;
-top: -2px;
-}
-.btn-temeintru{
-  height: 30px;
-  padding: 7px !important;
-  position: relative;
-  left: 20%;
-  top: 0px;
-}
-.list-inline > li {
-    display: inline-block;
-    padding-right: 5px;
-    padding-left: 0px !important;
-}
+      height: 30px;
+      padding: 7px !important;
+      position: relative;
+      left: 20% !important;
+      top: -2px;
+    }
+    .btn-temeintru{
+      height: 30px;
+      padding: 7px !important;
+      position: relative;
+      left: 20%;
+      top: 0px;
+    }
+    .list-inline > li {
+      display: inline-block;
+      padding-right: 5px;
+      padding-left: 0px !important;
+    }
 
   }
   #flecheindex{
@@ -601,51 +574,54 @@ top: -2px;
 
 /*.secotionTitle h2 span{
   font-size: 45px !important;
-}*/
-.lire-btn{
-  text-transform: lowercase;
-}
-#more{
-  color: #ec5598;
-  font-weight: 12px;
-}
-.aboutus{
-  color: #ec5598;
-}
-.ccm{
-  position: relative;
-  top: 20px;
-}
-#ok{
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: xxx-large;
-  text-rendering: auto;
-  /* -webkit-font-smoothing: antialiased; */
-  color: rgb(238, 17, 190) !important;
+  }*/
+  .lire-btn{
+    text-transform: lowercase;
+  }
+  #more{
+    color: #ec5598;
+    font-weight: 12px;
+  }
+  .aboutus{
+    color: #ec5598;
+    font-family: Quicksand, 'Open Sans' !important;
+  }
+  .ccm{
+    position: relative;
+    top: 20px;
+    font-family: Quicksand, 'Open Sans' !important;
+  }
+  #ok{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: xxx-large;
+    text-rendering: auto;
+    /* -webkit-font-smoothing: antialiased; */
+    color: rgb(238, 17, 190) !important;
 
-  padding: 10px;
-}
-.a-btn{
-  text-align: center;
-  position: relative;
-  right: 10px;
-}
+    padding: 10px;
+  }
+  .a-btn{
+    text-align: center;
+    position: relative;
+    right: 10px;
+  }
 
-.reviewInfo .sansfa {
-  font-size: 25px;
-  margin: 0 0 25px 0;
-  color: #ec5598;
-  font-family: 'Bradley Hand, cursive' !important;
-}
-.text-p-index{
-  text-align: justify;
-  line-height: 26px !important;
-  padding: 5px;
-}
-.service-single{
-  height: 541px;
-}
+  .reviewInfo .sansfa {
+    font-size: 25px;
+    margin: 0 0 25px 0;
+    color: #ec5598;
+    font-family: Quicksand, 'Open Sans' !important;
+  }
+  .text-p-index{
+    text-align: justify;
+    line-height: 26px !important;
+    padding: 5px;
+    font-family: Quicksand, 'Open Sans' !important;
+  }
+  .service-single{
+    height: 541px;
+  }
 
 }
 
@@ -661,10 +637,12 @@ top: -2px;
   }
   .aboutus{
     color: #ec5598;
+    font-family: Quicksand, 'Open Sans' !important;
   }
   .ccm{
     position: relative;
     top: 20px;
+    font-family: Quicksand, 'Open Sans' !important;
   }
   #ok{
     display: inline-block;
@@ -699,6 +677,7 @@ top: -2px;
   .ccm{
     position: relative;
     top: 20px;
+    font-family: Quicksand, 'Open Sans' !important;
   }
   #ok{
     display: inline-block;
@@ -719,13 +698,14 @@ top: -2px;
     font-size: 25px;
     margin: 0 0 25px 0;
     color: #ec5598;
-    font-family: 'Bradley Hand, cursive' !important;
+    font-family: Quicksand, 'Open Sans' !important;
   }
   .text-p-index{
     text-align: justify;
     line-height: 26px !important;
     padding-right: 10px;
     padding-left: 10px;
+    font-family: Quicksand, 'Open Sans' !important;
   }
   .service-single{
     height: 900px;
@@ -739,84 +719,87 @@ top: -2px;
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-    .form-group {
+  .form-group {
     position: relative;
     width: 100% !important;}
-  #contact-submit-btn{
-    width: auto;
-    text-align: center;
-  
-    border-radius: 50px;
-  }
+    #contact-submit-btn{
+      width: auto;
+      text-align: center;
+      
+      border-radius: 50px;
+    }
     #contact-submit-btnn{
-    width: auto;
-    text-align: center;
-  margin-left: 60px;
-    border-radius: 50px;
-  }
-  .lire-btn{
-    text-transform: lowercase;
-  }
-  #more{
-    color: #ec5598;
-    font-weight: 12px;
-  }
-  .aboutus{
-    color: #ec5598;
-  }
-  .ccm{
-    position: relative;
-    top: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  #ok{
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: xxx-large;
-    text-rendering: auto;
-    /* -webkit-font-smoothing: antialiased; */
-    color: rgb(238, 17, 190) !important;
-    padding: 10px;
-    position: relative;
-    top: 12px;
+      width: auto;
+      text-align: center;
+      margin-left: 60px;
+      border-radius: 50px;
+    }
+    .lire-btn{
+      text-transform: lowercase;
+    }
+    #more{
+      color: #ec5598;
+      font-weight: 12px;
+    }
+    .aboutus{
+      color: #ec5598;
+      font-family: Quicksand, 'Open Sans' !important;
+    }
+    .ccm{
+      position: relative;
+      top: 20px;
+      padding-left: 5px;
+      padding-right: 5px;
+      font-family: Quicksand, 'Open Sans' !important;
+    }
+    #ok{
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: xxx-large;
+      text-rendering: auto;
+      /* -webkit-font-smoothing: antialiased; */
+      color: rgb(238, 17, 190) !important;
+      padding: 10px;
+      position: relative;
+      top: 12px;
+    }
+
+    .a-btn{
+      text-align: center;
+    }
+    .reviewInfo .sansfa {
+      font-size: 25px;
+      margin: 0 0 25px 0;
+      color: #ec5598;
+      font-family: Quicksand, 'Open Sans' !important;
+    }
+    .text-p-index{
+      text-align: justify;
+      line-height: 26px !important;
+      font-family: Quicksand, 'Open Sans' !important;
+    }
+    .modalText {
+      text-align: center;
+      margin-top: -35px !important;
+    }
+    .service-single{
+      height: 541px;
+    }
+    .btn-a{
+      position:relative;
+      top: 53px;
+    }
+
   }
 
-  .a-btn{
-    text-align: center;
-  }
-  .reviewInfo .sansfa {
-    font-size: 25px;
-    margin: 0 0 25px 0;
-    color: #ec5598;
-    font-family: 'Bradley Hand, cursive' !important;
-  }
-  .text-p-index{
-    text-align: center;
-    line-height: 26px !important;
-  }
-  .modalText {
-    text-align: center;
-    margin-top: -35px !important;
-}
-  .service-single{
-    height: 541px;
-  }
-  .btn-a{
-    position:relative;
-    top: 53px;
+  .form-label{
+    position:absolute;
+    left:200px;
   }
 
-}
-
-.form-label{
-  position:absolute;
-  left:200px;
-}
-
-.prestation-category{
- font-size: large;
-}
+  .prestation-category{
+   font-size: large;
+ }
 
 }
 
