@@ -25,10 +25,16 @@
 				</select>
 			</div>
 
-			<div>
-				<label for="Date">Date</label>
-				<input type="text" name="date" id="Date" placeholder="MM/DD/YYYY">
+			<div class="dateSelect form-half form-left">
+				<div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
+					<label for="Date">Date</label>
+					<input type="text" name="date" id="Date" placeholder="MM/DD/YYYY" class="form-control">
+					<div class="input-group-addon">
+						<span class="fa fa-calendar"></span>
+					</div>
+				</div>
 			</div>
+
 
 			<div>
 				<label class="labelle" for="guiest_id1">Choisisser l'heure</label>
@@ -116,17 +122,17 @@
 				<h4>Infos complementaires</h4>
 				<label>Type de praticien</label>
 				<div>
-				  <input type="radio" id="man" name="praticien" value="Homme">
+				  <input type="radio" id="man" name="praticien" value="Homme" class="praticien-list" >
 				  <label for="man">Homme</label>
 				</div>
 
 				<div>
-				  <input type="radio" id="woman" name="praticien" value="Femme">
+				  <input type="radio" id="woman" name="praticien" value="Femme" class="praticien-list" >
 				  <label for="woman">Femme</label>
 				</div>
 
 				<div>
-				  <input type="radio" id="other" name="praticien" value="Peu importe">
+				  <input type="radio" id="other" name="praticien" value="Peu importe" class="praticien-list" >
 				  <label for="other">Peu importe</label>
 				</div>
 			</div>

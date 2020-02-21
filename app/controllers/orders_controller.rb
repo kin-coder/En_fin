@@ -1,9 +1,7 @@
 class OrdersController < ApplicationController
   # 1/2 Selection des prestation
   def zone
-    puts "#"*60
-    puts params.inspect
-    puts "#"*60
+    @all_params = params.permit(:country,:department,:date,:heure)
     respond_to do |format|
        format.js
     end 
