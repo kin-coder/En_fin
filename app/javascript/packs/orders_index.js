@@ -91,15 +91,21 @@ function initSession(){
 /*==========================================================================*/
 // remettre les elements si un l'user a actualisé
 function addDomIndex(){
+	let dataForm = JSON.parse(document.getElementById('form-data').dataset.spas)
+	let dataOption = JSON.parse(document.getElementById('form-data').dataset.spaoptions)
 	let spa = JSON.parse(sessionStorage.getItem("spa"))
 	let massages = JSON.parse(sessionStorage.getItem("massages"))
 	let cadeau = JSON.parse(sessionStorage.getItem("cadeau"))
 	// prestations.pays = "" // prestations.departement = "" // prestations.date = "" // prestations.heurs = "" // prestations.praticient = ""	
 	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
 // Ajouter les spa selectionné dans le dom
+	let tmpTime = ""
 	if (0 < spa.length) {
 		for (var i = 0; i < spa.length ; i++) {
 			actualiseDomSpa(spa[i].id,[spa[i].id,spa[i].time,spa[i].option,spa[i].info])
+			tmpTime = document.querySelector("input[data-index=\'"+spa[i].id+"\'][data-array=\'"+spa[i].time+"\'].time-spa-list").value
+			htmlTimeSpaOrder(tmpTime,spa[i].id,dataOption,dataForm)
+			htmlOptionSpaOrder(spa[i].id,dataOption,dataForm,spa[i].option)
 		}
 	}
 // Ajouter les massages selectionné dans le dom
@@ -315,9 +321,6 @@ function showTimesOnClickMassageSu(){
 			}
 		}
 	}
-
-/* ########################################################################################################################################################################## */
-/* ########################################################################################################################################################################## */
 }
 
 /*==========================================================================*/
@@ -361,9 +364,12 @@ function actualiseDomSpa(id,data=""){
 	typeSpa.forEach(type => {
 		type.addEventListener('change',changeTypeSpa);
 	});
-
+	// Ajout dans le panier
+	addSpaInOrder(id)
 	// nombre de spa - 0 +
 	numberSpaSelected()
+	// Grand prix total
+	bigTotalPrice()
 }
 
 function addSpaList(){
@@ -373,13 +379,7 @@ function addSpaList(){
 	// [logemtn,installation,eau]
 	sessionSpa.push({id:id,time:"",option:[],info:["Appartement","Intérieur","Cumulus - Ballon d\'eau (eau chaude limitée)"]})
 	sessionStorage.setItem("spa",JSON.stringify(sessionSpa))
-	
 	actualiseDomSpa(id)
-
-	// Ajout dans le panier
-	addSpaInOrder(id)
-	// Grand prix total
-	bigTotalPrice()
 }
 // evenement on click
 function removeSpaList(){
@@ -438,13 +438,17 @@ function addRmvTimSpaInOrder(){ //checkbox na option spa
 		}
 	}
 	sessionStorage.setItem("spa",JSON.stringify(sessionSpa))
+	// Ajouter l'element selectionné dans le dom
+	htmlTimeSpaOrder(this.value,index,dataOption,dataForm)
+}
+
+function htmlTimeSpaOrder(name,index,dataOption,dataForm){
 	document.getElementById("spa-order").classList.remove('hidden');
 	document.getElementById("spa-list-"+index).classList.remove('hidden');
-	document.getElementById("spa-time-"+index).innerHTML = this.value
-
+	document.getElementById("spa-time-"+index).innerHTML = name
 	// calcul prix pour un spa selectionné
-	let pricesSpa = JSON.parse(this.dataset.prices)[1]
-	let acompteSpa = JSON.parse(this.dataset.acompte)[1]
+	// let pricesSpa = JSON.parse(this.dataset.prices)[1]
+	// let acompteSpa = JSON.parse(this.dataset.acompte)[1]
 	priceTotalForOneSpa(index,dataOption,dataForm)
 	// total prix pours les spas selectionné
 	priceTotalForAllSpa(dataOption,dataForm)
@@ -477,6 +481,10 @@ function addRmvOptionSpaInOrder(){ //checkbox na option spa
 	}
 	sessionStorage.setItem("spa",JSON.stringify(sessionSpa))
 	// Ajout des element dans le dom
+	htmlOptionSpaOrder(index,dataOption,dataForm,listOptions)
+}
+
+function htmlOptionSpaOrder(index,dataOption,dataForm,listOptions){
 	let ulList = (document.getElementById("spa-list-"+index).getElementsByTagName("ul"))
 	let liList = ""
 	// [1, "Décoration romantique", 20] agencement dans la dataOption
@@ -488,12 +496,6 @@ function addRmvOptionSpaInOrder(){ //checkbox na option spa
 	priceTotalForOneSpa(index,dataOption,dataForm)
 	// modifier la somme total
 	priceTotalForAllSpa(dataOption,dataForm)
-	/*
-	<div class="spa-order hidden" id="spa-list-12">
-		<p>Pour <span id="spa-time-12"></span>h </p>
-		<ul></ul>
-	</div>
-	*/
 }
 
 function priceTotalForOneSpa(index,dataOption,dataForm){
