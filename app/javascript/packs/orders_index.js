@@ -93,6 +93,7 @@ function initSession(){
 function addDomIndex(){
 	let dataForm = JSON.parse(document.getElementById('form-data').dataset.spas)
 	let dataOption = JSON.parse(document.getElementById('form-data').dataset.spaoptions)
+	let dataMassages = JSON.parse(document.getElementById('form-data').dataset.massages)
 	let spa = JSON.parse(sessionStorage.getItem("spa"))
 	let massages = JSON.parse(sessionStorage.getItem("massages"))
 	let cadeau = JSON.parse(sessionStorage.getItem("cadeau"))
@@ -110,7 +111,11 @@ function addDomIndex(){
 	}
 // Ajouter les massages selectionné dans le dom
 	if (massages.length != 0) {
-		console.log(massages)
+		for (var i = 0; i < massages.length ; i++) {
+			actualiseDomMassage(massages[i].cat,massages[i].id,massages[i].sub,massages[i].time)
+			priceTotalForOneMassage(dataMassages,massages[i].id)
+			priceTotalForAllMassage(dataMassages)
+		}
 	}
 // Ajouter le cadeau selectionné dans le dom
 	if (cadeau.length != 0) {
@@ -131,7 +136,6 @@ function showDepartementIfFrance() {
 		div_dptm.classList.add("hidden")
 	}
 }
-
 /*==========================================================================*/
 	// les fonctions primaire utilisé dans SPA et massage
 function incrementeInc(){ /*incremente la valeur inc pour les params*/
@@ -230,7 +234,8 @@ function numberMassageSelected(name) {
 	document.getElementById("number-"+name).innerHTML = list.length
 }
 
-function valueToHtmlMassage(name,id){
+// [{"id":1,"cat":"Homme","sub":3,"time":1},{"id":2,"cat":"Femme","sub":0,"time":1}]
+function valueToHtmlMassage(name,id,sub=null,time=null){
 	let data = document.getElementById('form-data').dataset
 	let dataMassages = JSON.parse(data.massages)
 	let categories = []
@@ -244,13 +249,21 @@ function valueToHtmlMassage(name,id){
 	let htmlTime = ""
 	for (var i = 0; i < categories[1].length ; i++) {
 		htmlSub += "<div class=\"\">"
-		htmlSub += "<input type=\"checkbox\" value=\""+ categories[1][i][0] +"\" id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label>"
+		if (sub != null && sub == i) {
+			htmlSub += "<input type=\"checkbox\" value=\""+ categories[1][i][0] +"\" checked id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label>"
+			htmlTime += "<div class=\"times-massage\" data-info=\"["+ [id,i] +"]\" ><ul>"
+		}else{
+			htmlSub += "<input type=\"checkbox\" value=\""+ categories[1][i][0] +"\" id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label>"
+			htmlTime += "<div class=\"times-massage hidden\" data-info=\"["+ [id,i] +"]\" ><ul>"
+		}
 		htmlSub += "</div>"
 		heurs = categories[1][i][1] // liste des heurs possibles
-
-		htmlTime += "<div class=\"times-massage hidden\" data-info=\"["+ [id,i] +"]\" ><ul>"
 		for (var j = 0; j < heurs.length ; j++) {
-			htmlTime += "<li><input class=\"input-time-list\" type=\"radio\" value=\""+ heurs[j][0] +"\" id=\"time"+j+i+id+"\" name=\"massageSuPrice["+id+"][]\" data-info=\"["+ [id,i,j] +"]\" data-price=\"["+ [heurs[j][1],heurs[j][2],heurs[j][3],heurs[j][4]] +"]\" data-sub=\""+categories[1][i][0]+"\" data-name=\""+name+"\" ><label class=\"form\" for=\"time"+j+i+id+"\"> "+ heurs[j][0] +" </label></li>"
+			if (time != null && time == j && sub != null && sub == i) {
+				htmlTime += "<li><input class=\"input-time-list\" type=\"radio\" value=\""+ heurs[j][0] +"\" checked id=\"time"+j+i+id+"\" name=\"massageSuPrice["+id+"][]\" data-info=\"["+ [id,i,j] +"]\" data-price=\"["+ [heurs[j][1],heurs[j][2],heurs[j][3],heurs[j][4]] +"]\" data-sub=\""+categories[1][i][0]+"\" data-name=\""+name+"\" ><label class=\"form\" for=\"time"+j+i+id+"\"> "+ heurs[j][0] +" </label></li>"
+			}else{
+				htmlTime += "<li><input class=\"input-time-list\" type=\"radio\" value=\""+ heurs[j][0] +"\" id=\"time"+j+i+id+"\" name=\"massageSuPrice["+id+"][]\" data-info=\"["+ [id,i,j] +"]\" data-price=\"["+ [heurs[j][1],heurs[j][2],heurs[j][3],heurs[j][4]] +"]\" data-sub=\""+categories[1][i][0]+"\" data-name=\""+name+"\" ><label class=\"form\" for=\"time"+j+i+id+"\"> "+ heurs[j][0] +" </label></li>"
+			}
 		}
 		htmlTime += "</ul></div>"
 	}
@@ -264,27 +277,20 @@ function valueToHtmlMassage(name,id){
 function showTimesOnClickMassageSu(){
 	// data-info=\"["+ [id,i] +"]\"
 	let myData = JSON.parse(this.dataset.info)[0]
-
 	document.getElementById("list-order-"+myData).classList.add("hidden")
-
 	let timeListAll = document.getElementsByClassName("times-massage")
 	let timeList = []
 	let inputList = []
-
 	// Enregistrement dans la session
 	let sessionMassage = JSON.parse(sessionStorage.getItem("massages"))
-	
 	// sessionMassage.push({id:id,cat:categories[0],sub:"",time:"",price:""})
-
 	for (var i = sessionMassage.length - 1; i >= 0; i--) {
 		if(sessionMassage[i].id == myData){
 			sessionMassage[i].sub = JSON.parse(this.dataset.info)[1]
 			sessionMassage[i].time = ""
 		}
 	}
-
 	sessionStorage.setItem("massages",JSON.stringify(sessionMassage))
-
 	// Modification dans le DOM
 
 	// Selection les heurs et les checkbox a cocher disponible
@@ -557,15 +563,23 @@ function addCategoryMassage(){
 	sessionSpa.push({id:id,cat:categories[0],sub:"",time:""})
 	sessionStorage.setItem("massages",JSON.stringify(sessionSpa))
 	// Modification dans le DOM
-	let div = document.createElement('div')
-	div.classList.add('massage-list-'+this.dataset.cat)
-	div.innerHTML = valueToHtmlMassage(this.dataset.cat,id)
+	actualiseDomMassage(this.dataset.cat,id)
+}
 
-	document.getElementById("massage-order").innerHTML += "<div id=\"list-order-"+id+"\" class=\"hidden\"><div><h4>"+ this.dataset.cat +"</h4></div><div><h5></h5><div><ul></ul></div></div></div>"
+function actualiseDomMassage(name,id,sub=null,time=null){
+	let div = document.createElement('div')
+	div.classList.add('massage-list-'+name)
+	if (sub != null && time != null) {
+		div.innerHTML = valueToHtmlMassage(name,id,sub,time)
+	}else{
+		div.innerHTML = valueToHtmlMassage(name,id)	
+	}
+	document.getElementById("massage-order").innerHTML += "<div id=\"list-order-"+id+"\" class=\"hidden\"><div><h4>"+ name +"</h4></div><div><h5></h5><div><ul></ul></div></div></div>"
 
 	document.getElementById('massage-input').appendChild(div)
+
 	// nombre de massage pour homme et femme
-	numberMassageSelected(this.dataset.cat)
+	numberMassageSelected(name)
 	// evement pour afficher les horaires disponible pour un massages
 	let checkRadio = document.querySelectorAll('.massage-su');
 	checkRadio.forEach(checkR => {
@@ -579,6 +593,9 @@ function addCategoryMassage(){
 	// Grand prix total
 	bigTotalPrice()
 }
+
+
+
 /* ########################################################################################################################################################################## */
 /* ########################################################################################################################################################################## */
 
@@ -599,7 +616,7 @@ function addMassageInOrder(){
 	sessionStorage.setItem("massages",JSON.stringify(sessionMassage))
 	// Calculer le prix et ajouter dans le dom
 	// priceTotalForOneMassage(this.dataset.name,myData,this.dataset.sub)
-	priceTotalForOneMassage(dataMassages,myData)
+	priceTotalForOneMassage(dataMassages,myData[0])
 	priceTotalForAllMassage(dataMassages)
 }
 
@@ -611,7 +628,7 @@ function priceTotalForOneMassage(dataMassages,myData){
 	// 1: {id: 2, cat: "Femme", sub: 1, time: 0}
 	let sessionMassage = JSON.parse(sessionStorage.getItem("massages"))
 	for (var i = sessionMassage.length - 1; i >= 0; i--) {
-		if (sessionMassage[i].id == myData[0]) {
+		if (sessionMassage[i].id == myData) {
 			sub = sessionMassage[i].sub
 			time = sessionMassage[i].time
 			cat = sessionMassage[i].cat
@@ -624,7 +641,7 @@ function priceTotalForOneMassage(dataMassages,myData){
 	}else{
 		categories = dataMassages[1]
 	}
-	let divMassage = document.getElementById("list-order-"+myData[0])
+	let divMassage = document.getElementById("list-order-"+myData)
 	document.getElementById("massage-order").classList.remove('hidden')
 	divMassage.classList.remove('hidden')
 	divMassage.getElementsByTagName("h5")[0].innerHTML = categories[1][sub][0]
