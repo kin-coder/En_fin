@@ -1,4 +1,3 @@
-
 function scriptPrincipal(){
 /*==========================================================================*/
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~SPA~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -31,6 +30,11 @@ function scriptPrincipal(){
 /*==========================================================================*/
 	/*~~~~~~~~~~~~Date Heurs Pays Departement Praticient ~~~~~~~~~~~~~~~~~*/
 	document.getElementById("country-choice").addEventListener("change", showDepartementIfFrance);
+	// praticien
+	let addPraticient = document.querySelectorAll(".praticien-list")
+	addPraticient.forEach(add => {
+		add.addEventListener('change',addPraticientAtSession);
+	});
 /*==========================================================================*/
 	/*~~~~~~~~~~~~Verifier si il y a un truc dans la session ~~~~~~~~~~~~~*/
 	verifySession()
@@ -119,7 +123,21 @@ function addDomIndex(){
 	}
 // Ajouter le cadeau selectionné dans le dom
 	if (cadeau.length != 0) {
-		console.log(cadeau)
+		for (var i = 0; i < cadeau.length ; i++) {
+			// [[6,8],[7,3],[8,2],[9,1]]
+			document.getElementById(cadeau[i][0]+"-nbr").innerHTML = cadeau[i][1]
+		}
+		document.getElementById("cadeau-id").value = JSON.stringify(cadeau)
+		priceForAllCadeau()
+	}
+// Ajouter les information sur la zone et type de praticient
+	if (prestations.praticien != undefined){
+		let listPratitiens = document.querySelectorAll(".praticien-list")
+		for (var i = listPratitiens.length - 1; i >= 0; i--) {
+		    if(listPratitiens[i].value == prestations.praticien){
+	    	    listPratitiens[i].checked = true
+		    }
+		}
 	}
 }
 /*==========================================================================*/
@@ -136,6 +154,13 @@ function showDepartementIfFrance() {
 		div_dptm.classList.add("hidden")
 	}
 }
+	// pour le praticien 
+function addPraticientAtSession(){
+	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
+	prestations.praticien = this.value
+	sessionStorage.setItem("prestations",JSON.stringify(prestations))
+}
+
 /*==========================================================================*/
 	// les fonctions primaire utilisé dans SPA et massage
 function incrementeInc(){ /*incremente la valeur inc pour les params*/
@@ -144,7 +169,6 @@ function incrementeInc(){ /*incremente la valeur inc pour les params*/
 	sessionStorage.setItem("inc",JSON.stringify(inc))
 	return inc
 }
-
 /*==========================================================================*/
 	// les fonctions primaire SPA
 // [logemtn,installation,eau]
@@ -799,14 +823,3 @@ function bigTotalPrice(){
 	document.getElementById("total-price").innerHTML = spa[0]+massage[0] 
 	document.getElementById("total-acompte").innerHTML =  spa[1]+massage[1]+parseFloat(cadeau)
 }
-
-
-
-/*
-========================================================================================================
-Doc mety ho ilaina
-
-
-https://www.youtube.com/watch?v=pPK_C7DKyJo
-
-*/
