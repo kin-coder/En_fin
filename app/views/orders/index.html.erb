@@ -25,10 +25,16 @@
 				</select>
 			</div>
 
-			<div>
-				<label for="Date">Date</label>
-				<input type="text" name="date" id="Date" placeholder="MM/DD/YYYY">
+			<div class="dateSelect form-half form-left">
+				<div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
+					<label for="Date">Date</label>
+					<input type="text" name="date" id="Date" placeholder="MM/DD/YYYY" class="form-control">
+					<div class="input-group-addon">
+						<span class="fa fa-calendar"></span>
+					</div>
+				</div>
 			</div>
+
 
 			<div>
 				<label class="labelle" for="guiest_id1">Choisisser l'heure</label>
