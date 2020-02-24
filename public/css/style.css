@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,600,700|Roboto:100,300,400,500,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,700&display=swap');
 .panelloginhead{
-color: #ec5598 !important;
-margin-top: 30px;
+  color: #ec5598 !important;
+  margin-top: 30px;
 }
 .inscript{
-margin-left: 100px;
+  margin-left: 100px;
 }
 .inscri{
-display: inline-block;
+  display: inline-block;
 
 
 }
@@ -250,7 +250,7 @@ html, * {
 }
 
 body {
-  font-family: Quicksand, 'Open Sans', sans-serif;
+  font-family: Lato, 'Open Sans', sans-serif;
   font-size: 14px;
   line-height: 21px;
   color: #666666;
@@ -444,19 +444,19 @@ a:hover, a:focus {
 
 }
 
-  .secotionTitle h2 span {
-    display: block;
-    letter-spacing: normal;
-    color: #ec5598;
-    font-family: 'Quicksand', 'Open Sans';
-    font-size: 60px !important;
-    
-    line-height: 42px;
-    text-transform: capitalize;
-    font-weight: bold;
-    padding-bottom: 25px;
-    padding-top: 25px;
-  }
+.secotionTitle h2 span {
+  display: block;
+  letter-spacing: normal;
+  color: #ec5598;
+  font-family: 'Quicksand', 'Open Sans';
+  font-size: 60px !important;
+
+  line-height: 42px;
+  text-transform: capitalize;
+  font-weight: bold;
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
 }
 @font-face {
   font-family:'Bradley Hand, cursive'!important;
@@ -646,7 +646,7 @@ body.bodyColor .bb-fixed-header {
   background-color: transparent;
   border-radius: 0;
   letter-spacing: 1px;
-  font-family: Quicksand, 'Open Sans' !important;
+  font-family: Lato, 'Open Sans' !important;
 }
 
 @media (min-width: 768px) {
@@ -660,6 +660,19 @@ body.bodyColor .bb-fixed-header {
   .btn {
     padding: 15px 0;
     font-size: 14px;
+  }
+  .baniere-btn{
+    margin-left: 22px;
+
+  }
+  .baniere-btnbis{
+    margin-left: 7.5px;
+    margin-top: 22px;
+  }
+  .text-p-bienvenu{
+    text-align: justify;
+    position: relative;
+    left: 23px;
   }
 }
 
@@ -1024,12 +1037,12 @@ textarea.form-control {
 }
 
 .formPart {
- 
+
   border-color: #dedede;
   border: none;
 }
 .a-descendre{
-margin-top: 120px;
+  margin-top: 120px;
 }
 
 .formPart .panel-heading {
@@ -3899,7 +3912,7 @@ margin-top: 120px;
   line-height: 26px;
   color: #222222;
   margin: 0 0 25px 0;
-  font-family: Quicksand, 'Open Sans' !important;
+  font-family: Lato, 'Open Sans' !important;
 }
 
 .reviewInfo h3 {
