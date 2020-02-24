@@ -289,7 +289,7 @@ p {
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
   text-transform: uppercase;
   margin-top: 0;
   font-weight: 700;
@@ -347,7 +347,7 @@ h4 {
   font-size: 18px;
   margin-bottom: 20px;
   text-transform: capitalize;
-  font-family: Quicksand, 'Open Sans' !important;
+  font-family: Lato, 'Open Sans' !important;
 }
 
 h5 {
@@ -4012,9 +4012,12 @@ textarea.form-control {
 @media (min-width: 992px) {
   .priceImage {
     height: 190px;
+    border-radius: 15px;
   }
 }
-
+.btn-reserver-massage{
+border-radius: 15px;
+}
 .priceImage img {
   height: 100%;
   width: 100%;
@@ -4029,6 +4032,7 @@ textarea.form-control {
   background-color: rgba(0, 0, 0, 0.3);
   text-align: center;
   transition: all 0.4s;
+  border-radius: 15px;
 }
 
 .maskImage h3 {
@@ -4130,6 +4134,7 @@ textarea.form-control {
   text-align: center;
   border: 1px solid #dedede;
   border-top: 0;
+  border-radius: 15px;
 }
 
 @media (min-width: 320px) {
@@ -4263,7 +4268,7 @@ textarea.form-control {
 
 /*================= 5.9 PARTNER LOGO SECTION ==================*/
 .brandArea {
-  padding: 55px 0;
+  padding: 5px 0;
 }
 
 .brandArea .slide {
