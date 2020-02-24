@@ -262,6 +262,7 @@ function numberMassageSelected(name) {
 function valueToHtmlMassage(name,id,sub=null,time=null){
 	let data = document.getElementById('form-data').dataset
 	let dataMassages = JSON.parse(data.massages)
+
 	let categories = []
 	if ( name == "Homme") {
 		categories = dataMassages[0]
@@ -274,10 +275,10 @@ function valueToHtmlMassage(name,id,sub=null,time=null){
 	for (var i = 0; i < categories[1].length ; i++) {
 		htmlSub += "<div class=\"\">"
 		if (sub != null && sub == i) {
-			htmlSub += "<input type=\"checkbox\" value=\""+ categories[1][i][0] +"\" checked id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label>"
+			htmlSub += "<input type=\"checkbox\" value=\""+ name +"||"+ categories[1][i][0] +"\" checked id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label>"
 			htmlTime += "<div class=\"times-massage\" data-info=\"["+ [id,i] +"]\" ><ul>"
 		}else{
-			htmlSub += "<input type=\"checkbox\" value=\""+ categories[1][i][0] +"\" id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label>"
+			htmlSub += "<input type=\"checkbox\" value=\""+ name +"||"+ categories[1][i][0] +"\" id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label>"
 			htmlTime += "<div class=\"times-massage hidden\" data-info=\"["+ [id,i] +"]\" ><ul>"
 		}
 		htmlSub += "</div>"
