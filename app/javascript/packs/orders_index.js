@@ -274,11 +274,14 @@ function valueToHtmlMassage(name,id,sub=null,time=null){
 	let htmlTime = ""
 	for (var i = 0; i < categories[1].length ; i++) {
 		htmlSub += "<div class=\"\">"
+		if (i == 0) {
+			htmlSub += "<input type=\"text\" name=\"massageSu["+id+"][]\" value=\""+ name +"\" class=\"hidden\">"
+		}
 		if (sub != null && sub == i) {
-			htmlSub += "<input type=\"checkbox\" value=\""+ name +"||"+ categories[1][i][0] +"\" checked id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label>"
+			htmlSub += "<input type=\"checkbox\" value=\""+ categories[1][i][0] +"\" checked id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label>"
 			htmlTime += "<div class=\"times-massage\" data-info=\"["+ [id,i] +"]\" ><ul>"
 		}else{
-			htmlSub += "<input type=\"checkbox\" value=\""+ name +"||"+ categories[1][i][0] +"\" id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label>"
+			htmlSub += "<input type=\"checkbox\" value=\""+ categories[1][i][0] +"\" id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label>"
 			htmlTime += "<div class=\"times-massage hidden\" data-info=\"["+ [id,i] +"]\" ><ul>"
 		}
 		htmlSub += "</div>"
@@ -565,6 +568,11 @@ function priceTotalForAllSpa(dataOption,dataForm){
 			}
 		}
 	}
+
+	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
+	prestations.priceSpa = prixSomme[0]
+	sessionStorage.setItem("prestations",JSON.stringify(prestations))
+
 	spanPriceTotal.innerHTML = "prix: "+prixSomme[0]+"€ acompte: "+prixSomme[1]+"€"
 	spanPriceTotal.dataset.price = "["+[prixSomme[0],prixSomme[1]]+"]"
 	// Grand prix total
@@ -692,6 +700,11 @@ function priceTotalForAllMassage(dataMassages){
 	}
 	document.getElementById("massage-price-total").innerHTML = "prix: "+price+"€ acompte: "+acompte+"€"
 	document.getElementById("massage-price-total").dataset.price = "["+[price,acompte]+"]"
+
+	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
+	prestations.priceMassage = price
+	sessionStorage.setItem("prestations",JSON.stringify(prestations))
+
 	if (price == 0 && acompte == 0) {
 		document.getElementById("massage-order").classList.add('hidden')
 	}
@@ -758,7 +771,7 @@ function aDDCadeau(){
 		}
 	}
 	if (test) {
-		cadeau.push([id,1])
+		cadeau.push([id,1,this.dataset.name,this.dataset.price])
 		document.getElementById(id+"-nbr").innerHTML = 1
 	}
 	sessionStorage.setItem("cadeau",JSON.stringify(cadeau))
@@ -821,6 +834,6 @@ function bigTotalPrice(){
 	}else{
 		massage = [0,0]
 	}
-	document.getElementById("total-price").innerHTML = spa[0]+massage[0] 
+	document.getElementById("total-price").innerHTML = spa[0]+massage[0]
 	document.getElementById("total-acompte").innerHTML =  spa[1]+massage[1]+parseFloat(cadeau)
 }
