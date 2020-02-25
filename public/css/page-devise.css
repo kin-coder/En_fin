@@ -1,0 +1,147 @@
+<!-- media query -->
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .formPart .panel-body {
+        padding: 20px !important;
+        border: 1px solid 
+        #dedede;
+        border-top-color: rgb(222, 222, 222);
+        border-top-style: solid;
+        border-top-width: 1px;
+
+    }
+    .form-control {
+        height: 43px;
+        box-shadow: none;
+        border-radius: 0;
+        padding-left: 18px;
+        border-color: 
+        #dedede;
+        color:
+        #666666;
+        margin-left: 10px;
+        border-radius: 8px;
+        width: 100%;
+    }
+    .inscri{
+        background:
+        white;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        width: 1000px;
+        position: relative;
+        left: 90px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+	.btn-block {
+        display: block;
+        width: 200px !important;
+        border-radius: 100px;
+    }
+    .form-control {
+        height: 43px;
+        box-shadow: none;
+        border-radius: 0;
+        padding-left: 18px;
+        border-color: 
+        #dedede;
+        color:
+        #666666;
+        margin-left: 10px;
+        border-radius: 8px;
+        width: 100%;
+    }
+
+    .inscript {
+        margin-left: 0px;
+    }
+    .panel-login, .panel-body-login {
+        width: 400px !important;
+    }
+
+    .a-descendre {
+        margin-top: 10px;
+        position: relative;
+        left: 50px;
+        width: 300px;
+    }
+    .btn-common {
+        margin: 0;
+        padding: 14px !important;
+        font-size: 9px;
+        border-radius: 100px;
+        margin-left: 60px;
+    }
+    .formPart .panel-body {
+        padding: 20px !important;
+        border: 1px solid 
+        #dedede;
+        border-top-color: rgb(222, 222, 222);
+        border-top-style: solid;
+        border-top-width: 1px;
+
+    }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    #contact-submit-btnn {
+
+        width: auto;
+        text-align: center;
+        margin-left: 60px;
+        border-radius: 10px;
+        background:white;
+        border-color:#dedede;
+        position: absolute;
+        top: 47px;
+        left: 22px;
+        color: #c4baba !important;
+        font-size:10px;
+    }
+
+    .a-descendre {
+        margin-top: 10px;
+        position: relative;
+        left: 50px;
+        width: 300px;
+    }
+    .panel-title{
+        text-align: center;
+        color:deeppink !important;
+        margin-bottom: 15px;
+        margin-top: 25px
+    }
+    .formPart .panel-body {
+        padding: 20px !important;
+        border: none;
+        margin-top: 20px;
+    }
+    .form-control {
+        height: 43px;
+        box-shadow: none;
+        border-radius: 0;
+        padding-left: 18px;
+        border-color: 
+        #dedede;
+        color:
+        #666666;
+        margin-left: 10px;
+        border-radius: 8px;
+        width: 100%;
+    }
+    .inscript {
+        margin-left: 100px;
+    }
+}
+

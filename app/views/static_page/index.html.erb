@@ -10,41 +10,42 @@
     align:justify; 
     position:relative; 
     left:5px!important;
+    font-family: Quicksand, 'Open Sans' !important;
   }
 
   /* font texte N de texte-baniere*/
   .texte-baniere b{
     font-size:25px;
-    font-family:Brush Script MT, Brush Script Std, cursive!important;
+    font-family:Quicksand, Open Sans, serif!important;
   }
 
 
   /* font texte du titre de texte-baniere*/
   .poli1{
 
-   font-family:Georgia, serif!important;
+   font-family:Quicksand, Roboto!important;
    font-size: 20px !important;
  }
  
  /* font bouton (massage domicile/location spa) de nos services*/
  .mass{
+  border-radius: 10px;
+  color:white!important;
+}
 
-   color:white!important;
- }
 
-
- @media (min-width: 320px) {
+@media (min-width: 320px) {
 
   .secotionTitle h2 span {
     display: block;
     letter-spacing: normal;
     color: #ec5598;
-    font-family: 'Bradley Hand, cursive'!important;
+    font-family: Quicksand, 'Open Sans'!important;
     font-size: 50px;
     letter-spacing: 4px;
     line-height: 42px;
     text-transform: capitalize;
-    font-weight: 400;
+    font-weight: bold;
     padding-bottom: 25px;
   }
 }
@@ -54,25 +55,19 @@
     display: block;
     letter-spacing: normal;
     color: #ec5598;
-    font-family: 'Bradley Hand, cursive'!important;
+    font-family: Quicksand, 'Open Sans'!important;
     font-size: 90px;
     letter-spacing: 4px;
     line-height: 42px;
     text-transform: capitalize;
-    font-weight: 400;
+    font-weight: bold;
     padding-bottom: 25px;
     padding-top: 25px;
   }
 }
-@font-face {
-  font-family:'Bradley Hand, cursive'!important;
-  src: url('Bradley Hand, cursive') format('truetype')!important;
-
-}	
-
 .police_massage{
 
-  font-family: Jazz LET, fantasy;
+  font-family: Quicksand, fantasy;
   z-index: -4;
 }
 </style>
@@ -169,6 +164,7 @@
 
 
 
+<link href="/css/page-devise.css" rel="stylesheet">
 
 
 
@@ -341,38 +337,38 @@
 <section class="clearfix contactSection">
   <div class="container">
     <div class="row">
-      <div class="col-sm-6">
+      <center class="col-sm-6">
 
         <div>
-          <b><span><i class="fa fa-check-square-o" aria-hidden="true" id="ok"></i></span> Ecoute, disponibilité & réactivité</b>
+          <b><span><i class="fa fa-check-square-o" aria-hidden="true" id="ok"></i><br></span> Ecoute, disponibilité & réactivité</b>
         </div>
         <p class='text-p-index'>De la réservation jusqu’au suivi de votre satisfaction, nous comptons bien vous cocooner</p>
 
-      </div>
-      <div class="col-sm-6">
+      </center>
+      <center class="col-sm-6">
         <div>
-          <b><span><i class="fa fa-thumbs-up" aria-hidden="true" id="ok"></i></span> Professionnels sélectionnés, formés et diplômés</b>
+          <b><span><i class="fa fa-thumbs-up" aria-hidden="true" id="ok"></i> <br></span> Professionnels sélectionnés, formés et diplômés</b>
         </div>
         <p class='text-p-index'>Toutes nos prestations sont réalisées par des professionnels sélectionnés, formés et diplômés. Ils s’occuperont de vous avec talent et gentillesse !</p>
-      </div>
+      </center>
     </div>
 
     <div class="row">
-      <div class="col-sm-6">
+      <center class="col-sm-6">
 
         <div>
-          <b><span><i class="fa fa-clock-o" aria-hidden="true" id="ok"></i></span> Prestations sur mesure </b>
+          <b><span><i class="fa fa-clock-o" aria-hidden="true" id="ok"></i><br></span> Prestations sur mesure </b>
         </div>
         <p class='text-p-index'>C’est vous qui choisissez votre prestation et vos horaires, nous qui nous adaptons. Vous pouvez personnaliser votre moment en fonction de vos envies.</p>
 
 
-      </div>
-      <div class="col-sm-6">
+      </center>
+      <center class="col-sm-6">
         <div>
-          <b><span><i class="fa fa-lock" aria-hidden="true" id="ok"></i></span> Paiement CB sécurisé </b>
+          <b><span><i class="fa fa-lock" aria-hidden="true" id="ok"></i><br></span> Paiement CB sécurisé </b>
         </div>
         <p class='text-p-index'>Grâce à nos partenaires Mercanet by BNP Paribas et Paypal, vous pourrez commander en toute tranquillité. Nous vous demandons seulement un acompte lors de votre réservation en ligne, puis le reste du paiement se fait directement sur place auprès du professionnel</p>
-      </div>
+      </center>
     </div>  
   </div>
 </section>
@@ -418,8 +414,8 @@
             <div class="heading"><b>DÉCOUVRIR NOS SERVICES</b></div>
             <div class="contents">
               <ul>
-                <li><b><a href="#">JACUZZI À DOMICILE</a></b></li> <br>
-                <li><b><a href="#">MASSAGE À DOMICILE</a></b></li>
+                <li><b><a href="<%=spa_path%>" data-method="GET">JACUZZI À DOMICILE</a></b></li> <br>
+                <li><b><a href="<%=massage_path%>" data-method="GET">MASSAGE À DOMICILE</a></b></li>
               </ul>
 
             </div>
@@ -553,7 +549,7 @@
 
           <div class="holdingInfo patternbg">
             <div class="contactTitle">
-              <h3><center>Réseaux sociaux</center></h3>
+              <h3><center>Suivez-nous</center></h3>
             </div>
             <ul>
               <a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa fa-facebook" aria-hidden="true"></i> Cocooning Spa officiel </li></a>

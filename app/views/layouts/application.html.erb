@@ -74,7 +74,7 @@
     <header id="pageTop" class="header">
 
       <!-- TOP INFO BAR -->
-      <div class="top-info-bar">
+<!--       <div class="top-info-bar">
         <div class="container">
           <div class="top-bar-right">
             <ul class="list-inline">
@@ -84,7 +84,7 @@
           </div>
         </div>
       </div>
-
+ -->
       <!-- NAVBAR -->
       <nav id="menuBar" class="navbar navbar-default lightHeader">
         <div class="container">
@@ -123,7 +123,7 @@
                 <ul class="dropdown-menu">
                   <li><%= link_to "Se connecter", new_client_session_path%></li> 
                   <li><%= link_to "S'inscrire", new_client_registration_path%></li> 
-                </ul>  
+                </ul>
               </li>
               <% end %>
             </ul>
@@ -131,14 +131,39 @@
 
           <!-- Cart button -->
           <div class="cart_btn">
-            <a href="cart.html"><i class="fa fa-shopping-basket" aria-hidden="true"></i><span class="badge">0</span></a>
+            <a id="cart-btn-ok"><i class="fa fa-shopping-basket" aria-hidden="true"></i><span class="badge">0</span></a>
           </div>
 
         </div>
       </nav>
     </header>
 <div class="patternbg">
+
+    <div id="cart-inner-ok" class="hidden">
+      <h1>Votre commande</h1>
+      <div>
+        <h2>Prestation</h2>
+        <div id="cart-inner-prestation">
+        </div>
+      </div>
+      <div>
+        <h2>Produit</h2>
+        <div id="cart-inner-produit">
+        </div>
+      </div>
+      <div>
+        <h2>Code promo</h2>
+        <p id="promo-code"></p>
+      </div>
+      <div>
+        <h2>Prix total <span id="price-modal-cart">0 €</span></h2>
+      </div>
+      <p>Important: Pour les prestations, seul l'accompte est à régler en ligne, le reste du montant est à regler au prestataire en main propre (chèque ou éspèce uniquement)</p>
+      <a href="#">suivant</a>
+    </div>
+
     <%= yield %>
+    
 </div>
     <!-- FOOTER -->
     <footer style="background-image: url(img/home/footer-bg.jpg);">
@@ -297,6 +322,7 @@
   		$(".se-pre-con").fadeOut("slow");;
   	});
   </script>
+  <%= javascript_pack_tag 'buttons-prestation.js' %>
 
 </body>
 

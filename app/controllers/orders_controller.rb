@@ -1,5 +1,12 @@
 class OrdersController < ApplicationController
   # 1/2 Selection des prestation
+  def zone
+    @all_params = params.permit(:country,:department,:date,:heure)
+    respond_to do |format|
+       format.js
+    end 
+  end
+  # 1/2 Selection des prestation
   def index
     @countries = Country.all
     @departments = Department.all
@@ -38,9 +45,9 @@ class OrdersController < ApplicationController
 
   # 2/2 Sauvegarder dans une session les données
   def saveSession
-    puts "~~~~"*50
+    puts "~~~~"*20
     puts params.inspect
-    puts "~~~~"*50
+    puts "~~~~"*20
   end
 
   # 2 Selection des adresse de livraison et facturation
@@ -91,6 +98,11 @@ end
 
 =begin
 
+# massages = params[:massageSu]["3"]
+# puts "~~~~"*10
+# puts massages[0].split("||")
+# puts "~~~~"*10
+
 JSON.parse("Text to Data") // mamadika ny text ho data 
 
 JSON.stringify(Data) // mamadika ny data ho text
@@ -123,20 +135,6 @@ JSON.stringify(Data) // mamadika ny data ho text
 
 # <%= form_tag(saved_commande_path, id:"form", 'data-zones':"#{@listPrestation}", 'data-service':"#{@service.name}") do %>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 get 'orders/zone'
   get 'orders/order'
 
@@ -157,6 +155,4 @@ get 'orders/order'
       invoke  assets
       invoke    scss
       create      app/assets/stylesheets/orders.scss
-
-
 =end

@@ -4,8 +4,8 @@
 	<div class="set-zones">
 		<h2>Je choisi ma zone géographique </h2>
 
-		<form>
-			<div class="pays">
+		 <%= form_tag(zone_path, remote: true) do %>
+		 	<div class="pays">
 				<label class="labelle" for="country-choice">Choix pays</label>
 				<select name="country" id="country-choice" class="field">
 					<option value="">Choix pays</option>
@@ -25,14 +25,20 @@
 				</select>
 			</div>
 
-			<div>
-				<label for="Date">Date</label>
-				<input type="text" name="Date" id="Date" placeholder="MM/DD/YYYY">
+			<div class="dateSelect form-half form-left">
+				<div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
+					<label for="Date">Date</label>
+					<input type="text" name="date" id="Date" placeholder="MM/DD/YYYY" class="form-control">
+					<div class="input-group-addon">
+						<span class="fa fa-calendar"></span>
+					</div>
+				</div>
 			</div>
+
 
 			<div>
 				<label class="labelle" for="guiest_id1">Choisisser l'heure</label>
-				<select name="Heure" id="guiest_id1" class="select-dro">
+				<select name="heure" id="guiest_id1" class="select-dro">
 					<option value="">Choisisser l'heure</option>
 					<option value="08:00">08:00</option>
 					<option value="08:30">08:30</option>
@@ -66,15 +72,17 @@
 				</select>
 			</div>
 			<div>
-				<input type="submit" name="commit" value="Je valide" data-disable-with="Je valide">
+				<%= submit_tag("Je valide") %>	
 			</div>
-		</form>
+		 <% end %>
 	</div>
 
 <hr class="hr.new5">
 <!-- ======================================================================== -->
+<div class="row">
+	<div class="col-sm-9">
 
-	<%= form_tag(save_session_path,id:"form-data", 'data-spas':"#{@spas}",'data-spaoptions':"#{@spaoptions}",'data-massages':"#{@massages}") do %>
+	<%= form_tag(save_session_path,id:"form-data",'data-id':"#{@idMassage}",'data-spas':"#{@spas}",'data-spaoptions':"#{@spaoptions}",'data-massages':"#{@massages}") do %>
 
 	<div id="prestation-list">
 		<div class="spa">
@@ -85,7 +93,6 @@
 			</div>
 			<div id="spa-input">
 
-				
 			</div>
 		</div>
 <!-- ======================================================================== -->
@@ -115,17 +122,17 @@
 				<h4>Infos complementaires</h4>
 				<label>Type de praticien</label>
 				<div>
-				  <input type="radio" id="man" name="praticien" value="Homme">
+				  <input type="radio" id="man" name="praticien" value="Homme" class="praticien-list" >
 				  <label for="man">Homme</label>
 				</div>
 
 				<div>
-				  <input type="radio" id="woman" name="praticien" value="Femme">
+				  <input type="radio" id="woman" name="praticien" value="Femme" class="praticien-list" >
 				  <label for="woman">Femme</label>
 				</div>
 
 				<div>
-				  <input type="radio" id="other" name="praticien" value="Peu importe">
+				  <input type="radio" id="other" name="praticien" value="Peu importe" class="praticien-list" >
 				  <label for="other">Peu importe</label>
 				</div>
 			</div>
@@ -136,12 +143,13 @@
 			<ul>
 				<% @cadeaus.each do |cadeau| %>
 					<li><%= cadeau.name %>: <%= cadeau.price %>€
-						<i class="fa fa-minus-circle" id="<%= cadeau.id %>-rmv"></i>
+						<i class="fa fa-minus-circle cadeau-rmv" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
 						<span id="<%= cadeau.id %>-nbr">0</span>
-						<i class="fa fa-plus-circle" id="<%= cadeau.id %>-add" data-cadeau="[<%= cadeau.id %>,<%= cadeau.name %>,<%= cadeau.price %>]"></i>
+						<i class="fa fa-plus-circle cadeau-add" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
 					</li>
 				<% end %>
 			</ul>
+			<input type="text" value="[]" name="cadeau" id="cadeau-id" class="hidden">
 		</div>
 
 	</div>
@@ -152,54 +160,64 @@
 	<% end %> <!-- Fin formulaire -->
 <!-- ======================================================================== -->
 	<br><br><br><br>
+	</div>
+	<div class="col-sm-3">
+		<h2>Votre commande</h2>
+		<p id="empty-order">Vous n'avez pas encore sélectionné de prestation</p>
+		<div id="spa-order" class="hidden">
+			<h3>Location spa <span id="spa-price-total" data-price=""></span></h3>
+		</div>
+
+		<div id="massage-order" class="hidden">
+			<h3>Massage <span id="massage-price-total" data-price=""></span></h3>
+
+		</div>
+
+		<div id="cadeau-order" class="hidden">
+			<h3>Vos cadeau <span id="cadeau-price-total"></span> €</h3>
+			<div>
+			</div>
+		</div>
+
+		<div id="code-promo">
+			<h3>Code promo?</h3>
+			<label for="codeP">code promo : </label>
+			<input type="text" name="code" id="codeP">
+		</div>
+
+		<div>
+			<p>PRIX TOTAL: <strong id="total-price">0,00</strong> €</p>
+			<p>ACOMPTE TOTAL: <strong id="total-acompte">0,00</strong> €</p>
+		</div>
+
+	</div>
 </div>
+
 <%= javascript_pack_tag 'orders_index' %>
-<script type="text/javascript">
-	document.getElementById("country-choice").addEventListener("change", myFunction);
 
-	function myFunction() {
-	  var x = document.getElementById("country-choice").value;
-	  var input_dptm = document.getElementById("Departement")
-	  var div_dptm = document.getElementById("list-department")
-	  if (x == "France") {
-	  	input_dptm.removeAttribute("disabled")
-	  	div_dptm.removeAttribute("class")
-	  }else{
-	  	input_dptm.setAttribute("disabled","disabled")
-	  	div_dptm.classList.add("hidden")
-	  }
-	}
-</script>
+<!--
+
+<div id="spa-order" class="">
+	<h3>Location spa <span id="spa-price-total" data-price="[350,225]">prix: 350€ acompte: 225€</span></h3>
+	<div class="spa-order" id="spa-list-3">
+		<p>Pour <span id="spa-time-3">72</span> h <span id="spa-price-3">prix: 200€ acompte: 120€</span></p>
+		<ul>
+			<li>Décoration romantique</li>
+			<li>Décoration anniversaire / fête</li>
+			<li>Fontaine chocolat (fournie avec chocolat)</li>
+		</ul>
+	</div>
+	<div class="spa-order" id="spa-list-4">
+		<p>Pour <span id="spa-time-4">48</span> h <span id="spa-price-4">prix: 150€ acompte: 105€</span></p>
+		<ul>
+			<li>Décoration romantique</li>
+			<li>Décoration anniversaire / fête</li>
+			<li>Fontaine chocolat (fournie avec chocolat)</li>
+		</ul>
+	</div>
+</div>
 
 
-<script id="pro-choice" type="text/html">
-</script>
-
-<!-- 
-	<ul class="prestations">
-		<li>
-			<input type="radio" value="9" id="toggle-label-91"class="form-input" name="prestations[32][]" data-index="1">
-			<label class="form-label" for="toggle-label-91"> <span class="text-label">Découverte</span> </label>
-		</li>
-		<li>
-			<input type="radio" value="10" id="toggle-label-101" class="form-input" name="prestations[32][]" data-index="1">
-			<label class="form-label" for="toggle-label-101"> <span class="text-label">Dos</span> </label>
-		</li>
-		<li>
-			<input type="radio" value="11" id="toggle-label-111" class="form-input" name="prestations[32][]" data-index="1">
-			<label class="form-label" for="toggle-label-111"> <span class="text-label">Assis</span> </label>
-		</li>
-		<li>
-			<input type="radio" value="12" id="toggle-label-121" class="form-input" name="prestations[32][]" data-index="1">
-			<label class="form-label" for="toggle-label-121"> <span class="text-label">Relaxant</span> </label>
-		</li>
-		<li>
-			<input type="radio" value="13" id="toggle-label-131" class="form-input" name="prestations[32][]" data-index="1">
-			<label class="form-label" for="toggle-label-131"> <span class="text-label">Lomi-Lomi</span> </label>
-		</li>
-		<li>
-			<input type="radio" value="14" id="toggle-label-141" class="form-input" name="prestations[32][]" data-index="1">
-			<label class="form-label" for="toggle-label-141"> <span class="text-label">Ayuvédique</span> </label>
-		</li>
-	</ul>
-	<br><br><br><br> -->
+ ##################################################################################################### 
+selected=\"selected\"
+-->	

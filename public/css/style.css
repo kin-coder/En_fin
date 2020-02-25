@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,600,700|Roboto:100,300,400,500,700&display=swap');
+
+.panelloginhead{
+color: #ec5598 !important;
+margin-top: 30px;
+}
+.inscript{
+margin-left: 100px;
+}
+.inscri{
+display: inline-block;
+
+
+}
+
 .h4 .from-bottom{
  color:green !important;
 }
@@ -29,142 +44,141 @@
 <!-- media query -->
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-.optionnal-texte {
-  position: relative;
-  border-style: initial;
-  border-radius: 12px;
-  background-color: white;
-  color: deeppink;
-  
-  height: 36px;
-  z-index: 7;
-  top: 17px;
-  text-align: center;
-  margin: 0 auto;
-  width: 372px;
-  font-size: 25px;
-  font-family: 'Times New Roman', Times, serif;
-}
+  .optionnal-texte {
+    position: relative;
+    border-style: initial;
+    border-radius: 12px;
+    background-color: white;
+    color: deeppink;
+    height: 36px;
+    z-index: 7;
+    top: 17px;
+    text-align: center;
+    margin: 0 auto;
+    width: 372px;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-.optionnal-texte {
-  position: relative;
-  border-style: initial;
-  border-radius: 12px;
-  background-color: white;
-  color: deeppink;
-  
-  height: 36px;
-  z-index: 7;
-  top: 17px;
-  text-align: center;
-  margin: 0 auto;
-  width: 372px;
-  font-size: 25px;
-  font-family: 'Times New Roman', Times, serif;
-}
+  .optionnal-texte {
+    position: relative;
+    border-style: initial;
+    border-radius: 12px;
+    background-color: white;
+    color: deeppink;
+
+    height: 36px;
+    z-index: 7;
+    top: 17px;
+    text-align: center;
+    margin: 0 auto;
+    width: 372px;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-.optionnal-texte {
-  position: relative;
-  border-style: initial;
-  border-radius: 12px;
-  background-color: white;
-  color: deeppink;
-  
-  height: 36px;
-  z-index: 7;
-  top: 17px;
-  text-align: center;
-  margin: 0 auto;
-  width: 372px;
-  font-size: 25px;
-  font-family: 'Times New Roman', Times, serif;
-}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.aboutInner2 {
-  position: relative;
-}
-
-@media (min-width: 320px) {
-  .aboutInner2 {
-    height: auto;
-    padding: 0 15px 0 15px;
-    background-color: transparent;
-  }
-}
-
-@media (min-width: 768px) {
-  .aboutInner2 {
-    width: 50%;
-    float: right;
-    height: 650px;
-    padding: 120px 0 0 0;
-  }
-
-  .gauche{
-    background-color: #ffffff;
-    padding: 130px 50px 120px 0;
+  .optionnal-texte {
     position: relative;
-    left: 30px;
-    bottom: 100px;
-  }
-}
+    border-style: initial;
+    border-radius: 12px;
+    background-color: white;
+    color: deeppink;
 
-@media (min-width: 320px) {
-  .imagebox2 {
-    border: 5px solid #ffffff;
-  }
-}
+    height: 36px;
+    z-index: 7;
+    top: 17px;
+    text-align: center;
+    margin: 0 auto;
+    width: 372px;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    }}
 
-@media (min-width: 768px) {
-  .imagebox2 {
-    border: 5px solid #ffffff;
-    border-left: 0;
-  }
-}
 
-.imagebox2 img {
-  width: 100%;
-}
 
-@media (min-width: 320px) {
-  .imagebox2 img {
-    margin: -10px 0 10px 10px;
-  }
-}
 
-@media (min-width: 768px) {
-  .imagebox2 img {
-    margin: -40px 0 40px 40px;
-  }
-}
 
-@media (min-width: 992px) {
-  .imagebox2 img {
-    margin: -60px 0 60px 60px;
-  }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+    .aboutInner2 {
+      position: relative;
+    }
+
+    @media (min-width: 320px) {
+      .aboutInner2 {
+        height: auto;
+        padding: 0 15px 0 15px;
+        background-color: transparent;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .aboutInner2 {
+        width: 50%;
+        float: right;
+        height: 650px;
+        padding: 120px 0 0 0;
+      }
+
+      .gauche{
+        background-color: #ffffff;
+        padding: 130px 50px 120px 0;
+        position: relative;
+        left: 30px;
+        bottom: 100px;
+      }
+    }
+
+    @media (min-width: 320px) {
+      .imagebox2 {
+        border: 5px solid #ffffff;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .imagebox2 {
+        border: 5px solid #ffffff;
+        border-left: 0;
+      }
+    }
+
+    .imagebox2 img {
+      width: 100%;
+    }
+
+    @media (min-width: 320px) {
+      .imagebox2 img {
+        margin: -10px 0 10px 10px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .imagebox2 img {
+        margin: -40px 0 40px 40px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .imagebox2 img {
+        margin: -60px 0 60px 60px;
+      }
+    }
 
 
 
@@ -236,7 +250,7 @@ html, * {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: Quicksand, 'Open Sans', sans-serif;
   font-size: 14px;
   line-height: 21px;
   color: #666666;
@@ -333,6 +347,7 @@ h4 {
   font-size: 18px;
   margin-bottom: 20px;
   text-transform: capitalize;
+  font-family: Quicksand, 'Open Sans' !important;
 }
 
 h5 {
@@ -418,28 +433,27 @@ a:hover, a:focus {
     display: block;
     letter-spacing: normal;
     color: #ec5598;
-    font-size: 50px;
+    font-size: 40px !important;
     letter-spacing: 4px;
     line-height: 42px;
     text-transform: capitalize;
-    font-weight: 400;
-    font-family: 'Bradley Hand, cursive'!important;
+    font-weight: bold;
+    font-family: 'Quicksand', 'Open Sans'!important;
     padding-bottom: 25px;
   }
 
 }
 
-@media (min-width: 768px) {
   .secotionTitle h2 span {
     display: block;
     letter-spacing: normal;
     color: #ec5598;
-    font-family: 'Bradley Hand, cursive'!important;
-    font-size: 90px;
-    letter-spacing: 4px;
+    font-family: 'Quicksand', 'Open Sans';
+    font-size: 60px !important;
+    
     line-height: 42px;
     text-transform: capitalize;
-    font-weight: 400;
+    font-weight: bold;
     padding-bottom: 25px;
     padding-top: 25px;
   }
@@ -623,7 +637,6 @@ body.bodyColor .bb-fixed-header {
 /*=== 2. UI KIT ===*/
 /*=== 2.1 BUTTON ===*/
 .btn {
-  font-family: 'Open Sans', sans-serif;
   line-height: 15px;
   padding: 12px 0;
   color: #ffffff;
@@ -633,6 +646,7 @@ body.bodyColor .bb-fixed-header {
   background-color: transparent;
   border-radius: 0;
   letter-spacing: 1px;
+  font-family: Quicksand, 'Open Sans' !important;
 }
 
 @media (min-width: 768px) {
@@ -982,6 +996,9 @@ body.bodyColor .bb-fixed-header {
   padding-left: 18px;
   border-color: #dedede;
   color: #666666;
+  margin-left: 10px;
+  border-radius: 8px;
+  width: 750px;
 }
 
 .form-control:focus {
@@ -1003,13 +1020,16 @@ body.bodyColor .bb-fixed-header {
 }
 
 textarea.form-control {
-  height: 150px;
+  height: 99px;
 }
 
 .formPart {
-  border-radius: 0;
+ 
   border-color: #dedede;
   border: none;
+}
+.a-descendre{
+margin-top: 120px;
 }
 
 .formPart .panel-heading {
@@ -1637,8 +1657,8 @@ textarea.form-control {
 
 .modalCommon .modal-title {
   letter-spacing: 1px;
-      font-size: 10px;
-    text-align: center;
+  font-size: 10px;
+  text-align: center;
   color: #ffffff;
   text-transform: uppercase;
 }
@@ -2137,6 +2157,7 @@ textarea.form-control {
   .navbar-default .navbar-nav > li > a {
     margin: 0;
     padding: 45px 10px;
+    font-family: Quicksand, 'Open Sans';
   }
 }
 
@@ -2144,6 +2165,7 @@ textarea.form-control {
   .navbar-default .navbar-nav > li > a {
     margin: 0;
     padding: 45px 30px;
+    font-family: Quicksand, 'Open Sans';
   }
 }
 
@@ -3863,6 +3885,7 @@ textarea.form-control {
 @media (min-width: 992px) {
   .reviewInfo {
     margin: 0;
+    border-radius: 10px;
   }
 }
 
@@ -3876,6 +3899,7 @@ textarea.form-control {
   line-height: 26px;
   color: #222222;
   margin: 0 0 25px 0;
+  font-family: Quicksand, 'Open Sans' !important;
 }
 
 .reviewInfo h3 {
@@ -4158,6 +4182,9 @@ textarea.form-control {
 .contactSection {
   padding: 0 0 80px 0;
   background-color: #ffffff;
+  border-radius: 8px;
+  margin-bottom: 28px;
+  /*width: 1155px;*/
 }
 
 .contactTitle h3 {
@@ -4171,6 +4198,7 @@ textarea.form-control {
   padding: 40px 50px 30px 30px;
   margin: 45px 0 0 0;
   border: 3px white solid;
+  border-radius: 10px;
 }
 
 .holdingInfo p {
@@ -6506,6 +6534,7 @@ input[type=number]::-webkit-inner-spin-button {
 @media (min-width: 768px) {
   .produtSingle {
     margin-bottom: 50px;
+    border-radius: 10px;
   }
 }
 

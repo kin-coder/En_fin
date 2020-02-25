@@ -1,28 +1,45 @@
-
+<link href="/css/page-devise.css" rel="stylesheet">
 <div class="container">
-<center>
-<div class="panel panel-default formPart panel-login" >
-  <div class="panel-heading patternbg" ><center> <span>Connectez-vous</span></center></div>
-  <div class="panel-body panel-body-login">
-  <div class="row">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="col-sm-12">
-      <div class="form-group">
-        <i class="fa fa-envelope" aria-hidden="true"></i>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"email" %>
+  <div class="row inscri">
+    <div class="col-sm-6 inscript">
+
+      <div class="formPart panel-login" >
+        <div >
+          <h2 class = "panel-title">CONNEXION</h2>
+        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <div class="form-group">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"email" %>
+        </div>
+        <div class="form-group">
+          <i class="fa fa-key" aria-hidden="true"></i>
+          <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"fullname", placeholder:"mot de pass" %>
+        </div>
+        <div class="actions">
+          <center><%= f.submit "ME CONNECTER", class:"btn btn-primary btn-block", id:"contact-submit-btn"%></center>
+          <center><p><%= link_to "Mot de passe oublié ?", new_client_password_path %></p></center>
+        </div>
+        <% end %>
       </div>
-      <div class="form-group">
-        <i class="fa fa-key" aria-hidden="true"></i>
-        <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"fullname", placeholder:"mot de pass" %>
+    </div>
+
+
+
+    
+    <div class="col-sm-4">
+      <div class="a-descendre">
+        <div >
+          <h2 class = "panel-title">NOUVEAU CLIENT</h2>
+        </div>
+        <a href="<%=new_client_registration_path%>" class="btn btn-common btn-full-roundd btn-theme" id="contact-submit-btnn">CRÉER UN COMPTE</a>
       </div>
-      <div class="actions">
-        <center><%= f.submit "Connecter", class:"btn btn-primary btn-block" %></center> </br>
-        <center><p>Pas encore inscris? <%= render "clients/shared/links" %></p></center>
-      </div>
-      <% end %>
-  </div>
-  </div>
+    </div>
   </div>
 </div>
 </div>
-</center>
+</div>
+</div>
+
+

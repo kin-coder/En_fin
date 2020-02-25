@@ -8,7 +8,7 @@
 <style>
   .police_massage{
 
-    font-family: Jazz LET, fantasy;
+    font-family: Quicksand, 'Open Sans';
     z-index: -4;
   }
   @media (min-width: 992px){
@@ -26,7 +26,7 @@
    } 
    .police_spa{
 
-    font-family: Jazz LET, fantasy!important;
+    font-family: Quicksand, fantasy!important;
     z-index: -4;
   }
 }
@@ -53,7 +53,7 @@
  }
  .police_spa{
 
-  font-family: Jazz LET, fantasy!important;
+  font-family: Quicksand, fantasy !important;
   z-index: -4;
 }
 }
@@ -76,8 +76,10 @@
  
  .police_spa{
 
-  font-family: Jazz LET, fantasy!important;
+
+  font-family: Quicksand, fantasy !important;
   z-index: -4;
+
 }
 }
 .elsebg{
@@ -106,11 +108,11 @@
             <span>Nous vous proposons un service de location de spa, jacuzzi gonflable clé
               en main. À domicile ou sur le lieu de votre choix, profitez d’un instant de
             détente et de relaxation inoubliable.</span> <br><br>
-            <div>
+<!--             <div>
               <ul class="list-inline fullRoundBtn">
                 <li class="li"><a href="javascript:void(0)" class="btn btn-common btn-full-round btn-theme" id="btn-reserve-fixe">RÉSERVER MON SPA À DOMICILE</a></li>
               </ul>
-            </div>
+            </div> -->
           </div>
           <div class="col-sm-3"></div>
         </div>
@@ -120,8 +122,8 @@
         <div class="col-sm-12 col-xs-12">
           <div class="row">
             <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
-              <div class="reviewImageMassage1 hidden-xs">
-                <img src="img/home/offer-1.jpg" alt="Image review" class="img-responsive" alt="Massage">
+              <div class="hidden-xs reviewImageMassage1spa">
+                <img src="img/home/ccspa-1.jpg" alt="Image review" class="img-responsive" alt="Massage">
               </div>
               <div class="reviewInfo">
                 <center><i class="sansfa" aria-hidden="true">Innovez avec un jacuzzi privatif à domicile</i></center>
@@ -137,7 +139,7 @@
           <div class="row">
             <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
               <div class="reviewImageMassage2 hidden-xs">
-                <img src="img/home/offer-2.jpg" alt="Image review" class="img-responsive" alt="Massage">
+                <img src="img/home/ccspa-2.jpg" alt="Image review" class="img-responsive" alt="Massage">
               </div>
               <div class="reviewInfo">
                 <center><i class="sansfa" aria-hidden="true">Profitez d’un moment de détente à la maison en toute intimité : quel luxe !</i></center>
@@ -156,7 +158,7 @@
           <div class="row">
             <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
               <div class="reviewImageMassage3 hidden-xs">
-                <img src="img/home/offer-4.jpg" alt="Image review" class="img-responsive" alt="Massage">
+                <img src="img/home/ccspa-3.jpg" alt="Image review" class="img-responsive" alt="Massage">
               </div>
               <div class="reviewInfo">
                 <center><i class="sansfa" aria-hidden="true">Surprenez avec un spa à domicile et offrez le cadeau parfait qui fera plaisir à vos proches</i></center>
@@ -250,7 +252,6 @@
   <div>
     <p class="optionnal-texte">OPTIONS SUPLEMENTAIRES</p>
   </div>
-
   <section class="clearfix offersSection patternbg">
     <div class="container">
       <div class="row spa-suppl">
@@ -298,8 +299,6 @@
             </div>
           </a>
         </div>
-
-
         <div class="col-sm-12 col-xs-12">
           <a href="#" data-toggle="modal" data-target="#table">
             <div class="offerContent">
@@ -311,10 +310,8 @@
             </div>
           </a>
         </div>
-
       </div>
     </div>
-
   </section>
 
   <!-- comment ca marche SECTION -->
@@ -322,381 +319,379 @@
     <h2 id="contacter" class="police_massage"><span>Comment ça</span>marche?</h2>
   </div>
   <section class="clearfix contactSection">
+    <center>
+      <div class="row">
+        <div class="col-sm-6">
+          <div>
+            <b><span><i class="fa fa-mouse-pointer" aria-hidden="true" id="ok"></i> <br></span> Réservation</b>
+          </div>
+          <p class='text-p-index'>Choisissez vos prestations et réservez le jour et l’heure de votre choix directement en ligne. <br>
+            <%= link_to "Réserver", spa_path, class:"btn btn-common btn-round btn-theme btn-teme" %>
+          </p>
+        </div>
+        <div class="col-sm-6">
+          <div>
+            <b><span><i class="fa fa-truck" aria-hidden="true" id="ok"></i><br></span> Livraison</b>
+          </div>
+          <p class='text-p-index'>Un professionnel sélectionné et formé se charge de la livraison de votre spa. <br>
+            <%= link_to "Plus d'infos", faq_path, class:"btn btn-common btn-round btn-theme btn-teme" %>
+          </p>
+        </div>
+      </div>
+    </center>
+    <center>
+      <div class="row">
+        <div class="col-sm-6">
+          <div>
+            <b><span><i class="fa fa-check" aria-hidden="true" id="ok"></i> <br></span> Installation </b>
+          </div>
+          <p class='text-p-index'>Un professionnel sélectionné et formé effectue l’installation de votre spa (nettoyage & remplissage compris) en vérifiant et respectant les normes d’hygiène, de sécurité et de qualité. Il met également en place les différentes prestations choisies (décorations, table de massage, etc…). Il se charge de tout, vous ne vous occupez de rien. En moins de 1h30, vous pourrez utiliser votre jacuzzi! <br>
+            <%= link_to "Plus d'infos", faq_path, class:"btn btn-common btn-round btn-theme btn-teme" %>
+          </p>
+        </div>
+        <div class="col-sm-6">
+         <b><span><i class="fa fa-unlock" aria-hidden="true" id="ok"></i> <br></span> Désinstallation</b>
+         <p class='text-p-index'> Un professionnel sélectionné et formé effectue la désinstallation de votre spa (vidange et nettoyage compris) en vérifiant et respectant les normes d’hygiène, de sécurité et de qualité. Il enlève et range les différentes prestations choisies (décorations, table de massage, etc…). Il se charge de tout, vous ne vous occupez de rien. En moins de 1h, le démontage sera fini ! <br> <%= link_to "Plus d'infos", faq_path, class:"btn btn-common btn-round btn-theme btn-teme" %></p>
+       </div>
+
+     </div> 
+   </center>
+   <center>
     <div class="row">
       <div class="col-sm-6">
-
         <div>
-          <b><span><i class="fa fa-mouse-pointer" aria-hidden="true" id="ok"></i></span> Réservation</b>
+          <b><span><i class="fa fa-heart" aria-hidden="true" id="ok"></i><br></span> Détente </b>
         </div>
-        <p class='text-p-index'>Choisissez vos prestations et réservez le jour et l’heure de votre choix directement en ligne</p>
-        <%= link_to "Réserver", spa_path, class:"btn btn-common btn-round btn-theme" %>
-
-
-      </div>
-      <div class="col-sm-6">
-        <div>
-          <b><span><i class="fa fa-truck" aria-hidden="true" id="ok"></i></span> Livraison</b>
-        </div>
-        <p class='text-p-index'>Un professionnel sélectionné et formé se charge de la livraison de votre spa.</p>
-        <%= link_to "Plus d'infos", faq_path, class:"btn btn-common btn-round btn-theme" %>
-
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <div>
-          <b><span><i class="fa fa-check" aria-hidden="true" id="ok"></i></span> Installation </b>
-        </div>
-        <p class='text-p-index'>Un professionnel sélectionné et formé effectue l’installation de votre spa (nettoyage & remplissage compris) en vérifiant et respectant les normes d’hygiène, de sécurité et de qualité. Il met également en place les différentes prestations choisies (décorations, table de massage, etc…). Il se charge de tout, vous ne vous occupez de rien. En moins de 1h30, vous pourrez utiliser votre jacuzzi !</p>
-        <%= link_to "Plus d'infos", faq_path, class:"btn btn-common btn-round btn-theme" %>
-
-      </div>
-      <div class="col-sm-6">
-
-        <div>
-          <b><span><i class="fa fa-heart" aria-hidden="true" id="ok"></i></span> Détente </b>
-        </div>
-        <p class='text-p-index'>La chaleur et les bulles de nos spas permettront de vous détendre et de passer un moment magique en couple, entre amis ou encore en famille !</p>
-
-        <a href="#galerie" class="btn btn-common btn-round btn-theme">Galerie photo</a>
-
-      </div>
-
-    </div> 
-    <div class="row">
-      <div class="col-sm-12">
-        <center>
-          <b><span><i class="fa fa-unlock" aria-hidden="true" id="ok"></i></span> Désinstallation</b>
-        </center>
-        <p class='text-p-index'> Un professionnel sélectionné et formé effectue la désinstallation de votre spa (vidange et nettoyage compris) en vérifiant et respectant les normes d’hygiène, de sécurité et de qualité. Il enlève et range les différentes prestations choisies (décorations, table de massage, etc…). Il se charge de tout, vous ne vous occupez de rien. En moins de 1h, le démontage sera fini ! <br> <%= link_to "Plus d'infos", faq_path, class:"btn btn-common btn-round btn-theme btn-teme" %></p>
-        
-
+        <p class='text-p-index'>La chaleur et les bulles de nos spas permettront de vous détendre et de passer un moment magique en couple, entre amis ou encore en famille !
+          <a href="#galerie" class="btn btn-common btn-round btn-theme btn-temeintru">Galerie photo</a>
+        </p>
       </div> 
     </div>
-  </section>
+  </center>
+</section>
 
 
 
-  <!-- NOS ENGAGEMENTS -->
-  <div class="secotionTitle">
-    <h2 id="contacter" class="police_massage"><span>Nos engagements</span></h2>
+<!-- NOS ENGAGEMENTS -->
+<div class="secotionTitle">
+  <h2 id="contacter" class="police_massage"><span>Nos engagements</span></h2>
+</div>
+<section class="clearfix contactSection">
+ <center>
+  <div class="row">
+    <div class="col-sm-6">
+
+      <div>
+        <b><span><i class="fa fa-check-square-o" aria-hidden="true" id="ok"></i><br></span> Ecoute, disponibilité & réactivité</b>
+      </div>
+      <p class='engagements'>De la réservation jusqu’au suivi de votre satisfaction, nous comptons bien vous cocooner</p>
+
+    </div>
+    <div class="col-sm-6">
+      <div>
+        <b><span><i class="fa fa-thumbs-up" aria-hidden="true" id="ok"></i><br></span> Professionnels sélectionnés, formés et diplômés</b>
+      </div>
+      <p class='engagements'>Toutes nos prestations sont réalisées par des professionnels sélectionnés, formés et diplômés. Ils s’occuperont de vous avec talent et gentillesse !</p>
+    </div>
   </div>
-  <section class="clearfix contactSection">
-    
-    <div class="row">
-      <div class="col-sm-6">
-
-        <div>
-          <b><span><i class="fa fa-check-square-o" aria-hidden="true" id="ok"></i></span> Ecoute, disponibilité & réactivité</b>
-        </div>
-        <p class='text-p-index'>De la réservation jusqu’au suivi de votre satisfaction, nous comptons bien vous cocooner</p>
-
+</center>
+<center>
+  <div class="row">
+    <div class="col-sm-6">
+      <div>
+        <b><span><i class="fa fa-coffee" aria-hidden="true" id="ok"></i><br></span> Service clé en main  </b>
       </div>
-      <div class="col-sm-6">
-        <div>
-          <b><span><i class="fa fa-thumbs-up" aria-hidden="true" id="ok"></i></span> Professionnels sélectionnés, formés et diplômés</b>
-        </div>
-        <p class='text-p-index'>Toutes nos prestations sont réalisées par des professionnels sélectionnés, formés et diplômés. Ils s’occuperont de vous avec talent et gentillesse !</p>
+      <p class='engagements'>Vous ne vous occupez de rien, un professionnel formé et agréé se charge de tout (livraison, installation, remplissage, vidange et démontage du spa)</p>
+      <div>
+        <b><span><i class="fa fa-thumbs-up" aria-hidden="true" id="ok"></i><br></span> Respect des normes de qualité et de sécurité  </b>
       </div>
     </div>
+    <div class="col-sm-6">
 
-    <div class="row">
-      <div class="col-sm-6">
-        <div>
-          <b><span><i class="fa fa-coffee" aria-hidden="true" id="ok"></i></span> Service clé en main  </b>
-        </div>
-        <p class='text-p-index'>Vous ne vous occupez de rien, un professionnel formé et agréé se charge de tout (livraison, installation, remplissage, vidange et démontage du spa)</p>
-        <div>
-          <b><span><i class="fa fa-thumbs-up" aria-hidden="true" id="ok"></i></span> Respect des normes de qualité et de sécurité  </b>
-        </div>
+      <div>
+        <b><span><i class="fa fa-clock-o" aria-hidden="true" id="ok"></i><br></span> Prestations sur mesure et flexibilité</b>
       </div>
-      <div class="col-sm-6">
-
-        <div>
-          <b><span><i class="fa fa-clock-o" aria-hidden="true" id="ok"></i></span> Prestations sur mesure et flexibilité</b>
-        </div>
-        <p class='text-p-index'>C’est vous qui choisissez votre prestation et vos horaires, nous qui nous adaptons. Vous pouvez personnaliser votre moment en fonction de vos envies. <br>
-          Installation possible tous les jours de l’année, en appartement ou villa, en intérieur ou extérieur.
-        </p>
-      </div>
-
-    </div> 
-
-    <div class="row">
-
-      <div class="col-sm-6">
-        <div>
-          <b><span><i class="fa fa-eur" aria-hidden="true" id="ok"></i></span> Prix attractifs </b>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div>
-          <b><span><i class="fa fa-bath" aria-hidden="true" id="ok"></i></span> Hygiène garantie  </b>
-        </div>
-      </div>
-    </div>  
-    
-
-  </section>
-
- <!-- avis SECTION -->
-  <section class="container-fluid clearfix productArea patternbg">
-    <div class="container">
-      <div class="secotionTitle">
-        <h2 class="police_massage"><span>Idées originales</span></h2>
-      </div>
-      
+      <p class='engagements'>C’est vous qui choisissez votre prestation et vos horaires, nous qui nous adaptons. Vous pouvez personnaliser votre moment en fonction de vos envies. Installation possible tous les jours de l’année, en appartement ou villa, en intérieur ou extérieur.
+      </p>
     </div>
-  </section>
+
+  </div> 
+</center>
+<center>
+  <div class="row">
+
+    <div class="col-sm-6">
+      <div>
+        <b><span><i class="fa fa-eur" aria-hidden="true" id="ok"></i><br></span> Prix attractifs </b>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div>
+        <b><span><i class="fa fa-bath" aria-hidden="true" id="ok"></i> <br></span> Hygiène garantie  </b>
+      </div>
+    </div>
+  </div>  
+</center>
+
+</section>
+
+<!-- avis SECTION -->
+<section class="container-fluid clearfix productArea patternbg">
+  <div class="container">
+    <div class="secotionTitle">
+      <h2 class="police_massage"><span>Idées originales</span></h2>
+    </div>
+
+  </div>
+</section>
 
 
- 
-  <section class="clearfix productSection">
 
-    <div class="row">
-      <div class="col-xs-12">
-        <div id="productSlider" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#productSlider" data-slide-to="0" class="active"></li>
-            <li data-target="#productSlider" data-slide-to="1"></li>
-          </ol>
+<section class="clearfix productSection">
 
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner" role="listbox">
-            <div class="item active">
+  <div class="row">
+    <div class="col-xs-12">
+      <div id="productSlider" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#productSlider" data-slide-to="0" class="active"></li>
+          <li data-target="#productSlider" data-slide-to="1"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <div class="row">
+
+              <div class="col-sm-12 col-xs-12">
+                <div class="productInfo">
+
+                  <h4>
+                    <center class="slide0">
+                      <i class="fa fa-heart" aria-hidden="true" id="iconetitle"></i> <br>
+                    Un week-end en amoureux ave jacuzzi !</center> </h4>
+                    <p class="p-slider">Surprise à votre moitié ? Anniversaire de rencontre ou de mariage ? Une nuit de noces ? <br>Surprenez votre partenaire et retrouvez-vous en amoureux pour une soirée romantique unique ! </p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
               <div class="row">
-
                 <div class="col-sm-12 col-xs-12">
                   <div class="productInfo">
-
                     <h4>
-                      <center class="slide0">
-                        <i class="fa fa-heart" aria-hidden="true" id="iconetitle"></i> <br>
-                      Un week-end en amoureux ave jacuzzi !</center> </h4>
-                      <p class="p-slider">Surprise à votre moitié ? Anniversaire de rencontre ou de mariage ? Une nuit de noces ? <br>Surprenez votre partenaire et retrouvez-vous en amoureux pour une soirée romantique unique ! </p>
+                      <center class="slide1">
+                        <i class="fa fa-female" aria-hidden="true" id="iconetitle1"></i> <br>
+                      Spa entre copines !</center> </h4>
+                      <p class="p-slider">Passez du bon temps entre les filles, une pause bien-etre pour vivre un moment de <br>relaxation et de complicité ! </p>
 
                     </div>
                   </div>
                 </div>
               </div>
-
               <div class="item">
                 <div class="row">
                   <div class="col-sm-12 col-xs-12">
                     <div class="productInfo">
                       <h4>
-                        <center class="slide1">
-                          <i class="fa fa-female" aria-hidden="true" id="iconetitle1"></i> <br>
-                        Spa entre copines !</center> </h4>
+                        <center class="slide2">
+                          <i class="fa fa-check-square" aria-hidden="true" id="iconetitle2"></i> <br>
+                        Toute occasion est bonne pour un instant inoubliable !</center> </h4>
                         <p class="p-slider">Passez du bon temps entre les filles, une pause bien-etre pour vivre un moment de <br>relaxation et de complicité ! </p>
-
                       </div>
                     </div>
                   </div>
                 </div>
+
                 <div class="item">
                   <div class="row">
                     <div class="col-sm-12 col-xs-12">
                       <div class="productInfo">
                         <h4>
-                          <center class="slide2">
-                            <i class="fa fa-check-square" aria-hidden="true" id="iconetitle2"></i> <br>
-                          Toute occasion est bonne pour un instant inoubliable !</center> </h4>
-                          <p class="p-slider">Passez du bon temps entre les filles, une pause bien-etre pour vivre un moment de <br>relaxation et de complicité ! </p>
+                          <center class="slide3">
+                            <i class="fa fa-glass" aria-hidden="true" id="iconetitle3"></i> <br>
+                          Louer un spa pour une soirée, un moment festif !</center> </h4>
+                          <p class="p-slider">Que ce soit pour une fête entre amis ou en famille, pour un apéritif, un barbecue, une cremaillère, offrez-vous un moment de détente et de convivialité originale ravira tous vos convives ! </p>
                         </div>
                       </div>
                     </div>
                   </div>
+
 
                   <div class="item">
                     <div class="row">
                       <div class="col-sm-12 col-xs-12">
                         <div class="productInfo">
                           <h4>
-                            <center class="slide3">
-                              <i class="fa fa-glass" aria-hidden="true" id="iconetitle3"></i> <br>
-                            Louer un spa pour une soirée, un moment festif !</center> </h4>
-                            <p class="p-slider">Que ce soit pour une fête entre amis ou en famille, pour un apéritif, un barbecue, une cremaillère, offrez-vous un moment de détente et de convivialité originale ravira tous vos convives ! </p>
+                            <center class="slide4">
+                              <i class="fa fa-gratipay" aria-hidden="true" id="iconetitle4"></i> <br>
+                            Un spa pour un enterrement de vie de jeune fille ! </center> </h4>
+                            <p class="p-slider">Une très bonne idée pour immortaiser votre enterrement de vie de jeune fille ! </p>
                           </div>
                         </div>
                       </div>
                     </div>
-
 
                     <div class="item">
                       <div class="row">
                         <div class="col-sm-12 col-xs-12">
                           <div class="productInfo">
                             <h4>
-                              <center class="slide4">
-                                <i class="fa fa-gratipay" aria-hidden="true" id="iconetitle4"></i> <br>
-                              Un spa pour un enterrement de vie de jeune fille ! </center> </h4>
-                              <p class="p-slider">Une très bonne idée pour immortaiser votre enterrement de vie de jeune fille ! </p>
+                              <center class="slide5">
+                                <i class="fa fa-birthday-cake" aria-hidden="true" id="iconetitle5"></i> <br>
+                              Un jacuzzi pour fêter un anniversaire ! </center> </h4>
+                              <p class="p-slider">Vous cherchez une idée de cadeau unique ? Mais aussi, une idée qui soit fun originale ? Quelque chose qui marque ? Que vous cherchiez un cadeau d'anniversaire por vos parents, vos amis, vos enfants, vous les surprendrez à coup sûr avec un spa o domicile !</p>
                             </div>
                           </div>
                         </div>
                       </div>
+                    </div>
 
-                      <div class="item">
-                        <div class="row">
-                          <div class="col-sm-12 col-xs-12">
-                            <div class="productInfo">
-                              <h4>
-                                <center class="slide5">
-                                  <i class="fa fa-birthday-cake" aria-hidden="true" id="iconetitle5"></i> <br>
-                                Un jacuzzi pour fêter un anniversaire ! </center> </h4>
-                                <p class="p-slider">Vous cherchez une idée de cadeau unique ? Mais aussi, une idée qui soit fun originale ? Quelque chose qui marque ? Que vous cherchiez un cadeau d'anniversaire por vos parents, vos amis, vos enfants, vous les surprendrez à coup sûr avec un spa o domicile !</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Left and right controls -->
-                      <div class="vaetvient">
-                        <a class="left carousel-control" href="#productSlider" role="button" data-slide="prev">
-                          <i class="fa fa-arrow-circle-left" aria-hidden="true" id="ok"></i>
-                          <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#productSlider" role="button" data-slide="next">
-                          <i class="fa fa-arrow-circle-right ok" aria-hidden="true" id='fleche'></i>
-                          <span class="sr-only">Next</span>
-                        </a>
-                      </div>
+                    <!-- Left and right controls -->
+                    <div class="vaetvient">
+                      <a class="left carousel-control" href="#productSlider" role="button" data-slide="prev">
+                        <i class="fa fa-arrow-circle-left flechespa-left" aria-hidden="true" id="ok"></i>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="right carousel-control" href="#productSlider" role="button" data-slide="next">
+                        <i class="fa fa-arrow-circle-right ok" aria-hidden="true" id='fleche'></i>
+                        <span class="sr-only">Next</span>
+                      </a>
                     </div>
                   </div>
                 </div>
+              </div>
 
-              </section>
+            </section>
 
 
-              <!-- HOME GALLERY SECTION -->
-              <section>
-                <div class="clearfix homeGalleryTitle">
-                  <div class="container">
-                    <div class="secotionTitle">
-                      <h2 class="police_massage"><span>Galerie </span>ccspa en photo</h2>
+            <!-- HOME GALLERY SECTION -->
+            <section>
+              <div class="clearfix homeGalleryTitle">
+                <div class="container">
+                  <div class="secotionTitle">
+                    <h2 class="police_massage"><span>Galerie </span>ccspa en photo</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="container-fluid clearfix homeGallery">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="filter-container isotopeFilters">
+                      <ul class="list-inline filter">
+                        <li class="active"><a href="#" data-filter="*">all item</a></li>
+                        <li><a href="#" data-filter=".hair">hair</a></li>
+                        <li><a href="#" data-filter=".makeup">Make Up</a></li>
+                        <li><a href="#" data-filter=".facial">Facial</a></li>
+                        <li><a href="#" data-filter=".massage">Massage</a></li>
+                      </ul>
                     </div>
                   </div>
                 </div>
-                <div class="container-fluid clearfix homeGallery">
-                  <div class="row">
-                    <div class="col-xs-12">
-                      <div class="filter-container isotopeFilters">
-                        <ul class="list-inline filter">
-                          <li class="active"><a href="#" data-filter="*">all item</a></li>
-                          <li><a href="#" data-filter=".hair">hair</a></li>
-                          <li><a href="#" data-filter=".makeup">Make Up</a></li>
-                          <li><a href="#" data-filter=".facial">Facial</a></li>
-                          <li><a href="#" data-filter=".massage">Massage</a></li>
-                        </ul>
+                <div class="row isotopeContainer" id="container">
+                  <div class="col-sm-3 isotopeSelector hair">
+                    <div class="card">
+                      <div class="card-img">
+                        <img class="img-full" src="img/home/gallery-1.jpg" alt="Image" >
+                        <div class="overlay-content">
+                          <a href="img/home/gallery-1.jpg" data-fancybox="images" >
+                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div class="row isotopeContainer" id="container">
-                    <div class="col-sm-3 isotopeSelector hair">
-                      <div class="card">
-                        <div class="card-img">
-                          <img class="img-full" src="img/home/gallery-1.jpg" alt="Image" >
-                          <div class="overlay-content">
-                            <a href="img/home/gallery-1.jpg" data-fancybox="images" >
-                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                            </a>
-                          </div>
+                  <div class="col-sm-3 isotopeSelector makeup">
+                    <div class="card">
+                      <div class="card-img">
+                        <img class="img-full" src="img/home/gallery-2.jpg" alt="Image" >
+                        <div class="overlay-content">
+                          <a href="img/home/gallery-2.jpg" data-fancybox="images" >
+                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                          </a>
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-3 isotopeSelector makeup">
-                      <div class="card">
-                        <div class="card-img">
-                          <img class="img-full" src="img/home/gallery-2.jpg" alt="Image" >
-                          <div class="overlay-content">
-                            <a href="img/home/gallery-2.jpg" data-fancybox="images" >
-                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                            </a>
-                          </div>
+                  </div>
+                  <div class="col-sm-3 isotopeSelector massage">
+                    <div class="card">
+                      <div class="card-img">
+                        <img class="img-full" src="img/home/gallery-3.jpg" alt="Image" >
+                        <div class="overlay-content">
+                          <a href="img/home/gallery-3.jpg" data-fancybox="images" >
+                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                          </a>
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-3 isotopeSelector massage">
-                      <div class="card">
-                        <div class="card-img">
-                          <img class="img-full" src="img/home/gallery-3.jpg" alt="Image" >
-                          <div class="overlay-content">
-                            <a href="img/home/gallery-3.jpg" data-fancybox="images" >
-                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                            </a>
-                          </div>
+                  </div>
+                  <div class="col-sm-3 isotopeSelector hair">
+                    <div class="card">
+                      <div class="card-img">
+                        <img class="img-full" src="img/home/gallery-5.jpg" alt="Image" >
+                        <div class="overlay-content">
+                          <a href="img/home/gallery-5.jpg" data-fancybox="images" >
+                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                          </a>
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-3 isotopeSelector hair">
-                      <div class="card">
-                        <div class="card-img">
-                          <img class="img-full" src="img/home/gallery-5.jpg" alt="Image" >
-                          <div class="overlay-content">
-                            <a href="img/home/gallery-5.jpg" data-fancybox="images" >
-                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                            </a>
-                          </div>
+                  </div>
+                  <div class="col-sm-3 isotopeSelector makeup">
+                    <div class="card">
+                      <div class="card-img">
+                        <img class="img-full" src="img/home/gallery-5.jpg" alt="Image" >
+                        <div class="overlay-content">
+                          <a href="img/home/gallery-5.jpg" data-fancybox="images" >
+                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                          </a>
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-3 isotopeSelector makeup">
-                      <div class="card">
-                        <div class="card-img">
-                          <img class="img-full" src="img/home/gallery-5.jpg" alt="Image" >
-                          <div class="overlay-content">
-                            <a href="img/home/gallery-5.jpg" data-fancybox="images" >
-                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                            </a>
-                          </div>
+                  </div>
+                  <div class="col-sm-3 isotopeSelector facial">
+                    <div class="card">
+                      <div class="card-img">
+                        <img class="img-full" src="img/home/gallery-6.jpg" alt="Image" >
+                        <div class="overlay-content">
+                          <a href="img/home/gallery-6.jpg" data-fancybox="images" >
+                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                          </a>
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-3 isotopeSelector facial">
-                      <div class="card">
-                        <div class="card-img">
-                          <img class="img-full" src="img/home/gallery-6.jpg" alt="Image" >
-                          <div class="overlay-content">
-                            <a href="img/home/gallery-6.jpg" data-fancybox="images" >
-                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                            </a>
-                          </div>
+                  </div>
+                  <div class="col-sm-3 isotopeSelector facial">
+                    <div class="card">
+                      <div class="card-img">
+                        <img class="img-full" src="img/home/gallery-7.jpg" alt="Image" >
+                        <div class="overlay-content">
+                          <a href="img/home/gallery-7.jpg" data-fancybox="images" >
+                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                          </a>
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-3 isotopeSelector facial">
-                      <div class="card">
-                        <div class="card-img">
-                          <img class="img-full" src="img/home/gallery-7.jpg" alt="Image" >
-                          <div class="overlay-content">
-                            <a href="img/home/gallery-7.jpg" data-fancybox="images" >
-                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3 isotopeSelector massage">
-                      <div class="card">
-                        <div class="card-img">
-                          <img class="img-full" src="img/home/gallery-8.jpg" alt="Image" >
-                          <div class="overlay-content">
-                            <a href="img/home/gallery-8.jpg" data-fancybox="images">
-                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                            </a>
-                          </div>
+                  </div>
+                  <div class="col-sm-3 isotopeSelector massage">
+                    <div class="card">
+                      <div class="card-img">
+                        <img class="img-full" src="img/home/gallery-8.jpg" alt="Image" >
+                        <div class="overlay-content">
+                          <a href="img/home/gallery-8.jpg" data-fancybox="images">
+                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                          </a>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </section>
+              </div>
+            </section>
 
-              <!-- section avis -->
+            <!-- section avis -->
 <!--   <section class="clearfix contactSection patternbg">
     <div class="container">
       <div class="secotionTitle">
@@ -759,21 +754,14 @@
 
 </section>
 
-  <!-- CONTACT US SECTION -->
-  <section class="container-fluid clearfix productArea patternbg">
+    <!-- CONTACT US SECTION -->
+    <section class="clearfix contactSection">
 
-    <div class="secotionTitle">
-      <h2 class="police_massage"><span>Infos</span>Contactez-nous</h2>
-    </div>
-
-  </div>
-</section>
-
-<section class="clearfix contactSection">
-  <div class="container">
-    <div class="secotionTitle">
+      <div class="secotionTitle">
+        <h2 id="contacter" class="police_massage"><span>Infos</span>Contactez-nous</h2>
+      </div>
       <div class="row">
-        <div class="col-md-8 col-sm-7 col-xs-12">
+        <div class="col-md-8 col-sm-12 col-xs-12">
           <div class="contactTitle">
             <h3></br></h3>
           </div>
@@ -800,11 +788,11 @@
             </form>
           </div>
         </div>
-        <div class="col-md-4 col-sm-5 col-xs-12">
+        <div class="col-md-4 col-sm-5 col-xs-12 colipad">
 
           <div class="holdingInfo patternbg">
             <div class="contactTitle">
-              <h3><center>Réseaux sociaux</center></h3>
+              <h3><center>Suivez-nous</center></h3>
             </div>
             <ul>
               <a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa fa-facebook" aria-hidden="true"></i> Cocooning Spa officiel </li></a>
@@ -813,19 +801,9 @@
             </ul>
           </div>
         </div>
-           <div class="row">
-      <div class="col-xs-12">
-        <div class="">
-          <ul class="list-inline fullRoundBtn">
-            <li class="li"><a href="javascript:void(0)" class="btn btn-common btn-full-round btn-theme" id="btn-reserve-fixe">RÉSERVER MON JACUZZI À DOMICILE</a></li>
-          </ul>
-        </div>
       </div>
-    </div>
-      </div>
-    </div>
-  </section>
 
+    </section>
 
 
 
@@ -848,7 +826,7 @@
       </div>
       <div class="modal-body">
         <div id="appointment-alert" class="my-alert"></div>
-        <p class="text-p-index">la décoration romantique est composée de ballons, pétales de roses, bougies, lumière tamisée & spot lumineux dans le spa.</p>
+        <p class="text-p-index modalText">la décoration romantique est composée de ballons, pétales de roses, bougies, lumière tamisée & spot lumineux dans le spa.</p>
       </div>
     </div>
   </div>
@@ -864,7 +842,7 @@
       </div>
       <div class="modal-body">
         <div id="appointment-alert" class="my-alert"></div>
-        <p class="text-p-index">la décoration anniversaire/fête est composée de ballons, masques anniversaire/fête, lumière d’ambiance & spot lumineux dans le spa.</p>
+        <p class="text-p-index modalText">la décoration anniversaire/fête est composée de ballons, masques anniversaire/fête, lumière d’ambiance & spot lumineux dans le spa.</p>
       </div>
     </div>
   </div>
@@ -880,7 +858,7 @@
       </div>
       <div class="modal-body">
         <div id="appointment-alert" class="my-alert"></div>
-        <p class="text-p-index">Fournie avec chocolat</p>
+        <p class="text-p-index modalText">Fournie avec chocolat</p>
       </div>
     </div>
   </div>
@@ -896,7 +874,7 @@
       </div>
       <div class="modal-body">
         <div id="appointment-alert" class="my-alert"></div>
-        <p class="text-p-index">Pour 2 personnes</p>
+        <p class="text-p-index modalText">Pour 2 personnes</p>
       </div>
     </div>
   </div>
@@ -912,7 +890,7 @@
       </div>
       <div class="modal-body">
         <div id="appointment-alert" class="my-alert"></div>
-        <p class="text-p-index">Fournie avec huile de massage</p>
+        <p class="text-p-index modalText">Fournie avec huile de massage</p>
       </div>
     </div>
   </div>
