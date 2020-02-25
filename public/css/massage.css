@@ -349,8 +349,25 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+	.spaengagement{
+		position: relative;
+		left: -44px;
+	}
+	.engagement-spa{
+		position: relative;
+		left: -10px;
+	}
+	.text-p-ccmspa{
+		text-align: center;
+	}
+	.text-p-spa{
+		margin-top: 22px;
+	}
+	.col-sm-4spa{
+		width:32.2% !important;
+	}
 	.contactSectionEngagementMassage{
-		/*padding-top: 60px !important;*/
+		padding-top: 60px !important;
 	}
 	.contactSectionMassage{
 		width: 1142px;
@@ -736,6 +753,6 @@
 	height: 30px;
 	padding: 7px !important;
 	position: relative;
-	left: 30%;
+	left: -20px;
 	top: 0px;
 }
