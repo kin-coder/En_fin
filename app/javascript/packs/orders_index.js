@@ -423,6 +423,7 @@ function removeSpaList(){
 	let sessionSpa = JSON.parse(sessionStorage.getItem("spa"))
 	sessionSpa.pop()
 	sessionStorage.setItem("spa",JSON.stringify(sessionSpa))
+	numberAtOrderBtn()
 	// Modification dans le DOM
 	let list = document.getElementsByClassName("spa-list-prestations")
 	if (list.length > 0) {
@@ -472,6 +473,7 @@ function addRmvTimSpaInOrder(){ //checkbox na option spa
 		}
 	}
 	sessionStorage.setItem("spa",JSON.stringify(sessionSpa))
+	numberAtOrderBtn()
 	// Ajouter l'element selectionné dans le dom
 	htmlTimeSpaOrder(this.value,index,dataOption,dataForm)
 }
@@ -644,6 +646,7 @@ function addMassageInOrder(){
 	for (var i = sessionMassage.length - 1; i >= 0; i--) {
 		if(sessionMassage[i].id == myData[0]){
 			sessionMassage[i].time = myData[2]
+			numberAtOrderBtn()
 		}
 	}
 	sessionStorage.setItem("massages",JSON.stringify(sessionMassage))
@@ -727,6 +730,7 @@ function removeCategoryMassage(){
 		}
 	}
 	sessionStorage.setItem("massages",JSON.stringify(sessionMassage))
+	numberAtOrderBtn()
 	priceTotalForAllMassage(dataMassages)
 	// Modification dans le DOM
 	let list = document.getElementsByClassName('massage-list-'+this.dataset.cat)
@@ -754,6 +758,7 @@ function removeCadeau(){
 		}
 	}
 	sessionStorage.setItem("cadeau",JSON.stringify(cadeau))
+	numberAtOrderBtn()
 	document.getElementById("cadeau-id").value = JSON.stringify(cadeau)
 	// calcul du prix
 	priceForAllCadeau()
@@ -775,6 +780,7 @@ function aDDCadeau(){
 		document.getElementById(id+"-nbr").innerHTML = 1
 	}
 	sessionStorage.setItem("cadeau",JSON.stringify(cadeau))
+	numberAtOrderBtn()
 	document.getElementById("cadeau-id").value = JSON.stringify(cadeau)
 	// calcul du prix
 	priceForAllCadeau()
@@ -836,4 +842,31 @@ function bigTotalPrice(){
 	}
 	document.getElementById("total-price").innerHTML = spa[0]+massage[0]
 	document.getElementById("total-acompte").innerHTML =  spa[1]+massage[1]+parseFloat(cadeau)
+}
+// pour l'enregistrement des donné dans le panier du boutons
+function numberAtOrderBtn(){
+	let spa = JSON.parse(sessionStorage.getItem("spa"))
+	let massages = JSON.parse(sessionStorage.getItem("massages"))
+	let cadeau = JSON.parse(sessionStorage.getItem("cadeau"))
+	let number = 0
+	if (spa) {
+		for (var i = spa.length - 1; i >= 0; i--) {
+			if(spa[i].time != ""){
+				number++
+			}
+		}
+	}
+	if (massages) {
+		for (var i = massages.length - 1; i >= 0; i--) {
+			if(typeof(massages[i].sub) != "string"){
+				number++
+			}
+		}
+	}
+	if (cadeau) {
+		for (var i = cadeau.length - 1; i >= 0; i--) {
+			number += cadeau[i][1]
+		}
+	}
+	document.getElementById("number-cart-ok").innerHTML = number
 }
