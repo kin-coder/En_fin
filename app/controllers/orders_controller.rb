@@ -6,6 +6,21 @@ class OrdersController < ApplicationController
        format.js
     end 
   end
+  
+  def code_promo
+    parameters = params.permit(:code)
+    @code = parameters[:code]
+    @test = false
+    if CodePromo.all.find_by(code:@code)
+      @test = true
+      session[:code_promo] = @code
+    else
+      session.delete(:code_promo)
+    end
+    respond_to do |format|
+       format.js
+    end
+  end
   # 1/2 Selection des prestation
   def index
     @countries = Country.all
