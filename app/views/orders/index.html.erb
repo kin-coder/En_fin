@@ -179,7 +179,8 @@
 			</div>
 
 
-			<%= submit_tag("Confirmer commandes", id:"submi-tag",  class:"confirm-command btn btn-primary a-btn text-btn") %>
+	<%= submit_tag("Suivant", id:"submi-tag",  class:"confirm-command btn btn-primary a-btn text-btn") %>
+
 
 			<% end %> <!-- Fin formulaire -->
 			<!-- ======================================================================== -->
@@ -202,13 +203,17 @@
 				<div>
 				</div>
 			</div>
-
-			<div id="code-promo">
-				<h3>Code promo?</h3>
+		<div id="code-promo">
+			<h3>Code promo?</h3>
+			<%= form_tag(code_promo_path, remote: true) do %>
+			<div id="alert-code" class="hidden alert alert-success" role="alert">
+			  Votre code promo est validé avec succès
+			</div>
 				<label for="codeP">code promo : </label>
 				<input type="text" name="code" id="codeP">
-			</div>
-
+				<%= submit_tag("valider") %>	
+			<% end %>
+		</div>
 			<div>
 				<p>PRIX TOTAL: <strong id="total-price">0,00</strong> €</p>
 				<p>ACOMPTE TOTAL: <strong id="total-acompte">0,00</strong> €</p>
