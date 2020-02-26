@@ -1,5 +1,4 @@
 <link href="/css/resa.css" rel="stylesheet">
-
 <div class="container">
 	<div id="overlay">
 		<div id="text">
@@ -27,68 +26,82 @@
 					</select>
 				</div>
 
-				<div class="dateSelect form-half form-left">
+				<div class="dateSelect form-half form-left select-date">
 					
-						<label class="labelle" for="Date">Date</label>
-						<div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
-						<input type="text" name="date" id="Date" placeholder="MM/DD/YYYY" class="form-control">
+					<label class="labelle" for="Date">Date</label>
+					<div class="input-group date ed-datepicker filterDate input-calendar" data-provide="datepicker">
+						<input type="text" name="date" id="Date" placeholder="MM/DD/YYYY" class="form-control" required>
 						<div class="input-group-addon calendar-icone">
 							<span class="fa fa-calendar"></span>
 						</div>
 					</div>
 				</div>
-				<div>
-					<label class="labelle" for="guiest_id1">Heure</label>
-					<select name="heure" id="guiest_id1" class="select-dro field">
-						<option value="">Heure</option>
-						<option value="08:00">08:00</option>
-						<option value="08:30">08:30</option>
-						<option value="09:00">09:00</option>
-						<option value="09:30">09:30</option>
-						<option value="10:00">10:00</option>
-						<option value="10:30">10:30</option>
-						<option value="11:00">11:00</option>
-						<option value="11:30">11:30</option>
-						<option value="12:00">12:00</option>
-						<option value="12:30">12:30</option>
-						<option value="13:00">13:00</option>
-						<option value="13:30">13:30</option>
-						<option value="14:00">14:00</option>
-						<option value="14:30">14:30</option>
-						<option value="15:00">15:00</option>
-						<option value="15:30">15:30</option>
-						<option value="16:00">16:00</option>
-						<option value="16:30">16:30</option>
-						<option value="17:00">17:00</option>
-						<option value="17:30">17:30</option>
-						<option value="18:00">18:00</option>
-						<option value="18:30">18:30</option>
-						<option value="19:00">19:00</option>
-						<option value="19:30">19:30</option>
-						<option value="20:00">20:00</option>
-						<option value="20:30">20:30</option>
-						<option value="21:00">21:00</option>
-						<option value="21:30">21:30</option>
-						<option value="22:00">22:00</option>
-					</select>
-				</div>
-				<div>
-					<%= submit_tag("Je valide") %>	
+				<div >
+					<%= submit_tag("Je valide", class:"je-valide", onclick:"off()")%>	
 				</div>
 				<% end %>
 			</div>
-
-
-			<div class="btn btn-primary" onclick="off()">close</div>
 		</div>
 	</div>
 
-<div style="padding:20px">
-	<button onclick="on()">Turn on overlay effect</button>
-</div>
-	<br><br><br><br>
-	
-	<hr class="hr.new5">
+<!-- ==========================CONTENU ACCORDEONS================= -->
+	<div class="container allfaq">
+		<div class="accordion js-accordion">
+			<div class="accordion__item js-accordion-item active">
+				<div class="accordion-header js-accordion-header patternbg">LOCATION SPA</div> 
+				<div class="accordion-body js-accordion-body">
+					<div class="accordion-body__contents">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sequi placeat distinctio dolor, amet magnam voluptatibus eos ex vero, sunt veritatis esse. Nostrum voluptatum et repudiandae vel sed, explicabo in?
+					</div>
+
+				</div><!-- end of accordion body -->
+			</div><!-- end of accordion item -->
+			<div class="accordion__item js-accordion-item">
+				<div class="accordion-header js-accordion-header patternbg">MASSAGE À DOMICILE</div> 
+				<div class="accordion-body js-accordion-body">
+					<div class="accordion-body__contents">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sequi placeat distinctio dolor, amet magnam voluptatibus eos ex vero, sunt veritatis esse. Nostrum voluptatum et repudiandae vel sed, explicabo in?
+					</div>
+
+				</div><!-- end of accordion body -->
+			</div><!-- end of accordion item -->
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<!-- ======================================================================== -->
 	<div class="row">
 		<div class="col-sm-9">
@@ -203,7 +216,7 @@
 
 		</div>
 	</div>
-
+</div>
 	<%= javascript_pack_tag 'orders_index' %>
 
 <!--

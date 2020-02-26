@@ -6,4 +6,4 @@ function off() {
   document.getElementById("overlay").style.display = "none";
 }
 
-window.onload=on();
+window.onload=onn();
