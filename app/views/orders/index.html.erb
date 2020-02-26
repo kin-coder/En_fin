@@ -1,199 +1,210 @@
+<link href="/css/resa.css" rel="stylesheet">
+
 <div class="container">
-<br><br><br><br>
-<hr class="hr.new5">
-	<div class="set-zones">
-		<h2>Je choisi ma zone géographique </h2>
+	<div id="overlay">
+		<div id="text">
+			<div class="set-zones">
+				<h2>Je choisi ma zone géographique </h2>
 
-		 <%= form_tag(zone_path, remote: true) do %>
-		 	<div class="pays">
-				<label class="labelle" for="country-choice">Choix pays</label>
-				<select name="country" id="country-choice" class="field">
-					<option value="">Choix pays</option>
-					<% @countries.collect do |d| %>
+				<%= form_tag(zone_path, remote: true) do %>
+				<div class="pays">
+					<label class="labelle" for="country-choice">Pays</label>
+					<select name="country" id="country-choice" class="field">
+						<option value="" checked>Pays</option>
+						<% @countries.collect do |d| %>
 						<option value="<%=d.name%>"><%=d.name%></option>
-					<% end %>
-				</select>
-			</div>
+						<% end %>
+					</select>
+				</div>
 
-			<div id="list-department" class="hidden">
-				<label class="labelle" for="Departement">Departement</label>
-				<select name="department" id="Departement" class="field">
-					<option value="">Liste departement</option>
-					<% @departments.collect do |d| %>
+				<div id="list-department" class="hidden">
+					<label class="labelle" for="Departement">Departement</label>
+					<select name="department" id="Departement" class="field">
+						<option value="">Liste departement</option>
+						<% @departments.collect do |d| %>
 						<option value="<%= d.id %>"><%="#{d.code}-#{d.name}"%></option>
-					<% end %>
-				</select>
-			</div>
+						<% end %>
+					</select>
+				</div>
 
-			<div class="dateSelect form-half form-left">
-				<div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
-					<label for="Date">Date</label>
-					<input type="text" name="date" id="Date" placeholder="MM/DD/YYYY" class="form-control">
-					<div class="input-group-addon">
-						<span class="fa fa-calendar"></span>
+				<div class="dateSelect form-half form-left">
+					
+						<label class="labelle" for="Date">Date</label>
+						<div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
+						<input type="text" name="date" id="Date" placeholder="MM/DD/YYYY" class="form-control">
+						<div class="input-group-addon calendar-icone">
+							<span class="fa fa-calendar"></span>
+						</div>
 					</div>
 				</div>
-			</div>
-
-
-			<div>
-				<label class="labelle" for="guiest_id1">Choisisser l'heure</label>
-				<select name="heure" id="guiest_id1" class="select-dro">
-					<option value="">Choisisser l'heure</option>
-					<option value="08:00">08:00</option>
-					<option value="08:30">08:30</option>
-					<option value="09:00">09:00</option>
-					<option value="09:30">09:30</option>
-					<option value="10:00">10:00</option>
-					<option value="10:30">10:30</option>
-					<option value="11:00">11:00</option>
-					<option value="11:30">11:30</option>
-					<option value="12:00">12:00</option>
-					<option value="12:30">12:30</option>
-					<option value="13:00">13:00</option>
-					<option value="13:30">13:30</option>
-					<option value="14:00">14:00</option>
-					<option value="14:30">14:30</option>
-					<option value="15:00">15:00</option>
-					<option value="15:30">15:30</option>
-					<option value="16:00">16:00</option>
-					<option value="16:30">16:30</option>
-					<option value="17:00">17:00</option>
-					<option value="17:30">17:30</option>
-					<option value="18:00">18:00</option>
-					<option value="18:30">18:30</option>
-					<option value="19:00">19:00</option>
-					<option value="19:30">19:30</option>
-					<option value="20:00">20:00</option>
-					<option value="20:30">20:30</option>
-					<option value="21:00">21:00</option>
-					<option value="21:30">21:30</option>
-					<option value="22:00">22:00</option>
-				</select>
-			</div>
-			<div>
-				<%= submit_tag("Je valide") %>	
-			</div>
-		 <% end %>
-	</div>
-
-<hr class="hr.new5">
-<!-- ======================================================================== -->
-<div class="row">
-	<div class="col-sm-9">
-
-	<%= form_tag(save_session_path,id:"form-data",'data-id':"#{@idMassage}",'data-spas':"#{@spas}",'data-spaoptions':"#{@spaoptions}",'data-massages':"#{@massages}") do %>
-
-	<div id="prestation-list">
-		<div class="spa">
-			<h2>LOCATION SPA A DOMICILE</h2>
-			<div class="spa-click">
-				<p>Je souhaite reserver <i class="fa fa-minus-circle" id="remove-spa"></i><span id="number-spa">0</span><i class="fa fa-plus-circle" id="add-spa"></i> spa</p>
-
-			</div>
-			<div id="spa-input">
-
-			</div>
-		</div>
-<!-- ======================================================================== -->
-		<div class="massage">
-			<h2>MASSAGE A DOMICILE</h2>
-			
-			<!-- #################### -->
-			<div id="select-prestation">
-				<h4>Je souhaite reserver pour :</h4>
 				<div>
-					<p>Homme<i class="fa fa-minus-circle remove-massage" data-cat="Homme"></i><span id="number-Homme">0</span><i class="fa fa-plus-circle add-massage" data-cat="Homme"></i></p>
+					<label class="labelle" for="guiest_id1">Heure</label>
+					<select name="heure" id="guiest_id1" class="select-dro field">
+						<option value="">Heure</option>
+						<option value="08:00">08:00</option>
+						<option value="08:30">08:30</option>
+						<option value="09:00">09:00</option>
+						<option value="09:30">09:30</option>
+						<option value="10:00">10:00</option>
+						<option value="10:30">10:30</option>
+						<option value="11:00">11:00</option>
+						<option value="11:30">11:30</option>
+						<option value="12:00">12:00</option>
+						<option value="12:30">12:30</option>
+						<option value="13:00">13:00</option>
+						<option value="13:30">13:30</option>
+						<option value="14:00">14:00</option>
+						<option value="14:30">14:30</option>
+						<option value="15:00">15:00</option>
+						<option value="15:30">15:30</option>
+						<option value="16:00">16:00</option>
+						<option value="16:30">16:30</option>
+						<option value="17:00">17:00</option>
+						<option value="17:30">17:30</option>
+						<option value="18:00">18:00</option>
+						<option value="18:30">18:30</option>
+						<option value="19:00">19:00</option>
+						<option value="19:30">19:30</option>
+						<option value="20:00">20:00</option>
+						<option value="20:30">20:30</option>
+						<option value="21:00">21:00</option>
+						<option value="21:30">21:30</option>
+						<option value="22:00">22:00</option>
+					</select>
 				</div>
 				<div>
-					<p>Femme<i class="fa fa-minus-circle remove-massage" data-cat="Femme"></i><span id="number-Femme">0</span><i class="fa fa-plus-circle add-massage" data-cat="Femme"></i></p>
+					<%= submit_tag("Je valide") %>	
 				</div>
-
-
-			</div>
-
-			<div id="massage-input">
-				
-
-			</div>
-
-			<!-- #################### -->
-			<div class="praticien">
-				<h4>Infos complementaires</h4>
-				<label>Type de praticien</label>
-				<div>
-				  <input type="radio" id="man" name="praticien" value="Homme" class="praticien-list" >
-				  <label for="man">Homme</label>
-				</div>
-
-				<div>
-				  <input type="radio" id="woman" name="praticien" value="Femme" class="praticien-list" >
-				  <label for="woman">Femme</label>
-				</div>
-
-				<div>
-				  <input type="radio" id="other" name="praticien" value="Peu importe" class="praticien-list" >
-				  <label for="other">Peu importe</label>
-				</div>
-			</div>
-		</div>
-<!-- ======================================================================== -->
-		<div class="cadeaux">
-			<h2>FAITE PLAISIR AVEC NOS IDEES CADEAUX</h2>
-			<ul>
-				<% @cadeaus.each do |cadeau| %>
-					<li><%= cadeau.name %>: <%= cadeau.price %>€
-						<i class="fa fa-minus-circle cadeau-rmv" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
-						<span id="<%= cadeau.id %>-nbr">0</span>
-						<i class="fa fa-plus-circle cadeau-add" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
-					</li>
 				<% end %>
-			</ul>
-			<input type="text" value="[]" name="cadeau" id="cadeau-id" class="hidden">
-		</div>
-
-	</div>
-
-
-	<%= submit_tag("Confirmer commandes", id:"submi-tag",  class:"confirm-command btn btn-primary a-btn text-btn") %>
-
-	<% end %> <!-- Fin formulaire -->
-<!-- ======================================================================== -->
-	<br><br><br><br>
-	</div>
-	<div class="col-sm-3">
-		<h2>Votre commande</h2>
-		<p id="empty-order">Vous n'avez pas encore sélectionné de prestation</p>
-		<div id="spa-order" class="hidden">
-			<h3>Location spa <span id="spa-price-total" data-price=""></span></h3>
-		</div>
-
-		<div id="massage-order" class="hidden">
-			<h3>Massage <span id="massage-price-total" data-price=""></span></h3>
-
-		</div>
-
-		<div id="cadeau-order" class="hidden">
-			<h3>Vos cadeau <span id="cadeau-price-total"></span> €</h3>
-			<div>
 			</div>
-		</div>
 
-		<div id="code-promo">
-			<h3>Code promo?</h3>
-			<label for="codeP">code promo : </label>
-			<input type="text" name="code" id="codeP">
-		</div>
 
-		<div>
-			<p>PRIX TOTAL: <strong id="total-price">0,00</strong> €</p>
-			<p>ACOMPTE TOTAL: <strong id="total-acompte">0,00</strong> €</p>
+			<div class="btn btn-primary" onclick="off()">close</div>
 		</div>
-
 	</div>
-</div>
 
-<%= javascript_pack_tag 'orders_index' %>
+<div style="padding:20px">
+	<button onclick="on()">Turn on overlay effect</button>
+</div>
+	<br><br><br><br>
+	
+	<hr class="hr.new5">
+	<!-- ======================================================================== -->
+	<div class="row">
+		<div class="col-sm-9">
+
+			<%= form_tag(save_session_path,id:"form-data",'data-id':"#{@idMassage}",'data-spas':"#{@spas}",'data-spaoptions':"#{@spaoptions}",'data-massages':"#{@massages}") do %>
+
+			<div id="prestation-list">
+				<div class="spa">
+					<h2>LOCATION SPA A DOMICILE</h2>
+					<div class="spa-click">
+						<p>Je souhaite reserver <i class="fa fa-minus-circle" id="remove-spa"></i><span id="number-spa">0</span><i class="fa fa-plus-circle" id="add-spa"></i> spa</p>
+
+					</div>
+					<div id="spa-input">
+
+					</div>
+				</div>
+				<!-- ======================================================================== -->
+				<div class="massage">
+					<h2>MASSAGE A DOMICILE</h2>
+
+					<!-- #################### -->
+					<div id="select-prestation">
+						<h4>Je souhaite reserver pour :</h4>
+						<div>
+							<p>Homme<i class="fa fa-minus-circle remove-massage" data-cat="Homme"></i><span id="number-Homme">0</span><i class="fa fa-plus-circle add-massage" data-cat="Homme"></i></p>
+						</div>
+						<div>
+							<p>Femme<i class="fa fa-minus-circle remove-massage" data-cat="Femme"></i><span id="number-Femme">0</span><i class="fa fa-plus-circle add-massage" data-cat="Femme"></i></p>
+						</div>
+
+
+					</div>
+
+					<div id="massage-input">
+
+
+					</div>
+
+					<!-- #################### -->
+					<div class="praticien">
+						<h4>Infos complementaires</h4>
+						<label>Type de praticien</label>
+						<div>
+							<input type="radio" id="man" name="praticien" value="Homme" class="praticien-list" >
+							<label for="man">Homme</label>
+						</div>
+
+						<div>
+							<input type="radio" id="woman" name="praticien" value="Femme" class="praticien-list" >
+							<label for="woman">Femme</label>
+						</div>
+
+						<div>
+							<input type="radio" id="other" name="praticien" value="Peu importe" class="praticien-list" >
+							<label for="other">Peu importe</label>
+						</div>
+					</div>
+				</div>
+				<!-- ======================================================================== -->
+				<div class="cadeaux">
+					<h2>FAITE PLAISIR AVEC NOS IDEES CADEAUX</h2>
+					<ul>
+						<% @cadeaus.each do |cadeau| %>
+						<li><%= cadeau.name %>: <%= cadeau.price %>€
+							<i class="fa fa-minus-circle cadeau-rmv" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
+							<span id="<%= cadeau.id %>-nbr">0</span>
+							<i class="fa fa-plus-circle cadeau-add" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
+						</li>
+						<% end %>
+					</ul>
+					<input type="text" value="[]" name="cadeau" id="cadeau-id" class="hidden">
+				</div>
+
+			</div>
+
+
+			<%= submit_tag("Confirmer commandes", id:"submi-tag",  class:"confirm-command btn btn-primary a-btn text-btn") %>
+
+			<% end %> <!-- Fin formulaire -->
+			<!-- ======================================================================== -->
+			<br><br><br><br>
+		</div>
+		<div class="col-sm-3">
+			<h2>Votre commande</h2>
+			<p id="empty-order">Vous n'avez pas encore sélectionné de prestation</p>
+			<div id="spa-order" class="hidden">
+				<h3>Location spa <span id="spa-price-total" data-price=""></span></h3>
+			</div>
+
+			<div id="massage-order" class="hidden">
+				<h3>Massage <span id="massage-price-total" data-price=""></span></h3>
+
+			</div>
+
+			<div id="cadeau-order" class="hidden">
+				<h3>Vos cadeau <span id="cadeau-price-total"></span> €</h3>
+				<div>
+				</div>
+			</div>
+
+			<div id="code-promo">
+				<h3>Code promo?</h3>
+				<label for="codeP">code promo : </label>
+				<input type="text" name="code" id="codeP">
+			</div>
+
+			<div>
+				<p>PRIX TOTAL: <strong id="total-price">0,00</strong> €</p>
+				<p>ACOMPTE TOTAL: <strong id="total-acompte">0,00</strong> €</p>
+			</div>
+
+		</div>
+	</div>
+
+	<%= javascript_pack_tag 'orders_index' %>
 
 <!--
 
@@ -221,3 +232,6 @@
  ##################################################################################################### 
 selected=\"selected\"
 -->	
+
+
+<script data-turbolinks-track = "reload" src="/js/resa-js.js"></script>
