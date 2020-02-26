@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   post 'validate-zone', to:"orders#zone", as:"zone"
   get '/reservation-prestation', to:'orders#index', as: "reservation"
   post '/reservation-prestation/save', to:'orders#saveSession', as: "save_session"
-  
+  post 'validate-code', to:"orders#code_promo", as:"code_promo"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 end

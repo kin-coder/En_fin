@@ -388,7 +388,7 @@ left: 250px;*/
   .text-btn{
     padding-left: 15px;
     padding-right: 15px;
-    font-family: Quicksand, 'Open Sans' !important;
+    font-family: Lato, 'Open Sans' !important;
   }
 
 
@@ -617,11 +617,11 @@ left: 250px;*/
     text-align: justify;
     line-height: 26px !important;
     padding: 5px;
-    font-family: Quicksand, 'Open Sans' !important;
+    font-family: Lato, 'Open Sans' !important;
   }
   .service-single{
-    height: 541px;
-  }
+    /*height: 541px;
+  */  }
 
 }
 
@@ -692,7 +692,7 @@ left: 250px;*/
 
   .a-btn{
     position: relative;
-    right: 40px;
+    right: 20px;
   }
   .reviewInfo .sansfa {
     font-size: 25px;
@@ -705,10 +705,10 @@ left: 250px;*/
     line-height: 26px !important;
     padding-right: 10px;
     padding-left: 10px;
-    font-family: Quicksand, 'Open Sans' !important;
+    font-family: Lato, 'Open Sans' !important;
   }
   .service-single{
-    height: 900px;
+    /*height: 900px;*/
   }
   .btn-a{
     position:relative;
@@ -719,6 +719,27 @@ left: 250px;*/
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  .contactSectionEngagement{
+padding-top:65px !important;
+  }
+
+  .bloc-engagement{
+text-align: center !important;
+
+  }
+  .reviewinfocontact{
+width: 500px !important;
+  }
+    .reviewinfocontact2{
+width: 500px !important;
+position:absolute;
+left: -75px;
+  }
+  .col-sm-offset-2 {
+
+    margin-left: 0%;
+
+}
   .form-group {
     position: relative;
     width: 100% !important;}
@@ -743,14 +764,15 @@ left: 250px;*/
     }
     .aboutus{
       color: #ec5598;
-      font-family: Quicksand, 'Open Sans' !important;
+      font-family: Lato, 'Open Sans' !important;
+      margin-left: -35px;
     }
     .ccm{
       position: relative;
-      top: 20px;
+      top: 24px;
       padding-left: 5px;
       padding-right: 5px;
-      font-family: Quicksand, 'Open Sans' !important;
+      font-family: Lato, 'Open Sans' !important;
     }
     #ok{
       display: inline-block;
@@ -771,23 +793,27 @@ left: 250px;*/
       font-size: 25px;
       margin: 0 0 25px 0;
       color: #ec5598;
-      font-family: Quicksand, 'Open Sans' !important;
+      font-family: Lato, 'Open Sans' !important;
+      margin-left: -30px;
     }
     .text-p-index{
       text-align: justify;
       line-height: 26px !important;
-      font-family: Quicksand, 'Open Sans' !important;
+      font-family: Lato, 'Open Sans' !important;
+      position: relative;
+      left: -17.5px;
     }
     .modalText {
       text-align: center;
       margin-top: -35px !important;
     }
     .service-single{
-      height: 541px;
+      /*height: 541px;*/
     }
     .btn-a{
       position:relative;
-      top: 53px;
+      top: 5px;
+      left: -20px;
     }
 
   }

@@ -1,36 +1,68 @@
-/*
-
 document.getElementById('cart-btn-ok').addEventListener('click',showCart)
-
-function showCart(){
-	let cart = document.getElementById("cart-inner-ok")
-	cart.classList.remove("hidden")
-
-	
+numberOrder()
+function numberOrder(){
 	let spa = JSON.parse(sessionStorage.getItem("spa"))
 	let massages = JSON.parse(sessionStorage.getItem("massages"))
 	let cadeau = JSON.parse(sessionStorage.getItem("cadeau"))
-	
+	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
+	let number = 0
+	let totalPrice = 0
+	let spaAndMassage = "<ul>"
 	if (spa) {
-		spa.length
+		for (var i = spa.length - 1; i >= 0; i--) {
+			if(spa[i].time != ""){
+				number++
+			}
+		}
 	}
+	if (number > 0) {
+		spaAndMassage += "<li>location spa: "+number+" "+prestations.priceSpa+"€</li>"
+		totalPrice+= Number(prestations.priceSpa)
+	}
+
+	let numberMassage = 0
 	if (massages) {
-		massages.length
+		for (var i = massages.length - 1; i >= 0; i--) {
+			if(typeof(massages[i].sub) != "string"){
+				numberMassage++
+				number++
+			}
+		}
 	}
+	if (numberMassage > 0) {
+		spaAndMassage += "<li>massage: "+numberMassage+" "+prestations.priceMassage+"€</li>"
+		totalPrice+= Number(prestations.priceMassage)
+	}
+	document.getElementById("cart-inner-prestation").innerHTML = spaAndMassage+"</ul>"
+
+	let htmlCadeau = "<ul>"
 	if (cadeau) {
-		cadeau.length
+		for (var i = cadeau.length - 1; i >= 0; i--) {
+			number += cadeau[i][1]
+			totalPrice += Number(cadeau[i][3])*Number(cadeau[i][1])
+			htmlCadeau += "<li>"+cadeau[i][2]+" "+ Number(cadeau[i][3])*Number(cadeau[i][1]) +"€</li>"
+		}
 	}
+	document.getElementById("cart-inner-produit").innerHTML = htmlCadeau+"</ul>"
+	if (prestations.codePromo) {
+		document.getElementById("promo-code").innerHTML = prestations.codePromo
+	}else{
+		document.getElementById("promo-code").innerHTML = "aucun"
+	}
+	if (typeof(totalPrice)!= "number") {
+		document.getElementById("price-modal-cart").innerHTML = 0+"€"
+	}else{
+		document.getElementById("price-modal-cart").innerHTML = totalPrice+"€"
+	}
+	document.getElementById("number-cart-ok").innerHTML = number
 }
 
-
-
-
-
-
-
-document.getElementById("cart-inner-prestation")
-document.getElementById("cart-inner-produit")
-document.getElementById("promo-code")
-document.getElementById("price-modal-cart")
-
-*/
+function showCart(){
+	numberOrder()
+	let cart = document.getElementById("cart-inner-ok")
+	if (cart.classList[0] == "hidden"){
+		cart.classList.remove("hidden")	
+	}else{
+		cart.classList.add("hidden")	
+	}
+}

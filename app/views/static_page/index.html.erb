@@ -10,20 +10,20 @@
     align:justify; 
     position:relative; 
     left:5px!important;
-    font-family: Quicksand, 'Open Sans' !important;
+    font-family: Lato, 'Open Sans' !important;
   }
 
   /* font texte N de texte-baniere*/
   .texte-baniere b{
     font-size:25px;
-    font-family:Quicksand, Open Sans, serif!important;
+    font-family:Lato, Open Sans, serif!important;
   }
 
 
   /* font texte du titre de texte-baniere*/
   .poli1{
 
-   font-family:Quicksand, Roboto!important;
+   font-family:Lato, Roboto!important;
    font-size: 20px !important;
  }
  
@@ -41,7 +41,7 @@
     letter-spacing: normal;
     color: #ec5598;
     font-family: Quicksand, 'Open Sans'!important;
-    font-size: 50px;
+    font-size: 50px !important;
     letter-spacing: 4px;
     line-height: 42px;
     text-transform: capitalize;
@@ -99,12 +99,14 @@
               <div class="row">
 
                 <div class="texte-baniere col-12 col-md-7"> <b>C</b>ocooning Spa, le nouveau partenaire de vos instants bien-être à domicile !
-                En quelques clics, il est désormais possible de réserver vos prestations Spa & Massage où que vous soyez </div><br>
+                En quelques clics, il est désormais possible de réserver vos prestations Spa & Massage où que vous soyez.</div><br>
 
               </div>
             </div>
           </span><br>
-          <div ><a href="#service" class="btn btn-primary first-btn waves-effect waves-light scale-up bout" id="first-btn">Découvrir</a></div>
+          <div class="baniere-btn">
+            <a href="#service" class="btn btn-primary first-btn waves-effect waves-light scale-up bout" id="first-btn">Découvrir</a>
+          </div>
         </div>
       </div>
     </div>
@@ -118,7 +120,9 @@
           <span class="h4 from-bottom texte-baniere"><b>N</b>ous vous proposons un service de location de spa, jacuzzi gonflable clé
             en main. À domicile ou sur le lieu de votre choix, profitez d’un instant de
           détente et de relaxation inoubliable.</span><br>
-          <div  ><a href="#"class="btn btn-primary first-btn waves-effect waves-light scale-up " id="first-btn" >Réserver</a></div>
+          <div class="baniere-btnbis">
+            <a href="#"class="btn btn-primary first-btn waves-effect waves-light scale-up " id="first-btn" >Réserver</a>
+          </div>
         </div>
       </div>
     </div>
@@ -127,9 +131,11 @@
     <div class="slide slideResize slide4" style="background-image: url(img/home/gallery-2.jpg);">
       <div class="container">
         <div class="common-inner slide-inner4 texte-baniere col-12 col-md-7">   <!--common-inner slide-inner3-->
-          <span class="h1 from-bottom poli1">Bookez votre Massage et sentez-vous au top!</span><br>
-          <span class="h4 from-bottom texte-baniere"><b>A</b> domicile, à l’hôtel ou encore au bureau…Le massage vient à vous, où vous le voulez, quand vous le souhaitez !</span><br>
-          <div  ><a href="<%= reservation_path('location-spa') %>" class="btn btn-primary first-btn waves-effect waves-light scale-up" id="first-btn" >Réserver</a></div>
+          <span class="h1 from-bottom poli1">Bookez votre Massage et sentez-vous au top ! </span><br>
+          <span class="h4 from-bottom texte-baniere"><b>A</b> domicile, à l’hôtel ou encore au bureau … Le massage vient à vous, où vous le voulez, quand vous le souhaitez !</span><br>
+          <div class="baniere-btnbis">
+            <a href="<%= reservation_path('location-spa') %>" class="btn btn-primary first-btn waves-effect waves-light scale-up" id="first-btn" >Réserver</a>
+          </div>
         </div>
       </div>
     </div>
@@ -151,8 +157,8 @@
             <img src="/img/ccspa.png" alt="Image review" class="img-responsive" alt="Massage">
           </div>
           <div class="reviewInfo">
-            <center class="sansfa">Bienvenu chez Cocooning Spa !</center>
-            <p>La plateforme web n°1 en Europe au service de votre détente.
+            <center class="sansfa">Bienvenue chez Cocooning Spa !</center>
+            <p class="text-p-bienvenu">La plateforme web n°1 en Europe au service de votre détente.
             Notre mission est de vous permettre de réserver en deux clics des prestations de bien-être à domicile et de vous inciter à passer du bon temps et à penser à vous. </p>
           </div>
         </div>
@@ -183,7 +189,10 @@
             </div>
             <div class="reviewInfo service-single">
               <center class="sansfa">Location spa à domicile</center>
-              <p class="text-p-index"> Un concept inédit et original : nous installons et mettons en service un jacuzzi gonflable sur le lieu de votre choix afin de vous faire vivre un moment qui vous apportera à coup sûr détente, bien-être et convivialité. En été comme en hiver, en intérieur ou en extérieur, n’hésitez plus et tentez cette expérience unique en couple, entre amis ou encore en famille. Louer un spa/jacuzzi à domicile, c’est maintenant possible avec Cocooning Spa !</p>
+              <p class="text-p-index"> Un concept inédit et original : nous installons et mettons en service un jacuzzi gonflable sur le lieu de votre choix afin de vous faire vivre un moment qui vous apportera à coup sûr détente, bien-être et convivialité. <br>
+                En été comme en hiver, en intérieur ou en extérieur, n’hésitez plus et tentez cette expérience unique en couple, entre amis ou encore en famille. <br>
+                Louer un spa/jacuzzi à domicile, c’est maintenant possible avec Cocooning Spa !
+              </p>
               <div class="a-btn btn-a">
                <%= link_to "Découvrir", spa_path, class:"btn btn-primary first-btn mass text-btn" %>
 
@@ -200,8 +209,8 @@
           </div>
           <div class="reviewInfo">
             <center class="sansfa">Massage à domicile</center>
-            <p class="text-p-index">Imaginez profiter d’un massage sans avoir à vous déplacer ou à attendre... Ça donne envie, non? Avec Cocooning Spa, ce rêve devient réalité : c'est le bien-être qui vient à vous au moment où vous l'avez décidé. Que ce soit pour un massage classique, sportif ou encore relaxant, vous pouvez réserver celui-ci quand vous voulez. Commandez en quelques secondes un massage de qualité à domicile, à l’hôtel, au bureau, dans un parc, à la plage…Il est temps que le monde du massage s’adapte à vous !</p>
-            <div class="a-btn">
+            <p class="text-p-index">Imaginez profiter d’un massage sans avoir à vous déplacer ou à attendre ... Ça donne envie, non? Avec Cocooning Spa, ce rêve devient réalité : c'est le bien-être qui vient à vous au moment où vous l'avez décidé. Que ce soit pour un massage classique, sportif ou encore relaxant, vous pouvez réserver celui-ci quand vous voulez. Commandez en quelques secondes un massage de qualité à domicile, à l’hôtel, au bureau, dans un parc, à la plage ... Il est temps que le monde du massage s’adapte à vous !</p>
+            <div class="a-btn btn-a">
              <%= link_to "Découvrir", massage_path, class:"btn btn-primary first-btn mass text-btn" %>
 
            </div>
@@ -218,7 +227,7 @@
 <section class="container-fluid clearfix productArea">
   <div class="container">
     <div class="secotionTitle">
-      <h2 class="police_massage"><span>Comment</span>ça marche?</h2>
+      <h2 class="police_massage"><span>Comment</span>ça marche ?</h2>
     </div>
     <div class="row">
       <div class="col-md-4 col-sm-6 col-xs-12">
@@ -228,7 +237,7 @@
             <div class="productMas"></div>
           </div>
           <div class="productCaption">
-            <p class="ccm">Réservez vos prestations bien-être en un clic partout en France, Belgique, Luxembourg et Suisse.</p>
+            <p class="ccm">Réservez vos prestations bien-être en <br>un clic partout en France, Belgique, Luxembourg et Suisse.</p>
 
           </div>
         </div>
@@ -240,7 +249,7 @@
             <div class="productMas"></div>
           </div>
           <div class="productCaption">
-            <p class="ccm">Nos services sont disponibles de 8h à 22h, tous les jours de l’année, même au dernier moment ! On s’adapte à vous</p>
+            <p class="ccm">Nos services sont disponibles de 8h à 22h, tous les jours de l’année, même au dernier moment ! <br>On s’adapte à vous</p>
           </div>
         </div>
       </div>
@@ -251,7 +260,7 @@
             <div class="productMas"> </div>
           </div>
           <div class="productCaption">
-            <p class="ccm">Vous vous relaxez ! Vous n’avez plus qu’à vous détendre et à profiter de l’instant présent !</p>
+            <p class="ccm">Vous vous relaxez ! <br>Vous n’avez plus qu’à vous détendre et à profiter de l’instant présent !</p>
           </div>
         </div>
       </div>
@@ -296,11 +305,11 @@
     <div class="row">
       <div class="col-sm-6 col-xs-12">
         <div class="row">
-          <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
-            <div class="reviewInfo">
+          <div class="col-sm-9 col-sm-offset-2 col-xs-12 reviewInner" id="about-us">
+            <div class="reviewInfo reviewinfocontact">
               <center><i class="fa aboutus" aria-hidden="true"> QUI SOMMES-NOUS?</i></center>
               <p class="text-p-index">Cocooning Spa est une start-up française qui propose LA solution aux personnes intéressées par les prestations de bien-être à domicile. Nous vous proposons une plateforme web sur laquelle vous pouvez commander en quelques secondes une location de spa/jacuzzi ou un massage sur le lieu de votre choix et au moment voulu. <span id="lirelasuite" style="display:none;"> Une flexibilité sans égale. Cocooning Spa surfe sur une nouvelle tendance de consommation, celle du plaisir immédiat et sans restriction. 
-              Nous entendons bien, à travers ce concept totalement novateur, révolutionner l’univers du bien-être. </span> <i class="btn lire-btn" id="more" aria-hidden="true" onclick="document.getElementById('lirelasuite').style.display = 'block'; this.style.display = 'none';">lire la suite</i>
+              Nous entendons bien, à travers ce concept totalement novateur, révolutionner l’univers du bien-être. </span> <a href="javascript:void(0)" class="lire-btn" id="more" aria-hidden="true" onclick="document.getElementById('lirelasuite').style.display = 'block'; this.style.display = 'none';">lire la suite</a href="">
             </p>
             <div class="a-btn">
               <%= link_to "En savoir plus", propos_path, class:"btn btn-primary first-btn mass text-btn" %>
@@ -314,7 +323,7 @@
     <div class="col-sm-6 col-xs-12">
       <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
-          <div class="reviewInfo">
+          <div class="reviewInfo reviewinfocontact2">
             <center><i class="fa aboutus" aria-hidden="true">DEVENEZ PARTENAIRES</i></center>
             <p class="text-p-index">Vous êtes déjà professionnels dans le domaine du massage ou de la location de spa ? Vous n’êtes pas encore en activité et vous souhaitez vous lancer, devenir indépendant ? Cocooning Spa est le tremplin qu’il vous faut. Nous avons besoin de partenaires comme vous ! <br>
             Alors rejoignez vous aussi l’aventure Cocooning Spa.</p>
@@ -334,7 +343,7 @@
 <div class="secotionTitle">
   <h2 id="contacter" class="police_massage"><span>Nos engagements</span></h2>
 </div>
-<section class="clearfix contactSection">
+<section class="clearfix contactSection contactSectionEngagement">
   <div class="container">
     <div class="row">
       <center class="col-sm-6">
@@ -342,33 +351,34 @@
         <div>
           <b><span><i class="fa fa-check-square-o" aria-hidden="true" id="ok"></i><br></span> Ecoute, disponibilité & réactivité</b>
         </div>
-        <p class='text-p-index'>De la réservation jusqu’au suivi de votre satisfaction, nous comptons bien vous cocooner</p>
+        <p class='text-p-index bloc-engagement'>De la réservation jusqu’au suivi de votre satisfaction, <br>nous comptons bien vous cocooner.</p>
 
       </center>
       <center class="col-sm-6">
         <div>
           <b><span><i class="fa fa-thumbs-up" aria-hidden="true" id="ok"></i> <br></span> Professionnels sélectionnés, formés et diplômés</b>
         </div>
-        <p class='text-p-index'>Toutes nos prestations sont réalisées par des professionnels sélectionnés, formés et diplômés. Ils s’occuperont de vous avec talent et gentillesse !</p>
+        <p class='text-p-index bloc-engagement'>Toutes nos prestations sont réalisées par des professionnels sélectionnés, formés et diplômés. Ils s’occuperont de vous avec talent et gentillesse !</p>
       </center>
     </div>
 
     <div class="row">
+            <center class="col-sm-6">
+        <div>
+          <b><span><i class="fa fa-lock" aria-hidden="true" id="ok"></i><br></span> Paiement CB sécurisé </b>
+        </div>
+        <p class='text-p-index bloc-engagement'>Grâce à nos partenaires Mercanet by BNP Paribas et Paypal, vous pourrez commander en toute tranquillité. Nous vous demandons seulement un acompte lors de votre réservation en ligne, puis le reste du paiement se fait directement sur place auprès du professionnel.</p>
+      </center>
       <center class="col-sm-6">
 
         <div>
           <b><span><i class="fa fa-clock-o" aria-hidden="true" id="ok"></i><br></span> Prestations sur mesure </b>
         </div>
-        <p class='text-p-index'>C’est vous qui choisissez votre prestation et vos horaires, nous qui nous adaptons. Vous pouvez personnaliser votre moment en fonction de vos envies.</p>
+        <p class='text-p-index bloc-engagement'>C’est vous qui choisissez votre prestation et vos horaires, nous qui nous adaptons. Vous pouvez personnaliser votre moment en fonction de vos envies.</p>
 
 
       </center>
-      <center class="col-sm-6">
-        <div>
-          <b><span><i class="fa fa-lock" aria-hidden="true" id="ok"></i><br></span> Paiement CB sécurisé </b>
-        </div>
-        <p class='text-p-index'>Grâce à nos partenaires Mercanet by BNP Paribas et Paypal, vous pourrez commander en toute tranquillité. Nous vous demandons seulement un acompte lors de votre réservation en ligne, puis le reste du paiement se fait directement sur place auprès du professionnel</p>
-      </center>
+
     </div>  
   </div>
 </section>
@@ -536,7 +546,7 @@
                 <input type="text" name="contact-form-mobile" class="form-control" placeholder="Votre Mobile" required>
               </div>
               <div class="form-group">
-                <textarea class="form-control" name="contact-form-message" placeholder="Laisser votre Message" required></textarea>
+                <textarea class="form-control" name="contact-form-message" placeholder="Laissez votre Message" required></textarea>
               </div>
               <div class="form-group">
                 <button type="submit" id="contact-submit-btn" class="btn btn-primary first-btn">Envoyer</button>
@@ -563,3 +573,4 @@
   </section>
 
   <%= javascript_pack_tag 'index-js' %>
+

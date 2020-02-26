@@ -49,32 +49,6 @@ listdepartement.each do |listdepartement|
 	end
 end
 
-
-=begin
-
-
-Selection pays : France, Belgique, Luxembourg ou suisse
-Si France sélectionné, selection du département:
-	-les dpts du 01 au 95 
-	971 guadeloupe, 972martinique, 973 guyane, 974 La Réunion, 976 Mayotte
-
-Affichage des services en fonction de la zone sélectionnée
-
-LES SERVICES NE S’AFFICHENT QUE SI ILS SONT PRESENTS DANS LA ZONE SELECTIONNEE. 
-Si seulement l’un ou l’autre est present, n’afficher que celui ci. 
-Si aucun service dans la zone, afficher le message suivant : 
-“ Oups, le service n’est pas disponible actuellement dans votre zone ! 
-Nous oeuvrons pour qu’il le soit prochainement. “
-
-
-=end
-
-
-
-
-
-
-
 # ======================= CREE LES SERVICE MASSAGE ======================= #
 sus = [["Massage Classique / découverte","Le massage classique est un traitement qui agit sur chaque partie du corps les unes après les autres. Il se pratique par pétrissage, lissage, vibration ou par des mouvements plus petits et plus subtils sur les points de tension. Il s’agit d’un massage global relaxant qui en plus de soulager les tensions musculaires superficielles et profondes, possède de multiples actions thérapeutiques. Il permet de renforcer le système immunitaire, d’améliorer les fonctions digestives, de stimuler la vitalité des tissus, favoriser une bonne circulation sanguine et d’apaiser les tensions nerveuses. Le massage classique est recommandé pour les insomnies, les angoisses, le stress, la nervosité, la constipation, les migraines."],
 ["Massage Anti-stress / relaxant","Le massage anti-stress est source de détente, en enlevant les nœuds musculaires et en optimisant la circulation sanguine et lymphatique. Il élimine stress et anxiété. Il élimine ainsi les toxines à l’origine des dépressions. Une fois les tensions dissipées, l’organisme se relaxe, les muscles et articulations retrouvent leur souplesse. Cette action se répercute directement sur le cerveau puisque l’évacuation des toxines optimise son oxygénation.
@@ -189,9 +163,12 @@ listavis.each do |avis|
 	puts "Comment-#{c.id}"
 end
 
-
-
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+	# Creation d'exemple de code promo
+["HULK","SPACADEAU","GRENOUILLE","PINOK","GANA"].each do |code|
+	puts "Code promoe -#{code}"
+	CodePromo.create(code:code)
+end
  
 =begin
 
