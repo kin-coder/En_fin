@@ -1,0 +1,90 @@
+<br><br><br><br>
+<div class="container">
+	<%= form_tag(summary_path) do %>
+	<div>
+		<h2>Addresse de livraison</h2>
+
+		<div>
+			<%= label_tag 'adresseL', 'Adresse', class: 'small_label' %>
+			<%= text_field_tag 'adresseL', @client.adresse, class: "input" %>
+		</div>
+		
+		<div>
+			<%= label_tag 'complAdresseL', 'Complement d\'adresse', class: 'small_label' %>
+			<%= text_field_tag 'complAdresseL', nil, class: "input" %>
+		</div>
+		
+		<div>
+			<%= label_tag 'codePostaL', 'Code Postal', class: 'small_label' %>
+			<%= text_field_tag 'codePostaL', nil, class: "input" %>
+		</div>
+		
+		<div>
+			<%= label_tag 'villeL', 'Ville', class: 'small_label' %>
+			<%= text_field_tag 'villeL', nil, class: "input" %>
+		</div>
+			
+		<div>
+			<label>Pays</label>
+			<% @countries.each do |country| %>
+				<label class="">
+					<%= radio_button_tag 'countryL', country.name %> <%= country.name%>
+				</label>
+			<% end %>
+		</div>
+	</div>
+	<hr>
+	<div>
+		<h2>Addresse de facturation</h2>
+		<div>
+			<%= label_tag 'adresseF', 'Adresse', class: 'small_label' %>
+			<%= text_field_tag 'adresseF', nil, class: "input" %>
+		</div>
+		
+		<div>
+			<%= label_tag 'complAdresseF', 'Complement d\'adresse', class: 'small_label' %>
+			<%= text_field_tag 'complAdresseF', nil, class: "input" %>
+		</div>
+		
+		<div>
+			<%= label_tag 'codePostaF', 'Code Postal', class: 'small_label' %>
+			<%= text_field_tag 'codePostaF', nil, class: "input" %>
+		</div>
+		
+		<div>
+			<%= label_tag 'villeF', 'Ville', class: 'small_label' %>
+			<%= text_field_tag 'villeF', nil, class: "input" %>
+		</div>
+			
+		<div>
+			<label>Pays</label>
+			<% @countries.each do |country| %>
+				<label class="">
+					<%= radio_button_tag 'countryF', country.name %> <%= country.name%>
+				</label>
+			<% end %>
+		</div>
+	</div>
+	<hr>
+	<div>
+		<h2>Un message à nous faire parvenir?</h2>
+		
+		<div>
+			<%= label_tag 'message', 'Message perso', class: 'small_label' %>
+			<%= text_area_tag 'message', "Un message à nous faire parvenir?", rows: 10, cols: 100%>
+		</div>
+
+	</div>
+
+	<div >
+		<%= submit_tag("Je valide", class:"btn btn-primary")%>
+	</div>
+
+
+	<% end %>
+
+	<br><br><br>
+
+</div>
+
+

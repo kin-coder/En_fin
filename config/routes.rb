@@ -43,7 +43,14 @@ Rails.application.routes.draw do
   post 'filter' => 'controller_name#filter'
   post 'validate-zone', to:"orders#zone", as:"zone"
   get '/reservation-prestation', to:'orders#index', as: "reservation"
+  get '/reservation-prestation/info-livraison', to:'orders#delivery', as: "delivery"
+
+  
+
   post '/reservation-prestation/save', to:'orders#saveSession', as: "save_session"
+
+  post '/reservation-prestation/recapitulatif-commande', to:'orders#summary', as: "summary"
+
   post 'validate-code', to:"orders#code_promo", as:"code_promo"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
