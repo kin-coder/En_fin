@@ -126,11 +126,17 @@ class OrdersController < ApplicationController
     puts params[:praticien]
     puts "~~~~"*5
 
+    redirect_to delivery_path
   end
 
   # 2 Selection des adresse de livraison et facturation
   def delivery
     
+# email: ""
+# first_name: nil, last_name: nil, adresse: nil, tel: nil, sexe: nil>
+  @client = Client.first
+  @countries = Country.all
+
   end
 
   # 3 Affiche la recapitulatif de commande
