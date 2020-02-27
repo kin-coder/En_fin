@@ -60,9 +60,72 @@ class OrdersController < ApplicationController
 
   # 2/2 Sauvegarder dans une session les données
   def saveSession
-    puts "~~~~"*20
-    puts params.inspect
-    puts "~~~~"*20
+    # orderSpa = [{time:48,type:["a","b"],price:180,option:[["a",12],["c",45]]},{time:48,type:["a","b"],price:180,option:[["a",12],["c",45]]}]
+    # orderMassage =  [{ca:"Homme",su:"prénatal",price:[30,120]}]
+    orderSpa = []
+    params[:timeSpa].each do |k,v|
+      tmp = {}
+      if Spa.find_by(duration:v[0].to_i)
+        tmp["time"] = v[0].to_i
+      else
+        # erreur
+      end
+      tmp["type"] = params[:typeSpa][k]
+      options = params[:optionSpa][k]
+
+      if options
+        tmpOption = []
+        options.each do |option|
+          product = Product.find_by(name:option)
+          if product
+            tmpOption.push(option)
+          else
+            # erreur
+          end
+        end
+        tmp["option"] = tmpOption
+      end
+      orderSpa.push(tmp)
+    end
+
+    puts "~~~"*10
+    puts orderSpa
+    puts "~~~"*10
+
+    orderMassage = []
+
+    params[:massageSu].each do |k,v|
+      tmp = {}
+      mCa = MassageCa.find_by(name:v[0])
+      if mCa
+        tmp["ca"] = v[0]
+        mSu = mCa.massage_sus.find_by(name:v[1])
+        if mSu
+          tmp["su"] = v[1]
+        else
+          # erreur
+        end
+      else
+        # erreur
+      end
+      price = MassageSuPrice.find_by(duration:params[:massageSuPrice][k][0].to_i)
+      if price
+        tmp["price"] = [price.duration,price.ordinary_price,price.ordinary_acompte]
+      else
+        # erreur
+      end
+      orderMassage.push(tmp)
+    end
+
+    puts "~~~"*10
+    puts orderMassage
+    puts "~~~"*10
+
+
+    puts "~~praticien~~"*5
+    puts params[:praticien]
+    puts "~~~~"*5
+
   end
 
   # 2 Selection des adresse de livraison et facturation
