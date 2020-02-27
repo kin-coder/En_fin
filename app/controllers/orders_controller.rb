@@ -141,7 +141,9 @@ class OrdersController < ApplicationController
 
   # 3 Affiche la recapitulatif de commande
   def summary
-    
+    puts "~~~~"*12
+    puts params.inspect
+    puts "~~~~"*12
   end
 
   # 4 Le Payement
