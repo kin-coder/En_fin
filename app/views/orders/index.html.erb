@@ -44,146 +44,164 @@
 		</div>
 	</div>
 
-<!-- ==========================CONTENU ACCORDEONS================= -->
-<div class="container allfaq">
-	<div class="row">
-		<div class="col-sm-9">
-			<!-- session js -->
-			<%= form_tag(save_session_path,id:"form-data",'data-id':"#{@idMassage}",'data-spas':"#{@spas}",'data-spaoptions':"#{@spaoptions}",'data-massages':"#{@massages}") do %>
-			<!-- session js fin -->
-			<div id="prestation-list">
-				<div class="accordion js-accordion">
+	<!-- ==========================CONTENU ACCORDEONS================= -->
+	<div class="container allfaq">
+		<div class="row">
+			<div class="col-sm-9">
+				<!-- session js -->
+				<%= form_tag(save_session_path,id:"form-data",'data-id':"#{@idMassage}",'data-spas':"#{@spas}",'data-spaoptions':"#{@spaoptions}",'data-massages':"#{@massages}") do %>
+				<!-- session js fin -->
+				<div id="prestation-list">
+					<div class="accordion js-accordion">
 
-					<div class="accordion__item js-accordion-item active">
-						<div class="accordion-header js-accordion-header patternbg">LOCATION SPA</div> 
-						<div class="accordion-body js-accordion-body">
-							<div class="accordion-body__contents">
-								<div class="spa">
-									<h2>LOCATION SPA A DOMICILE</h2>
-									<div class="spa-click">
-										<p>Je souhaite reserver <i class="fa fa-minus-circle" id="remove-spa"></i><span id="number-spa">0</span><i class="fa fa-plus-circle" id="add-spa"></i> spa</p>
-									</div>
-									<div id="spa-input">
-
-									</div>
-								</div>
-							</div>
-
-						</div><!-- end of accordion body -->
-					</div><!-- end of accordion item -->
-					<div class="accordion__item js-accordion-item">
-						<div class="accordion-header js-accordion-header patternbg">MASSAGE À DOMICILE</div> 
-						<div class="accordion-body js-accordion-body">
-							<div class="accordion-body__contents">
-								<div class="massage">
-									<h2>MASSAGE A DOMICILE</h2>
-
-									<!-- #################### -->
-									<div id="select-prestation">
-										<h4>Je souhaite reserver pour :</h4>
-										<div>
-											<p>Homme<i class="fa fa-minus-circle remove-massage" data-cat="Homme"></i><span id="number-Homme">0</span><i class="fa fa-plus-circle add-massage" data-cat="Homme"></i></p>
+						<div class="accordion__item js-accordion-item active">
+							<div class="accordion-header js-accordion-header patternbg">LOCATION SPA</div> 
+							<div class="accordion-body js-accordion-body">
+								<div class="accordion-body__contents">
+									<div class="spa">
+										<h2>LOCATION SPA A DOMICILE</h2>
+										<div class="spa-click">
+											<p>Je souhaite reserver <i class="fa fa-minus-circle" id="remove-spa"></i><span id="number-spa">0</span><i class="fa fa-plus-circle" id="add-spa"></i> spa</p>
 										</div>
-										<div>
-											<p>Femme<i class="fa fa-minus-circle remove-massage" data-cat="Femme"></i><span id="number-Femme">0</span><i class="fa fa-plus-circle add-massage" data-cat="Femme"></i></p>
-										</div>
+										<div id="spa-input">
 
-
-									</div>
-
-									<div id="massage-input">
-
-
-									</div>
-
-									<!-- #################### -->
-									<div class="praticien">
-										<h4>Infos complementaires</h4>
-										<label>Type de praticien</label>
-										<div>
-											<input type="radio" id="man" name="praticien" value="Homme" class="praticien-list" >
-											<label for="man">Homme</label>
-										</div>
-
-										<div>
-											<input type="radio" id="woman" name="praticien" value="Femme" class="praticien-list" >
-											<label for="woman">Femme</label>
-										</div>
-
-										<div>
-											<input type="radio" id="other" name="praticien" value="Peu importe" class="praticien-list" >
-											<label for="other">Peu importe</label>
 										</div>
 									</div>
 								</div>
-							</div>
 
-						</div><!-- end of accordion body -->
-					</div><!-- end of accordion item -->
+							</div><!-- end of accordion body -->
+						</div><!-- end of accordion item -->
+						<div class="accordion__item js-accordion-item">
+							<div class="accordion-header js-accordion-header patternbg">MASSAGE À DOMICILE</div> 
+							<div class="accordion-body js-accordion-body">
+								<div class="accordion-body__contents">
+									<div class="massage">
+										<h2>MASSAGE A DOMICILE</h2>
 
+										<!-- #################### -->
+										<div id="select-prestation">
+											<h4>Je souhaite reserver pour :</h4>
+											<div>
+												<p>Homme<i class="fa fa-minus-circle remove-massage" data-cat="Homme"></i><span id="number-Homme">0</span><i class="fa fa-plus-circle add-massage" data-cat="Homme"></i></p>
+											</div>
+											<div>
+												<p>Femme<i class="fa fa-minus-circle remove-massage" data-cat="Femme"></i><span id="number-Femme">0</span><i class="fa fa-plus-circle add-massage" data-cat="Femme"></i></p>
+											</div>
+										</div>
+										<div id="massage-input">
+
+
+										</div>
+										<!-- #################### -->
+										<div class="praticien">
+											<h4>Infos complementaires</h4>
+											<label>Type de praticien</label>
+											<div>
+												<input type="radio" id="man" name="praticien" value="Homme" class="praticien-list" >
+												<label for="man">Homme</label>
+											</div>
+											<div>
+												<input type="radio" id="woman" name="praticien" value="Femme" class="praticien-list" >
+												<label for="woman">Femme</label>
+											</div>
+											<div>
+												<input type="radio" id="other" name="praticien" value="Peu importe" class="praticien-list" >
+												<label for="other">Peu importe</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div><!-- end of accordion body -->
+						</div><!-- end of accordion item -->
+					</div>
+
+
+					<div class="row">
+						<div class="col-sm-12 sm-9-spa">
+							<div class="innerWrapper">
+								<div class="table-responsive">
+									<table class="table">
+										<thead>
+											<tr>
+												<th id="tableHead">FAITES PLAISIR AVEC NOS IDÉES CADEAUX</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													<div class="row">
+														<% @cadeaus.each do |cadeau| %>
+														<div class="col-sm-3">
+
+															<div><img src="/img/products/<%= cadeau.name %>.jpg" alt="" class="image-produit"> 
+															</div>
+															<div class="description-produit">
+																<%= cadeau.name %> <br>
+																Prix : <%= cadeau.price %> € <br>
+																<strong>Nombres: </strong>
+																<i class="fa fa-minus-circle cadeau-rmv btn-produits" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
+																<strong><span id="<%= cadeau.id %>-nbr">0</span></strong>
+																<i class="fa fa-plus-circle cadeau-add btn-produits" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
+
+																<input type="text" value="[]" name="cadeau" id="cadeau-id" class="hidden">
+
+															</div>
+														</div>
+														<% end %>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>  
+							</div>     
+						</div>
+					</div>
 				</div>
 
-				<div class="cadeaux">
-					<h2>FAITE PLAISIR AVEC NOS IDEES CADEAUX</h2>
-					<ul>
-						<% @cadeaus.each do |cadeau| %>
-						<li><%= cadeau.name %>: <%= cadeau.price %>€
-							<i class="fa fa-minus-circle cadeau-rmv" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
-							<span id="<%= cadeau.id %>-nbr">0</span>
-							<i class="fa fa-plus-circle cadeau-add" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
-						</li>
-						<% end %>
-					</ul>
-					<input type="text" value="[]" name="cadeau" id="cadeau-id" class="hidden">
-				</div>
-			</div>
-
-	<%= submit_tag("Suivant", id:"submi-tag",  class:"confirm-command btn btn-primary a-btn text-btn") %>
-			<% end %>
-
-		</div>
-		<div class="col-sm-3">
-			<h2>Votre commande</h2>
-			<p id="empty-order">Vous n'avez pas encore sélectionné de prestation</p>
-			<div id="spa-order" class="hidden">
-				<h3>Location spa <span id="spa-price-total" data-price=""></span></h3>
-			</div>
-
-			<div id="massage-order" class="hidden">
-				<h3>Massage <span id="massage-price-total" data-price=""></span></h3>
-
-			</div>
-
-			<div id="cadeau-order" class="hidden">
-				<h3>Vos cadeau <span id="cadeau-price-total"></span> €</h3>
-				<div>
-				</div>
-			</div>
-			<div id="code-promo">
-				<h3>Code promo?</h3>
-				<%= form_tag(code_promo_path, remote: true) do %>
-				<div id="alert-code" class="hidden alert alert-success" role="alert">
-					Votre code promo est validé avec succès
-				</div>
-				<label for="codeP">code promo : </label>
-				<input type="text" name="code" id="codeP">
-				<%= submit_tag("valider") %>	
+				<%= submit_tag("Suivant", id:"submi-tag",  class:"confirm-command btn btn-primary a-btn text-btn") %>
 				<% end %>
 			</div>
-			<div>
-				<p>PRIX TOTAL: <strong id="total-price">0,00</strong> €</p>
-				<p>ACOMPTE TOTAL: <strong id="total-acompte">0,00</strong> €</p>
+			<div class="col-sm-3">
+				<h2>Votre commande</h2>
+				<p id="empty-order">Vous n'avez pas encore sélectionné de prestation</p>
+				<div id="spa-order" class="hidden">
+					<h3>Location spa <span id="spa-price-total" data-price=""></span></h3>
+				</div>
+				<div id="massage-order" class="hidden">
+					<h3>Massage <span id="massage-price-total" data-price=""></span></h3>
+
+				</div>
+				<div id="cadeau-order" class="hidden">
+					<h3>Vos cadeaux <span id="cadeau-price-total"></span> €</h3>
+					<div>
+					</div>
+				</div>
+				<div id="code-promo">
+					<h3>Code promo?</h3>
+					<%= form_tag(code_promo_path, remote: true) do %>
+					<div id="alert-code" class="hidden alert alert-success" role="alert">
+						Votre code promo est validé avec succès
+					</div>
+					<label for="codeP">code promo : </label>
+					<input type="text" name="code" id="codeP">
+					<%= submit_tag("valider") %>	
+					<% end %>
+				</div>
+				<div>
+					<p>PRIX TOTAL: <strong id="total-price">0,00</strong> €</p>
+					<p>ACOMPTE TOTAL: <strong id="total-acompte">0,00</strong> €</p>
+				</div>
+
 			</div>
 
 		</div>
-
 	</div>
 </div>
-</div>
 
- <!-- Fin formulaire -->
-			<!-- ======================================================================== -->
-	<%= javascript_pack_tag 'orders_index' %>
+<!-- Fin formulaire -->
+<!-- ======================================================================== -->
+<%= javascript_pack_tag 'orders_index' %>
 
 <!--
 

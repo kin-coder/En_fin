@@ -1,5 +1,55 @@
 <section class="clearfix orderSection padding">
   <div class="container">
+    <div class="row">
+      <div class="col-sm-9 sm-9-spa">
+        <div class="innerWrapper">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th id="tableHead">Produits supplémentaires à vendre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="row">
+                  <% @products.each do |product| %>
+                  <div class="col-sm-3">
+
+                    <div><img src="/img/products/<%= product.name %>.jpg" alt="" class="image-produit"> 
+                    </div>
+                    <div class="description-produit">
+                      <%= product.name %> <br>
+                      Prix : <%= product.price %> € <br>
+                      <strong>Nombres: </strong>   <i id="fa" class="fa fa-minus-circle btn-produits" data-zones="[<%= product.id %>,&quot;<%= product.name %>&quot;,<%= product.price %>]" data-action="delete"></i>
+                      <strong><span id="produits-number-<%= product.id %>">0</span></strong>
+                      <i id="fa" class="fa fa-plus-circle btn-produits" data-zones="[<%= product.id %>,&quot;<%= product.name %>&quot;,<%= product.price %>]" data-action="new"></i>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>  
+    </div>     
+  </div>
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+<section class="clearfix orderSection padding">
+  <div class="container">
     <div class="orderBox  patternbg">
       Faites vos réservations
     </div>
