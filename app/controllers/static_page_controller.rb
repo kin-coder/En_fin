@@ -20,6 +20,15 @@ class StaticPageController < ApplicationController
 
   def cgu  
   end
+  # telechargement du doc cgu en pdf
+  def dataDowCgu
+    send_file(
+      "#{Rails.root}/public/data_cgu/CGU_CCSPA.pdf",
+      filename: "cgu_cocooning_spa.pdf",
+      type: "application/pdf"
+    )
+  end
+
   #page comment-ca-marche
   def ccm
   end
