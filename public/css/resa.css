@@ -1,5 +1,4 @@
 
-
 .container{
 background: white;
 }
@@ -36,6 +35,7 @@ background: white;
   margin: 0 auto;
   border-radius: 5px;
   background: white;
+  margin-bottom: 20px;
 }
 
 .accordion-header,
@@ -126,6 +126,8 @@ content: "\f103";
 .allfaq{
 padding-top: 100px;
 margin-bottom: 100px;
+position: relative;
+left: -15px;
 }
 
 
@@ -172,3 +174,18 @@ height: 25px !important;
 position: relative;
 left: 40.8%;
 }
+
+
+.image-produit{
+width: 100px;
+height: 100px;
+}
+
+
+
+
+
+
+
+
+
