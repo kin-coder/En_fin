@@ -106,17 +106,17 @@ Spa.create(duration: 24, exceptional_price: 180, ordinary_price: 100, exceptiona
 Spa.create(duration: 48, exceptional_price: 230, ordinary_price: 150, exceptional_acompte: 65, ordinary_acompte: 45, service: s2)
 Spa.create(duration: 72, exceptional_price: 280, ordinary_price: 200, exceptional_acompte: 75, ordinary_acompte: 60, service: s2)
 
-Product.create(name: "Décoration romantique", description: "la décoration romantique est composée de ballons, pétales de roses, bougies, lumière tamisée & spot lumineux dans le spa.", price: 20, is_option_spa: false)
+Product.create(name: "Décoration romantique", description: "la décoration romantique est composée de ballons, pétales de roses, bougies, lumière tamisée & spot lumineux dans le spa.", price: 20, is_option_spa: true)
 Product.create(name: "Décoration anniversaire / fête", description: "la décoration anniversaire/fête est composée de ballons, masques anniversaire/fête, lumière d’ambiance & spot lumineux dans le spa.", price: 20, is_option_spa: true)
-Product.create(name: "Fontaine chocolat", description: "Fournie avec chocolat", price: 20, is_option_spa: false)
-Product.create(name: "Plateau de fruits frais", description: "Pour 2 personnes", price: 20, is_option_spa: false)
+Product.create(name: "Fontaine chocolat", description: "Fournie avec chocolat", price: 20, is_option_spa: true)
+Product.create(name: "Plateau de fruits frais", description: "Pour 2 personnes", price: 20, is_option_spa: true)
 
-Product.create(name: "Table de massage", description: "Fournie avec huile de massage", price: 25, is_option_spa: false)
+Product.create(name: "Table de massage", description: "Fournie avec huile de massage", price: 25, is_option_spa: true)
  # ~~~~~~~~~ idée cadeau
-Product.create(name: "Cadeau 1", description: "#####", price: 20, is_option_spa: true)
-Product.create(name: "Cadeau 2", description: "#####", price: 20, is_option_spa: true)
-Product.create(name: "Cadeau 3", description: "#####", price: 20, is_option_spa: true)
-Product.create(name: "Cadeau 4", description: "#####", price: 20, is_option_spa: true)
+Product.create(name: "Lorem ipsum", description: "#####", price: 20, is_option_spa: false)
+Product.create(name: "Lorem ipsum dolor.", description: "#####", price: 20, is_option_spa: false)
+Product.create(name: "Nom du cadeau 1", description: "#####", price: 20, is_option_spa: false)
+Product.create(name: "Cadeau 4", description: "#####", price: 20, is_option_spa: false)
 # ===================== ENREGISTREMENT D'UNE COMMANDE ===================== #
 
 # Order
