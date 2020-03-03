@@ -20,19 +20,14 @@ Rails.application.routes.draw do
   root 'static_page#index'
 
   get '/contact', to:'static_page#contact', as: "contact"
-
   get '/mentions-legales', to:'static_page#legalnotice', as: "legalnotice"
-
   get '/conditions-generales', to:'static_page#cgu', as: "cgu"
   get '/conditions-generales-to-pdf', to:'static_page#dataDowCgu', as: "data_cgu"
-
   get '/faq', to:'static_page#faq', as: "faq"
-
   get "/engagement", to:'static_page#engagement', as: "engagement"
-
   get "/qui-sommes-nous", to:'static_page#propos', as: "propos"
 
-  get '/comment-ca-marche', to:'static_page#comment_ca_marche', as: "comment_ca_marche"
+  get "/devenir-partenaire", to:'static_page#partner', as: "partner"
 
 # Page pour chaque service
   get '/service', to:'static_page#service', as: "service"

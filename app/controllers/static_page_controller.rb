@@ -8,8 +8,11 @@ class StaticPageController < ApplicationController
     @massages = MassageSu.all
     @comments = Comment.all
   end
-
   def location_spa
+  end
+# Devenir partenaire inscription prestataire
+  def partner
+    
   end
 #Autre page
   def contact
@@ -29,9 +32,6 @@ class StaticPageController < ApplicationController
     )
   end
 
-  #page comment-ca-marche
-  def ccm
-  end
   #page faq
   def faq
   end
@@ -42,6 +42,4 @@ class StaticPageController < ApplicationController
   def propos
   end
 
-  def service
-  end
 end
