@@ -106,6 +106,10 @@ Spa.create(duration: 24, exceptional_price: 180, ordinary_price: 100, exceptiona
 Spa.create(duration: 48, exceptional_price: 230, ordinary_price: 150, exceptional_acompte: 65, ordinary_acompte: 45, service: s2)
 Spa.create(duration: 72, exceptional_price: 280, ordinary_price: 200, exceptional_acompte: 75, ordinary_acompte: 60, service: s2)
  # ~~~~~~~~~ idée option pour spa
+Product.create(name: "Romantique", description: "la décoration romantique est composée de ballons, pétales de roses, bougies, lumière tamisée & spot lumineux dans le spa.", price: 20, is_option_spa: true)
+Product.create(name: "Anniversaire", description: "la décoration anniversaire/fête est composée de ballons, masques anniversaire/fête, lumière d’ambiance & spot lumineux dans le spa.", price: 20, is_option_spa: true)
+Product.create(name: "Personnalisée", description: "Fournie avec chocolat", price: 20, is_option_spa: true)
+
 Product.create(name: "Décoration romantique", description: "la décoration romantique est composée de ballons, pétales de roses, bougies, lumière tamisée & spot lumineux dans le spa.", price: 20, is_option_spa: true)
 Product.create(name: "Décoration anniversaire / fête", description: "la décoration anniversaire/fête est composée de ballons, masques anniversaire/fête, lumière d’ambiance & spot lumineux dans le spa.", price: 20, is_option_spa: true)
 Product.create(name: "Fontaine chocolat", description: "Fournie avec chocolat", price: 20, is_option_spa: true)

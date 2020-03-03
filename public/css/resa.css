@@ -228,11 +228,10 @@ input.time-spa-list:empty {
 
 /* style label */
 input.time-spa-list:empty ~ label {
-  position: relative;
   float: left;
   line-height: 2.5em;
   text-indent: 3.25em;
-  margin-top: 2em;
+  /*margin-top: 2em;*/
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -282,4 +281,32 @@ input.time-spa-list:focus ~ label:before {
 
 .time-spa-list{
    width: 30px;
+}
+
+.duree-spa{
+position: relative;
+margin-bottom: 10px;
+margin-right: 10px;
+left: 180px;
+font-size: small;
+}
+
+.label-spa {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 0px;
+    font-weight: 700;
+    position :relative;
+}
+
+.option-spa-list{
+position: absolute;
+left: 100px;
+
+}
+
+.label-option-spa{
+position: relative;
+left: 150px;
+font-size: small;
 }

@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
     # options pour location spa
     @spaoptions = []
     tmpoption = Product.where(is_option_spa:true)
-    tmpoption.each do |option|
+    tmpoption[0..2].each do |option|
       @spaoptions.push([option.id,option.name,option.price])
     end
     # service massage
