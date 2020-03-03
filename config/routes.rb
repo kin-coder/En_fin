@@ -23,7 +23,8 @@ Rails.application.routes.draw do
 
   get '/mentions-legales', to:'static_page#legalnotice', as: "legalnotice"
 
-  get '/conditions-generales-dUtilisation', to:'static_page#cgu', as: "cgu"
+  get '/conditions-generales', to:'static_page#cgu', as: "cgu"
+  get '/conditions-generales-to-pdf', to:'static_page#dataDowCgu', as: "data_cgu"
 
   get '/faq', to:'static_page#faq', as: "faq"
 
@@ -54,7 +55,6 @@ Rails.application.routes.draw do
   post 'validate-code', to:"orders#code_promo", as:"code_promo"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
-  get '/conditions-generales-dUtilisation-to-pdf', to:'static_page#dataDowCgu', as: "data_cgu"
 
 end
 
