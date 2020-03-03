@@ -44,6 +44,20 @@
 <!-- media query -->
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  .secotionTitle h2 span {
+  display: block;
+  letter-spacing: normal;
+  color: #ec5598;
+  font-family: 'Quicksand', 'Open Sans';
+  font-size: 60px !important;
+
+  line-height: 42px;
+  text-transform: capitalize;
+  font-weight: bold;
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+
   .optionnal-texte {
     position: relative;
     border-style: initial;
@@ -99,8 +113,16 @@
     font-family: 'Lato', Times, serif;
     padding-top: 5px;
     }}
+@media only screen and (max-width: 600px) {
 
 
+.areserver {
+    position: fixed;
+    right: 4px;
+    z-index: 100;
+    top: 25%;
+}
+}
 
 
 
@@ -428,6 +450,20 @@ a:hover, a:focus {
 }
 
 @media (min-width: 320px) {
+  .secotionTitle h2 span {
+  display: block;
+  letter-spacing: normal;
+  color: #ec5598;
+  font-family: 'Quicksand', 'Open Sans';
+  font-size: 60px !important;
+
+  line-height: 42px;
+  text-transform: capitalize;
+  font-weight: bold;
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+
 
   .secotionTitle h2 span {
     display: block;
@@ -444,20 +480,7 @@ a:hover, a:focus {
 
 }
 
-.secotionTitle h2 span {
-  display: block;
-  letter-spacing: normal;
-  color: #ec5598;
-  font-family: 'Quicksand', 'Open Sans';
-  font-size: 60px !important;
 
-  line-height: 42px;
-  text-transform: capitalize;
-  font-weight: bold;
-  padding-bottom: 25px;
-  padding-top: 25px;
-}
-}
 @font-face {
   font-family:'Bradley Hand, cursive'!important;
   src: url('Bradley Hand, cursive') format('truetype')!important;
@@ -565,12 +588,40 @@ body.bodyColor.wrapper {
   body.bodyColor.wrapper {
     max-width: 970px;
   }
+  .secotionTitle h2 span {
+  display: block;
+  letter-spacing: normal;
+  color: #ec5598;
+  font-family: 'Quicksand', 'Open Sans';
+  font-size: 60px !important;
+
+  line-height: 42px;
+  text-transform: capitalize;
+  font-weight: bold;
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+
 }
 
 @media (min-width: 1200px) {
   body.bodyColor.wrapper {
     max-width: 1170px;
   }
+  .secotionTitle h2 span {
+  display: block;
+  letter-spacing: normal;
+  color: #ec5598;
+  font-family: 'Quicksand', 'Open Sans';
+  font-size: 60px !important;
+
+  line-height: 42px;
+  text-transform: capitalize;
+  font-weight: bold;
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+
 }
 
 @media (min-width: 480px) {

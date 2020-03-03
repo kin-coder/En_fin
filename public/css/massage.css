@@ -54,7 +54,15 @@
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-
+		.elsebgMassage{
+		width: 700px;
+	}
+.areserver{
+	position: fixed;
+	right: 8px;
+	z-index: 100;
+	top: 20%;
+}
 	.form-control {
 		height: 43px;
 		box-shadow: none;
@@ -349,6 +357,16 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+
+	.btn-spa{
+margin-left: 0px !important;
+	}
+	.areserver{
+	position: fixed;
+	right: 4.5px;
+	z-index: 100;
+	top: 50%;
+}
 	.spaengagement{
 		position: relative;
 		left: -44px;
@@ -364,7 +382,7 @@
 		margin-top: 22px;
 	}
 	.col-sm-4spa{
-		width:32.2% !important;
+		width:33.3% !important;
 	}
 	.contactSectionEngagementMassage{
 		padding-top: 60px !important;
@@ -373,11 +391,11 @@
 		width: 1142px;
 	}
 	.elsebgMassage{
-		width: 1128px;
+		width: 1140px;
 	}
 
 	.reviewInfoMassage{
-		width: 835px !important;
+		width: 847.5px !important;
 	}
 	.form-control {
 		height: 43px;
@@ -453,6 +471,18 @@
 		rgb(238, 17, 190) !important;
 		padding: 10px;
 	}
+		.flecheaccueil-left{
+		position: absolute;
+		right:1050px !important;
+		top: 20%;
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: 100px;
+		text-rendering: auto;
+		color:
+		rgb(238, 17, 190) !important;
+		padding: 10px;
+	}
 
 	#flechemassage-left{
 		position: absolute;
@@ -482,6 +512,17 @@
 		margin-left: 85px;
 		margin-bottom: 100px;
 	}
+.flecheaccueil-right {
+    position: absolute;
+    right: 140px !important;
+    top: 20%;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 100px;
+    text-rendering: auto;
+    color: rgb(238, 17, 190) !important;
+    padding: 10px;
+}
 
 	.flechemassage-right{
 		position: absolute;
@@ -571,7 +612,7 @@
 
 	.productSectionMassage{
 		background-image: linear-gradient(white, white);
-		width: 1142px;
+		width: 1140px;
 		border-radius: 10px;
 	}
 
@@ -689,12 +730,6 @@
 	100%{box-shadow:0px 0px 15px #4183C4;}
 }
 
-.areserver{
-	position: fixed;
-	right: 6px;
-	z-index: 100;
-	top: 50%;
-}
 .btn-full-roundd {
 
 	border-radius: 25px;
@@ -755,4 +790,18 @@
 	position: relative;
 	left: -20px;
 	top: 0px;
+}
+
+
+
+@media only screen and (min-width: 1200px) {
+.areserver {
+    position: fixed;
+    right: 4px;
+    z-index: 100;
+    top: 25%;
+}
+
+
+
 }
