@@ -5,4 +5,7 @@ class Department < ApplicationRecord
 	#relation Prestataire N-N Depatement
     has_many :prestataire_departments
     has_many :prestataires, through: :prestataire_departments
+    # relation Service N-N Department
+    has_many :service_departments
+	has_many :services, through: :service_departments
 end
