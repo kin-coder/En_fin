@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_26_171056) do
+ActiveRecord::Schema.define(version: 2020_03_04_172623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -227,6 +227,24 @@ ActiveRecord::Schema.define(version: 2020_02_26_171056) do
     t.boolean "is_option_spa", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "service_countries", force: :cascade do |t|
+    t.bigint "service_id"
+    t.bigint "country_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_service_countries_on_country_id"
+    t.index ["service_id"], name: "index_service_countries_on_service_id"
+  end
+
+  create_table "service_departments", force: :cascade do |t|
+    t.bigint "service_id"
+    t.bigint "department_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["department_id"], name: "index_service_departments_on_department_id"
+    t.index ["service_id"], name: "index_service_departments_on_service_id"
   end
 
   create_table "services", force: :cascade do |t|
