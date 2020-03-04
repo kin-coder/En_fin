@@ -8,8 +8,11 @@ class StaticPageController < ApplicationController
     @massages = MassageSu.all
     @comments = Comment.all
   end
-
   def location_spa
+  end
+# Devenir partenaire inscription prestataire
+  def partner
+    
   end
 #Autre page
   def contact
@@ -20,9 +23,15 @@ class StaticPageController < ApplicationController
 
   def cgu  
   end
-  #page comment-ca-marche
-  def ccm
+  # telechargement du doc cgu en pdf
+  def dataDowCgu
+    send_file(
+      "#{Rails.root}/public/data_cgu/CGU_CCSPA.pdf",
+      filename: "cgu_cocooning_spa.pdf",
+      type: "application/pdf"
+    )
   end
+
   #page faq
   def faq
   end
@@ -33,6 +42,4 @@ class StaticPageController < ApplicationController
   def propos
   end
 
-  def service
-  end
 end

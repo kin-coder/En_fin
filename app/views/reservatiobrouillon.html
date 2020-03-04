@@ -1,0 +1,369 @@
+<section class="clearfix orderSection padding">
+  <div class="container">
+    <div class="orderBox  patternbg">
+      Faites vos réservations
+    </div>
+    <div class="row">
+      <div class="col-sm-9 sm-9-spa">
+        <div class="innerWrapper">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th id="tableHead">Produits supplémentaires à vendre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="row">
+                  <% @products.each do |product| %>
+                  <div class="col-sm-3">
+
+                    <div><img src="/img/products/<%= product.name %>.jpg" alt="" class="image-produit"> 
+                    </div>
+                    <div class="description-produit">
+                      <%= product.name %> <br>
+                      Prix : <%= product.price %> € <br>
+                      <strong>Nombres: </strong>   <i id="fa" class="fa fa-minus-circle btn-produits" data-zones="[<%= product.id %>,&quot;<%= product.name %>&quot;,<%= product.price %>]" data-action="delete"></i>
+                      <strong><span id="produits-number-<%= product.id %>">0</span></strong>
+                      <i id="fa" class="fa fa-plus-circle btn-produits" data-zones="[<%= product.id %>,&quot;<%= product.name %>&quot;,<%= product.price %>]" data-action="new"></i>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>  
+    </div>     
+  </div>
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+<section class="clearfix orderSection padding">
+  <div class="container">
+    <div class="orderBox  patternbg">
+      Faites vos réservations
+    </div>
+    <div class="row">
+      <div class="col-sm-9 sm-9-spa">
+        <div class="innerWrapper">
+         <%= form_tag(saved_spa_path, 'data-zones':"#{@data}", id:"form", 'data-service':"#{@service.name}") do %>
+         <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th id="tableHead">Type de location spa</th>
+
+                <th id="tableHead">Quantités</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @subcategories.each do |subcategory| %>
+              <tr id="tableContent">
+                <td id="tableContent">
+                  Location Spa pour <%= subcategory.name %>H à <%= subcategory.price %> €
+                </td>
+                <td>
+                  <i class="fa fa-minus-circle posibilities-presation" data-hourse="<%= subcategory.name %>" data-action="delete"></i>
+                  <strong class="quantité">
+                    <span id="puts-number-<%= subcategory.name %>h">0</span>
+                  </strong>
+                  <i class="fa fa-plus-circle posibilities-presation" data-hourse="<%= subcategory.name %>" data-action="new"></i>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th id="tableHead">Informations sur la location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                 <div id="list-prestation">
+                  <p id="info-spa" class=""> Vous n'avez pas encore choisi de prestation spa</p>
+                </div>
+                <div id="all-produits"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th id="tableHead">Produits supplémentaires à vendre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="row">
+                  <% @products.each do |product| %>
+                  <div class="col-sm-3">
+
+                    <div><img src="/img/products/<%= product.name %>.jpg" alt="" class="image-produit"> 
+                    </div>
+                    <div class="description-produit">
+                      <%= product.name %> <br>
+                      Prix : <%= product.price %> € <br>
+                      <strong>Nombres: </strong>   <i id="fa" class="fa fa-minus-circle btn-produits" data-zones="[<%= product.id %>,&quot;<%= product.name %>&quot;,<%= product.price %>]" data-action="delete"></i>
+                      <strong><span id="produits-number-<%= product.id %>">0</span></strong>
+                      <i id="fa" class="fa fa-plus-circle btn-produits" data-zones="[<%= product.id %>,&quot;<%= product.name %>&quot;,<%= product.price %>]" data-action="new"></i>
+                    </div>
+
+                  </div>
+                  <% end %>
+                </div>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th id="tableHead">Zone de livraison</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="coordonnee">
+                <div>
+                  <%= label_tag 'Pays', nil, class:"labelle" %>
+                  <%=select_tag 'country', options_for_select(@pays.collect{ |u| [u.name,u.id] }),class:"field",id:"Pays"%>
+                </div>
+                <div>
+                  <%= label_tag "Departement", nil, class:"labelle" %>
+                  <%= select_tag "department", options_for_select(@departments.collect{ |d| ["#{d.code}-#{d.namedepartment} ",d.id] }),class:"field",id:"Departement"%>
+                </div>
+                <div>
+                  <%= label_tag "Adresse", nil, class:"labelle" %>
+                  <%= text_field_tag "Adresse", nil, class:"field" %>
+                </div>
+                <div>
+                  <%= label_tag "Un message particulier ?", nil, class:"labelle",for:"message"%> <br>
+                  <%= text_area_tag "message", nil, class:"field", placeholder:"Laisser votre message ici", id:"message" %>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th id="tableHead">Date et heure de livraison</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="dateSelect form-half form-left">
+                  <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
+                    <%= text_field_tag "Date", nil ,required: true, class: "form-control", placeholder:"MM/DD/YYYY"%>
+                    <div class="input-group-addon">
+                      <span class="fa fa-calendar"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="timeSelect form-half form-right" >
+                  <%= select_tag "Heure", options_for_select([["Choisisser l'heure", ""], "06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"]), class:"select-dro",id:'guiest_id1' %>
+                </div>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+          <%= submit_tag("Confirmer commandes", id:"submi-tag",  class:"confirm-command btn btn-primary a-btn text-btn") %>
+      <% end %>
+  </div>
+
+  <div class="col-sm-3 sm-3-spa" id="panierTable">
+    <div class="innerWrapper">
+      <div class="table-responsive " >
+        <table class="table">
+          <thead>
+            <tr>
+              <th id="tableHead">Votre Panier</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div id="card">
+                  <h4 class="panierTitle"><i class="fa fa-shopping-basket" aria-hidden="true" id="fa"></i> Vos commandes <i class="fa fa-shopping-basket" aria-hidden="true" id="fa"></i></h4>
+
+                  <div id="group-panier-24h" class="hidden">
+                    <h5><i class="fa fa-hand-o-right" aria-hidden="true" id="fa"></i>Location spa pour 24H</h5>
+                    <div>
+                      <ul id="panierContent">
+                        <li>Nombre de spa gonflable: <span id="number-panier-24h"></span></li>
+                        <li>Prix: <span id="price-panier-24h"></span> €</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div id="group-panier-48h" class="hidden">
+                    <h5><i class="fa fa-hand-o-right" aria-hidden="true" id="fa"></i>Location spa pour 48H</h5>
+                    <div>
+                      <ul id="panierContent">
+                        <li>Nombre de spa gonflable: <span id="number-panier-48h"></span></li>
+                        <li>Prix: <span id="price-panier-48h"></span> €</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div id="group-panier-72h" class="hidden">
+                    <h5><i class="fa fa-hand-o-right" aria-hidden="true" id="fa"></i>Location spa pour 72H</h5>
+                    <div>
+                      <ul id="panierContent">
+                        <li>Nombre de spa gonflable: <span id="number-panier-72h"></span></li>
+                        <li>Prix: <span id="price-panier-72h"></span> €</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div id="list-produits" class="panierContent">
+                    <div id="info-produit" class="hidden">
+                      <h5><i class="fa fa-hand-o-right" aria-hidden="true" id="fa"></i>Vos produits</h5>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="totalPrix">
+                  <strong class="btn btn-primary btn-prix">Total : <span id="priceTotale">0</span> €</strong>
+                </div>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+
+<style>
+body {
+  font-family: sans-serif;
+  font-weight: normal;
+  margin: 10px;
+  color: #999;
+  background-color: #eee;
+}
+
+form {
+  margin: 40px 0;
+}
+
+div {
+  clear: both;
+  margin: 0 50px;
+}
+
+label {
+  width: 200px;
+  border-radius: 3px;
+  border: 1px solid #d1d3d4;
+}
+
+/* hide input */
+input.radio:empty {
+  margin-left: -999px;
+}
+
+/* style label */
+input.radio:empty ~ label {
+  position: relative;
+  float: left;
+  line-height: 2.5em;
+  text-indent: 3.25em;
+  margin-top: 2em;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+input.radio:empty ~ label:before {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  width: 2.5em;
+  background: #d1d3d4;
+  border-radius: 3px 0 0 3px;
+}
+
+/* toggle hover */
+input.radio:hover:not(:checked) ~ label:before {
+  content: "\2714";
+  text-indent: 0.9em;
+  color: #c2c2c2;
+}
+
+input.radio:hover:not(:checked) ~ label {
+  color: #888;
+}
+
+/* toggle on */
+input.radio:checked ~ label:before {
+  content: "\2714";
+  text-indent: 0.9em;
+  color: #9ce2ae;
+  background-color: #4dcb6d;
+}
+
+input.radio:checked ~ label {
+  color: #777;
+}
+
+/* radio focus */
+input.radio:focus ~ label:before {
+  box-shadow: 0 0 0 3px #999;
+}
+
+
+
+</style>
+
+
+<div class=\"row\"><div class=\"col-sm-12 sm-9-spa\"><div class=\"innerWrapper\"><div class=\"table-responsive\"><table class=\"table\"><thead><tr class=\"tr\"><th id=\"tableHead\">Informations sur la location</th></tr></thead></table></div></div></div></div>
