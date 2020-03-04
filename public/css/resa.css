@@ -273,6 +273,7 @@ input.time-spa-list:checked ~ label:before {
   color: #9CE2AE;
   background-color: #ec5598;
   border-radius: 20px;
+
 }
 
 input.time-spa-list:checked ~ label {
@@ -371,24 +372,32 @@ margin-bottom: 10px;
 font-size: small;
 letter-spacing: 2px;
 margin-right: 5px;
-position: absolute;
-left: 70px;
+/*position: absolute;
+left: 70px;*/
 margin-top: -18px;
 }
 
-.selectElement, .select-dro{
+.selectElement{
     width: 150px;
     font-size: small;
     margin-right: 5px;
-    font-family: Lato, "Open Sens";
+    font-family: Lato, "Open Sans";
     position: absolute;
-    left: 230px;
-    margin-top: -20px;
-    margin-bottom: 100px;
+left: 150px;
+margin-top: -2px;    
+}
+.select-dro{
+    width: 150px;
+    font-size: small;
+    font-family: Lato, "Open Sans";   
+    text-align: center;
 }
 
 .infoSpa{
-margin-bottom: 50px;
+margin-bottom: 26px;
+position: relative;
+top: -15px;
+left: 52px;
 }
 }
 
