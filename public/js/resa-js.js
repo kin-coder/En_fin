@@ -6,5 +6,5 @@ function off() {
   document.getElementById("overlay").style.display = "none";
 }
 
-window.onload=onn();
+window.onload=on();
 

@@ -54,7 +54,7 @@
 				<div id="prestation-list">
 					<div class="accordion js-accordion">
 
-						<div class="accordion__item js-accordion-item active">
+						<div id="loc-spa-fafana" class="accordion__item js-accordion-item">
 							<div class="accordion-header js-accordion-header patternbg"><center>LOCATION SPA</center></div> 
 							<div class="accordion-body js-accordion-body">
 								<div class="accordion-body__contents">
@@ -73,7 +73,7 @@
 										<!-- HEURE DE RESERVATION -->
 										<center>
 											<label class="label-heure" for="heure-spa">Choix de l'heure</label>
-											<select name="heure" id="heure-spa" class="select-dro">
+											<select name="heureSpa" id="heure-spa" class="select-dro">
 												<option value="">Heure</option>
 												<option value="08:00">08:00</option>
 												<option value="08:30">08:30</option>
@@ -111,16 +111,14 @@
 
 							</div><!-- end of accordion body -->
 						</div><!-- end of accordion item -->
-						<div class="accordion__item js-accordion-item">
+						<div id="massage-fafana" class="accordion__item js-accordion-item">
 							<div class="accordion-header js-accordion-header patternbg"><center>MASSAGE À DOMICILE</center></div> 
 							<div class="accordion-body js-accordion-body">
 								<div class="accordion-body__contents">
 									<div class="massage">
-										<h2>MASSAGE A DOMICILE</h2>
-
 										<!-- #################### -->
 										<div id="select-prestation">
-											<h4>Je souhaite reserver pour :</h4>
+											<p class="p-resa-spa">Je souhaite reserver pour :<p>
 											<div>
 												<p>Homme<i class="fa fa-minus-circle remove-massage" data-cat="Homme"></i><span id="number-Homme">0</span><i class="fa fa-plus-circle add-massage" data-cat="Homme"></i></p>
 											</div>
@@ -128,10 +126,12 @@
 												<p>Femme<i class="fa fa-minus-circle remove-massage" data-cat="Femme"></i><span id="number-Femme">0</span><i class="fa fa-plus-circle add-massage" data-cat="Femme"></i></p>
 											</div>
 										</div>
+
 										<div id="massage-input">
 
 
 										</div>
+
 										<!-- #################### -->
 										<div class="praticien">
 											<h4>Infos complementaires</h4>
@@ -152,7 +152,7 @@
 										<!-- HEURE DE RESERVATION -->
 										<div>
 											<label class="labelle" for="heure-massage">Heure de réservation</label>
-											<select name="heure" id="heure-massage" class="select-dro field">
+											<select name="heureMassage" id="heure-massage" class="select-dro field">
 												<option value="">Heure</option>
 												<option value="08:00">08:00</option>
 												<option value="08:30">08:30</option>
@@ -308,3 +308,11 @@ selected=\"selected\"
 
 
 <script data-turbolinks-track = "reload" src="/js/resa-js.js"></script>
+
+
+
+
+
+
+
+<!-- <div class=\"row\"><div class=\"col-sm-6\"><h5>Massages</h5>"+ htmlSub +"</div></div> -->
