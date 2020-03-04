@@ -1,11 +1,11 @@
 function scriptPrincipal(){
-/*==========================================================================*/
+	/*==========================================================================*/
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~SPA~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	let removeSpa = document.getElementById("remove-spa")
 	let addSpa = document.getElementById("add-spa")
 	removeSpa.addEventListener('click',removeSpaList)
 	addSpa.addEventListener('click',addSpaList)
-/*==========================================================================*/
+	/*==========================================================================*/
 	/*~~~~~~~~~~~~~~~~~~~~~~~Massage~~~~~~~~~~~~~~~~~~~~~~~*/
 	let buttonRmvs = document.querySelectorAll('.remove-massage');
 	buttonRmvs.forEach(buttonRmv => {
@@ -16,7 +16,7 @@ function scriptPrincipal(){
 	buttonAdds.forEach(buttonAdd => {
 		buttonAdd.addEventListener('click',addCategoryMassage);
 	});
-/*==========================================================================*/
+	/*==========================================================================*/
 	/*~~~~~~~~~~~~~~~~~~~~~~~Cadeau~~~~~~~~~~~~~~~~~~~~~~~*/
 	let rmvCadeau = document.querySelectorAll(".cadeau-rmv")
 	rmvCadeau.forEach(rmv => {
@@ -27,7 +27,7 @@ function scriptPrincipal(){
 	addCadeau.forEach(add => {
 		add.addEventListener('click',aDDCadeau);
 	});
-/*==========================================================================*/
+	/*==========================================================================*/
 	/*~~~~~~~~~~~~Date Heurs Pays Departement Praticient ~~~~~~~~~~~~~~~~~*/
 	document.getElementById("country-choice").addEventListener("change", showDepartementIfFrance);
 	// praticien
@@ -35,7 +35,7 @@ function scriptPrincipal(){
 	addPraticient.forEach(add => {
 		add.addEventListener('change',addPraticientAtSession);
 	});
-/*==========================================================================*/
+	/*==========================================================================*/
 	/*~~~~~~~~~~~~Verifier si il y a un truc dans la session ~~~~~~~~~~~~~*/
 	verifySession()
 }
@@ -104,26 +104,26 @@ function addDomIndex(){
 	// prestations.pays = "" // prestations.departement = "" // prestations.date = "" // prestations.heurs = "" // prestations.praticient = ""	
 	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
 // Ajouter les spa selectionné dans le dom
-	let tmpTime = ""
-	if (0 < spa.length) {
-		for (var i = 0; i < spa.length ; i++) {
-			actualiseDomSpa(spa[i].id,[spa[i].id,spa[i].time,spa[i].option,spa[i].info])
-			tmpTime = document.querySelector("input[data-index=\'"+spa[i].id+"\'][data-array=\'"+spa[i].time+"\'].time-spa-list").value
-			htmlTimeSpaOrder(tmpTime,spa[i].id,dataOption,dataForm)
-			htmlOptionSpaOrder(spa[i].id,dataOption,dataForm,spa[i].option)
-		}
+let tmpTime = ""
+if (0 < spa.length) {
+	for (var i = 0; i < spa.length ; i++) {
+		actualiseDomSpa(spa[i].id,[spa[i].id,spa[i].time,spa[i].option,spa[i].info])
+		tmpTime = document.querySelector("input[data-index=\'"+spa[i].id+"\'][data-array=\'"+spa[i].time+"\'].time-spa-list").value
+		htmlTimeSpaOrder(tmpTime,spa[i].id,dataOption,dataForm)
+		htmlOptionSpaOrder(spa[i].id,dataOption,dataForm,spa[i].option)
 	}
+}
 // Ajouter les massages selectionné dans le dom
-	if (massages.length != 0) {
-		for (var i = 0; i < massages.length ; i++) {
-			actualiseDomMassage(massages[i].cat,massages[i].id,massages[i].sub,massages[i].time)
-			priceTotalForOneMassage(dataMassages,massages[i].id)
-			priceTotalForAllMassage(dataMassages)
-		}
+if (massages.length != 0) {
+	for (var i = 0; i < massages.length ; i++) {
+		actualiseDomMassage(massages[i].cat,massages[i].id,massages[i].sub,massages[i].time)
+		priceTotalForOneMassage(dataMassages,massages[i].id)
+		priceTotalForAllMassage(dataMassages)
 	}
+}
 // Ajouter le cadeau selectionné dans le dom
-	if (cadeau.length != 0) {
-		for (var i = 0; i < cadeau.length ; i++) {
+if (cadeau.length != 0) {
+	for (var i = 0; i < cadeau.length ; i++) {
 			// [[6,8],[7,3],[8,2],[9,1]]
 			document.getElementById(cadeau[i][0]+"-nbr").innerHTML = cadeau[i][1]
 		}
@@ -131,45 +131,45 @@ function addDomIndex(){
 		priceForAllCadeau()
 	}
 // Ajouter les information sur la zone et type de praticient
-	if (prestations.praticien != undefined){
-		let listPratitiens = document.querySelectorAll(".praticien-list")
-		for (var i = listPratitiens.length - 1; i >= 0; i--) {
-		    if(listPratitiens[i].value == prestations.praticien){
-	    	    listPratitiens[i].checked = true
-		    }
+if (prestations.praticien != undefined){
+	let listPratitiens = document.querySelectorAll(".praticien-list")
+	for (var i = listPratitiens.length - 1; i >= 0; i--) {
+		if(listPratitiens[i].value == prestations.praticien){
+			listPratitiens[i].checked = true
 		}
 	}
 }
+}
 /*==========================================================================*/
 	// les fonctions concernatant Date Heurs Pays Departement Praticient
-function showDepartementIfFrance() {
-	var x = this.value
-	var input_dptm = document.getElementById("Departement")
-	var div_dptm = document.getElementById("list-department")
-	if (x == "France") {
-		input_dptm.removeAttribute("disabled")
-		div_dptm.removeAttribute("class")
-	}else{
-		input_dptm.setAttribute("disabled","disabled")
-		div_dptm.classList.add("hidden")
+	function showDepartementIfFrance() {
+		var x = this.value
+		var input_dptm = document.getElementById("Departement")
+		var div_dptm = document.getElementById("list-department")
+		if (x == "France") {
+			input_dptm.removeAttribute("disabled")
+			div_dptm.removeAttribute("class")
+		}else{
+			input_dptm.setAttribute("disabled","disabled")
+			div_dptm.classList.add("hidden")
+		}
 	}
-}
 	// pour le praticien 
-function addPraticientAtSession(){
-	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
-	prestations.praticien = this.value
-	sessionStorage.setItem("prestations",JSON.stringify(prestations))
-}
+	function addPraticientAtSession(){
+		let prestations = JSON.parse(sessionStorage.getItem("prestations"))
+		prestations.praticien = this.value
+		sessionStorage.setItem("prestations",JSON.stringify(prestations))
+	}
 
-/*==========================================================================*/
+	/*==========================================================================*/
 	// les fonctions primaire utilisé dans SPA et massage
-function incrementeInc(){ /*incremente la valeur inc pour les params*/
-	let inc = JSON.parse(sessionStorage.getItem("inc"))
-	inc++
-	sessionStorage.setItem("inc",JSON.stringify(inc))
-	return inc
-}
-/*==========================================================================*/
+	function incrementeInc(){ /*incremente la valeur inc pour les params*/
+		let inc = JSON.parse(sessionStorage.getItem("inc"))
+		inc++
+		sessionStorage.setItem("inc",JSON.stringify(inc))
+		return inc
+	}
+	/*==========================================================================*/
 	// les fonctions primaire SPA
 // [logemtn,installation,eau]
 function changeLogement (){
@@ -205,9 +205,9 @@ function changeTypeSpa (){
 
 // "time":"1","option":[1,2,3]}]
 function valueToHtmlSpa(id,time=null,option="",info=""){ /* code html pour l'ajout d'un spa */
-	let data = document.getElementById('form-data').dataset
-	let dataSpas = JSON.parse(data.spas)
-	let dataSpaoptions = JSON.parse(data.spaoptions)
+let data = document.getElementById('form-data').dataset
+let dataSpas = JSON.parse(data.spas)
+let dataSpaoptions = JSON.parse(data.spaoptions)
 	// spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte
 	let typeSpa = "<div class='col-sm-3'><h4><center class=\"titleSpa\">Durée location</center></h4>"
 	for (var i = 0; i < dataSpas.length ; i++) {
@@ -253,10 +253,10 @@ function numberSpaSelected(){
 
 /*==========================================================================*/
 	// les fonctions primaire MASSAGE
-function numberMassageSelected(name) {
-	let list = document.getElementsByClassName("massage-list-"+name)
-	document.getElementById("number-"+name).innerHTML = list.length
-}
+	function numberMassageSelected(name) {
+		let list = document.getElementsByClassName("massage-list-"+name)
+		document.getElementById("number-"+name).innerHTML = list.length
+	}
 
 // [{"id":1,"cat":"Homme","sub":3,"time":1},{"id":2,"cat":"Femme","sub":0,"time":1}]
 function valueToHtmlMassage(name,id,sub=null,time=null){
@@ -288,14 +288,14 @@ function valueToHtmlMassage(name,id,sub=null,time=null){
 		heurs = categories[1][i][1] // liste des heurs possibles
 		for (var j = 0; j < heurs.length ; j++) {
 			if (time != null && time == j && sub != null && sub == i) {
-				htmlTime += "<li><input class=\"input-time-list\" type=\"radio\" value=\""+ heurs[j][0] +"\" checked id=\"time"+j+i+id+"\" name=\"massageSuPrice["+id+"][]\" data-info=\"["+ [id,i,j] +"]\" data-price=\"["+ [heurs[j][1],heurs[j][2],heurs[j][3],heurs[j][4]] +"]\" data-sub=\""+categories[1][i][0]+"\" data-name=\""+name+"\" ><label class=\"form\" for=\"time"+j+i+id+"\"> "+ heurs[j][0] +" </label></li>"
+				htmlTime += "<li class=\"duree-massage\"><input class=\"input-time-list time-spa-list\" type=\"radio\" value=\""+ heurs[j][0] +"\" checked id=\"time"+j+i+id+"\" name=\"massageSuPrice["+id+"][]\" data-info=\"["+ [id,i,j] +"]\" data-price=\"["+ [heurs[j][1],heurs[j][2],heurs[j][3],heurs[j][4]] +"]\" data-sub=\""+categories[1][i][0]+"\" data-name=\""+name+"\" ><label class=\"form label-spa\" for=\"time"+j+i+id+"\"> "+ heurs[j][0] +" </label></li>"
 			}else{
-				htmlTime += "<li><input class=\"input-time-list\" type=\"radio\" value=\""+ heurs[j][0] +"\" id=\"time"+j+i+id+"\" name=\"massageSuPrice["+id+"][]\" data-info=\"["+ [id,i,j] +"]\" data-price=\"["+ [heurs[j][1],heurs[j][2],heurs[j][3],heurs[j][4]] +"]\" data-sub=\""+categories[1][i][0]+"\" data-name=\""+name+"\" ><label class=\"form\" for=\"time"+j+i+id+"\"> "+ heurs[j][0] +" </label></li>"
+				htmlTime += "<li class=\"duree-massage\"><input class=\"input-time-list time-spa-list\" type=\"radio\" value=\""+ heurs[j][0] +"\" id=\"time"+j+i+id+"\" name=\"massageSuPrice["+id+"][]\" data-info=\"["+ [id,i,j] +"]\" data-price=\"["+ [heurs[j][1],heurs[j][2],heurs[j][3],heurs[j][4]] +"]\" data-sub=\""+categories[1][i][0]+"\" data-name=\""+name+"\" ><label class=\"form label-spa\" for=\"time"+j+i+id+"\"> "+ heurs[j][0] +" </label></li>"
 			}
 		}
 		htmlTime += "</ul></div>"
 	}
-	return "<div class=\"row\"><div class=\"col-sm-12 sm-9-spa\"><div class=\"innerWrapper\"><div class=\"table-responsive\"><table class=\"table\"><thead><tr class=\"tr\"><th id=\"tableHead\">Informations sur le massage pour "+name+"</th></tr></thead></table></div></div></div></div><div class=\"row\"><div class=\"col-sm-6\"><h5>Massages</h5><div class=\"sm-6-massage\">"+ htmlSub +"</div></div><div class=\"col-sm-6\"><h5>Durée(min)</h5>"+htmlTime+"</div></div>"
+	return "<div class=\"row\"><div class=\"col-sm-12 sm-9-spa\"><div class=\"innerWrapper\"><div class=\"table-responsive\"><table class=\"table\"><thead><tr class=\"tr\"><th id=\"tableHead\">"+name+"</th></tr></thead></table></div></div></div></div><div class=\"row\"><div class=\"col-sm-10\"><h4><center class=\"titleMassage\">Type de massages</center></h4><div class=\"sm-6-massage\">"+ htmlSub +"</div></div><div class=\"col-sm-2\"><h4>Durée(min)</h4>"+htmlTime+"</div></div>"
 }
 
 
@@ -585,16 +585,16 @@ function priceTotalForAllSpa(dataOption,dataForm){
 
 /*==========================================================================*/
 	// fonction principale MASSAGE
-function addCategoryMassage(){
-	let id = incrementeInc()
-	let data = document.getElementById('form-data').dataset
-	let dataMassages = JSON.parse(data.massages)
-	let categories = []
-	if ( this.dataset.cat == "Homme") {
-		categories = dataMassages[0]
-	}else{
-		categories = dataMassages[1]
-	}
+	function addCategoryMassage(){
+		let id = incrementeInc()
+		let data = document.getElementById('form-data').dataset
+		let dataMassages = JSON.parse(data.massages)
+		let categories = []
+		if ( this.dataset.cat == "Homme") {
+			categories = dataMassages[0]
+		}else{
+			categories = dataMassages[1]
+		}
 	// Enregistrement dans la session
 	let sessionSpa = JSON.parse(sessionStorage.getItem("massages"))
 	sessionSpa.push({id:id,cat:categories[0],sub:"",time:""})
@@ -640,7 +640,7 @@ function addMassageInOrder(){
 	let dataForm = JSON.parse(document.getElementById('form-data').dataset.spas)
 	let dataOption = JSON.parse(document.getElementById('form-data').dataset.spaoptions)
 	let dataMassages = JSON.parse(document.getElementById('form-data').dataset.massages)
-																											 /*  [id,i,j]  */
+	/*  [id,i,j]  */
 	// <input class="input-time-list" type="radio" value="60" id="time164" name="massageSuPrice[4][]" data-info="[4,6,1]" data-name="Homme">
 	let myData = JSON.parse(this.dataset.info)
 	// Modifier la session
@@ -746,22 +746,22 @@ function removeCategoryMassage(){
 }
 /*==========================================================================*/
 	// fonction principale CADEAU
-function removeCadeau(){
-	let id = JSON.parse(this.dataset.id)
-	let cadeau = JSON.parse(sessionStorage.getItem("cadeau"))
-	for (var i = cadeau.length - 1; i >= 0; i--) {
-		if(cadeau[i][0] == id){
-			cadeau[i][1]--
-			document.getElementById(id+"-nbr").innerHTML = cadeau[i][1]
-			if(cadeau[i][1] == 0){
-				cadeau.splice(i,1)
+	function removeCadeau(){
+		let id = JSON.parse(this.dataset.id)
+		let cadeau = JSON.parse(sessionStorage.getItem("cadeau"))
+		for (var i = cadeau.length - 1; i >= 0; i--) {
+			if(cadeau[i][0] == id){
+				cadeau[i][1]--
+				document.getElementById(id+"-nbr").innerHTML = cadeau[i][1]
+				if(cadeau[i][1] == 0){
+					cadeau.splice(i,1)
+				}
+				break
 			}
-			break
 		}
-	}
-	sessionStorage.setItem("cadeau",JSON.stringify(cadeau))
-	numberAtOrderBtn()
-	document.getElementById("cadeau-id").value = JSON.stringify(cadeau)
+		sessionStorage.setItem("cadeau",JSON.stringify(cadeau))
+		numberAtOrderBtn()
+		document.getElementById("cadeau-id").value = JSON.stringify(cadeau)
 	// calcul du prix
 	priceForAllCadeau()
 }
