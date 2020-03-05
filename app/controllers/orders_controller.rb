@@ -2,6 +2,32 @@ class OrdersController < ApplicationController
   # 1/2 Selection des prestation
   def zone
 # "country"=>"France", "department"=>"17", "date"=>"03/24/2020"
+    @country = params[:country]
+    @department = params[:department]
+    
+    @date = params[:date]
+
+    @country = Country.find_by(name:@country)
+    @department = Department.find(@department.to_i)
+
+    if @country
+      if @country.name == "France"
+        if @department != nil
+           @country = @country.name
+           @department = @department.name
+        else
+          # erreur
+          redirect_back(fallback_location: root_path)
+        end
+      else
+        @country = @country.name
+        @department = ""
+      end
+    else
+      # erreur
+      redirect_back(fallback_location: root_path)
+    end
+
     respond_to do |format|
        format.js
     end
