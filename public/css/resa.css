@@ -81,6 +81,7 @@
   padding: 1.5em 1.5em;
   font-size: .85em;
   border: 2px solid #eee;
+  border-radius: 20px;
 }
 
 .accordion__item.active:last-child .accordion-header {
@@ -89,6 +90,7 @@
 
 .accordion:first-child > .accordion__item > .accordion-header {
   border-bottom: 1px solid transparent;
+  border-radius: 20px;
 }
 
 .accordion__item>.accordion-header:after {
@@ -423,6 +425,7 @@ margin-top: -18px;
 }
 .table-responsive {
   margin-top: 20px;
+  border-radius: 20px;
 }
 
 
@@ -550,3 +553,146 @@ margin-top: -18px;
   margin-bottom: 75px;
 }
 /*Radio praticien*/
+
+
+/*PANIER*/
+.panierTitle{
+  color: #ec5598;
+  letter-spacing: 2px;
+  padding-top: 20px;
+}
+#fa{
+  color: #ec5598;
+}
+.p-panier{
+  padding-bottom: 18px;
+  letter-spacing: 2px;
+}
+#codeP{
+  width: 125px;
+}
+.subTitlePanier, .subTitlePanierSpa, .subTitlePanierMsg, .subTitleCadeau{
+  font-family: Quicksand, 'Open Sans', sans-serif !important;
+  font-weight: bold !important;
+  font-size: 1em !important;
+}
+.subTitlePanier{
+  position: relative;
+  left: -48px;
+}
+.subTitlePanierSpa{
+  position: relative;
+  left: -27px;
+}
+.subTitlePanierMsg{
+  position: relative;
+  left: -45px;
+}
+.subTitleCadeau{
+  position: relative;
+  left: -36px;}
+  #spa-price-total, #massage-price-total, #cadeau-price-total{
+    color: black;
+  }
+
+  .spa-duration{
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  .li-acompte{
+    position: relative;
+    margin-left: 22px;
+  }
+  .li-ambiance{
+    position: relative;
+    margin-left: 84px;
+    list-style-type: inherit;
+    color: #685f5f !important;
+
+  }
+
+  .ul-panier{
+    position: relative;
+
+  }
+  #spa-order, #massage-order, #cadeau-order{
+    margin-bottom: 25px;
+  }
+
+  .msg-duration{
+    font-size: 1.2em;
+    font-weight: bold;
+    position: relative;
+    left: -28px;
+  }
+
+  .li-msgType , .li-msgPrix, .li-msgAcompte{
+    position: relative;
+    margin-left: 60px;
+    list-style-type: inherit;
+    color: #685f5f !important;
+  }
+
+  .prestation-message{
+    position: relative;
+    width: 200px;
+    left: 28px;
+    padding-left: 0px;
+    text-align: left;
+  }
+
+
+
+  .innerWrapper>.table-responsive>.table>thead>tr>th:last-child{
+
+    border-bottom: 1px solid transparent;
+    border-radius: 20px;
+  }
+  .prixTotals{
+    background:#ec5598;
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 5px;
+    font-family: Quicksand, 'Open Sans', sans-serif !important;
+    font-weight: bold;
+  }
+  .p-prixTotal{
+
+    font-family: Quicksand, 'Open Sans', sans-serif !important;
+    font-weight: bold;
+    color: white;
+  }
+
+  .cadeau-add, .cadeau-rmv{
+    color:#8c8383 !important;
+    font-size: 1.3em;
+  }
+
+  .li-cadeau{
+    position: relative;
+    margin-left: 60px;
+    list-style-type: inherit;
+    color: #685f5f !important;
+  }
+
+  .cadeaux{
+    position: relative;
+    width: 200px;
+    left: 28px;
+    padding-left: 0px;
+    text-align: left;
+  }
+  .nbr-cadeau{
+    margin-left: 15px;
+  }
+
+  .btn-resa{
+    position: relative;
+    left: 50%;
+    top: 20px;
+    font-family: Quicksand, 'Open Sans', sans-serif !important;
+    width: 30%;
+  }
+  .btn-resa-text{
+    border-radius: 100px;
+  }

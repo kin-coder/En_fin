@@ -21,7 +21,7 @@
 					<select name="department" id="Departement" class="field">
 						<option value="">Liste departement</option>
 						<% @departments.collect do |d| %>
-						<option value="<%= d.id %>"><%="#{d.code}-#{d.name}"%></option>
+						<option value="<%= d.name %>"><%="#{d.code}-#{d.name}"%></option>
 						<% end %>
 					</select>
 				</div>
@@ -54,8 +54,9 @@
 				<div id="prestation-list">
 					<div class="accordion js-accordion">
 
-						<div id="loc-spa-fafana" class="accordion__item js-accordion-item active">
-							<div class="accordion-header js-accordion-header patternbg"><center>LOCATION SPA</center></div> 
+						<div id="loc-spa-fafana" class="accordion__item js-accordion-item">
+							<div class="accordion-header js-accordion-header patternbg"><center>LOCATION SPA</center>
+							</div> 
 							<div class="accordion-body js-accordion-body">
 								<div class="accordion-body__contents">
 									<div class="spa">
@@ -111,8 +112,9 @@
 
 							</div><!-- end of accordion body -->
 						</div><!-- end of accordion item -->
-						<div id="massage-fafana" class="accordion__item js-accordion-item active">
-							<div class="accordion-header js-accordion-header patternbg"><center>MASSAGE À DOMICILE</center></div> 
+						<div id="massage-fafana" class="accordion__item js-accordion-item">
+							<div class="accordion-header js-accordion-header patternbg"><center>MASSAGE À DOMICILE</center>
+							</div> 
 							<div class="accordion-body js-accordion-body">
 								<div class="accordion-body__contents">
 									<div class="massage">
@@ -163,6 +165,7 @@
 													<label for="other"> <span class="label-no-fa">Peu importe</span></label>
 												</div>
 											</center>
+
 											<hr class="interligne">
 											<!-- HEURE DE RESERVATION -->
 											<center>
@@ -213,8 +216,8 @@
 									<div class="table-responsive">
 										<table class="table">
 											<thead>
-												<tr class="accordion-header">
-													<th id="tableHead" ><center >FAITES PLAISIR AVEC NOS IDÉES CADEAUX</center></th>
+												<tr>
+													<th id="tableHead" class="accordion-header" ><center >FAITES PLAISIR AVEC NOS IDÉES CADEAUX</center></th>
 												</tr>
 											</thead>
 											<tbody>
@@ -229,7 +232,7 @@
 																<div class="description-produit">
 																	<%= cadeau.name %> <br>
 																	Prix : <%= cadeau.price %> € <br>
-																	<strong>Nombres: </strong>
+																	<strong>Nombres : </strong>
 																	<i class="fa fa-minus-circle cadeau-rmv btn-produits" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
 																	<strong><span id="<%= cadeau.id %>-nbr">0</span></strong>
 																	<i class="fa fa-plus-circle cadeau-add btn-produits" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
@@ -249,11 +252,74 @@
 							</div>
 						</div>
 					</div>
-
-					<%= submit_tag("Suivant", id:"submi-tag",  class:"confirm-command btn btn-primary a-btn text-btn") %>
-					<% end %>
+					
+					<div class="btn-resa">
+						<%= submit_tag("Suivant", id:"submi-tag",  class:"confirm-command btn btn-primary btn-resa-text text-btn btn-resa-text") %>
+						<% end %>
+					</div>
 				</div>
-				<div class="col-sm-3">
+
+				<!-- PANIER DYNAMIQUE -->
+				<div class="col-sm-3 sm-3-spa" id="panierTable">
+					<div class="innerWrapper">
+						<div class="table-responsive " >
+							<table class="table">
+								<thead>
+									<tr>
+										<th id="tableHead">
+											<center>VOTRE PANIER</center>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<div id="card">
+												<h4 class="panierTitle"> Votre commande <i class="fa fa-shopping-basket" aria-hidden="true" id="fa"></i></h4>
+												<p class="p-panier" id="empty-order">Vous n'avez pas encore <br> sélectionné de prestation</p>
+
+												<div id="spa-order" class="hidden">
+													<h3 class="subTitlePanierSpa">Location spa <span id="spa-price-total" data-price=""></span></h3>
+												</div>
+
+												<div id="massage-order" class="hidden">
+													<h3 class="subTitlePanierMsg">Massage <span id="massage-price-total" data-price=""></span></h3>
+												</div>
+
+												<div id="cadeau-order" class="hidden">
+													<h3 class="subTitleCadeau">Vos cadeaux :  <span id="cadeau-price-total"></span> €</h3>
+													<div class="cadeaux"></div>
+												</div>
+												<div id="code-promo">
+													<h3 class="subTitlePanier">Code promo ?</h3>
+													<%= form_tag(code_promo_path, remote: true) do %>
+													<div id="alert-code" class="hidden alert alert-success" role="alert">
+														Votre code promo est validé avec succès
+													</div>
+													<label for="codeP"></label>
+													<input type="text" name="code" id="codeP", placeholder="Code promo">
+													<%= submit_tag("valider") %>	
+													<% end %>
+												</div>
+												<div class="prixTotals">
+													<p class="p-prixTotal">PRIX TOTAL : <strong id="total-price">0,00</strong> €</p>
+													<p class="p-prixTotal">ACOMPTE TOTAL : <strong id="total-acompte">0,00</strong> €</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+
+				<!-- <div class="col-sm-3">
 					<h2>Votre commande</h2>
 					<p id="empty-order">Vous n'avez pas encore sélectionné de prestation</p>
 					<div id="spa-order" class="hidden">
@@ -284,15 +350,12 @@
 						<p>ACOMPTE TOTAL: <strong id="total-acompte">0,00</strong> €</p>
 					</div>
 
-				</div>
+				</div> -->
 
-			</div>
-		</div>
-	</div>
 
-	<!-- Fin formulaire -->
-	<!-- ======================================================================== -->
-	<%= javascript_pack_tag 'orders_index' %>
+				<!-- Fin formulaire -->
+				<!-- ======================================================================== -->
+				<%= javascript_pack_tag 'orders_index' %>
 
 <!--
 
