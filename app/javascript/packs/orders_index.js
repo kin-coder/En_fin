@@ -446,7 +446,7 @@ function addSpaInOrder(id){
 	let div = document.createElement("div")
 	div.classList = "spa-order hidden"
 	div.setAttribute("id","spa-list-"+id)
-	div.innerHTML = "<p>Pour <span id=\"spa-time-"+id+"\"></span> h <span id=\"spa-price-"+id+"\"></span></p><ul></ul>"
+	div.innerHTML = "<p class=\"ul-panier\"><span class=\"spa-duration\">Spa pour : <span id=\"spa-time-"+id+"\"></span> h </span><br><span id=\"spa-price-"+id+"\"></span></p><ul></ul>"
 	divOrder.appendChild(div)
 }
 
@@ -527,7 +527,7 @@ function htmlOptionSpaOrder(index,dataOption,dataForm,listOptions){
 	let liList = ""
 	// [1, "Décoration romantique", 20] agencement dans la dataOption
 	for (var i = 0; i < listOptions.length; i++) {
-		liList += "<li>"+dataOption[listOptions[i]][1]+"</li>"
+		liList += "<li class=\"li-ambiance\">Ambiance : "+dataOption[listOptions[i]][1]+"</li>"
 	}
 	ulList[0].innerHTML = liList
 	// modifier la petite some
@@ -549,7 +549,7 @@ function priceTotalForOneSpa(index,dataOption,dataForm){
 			for (var j = spa.length - 1; j >= 0; j--) {
 				price[1] += dataOption[spa[j]][2]
 			}
-			spaPrice.innerHTML = "prix: "+price[0]+"€ acompte: "+price[1]+"€"
+			spaPrice.innerHTML = "<li class=\"li-prix\">Prix : "+price[0]+"€ </li><li class=\"li-acompte\">Acompte : "+price[1]+"€</li>"
 			break
 		}
 	}
@@ -577,7 +577,7 @@ function priceTotalForAllSpa(dataOption,dataForm){
 	prestations.priceSpa = prixSomme[0]
 	sessionStorage.setItem("prestations",JSON.stringify(prestations))
 
-	spanPriceTotal.innerHTML = "prix: "+prixSomme[0]+"€ acompte: "+prixSomme[1]+"€"
+spanPriceTotal.innerHTML = " : "+prixSomme[0]+" € "
 	spanPriceTotal.dataset.price = "["+[prixSomme[0],prixSomme[1]]+"]"
 	// Grand prix total
 	bigTotalPrice()
@@ -611,7 +611,7 @@ function actualiseDomMassage(name,id,sub=null,time=null){
 	}else{
 		div.innerHTML = valueToHtmlMassage(name,id)	
 	}
-	document.getElementById("massage-order").innerHTML += "<div id=\"list-order-"+id+"\" class=\"hidden\"><div><h4>"+ name +"</h4></div><div><h5></h5><div><ul></ul></div></div></div>"
+	document.getElementById("massage-order").innerHTML += "<div id=\"list-order-"+id+"\" class=\"hidden\"><div><p class=\"msg-duration\">"+ name +"</p></div><div class=\"prestation-message\"><li class=\"li-msgType\"></li><div><ul></ul></div></div></div>"
 
 	document.getElementById('massage-input').appendChild(div)
 
@@ -682,9 +682,9 @@ function priceTotalForOneMassage(dataMassages,myData){
 	let divMassage = document.getElementById("list-order-"+myData)
 	document.getElementById("massage-order").classList.remove('hidden')
 	divMassage.classList.remove('hidden')
-	divMassage.getElementsByTagName("h5")[0].innerHTML = categories[1][sub][0]
+	divMassage.getElementsByTagName("li")[0].innerHTML = categories[1][sub][0]
 	//  [30, 70, 30, 50, 20]
-	divMassage.getElementsByTagName("ul")[0].innerHTML = "<li>prix: "+categories[1][sub][1][time][3]+"€</li><li>acompte: "+categories[1][sub][1][time][4]+"€</li>"
+	divMassage.getElementsByTagName("ul")[0].innerHTML = "<li class=\"li-msgPrix\">Prix: "+categories[1][sub][1][time][3]+"€</li><li class=\"li-msgAcompte\">Acompte: "+categories[1][sub][1][time][4]+"€</li>"
 }
 
 function priceTotalForAllMassage(dataMassages){
@@ -703,12 +703,13 @@ function priceTotalForAllMassage(dataMassages){
 			acompte += categories[1][sessionMassage[i].sub][1][sessionMassage[i].time][4]
 		}
 	}
-	document.getElementById("massage-price-total").innerHTML = "prix: "+price+"€ acompte: "+acompte+"€"
+	document.getElementById("massage-price-total").innerHTML = " : "+price+"€"+acompte+"€"
 	document.getElementById("massage-price-total").dataset.price = "["+[price,acompte]+"]"
 
 	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
 	prestations.priceMassage = price
-	sessionStorage.setItem("prestations",JSON.stringify(prestations))
+	sessionStorage.setItem("prestations",JSON.stringify(prestations))	
+		document.getElementById("massage-price-total").innerHTML = " : "+price+" € "
 
 	if (price == 0 && acompte == 0) {
 		document.getElementById("massage-order").classList.add('hidden')
@@ -802,7 +803,7 @@ function priceForAllCadeau(){
 		for (var j = infoCadeau.length - 1; j >= 0; j--) {
 			if (cadeau[i][0] == infoCadeau[j][0]){
 				totalPrice += cadeau[i][1]*infoCadeau[j][2] /* isany * prix */ /* infoCadeau[i][1] anarany*/
-				elementDom += "<li>"+ infoCadeau[i][1] +" nb: "+ cadeau[i][1] +" prix: "+ cadeau[i][1]*infoCadeau[j][2] +"€</li>"
+				elementDom += "<li class=\"li-cadeau\">"+ infoCadeau[i][1] +"<div class=\"nbr-cadeau\"> Nombres : "+ cadeau[i][1] +" <br> Prix : "+ cadeau[i][1]*infoCadeau[j][2] +" € </br></li>"
 				break
 			}
 		}
@@ -874,3 +875,10 @@ function numberAtOrderBtn(){
 }
 
 
+
+// LIGNE 580 RA ILAINA ILAY ACCOMPTE
+// spanPriceTotal.innerHTML = "prix: "+prixSomme[0]+"€ acompte: "+prixSomme[1]+"€"
+
+
+// LIGNE 712 RA ILAINA ILAY ACCOMPTE
+	// document.getElementById("massage-price-total").innerHTML = "prix: "+price+" € "+acompte+"€"
