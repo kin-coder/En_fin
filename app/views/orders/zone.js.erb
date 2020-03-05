@@ -1,26 +1,17 @@
+document.getElementById("overlay").style.display = "none"
 
+// document.getElementById("container-principale").appendChild(document.getElementById("text"))
 
+alert("tonga ato ve eee! <%= @services %>")
 
-alert(<%= @country %>)
-alert(<%= @department %>)
-alert(<%= @date %>)
+<% unless @services.include?("Massage") %>
+	document.getElementById("massage-fafana").classList.add("hidden")
+<% else %>
+	document.getElementById("massage-fafana").classList.remove("hidden")
+<% end %>
 
-addZoneInPrestations()
-function addZoneInPrestations() {
-	let addZone = JSON.parse(sessionStorage.getItem("prestations"))
-	addZone.pays = "<%= @all_params[:country] %>"
-	<% if @all_params[:department] %>
-		addZone.departement = "<%= @all_params[:department] %>"
-	<% else %>
-		delete addZone.departement
-	<% end %>
-	addZone.date = "<%= @all_params[:date] %>"
-	addZone.heurs = "<%= @all_params[:heure] %>"
-	sessionStorage.setItem("prestations",JSON.stringify(addZone))
-}
-
-
-
-
-
-
+<% unless @services.include?("Location spa") %>
+	document.getElementById("loc-spa-fafana").classList.add("hidden")
+<% else %>
+	document.getElementById("loc-spa-fafana").classList.remove("hidden")
+<% end %>

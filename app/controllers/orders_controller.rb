@@ -8,18 +8,28 @@ class OrdersController < ApplicationController
     @date = params[:date]
 
     @country = Country.find_by(name:@country)
-    @department = Department.find(@department.to_i)
+    @department = Department.find_by(name:@department)
+    
+    @services = []
 
     if @country
       if @country.name == "France"
         if @department != nil
            @country = @country.name
+
+           @department.services.each do |s|
+            @services.push(s.name)
+           end
+
            @department = @department.name
         else
           # erreur
           redirect_back(fallback_location: root_path)
         end
       else
+        @country.services.each do |s|
+            @services.push(s.name)
+        end
         @country = @country.name
         @department = ""
       end
@@ -31,7 +41,9 @@ class OrdersController < ApplicationController
     respond_to do |format|
        format.js
     end
+
   end
+
   
   def code_promo
     parameters = params.permit(:code)
