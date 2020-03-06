@@ -36,18 +36,20 @@ Rails.application.routes.draw do
 
 #ORDERS_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page tunelle d'achats dans le controller ORDERS
-  post 'filter' => 'controller_name#filter'
-  post 'validate-zone', to:"orders#zone", as:"zone"
+  post '/reservation-prestation/validate-zone', to:"orders#zone", as:"zone"
+  
   get '/reservation-prestation', to:'orders#index', as: "reservation"
+  post '/reservation-prestation/save', to:'orders#saveSession', as: "save_session"
+  
   get '/reservation-prestation/info-livraison', to:'orders#delivery', as: "delivery"
-
+  post '/reservation-prestation/info-livraison/save', to:'orders#saveDelivery', as: "save_delivery"
+  
+  get '/reservation-prestation/recapitulatif-commande', to:'orders#summary', as: "summary"
   
 
-  post '/reservation-prestation/save', to:'orders#saveSession', as: "save_session"
 
-  post '/reservation-prestation/recapitulatif-commande', to:'orders#summary', as: "summary"
 
-  post 'validate-code', to:"orders#code_promo", as:"code_promo"
+  post '/reservation-prestation/validate-code', to:"orders#code_promo", as:"code_promo"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 

@@ -1,6 +1,6 @@
 
 .container{
-background: white;
+  background: white;
 }
 
 /* ===================MODAL==================== */
@@ -22,8 +22,8 @@ background: white;
   position: absolute;
   top: 50%;
   left: 50%;
-/*  font-size: 50px;*/
- 
+  /*  font-size: 50px;*/
+
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
 }
@@ -58,7 +58,7 @@ background: white;
 }
 
 .accordion__item {
-    border-bottom: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
 .accordion__item .accordion__item {
@@ -81,6 +81,7 @@ background: white;
   padding: 1.5em 1.5em;
   font-size: .85em;
   border: 2px solid #eee;
+  border-radius: 20px;
 }
 
 .accordion__item.active:last-child .accordion-header {
@@ -89,17 +90,18 @@ background: white;
 
 .accordion:first-child > .accordion__item > .accordion-header {
   border-bottom: 1px solid transparent;
+  border-radius: 20px;
 }
 
 .accordion__item>.accordion-header:after {
-font-family: FontAwesome;
-font-size: 1.2em;
-float: right;
-position: relative;
-top: -2px;
-transition: .3s all;
-transform: rotate(0deg);
-content: "\f103";
+  font-family: FontAwesome;
+  font-size: 1.2em;
+  float: right;
+  position: relative;
+  top: -2px;
+  transition: .3s all;
+  transform: rotate(0deg);
+  content: "\f103";
 }
 
 .accordion__item.active > .accordion-header:after {
@@ -127,106 +129,111 @@ content: "\f103";
 
 
 .allfaq{
-padding-top: 100px;
-margin-bottom: 100px;
-position: relative;
-left: -15px;
+  padding-top: 100px;
+  margin-bottom: 100px;
+  position: relative;
+  left: -15px;
 }
 
 
 /* ==================custom================= */
 .set-zones{
-background: deeppink;
-opacity: 0.8;
-padding: 50px;
-border-radius: 8px;
+  background: deeppink;
+  opacity: 0.8;
+  padding: 50px;
+  border-radius: 8px;
 }
 .dateSelect .calendar-icone {
-background-color: white;
-border-color:#dedede;
-border-radius: 8px;
+  background-color: white;
+  border-color:#dedede;
+  border-radius: 8px;
 }
 
 .labelle{
-position:relative;
-left:100px;
-margin-bottom: 20px;
+  position: relative;
+  left: 95px;
+  margin-bottom: 20px;
+  color:white;
+  font-weight: bold;
+  font-size: 15px;
 }
 
 .field{
-position: absolute;
-left: 240px;
-width: 140px;
-margin-top: -1.6px;
-border-radius: 5px;
-text-align: center;
+  position: absolute;
+  left: 240px;
+  width: 140px;
+  margin-top: -1.6px;
+  border-radius: 5px;
+  text-align: center;
 }
 .input-calendar{
-position: relative;
-display: table;
-border-collapse: separate;
-left: 180px;
-width: 150px;
-top: -51px;
+  position: relative;
+  display: table;
+  border-collapse: separate;
+  left: 180px;
+  width: 150px;
+  top: -51px;
 }
 .select-date{
-margin-right: 4%;
-height: 25px !important;
+  margin-right: 4%;
+  height: 25px !important;
 }
 .je-valide{
-position: relative;
-left: 40.8%;
+  position: relative;
+  left: 40.8%;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 
 .image-produit{
-width: 100px;
-height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 
 .innerWrapper .table-responsive .table thead tr th:last-child {
-    border: none;
-    height: 100px;
-    font-size: x-large;
+  border: none;
+  height: 100px;
+  font-size: x-large;
 }
 .innerWrapper .table-responsive .table thead .tr th:last-child {
-    border: none;
-    height: 10px;
-    font-size: large;
-    text-align: center;
-    margin-bottom: 10px;
+  border: none;
+  height: 10px;
+  font-size: large;
+  text-align: center;
+  margin-bottom: 10px;
 }
 .sm-9-spa{
-margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 .sm-6-massage{
-column-count: 2;
+  column-count: 2;
 }
 
 
 
 .p-resa-spa{
-letter-spacing: 2px;
-font-family: Lato, "Open Sans";
-font-size: large;
-font-weight: bold;
+  letter-spacing: 2px;
+  font-family: Lato, "Open Sans";
+  font-size: large;
+  font-weight: bold;
 }
 #number-spa{
-color: #ec5598;
-padding: 5px;
+  color: #ec5598;
+  padding: 5px;
 }
-#add-spa, #remove-spa{
-color: #ec5598;
-font-size: x-large;
+#add-spa, #remove-spa, .remove-massage, .add-massage{
+  color: #ec5598;
+  font-size: x-large;
 }
 .interligne{
-margin-top: 15px !important;
-border-top: 2px solid #eee !important;
+  margin-top: 15px !important;
+  border-top: 2px solid #eee !important;
 }
 
 #spa-input{
-letter-spacing: 2px;
+  letter-spacing: 2px;
 }
 
 
@@ -299,36 +306,36 @@ input.time-spa-list:focus ~ label:before {
 }
 
 .time-spa-list{
-   width: 30px;
+ width: 30px;
 }
 
 .duree-spa{
-position: relative;
-margin-bottom: 25px;
-margin-right: 10px;
-left: 10px;
-font-size: small;
+  position: relative;
+  margin-bottom: 25px;
+  margin-right: 10px;
+  left: 10px;
+  font-size: small;
 }
 
 .label-spa {
-    display: inline-block;
-    max-width: 100%;
-    margin-bottom: 0px;
-    font-weight: 700;
-    position :relative;
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 0px;
+  font-weight: 700;
+  position :relative;
 }
 
 .option-spa-list{
-position: absolute;
-left: 150px;
+  position: absolute;
+  left: 150px;
 
 }
 
 .label-option-spa{
-position: relative;
-left: -20px;
-font-size: small;
-top: -10px
+  position: relative;
+  left: -20px;
+  font-size: small;
+  top: -10px
 }
 
 
@@ -337,99 +344,360 @@ top: -10px
 
 
 input[type="checkbox"]{
-position: relative;
-width: 60px;
-height: 30px;
--webkit-appearance: none;
-background: #D1D3D4;
-outline: none;
-border-radius: 100px;
-/*box-shadow: inset 0 0 5px rgba(0,0,0,.2);*/
-transition: .5s;
+  position: relative;
+  width: 60px;
+  height: 30px;
+  -webkit-appearance: none;
+  background: #D1D3D4;
+  outline: none;
+  border-radius: 100px;
+  /*box-shadow: inset 0 0 5px rgba(0,0,0,.2);*/
+  transition: .5s;
 }
 
 input:checked[type="checkbox"]{
-background: deeppink;
+  background: deeppink;
 }
 
 input[type="checkbox"]:before{
-content: "";
-position: absolute;
-width: 20px;
-height: 20px;
-border-radius: 100px;
-top: 5px;
-left: 5px;
-background: #fff;
-box-shadow: 0 2px 5px rgba(0,0,0,.2);
-transition: .5s;
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  top: 5px;
+  left: 5px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,.2);
+  transition: .5s;
 }
 
 input:checked[type="checkbox"]:before{
-left: 36px;
+  left: 36px;
 }
 
 input[type="checkbox"]{
 
-    margin: 0px 0 0;
-    margin-top: 1px\9;
-    line-height: normal;
+  margin: 0px 0 0;
+  margin-top: 1px\9;
+  line-height: normal;
 }
 
 .list-ambiance{
-margin-bottom: 10px;
+  margin-bottom: 10px;
 
 }
 
 .label-info-spa, .label-heure{
-font-size: small;
-letter-spacing: 2px;
-margin-right: 5px;
+  font-size: small;
+  letter-spacing: 2px;
+  margin-right: 5px;
 /*position: absolute;
 left: 70px;*/
 margin-top: -18px;
 }
 
 .selectElement{
-    width: 150px;
-    font-size: small;
-    margin-right: 5px;
-    font-family: Lato, "Open Sans";
-    position: absolute;
-left: 150px;
-margin-top: -2px;    
+  width: 150px;
+  font-size: small;
+  margin-right: 5px;
+  font-family: Lato, "Open Sans";
+  position: absolute;
+  left: 150px;
+  margin-top: -2px;    
 }
 .select-dro{
-    width: 150px;
-    font-size: small;
-    font-family: Lato, "Open Sans";   
-    text-align: center;
+  width: 150px;
+  font-size: small;
+  font-family: Lato, "Open Sans";   
+  text-align: center;
 }
 
 .infoSpa{
-margin-bottom: 26px;
-position: relative;
-top: -15px;
-left: 52px;
+  margin-bottom: 26px;
+  position: relative;
+  top: -15px;
+  left: 52px;
 }
 }
 
 .fin-spa{
-/*margin-bottom: 10px;*/
+  /*margin-bottom: 10px;*/
 }
 
 .titleSpa{
-font-weight: 700;
+  font-weight: 700;
 }
-
+.table-responsive {
+  margin-top: 20px;
+  border-radius: 20px;
+}
 
 
 
 .massage-su{
-position: relative;
-left:130px;
+  position: relative;
+  left:245px;
+  top: 10px;
 }
 .label-massage{
-position: relative;
-left:-55px;
+  position: relative;
+  left:-20px;
+  font-weight: 700;
+  font-size: small;
 }
+.duree-massage {
+  position: relative;
+  margin-bottom: 18px;
+  margin-right: 10px;
+  left: 10px;
+  font-size: small;
+  top: 9px;
+}
+
+.titleMassage{
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 2px;
+}
+
+
+/*Radio praticien*/
+.praticien-list:checked,
+.praticien-list:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+.praticien-list:checked + label,
+.praticien-list:not(:checked) + label
+{
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  line-height: 20px;
+  display: inline-block;
+  color: #666;
+}
+.praticien-list:checked + label:before,
+.praticien-list:not(:checked) + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border: 1px solid black;
+  border-radius: 100%;
+  background: #fff;
+}
+.praticien-list:checked + label:after,
+.praticien-list:not(:checked) + label:after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #F87DA9;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  border-radius: 100%;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.praticien-list:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+.praticien-list:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+#praticien-label{
+  position: absolute;
+  left: -20px;
+  font-size: 80px;
+  top: -85px;
+}
+#praticienman-label{
+  position: absolute;
+  left: -14px;
+  font-size: 80px;
+  top: -85px;
+}
+.label-no-fa{
+  top: -40px;
+  position: relative;
+  font-size: large;
+  left: -70px;
+}
+.praticiens{
+  display: inline;
+  margin-right: 100px;
+  position: relative;
+  top: 70px;
+  left: 100px;
+}
+
+.titlePraticien {
+
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 2px;
+  margin-left: -95px;
+  color: #666;
+
+}
+.pratText{
+  position: relative;
+  top: 81.5px !important;
+}
+
+.praticien{
+  margin-bottom: 75px;
+}
+/*Radio praticien*/
+
+
+/*PANIER*/
+.panierTitle{
+  color: #ec5598;
+  letter-spacing: 2px;
+  padding-top: 20px;
+}
+#fa{
+  color: #ec5598;
+}
+.p-panier{
+  padding-bottom: 18px;
+  letter-spacing: 2px;
+}
+#codeP{
+  width: 125px;
+}
+.subTitlePanier, .subTitlePanierSpa, .subTitlePanierMsg, .subTitleCadeau{
+  font-family: Quicksand, 'Open Sans', sans-serif !important;
+  font-weight: bold !important;
+  font-size: 1em !important;
+}
+.subTitlePanier{
+  position: relative;
+  left: -48px;
+}
+.subTitlePanierSpa{
+  position: relative;
+  left: -27px;
+}
+.subTitlePanierMsg{
+  position: relative;
+  left: -45px;
+}
+.subTitleCadeau{
+  position: relative;
+  left: -36px;}
+  #spa-price-total, #massage-price-total, #cadeau-price-total{
+    color: black;
+  }
+
+  .spa-duration{
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  .li-acompte{
+    position: relative;
+    margin-left: 22px;
+  }
+  .li-ambiance{
+    position: relative;
+    margin-left: 84px;
+    list-style-type: inherit;
+    color: #685f5f !important;
+
+  }
+
+  .ul-panier{
+    position: relative;
+
+  }
+  #spa-order, #massage-order, #cadeau-order{
+    margin-bottom: 25px;
+  }
+
+  .msg-duration{
+    font-size: 1.2em;
+    font-weight: bold;
+    position: relative;
+    left: -28px;
+  }
+
+  .li-msgType , .li-msgPrix, .li-msgAcompte{
+    position: relative;
+    margin-left: 60px;
+    list-style-type: inherit;
+    color: #685f5f !important;
+  }
+
+  .prestation-message{
+    position: relative;
+    width: 200px;
+    left: 28px;
+    padding-left: 0px;
+    text-align: left;
+  }
+
+
+
+  .innerWrapper>.table-responsive>.table>thead>tr>th:last-child{
+
+    border-bottom: 1px solid transparent;
+    border-radius: 20px;
+  }
+  .prixTotals{
+    background:#ec5598;
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 5px;
+    font-family: Quicksand, 'Open Sans', sans-serif !important;
+    font-weight: bold;
+  }
+  .p-prixTotal{
+
+    font-family: Quicksand, 'Open Sans', sans-serif !important;
+    font-weight: bold;
+    color: white;
+  }
+
+  .cadeau-add, .cadeau-rmv{
+    color:#8c8383 !important;
+    font-size: 1.3em;
+  }
+
+  .li-cadeau{
+    position: relative;
+    margin-left: 60px;
+    list-style-type: inherit;
+    color: #685f5f !important;
+  }
+
+  .cadeaux{
+    position: relative;
+    width: 200px;
+    left: 28px;
+    padding-left: 0px;
+    text-align: left;
+  }
+  .nbr-cadeau{
+    margin-left: 15px;
+  }
+
+  .btn-resa{
+    position: relative;
+    left: 50%;
+    top: 20px;
+    font-family: Quicksand, 'Open Sans', sans-serif !important;
+    width: 30%;
+  }
+  .btn-resa-text{
+    border-radius: 100px;
+  }

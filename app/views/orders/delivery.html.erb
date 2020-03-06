@@ -1,90 +1,99 @@
-<br><br><br><br>
+<link href="/css/delivery.css" rel="stylesheet">
 <div class="container">
-	<%= form_tag(summary_path) do %>
-	<div>
-		<h2>Addresse de livraison</h2>
+	
 
-		<div>
-			<%= label_tag 'adresseL', 'Adresse', class: 'small_label' %>
-			<%= text_field_tag 'adresseL', @client.adresse, class: "input" %>
+		<!-- ADRESSE DE LIVRAISON -->
+		<div class="col-sm-12">
+			<%= form_tag(save_delivery_path) do %>
+			<div class="livraison">
+				<h2><center class="adresseTitle">Adresse de Livraison</center></h2>
+				<div class="adresseLivraison">
+					<div class="inline-form">
+						<%= label_tag 'adresseL', 'Adresse', class: 'small_label' %>
+						<%= text_field_tag 'adresseL', @client.adresse, class: "input" %>
+					</div>
+
+					<div class="inline-form">
+						<%= label_tag 'complAdresseL', 'Complement d\'adresse', class: 'small_label' %>
+						<%= text_field_tag 'complAdresseL', nil, class: "input" %>
+					</div>
+
+					<div class="inline-form">
+						<%= label_tag 'codePostaL', 'Code Postal', class: 'small_label' %>
+						<%= text_field_tag 'codePostaL', nil, class: "input" %>
+					</div>
+
+					<div class="inline-form">
+						<%= label_tag 'villeL', 'Ville', class: 'small_label' %>
+						<%= text_field_tag 'villeL', nil, class: "input" %>
+					</div>
+
+					<div class="inline-formPays">
+						<label class='small_label'>Pays</label>
+						<% @countries.each do |country| %>
+
+						<input type="radio" name="countryL" id="<%=dom_id(country)%>", value="<%=country.name%>" class="paysList"> 
+						<label for="<%=dom_id(country)%>" class='pays_label'><%= country.name%></label> 
+						<% end %>
+					</div>
+				</div>
+			</div>
 		</div>
-		
-		<div>
-			<%= label_tag 'complAdresseL', 'Complement d\'adresse', class: 'small_label' %>
-			<%= text_field_tag 'complAdresseL', nil, class: "input" %>
+		<!-- ADRESSE FACTURATION -->
+		<div class="col-sm-12">
+			<div class="livraison">
+				<h2><center class="adresseTitle">Adresse de facturation</center></h2>
+				<div class="inline-form">
+					<%= label_tag 'adresseF', 'Adresse', class: 'small_label' %>
+					<%= text_field_tag 'adresseF', nil, class: "input" %>
+				</div>
+
+				<div class="inline-form">
+					<%= label_tag 'complAdresseF', 'Complement d\'adresse', class: 'small_label' %>
+					<%= text_field_tag 'complAdresseF', nil, class: "input" %>
+				</div>
+
+				<div class="inline-form">
+					<%= label_tag 'codePostaF', 'Code Postal', class: 'small_label' %>
+					<%= text_field_tag 'codePostaF', nil, class: "input" %>
+				</div>
+
+				<div class="inline-form">
+					<%= label_tag 'villeF', 'Ville', class: 'small_label' %>
+					<%= text_field_tag 'villeF', nil, class: "input" %>
+				</div>
+
+				<div class="inline-form">
+					<label class='small_label'>Pays</label>
+					<% @countries.each do |country| %>
+					<input class="paysList" type="radio" name="countryF" id="<%=dom_id(country,:F)%>", value="<%=country.name%>">
+						<label class='pays_label' for="<%=dom_id(country,:F)%>"><%= country.name%></label>
+					<% end %>
+				</div>
+			</div>
 		</div>
-		
-		<div>
-			<%= label_tag 'codePostaL', 'Code Postal', class: 'small_label' %>
-			<%= text_field_tag 'codePostaL', nil, class: "input" %>
-		</div>
-		
-		<div>
-			<%= label_tag 'villeL', 'Ville', class: 'small_label' %>
-			<%= text_field_tag 'villeL', nil, class: "input" %>
-		</div>
-			
-		<div>
-			<label>Pays</label>
-			<% @countries.each do |country| %>
-				<label class="">
-					<%= radio_button_tag 'countryL', country.name %> <%= country.name%>
-				</label>
+<!-- MESSAGE PARTICULIER -->
+		<div class="col-sm-12">
+			<div class="livraison">
+
+				<h2><center class="adresseTitle">Un message à nous faire parvenir?</center></h2>
+
+				<div>
+					<%= label_tag 'message', 'Message perso', class: 'small_label messages' %>
+					<%= text_area_tag 'message', " ", rows: 10, class: 'small_textarea'%>
+				</div>
+
+			</div>
+
+			<div class="btn-resa">
+				<%= submit_tag("Je valide", class:"confirm-command btn btn-primary text-btn btn-resa-text")%>
+			</div>
+
+
 			<% end %>
-		</div>
-	</div>
-	<hr>
-	<div>
-		<h2>Addresse de facturation</h2>
-		<div>
-			<%= label_tag 'adresseF', 'Adresse', class: 'small_label' %>
-			<%= text_field_tag 'adresseF', nil, class: "input" %>
-		</div>
-		
-		<div>
-			<%= label_tag 'complAdresseF', 'Complement d\'adresse', class: 'small_label' %>
-			<%= text_field_tag 'complAdresseF', nil, class: "input" %>
-		</div>
-		
-		<div>
-			<%= label_tag 'codePostaF', 'Code Postal', class: 'small_label' %>
-			<%= text_field_tag 'codePostaF', nil, class: "input" %>
-		</div>
-		
-		<div>
-			<%= label_tag 'villeF', 'Ville', class: 'small_label' %>
-			<%= text_field_tag 'villeF', nil, class: "input" %>
-		</div>
-			
-		<div>
-			<label>Pays</label>
-			<% @countries.each do |country| %>
-				<label class="">
-					<%= radio_button_tag 'countryF', country.name %> <%= country.name%>
-				</label>
-			<% end %>
-		</div>
-	</div>
-	<hr>
-	<div>
-		<h2>Un message à nous faire parvenir?</h2>
-		
-		<div>
-			<%= label_tag 'message', 'Message perso', class: 'small_label' %>
-			<%= text_area_tag 'message', "Un message à nous faire parvenir?", rows: 10, cols: 100%>
-		</div>
 
-	</div>
-
-	<div >
-		<%= submit_tag("Je valide", class:"btn btn-primary")%>
-	</div>
-
-
-	<% end %>
-
-	<br><br><br>
-
+		</div>
+	
 </div>
 
 
