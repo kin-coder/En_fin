@@ -1,30 +1,35 @@
 class OrdersController < ApplicationController
   # 1/2 Selection des prestation
   def zone
-# "country"=>"France", "department"=>"17", "date"=>"03/24/2020"
     @country = params[:country]
     @department = params[:department]
-    
     @date = params[:date]
-
     @country = Country.find_by(name:@country)
-    @department = Department.find_by(name:@department)
-    
+    if @department
+      @department = Department.find_by(name:@department)  
+    else
+      @department = nil
+    end
     @services = []
-
+    @error = ""
     if @country
       if @country.name == "France"
         if @department != nil
-           @country = @country.name
-
-           @department.services.each do |s|
+          @country = @country.name
+          @department.services.each do |s|
             @services.push(s.name)
-           end
-
-           @department = @department.name
+          end
+          @department = @department.name
+          unless session[:otherInfo]
+            session[:otherInfo]={}
+          end
+          session[:otherInfo]["pays"] = @country
+          session[:otherInfo]["department"] = @department
+          session[:otherInfo]["date"] = @date
+          
         else
-          # erreur
-          redirect_back(fallback_location: root_path)
+          @error = "Veuillez choisir un département" #erreur
+          #redirect_back(fallback_location: root_path)
         end
       else
         @country.services.each do |s|
@@ -32,10 +37,17 @@ class OrdersController < ApplicationController
         end
         @country = @country.name
         @department = ""
+
+        unless session[:otherInfo]
+          session[:otherInfo]={}
+        end
+        session[:otherInfo]["pays"] = @country
+        session[:otherInfo]["department"] = @department
+        session[:otherInfo]["date"] = @date
       end
     else
-      # erreur
-      redirect_back(fallback_location: root_path)
+      @error = "Veuillez choisir un pays" #erreur
+      #redirect_back(fallback_location: root_path)
     end
 
     respond_to do |format|

@@ -3,6 +3,9 @@
 	<div id="overlay">
 		<div id="text">
 			<div class="set-zones">
+				<div class="alert alert-danger hidden" role="alert" id="errorInZone">
+				  
+				</div>
 				<h2>Je choisi ma zone géographique </h2>
 
 				<%= form_tag(zone_path, remote: true) do %>
@@ -46,6 +49,9 @@
 
 	<!-- ==========================CONTENU ACCORDEONS================= -->
 	<div class="container allfaq">
+		<div id="zode-and-date-selected">
+			
+		</div>
 		<div class="row">
 			<div class="col-sm-9">
 				<!-- session js -->
