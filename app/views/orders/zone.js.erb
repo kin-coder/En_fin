@@ -1,17 +1,53 @@
-document.getElementById("overlay").style.display = "none"
+mainLoad()
 
-// document.getElementById("container-principale").appendChild(document.getElementById("text"))
+function mainLoad(){
+	let error = "<%= @error %>"
+	if(error == ""){
+		<% if @services.empty? %>
+			alert("Oups, le service n’est pas disponible actuellement dans votre zone ! Nous oeuvrons pour qu’il le soit prochainement.")
+		<% else %>
+			document.getElementById("overlay").style.display = "none"
+			editSessionAndDomValue()
+		<% end %>
+	}else{
+		document.getElementById("errorInZone").classList.remove("hidden")
+		document.getElementById("errorInZone").innerHTML = error
+	}
+}
 
-alert("tonga ato ve eee! <%= @services %>")
+function editSessionAndDomValue(){
+	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
+	prestations.country = "<%= @country %>"
+	let nameDepart = ""
+	<% if @department != "" %>
+		prestations.department = "<%= @department %>"
+		nameDepart = "Departement : <%= @department %>"
+	<% else %>
+		delete prestations.department
+	<% end %>
+	prestations.date = "<%= @date %>"
+	sessionStorage.setItem("prestations",JSON.stringify(prestations))
+	<% unless @services.include?("Massage") %>
+		document.getElementById("massage-fafana").classList.add("hidden")
+		sessionStorage.setItem("spa","[]")
+	<% else %>
+		document.getElementById("massage-fafana").classList.remove("hidden")
+	<% end %>
 
-<% unless @services.include?("Massage") %>
-	document.getElementById("massage-fafana").classList.add("hidden")
-<% else %>
-	document.getElementById("massage-fafana").classList.remove("hidden")
-<% end %>
+	<% unless @services.include?("Location spa") %>
+		document.getElementById("loc-spa-fafana").classList.add("hidden")
+		sessionStorage.setItem("massages","[]")
+	<% else %>
+		document.getElementById("loc-spa-fafana").classList.remove("hidden")
+	<% end %>
 
-<% unless @services.include?("Location spa") %>
-	document.getElementById("loc-spa-fafana").classList.add("hidden")
-<% else %>
-	document.getElementById("loc-spa-fafana").classList.remove("hidden")
-<% end %>
+	let valueCountry = document.getElementById('zode-and-date-selected')
+	valueCountry.innerHTML = "<div>Pays : <%= @country %> "+nameDepart+" Date de livraison : <%= @date %> <button class=\"btn btn-primary\" id=\"openZoneChoice\">Midfier votre zone et la date</button></div>"
+
+	document.getElementById("openZoneChoice").addEventListener('click',openZone);
+}
+
+function openZone(){
+	document.getElementById("errorInZone").classList.add("hidden")
+	document.getElementById("overlay").style.display = "block"
+}
