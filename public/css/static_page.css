@@ -1,4 +1,15 @@
 /* GESTION RESPONSIVE */
+
+.ccm-index img {
+width: 50px;
+margin-bottom: -10px;
+position: relative;
+top: -15px;
+}
+.suisse img {
+width: 139px;
+height: 139px;
+}
 @media (min-width: 768px) {
  .row-product {
   margin-right: -15px;
@@ -720,26 +731,26 @@ left: 250px;*/
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .contactSectionEngagement{
-padding-top:65px !important;
+    padding-top:65px !important;
   }
 
   .bloc-engagement{
-text-align: center !important;
+    text-align: center !important;
 
   }
   .reviewinfocontact{
-width: 500px !important;
+    width: 500px !important;
   }
-    .reviewinfocontact2{
-width: 500px !important;
-position:absolute;
-left: -75px;
+  .reviewinfocontact2{
+    width: 500px !important;
+    position:absolute;
+    left: -75px;
   }
   .col-sm-offset-2 {
 
     margin-left: 0%;
 
-}
+  }
   .form-group {
     position: relative;
     width: 100% !important;}
@@ -790,11 +801,14 @@ left: -75px;
       text-align: center;
     }
     .reviewInfo .sansfa {
-      font-size: 25px;
+      font-size: 30px;
       margin: 0 0 25px 0;
-      color: #ec5598;
+      margin-left: 0px;
+      color:#ec5598;
       font-family: Lato, 'Open Sans' !important;
       margin-left: -30px;
+      font-weight: bold;
+      font-style: normal;
     }
     .text-p-index{
       text-align: justify;

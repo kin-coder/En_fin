@@ -5,9 +5,12 @@
 
 <style>
   /* Mise en page du texte*/
+#slideText{
+color:white !important;
+}
   .texte-baniere{
     color:black !important;
-    align:justify; 
+    
     position:relative; 
     left:5px!important;
     font-family: Lato, 'Open Sans' !important;
@@ -22,7 +25,7 @@
 
   /* font texte du titre de texte-baniere*/
   .poli1{
-
+color:white !important;
    font-family:Lato, Roboto!important;
    font-size: 20px !important;
  }
@@ -112,12 +115,12 @@
     </div>
 
     <!-- Slide two -->
-    <div class="slide slideResize slide3" style="background-image: url(img/home/variety.jpg);">
+    <div class="slide slideResize slide3" style="background-image: url(img/home/slide-2.jpg);">
       <div class="container">
         <div class="common-inner slide-inner3  texte-baniere col-12 col-md-7">
           <!--<img src="img/favicon.png" alt="Logo Icon" class="img-responsive">-->  <!-- ICONE -->
           <span class="h1 from-bottom poli1">Louez votre spa / jacuzzi à domicile</span><br>
-          <span class="h4 from-bottom texte-baniere"><b>N</b>ous vous proposons un service de location de spa, jacuzzi gonflable clé
+          <span id="slideText" class="h4 from-bottom texte-baniere"><b>N</b>ous vous proposons un service de location de spa, jacuzzi gonflable clé
             en main. À domicile ou sur le lieu de votre choix, profitez d’un instant de
           détente et de relaxation inoubliable.</span><br>
           <div class="baniere-btnbis">
@@ -128,7 +131,7 @@
     </div>
 
     <!-- Slide three -->
-    <div class="slide slideResize slide4" style="background-image: url(img/home/gallery-2.jpg);">
+    <div class="slide slideResize slide4" style="background-image: url(img/home/slide-3.png);">
       <div class="container">
         <div class="common-inner slide-inner4 texte-baniere col-12 col-md-7">   <!--common-inner slide-inner3-->
           <span class="h1 from-bottom poli1">Bookez votre Massage et sentez-vous au top ! </span><br>
@@ -153,8 +156,8 @@
     <div class="col-sm-10 col-xs-12">
       <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
-          <div class="reviewImage hidden-xs">
-            <img src="/img/ccspa.png" alt="Image review" class="img-responsive" alt="Massage">
+          <div class="reviewImage reviewImageCcspa hidden-xs">
+            <img src="/img/logo-ccspa.png" alt="Image review" class="img-responsive" alt="Massage">
           </div>
           <div class="reviewInfo">
             <center class="sansfa">Bienvenue chez Cocooning Spa !</center>
@@ -184,8 +187,8 @@
       <div class="col-sm-6 col-xs-12">
         <div class="row">
           <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
-            <div class="reviewImage hidden-xs">
-              <img src="img/home/home-about.jpg" alt="Image review" class="img-responsive" alt="Massage">
+            <div class="reviewImage reviewImageCcspaService hidden-xs">
+              <img src="img/home/LocationSpa.jpg" alt="Image review" class="img-responsive" alt="Massage">
             </div>
             <div class="reviewInfo service-single">
               <center class="sansfa">Location spa à domicile</center>
@@ -204,8 +207,8 @@
      <div class="col-sm-6 col-xs-12">
       <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
-          <div class="reviewImage hidden-xs">
-            <img src="img/home/offer-2.jpg" alt="Image review" class="img-responsive">
+          <div class="reviewImage reviewImageCcspaService hidden-xs">
+            <img src="img/home/Massage.jpg" alt="Image review" class="img-responsive">
           </div>
           <div class="reviewInfo">
             <center class="sansfa">Massage à domicile</center>
@@ -232,8 +235,8 @@
     <div class="row">
       <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="produtSingle">
-          <div class="produtImage">
-            <img src="img/localisationn.jpg" alt="Image Product" class="img-responsive">
+          <div class="produtImage produtImageCcspa">
+            <img src="img/Reserver.png" alt="Image Product" class="img-responsive">
             <div class="productMas"></div>
           </div>
           <div class="productCaption">
@@ -244,8 +247,8 @@
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="produtSingle">
-          <div class="produtImage">
-            <img src="img/calendar.jpg" alt="Image Product" class="img-responsive">
+          <div class="produtImage produtImageCcspa">
+            <img src="img/disponible.png" alt="Image Product" class="img-responsive">
             <div class="productMas"></div>
           </div>
           <div class="productCaption">
@@ -255,8 +258,8 @@
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="produtSingle">
-          <div class="produtImage">
-            <img src="img/relaxr.jpg" alt="Image Product" class="img-responsive">
+          <div class="produtImage produtImageCcspa">
+            <img src="img/Relaxez.png" alt="Image Product" class="img-responsive">
             <div class="productMas"> </div>
           </div>
           <div class="productCaption">
@@ -355,8 +358,9 @@
 
       </center>
       <center class="col-sm-6">
-        <div>
-          <b><span><i class="fa fa-thumbs-up" aria-hidden="true" id="ok"></i> <br></span> Professionnels sélectionnés, formés et diplômés</b>
+        <div class="ccm-index">
+          <b><span><i class="fa fa-thum" aria-hidden="true" id="ok">              <img src="img/home/professionnel.png" alt="Image Partner">
+</i> <br></span> Professionnels sélectionnés, formés et diplômés</b>
         </div>
         <p class='text-p-index bloc-engagement'>Toutes nos prestations sont réalisées par des professionnels sélectionnés, formés et diplômés. Ils s’occuperont de vous avec talent et gentillesse !</p>
       </center>
@@ -371,8 +375,8 @@
       </center>
       <center class="col-sm-6">
 
-        <div>
-          <b><span><i class="fa fa-clock-o" aria-hidden="true" id="ok"></i><br></span> Prestations sur mesure </b>
+        <div class="ccm-index">
+          <b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/cible.png" alt="Image Partner"></i><br></span> Prestations sur mesure </b>
         </div>
         <p class='text-p-index bloc-engagement'>C’est vous qui choisissez votre prestation et vos horaires, nous qui nous adaptons. Vous pouvez personnaliser votre moment en fonction de vos envies.</p>
 
@@ -405,11 +409,11 @@
           </div>
           <div class="slide">
             <div class="partnersLogo clearfix">
-              <img src="img/home/belgique.jpg" alt="Image Partner">
+              <img src="img/home/belgique.png" alt="Image Partner">
             </div>
           </div>
           <div class="slide">
-            <div class="partnersLogo clearfix">
+            <div class="partnersLogo suisse clearfix">
               <img src="img/home/suisse.png" alt="Image Partner">
             </div>
           </div>

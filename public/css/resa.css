@@ -150,9 +150,12 @@
 }
 
 .labelle{
-  position:relative;
-  left:100px;
+  position: relative;
+  left: 95px;
   margin-bottom: 20px;
+  color:white;
+  font-weight: bold;
+  font-size: 15px;
 }
 
 .field{
@@ -178,6 +181,8 @@
 .je-valide{
   position: relative;
   left: 40.8%;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 
