@@ -1,29 +1,41 @@
-function on() {
+initialize()
+
+function on(){
   document.getElementById("overlay").style.display = "block";
 }
 
-// function off() {
-//   document.getElementById("overlay").style.display = "none";
-// }
+function initialize(){
+	let zone = JSON.parse(sessionStorage.getItem("zone"))
+	if (zone != null && zone.country != undefined) {
+		if (zone.country != "") {
+			let valueCountry = document.getElementById('zode-and-date-selected')
+			let nameDepart = ""
+			if (zone.department) {
+				nameDepart = "Departement : "+zone.department
+			}
+			valueCountry.innerHTML = "<div>Pays : "+zone.country+" "+nameDepart+" Date de livraison : "+zone.date+" <button class=\"btn btn-primary\" id=\"openZoneChoice\">Modifier</button></div>"
+			document.getElementById("openZoneChoice").addEventListener('click',openZone);
+		
+			if (zone.services.includes("Massage")){
+				document.getElementById("massage-fafana").classList.remove("hidden")
+			}else{
+				document.getElementById("massage-fafana").classList.add("hidden")
+			}
 
-window.onload = on();
+			if (zone.services.includes("Location spa")){
+				document.getElementById("loc-spa-fafana").classList.remove("hidden")
+			}else{
+				document.getElementById("loc-spa-fafana").classList.add("hidden")
+			}
 
-/*
-
-// addZoneInPrestations()
-
-// function addZoneInPrestations() {
-// 	let addZone = JSON.parse(sessionStorage.getItem("prestations"))
-// 	addZone.pays = "<%= @all_params[:country] %>"
-// 	<% if @all_params[:department] %>
-// 		addZone.departement = "<%= @all_params[:department] %>"
-// 	<% else %>
-// 		delete addZone.departement
-// 	<% end %>
-// 	addZone.date = "<%= @all_params[:date] %>"
-// 	addZone.heurs = "<%= @all_params[:heure] %>"
-// 	sessionStorage.setItem("prestations",JSON.stringify(addZone))
-// }
-
-
-*/
+		}else{
+			window.onload = on();
+		}
+	}else{
+		window.onload = on();
+	}
+}
+function openZone(){
+	document.getElementById("errorInZone").classList.add("hidden")
+	document.getElementById("overlay").style.display = "block"
+}

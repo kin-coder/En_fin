@@ -16,17 +16,27 @@ function mainLoad(){
 }
 
 function editSessionAndDomValue(){
-	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
-	prestations.country = "<%= @country %>"
+
+	sessionStorage.setItem("prestations","{}")
+	sessionStorage.setItem("spa","[]")
+	sessionStorage.setItem("massages","[]")
+	sessionStorage.setItem("cadeau","[]")
+	sessionStorage.setItem("inc","0")
+	sessionStorage.setItem("zone","{}")
+
+	let zone = JSON.parse(sessionStorage.getItem("zone"))
+	zone.country = "<%= @country %>"
+	zone.services = ["<%= @services[0] %>","<%= @services[1] %>"]
 	let nameDepart = ""
 	<% if @department != "" %>
-		prestations.department = "<%= @department %>"
+		zone.department = "<%= @department %>"
 		nameDepart = "Departement : <%= @department %>"
 	<% else %>
-		delete prestations.department
+		delete zone.department
 	<% end %>
-	prestations.date = "<%= @date %>"
-	sessionStorage.setItem("prestations",JSON.stringify(prestations))
+	zone.date = "<%= @date %>"
+	sessionStorage.setItem("zone",JSON.stringify(zone))
+
 	<% unless @services.include?("Massage") %>
 		document.getElementById("massage-fafana").classList.add("hidden")
 		sessionStorage.setItem("spa","[]")
@@ -42,12 +52,41 @@ function editSessionAndDomValue(){
 	<% end %>
 
 	let valueCountry = document.getElementById('zode-and-date-selected')
-	valueCountry.innerHTML = "<div>Pays : <%= @country %> "+nameDepart+" Date de livraison : <%= @date %> <button class=\"btn btn-primary\" id=\"openZoneChoice\">Midfier votre zone et la date</button></div>"
+	valueCountry.innerHTML = "<div>Pays : <%= @country %> "+nameDepart+" Date de livraison : <%= @date %> <button class=\"btn btn-primary\" id=\"openZoneChoice\">Modifier</button></div>"
 
 	document.getElementById("openZoneChoice").addEventListener('click',openZone);
+
+	// Edition des elements !
+	resetValueInDom()
 }
 
 function openZone(){
 	document.getElementById("errorInZone").classList.add("hidden")
 	document.getElementById("overlay").style.display = "block"
+}
+
+function resetValueInDom(){
+	document.getElementById('number-spa').innerHTML = "0"
+	document.getElementById('number-Homme').innerHTML = "0"
+	document.getElementById('number-Femme').innerHTML = "0"
+	document.getElementById('number-cart-ok').innerHTML = "0"
+
+	document.getElementById('massage-input').innerHTML = ""
+	document.getElementById('spa-input').innerHTML = ""
+
+	document.getElementById('empty-order').classList.remove("hidden")
+
+	document.getElementById('spa-order').classList.add("hidden")
+	document.getElementById('massage-order').classList.add("hidden")
+	document.getElementById('cadeau-order').classList.add("hidden")
+
+	document.getElementById('total-price').innerHTML = "0"
+	document.getElementById('total-acompte').innerHTML = "0"
+
+
+	let cdeaus = document.querySelectorAll('.nbr-cadeau-wa');
+	cdeaus.forEach(cadeau => {
+		cadeau.innerHTML = "0"
+	});
+
 }

@@ -877,7 +877,7 @@ function numberAtOrderBtn(){
 
 
 // LIGNE 580 RA ILAINA ILAY ACCOMPTE
-// spanPriceTotal.innerHTML = "prix: "+prixSomme[0]+"€ acompte: "+prixSomme[1]+"€"
+	// spanPriceTotal.innerHTML = "prix: "+prixSomme[0]+"€ acompte: "+prixSomme[1]+"€"
 
 
 // LIGNE 712 RA ILAINA ILAY ACCOMPTE
