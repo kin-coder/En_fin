@@ -16,6 +16,13 @@ function mainLoad(){
 }
 
 function editSessionAndDomValue(){
+
+	sessionStorage.setItem("prestations","{}")
+	sessionStorage.setItem("spa","[]")
+	sessionStorage.setItem("massages","[]")
+	sessionStorage.setItem("cadeau","[]")
+	sessionStorage.setItem("inc","0")
+
 	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
 	prestations.country = "<%= @country %>"
 	let nameDepart = ""
@@ -45,9 +52,38 @@ function editSessionAndDomValue(){
 	valueCountry.innerHTML = "<div>Pays : <%= @country %> "+nameDepart+" Date de livraison : <%= @date %> <button class=\"btn btn-primary\" id=\"openZoneChoice\">Midfier votre zone et la date</button></div>"
 
 	document.getElementById("openZoneChoice").addEventListener('click',openZone);
+
+	// Edition des elements !
+	resetValueInDom()
 }
 
 function openZone(){
 	document.getElementById("errorInZone").classList.add("hidden")
 	document.getElementById("overlay").style.display = "block"
+}
+
+function resetValueInDom(){
+	document.getElementById('number-spa').innerHTML = "0"
+	document.getElementById('number-Homme').innerHTML = "0"
+	document.getElementById('number-Femme').innerHTML = "0"
+	document.getElementById('number-cart-ok').innerHTML = "0"
+
+	document.getElementById('massage-input').innerHTML = ""
+	document.getElementById('spa-input').innerHTML = ""
+
+	document.getElementById('empty-order').classList.remove("hidden")
+
+	document.getElementById('spa-order').classList.add("hidden")
+	document.getElementById('massage-order').classList.add("hidden")
+	document.getElementById('cadeau-order').classList.add("hidden")
+
+	document.getElementById('total-price').innerHTML = "0"
+	document.getElementById('total-acompte').innerHTML = "0"
+
+
+	let cdeaus = document.querySelectorAll('.nbr-cadeau-wa');
+	cdeaus.forEach(cadeau => {
+		cadeau.innerHTML = "0"
+	});
+
 }

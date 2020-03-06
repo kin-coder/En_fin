@@ -1,29 +1,30 @@
-function on() {
+initialize()
+
+
+
+function on(){
   document.getElementById("overlay").style.display = "block";
 }
 
-// function off() {
-//   document.getElementById("overlay").style.display = "none";
-// }
-
-window.onload = on();
-
-/*
-
-// addZoneInPrestations()
-
-// function addZoneInPrestations() {
-// 	let addZone = JSON.parse(sessionStorage.getItem("prestations"))
-// 	addZone.pays = "<%= @all_params[:country] %>"
-// 	<% if @all_params[:department] %>
-// 		addZone.departement = "<%= @all_params[:department] %>"
-// 	<% else %>
-// 		delete addZone.departement
-// 	<% end %>
-// 	addZone.date = "<%= @all_params[:date] %>"
-// 	addZone.heurs = "<%= @all_params[:heure] %>"
-// 	sessionStorage.setItem("prestations",JSON.stringify(addZone))
-// }
-
-
-*/
+function initialize(){
+	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
+	if (prestations.country != undefined) {
+		if (prestations.country != "") {
+			let valueCountry = document.getElementById('zode-and-date-selected')
+			let nameDepart = ""
+			if (prestations.department) {
+				nameDepart = "Departement : "+prestations.department
+			}
+			valueCountry.innerHTML = "<div>Pays : "+prestations.country+" "+nameDepart+" Date de livraison : "+prestations.date+" <button class=\"btn btn-primary\" id=\"openZoneChoice\">Midfier votre zone et la date</button></div>"
+			document.getElementById("openZoneChoice").addEventListener('click',openZone);
+		}else{
+			window.onload = on();
+		}
+	}else{
+		window.onload = on();
+	}
+}
+function openZone(){
+	document.getElementById("errorInZone").classList.add("hidden")
+	document.getElementById("overlay").style.display = "block"
+}

@@ -240,7 +240,7 @@
 																	Prix : <%= cadeau.price %> € <br>
 																	<strong>Nombres : </strong>
 																	<i class="fa fa-minus-circle cadeau-rmv btn-produits" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
-																	<strong><span id="<%= cadeau.id %>-nbr">0</span></strong>
+																	<strong><span class="nbr-cadeau-wa" id="<%= cadeau.id %>-nbr">0</span></strong>
 																	<i class="fa fa-plus-circle cadeau-add btn-produits" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
 
 																	<input type="text" value="[]" name="cadeau" id="cadeau-id" class="hidden">
@@ -322,6 +322,10 @@
 			</div>
 		</div>
 	</div>
+	
+	<%= javascript_pack_tag 'orders_index' %>
+
+	<script data-turbolinks-track = "reload" src="/js/resa-js.js"></script>
 
 	
 
@@ -361,7 +365,7 @@
 
 				<!-- Fin formulaire -->
 				<!-- ======================================================================== -->
-				<%= javascript_pack_tag 'orders_index' %>
+
 
 <!--
 
@@ -391,7 +395,7 @@ selected=\"selected\"
 -->	
 
 
-<script data-turbolinks-track = "reload" src="/js/resa-js.js"></script>
+
 
 
 
