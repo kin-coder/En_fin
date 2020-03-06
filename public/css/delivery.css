@@ -1,0 +1,133 @@
+.container {
+	background: white;
+}
+
+.livraison{
+	margin-top: 75px;
+}
+
+.adresseTitle{
+	font-family: Quicksand, "Open Sans";
+	font-weight: bold;
+	color: #ec5598;
+
+}
+
+.input{
+	position: absolute;
+	left: 400px;
+	font-size: 1.2em;
+	font-weight: 40;
+	text-align: justify;
+	letter-spacing: 1.2px;
+	width: 50%;
+}
+
+.inline-form{
+	margin-bottom: 25px;
+}
+.small_label{
+	position: relative;
+	left: 170px;
+	top: 12px;
+	font-size: 1.2em;
+	font-weight: 40;
+	letter-spacing: 1.2px;
+}
+
+.paysList{
+	position: relative;
+}
+
+/*Radio praticien*/
+.paysList:checked,
+.paysList:not(:checked) {
+	position: absolute;
+	left: -9999px;
+}
+.paysList:checked + label,
+.paysList:not(:checked) + label
+{
+	position: relative;
+	padding-left: 28px;
+	cursor: pointer;
+	line-height: 20px;
+	display: inline-block;
+	color: #666;
+	margin-right: 30px;
+}
+.paysList:checked + label:before,
+.paysList:not(:checked) + label:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 18px;
+	height: 18px;
+	border: 1px solid black;
+	border-radius: 100%;
+	background: #fff;
+}
+.paysList:checked + label:after,
+.paysList:not(:checked) + label:after {
+	content: '';
+	width: 10px;
+	height: 10px;
+	background: #F87DA9;
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	border-radius: 100%;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+.paysList:not(:checked) + label:after {
+	opacity: 0;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+}
+.paysList:checked + label:after {
+	opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+
+.pays_label{
+	position: relative;
+	left: 420px;
+	top: 12px;
+	font-size: 1em;
+	font-weight: 40;
+	letter-spacing: 1.2px;
+}
+
+.small_textarea{
+	width: 800px;
+	margin-left: 45px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	font-size: 1.2em;
+	font-weight: 40;
+
+}
+.messages{
+	background:white;
+	position: relative;
+	top: -215px;
+	left: 190px;
+}
+
+
+.btn-resa-text{
+	border-radius: 100px;
+}
+.btn-resa{
+	position: relative;
+	left: 50%;
+	top: 20px;
+	font-family: Quicksand, 'Open Sans', sans-serif !important;
+	width: 30%;
+	margin-bottom: 100px;
+	margin-top: 20px;
+}
