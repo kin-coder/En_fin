@@ -2152,7 +2152,9 @@ textarea.form-control {
 }
 
 .navbar-brand > img {
-  width: 100%;
+  width: 70%;
+margin-top: 10px;
+margin-left: 20px;
 }
 
 @media (min-width: 320px) {
@@ -2176,7 +2178,7 @@ textarea.form-control {
 
 @media (min-width: 992px) {
   .navbar-brand {
-    width: 230px;
+    width: 220px;
     padding: 40px 50px;
   }
 }
@@ -3927,12 +3929,30 @@ textarea.form-control {
   .reviewImage {
     left: -145px;
   }
+  .reviewImageCcspa {
+    left: -145px;
+    top: 48px;
+}
 }
 
 .reviewImage img {
   position: absolute;
   left: 25px;
   top: -25px;
+}
+
+.reviewImageCcspa img {
+    position: absolute;
+    left: 20px !important;
+    top: 9px !important;
+    width: 120px !important;
+}
+.reviewImageCcspaService img {
+    position: absolute;
+    left: 20px !important;
+    top: 9px !important;
+    width: 150px !important;
+    height: 150px !important;
 }
 
 .reviewInfo {
@@ -6640,6 +6660,12 @@ input[type=number]::-webkit-inner-spin-button {
 .produtImage img {
   display: inline-block;
   transition: all 0.8s ease-in-out;
+}
+
+.produtImageCcspa img {
+    display: inline-block;
+    transition: all 0.8s ease-in-out;
+    width: 200px;
 }
 
 .productOption {
