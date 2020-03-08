@@ -1,3 +1,4 @@
+scriptPrincipal()
 function scriptPrincipal(){
 	/*==========================================================================*/
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~SPA~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -35,12 +36,13 @@ function scriptPrincipal(){
 	addPraticient.forEach(add => {
 		add.addEventListener('change',addPraticientAtSession);
 	});
+
 	/*==========================================================================*/
 	/*~~~~~~~~~~~~Verifier si il y a un truc dans la session ~~~~~~~~~~~~~*/
 	verifySession()
 }
-
-scriptPrincipal()
+// 
+// 
 /*==========================================================================*/
 // verifier si la session est vide ou pas
 function verifySession(){
@@ -84,6 +86,7 @@ function verifySession(){
 		initSession()
 	}
 }
+
 // initialiser la session
 function initSession(){
 	sessionStorage.setItem("prestations","{}")

@@ -10,29 +10,28 @@
 				<div class="adresseLivraison">
 					<div class="inline-form">
 						<%= label_tag 'adresseL', 'Adresse', class: 'small_label' %>
-						<%= text_field_tag 'adresseL', @client.adresse, class: "input" %>
+						<%= text_field_tag 'adresseL', @client.adresse, class: "input", required:true %>
 					</div>
 
 					<div class="inline-form">
 						<%= label_tag 'complAdresseL', 'Complement d\'adresse', class: 'small_label' %>
-						<%= text_field_tag 'complAdresseL', nil, class: "input" %>
+						<%= text_field_tag 'complAdresseL', nil, class: "input", required:true %>
 					</div>
 
 					<div class="inline-form">
 						<%= label_tag 'codePostaL', 'Code Postal', class: 'small_label' %>
-						<%= text_field_tag 'codePostaL', nil, class: "input" %>
+						<%= text_field_tag 'codePostaL', nil, class: "input", required:true %>
 					</div>
 
 					<div class="inline-form">
 						<%= label_tag 'villeL', 'Ville', class: 'small_label' %>
-						<%= text_field_tag 'villeL', nil, class: "input" %>
+						<%= text_field_tag 'villeL', nil, class: "input", required:true %>
 					</div>
 
 					<div class="inline-formPays">
 						<label class='small_label'>Pays</label>
 						<% @countries.each do |country| %>
-
-						<input type="radio" name="countryL" id="<%=dom_id(country)%>", value="<%=country.name%>" class="paysList"> 
+						<input type="radio" name="countryL" id="<%=dom_id(country)%>", value="<%=country.name%>" class="paysList" required>
 						<label for="<%=dom_id(country)%>" class='pays_label'><%= country.name%></label> 
 						<% end %>
 					</div>
@@ -45,22 +44,22 @@
 				<h2><center class="adresseTitle">Adresse de facturation</center></h2>
 				<div class="inline-form">
 					<%= label_tag 'adresseF', 'Adresse', class: 'small_label' %>
-					<%= text_field_tag 'adresseF', nil, class: "input" %>
+					<%= text_field_tag 'adresseF', nil, class: "input", required:true %>
 				</div>
 
 				<div class="inline-form">
 					<%= label_tag 'complAdresseF', 'Complement d\'adresse', class: 'small_label' %>
-					<%= text_field_tag 'complAdresseF', nil, class: "input" %>
+					<%= text_field_tag 'complAdresseF', nil, class: "input", required:true %>
 				</div>
 
 				<div class="inline-form">
 					<%= label_tag 'codePostaF', 'Code Postal', class: 'small_label' %>
-					<%= text_field_tag 'codePostaF', nil, class: "input" %>
+					<%= text_field_tag 'codePostaF', nil, class: "input", required:true %>
 				</div>
 
 				<div class="inline-form">
 					<%= label_tag 'villeF', 'Ville', class: 'small_label' %>
-					<%= text_field_tag 'villeF', nil, class: "input" %>
+					<%= text_field_tag 'villeF', nil, class: "input", required:true %>
 				</div>
 
 				<div class="inline-form">
