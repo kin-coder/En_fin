@@ -1,21 +1,26 @@
-<h1>Recapitulatif de votre commande</h1>
-<h3><%= session[:myPrestation] %> </h3>
-<h3><%= session[:otherInfo] %></h3>
-<div>
-	Prestation:<br>
-	Produits:<br>
-	Prix Total:<br>
-	Accompte à régler en ligne:<br>
-	Montant à régler sur place:(CB ou éspèces uniquement)<br>
-	Adresse de facturation:<br>
-	Adresse de livraison:<br>
-	Infos complementaires:<br>
-</div>
+<br><br><br><br><br><br>
 
-<div>
-	<h2>IMPORTANT</h2>
-	<p>Ce devis ne tient pas compte des éventuels frais de déplacement (pour les services spa/massage) qui pourrait vous etre facturés selon votre ville. Pour plus d'information veuillez nous contacter</p>
-	<p>Les accomptes ne s'appliquent qu'aux services(Spa/massages). Pour les produits, le montant est réglé dans sa totalité en ligne</p>
-</div>
+<div class="container">
+	<h1>Recapitulatif de votre commande</h1>
+	<h3><%= session[:myPrestation] %> </h3>
+	<h3><%= session[:otherInfo] %></h3>
+	<div>
+		Prestation:<br>
+		Produits:<br>
+		Prix Total:<br>
+		Accompte à régler en ligne:<br>
+		Montant à régler sur place:(CB ou éspèces uniquement)<br>
+		Adresse de facturation: <%= session[:otherInfo]["adresseF"] %> <br>
+		Adresse de livraison: <%= session[:otherInfo]["adresseL"] %> <br>
+		Infos complementaires:<br>
 
-<a href="#">Je finalise</a>
+	</div>
+
+	<div>
+		<h2>IMPORTANT</h2>
+		<p>Ce devis ne tient pas compte des éventuels frais de déplacement (pour les services spa/massage) qui pourrait vous etre facturés selon votre ville. Pour plus d'information veuillez nous contacter</p>
+		<p>Les accomptes ne s'appliquent qu'aux services(Spa/massages). Pour les produits, le montant est réglé dans sa totalité en ligne</p>
+	</div>
+
+	<a href="#">Je finalise</a>
+</div>

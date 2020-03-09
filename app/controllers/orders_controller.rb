@@ -63,9 +63,9 @@ class OrdersController < ApplicationController
     @test = false
     if CodePromo.all.find_by(code:@code)
       @test = true
-      session[:code_promo] = @code
+      session[:otherInfo]["code_promo"] = @code
     else
-      session.delete(:code_promo)
+      session[:otherInfo]["code_promo"] = ""
     end
     respond_to do |format|
        format.js
@@ -112,16 +112,17 @@ class OrdersController < ApplicationController
   def saveSession
     # orderSpa = [{time:48,type:["a","b"],price:180,option:[["a",12],["c",45]]},{time:48,type:["a","b"],price:180,option:[["a",12],["c",45]]}]
     # orderMassage =  [{ca:"Homme",su:"prénatal",price:[30,120]}]
-
     timeSpas = params[:timeSpa]
     orderSpa = []
+    isError = false
+
     if timeSpas
       timeSpas.each do |k,v|
         tmp = {}
         if Spa.find_by(duration:v[0].to_i)
           tmp["time"] = v[0].to_i
         else
-          # erreur
+          isError = true
         end
         tmp["type"] = params[:typeSpa][k]
         options = params[:optionSpa][k]
@@ -132,12 +133,22 @@ class OrdersController < ApplicationController
             if product
               tmpOption.push(option)
             else
-              # erreur
+              isError = true
             end
           end
           tmp["option"] = tmpOption
         end
+        if isError
+          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+          redirect_back(fallback_location: root_path)
+          return
+        end
         orderSpa.push(tmp)
+      end
+      if params[:heureSpa] == ""
+        flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+        redirect_back(fallback_location: root_path)
+        return
       end
     end
 
@@ -153,37 +164,77 @@ class OrdersController < ApplicationController
           if mSu
             tmp["su"] = v[1]
           else
-            # erreur
+            isError = true
           end
         else
-          # erreur
+          isError = true
         end
-        price = MassageSuPrice.find_by(duration:params[:massageSuPrice][k][0].to_i)
-        if price
-          tmp["price"] = [price.duration,price.ordinary_price,price.ordinary_acompte]
+        if params[:massageSuPrice]
+          price = MassageSuPrice.find_by(duration:params[:massageSuPrice][k][0].to_i)
+          if price
+            tmp["price"] = price.id
+          else
+            isError = true
+          end
         else
-          # erreur
+          isError = true
+        end
+        if isError
+          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+          redirect_back(fallback_location: root_path)
+          return
         end
         orderMassage.push(tmp)
       end
+      if params[:heureMassage] == ""
+        flash[:notice] = "Une erreur c'est prouduit lors de la verification des données madase"
+        redirect_back(fallback_location: root_path)
+        return
+      end
+
+      unless params[:praticien]
+        flash[:notice] = "Une erreur c'est prouduit lors de la verification des données madase"
+        redirect_back(fallback_location: root_path)
+        return
+      end
     end
 
-    # params[:cadeau]
-    # <h3><%= session[:myPrestation] %></h3>
-    # <h3><%= session[:otherInfo] %></h3>
+    allCadeau = []
+    if params[:cadeau]
+      a_cadeau = params[:cadeau].split("|")
+      a_cadeau.each do |c|
+        # id: 0 nbr: 1
+        infoC = c.split("-")
+        produit = Product.find(infoC[0].to_i)
+        if produit
+          allCadeau.push([produit.name,produit.price,infoC[1].to_i])
+        else
+          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+          redirect_back(fallback_location: root_path)
+          return
+        end
+      end
+    end
+
+    if orderSpa.empty? && orderMassage.empty?
+      flash[:notice] = "Veuillez selectioner au moin une prestation"
+      redirect_back(fallback_location: root_path)
+      return
+    end
 
     session[:myPrestation] = {spa:orderSpa, massage:orderMassage}
-    session[:otherInfo] = {heureSpa:params[:heureSpa],praticien:params[:praticien],heureMassage:params[:heureMassage],cadeau:[]}
+    session[:otherInfo]["heureSpa"] = params[:heureSpa]
+    session[:otherInfo]["praticien"] = params[:praticien]
+    session[:otherInfo]["heureMassage"] = params[:heureMassage]
+    session[:otherInfo]["cadeau"] = allCadeau
 
     redirect_to delivery_path
   end
 
   # 2 Selection des adresse de livraison et facturation
   def delivery
-# email: ""
-# first_name: nil, last_name: nil, adresse: nil, tel: nil, sexe: nil>
-  @client = Client.first
-  @countries = Country.all
+    @client = Client.first
+    @countries = Country.all
   end
 
   def saveDelivery
