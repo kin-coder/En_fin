@@ -701,3 +701,27 @@ margin-top: -18px;
   .btn-resa-text{
     border-radius: 100px;
   }
+
+  .pays-selected{
+    font-size: large;
+    position: relative;
+    left: 10%;
+    font-family: Lato, 'Open Sans', sans-serif;
+    color: #9d9696;
+    margin-top: 20px;
+  }
+
+  .label-selected{
+    position: absolute;
+    left: 200px;
+    font-family: Lato, 'Open Sans', sans-serif;
+  }
+
+  .btn-pays{
+    border-radius: 12px;
+    padding: 10px;
+    position: relative;
+    left: -80px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }

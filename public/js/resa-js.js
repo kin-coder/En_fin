@@ -11,9 +11,9 @@ function initialize(){
 			let valueCountry = document.getElementById('zode-and-date-selected')
 			let nameDepart = ""
 			if (zone.department) {
-				nameDepart = "Departement : "+zone.department
+				nameDepart = "<i><strong class=\"label-selected\">Departement : </strong></i>"+zone.department
 			}
-			valueCountry.innerHTML = "<div>Pays : "+zone.country+" "+nameDepart+" Date de livraison : "+zone.date+" <button class=\"btn btn-primary\" id=\"openZoneChoice\">Modifier</button></div>"
+			valueCountry.innerHTML = "<div class=\"pays-selected\"><i><strong class=\"label-selected\">Pays : </strong></i>"+zone.country+" &nbsp;&nbsp; <br>"+nameDepart+" <br><i><strong  class=\"label-selected\">Date de livraison : </strong></i>"+zone.date+" <br><button class=\"btn btn-primary btn-pays\" id=\"openZoneChoice\">Modifier</button></div>"
 			document.getElementById("openZoneChoice").addEventListener('click',openZone);
 		
 			if (zone.services.includes("Massage")){
