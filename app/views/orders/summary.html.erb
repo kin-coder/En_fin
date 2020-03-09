@@ -2,8 +2,96 @@
 
 <div class="container">
 	<h1>Recapitulatif de votre commande</h1>
-	<h3><%= session[:myPrestation] %> </h3>
-	<h3><%= session[:otherInfo] %></h3>
+	<% priceTotal = 0 %>
+	<% acompteTotal = 0 %>
+
+	<div class="alert alert-success" role="alert">
+		<h2>Location Spa</h2>
+		<% session[:myPrestation]["spa"].each do |spa| %> 
+			<div>
+			durrée : <%= spa["time"] %>h<br>
+			type : 
+			<ul>
+				<li>Type de logement : <%= spa["type"][0] %></li>
+				<li>Type d'installation : <%= spa["type"][1] %></li>
+				<li>Système d'eau : <%= spa["type"][2] %></li>
+			</ul>
+
+			<% if spa["option"] %>
+				option : <%= spa["option"][0][0] %> à <%= spa["option"][0][1] %>€ <br>
+				<% acompteTotal += spa["option"][0][1].to_f %>
+			<% end %>
+
+			prix : <%= spa["price"][0] %>€<br>
+			acompte :<%= spa["price"][1] %>€<br>
+			</div>
+
+			<% priceTotal += spa["price"][0].to_f %>
+			<% acompteTotal += spa["price"][1].to_f %>
+
+			<hr>
+		<% end %>
+		<div>
+			Date et heurs de livraison : le <%= session[:otherInfo]["date"] %> à <%= session[:otherInfo]["heureSpa"] %>
+		</div>
+	</div>
+
+
+
+	<div class="alert alert-danger" role="alert">
+	  	<h2>Massage</h2>
+		<% session[:myPrestation]["massage"].each do |massage| %>
+			<div>
+			pour : <%= massage["ca"] %><br>
+			type de massage : <%= massage["su"] %><br>
+			prix : <%= massage["price"][1] %>€<br>
+			acompte : <%= massage["price"][2] %>€<br>
+			</div>
+			<hr>
+
+			<% priceTotal += massage["price"][1].to_f %>
+			<% acompteTotal += massage["price"][2].to_f %>
+
+		<% end %>
+		<div>
+			Praticien : <%= session[:otherInfo]["praticien"] %><br>
+			Date et heurs de livraison : le <%= session[:otherInfo]["date"] %> à <%= session[:otherInfo]["heureMassage"] %>
+		</div>
+	</div>
+
+	<% unless session[:otherInfo]["cadeau"].empty? %>
+	<div class="alert alert-warning" role="alert">
+		<h2>Nos Cadeau</h2>
+		<% session[:otherInfo]["cadeau"].each do |cadeau| %>
+			<div>
+			cadeau : <%= cadeau[2] %> * <%= cadeau[0] %><br>
+			prix : <%= cadeau[1].to_f * cadeau[2].to_i %>€
+			</div>
+			<% acompteTotal += cadeau[1].to_f*cadeau[2].to_i %>
+		<% end %>  
+	</div>
+	<% end %>
+	<div class="alert alert-success">
+		Prix Total: <%= priceTotal + acompteTotal %>€ <br>
+		Accompte à régler en ligne: <%= acompteTotal %>€<br>
+		Montant à régler sur place:(CB ou éspèces uniquement) <%= priceTotal %>€<br>
+	</div>
+
+	<div class="alert alert-success" role="alert">
+		<h2>Infos complementaires</h2>
+		Pays : <%= session[:otherInfo]["pays"] %> <br>
+		Departement : <%= session[:otherInfo]["department"] %><br>
+		Adresse de facturation: <%= session[:otherInfo]["adresseF"] %> <br>
+		Adresse de livraison: <%= session[:otherInfo]["adresseL"] %> <br>
+	</div>
+
+
+
+
+
+
+	<br><br><br><br><br>
+
 	<div>
 		Prestation:<br>
 		Produits:<br>
@@ -13,7 +101,6 @@
 		Adresse de facturation: <%= session[:otherInfo]["adresseF"] %> <br>
 		Adresse de livraison: <%= session[:otherInfo]["adresseL"] %> <br>
 		Infos complementaires:<br>
-
 	</div>
 
 	<div>

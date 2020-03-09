@@ -141,7 +141,7 @@ class OrdersController < ApplicationController
           options.each do |option|
             product = Product.find_by(name:option)
             if product
-              tmpOption.push(option)
+              tmpOption.push([option,product.price])
             else
               isError = true
             end
@@ -274,6 +274,7 @@ class OrdersController < ApplicationController
 
   # 3 Affiche la recapitulatif de commande
   def summary
+    
     
   end
 
