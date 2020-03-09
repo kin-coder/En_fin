@@ -5,9 +5,9 @@
 
 <style>
   /* Mise en page du texte*/
-#slideText{
-color:white !important;
-}
+  #slideText{
+    color:white !important;
+  }
   .texte-baniere{
     color:black !important;
     
@@ -25,54 +25,59 @@ color:white !important;
 
   /* font texte du titre de texte-baniere*/
   .poli1{
-color:white !important;
-   font-family:Lato, Roboto!important;
-   font-size: 20px !important;
- }
- 
- /* font bouton (massage domicile/location spa) de nos services*/
- .mass{
-  border-radius: 10px;
-  color:white!important;
-}
-
-
-@media (min-width: 320px) {
-
-  .secotionTitle h2 span {
-    display: block;
-    letter-spacing: normal;
-    color: #ec5598;
-    font-family: Quicksand, 'Open Sans'!important;
-    font-size: 50px !important;
-    letter-spacing: 4px;
-    line-height: 42px;
-    text-transform: capitalize;
-    font-weight: bold;
-    padding-bottom: 25px;
+    color:black !important;
+    font-family:Lato, Roboto!important;
+    font-size: 20px !important;
   }
-}
-
-@media (min-width: 768px) {
-  .secotionTitle h2 span {
-    display: block;
-    letter-spacing: normal;
-    color: #ec5598;
-    font-family: Quicksand, 'Open Sans'!important;
-    font-size: 90px;
-    letter-spacing: 4px;
-    line-height: 42px;
-    text-transform: capitalize;
-    font-weight: bold;
-    padding-bottom: 25px;
-    padding-top: 25px;
+  .poli1blanc{
+    color:white !important;
+    font-family:Lato, Roboto!important;
+    font-size: 20px !important;
   }
-}
-.police_massage{
 
-  font-family: Quicksand, fantasy;
-  z-index: -4;
-}
+  /* font bouton (massage domicile/location spa) de nos services*/
+  .mass{
+    border-radius: 10px;
+    color:white!important;
+  }
+
+
+  @media (min-width: 320px) {
+
+    .secotionTitle h2 span {
+      display: block;
+      letter-spacing: normal;
+      color: #ec5598;
+      font-family: Quicksand, 'Open Sans'!important;
+      font-size: 50px !important;
+      letter-spacing: 4px;
+      line-height: 42px;
+      text-transform: capitalize;
+      font-weight: bold;
+      padding-bottom: 25px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .secotionTitle h2 span {
+      display: block;
+      letter-spacing: normal;
+      color: #ec5598;
+      font-family: Quicksand, 'Open Sans'!important;
+      font-size: 90px;
+      letter-spacing: 4px;
+      line-height: 42px;
+      text-transform: capitalize;
+      font-weight: bold;
+      padding-bottom: 25px;
+      padding-top: 25px;
+    }
+  }
+  .police_massage{
+
+    font-family: Quicksand, fantasy;
+    z-index: -4;
+  }
 </style>
 
 
@@ -119,7 +124,7 @@ color:white !important;
       <div class="container">
         <div class="common-inner slide-inner3  texte-baniere col-12 col-md-7">
           <!--<img src="img/favicon.png" alt="Logo Icon" class="img-responsive">-->  <!-- ICONE -->
-          <span class="h1 from-bottom poli1">Louez votre spa / jacuzzi à domicile</span><br>
+          <span class="h1 from-bottom poli1blanc">Louez votre spa / jacuzzi à domicile</span><br>
           <span id="slideText" class="h4 from-bottom texte-baniere"><b>N</b>ous vous proposons un service de location de spa, jacuzzi gonflable clé
             en main. À domicile ou sur le lieu de votre choix, profitez d’un instant de
           détente et de relaxation inoubliable.</span><br>
@@ -194,10 +199,10 @@ color:white !important;
               <center class="sansfa">Location spa à domicile</center>
               <p class="text-p-index"> Un concept inédit et original : nous installons et mettons en service un jacuzzi gonflable sur le lieu de votre choix afin de vous faire vivre un moment qui vous apportera à coup sûr détente, bien-être et convivialité. <br>
                 En été comme en hiver, en intérieur ou en extérieur, n’hésitez plus et tentez cette expérience unique en couple, entre amis ou encore en famille. <br>
-                Louer un spa/jacuzzi à domicile, c’est maintenant possible avec Cocooning Spa !
-              </p>
+                Louer un spa/jacuzzi à domicile, c’est maintenant possible avec Cocooning Spa ! <br><br>
+              </p> 
               <div class="a-btn btn-a">
-               <%= link_to "Découvrir", spa_path, class:"btn btn-primary first-btn mass text-btn" %>
+               <%= link_to "Je découvre", spa_path, class:"btn btn-primary first-btn mass text-btn" %>
 
              </div>
            </div>
@@ -212,9 +217,9 @@ color:white !important;
           </div>
           <div class="reviewInfo">
             <center class="sansfa">Massage à domicile</center>
-            <p class="text-p-index">Imaginez profiter d’un massage sans avoir à vous déplacer ou à attendre ... Ça donne envie, non? Avec Cocooning Spa, ce rêve devient réalité : c'est le bien-être qui vient à vous au moment où vous l'avez décidé. Que ce soit pour un massage classique, sportif ou encore relaxant, vous pouvez réserver celui-ci quand vous voulez. Commandez en quelques secondes un massage de qualité à domicile, à l’hôtel, au bureau, dans un parc, à la plage ... Il est temps que le monde du massage s’adapte à vous !</p>
+            <p class="text-p-index">Imaginez profiter d’un massage sans avoir à vous déplacer ou à attendre ... Ça donne envie, non ? Avec Cocooning Spa, ce rêve devient réalité : c'est le bien-être qui vient à vous au moment où vous l'avez décidé. Que ce soit pour un massage classique, sportif ou encore relaxant, vous pouvez réserver celui-ci quand vous voulez. Commandez en quelques secondes un massage de qualité à domicile, à l’hôtel, au bureau, dans un parc, à la plage ... Il est temps que le monde du massage s’adapte aux consommateurs !</p>
             <div class="a-btn btn-a">
-             <%= link_to "Découvrir", massage_path, class:"btn btn-primary first-btn mass text-btn" %>
+             <%= link_to "Je découvre", massage_path, class:"btn btn-primary first-btn mass text-btn" %>
 
            </div>
          </div>
@@ -313,32 +318,32 @@ color:white !important;
               <center><i class="fa aboutus" aria-hidden="true"> QUI SOMMES-NOUS?</i></center>
               <p class="text-p-index">Cocooning Spa est une start-up française qui propose LA solution aux personnes intéressées par les prestations de bien-être à domicile. Nous vous proposons une plateforme web sur laquelle vous pouvez commander en quelques secondes une location de spa/jacuzzi ou un massage sur le lieu de votre choix et au moment voulu. <span id="lirelasuite" style="display:none;"> Une flexibilité sans égale. Cocooning Spa surfe sur une nouvelle tendance de consommation, celle du plaisir immédiat et sans restriction. 
               Nous entendons bien, à travers ce concept totalement novateur, révolutionner l’univers du bien-être. </span> <a href="javascript:void(0)" class="lire-btn" id="more" aria-hidden="true" onclick="document.getElementById('lirelasuite').style.display = 'block'; this.style.display = 'none';">lire la suite</a href="">
-            </p>
-            <div class="a-btn">
-              <%= link_to "En savoir plus", propos_path, class:"btn btn-primary first-btn mass text-btn" %>
+              </p>
+              <div class="a-btn">
+                <%= link_to "En savoir plus", propos_path, class:"btn btn-primary first-btn mass text-btn" %>
+
+              </div>
 
             </div>
-
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-sm-6 col-xs-12">
-      <div class="row">
-        <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
-          <div class="reviewInfo reviewinfocontact2">
-            <center><i class="fa aboutus" aria-hidden="true">DEVENEZ PARTENAIRES</i></center>
-            <p class="text-p-index">Vous êtes déjà professionnels dans le domaine du massage ou de la location de spa ? Vous n’êtes pas encore en activité et vous souhaitez vous lancer, devenir indépendant ? Cocooning Spa est le tremplin qu’il vous faut. Nous avons besoin de partenaires comme vous ! <br>
-            Alors rejoignez vous aussi l’aventure Cocooning Spa.</p>
-            <div class="a-btn">
-             <%= link_to "En savoir plus", contact_path, class:"btn btn-primary first-btn mass text-btn" %>
+      <div class="col-sm-6 col-xs-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3 col-xs-12 reviewInner">
+            <div class="reviewInfo reviewinfocontact2">
+              <center><i class="fa aboutus" aria-hidden="true">DEVENEZ PARTENAIRES</i></center>
+              <p class="text-p-index">Vous êtes déjà professionnels dans le domaine du massage ou de la location de spa ? Vous n’êtes pas encore en activité et vous souhaitez vous lancer, devenir indépendant ? Cocooning Spa est le tremplin qu’il vous faut. Nous avons besoin de partenaires comme vous ! <br>
+              Alors rejoignez vous aussi l’aventure Cocooning Spa.</p>
+              <div class="a-btn">
+               <%= link_to "En savoir plus", contact_path, class:"btn btn-primary first-btn mass text-btn" %>
+             </div>
            </div>
          </div>
        </div>
      </div>
    </div>
  </div>
-</div>
 </section>
 
 
@@ -360,14 +365,14 @@ color:white !important;
       <center class="col-sm-6">
         <div class="ccm-index">
           <b><span><i class="fa fa-thum" aria-hidden="true" id="ok">              <img src="img/home/professionnel.png" alt="Image Partner">
-</i> <br></span> Professionnels sélectionnés, formés et diplômés</b>
+          </i> <br></span> Professionnels sélectionnés, formés et diplômés</b>
         </div>
         <p class='text-p-index bloc-engagement'>Toutes nos prestations sont réalisées par des professionnels sélectionnés, formés et diplômés. Ils s’occuperont de vous avec talent et gentillesse !</p>
       </center>
     </div>
 
     <div class="row">
-            <center class="col-sm-6">
+      <center class="col-sm-6">
         <div>
           <b><span><i class="fa fa-lock" aria-hidden="true" id="ok"></i><br></span> Paiement CB sécurisé </b>
         </div>
@@ -441,88 +446,88 @@ color:white !important;
 </section>
 
 
-  <!-- avis SECTION -->
-  <section class="container-fluid clearfix productArea patternbg">
-    <div class="secotionTitle">
-      <h2 class="police_massage"><span>Avis et notes</span>Clients</h2>
-    </div>
-    
-  </section>
-  <section class="clearfix productSection patternbg">
-    <div class="container patternbg">
-      <div class="row">
-        <div class="col-xs-12">
-          <div id="productSlider" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <li data-target="#productSlider" data-slide-to="0" class="active"></li>
-              <li data-target="#productSlider" data-slide-to="1"></li>
-            </ol>
+<!-- avis SECTION -->
+<section class="container-fluid clearfix productArea patternbg">
+  <div class="secotionTitle">
+    <h2 class="police_massage"><span>Nos clients</span>partagent leur expérience</h2>
+  </div>
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-              <div class="item active">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-sm-12 col-xs-12">
-                      <div class="productInfo productInfoindex">
+</section>
+<section class="clearfix productSection patternbg">
+  <div class="container patternbg">
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="productSlider" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#productSlider" data-slide-to="0" class="active"></li>
+            <li data-target="#productSlider" data-slide-to="1"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-12 col-xs-12">
+                    <div class="productInfo productInfoindex">
 
 
-                        <center class="slide1">
-                          <i class="stars" aria-hidden="true" id="iconetitle1"></i> <br>
+                      <center class="slide1">
+                        <i class="stars" aria-hidden="true" id="iconetitle1"></i> <br>
 
-                        </center> 
-                        <p class="p-slider">Merci beaucoup à Cocooningspa ! Très bonne service !</p>
-                        <i class="slide1 username">Alex</i>
+                      </center> 
+                      <p class="p-slider">Merci beaucoup à Cocooningspa ! Très bonne service !</p>
+                      <i class="slide1 username">Alex</i>
 
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <% @comments.each do |comment| %>
-              <div class="item">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-sm-12 col-xs-12">
-                      <div class="productInfo productInfoindex">
+            </div>
+            <% @comments.each do |comment| %>
+            <div class="item">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-12 col-xs-12">
+                    <div class="productInfo productInfoindex">
 
-                        <center class="slide1">
-                          <i class="stars" aria-hidden="true" id="iconetitle1"></i> 
+                      <center class="slide1">
+                        <i class="stars" aria-hidden="true" id="iconetitle1"></i> 
 
-                        </center> 
-                        <p class="p-slider"><%=comment.content%></p>
-                        <i class="slide1 username"><%=comment.user_name%></i>
+                      </center> 
+                      <p class="p-slider"><%=comment.content%></p>
+                      <i class="slide1 username"><%=comment.user_name%></i>
 
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <%end%>
-              <!-- Left and right controls -->
-              <div class="vaetvient">
-                <a class="left carousel-control" href="#productSlider" role="button" data-slide="prev">
-                  <i class="fa fa-arrow-circle-left flecheaccueil-left" aria-hidden="true" id="ok"></i>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#productSlider" role="button" data-slide="next">
-                  <i class="fa fa-arrow-circle-right ok flecheaccueil-right" aria-hidden="true" id='flecheindex'></i>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
+            </div>
+            <%end%>
+            <!-- Left and right controls -->
+            <div class="vaetvient">
+              <a class="left carousel-control" href="#productSlider" role="button" data-slide="prev">
+                <i class="fa fa-arrow-circle-left flecheaccueil-left" aria-hidden="true" id="ok"></i>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#productSlider" role="button" data-slide="next">
+                <i class="fa fa-arrow-circle-right ok flecheaccueil-right" aria-hidden="true" id='flecheindex'></i>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
   
   <!-- CONTACT US SECTION -->
   <section class="container-fluid clearfix productArea patternbg">
 
     <div class="secotionTitle">
-      <h2 class="police_massage"><span>Infos</span>Contactez-nous</h2>
+      <h2 class="police_massage"><span>Besoin d’infos ?</span>Des questions ?</h2>
     </div>
 
   </div>
@@ -532,6 +537,8 @@ color:white !important;
   <div class="container">
     <div class="secotionTitle">
       <div class="row">
+                    <div>Vous êtes un particulier et souhaitez échanger avec nous ?
+Vous êtes une entreprise, une piscine, une agence évènementielle, un service de conciergerie, organisateur d’événements, Comité d’Entreprise, etc ... ? Nous pouvons adapter nos prestations sur mesure pour vos clients ou vos salariés.</div>
         <div class="col-md-8 col-sm-7 col-xs-12">
           <div class="contactTitle">
             <h3></br></h3>
@@ -566,9 +573,15 @@ color:white !important;
               <h3><center>Suivez-nous</center></h3>
             </div>
             <ul>
-              <a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa fa-facebook" aria-hidden="true"></i> Cocooning Spa officiel </li></a>
-              <a href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa fa-instagram" aria-hidden="true"></i> Cocooning Spa </li></a>
-              <a href="#" class="btn"> <li><i class="fa fa-users" aria-hidden="true"></i> Cocooning Spa blog</li> </a>
+              <a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa icon" aria-hidden="true">
+                <img src="/img/icon-reseau-social/facebook.png" alt="">
+              </i> Cocooning Spa officiel </li></a>
+              <a href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa icon" aria-hidden="true"> 
+                <img src="/img/icon-reseau-social/instagram.png" alt="">
+              </i> Cocooning Spa </li></a>
+              <a href="https://www.snapchat.com/add/cocooningspaev" class="btn"> <li><i class="fa icon" aria-hidden="true">
+                <img src="/img/icon-reseau-social/snapchat.png" alt="">
+              </i> Cocooning Spa snapchat</li> </a>
             </ul>
           </div>
         </div>
