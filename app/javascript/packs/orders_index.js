@@ -508,7 +508,7 @@ function addRmvOptionSpaInOrder(){ //checkbox na option spa
 	if(this.checked){
 		for (var i = sessionSpa.length - 1; i >= 0; i--) {
 			if (sessionSpa[i].id == index) {
-				sessionSpa[i].option.push(id)
+				sessionSpa[i].option = [id]
 				listOptions = sessionSpa[i].option
 				break
 			}
@@ -516,12 +516,20 @@ function addRmvOptionSpaInOrder(){ //checkbox na option spa
 	}else{
 		for (var i = sessionSpa.length - 1; i >= 0; i--) {
 			if (sessionSpa[i].id == index) {
-				sessionSpa[i].option.splice( sessionSpa[i].option.indexOf(id), 1 )
+				sessionSpa[i].option = []
 				listOptions = sessionSpa[i].option
 				break
 			}
 		}
 	}
+
+	let inputList = document.querySelectorAll(".option-spa-list[data-index=\'"+index+"\']")
+	inputList.forEach(inputL => {
+		if(this != inputL){
+			inputL.checked = false
+		}
+	});
+
 	sessionStorage.setItem("spa",JSON.stringify(sessionSpa))
 	// Ajout des element dans le dom
 	htmlOptionSpaOrder(index,dataOption,dataForm,listOptions)

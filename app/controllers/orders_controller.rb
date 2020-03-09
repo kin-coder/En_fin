@@ -115,12 +115,22 @@ class OrdersController < ApplicationController
     timeSpas = params[:timeSpa]
     orderSpa = []
     isError = false
+    
+    # gestion de l'heurs pour les prixs MM-DD 
+    exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+    current_date = session[:otherInfo]["date"].split("/")
 
     if timeSpas
       timeSpas.each do |k,v|
         tmp = {}
-        if Spa.find_by(duration:v[0].to_i)
+        curent_Spa = Spa.find_by(duration:v[0].to_i)
+        if curent_Spa
           tmp["time"] = v[0].to_i
+          if exceptionalDate.include?(current_date[0..1])
+            tmp["price"] = [curent_Spa.exceptional_price,curent_Spa.exceptional_acompte]
+          else
+            tmp["price"] = [curent_Spa.ordinary_price,curent_Spa.ordinary_acompte]
+          end
         else
           isError = true
         end
@@ -172,7 +182,11 @@ class OrdersController < ApplicationController
         if params[:massageSuPrice]
           price = MassageSuPrice.find_by(duration:params[:massageSuPrice][k][0].to_i)
           if price
-            tmp["price"] = price.id
+            if exceptionalDate.include?(current_date[0..1])
+              tmp["price"] = [price.id,price.exceptional_price,price.exceptional_acompte]
+            else
+              tmp["price"] = [price.id,price.ordinary_price,price.ordinary_acompte]
+            end
           else
             isError = true
           end
@@ -187,13 +201,13 @@ class OrdersController < ApplicationController
         orderMassage.push(tmp)
       end
       if params[:heureMassage] == ""
-        flash[:notice] = "Une erreur c'est prouduit lors de la verification des données madase"
+        flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
         redirect_back(fallback_location: root_path)
         return
       end
 
       unless params[:praticien]
-        flash[:notice] = "Une erreur c'est prouduit lors de la verification des données madase"
+        flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
         redirect_back(fallback_location: root_path)
         return
       end
@@ -229,6 +243,7 @@ class OrdersController < ApplicationController
     session[:otherInfo]["cadeau"] = allCadeau
 
     redirect_to delivery_path
+
   end
 
   # 2 Selection des adresse de livraison et facturation
