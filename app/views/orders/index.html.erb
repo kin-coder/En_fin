@@ -40,7 +40,7 @@
 					</div>
 				</div>
 				<div >
-					<%= submit_tag("Je valide", class:"je-valide", onsubmit:"off()")%>	
+					<%= submit_tag("Je valide", class:"je-valide")%>	
 				</div>
 				<% end %>
 			</div>
@@ -52,6 +52,13 @@
 		<div id="zode-and-date-selected">
 			
 		</div>
+
+		<% if flash[:notice] %>
+			<div class="alert alert-danger" role="alert">
+				<%= flash[:notice] %>
+			</div>
+		<% end %>
+
 		<div class="row">
 			<div class="col-sm-9">
 				<!-- session js -->
@@ -163,7 +170,7 @@
 													<label for="man"><i id="praticienman-label" class="fa fa-male" aria-hidden="true"></i></label>
 												</div>
 												<div class="praticiens">
-													<input type="radio" id="woman" name="praticien" value="Femme" class="praticien-list" >
+													<input type="radio" id="woman" name="praticien" value="Femme" class="praticien-list">
 													<label for="woman"><i id="praticien-label" class="fa fa-female" aria-hidden="true"></i></label>
 												</div>
 												<div class="praticiens pratText">
@@ -232,7 +239,6 @@
 														<div class="row">
 															<% @cadeaus.each do |cadeau| %>
 															<div class="col-sm-3">
-
 																<div><img src="/img/products/<%= cadeau.name %>.jpg" alt="" class="image-produit"> 
 																</div>
 																<div class="description-produit">
@@ -242,9 +248,6 @@
 																	<i class="fa fa-minus-circle cadeau-rmv btn-produits" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
 																	<strong><span class="nbr-cadeau-wa" id="<%= cadeau.id %>-nbr">0</span></strong>
 																	<i class="fa fa-plus-circle cadeau-add btn-produits" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
-
-																	<input type="text" value="[]" name="cadeau" id="cadeau-id" class="hidden">
-
 																</div>
 															</div>
 															<% end %>
@@ -253,7 +256,8 @@
 												</tr>
 											</tbody>
 										</table>
-									</div>  
+									</div>
+									<input type="text" name="cadeau" id="cadeau-id" class="hidden">
 								</div>     
 							</div>
 						</div>
