@@ -6,7 +6,7 @@
 				<div class="alert alert-danger hidden" role="alert" id="errorInZone">
 				  
 				</div>
-				<h2>Je choisi ma zone géographique </h2>
+				<h2 style="color:white;">Je choisi ma zone géographique </h2>
 
 				<%= form_tag(zone_path, remote: true) do %>
 				<div class="pays">
@@ -49,10 +49,6 @@
 
 	<!-- ==========================CONTENU ACCORDEONS================= -->
 	<div class="container allfaq">
-		<div id="zode-and-date-selected">
-			
-		</div>
-
 		<% if flash[:notice] %>
 			<div class="alert alert-danger" role="alert">
 				<%= flash[:notice] %>
@@ -60,7 +56,29 @@
 		<% end %>
 
 		<div class="row">
+
 			<div class="col-sm-9">
+				<div class="innerWrapper">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th id="tableHead" class="accordion-header" ><center >MA ZONE GÉOGRAPHIQUE</center></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div id="zode-and-date-selected">
+
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
 				<!-- session js -->
 				<%= form_tag(save_session_path,id:"form-data",'data-id':"#{@idMassage}",'data-spas':"#{@spas}",'data-spaoptions':"#{@spaoptions}",'data-massages':"#{@massages}") do %>
 				<!-- session js fin -->
@@ -87,7 +105,7 @@
 										<!-- HEURE DE RESERVATION -->
 										<center>
 											<label class="label-heure" for="heure-spa">Choix de l'heure</label>
-											<select name="heureSpa" id="heure-spa" class="select-dro">
+											<select name="heureSpa" id="heure-spa" class="select-dro" required>
 												<option value="">Heure</option>
 												<option value="08:00">08:00</option>
 												<option value="08:30">08:30</option>
@@ -408,4 +426,5 @@ selected=\"selected\"
 
 
 <!-- <div class=\"row\"><div class=\"col-sm-6\"><h5>Massages</h5>"+ htmlSub +"</div></div> -->
+
 
