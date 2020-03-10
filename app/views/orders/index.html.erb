@@ -11,7 +11,7 @@
 				<%= form_tag(zone_path, remote: true) do %>
 				<div class="pays">
 					<label class="labelle" for="country-choice">Pays</label>
-					<select name="country" id="country-choice" class="field">
+					<select name="country" id="country-choice" class="field" required>
 						<option value="" checked>Pays</option>
 						<% @countries.collect do |d| %>
 						<option value="<%=d.name%>"><%=d.name%></option>
@@ -21,7 +21,7 @@
 
 				<div id="list-department" class="hidden">
 					<label class="labelle" for="Departement">Departement</label>
-					<select name="department" id="Departement" class="field">
+					<select name="department" id="Departement" class="field" required>
 						<option value="">Liste departement</option>
 						<% @departments.collect do |d| %>
 						<option value="<%= d.name %>"><%="#{d.code}-#{d.name}"%></option>
@@ -54,7 +54,7 @@
 		</div>
 
 		<% if flash[:notice] %>
-			<div class="alert alert-danger" role="alert">
+			<div class="alert alert-danger" role="alert" id="errorForDataFormulaire">
 				<%= flash[:notice] %>
 			</div>
 		<% end %>
@@ -166,7 +166,7 @@
 												</div>
 												<h4><span class="titlePraticien">Type de praticien</span></h4>
 												<div class="praticiens">
-													<input type="radio" id="man" name="praticien" value="Homme" class="praticien-list" >
+													<input type="radio" id="man" name="praticien" value="Homme" class="praticien-list">
 													<label for="man"><i id="praticienman-label" class="fa fa-male" aria-hidden="true"></i></label>
 												</div>
 												<div class="praticiens">

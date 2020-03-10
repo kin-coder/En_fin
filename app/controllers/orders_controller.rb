@@ -132,31 +132,34 @@ class OrdersController < ApplicationController
             tmp["price"] = [curent_Spa.ordinary_price,curent_Spa.ordinary_acompte]
           end
         else
+          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
           isError = true
         end
         tmp["type"] = params[:typeSpa][k]
-        options = params[:optionSpa][k]
-        if options
+
+        
+        if params[:optionSpa]
+          options = params[:optionSpa][k]
           tmpOption = []
           options.each do |option|
             product = Product.find_by(name:option)
             if product
               tmpOption.push([option,product.price])
             else
+              flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
               isError = true
             end
           end
           tmp["option"] = tmpOption
         end
         if isError
-          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
           redirect_back(fallback_location: root_path)
           return
         end
         orderSpa.push(tmp)
       end
       if params[:heureSpa] == ""
-        flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+        flash[:notice] = "Velliez indiquer l'heur de votre réservation de spa"
         redirect_back(fallback_location: root_path)
         return
       end
@@ -174,9 +177,11 @@ class OrdersController < ApplicationController
           if mSu
             tmp["su"] = v[1]
           else
+            flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
             isError = true
           end
         else
+          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
           isError = true
         end
         if params[:massageSuPrice]
@@ -188,26 +193,27 @@ class OrdersController < ApplicationController
               tmp["price"] = [price.id,price.ordinary_price,price.ordinary_acompte]
             end
           else
+            flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
             isError = true
           end
         else
+          flash[:notice] = "Durée de votre massages?"
           isError = true
         end
         if isError
-          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
           redirect_back(fallback_location: root_path)
           return
         end
         orderMassage.push(tmp)
       end
       if params[:heureMassage] == ""
-        flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+        flash[:notice] = "Velliez indiquer l'heur de votre réservation de massage"
         redirect_back(fallback_location: root_path)
         return
       end
 
       unless params[:praticien]
-        flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+        flash[:notice] = "Velliez indiquer quelle praticien pour votre massages"
         redirect_back(fallback_location: root_path)
         return
       end
@@ -274,7 +280,6 @@ class OrdersController < ApplicationController
 
   # 3 Affiche la recapitulatif de commande
   def summary
-    
     
   end
 
