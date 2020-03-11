@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :validate_session, only: [:delivery,:saveDelivery,:summary,:payment]
+  before_action :validate_value_in_session, only: [:summary,:payment]
   # 1/2 Selection des prestation
   def zone
     @country = params[:country]
@@ -141,16 +143,18 @@ class OrdersController < ApplicationController
         if params[:optionSpa]
           options = params[:optionSpa][k]
           tmpOption = []
-          options.each do |option|
-            product = Product.find_by(name:option)
-            if product
-              tmpOption.push([option,product.price])
-            else
-              flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
-              isError = true
+          if options
+            options.each do |option|
+              product = Product.find_by(name:option)
+              if product
+                tmpOption.push([option,product.price])
+              else
+                flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+                isError = true
+              end
             end
+            tmp["option"] = tmpOption
           end
-          tmp["option"] = tmpOption
         end
         if isError
           redirect_back(fallback_location: root_path)
@@ -184,7 +188,8 @@ class OrdersController < ApplicationController
           flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
           isError = true
         end
-        if params[:massageSuPrice]
+
+        if params[:massageSuPrice][k]
           price = MassageSuPrice.find_by(duration:params[:massageSuPrice][k][0].to_i)
           if price
             if exceptionalDate.include?(current_date[0..1])
@@ -197,7 +202,7 @@ class OrdersController < ApplicationController
             isError = true
           end
         else
-          flash[:notice] = "Durée de votre massages?"
+          flash[:notice] = "Remplisser bien les champs avant de valider"
           isError = true
         end
         if isError
@@ -285,9 +290,104 @@ class OrdersController < ApplicationController
 
   # 4 Le Payement
   def payment
+    # puts "===================="*7
+    # puts session[:myPrestation]
+    # puts "===================="*7
+    # puts session[:otherInfo]
+    # puts "===================="*7
+    # {"spa"=>[{"time"=>24, "price"=>[100.0, 30.0],"type"=>["tée)"], "option"=>[["Romantique", 20.0]]}, {"time"=>48, "price"=>[150.0, 45.0], "type"=>["Appartement", "Intérieur", "Cumulus - Ballon d'eau (eau chaude limitée)"], "option"=>[["Personnalisée", 30.0]]}], 
+    # {"pays"=>"Belgique", "department"=>"", "date"=>"04/01/2020", "heureSpa"=>"10:00", "praticien"=>"Femme", "heureMassage"=>"15:30", "cadeau"=>[["Petits fours", 20.0, 1], ["Plateau de fruits frais", 20.0, 2]], "adresseL"=>"Lot Ter 321 Ganangana, Lot 404 Baché 2", "complAdresseL"=>"Lot 404 Baché 2", "codePostaL"=>"1231243", "villeL"=>"Antananarivo", "countryL"=>"Belgique", "adresseF"=>"Lot Ter
+# =========================================================================
+    myPrestation = session[:myPrestation]
+    # Location spa
+    unless myPrestation["spa"].empty?
+      myPrestation["spa"].each do |spa|
+        current_spa = Spa.find_by(duration:spa["time"])
+        if current_spa
+
+        else
+
+        end
+
+        if spa["option"]
+          # name, prix spa["option"][0][1]
+          current_product = Product.find_by(name:spa["option"][0])
+          if current_product
+
+          else
+
+          end
+        end
+      end
+      # Date,heurs de livraison
+      session[:otherInfo]["date"]
+      session[:otherInfo]["heureSpa"]  
+    end
     
+# =========================================================================
+# "massage"=>[{"ca"=>"Homme", "su"=>"Massage Classique / découverte", "price"=>[2, 70.0, 20.0]}, {"ca"=>"Homme", "su"=>"Massage Pieds & Mains", "price"=>[4, 110.0, 20.0]}, {"ca"=>"Femme", "su"=>"Massage Anti-stress / relaxant", "price"=>[4, 110.0, 20.0]}]}
+    # Massage a domicile
+    unless myPrestation["massage"].empty?
+      myPrestation["massage"].each do |massage|
+        # nom ca et nom su
+        current_ca = MassageCa.find_by(name:massage["ca"])
+        
+        if current_ca
+          
+          current_su = current_ca.massage_sus.find_by(name:massage["su"])
+          if current_su
+            
+          else
+
+          end
+        else
+
+        end
+        
+        # pour le prix
+        current_prix = MassageSuPrice.find(massage["price"][0].to_i)
+        if current_prix
+          
+        else
+        end
+      end
+      session[:otherInfo]["praticien"]
+      session[:otherInfo]["date"]
+      session[:otherInfo]["heureMassage"]
+    end
+    
+# =========================================================================
+    #Nos Cadeau "cadeau"=>[["Petits fours", 20.0, 1], ["Plateau de fruits frais", 20.0, 2]]
+    unless session[:otherInfo]["cadeau"].empty?
+      session[:otherInfo]["cadeau"].each do |cadeau|
+        # name, price, nombre # OrderProduct id: nil, number: nil, product_id: nil
+        current_product = Product.find_by(name:cadeau[0])
+        if current_product
+          # nombre du produit
+          cadeau[2].to_i
+        else
+        
+        end
+        
+      end
+    end
+
   end
 
+  private
+
+  def validate_session
+    if session[:myPrestation] == nil || session[:otherInfo] == nil
+      flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+      redirect_to reservation_path  
+    end
+  end
+
+  def validate_value_in_session
+    puts "================"*4
+    puts "Hita waa tena hita marina le"
+    puts "================"*4
+  end
 
 end
 

@@ -36,8 +36,6 @@
 		</div>
 	</div>
 
-
-
 	<div class="alert alert-danger" role="alert">
 	  	<h2>Massage</h2>
 		<% session[:myPrestation]["massage"].each do |massage| %>
@@ -64,8 +62,8 @@
 		<h2>Nos Cadeau</h2>
 		<% session[:otherInfo]["cadeau"].each do |cadeau| %>
 			<div>
-			cadeau : <%= cadeau[2] %> * <%= cadeau[0] %><br>
-			prix : <%= cadeau[1].to_f * cadeau[2].to_i %>€
+				cadeau : <%= cadeau[2] %> * <%= cadeau[0] %><br>
+				prix : <%= cadeau[1].to_f * cadeau[2].to_i %>€
 			</div>
 			<% acompteTotal += cadeau[1].to_f*cadeau[2].to_i %>
 		<% end %>  
@@ -108,6 +106,5 @@
 		<p>Ce devis ne tient pas compte des éventuels frais de déplacement (pour les services spa/massage) qui pourrait vous etre facturés selon votre ville. Pour plus d'information veuillez nous contacter</p>
 		<p>Les accomptes ne s'appliquent qu'aux services(Spa/massages). Pour les produits, le montant est réglé dans sa totalité en ligne</p>
 	</div>
-
-	<a href="#">Je finalise</a>
+	<a href="<%= payment_path %>">Je finalise</a>
 </div>
