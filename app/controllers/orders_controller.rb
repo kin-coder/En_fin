@@ -1,12 +1,30 @@
 class OrdersController < ApplicationController
+  before_action :validate_session, only: [:delivery,:saveDelivery,:summary,:payment]
+  before_action :validate_value_in_session, only: [:summary,:payment]
   # 1/2 Selection des prestation
   def zone
     @country = params[:country]
     @department = params[:department]
     @date = params[:date]
+    if @date
+      unless @date[2] == "/" && @date[5] == "/" && @date.length == 10
+        redirect_to reservation_path
+        return
+      end
+    else
+      redirect_to reservation_path
+    end
+
     @country = Country.find_by(name:@country)
+    unless @country
+      redirect_to reservation_path
+    end
+
     if @department
-      @department = Department.find_by(name:@department)  
+      @department = Department.find_by(name:@department)
+      unless @department
+        redirect_to reservation_path   
+      end
     else
       @department = nil
     end
@@ -26,7 +44,6 @@ class OrdersController < ApplicationController
           session[:otherInfo]["pays"] = @country
           session[:otherInfo]["department"] = @department
           session[:otherInfo]["date"] = @date
-          
         else
           @error = "Veuillez choisir un département" #erreur
           #redirect_back(fallback_location: root_path)
@@ -132,31 +149,36 @@ class OrdersController < ApplicationController
             tmp["price"] = [curent_Spa.ordinary_price,curent_Spa.ordinary_acompte]
           end
         else
+          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
           isError = true
         end
         tmp["type"] = params[:typeSpa][k]
-        options = params[:optionSpa][k]
-        if options
+
+        
+        if params[:optionSpa]
+          options = params[:optionSpa][k]
           tmpOption = []
-          options.each do |option|
-            product = Product.find_by(name:option)
-            if product
-              tmpOption.push([option,product.price])
-            else
-              isError = true
+          if options
+            options.each do |option|
+              product = Product.find_by(name:option)
+              if product
+                tmpOption.push([option,product.price])
+              else
+                flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+                isError = true
+              end
             end
+            tmp["option"] = tmpOption
           end
-          tmp["option"] = tmpOption
         end
         if isError
-          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
           redirect_back(fallback_location: root_path)
           return
         end
         orderSpa.push(tmp)
       end
       if params[:heureSpa] == ""
-        flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+        flash[:notice] = "Velliez indiquer l'heur de votre réservation de spa"
         redirect_back(fallback_location: root_path)
         return
       end
@@ -174,12 +196,15 @@ class OrdersController < ApplicationController
           if mSu
             tmp["su"] = v[1]
           else
+            flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
             isError = true
           end
         else
+          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
           isError = true
         end
-        if params[:massageSuPrice]
+
+        if params[:massageSuPrice] && params[:massageSuPrice][k]
           price = MassageSuPrice.find_by(duration:params[:massageSuPrice][k][0].to_i)
           if price
             if exceptionalDate.include?(current_date[0..1])
@@ -188,26 +213,28 @@ class OrdersController < ApplicationController
               tmp["price"] = [price.id,price.ordinary_price,price.ordinary_acompte]
             end
           else
+            flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
             isError = true
           end
         else
+          flash[:notice] = "Remplisser bien les champs avant de valider"
           isError = true
         end
+
         if isError
-          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
           redirect_back(fallback_location: root_path)
           return
         end
         orderMassage.push(tmp)
       end
       if params[:heureMassage] == ""
-        flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+        flash[:notice] = "Velliez indiquer l'heur de votre réservation de massage"
         redirect_back(fallback_location: root_path)
         return
       end
 
       unless params[:praticien]
-        flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+        flash[:notice] = "Velliez indiquer quelle praticien pour votre massages"
         redirect_back(fallback_location: root_path)
         return
       end
@@ -275,102 +302,121 @@ class OrdersController < ApplicationController
   # 3 Affiche la recapitulatif de commande
   def summary
     
-    
   end
 
   # 4 Le Payement
   def payment
+    myPrestation = session[:myPrestation]
+    # Location spa
+    unless myPrestation["spa"].empty?
+      myPrestation["spa"].each do |spa|
+        current_spa = Spa.find_by(duration:spa["time"])
+
+        if spa["option"]
+          # name, prix spa["option"][0][1]
+          current_product = Product.find_by(name:spa["option"][0])
+          
+        end
+      end
+      # Date,heurs de livraison
+      session[:otherInfo]["date"]
+      session[:otherInfo]["heureSpa"]  
+    end
     
+    unless myPrestation["massage"].empty?
+      myPrestation["massage"].each do |massage|
+        # nom ca et nom su
+        current_ca = MassageCa.find_by(name:massage["ca"])
+        
+        current_su = current_ca.massage_sus.find_by(name:massage["su"])
+        # pour le prix
+        current_prix = MassageSuPrice.find(massage["price"][0].to_i)
+        
+      end
+      session[:otherInfo]["praticien"]
+      session[:otherInfo]["date"]
+      session[:otherInfo]["heureMassage"]
+    end
+    
+    unless session[:otherInfo]["cadeau"].empty?
+      session[:otherInfo]["cadeau"].each do |cadeau|
+        current_product = Product.find_by(name:cadeau[0])
+        # nombre du produit
+        cadeau[2].to_i
+      end
+    end
+
   end
 
+  private
+
+  def redirect_reservation
+    flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+    flash[:delete_js] = true
+    redirect_to reservation_path
+    session.clear
+  end
+
+  def validate_session
+    if session[:myPrestation] == nil || session[:otherInfo] == nil
+      redirect_reservation
+    end
+    unless session[:otherInfo]["date"]
+      redirect_reservation
+    end
+  end
+
+  def validate_value_in_session
+    myPrestation = session[:myPrestation]
+    unless myPrestation["spa"].empty?
+      myPrestation["spa"].each do |spa|
+        current_spa = Spa.find_by(duration:spa["time"])
+        unless current_spa
+          redirect_reservation
+        end
+        if spa["option"]
+          current_product = Product.find_by(name:spa["option"][0])
+          unless current_product
+            redirect_reservation
+          end
+        end
+      end
+      unless session[:otherInfo]["heureSpa"]
+        redirect_reservation
+      end
+    end
+    unless myPrestation["massage"].empty?
+      myPrestation["massage"].each do |massage|
+        current_ca = MassageCa.find_by(name:massage["ca"])
+        if current_ca
+          current_su = current_ca.massage_sus.find_by(name:massage["su"])
+          unless current_su
+            redirect_reservation
+          end
+        else
+          redirect_reservation
+        end
+        # pour le prix
+        current_prix = MassageSuPrice.find(massage["price"][0].to_i)
+        unless current_prix
+          redirect_reservation
+        end
+      end
+      unless session[:otherInfo]["praticien"]
+        redirect_reservation
+      end
+      unless session[:otherInfo]["heureMassage"]
+        redirect_reservation
+      end
+    end
+    unless session[:otherInfo]["cadeau"].empty?
+      session[:otherInfo]["cadeau"].each do |cadeau|
+        current_product = Product.find_by(name:cadeau[0])
+        unless current_product
+          redirect_reservation
+        end
+      end
+    end
+  end
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=begin
-
-# massages = params[:massageSu]["3"]
-# puts "~~~~"*10
-# puts massages[0].split("||")
-# puts "~~~~"*10
-
-JSON.parse("Text to Data") // mamadika ny text ho data 
-
-JSON.stringify(Data) // mamadika ny data ho text
-
-
-@services = Service.all
-# service location spa
-@spas = Spa.all
-@spaoptions = Product.where(is_option_spa:true)
-# service massage
-@massages = MassageCa.all #.massage_sus liste sub sub[0].massage_su_prices //differen heurse
-@cadeaus = Product.where(is_option_spa:false)
-
-
-# @categories = @service.categories # Liste de tous les categories
-
-# @products = @service.products # Liste de tous les produits
-
-# @listPrestation = []
-
-# @categories.each do |c|
-
-#   @listPrestation.push([[c.name,c.id]])
-
-#   c.subcategories.each do |s|
-#     @listPrestation[@listPrestation.length-1].push([s.id,s.name,s.price])
-#   end
-
-# end
-
-# <%= form_tag(saved_commande_path, id:"form", 'data-zones':"#{@listPrestation}", 'data-service':"#{@service.name}") do %>
-
-get 'orders/zone'
-  get 'orders/order'
-
-rails g controller Orders zone order
-Running via Spring preloader in process 4988
-      create  app/controllers/orders_controller.rb
-       route  get 'orders/zone'
-get 'orders/order'
-      invoke  erb
-      create    app/views/orders
-      create    app/views/orders/zone.html.erb
-      create    app/views/orders/order.html.erb
-      invoke  test_unit
-      create    test/controllers/orders_controller_test.rb
-      invoke  helper
-      create    app/helpers/orders_helper.rb
-      invoke    test_unit
-      invoke  assets
-      invoke    scss
-      create      app/assets/stylesheets/orders.scss
-=end

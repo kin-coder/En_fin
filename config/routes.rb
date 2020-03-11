@@ -37,7 +37,6 @@ Rails.application.routes.draw do
 #ORDERS_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page tunelle d'achats dans le controller ORDERS
   post '/reservation-prestation/validate-zone', to:"orders#zone", as:"zone"
-  
   get '/reservation-prestation', to:'orders#index', as: "reservation"
   post '/reservation-prestation/save', to:'orders#saveSession', as: "save_session"
   
@@ -45,6 +44,8 @@ Rails.application.routes.draw do
   post '/reservation-prestation/info-livraison/save', to:'orders#saveDelivery', as: "save_delivery"
   
   get '/reservation-prestation/recapitulatif-commande', to:'orders#summary', as: "summary"
+  #tokony post ito
+  get '/reservation-prestation/paye-commande', to:'orders#payment', as: "payment"
   
 
 
