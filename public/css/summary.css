@@ -1,0 +1,48 @@
+.reservationSpa{
+position: relative;
+left: 20px;
+text-align: left;
+ color: #9d9696;
+ font-size: 15px;
+}
+
+.padding {
+    padding: 10px 0 10px !important;
+}
+
+.interligne{
+  border-top: 2px solid
+#666666 !important;
+width: 100px;
+color: #9d9696;
+}
+
+.p-important{
+text-align: justify;
+ font-size: 15px;
+}
+
+.infoImportant{
+border: 1px solid #9d9696;
+padding: 20px;
+border-radius: 5px;
+}
+.alert-success{
+color:  #9d9696;
+margin-top: 10px;
+font-size: 15px;
+font-style: italic;
+}
+
+.btn-resa-text{
+	border-radius: 100px;
+}
+.btn-resa{
+	position: relative;
+	left: 50%;
+	top: 20px;
+	font-family: Quicksand, 'Open Sans', sans-serif !important;
+	width: 30%;
+	margin-bottom: 100px;
+	margin-top: 20px;
+}
