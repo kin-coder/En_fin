@@ -306,33 +306,16 @@ class OrdersController < ApplicationController
 
   # 4 Le Payement
   def payment
-    # puts "===================="*7
-    # puts session[:myPrestation]
-    # puts "===================="*7
-    # puts session[:otherInfo]
-    # puts "===================="*7
-    # {"spa"=>[{"time"=>24, "price"=>[100.0, 30.0],"type"=>["tée)"], "option"=>[["Romantique", 20.0]]}, {"time"=>48, "price"=>[150.0, 45.0], "type"=>["Appartement", "Intérieur", "Cumulus - Ballon d'eau (eau chaude limitée)"], "option"=>[["Personnalisée", 30.0]]}], 
-    # {"pays"=>"Belgique", "department"=>"", "date"=>"04/01/2020", "heureSpa"=>"10:00", "praticien"=>"Femme", "heureMassage"=>"15:30", "cadeau"=>[["Petits fours", 20.0, 1], ["Plateau de fruits frais", 20.0, 2]], "adresseL"=>"Lot Ter 321 Ganangana, Lot 404 Baché 2", "complAdresseL"=>"Lot 404 Baché 2", "codePostaL"=>"1231243", "villeL"=>"Antananarivo", "countryL"=>"Belgique", "adresseF"=>"Lot Ter
-# =========================================================================
     myPrestation = session[:myPrestation]
     # Location spa
     unless myPrestation["spa"].empty?
       myPrestation["spa"].each do |spa|
         current_spa = Spa.find_by(duration:spa["time"])
-        if current_spa
-
-        else
-
-        end
 
         if spa["option"]
           # name, prix spa["option"][0][1]
           current_product = Product.find_by(name:spa["option"][0])
-          if current_product
-
-          else
-
-          end
+          
         end
       end
       # Date,heurs de livraison
@@ -340,51 +323,26 @@ class OrdersController < ApplicationController
       session[:otherInfo]["heureSpa"]  
     end
     
-# =========================================================================
-# "massage"=>[{"ca"=>"Homme", "su"=>"Massage Classique / découverte", "price"=>[2, 70.0, 20.0]}, {"ca"=>"Homme", "su"=>"Massage Pieds & Mains", "price"=>[4, 110.0, 20.0]}, {"ca"=>"Femme", "su"=>"Massage Anti-stress / relaxant", "price"=>[4, 110.0, 20.0]}]}
-    # Massage a domicile
     unless myPrestation["massage"].empty?
       myPrestation["massage"].each do |massage|
         # nom ca et nom su
         current_ca = MassageCa.find_by(name:massage["ca"])
         
-        if current_ca
-          
-          current_su = current_ca.massage_sus.find_by(name:massage["su"])
-          if current_su
-            
-          else
-
-          end
-        else
-
-        end
-        
+        current_su = current_ca.massage_sus.find_by(name:massage["su"])
         # pour le prix
         current_prix = MassageSuPrice.find(massage["price"][0].to_i)
-        if current_prix
-          
-        else
-        end
+        
       end
       session[:otherInfo]["praticien"]
       session[:otherInfo]["date"]
       session[:otherInfo]["heureMassage"]
     end
     
-# =========================================================================
-    #Nos Cadeau "cadeau"=>[["Petits fours", 20.0, 1], ["Plateau de fruits frais", 20.0, 2]]
     unless session[:otherInfo]["cadeau"].empty?
       session[:otherInfo]["cadeau"].each do |cadeau|
-        # name, price, nombre # OrderProduct id: nil, number: nil, product_id: nil
         current_product = Product.find_by(name:cadeau[0])
-        if current_product
-          # nombre du produit
-          cadeau[2].to_i
-        else
-        
-        end
-        
+        # nombre du produit
+        cadeau[2].to_i
       end
     end
 
@@ -462,92 +420,3 @@ class OrdersController < ApplicationController
   end
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=begin
-
-# massages = params[:massageSu]["3"]
-# puts "~~~~"*10
-# puts massages[0].split("||")
-# puts "~~~~"*10
-
-JSON.parse("Text to Data") // mamadika ny text ho data 
-
-JSON.stringify(Data) // mamadika ny data ho text
-
-
-@services = Service.all
-# service location spa
-@spas = Spa.all
-@spaoptions = Product.where(is_option_spa:true)
-# service massage
-@massages = MassageCa.all #.massage_sus liste sub sub[0].massage_su_prices //differen heurse
-@cadeaus = Product.where(is_option_spa:false)
-
-
-# @categories = @service.categories # Liste de tous les categories
-
-# @products = @service.products # Liste de tous les produits
-
-# @listPrestation = []
-
-# @categories.each do |c|
-
-#   @listPrestation.push([[c.name,c.id]])
-
-#   c.subcategories.each do |s|
-#     @listPrestation[@listPrestation.length-1].push([s.id,s.name,s.price])
-#   end
-
-# end
-
-# <%= form_tag(saved_commande_path, id:"form", 'data-zones':"#{@listPrestation}", 'data-service':"#{@service.name}") do %>
-
-get 'orders/zone'
-  get 'orders/order'
-
-rails g controller Orders zone order
-Running via Spring preloader in process 4988
-      create  app/controllers/orders_controller.rb
-       route  get 'orders/zone'
-get 'orders/order'
-      invoke  erb
-      create    app/views/orders
-      create    app/views/orders/zone.html.erb
-      create    app/views/orders/order.html.erb
-      invoke  test_unit
-      create    test/controllers/orders_controller_test.rb
-      invoke  helper
-      create    app/helpers/orders_helper.rb
-      invoke    test_unit
-      invoke  assets
-      invoke    scss
-      create      app/assets/stylesheets/orders.scss
-=end
