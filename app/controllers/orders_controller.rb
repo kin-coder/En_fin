@@ -6,9 +6,25 @@ class OrdersController < ApplicationController
     @country = params[:country]
     @department = params[:department]
     @date = params[:date]
+    if @date
+      unless @date[2] == "/" && @date[5] == "/" && @date.length == 10
+        redirect_to reservation_path
+        return
+      end
+    else
+      redirect_to reservation_path
+    end
+
     @country = Country.find_by(name:@country)
+    unless @country
+      redirect_to reservation_path
+    end
+
     if @department
-      @department = Department.find_by(name:@department)  
+      @department = Department.find_by(name:@department)
+      unless @department
+        redirect_to reservation_path   
+      end
     else
       @department = nil
     end
@@ -28,7 +44,6 @@ class OrdersController < ApplicationController
           session[:otherInfo]["pays"] = @country
           session[:otherInfo]["department"] = @department
           session[:otherInfo]["date"] = @date
-          
         else
           @error = "Veuillez choisir un département" #erreur
           #redirect_back(fallback_location: root_path)
@@ -189,7 +204,7 @@ class OrdersController < ApplicationController
           isError = true
         end
 
-        if params[:massageSuPrice][k]
+        if params[:massageSuPrice] && params[:massageSuPrice][k]
           price = MassageSuPrice.find_by(duration:params[:massageSuPrice][k][0].to_i)
           if price
             if exceptionalDate.include?(current_date[0..1])
@@ -205,6 +220,7 @@ class OrdersController < ApplicationController
           flash[:notice] = "Remplisser bien les champs avant de valider"
           isError = true
         end
+
         if isError
           redirect_back(fallback_location: root_path)
           return
@@ -376,17 +392,73 @@ class OrdersController < ApplicationController
 
   private
 
+  def redirect_reservation
+    flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+    flash[:delete_js] = true
+    redirect_to reservation_path
+    session.clear
+  end
+
   def validate_session
     if session[:myPrestation] == nil || session[:otherInfo] == nil
-      flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
-      redirect_to reservation_path  
+      redirect_reservation
+    end
+    unless session[:otherInfo]["date"]
+      redirect_reservation
     end
   end
 
   def validate_value_in_session
-    puts "================"*4
-    puts "Hita waa tena hita marina le"
-    puts "================"*4
+    myPrestation = session[:myPrestation]
+    unless myPrestation["spa"].empty?
+      myPrestation["spa"].each do |spa|
+        current_spa = Spa.find_by(duration:spa["time"])
+        unless current_spa
+          redirect_reservation
+        end
+        if spa["option"]
+          current_product = Product.find_by(name:spa["option"][0])
+          unless current_product
+            redirect_reservation
+          end
+        end
+      end
+      unless session[:otherInfo]["heureSpa"]
+        redirect_reservation
+      end
+    end
+    unless myPrestation["massage"].empty?
+      myPrestation["massage"].each do |massage|
+        current_ca = MassageCa.find_by(name:massage["ca"])
+        if current_ca
+          current_su = current_ca.massage_sus.find_by(name:massage["su"])
+          unless current_su
+            redirect_reservation
+          end
+        else
+          redirect_reservation
+        end
+        # pour le prix
+        current_prix = MassageSuPrice.find(massage["price"][0].to_i)
+        unless current_prix
+          redirect_reservation
+        end
+      end
+      unless session[:otherInfo]["praticien"]
+        redirect_reservation
+      end
+      unless session[:otherInfo]["heureMassage"]
+        redirect_reservation
+      end
+    end
+    unless session[:otherInfo]["cadeau"].empty?
+      session[:otherInfo]["cadeau"].each do |cadeau|
+        current_product = Product.find_by(name:cadeau[0])
+        unless current_product
+          redirect_reservation
+        end
+      end
+    end
   end
 
 end

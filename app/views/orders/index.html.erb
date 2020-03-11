@@ -1,4 +1,11 @@
 <link href="/css/resa.css" rel="stylesheet">
+
+<% if flash[:delete_js] %>
+	<script type="text/javascript">
+		sessionStorage.clear();
+	</script>
+<% end %>
+
 <div class="container" id="container-principale">
 	<div id="overlay">
 		<div id="text">
