@@ -154,7 +154,6 @@ class OrdersController < ApplicationController
         end
         tmp["type"] = params[:typeSpa][k]
 
-        
         if params[:optionSpa]
           options = params[:optionSpa][k]
           tmpOption = []
@@ -306,43 +305,55 @@ class OrdersController < ApplicationController
 
   # 4 Le Payement
   def payment
+    @order = Order.new
+    @order.prestation_date = session[:otherInfo]["date"]
+    @order.billing_pays = session[:otherInfo]["countryF"]
+    @order.billing_ville = session[:otherInfo]["villeF"]
+    @order.billing_code_postal = session[:otherInfo]["codePostaF"]
+    @order.billing_adresse = session[:otherInfo]["adresseF"]
+    @order.billing_adresse_complet = session[:otherInfo]["complAdresseF"]
+    @order.delivery_pays = session[:otherInfo]["countryL"]
+    @order.delivery_ville = session[:otherInfo]["villeL"]
+    @order.delivery_code_postal = session[:otherInfo]["codePostaL"]
+    @order.delivery_adresse = session[:otherInfo]["adresseL"]
+    @order.delivery_adresse_complet = session[:otherInfo]["complAdresseL"]
+    @order.message = session[:otherInfo]["message"]
+    @order.client = Client.first
+    @order.department = Department.find_by(name:session[:otherInfo]["department"])
+    @order.country = Country.find_by(name:session[:otherInfo]["pays"])
+    @order.save
+
     myPrestation = session[:myPrestation]
-    # Location spa
     unless myPrestation["spa"].empty?
+      OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: session[:otherInfo]["heureSpa"])
       myPrestation["spa"].each do |spa|
         current_spa = Spa.find_by(duration:spa["time"])
-
+        current_product = ""
         if spa["option"]
-          # name, prix spa["option"][0][1]
           current_product = Product.find_by(name:spa["option"][0])
-          
+          OrderSpa.create(logement: spa["type"][0], installation: spa["type"][1], syteme_eau: spa["type"][2], order: @order, spa: current_spa, product: current_product)
+        else
+          OrderSpa.create(logement: spa["type"][0], installation: spa["type"][1], syteme_eau: spa["type"][2], order: @order, spa: current_spa)
         end
       end
-      # Date,heurs de livraison
-      session[:otherInfo]["date"]
-      session[:otherInfo]["heureSpa"]  
     end
     
     unless myPrestation["massage"].empty?
+      OrderService.create(order: @order, service: Service.find_by(name:"Massage"), service_time: session[:otherInfo]["heureMassage"])
       myPrestation["massage"].each do |massage|
-        # nom ca et nom su
-        current_ca = MassageCa.find_by(name:massage["ca"])
-        
+        current_ca = MassageCa.find_by(name:massage["ca"])      
         current_su = current_ca.massage_sus.find_by(name:massage["su"])
-        # pour le prix
         current_prix = MassageSuPrice.find(massage["price"][0].to_i)
-        
+        OrderMassage.create(order: @order, massage_ca:current_ca, massage_su: current_su, massage_su_price: current_prix)
       end
-      session[:otherInfo]["praticien"]
-      session[:otherInfo]["date"]
-      session[:otherInfo]["heureMassage"]
+      @order.praticien = session[:otherInfo]["praticien"]
+      @order.save
     end
     
     unless session[:otherInfo]["cadeau"].empty?
       session[:otherInfo]["cadeau"].each do |cadeau|
         current_product = Product.find_by(name:cadeau[0])
-        # nombre du produit
-        cadeau[2].to_i
+        OrderProduct.create(number: cadeau[2].to_i, product: current_product, order: @order)
       end
     end
 
