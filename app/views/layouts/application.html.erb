@@ -84,60 +84,60 @@
           </div>
         </div>
       </div>
- -->
-      <!-- NAVBAR -->
-      <nav id="menuBar" class="navbar navbar-default lightHeader">
-        <div class="container">
+    -->
+    <!-- NAVBAR -->
+    <nav id="menuBar" class="navbar navbar-default lightHeader">
+      <div class="container">
 
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <%=link_to( image_tag("/img/logo-ccspa.png"), root_path, class:"navbar-brand", alt:"logo")%>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <%= link_to "Massages", massage_path %>
-              </li>
-              <li>
-                <%= link_to "Location Spa", spa_path %>
-              </li>
-              <li>
-                <%= link_to "Réservation", reservation_path %>
-              </li>
-
-              <%if client_signed_in?%>
-              <li>
-                <%= link_to "Se deconnecter", destroy_client_session_path, method:"delete"  %>
-              </li>
-              <% else %>
-              <li class=" dropdown singleDrop">
-                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Connexion</a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "Se connecter", new_client_session_path%></li> 
-                  <li><%= link_to "S'inscrire", new_client_registration_path%></li> 
-                </ul>
-              </li>
-              <% end %>
-            </ul>
-          </div>
-
-          <!-- Cart button -->
-          <div class="cart_btn">
-            <a id="cart-btn-ok"><i class="fa fa-shopping-basket" aria-hidden="true"></i><span id="number-cart-ok" class="badge">0</span></a>
-          </div>
-
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%=link_to( image_tag("/img/logo-ccspa.png"), root_path, class:"navbar-brand", alt:"logo")%>
         </div>
-      </nav>
-    </header>
-<div class="patternbg">
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <%= link_to "Massages", massage_path %>
+            </li>
+            <li>
+              <%= link_to "Location Spa", spa_path %>
+            </li>
+            <li>
+              <%= link_to "Réservation", reservation_path %>
+            </li>
+
+            <%if client_signed_in?%>
+            <li>
+              <%= link_to "Se deconnecter", destroy_client_session_path, method:"delete"  %>
+            </li>
+            <% else %>
+            <li class=" dropdown singleDrop">
+              <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Connexion</a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Se connecter", new_client_session_path%></li> 
+                <li><%= link_to "S'inscrire", new_client_registration_path%></li> 
+              </ul>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+
+        <!-- Cart button -->
+        <div class="cart_btn">
+          <a id="cart-btn-ok"><i class="fa fa-shopping-basket" aria-hidden="true"></i><span id="number-cart-ok" class="badge">0</span></a>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <div class="patternbg">
 
     <div id="cart-inner-ok" class="hidden">
       <h1>Votre commande</h1>
@@ -164,158 +164,181 @@
 
     <%= yield %>
     
-</div>
-    <!-- FOOTER -->
-    <footer style="background-image: url(img/home/footer-bg.jpg);">
-      <!-- BACK TO TOP BUTTON -->
-      <a href="#pageTop" class="backToTop"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
-      <!-- FOOTER INFO -->
-      <div class="clearfix footerInfo">
-        <div class="container">
-          <div class="row">
-           
+  </div>
+  <!-- FOOTER -->
+  <footer style="background-image: url(img/home/footer-bg.jpg);">
+    <!-- BACK TO TOP BUTTON -->
+    <a href="#pageTop" class="backToTop"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+    <!-- FOOTER INFO -->
+    <div class="clearfix footerInfo">
+      <div class="container">
+        <div class="row">
 
-            <div class="col-sm-4 col-xs-12">
-              <div class="footerText">
-                <a href="/" class="footerLogo" data-method="GET">
-                  <img src="/img/logo-ccspa.png" alt="Cocooningspa">
 
-                </a>
-                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa officia.Lorem ipsum dolor sit amet.</p>
-                <p>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              </div>
+          <div class="col-sm-3 col-xs-12">
+            <div class="footerText">
+              <span class="footerLogo" data-method="GET">
+                <img src="/img/logo-ccspa.png" alt="Cocooningspa">
+
+              </span>
+              <p class="p-footer">Le nouveau partenaire de vos instants bien-être à domicile !</p>
+
             </div>
-            <div class="col-sm-1 col-xs-12">
-            </div>
-            <div class="col-sm-3 col-xs-12 paddingLeft">
-              <div class="footerInfoTitle">
-                <h4>Liens utiles</h4>
-              </div>
-              <div class="useLink">
-                <ul class="list-unstyle">
-                  <li><a href="<%=faq_path%>" data-method="GET"><i class="fa fa-angle-double-right" aria-hidden="true"></i>FAQ</a></li>
-                  
-                  <li><a href="<%=propos_path%>" data-method="GET"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Qui sommes-nous?</a></li>
-
-                  <li><a href="<%=cgu_path%>" data-method="GET"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Conditions génerales CGU</a></li>
-
-                  <li><a href="<%=legalnotice_path%>" data-method="GET"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Mentions légales</a></li>
-
-                  <li><a href="<%=partner_path%>" data-method="GET"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Devenez partenaires</a></li>
-
-                  <li><a href="<%=contact_path%>" data-method="GET"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Contactez-nous</a></li>
-
-                </ul>
-              </div>
-            </div>
-            <div class="col-sm-1 col-xs-12">
-            </div>
-            <div class="col-sm-3 col-xs-12">
-              <div class="footerInfoTitle">
-                <h4 id="galerie">Galerie Photos</h4>
-              </div>
-              <div class="footerGallery row">
-                <div class="col-xs-4">
-                  <a href="gallery-v2.html" style="background-image: url(/img/home/footer-gallery-1.jpg);"></a>
-                </div>
-                <div class="col-xs-4">
-                  <a href="gallery-v2.html" style="background-image: url(/img/home/footer-gallery-2.jpg);"></a>
-                </div>
-                <div class="col-xs-4">
-                  <a href="gallery-v2.html" style="background-image: url(/img/home/footer-gallery-3.jpg);"></a>
-                </div>
-                <div class="col-xs-4">
-                  <a href="gallery-v2.html" style="background-image: url(/img/home/footer-gallery-4.jpg);"></a>
-                </div>
-                <div class="col-xs-4">
-                  <a href="gallery-v2.html" style="background-image: url(/img/home/footer-gallery-5.jpg);"></a>
-                </div>
-                <div class="col-xs-4">
-                  <a href="gallery-v2.html" style="background-image: url(/img/home/footer-gallery-6.jpg);"></a>
-                </div>
-              </div>
-            </div>
-
           </div>
-        </div>
-      </div>
+          
+          <div class="col-sm-3 col-xs-12">
 
-      <!-- COPY RIGHT -->
-      <div class="clearfix copyRight">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-5 col-sm-push-7 col-xs-12">
-              <ul class="list-inline socialLink">
-                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+            <div class="footerInfoTitle">
+              <h4>Notre concept</h4>
+            </div>
+            <div class="useLink">
+              <ul class="list-unstyle">
+                <li><a href="<%=root_path%>" data-method="GET">Accueil Cocooning Spa</a></li>
+
+                <li><a href="<%=spa_path%>" data-method="GET">Location spa/jacuzzi à domicile</a></li>
+
+                <li><a href="<%=massage_path%>" data-method="GET">Massage à domicile</a></li>
+
+                <li><a href="<%=partner_path%>" data-method="GET">Pour les entreprises </a></li>
+
+                <li><a href="/#zoneaction" data-method="GET">Nos zones d’action</a></li>
+
               </ul>
             </div>
-            <div class="col-sm-7 col-sm-pull-5 col-xs-12">
-              <div class="copyRightText">
-                <p>&copy; 2020 Copyright <a target="_blank" href="http://www.iamabdus.com/">Cocooning SPA</a> by <a target="_blank" href="http://www.iamabdus.com/">team Sayna</a></p>
-              </div>
+
+          </div>
+          <div class="col-sm-3 col-xs-12 paddingLeft">
+            <div class="footerInfoTitle">
+              <h4>Cocooning Spa</h4>
+            </div>
+            <div class="useLink">
+              <ul class="list-unstyle">
+                <li><a href="<%=propos_path%>" data-method="GET">À propos de nous</a></li>
+                <li><a href="/#avis" data-method="GET">Avis</a></li>
+                <li><a href="<%=partner_path%>" data-method="GET">Devenir partenaires</a></li>
+                <li><a href="<%=contact_path%>" data-method="GET">Nous contacter</a></li>
+                <li><a href="<%=faq_path%>" data-method="GET">FAQ</a></li>
+                <li><a href="<%=legalnotice_path%>" data-method="GET">Mentions légales </a>-<a href="<%=cgu_path%>" data-method="GET"> CGU</a></li>
+                <li><a href="<%=faq_path%>" data-method="GET">Conditions d'annulation</a></li>
+
+
+              </ul>
             </div>
           </div>
-        </div>
-      </div>
-    </footer>
-  </div>
-  <!-- APPOINMENT MODAL -->
-  <div id="appoinmentModal" class="modal fade modalCommon" role="dialog" tabindex="-1">
-    <div class="modal-dialog">
-      <!-- MODAL CONTENT-->
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        
-        <div class="panel panel-default formPart panel-login" >
-          <div class="panel-heading patternbg" ><center> <span>Connectez-vous</span></center></div>
-          <div class="panel-body panel-body-login">
-            <div class="row">
-              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <div class="col-sm-12">
-                <div class="form-group">
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"email" %>
-                </div>
-                <div class="form-group">
-                  <i class="fa fa-key" aria-hidden="true"></i>
-                  <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"fullname", placeholder:"mot de pass" %>
-                </div>
-                <div class="actions">
-                  <center><%= f.submit "Connecter", class:"btn btn-primary btn-block" %></center> </br>
-                  <center><p>Pas encore inscris? <%= render "clients/shared/links" %></p></center>
-                </div>
-                <% end %>
-
+          <div class="col-sm-3 col-xs-12">
+            <div class="footerInfoTitle">
+              <h4 id="galerie">Restons connectés</h4>
+            </div>
+            <div class="footerGallery row">
+              <div class="col-xs-4">
+                <a href=" https://www.facebook.com/cocooningspaev/" style="background-image: url(/img/home/facebook.png);"></a>
               </div>
+              <div class="col-xs-4">
+                <a href="https://www.instagram.com/cocooningspaev/?hl=fr" style="background-image: url(/img/home/instagram.png);"></a>
+              </div>
+              <div class="col-xs-4">
+                <a href="https://www.snapchat.com/add/cocooningspaev" style="background-image: url(/img/home/snapchat.png);"></a>
+              </div>
+
             </div>
           </div>
 
-          
         </div>
       </div>
     </div>
+
+    <!-- COPY RIGHT -->
+    <div class="clearfix copyRight">
+      <div class="container">
+        <div class="row">
+                    <div class="col-sm-2 col-xs-12">
+
+         </div>
+          <div class="col-sm-3 col-xs-12">
+            <div class="copyRightText">
+              <div class="footerInfoTitle">     
+               <img src="/img/home/Mercanet.jpeg" alt="">
+             </div>
+           </div>
+         </div>
+         <div class="col-sm-3 col-xs-12">
+          <div class="copyRightText">
+            <div class="footerInfoTitles">
+              <h4>Horaires services </h4>
+              <i>Lundi-Dimanche : 8:00 - 22:00 <br>
+              365 jours/an</i>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 col-xs-12">
+          <div class="copyRightText">
+            <div class="footerInfoTitles">
+              <h4>Horaires bureau </h4>
+              <i>Lundi-Dimanche : 8:00 - 20:00 <br>
+              06 67 07 65 87 </i>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
   </div>
+</footer>
+</div>
+<!-- APPOINMENT MODAL -->
+<div id="appoinmentModal" class="modal fade modalCommon" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <!-- MODAL CONTENT-->
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+      <div class="panel panel-default formPart panel-login" >
+        <div class="panel-heading patternbg" ><center> <span>Connectez-vous</span></center></div>
+        <div class="panel-body panel-body-login">
+          <div class="row">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"email" %>
+              </div>
+              <div class="form-group">
+                <i class="fa fa-key" aria-hidden="true"></i>
+                <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"fullname", placeholder:"mot de pass" %>
+              </div>
+              <div class="actions">
+                <center><%= f.submit "Connecter", class:"btn btn-primary btn-block" %></center> </br>
+                <center><p>Pas encore inscris? <%= render "clients/shared/links" %></p></center>
+              </div>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
 
 
-  <!-- JAVASCRIPTS -->
-  <script data-turbolinks-track = "reload" src="/plugins/jquery/jquery.min.js"></script>
-  <script data-turbolinks-track = "reload" src="/plugins/jquery-ui/jquery-ui.min.js"></script>
-  <script data-turbolinks-track = "reload" src="/plugins/bootstrap/js/bootstrap.min.js"></script>
-  <script data-turbolinks-track = "reload" src="/plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
-  <script data-turbolinks-track = "reload" src="/plugins/owl-carousel/owl.carousel.min.js"></script>
-  <script data-turbolinks-track = "reload" src="/plugins/isotope/isotope.min.js"></script>
-  <script data-turbolinks-track = "reload" src="/plugins/fancybox/jquery.fancybox.min.js"></script>
-  <script data-turbolinks-track = "reload" src="/plugins/isotope/isotope-triger.min.js"></script>
-  <script data-turbolinks-track = "reload" src="/plugins/smoothscroll/SmoothScroll.min.js"></script>
-  <script data-turbolinks-track = "reload" src="/plugins/datepicker/bootstrap-datepicker.min.js"></script>
-  <script data-turbolinks-track = "reload" src="/plugins/syotimer/jquery.syotimer.min.js"></script>
-  <script data-turbolinks-track = "reload" src="/js/custom.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <script>
+
+<!-- JAVASCRIPTS -->
+<script data-turbolinks-track = "reload" src="/plugins/jquery/jquery.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/isotope/isotope.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/fancybox/jquery.fancybox.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/isotope/isotope-triger.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/smoothscroll/SmoothScroll.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/datepicker/bootstrap-datepicker.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/syotimer/jquery.syotimer.min.js"></script>
+<script data-turbolinks-track = "reload" src="/js/custom.js"></script>
+
+<script>
   	//paste this code under head tag or in a seperate js file.
   	// Wait for window load
   	$(window).load(function() {
