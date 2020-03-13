@@ -1,7 +1,13 @@
 
-
+.contactTitle{
+background: white !important;
+text-transform: none !important;
+}
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {.phone{
+@media only screen and (max-width: 600px) {
+
+
+	.phone{
 	background: white;
 	width: 100%;
 	margin-top: 50px;
@@ -47,7 +53,35 @@ left: 5%;
 	color:white;
 	font-weight: bold; 
 
-}}
+}
+
+.secotionTitle h2 span {
+    display: block;
+    letter-spacing: normal;
+    color: #ec5598;
+    font-family: 'Quicksand', 'Open Sans';
+    font-size: 30px !important;
+    line-height: 15px;
+    text-transform: none;
+    font-weight: bold;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    margin-left: 8%;
+}
+
+.p-contact{
+margin-top: 3%;
+margin-left: 3%;
+margin-right: 3%;
+width: 94%;
+max-width: 100%;
+text-align: justify;
+}
+.police_massage{
+text-align: left;
+}
+
+}
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
@@ -96,6 +130,33 @@ left: 5%;
 	color:white;
 	font-weight: bold; 
 }
+
+
+.secotionTitle h2 span {
+    display: block;
+    letter-spacing: normal;
+    color: #ec5598;
+    font-family: 'Quicksand', 'Open Sans' !important;
+ font-size: 50px !important;
+line-height: 25px;
+    text-transform: none;
+    font-weight: bold;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    margin-left: 8%;
+}
+
+.p-contact{
+margin-top: 3%;
+margin-left: 3%;
+margin-right: 3%;
+width: 94%;
+max-width: 100%;
+text-align: justify;
+}
+.police_massage{
+text-align: left;
+}
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -118,7 +179,7 @@ left: 5%;
 	top: 10px;
 	width: 300px;
 }
-.zone{
+.zonePartner{
 	position: relative;
 	top: -36px;
 	left: 100px;
@@ -146,6 +207,32 @@ left: 5%;
 	color:white;
 	font-weight: bold; 
 	border-radius: 10px
-}}
+}
+.secotionTitle h2 span {
+    display: block;
+    letter-spacing: normal;
+    color: #ec5598;
+    font-family: 'Quicksand', 'Open Sans';
+    font-size: 60px !important;
+    line-height: 42px;
+    text-transform: none;
+    font-weight: bold;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    margin-left: 8%;
+}
+
+.p-contact{
+margin-top: 3%;
+margin-left: 3%;
+margin-right: 3%;
+width: 94%;
+max-width: 100%;
+text-align: center;
+}
+.police_massage{
+text-align: left;
+}
+}
 
 

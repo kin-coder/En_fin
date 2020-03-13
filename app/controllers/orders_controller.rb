@@ -1,12 +1,33 @@
 class OrdersController < ApplicationController
+  before_action :validate_session, only: [:delivery,:saveDelivery,:summary,:payment]
+  before_action :validate_value_in_session, only: [:summary,:payment]
+  before_action :validate_pay_error_success, only: [:payedsuccess,:payederrors]
+  before_action :authenticate_client!, only: [:delivery,:saveDelivery,:summary,:payment]
+
   # 1/2 Selection des prestation
   def zone
     @country = params[:country]
     @department = params[:department]
     @date = params[:date]
+    if @date
+      unless @date[2] == "/" && @date[5] == "/" && @date.length == 10
+        redirect_to reservation_path
+        return
+      end
+    else
+      redirect_to reservation_path
+    end
+
     @country = Country.find_by(name:@country)
+    unless @country
+      redirect_to reservation_path
+    end
+
     if @department
-      @department = Department.find_by(name:@department)  
+      @department = Department.find_by(name:@department)
+      unless @department
+        redirect_to reservation_path   
+      end
     else
       @department = nil
     end
@@ -26,7 +47,6 @@ class OrdersController < ApplicationController
           session[:otherInfo]["pays"] = @country
           session[:otherInfo]["department"] = @department
           session[:otherInfo]["date"] = @date
-          
         else
           @error = "Veuillez choisir un département" #erreur
           #redirect_back(fallback_location: root_path)
@@ -63,9 +83,9 @@ class OrdersController < ApplicationController
     @test = false
     if CodePromo.all.find_by(code:@code)
       @test = true
-      session[:code_promo] = @code
+      session[:otherInfo]["code_promo"] = @code
     else
-      session.delete(:code_promo)
+      session[:otherInfo]["code_promo"] = ""
     end
     respond_to do |format|
        format.js
@@ -112,32 +132,57 @@ class OrdersController < ApplicationController
   def saveSession
     # orderSpa = [{time:48,type:["a","b"],price:180,option:[["a",12],["c",45]]},{time:48,type:["a","b"],price:180,option:[["a",12],["c",45]]}]
     # orderMassage =  [{ca:"Homme",su:"prénatal",price:[30,120]}]
-
     timeSpas = params[:timeSpa]
     orderSpa = []
+    isError = false
+    
+    # gestion de l'heurs pour les prixs MM-DD 
+    exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+    current_date = session[:otherInfo]["date"].split("/")
+
     if timeSpas
       timeSpas.each do |k,v|
         tmp = {}
-        if Spa.find_by(duration:v[0].to_i)
+        curent_Spa = Spa.find_by(duration:v[0].to_i)
+        if curent_Spa
           tmp["time"] = v[0].to_i
+          if exceptionalDate.include?(current_date[0..1])
+            tmp["price"] = [curent_Spa.exceptional_price,curent_Spa.exceptional_acompte]
+          else
+            tmp["price"] = [curent_Spa.ordinary_price,curent_Spa.ordinary_acompte]
+          end
         else
-          # erreur
+          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+          isError = true
         end
         tmp["type"] = params[:typeSpa][k]
-        options = params[:optionSpa][k]
-        if options
+
+        if params[:optionSpa]
+          options = params[:optionSpa][k]
           tmpOption = []
-          options.each do |option|
-            product = Product.find_by(name:option)
-            if product
-              tmpOption.push(option)
-            else
-              # erreur
+          if options
+            options.each do |option|
+              product = Product.find_by(name:option)
+              if product
+                tmpOption.push([option,product.price])
+              else
+                flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+                isError = true
+              end
             end
+            tmp["option"] = tmpOption
           end
-          tmp["option"] = tmpOption
+        end
+        if isError
+          redirect_back(fallback_location: root_path)
+          return
         end
         orderSpa.push(tmp)
+      end
+      if params[:heureSpa] == ""
+        flash[:notice] = "Velliez indiquer l'heur de votre réservation de spa"
+        redirect_back(fallback_location: root_path)
+        return
       end
     end
 
@@ -153,37 +198,87 @@ class OrdersController < ApplicationController
           if mSu
             tmp["su"] = v[1]
           else
-            # erreur
+            flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+            isError = true
           end
         else
-          # erreur
+          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+          isError = true
         end
-        price = MassageSuPrice.find_by(duration:params[:massageSuPrice][k][0].to_i)
-        if price
-          tmp["price"] = [price.duration,price.ordinary_price,price.ordinary_acompte]
+
+        if params[:massageSuPrice] && params[:massageSuPrice][k]
+          price = MassageSuPrice.find_by(duration:params[:massageSuPrice][k][0].to_i)
+          if price
+            if exceptionalDate.include?(current_date[0..1])
+              tmp["price"] = [price.id,price.exceptional_price,price.exceptional_acompte]
+            else
+              tmp["price"] = [price.id,price.ordinary_price,price.ordinary_acompte]
+            end
+          else
+            flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+            isError = true
+          end
         else
-          # erreur
+          flash[:notice] = "Remplisser bien les champs avant de valider"
+          isError = true
+        end
+
+        if isError
+          redirect_back(fallback_location: root_path)
+          return
         end
         orderMassage.push(tmp)
       end
+      if params[:heureMassage] == ""
+        flash[:notice] = "Velliez indiquer l'heur de votre réservation de massage"
+        redirect_back(fallback_location: root_path)
+        return
+      end
+
+      unless params[:praticien]
+        flash[:notice] = "Velliez indiquer quelle praticien pour votre massages"
+        redirect_back(fallback_location: root_path)
+        return
+      end
     end
 
-    # params[:cadeau]
-    # <h3><%= session[:myPrestation] %></h3>
-    # <h3><%= session[:otherInfo] %></h3>
+    allCadeau = []
+    if params[:cadeau]
+      a_cadeau = params[:cadeau].split("|")
+      a_cadeau.each do |c|
+        # id: 0 nbr: 1
+        infoC = c.split("-")
+        produit = Product.find(infoC[0].to_i)
+        if produit
+          allCadeau.push([produit.name,produit.price,infoC[1].to_i])
+        else
+          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+          redirect_back(fallback_location: root_path)
+          return
+        end
+      end
+    end
+
+    if orderSpa.empty? && orderMassage.empty?
+      flash[:notice] = "Veuillez selectioner au moin une prestation"
+      redirect_back(fallback_location: root_path)
+      return
+    end
 
     session[:myPrestation] = {spa:orderSpa, massage:orderMassage}
-    session[:otherInfo] = {heureSpa:params[:heureSpa],praticien:params[:praticien],heureMassage:params[:heureMassage],cadeau:[]}
+    session[:otherInfo]["heureSpa"] = params[:heureSpa]
+    session[:otherInfo]["praticien"] = params[:praticien]
+    session[:otherInfo]["heureMassage"] = params[:heureMassage]
+    session[:otherInfo]["cadeau"] = allCadeau
 
     redirect_to delivery_path
+
   end
 
   # 2 Selection des adresse de livraison et facturation
   def delivery
-# email: ""
-# first_name: nil, last_name: nil, adresse: nil, tel: nil, sexe: nil>
-  @client = Client.first
-  @countries = Country.all
+    @client = Client.first
+    @countries = Country.all
   end
 
   def saveDelivery
@@ -213,97 +308,197 @@ class OrdersController < ApplicationController
 
   # 4 Le Payement
   def payment
+    @amount = (@totalAcompte*100).to_i
+
+    customer = Stripe::Customer.create({
+      email: params[:stripeEmail],
+      source: params[:stripeToken],
+    })
+
+    charge = Stripe::Charge.create({
+      customer: customer.id,
+      amount: @amount,
+      description: 'Payement de votre prestation',
+      currency: 'eur',
+    })
+
+    # =============================== Enregistrement des commandes si payer
+    @order = Order.new
+    @order.prestation_date = session[:otherInfo]["date"]
+    @order.billing_pays = session[:otherInfo]["countryF"]
+    @order.billing_ville = session[:otherInfo]["villeF"]
+    @order.billing_code_postal = session[:otherInfo]["codePostaF"]
+    @order.billing_adresse = session[:otherInfo]["adresseF"]
+    @order.billing_adresse_complet = session[:otherInfo]["complAdresseF"]
+    @order.delivery_pays = session[:otherInfo]["countryL"]
+    @order.delivery_ville = session[:otherInfo]["villeL"]
+    @order.delivery_code_postal = session[:otherInfo]["codePostaL"]
+    @order.delivery_adresse = session[:otherInfo]["adresseL"]
+    @order.delivery_adresse_complet = session[:otherInfo]["complAdresseL"]
+    @order.message = session[:otherInfo]["message"]
+    @order.client = current_client
+    @order.department = Department.find_by(name:session[:otherInfo]["department"])
+    @order.country = Country.find_by(name:session[:otherInfo]["pays"])
+    @order.save
+
+    myPrestation = session[:myPrestation]
+    unless myPrestation["spa"].empty?
+      OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: session[:otherInfo]["heureSpa"])
+      myPrestation["spa"].each do |spa|
+        current_spa = Spa.find_by(duration:spa["time"])
+        current_product = ""
+        if spa["option"]
+          current_product = Product.find_by(name:spa["option"][0])
+          OrderSpa.create(logement: spa["type"][0], installation: spa["type"][1], syteme_eau: spa["type"][2], order: @order, spa: current_spa, product: current_product)
+        else
+          OrderSpa.create(logement: spa["type"][0], installation: spa["type"][1], syteme_eau: spa["type"][2], order: @order, spa: current_spa)
+        end
+      end
+    end
+    
+    unless myPrestation["massage"].empty?
+      OrderService.create(order: @order, service: Service.find_by(name:"Massage"), service_time: session[:otherInfo]["heureMassage"])
+      myPrestation["massage"].each do |massage|
+        current_ca = MassageCa.find_by(name:massage["ca"])      
+        current_su = current_ca.massage_sus.find_by(name:massage["su"])
+        current_prix = MassageSuPrice.find(massage["price"][0].to_i)
+        OrderMassage.create(order: @order, massage_ca:current_ca, massage_su: current_su, massage_su_price: current_prix)
+      end
+      @order.praticien = session[:otherInfo]["praticien"]
+      @order.save
+    end
+    
+    unless session[:otherInfo]["cadeau"].empty?
+      session[:otherInfo]["cadeau"].each do |cadeau|
+        current_product = Product.find_by(name:cadeau[0])
+        OrderProduct.create(number: cadeau[2].to_i, product: current_product, order: @order)
+      end
+    end
+
+    redirect_to payedsuccess_path
+
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to payederrors_path
+
+  end
+
+  def payedsuccess
+    session.clear
+  end
+
+  def payederrors
+    session.clear
+  end
+
+  private
+
+  def validate_pay_error_success
     
   end
 
+  def redirect_reservation
+    flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+    flash[:delete_js] = true
+    session.clear
+    redirect_to reservation_path
+  end
+
+  def validate_session
+    if session[:myPrestation] == nil || session[:otherInfo] == nil
+      redirect_reservation
+    end
+    if session[:otherInfo] != nil
+      unless session[:otherInfo]["date"]
+        redirect_reservation
+      end      
+    end
+  end
+
+  def validate_value_in_session
+
+    exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+    
+    current_date = session[:otherInfo]["date"].split("/")
+
+    isExeptional = false #[curent_Spa.ordinary_price,curent_Spa.ordinary_acompte]
+    if exceptionalDate.include?(current_date[0..1])
+      isExeptional = true #[curent_Spa.exceptional_price,curent_Spa.exceptional_acompte]
+    end
+
+    @totalPrice = 0
+    @totalAcompte = 0
+
+    myPrestation = session[:myPrestation]
+    unless myPrestation["spa"].empty?
+      myPrestation["spa"].each do |spa|
+        current_spa = Spa.find_by(duration:spa["time"])
+        unless current_spa
+          redirect_reservation
+        else
+          if isExeptional
+            @totalPrice += current_spa.exceptional_price
+            @totalAcompte += current_spa.exceptional_acompte
+          else
+            @totalPrice += current_spa.ordinary_price
+            @totalAcompte += current_spa.ordinary_acompte
+          end
+        end
+        if spa["option"]
+          current_product = Product.find_by(name:spa["option"][0])
+          unless current_product
+            redirect_reservation
+          else
+            @totalAcompte += current_product.price
+          end
+        end
+      end
+      unless session[:otherInfo]["heureSpa"]
+        redirect_reservation
+      end
+    end
+    unless myPrestation["massage"].empty?
+      myPrestation["massage"].each do |massage|
+        current_ca = MassageCa.find_by(name:massage["ca"])
+        if current_ca
+          current_su = current_ca.massage_sus.find_by(name:massage["su"])
+          unless current_su
+            redirect_reservation
+          end
+        else
+          redirect_reservation
+        end
+        # pour le prix
+        current_prix = MassageSuPrice.find(massage["price"][0].to_i)
+        unless current_prix
+          redirect_reservation
+        else
+          if isExeptional
+            @totalPrice += current_prix.exceptional_price
+            @totalAcompte += current_prix.exceptional_acompte
+          else
+            @totalPrice += current_prix.ordinary_price
+            @totalAcompte += current_prix.ordinary_acompte
+          end
+        end
+      end
+      unless session[:otherInfo]["praticien"]
+        redirect_reservation
+      end
+      unless session[:otherInfo]["heureMassage"]
+        redirect_reservation
+      end
+    end
+    unless session[:otherInfo]["cadeau"].empty?
+      session[:otherInfo]["cadeau"].each do |cadeau|
+        current_product = Product.find_by(name:cadeau[0])
+        unless current_product
+          redirect_reservation
+        else
+          @totalAcompte += current_product.price*cadeau[2].to_i
+        end
+      end
+    end
+  end
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=begin
-
-# massages = params[:massageSu]["3"]
-# puts "~~~~"*10
-# puts massages[0].split("||")
-# puts "~~~~"*10
-
-JSON.parse("Text to Data") // mamadika ny text ho data 
-
-JSON.stringify(Data) // mamadika ny data ho text
-
-
-@services = Service.all
-# service location spa
-@spas = Spa.all
-@spaoptions = Product.where(is_option_spa:true)
-# service massage
-@massages = MassageCa.all #.massage_sus liste sub sub[0].massage_su_prices //differen heurse
-@cadeaus = Product.where(is_option_spa:false)
-
-
-# @categories = @service.categories # Liste de tous les categories
-
-# @products = @service.products # Liste de tous les produits
-
-# @listPrestation = []
-
-# @categories.each do |c|
-
-#   @listPrestation.push([[c.name,c.id]])
-
-#   c.subcategories.each do |s|
-#     @listPrestation[@listPrestation.length-1].push([s.id,s.name,s.price])
-#   end
-
-# end
-
-# <%= form_tag(saved_commande_path, id:"form", 'data-zones':"#{@listPrestation}", 'data-service':"#{@service.name}") do %>
-
-get 'orders/zone'
-  get 'orders/order'
-
-rails g controller Orders zone order
-Running via Spring preloader in process 4988
-      create  app/controllers/orders_controller.rb
-       route  get 'orders/zone'
-get 'orders/order'
-      invoke  erb
-      create    app/views/orders
-      create    app/views/orders/zone.html.erb
-      create    app/views/orders/order.html.erb
-      invoke  test_unit
-      create    test/controllers/orders_controller_test.rb
-      invoke  helper
-      create    app/helpers/orders_helper.rb
-      invoke    test_unit
-      invoke  assets
-      invoke    scss
-      create      app/assets/stylesheets/orders.scss
-=end

@@ -1,0 +1,27 @@
+.noticeTitle{
+font-family: Quicksand, "Open Sans", "sans-serif" !important;
+margin-top: 30px;
+color: #8aec8a;
+}
+.noticeTitle1{
+font-family: Quicksand, "Open Sans", "sans-serif" !important;
+margin-top: 30px;
+margin-left: 11%;
+color: #8aec8a;
+}
+
+.textNotice{
+text-align: justify;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+.colReduit{
+width: 90%;
+margin-left: -25px;
+}
+}
+
+
+
+

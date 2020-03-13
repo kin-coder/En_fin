@@ -129,17 +129,16 @@ ActiveRecord::Schema.define(version: 2020_03_04_172623) do
     t.integer "number"
     t.bigint "product_id"
     t.bigint "order_id"
-    t.bigint "order_spa_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_products_on_order_id"
-    t.index ["order_spa_id"], name: "index_order_products_on_order_spa_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
   end
 
   create_table "order_services", force: :cascade do |t|
     t.bigint "order_id"
     t.bigint "service_id"
+    t.string "service_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_services_on_order_id"
@@ -152,23 +151,26 @@ ActiveRecord::Schema.define(version: 2020_03_04_172623) do
     t.string "syteme_eau"
     t.bigint "order_id"
     t.bigint "spa_id"
+    t.bigint "product_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_spas_on_order_id"
+    t.index ["product_id"], name: "index_order_spas_on_product_id"
     t.index ["spa_id"], name: "index_order_spas_on_spa_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.date "prestation_date"
-    t.time "prestation_time"
+    t.string "prestation_date"
     t.string "billing_pays"
     t.string "billing_ville"
     t.string "billing_code_postal"
     t.string "billing_adresse"
+    t.string "billing_adresse_complet"
     t.string "delivery_pays"
     t.string "delivery_ville"
     t.string "delivery_code_postal"
     t.string "delivery_adresse"
+    t.string "delivery_adresse_complet"
     t.string "praticien"
     t.text "message"
     t.bigint "client_id"

@@ -1,4 +1,11 @@
 <link href="/css/resa.css" rel="stylesheet">
+
+<% if flash[:delete_js] %>
+	<script type="text/javascript">
+		sessionStorage.clear();
+	</script>
+<% end %>
+
 <div class="container" id="container-principale">
 	<div id="overlay">
 		<div id="text">
@@ -6,12 +13,12 @@
 				<div class="alert alert-danger hidden" role="alert" id="errorInZone">
 				  
 				</div>
-				<h2>Je choisi ma zone géographique </h2>
+				<h2 style="color:white;">Je choisi ma zone géographique </h2>
 
 				<%= form_tag(zone_path, remote: true) do %>
 				<div class="pays">
 					<label class="labelle" for="country-choice">Pays</label>
-					<select name="country" id="country-choice" class="field">
+					<select name="country" id="country-choice" class="field" required>
 						<option value="" checked>Pays</option>
 						<% @countries.collect do |d| %>
 						<option value="<%=d.name%>"><%=d.name%></option>
@@ -21,7 +28,7 @@
 
 				<div id="list-department" class="hidden">
 					<label class="labelle" for="Departement">Departement</label>
-					<select name="department" id="Departement" class="field">
+					<select name="department" id="Departement" class="field" required>
 						<option value="">Liste departement</option>
 						<% @departments.collect do |d| %>
 						<option value="<%= d.name %>"><%="#{d.code}-#{d.name}"%></option>
@@ -40,7 +47,7 @@
 					</div>
 				</div>
 				<div >
-					<%= submit_tag("Je valide", class:"je-valide", onsubmit:"off()")%>	
+					<%= submit_tag("Je valide", class:"je-valide")%>	
 				</div>
 				<% end %>
 			</div>
@@ -49,11 +56,36 @@
 
 	<!-- ==========================CONTENU ACCORDEONS================= -->
 	<div class="container allfaq">
-		<div id="zode-and-date-selected">
-			
-		</div>
+		<% if flash[:notice] %>
+			<div class="alert alert-danger" role="alert" id="errorForDataFormulaire">
+				<%= flash[:notice] %>
+			</div>
+		<% end %>
+
 		<div class="row">
+
 			<div class="col-sm-9">
+				<div class="innerWrapper">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th id="tableHead" class="accordion-header" ><center >MA ZONE GÉOGRAPHIQUE</center></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div id="zode-and-date-selected">
+
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
 				<!-- session js -->
 				<%= form_tag(save_session_path,id:"form-data",'data-id':"#{@idMassage}",'data-spas':"#{@spas}",'data-spaoptions':"#{@spaoptions}",'data-massages':"#{@massages}") do %>
 				<!-- session js fin -->
@@ -159,11 +191,11 @@
 												</div>
 												<h4><span class="titlePraticien">Type de praticien</span></h4>
 												<div class="praticiens">
-													<input type="radio" id="man" name="praticien" value="Homme" class="praticien-list" >
+													<input type="radio" id="man" name="praticien" value="Homme" class="praticien-list">
 													<label for="man"><i id="praticienman-label" class="fa fa-male" aria-hidden="true"></i></label>
 												</div>
 												<div class="praticiens">
-													<input type="radio" id="woman" name="praticien" value="Femme" class="praticien-list" >
+													<input type="radio" id="woman" name="praticien" value="Femme" class="praticien-list">
 													<label for="woman"><i id="praticien-label" class="fa fa-female" aria-hidden="true"></i></label>
 												</div>
 												<div class="praticiens pratText">
@@ -232,7 +264,6 @@
 														<div class="row">
 															<% @cadeaus.each do |cadeau| %>
 															<div class="col-sm-3">
-
 																<div><img src="/img/products/<%= cadeau.name %>.jpg" alt="" class="image-produit"> 
 																</div>
 																<div class="description-produit">
@@ -242,9 +273,6 @@
 																	<i class="fa fa-minus-circle cadeau-rmv btn-produits" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
 																	<strong><span class="nbr-cadeau-wa" id="<%= cadeau.id %>-nbr">0</span></strong>
 																	<i class="fa fa-plus-circle cadeau-add btn-produits" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
-
-																	<input type="text" value="[]" name="cadeau" id="cadeau-id" class="hidden">
-
 																</div>
 															</div>
 															<% end %>
@@ -253,7 +281,8 @@
 												</tr>
 											</tbody>
 										</table>
-									</div>  
+									</div>
+									<input type="text" name="cadeau" id="cadeau-id" class="hidden">
 								</div>     
 							</div>
 						</div>
@@ -404,4 +433,5 @@ selected=\"selected\"
 
 
 <!-- <div class=\"row\"><div class=\"col-sm-6\"><h5>Massages</h5>"+ htmlSub +"</div></div> -->
+
 

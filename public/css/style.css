@@ -41,22 +41,24 @@
   font-family: 'Times New Roman', Times, serif;
 }
 
+
+
 <!-- media query -->
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .secotionTitle h2 span {
-  display: block;
-  letter-spacing: normal;
-  color: #ec5598;
-  font-family: 'Quicksand', 'Open Sans';
-  font-size: 60px !important;
+    display: block;
+    letter-spacing: normal;
+    color: #ec5598;
+    font-family: 'Quicksand', 'Open Sans';
+    font-size: 60px !important;
 
-  line-height: 42px;
-  text-transform: capitalize;
-  font-weight: bold;
-  padding-bottom: 25px;
-  padding-top: 25px;
-}
+    line-height: 42px;
+    text-transform: capitalize;
+    font-weight: bold;
+    padding-bottom: 25px;
+    padding-top: 25px;
+  }
 
   .optionnal-texte {
     position: relative;
@@ -113,16 +115,16 @@
     font-family: 'Lato', Times, serif;
     padding-top: 5px;
     }}
-@media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 600px) {
 
 
-.areserver {
-    position: fixed;
-    right: 4px;
-    z-index: 100;
-    top: 25%;
-}
-}
+      .areserver {
+        position: fixed;
+        right: 4px;
+        z-index: 100;
+        top: 25%;
+      }
+    }
 
 
 
@@ -451,18 +453,18 @@ a:hover, a:focus {
 
 @media (min-width: 320px) {
   .secotionTitle h2 span {
-  display: block;
-  letter-spacing: normal;
-  color: #ec5598;
-  font-family: 'Quicksand', 'Open Sans';
-  font-size: 60px !important;
+    display: block;
+    letter-spacing: normal;
+    color: #ec5598;
+    font-family: 'Quicksand', 'Open Sans';
+    font-size: 60px !important;
 
-  line-height: 42px;
-  text-transform: capitalize;
-  font-weight: bold;
-  padding-bottom: 25px;
-  padding-top: 25px;
-}
+    line-height: 42px;
+    text-transform: capitalize;
+    font-weight: bold;
+    padding-bottom: 25px;
+    padding-top: 25px;
+  }
 
 
   .secotionTitle h2 span {
@@ -589,18 +591,18 @@ body.bodyColor.wrapper {
     max-width: 970px;
   }
   .secotionTitle h2 span {
-  display: block;
-  letter-spacing: normal;
-  color: #ec5598;
-  font-family: 'Quicksand', 'Open Sans';
-  font-size: 60px !important;
+    display: block;
+    letter-spacing: normal;
+    color: #ec5598;
+    font-family: 'Quicksand', 'Open Sans';
+    font-size: 60px !important;
 
-  line-height: 42px;
-  text-transform: capitalize;
-  font-weight: bold;
-  padding-bottom: 25px;
-  padding-top: 25px;
-}
+    line-height: 42px;
+    text-transform: capitalize;
+    font-weight: bold;
+    padding-bottom: 25px;
+    padding-top: 25px;
+  }
 
 }
 
@@ -609,18 +611,18 @@ body.bodyColor.wrapper {
     max-width: 1170px;
   }
   .secotionTitle h2 span {
-  display: block;
-  letter-spacing: normal;
-  color: #ec5598;
-  font-family: 'Quicksand', 'Open Sans';
-  font-size: 60px !important;
+    display: block;
+    letter-spacing: normal;
+    color: #ec5598;
+    font-family: 'Quicksand', 'Open Sans';
+    font-size: 60px !important;
 
-  line-height: 42px;
-  text-transform: capitalize;
-  font-weight: bold;
-  padding-bottom: 25px;
-  padding-top: 25px;
-}
+    line-height: 42px;
+    text-transform: capitalize;
+    font-weight: bold;
+    padding-bottom: 25px;
+    padding-top: 25px;
+  }
 
 }
 
@@ -2153,8 +2155,8 @@ textarea.form-control {
 
 .navbar-brand > img {
   width: 70%;
-margin-top: 10px;
-margin-left: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
 }
 
 @media (min-width: 320px) {
@@ -3932,7 +3934,7 @@ margin-left: 20px;
   .reviewImageCcspa {
     left: -145px;
     top: 48px;
-}
+  }
 }
 
 .reviewImage img {
@@ -3942,17 +3944,17 @@ margin-left: 20px;
 }
 
 .reviewImageCcspa img {
-    position: absolute;
-    left: 20px !important;
-    top: 9px !important;
-    width: 120px !important;
+  position: absolute;
+  left: 20px !important;
+  top: 9px !important;
+  width: 120px !important;
 }
 .reviewImageCcspaService img {
-    position: absolute;
-    left: 20px !important;
-    top: 9px !important;
-    width: 150px !important;
-    height: 150px !important;
+  position: absolute;
+  left: 20px !important;
+  top: 9px !important;
+  width: 150px !important;
+  height: 150px !important;
 }
 
 .reviewInfo {
@@ -4087,7 +4089,7 @@ margin-left: 20px;
   }
 }
 .btn-reserver-massage{
-border-radius: 15px;
+  border-radius: 15px;
 }
 .priceImage img {
   height: 100%;
@@ -4742,7 +4744,20 @@ footer {
 @media (min-width: 320px) {
   .footerInfo .col-sm-3 {
     padding: 0 15px 50px 15px;
+    text-align: center;
   }
+  .copyRight {
+    border: 1px solid 
+    rgba(0, 0, 0, 0.07);
+    padding: 30px 0;
+    text-align: center;
+}
+.footerLogo img {
+    width: 40%;
+    margin-left: 0px !important;
+    margin-bottom: -10px;
+}
+
 }
 
 @media (min-width: 768px) {
@@ -4872,8 +4887,15 @@ footer {
 .footerInfoTitle h4 {
   font-size: 20px;
   line-height: 27px;
-  margin-bottom: 35px;
-  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 20px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+}
+.footerInfoTitles h4 {
+  font-size: 20px;
+  line-height: 27px;
+  margin-bottom: 10px;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 400;
 }
 
@@ -4897,7 +4919,7 @@ footer {
 
 @media (min-width: 992px) {
   .useLink ul li {
-    margin: 0 0 20px 0;
+    margin: 0 0 5px 0;
   }
 }
 
@@ -4964,13 +4986,14 @@ footer {
 
 .footerGallery a {
   display: block;
-  width: 100%;
+  width: 40px;
   text-align: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 75px;
+  height: 40px;
 }
+
 
 /*=== 4.2 COPY RIGHT ===*/
 .copyRight {
@@ -6663,9 +6686,9 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .produtImageCcspa img {
-    display: inline-block;
-    transition: all 0.8s ease-in-out;
-    width: 200px;
+  display: inline-block;
+  transition: all 0.8s ease-in-out;
+  width: 200px;
 }
 
 .productOption {
@@ -7625,5 +7648,20 @@ input[type=number]::-webkit-inner-spin-button {
     height: 50px;
     line-height: 50px;
   }
+}
+
+
+/*FOOTER*/
+.p-footer{
+
+  margin-top: -8px;
+}
+
+.footerInfoTitle img{
+  height: 100px;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px 18px #888888;
+  width: 150px;
 }
 

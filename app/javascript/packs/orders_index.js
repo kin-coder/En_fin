@@ -1,3 +1,4 @@
+scriptPrincipal()
 function scriptPrincipal(){
 	/*==========================================================================*/
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~SPA~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -35,12 +36,13 @@ function scriptPrincipal(){
 	addPraticient.forEach(add => {
 		add.addEventListener('change',addPraticientAtSession);
 	});
+
 	/*==========================================================================*/
 	/*~~~~~~~~~~~~Verifier si il y a un truc dans la session ~~~~~~~~~~~~~*/
 	verifySession()
 }
-
-scriptPrincipal()
+// 
+// 
 /*==========================================================================*/
 // verifier si la session est vide ou pas
 function verifySession(){
@@ -84,6 +86,7 @@ function verifySession(){
 		initSession()
 	}
 }
+
 // initialiser la session
 function initSession(){
 	sessionStorage.setItem("prestations","{}")
@@ -103,42 +106,44 @@ function addDomIndex(){
 	let cadeau = JSON.parse(sessionStorage.getItem("cadeau"))
 	// prestations.pays = "" // prestations.departement = "" // prestations.date = "" // prestations.heurs = "" // prestations.praticient = ""	
 	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
-// Ajouter les spa selectionné dans le dom
-let tmpTime = ""
-if (0 < spa.length) {
-	for (var i = 0; i < spa.length ; i++) {
-		actualiseDomSpa(spa[i].id,[spa[i].id,spa[i].time,spa[i].option,spa[i].info])
-		tmpTime = document.querySelector("input[data-index=\'"+spa[i].id+"\'][data-array=\'"+spa[i].time+"\'].time-spa-list").value
-		htmlTimeSpaOrder(tmpTime,spa[i].id,dataOption,dataForm)
-		htmlOptionSpaOrder(spa[i].id,dataOption,dataForm,spa[i].option)
+	// Ajouter les spa selectionné dans le dom
+	let tmpTime = ""
+	if (0 < spa.length) {
+		for (var i = 0; i < spa.length ; i++) {
+			actualiseDomSpa(spa[i].id,[spa[i].id,spa[i].time,spa[i].option,spa[i].info])
+			tmpTime = document.querySelector("input[data-index=\'"+spa[i].id+"\'][data-array=\'"+spa[i].time+"\'].time-spa-list").value
+			htmlTimeSpaOrder(tmpTime,spa[i].id,dataOption,dataForm)
+			htmlOptionSpaOrder(spa[i].id,dataOption,dataForm,spa[i].option)
+		}
 	}
-}
-// Ajouter les massages selectionné dans le dom
-if (massages.length != 0) {
-	for (var i = 0; i < massages.length ; i++) {
-		actualiseDomMassage(massages[i].cat,massages[i].id,massages[i].sub,massages[i].time)
-		priceTotalForOneMassage(dataMassages,massages[i].id)
-		priceTotalForAllMassage(dataMassages)
+	// Ajouter les massages selectionné dans le dom
+	if (massages.length != 0) {
+		for (var i = 0; i < massages.length ; i++) {
+			actualiseDomMassage(massages[i].cat,massages[i].id,massages[i].sub,massages[i].time)
+			priceTotalForOneMassage(dataMassages,massages[i].id)
+			priceTotalForAllMassage(dataMassages)
+		}
 	}
-}
-// Ajouter le cadeau selectionné dans le dom
-if (cadeau.length != 0) {
-	for (var i = 0; i < cadeau.length ; i++) {
+	// Ajouter le cadeau selectionné dans le dom
+	if (cadeau.length != 0) {
+		valueInInput = ""
+		for (var i = 0; i < cadeau.length ; i++) {
 			// [[6,8],[7,3],[8,2],[9,1]]
 			document.getElementById(cadeau[i][0]+"-nbr").innerHTML = cadeau[i][1]
+			valueInInput += cadeau[i][0]+"-"+cadeau[i][1]+"|"
 		}
-		document.getElementById("cadeau-id").value = JSON.stringify(cadeau)
+		document.getElementById("cadeau-id").value = valueInInput
 		priceForAllCadeau()
 	}
-// Ajouter les information sur la zone et type de praticient
-if (prestations.praticien != undefined){
-	let listPratitiens = document.querySelectorAll(".praticien-list")
-	for (var i = listPratitiens.length - 1; i >= 0; i--) {
-		if(listPratitiens[i].value == prestations.praticien){
-			listPratitiens[i].checked = true
+	// Ajouter les information sur la zone et type de praticient
+	if (prestations.praticien != undefined){
+		let listPratitiens = document.querySelectorAll(".praticien-list")
+		for (var i = listPratitiens.length - 1; i >= 0; i--) {
+			if(listPratitiens[i].value == prestations.praticien){
+				listPratitiens[i].checked = true
+			}
 		}
 	}
-}
 }
 /*==========================================================================*/
 	// les fonctions concernatant Date Heurs Pays Departement Praticient
@@ -503,7 +508,7 @@ function addRmvOptionSpaInOrder(){ //checkbox na option spa
 	if(this.checked){
 		for (var i = sessionSpa.length - 1; i >= 0; i--) {
 			if (sessionSpa[i].id == index) {
-				sessionSpa[i].option.push(id)
+				sessionSpa[i].option = [id]
 				listOptions = sessionSpa[i].option
 				break
 			}
@@ -511,12 +516,20 @@ function addRmvOptionSpaInOrder(){ //checkbox na option spa
 	}else{
 		for (var i = sessionSpa.length - 1; i >= 0; i--) {
 			if (sessionSpa[i].id == index) {
-				sessionSpa[i].option.splice( sessionSpa[i].option.indexOf(id), 1 )
+				sessionSpa[i].option = []
 				listOptions = sessionSpa[i].option
 				break
 			}
 		}
 	}
+
+	let inputList = document.querySelectorAll(".option-spa-list[data-index=\'"+index+"\']")
+	inputList.forEach(inputL => {
+		if(this != inputL){
+			inputL.checked = false
+		}
+	});
+
 	sessionStorage.setItem("spa",JSON.stringify(sessionSpa))
 	// Ajout des element dans le dom
 	htmlOptionSpaOrder(index,dataOption,dataForm,listOptions)
@@ -747,22 +760,28 @@ function removeCategoryMassage(){
 }
 /*==========================================================================*/
 	// fonction principale CADEAU
-	function removeCadeau(){
-		let id = JSON.parse(this.dataset.id)
-		let cadeau = JSON.parse(sessionStorage.getItem("cadeau"))
-		for (var i = cadeau.length - 1; i >= 0; i--) {
-			if(cadeau[i][0] == id){
-				cadeau[i][1]--
-				document.getElementById(id+"-nbr").innerHTML = cadeau[i][1]
-				if(cadeau[i][1] == 0){
-					cadeau.splice(i,1)
-				}
-				break
+function removeCadeau(){
+	let id = JSON.parse(this.dataset.id)
+	let cadeau = JSON.parse(sessionStorage.getItem("cadeau"))
+	for (var i = cadeau.length - 1; i >= 0; i--) {
+		if(cadeau[i][0] == id){
+			cadeau[i][1]--
+			document.getElementById(id+"-nbr").innerHTML = cadeau[i][1]
+			if(cadeau[i][1] == 0){
+				cadeau.splice(i,1)
 			}
+			break
 		}
-		sessionStorage.setItem("cadeau",JSON.stringify(cadeau))
-		numberAtOrderBtn()
-		document.getElementById("cadeau-id").value = JSON.stringify(cadeau)
+	}
+	sessionStorage.setItem("cadeau",JSON.stringify(cadeau))
+	numberAtOrderBtn()
+
+	let changeCadeau = JSON.parse(sessionStorage.getItem("cadeau"))
+	valueInInput = ""
+	for (var i = changeCadeau.length - 1; i >= 0; i--) {
+		valueInInput += changeCadeau[i][0]+"-"+changeCadeau[i][1]+"|"
+	}
+	document.getElementById("cadeau-id").value = valueInInput
 	// calcul du prix
 	priceForAllCadeau()
 }
@@ -784,7 +803,13 @@ function aDDCadeau(){
 	}
 	sessionStorage.setItem("cadeau",JSON.stringify(cadeau))
 	numberAtOrderBtn()
-	document.getElementById("cadeau-id").value = JSON.stringify(cadeau)
+
+	let changeCadeau = JSON.parse(sessionStorage.getItem("cadeau"))
+	valueInInput = ""
+	for (var i = changeCadeau.length - 1; i >= 0; i--) {
+		valueInInput += changeCadeau[i][0]+"-"+changeCadeau[i][1]+"|"
+	}
+	document.getElementById("cadeau-id").value = valueInInput
 	// calcul du prix
 	priceForAllCadeau()
 }

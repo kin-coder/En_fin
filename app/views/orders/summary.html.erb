@@ -1,21 +1,171 @@
-<h1>Recapitulatif de votre commande</h1>
-<h3><%= session[:myPrestation] %> </h3>
-<h3><%= session[:otherInfo] %></h3>
-<div>
-	Prestation:<br>
-	Produits:<br>
-	Prix Total:<br>
-	Accompte à régler en ligne:<br>
-	Montant à régler sur place:(CB ou éspèces uniquement)<br>
-	Adresse de facturation:<br>
-	Adresse de livraison:<br>
-	Infos complementaires:<br>
-</div>
+<link href="/css/summary.css" rel="stylesheet">
+<div class="container" style="background: white;">
 
-<div>
-	<h2>IMPORTANT</h2>
-	<p>Ce devis ne tient pas compte des éventuels frais de déplacement (pour les services spa/massage) qui pourrait vous etre facturés selon votre ville. Pour plus d'information veuillez nous contacter</p>
-	<p>Les accomptes ne s'appliquent qu'aux services(Spa/massages). Pour les produits, le montant est réglé dans sa totalité en ligne</p>
-</div>
+	<div class="secotionTitle">
+		<h2 id="service" class="poli1 police_massage"><span>Récapitulatif de votre commande</span></h2>
+	</div>
+	<div class="row">
+		<div class="col-sm-8">
+			<section class="clearfix orderSection padding">
+				<div class="col-xs-12">
+					<div class="innerWrapper">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>LOCATION SPA</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<% session[:myPrestation]["spa"].each do |spa| %> 
+											<div class="reservationSpa">
+												Durée : <%= spa["time"] %>h<br>
+												<ul>
+													<li>Type de logement : <%= spa["type"][0] %></li>
+													<li>Type d'installation : <%= spa["type"][1] %></li>
+													<li>Système d'eau : <%= spa["type"][2] %></li>
+												</ul>
 
-<a href="#">Je finalise</a>
+												<% if spa["option"] %>
+												Option : <%= spa["option"][0][0] %> à <%= spa["option"][0][1] %> € <br>
+												<% end %>
+
+												Prix : <%= spa["price"][0] %> €<br>
+												Acompte :<%= spa["price"][1] %> €<br>
+												<div>
+													Date et heure de livraison : le <%= session[:otherInfo]["date"] %> à <%= session[:otherInfo]["heureSpa"] %>
+												</div>
+											</div>
+											<% end %>
+
+										</td>
+									</tr>
+									
+								</tbody>
+							</table>
+						</div>
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>MASSAGE</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+
+										<td>
+											<% session[:myPrestation]["massage"].each do |massage| %>
+											<div class="reservationSpa">
+												Pour : <%= massage["ca"] %><br>
+												Type de massage : <%= massage["su"] %><br>
+												Prix : <%= massage["price"][1] %> €<br>
+												Acompte : <%= massage["price"][2] %> €
+											</div>
+											<% end %>
+										</td>
+									</tr>
+									
+								</tbody>
+							</table>
+						</div>
+
+
+						<% unless session[:otherInfo]["cadeau"].empty? %>
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>PRODUITS</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+
+										<td>
+											<% session[:otherInfo]["cadeau"].each do |cadeau| %>
+											<div class="reservationSpa">
+												<%= cadeau[0] %> : <%= cadeau[2] %><br>
+												Prix : <%= cadeau[1].to_f * cadeau[2].to_i %> €
+											</div>
+											<% end %>  
+										</td>
+									</tr>
+									
+								</tbody>
+							</table>
+						</div>
+						<% end %>
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>INFOS COMPLEMENTAIRES</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+
+										<td>
+											<div class="reservationSpa">
+												Pays : <%= session[:otherInfo]["pays"] %> <br>
+												Departement : <%= session[:otherInfo]["department"] %><br>
+												Adresse de facturation: <%= session[:otherInfo]["adresseF"] %> <br>
+												Adresse de livraison: <%= session[:otherInfo]["adresseL"] %> <br>
+											</div>
+											
+										</td>
+									</tr>
+									
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+				</div>
+				
+				
+			</section>
+		</div>
+
+		<div class="col-sm-4">
+			<div class="alert alert-success">
+				Prix Total: <strong><%= @totalAcompte + @totalPrice %> € </strong><br>
+				Montant à régler sur place(CB ou éspèces uniquement) : <strong><%= @totalPrice %> €</strong><br>
+				<div>
+					<%= form_tag payment_path do %>
+					  <article>
+					    <% if flash[:error].present? %>
+					      <div id="error_explanation">
+					        <p><%= flash[:error] %></p>
+					      </div>
+					    <% end %>
+					    <label class="amount">
+					    	<span>Acompte à régler en ligne: <strong><%= @totalAcompte %> €</strong></span>
+					    </label>
+					  </article>
+
+					  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+					          data-description="Payement de l'acompte"
+					          data-amount="<%= @totalAcompte*100 %>"
+					          data-currency="eur"
+					          data-locale="auto"></script>
+					<% end %>
+				</div>
+			</div>
+			<center class="infoImportant">
+				<h4><i class="fa fa-exclamation-circle" aria-hidden="true"></i> IMPORTANT</h4>
+				<p class="p-important">Ce devis ne tient pas compte des éventuels frais de déplacement (pour les services spa/massage) qui pourrait vous etre facturés selon votre ville. Pour plus d'information veuillez nous contacter.</p>
+				<hr class="interligne">
+				<p class="p-important">Les acomptes ne s'appliquent qu'aux services(Spa/massages). Pour les produits, le montant est réglé dans sa totalité en ligne.</p>
+			</center>
+
+		</div>
+	</div>
+
+</div>
