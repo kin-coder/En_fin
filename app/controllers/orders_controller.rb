@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
   before_action :validate_session, only: [:delivery,:saveDelivery,:summary,:payment]
   before_action :validate_value_in_session, only: [:summary,:payment]
+  before_action :validate_pay_error_success, only: [:payedsuccess,:payederrors]
+  before_action :authenticate_client!, only: [:delivery,:saveDelivery,:summary,:payment]
+
   # 1/2 Selection des prestation
   def zone
     @country = params[:country]
@@ -305,6 +308,21 @@ class OrdersController < ApplicationController
 
   # 4 Le Payement
   def payment
+    @amount = (@totalAcompte*100).to_i
+
+    customer = Stripe::Customer.create({
+      email: params[:stripeEmail],
+      source: params[:stripeToken],
+    })
+
+    charge = Stripe::Charge.create({
+      customer: customer.id,
+      amount: @amount,
+      description: 'Payement de votre prestation',
+      currency: 'eur',
+    })
+
+    # =============================== Enregistrement des commandes si payer
     @order = Order.new
     @order.prestation_date = session[:otherInfo]["date"]
     @order.billing_pays = session[:otherInfo]["countryF"]
@@ -318,7 +336,7 @@ class OrdersController < ApplicationController
     @order.delivery_adresse = session[:otherInfo]["adresseL"]
     @order.delivery_adresse_complet = session[:otherInfo]["complAdresseL"]
     @order.message = session[:otherInfo]["message"]
-    @order.client = Client.first
+    @order.client = current_client
     @order.department = Department.find_by(name:session[:otherInfo]["department"])
     @order.country = Country.find_by(name:session[:otherInfo]["pays"])
     @order.save
@@ -357,38 +375,81 @@ class OrdersController < ApplicationController
       end
     end
 
+    redirect_to payedsuccess_path
+
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to payederrors_path
+
+  end
+
+  def payedsuccess
+    session.clear
+  end
+
+  def payederrors
+    session.clear
   end
 
   private
 
+  def validate_pay_error_success
+    
+  end
+
   def redirect_reservation
     flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
     flash[:delete_js] = true
-    redirect_to reservation_path
     session.clear
+    redirect_to reservation_path
   end
 
   def validate_session
     if session[:myPrestation] == nil || session[:otherInfo] == nil
       redirect_reservation
     end
-    unless session[:otherInfo]["date"]
-      redirect_reservation
+    if session[:otherInfo] != nil
+      unless session[:otherInfo]["date"]
+        redirect_reservation
+      end      
     end
   end
 
   def validate_value_in_session
+
+    exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+    
+    current_date = session[:otherInfo]["date"].split("/")
+
+    isExeptional = false #[curent_Spa.ordinary_price,curent_Spa.ordinary_acompte]
+    if exceptionalDate.include?(current_date[0..1])
+      isExeptional = true #[curent_Spa.exceptional_price,curent_Spa.exceptional_acompte]
+    end
+
+    @totalPrice = 0
+    @totalAcompte = 0
+
     myPrestation = session[:myPrestation]
     unless myPrestation["spa"].empty?
       myPrestation["spa"].each do |spa|
         current_spa = Spa.find_by(duration:spa["time"])
         unless current_spa
           redirect_reservation
+        else
+          if isExeptional
+            @totalPrice += current_spa.exceptional_price
+            @totalAcompte += current_spa.exceptional_acompte
+          else
+            @totalPrice += current_spa.ordinary_price
+            @totalAcompte += current_spa.ordinary_acompte
+          end
         end
         if spa["option"]
           current_product = Product.find_by(name:spa["option"][0])
           unless current_product
             redirect_reservation
+          else
+            @totalAcompte += current_product.price
           end
         end
       end
@@ -411,6 +472,14 @@ class OrdersController < ApplicationController
         current_prix = MassageSuPrice.find(massage["price"][0].to_i)
         unless current_prix
           redirect_reservation
+        else
+          if isExeptional
+            @totalPrice += current_prix.exceptional_price
+            @totalAcompte += current_prix.exceptional_acompte
+          else
+            @totalPrice += current_prix.ordinary_price
+            @totalAcompte += current_prix.ordinary_acompte
+          end
         end
       end
       unless session[:otherInfo]["praticien"]
@@ -425,6 +494,8 @@ class OrdersController < ApplicationController
         current_product = Product.find_by(name:cadeau[0])
         unless current_product
           redirect_reservation
+        else
+          @totalAcompte += current_product.price*cadeau[2].to_i
         end
       end
     end

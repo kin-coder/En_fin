@@ -4,9 +4,6 @@
 	<div class="secotionTitle">
 		<h2 id="service" class="poli1 police_massage"><span>Récapitulatif de votre commande</span></h2>
 	</div>
-	<% priceTotal = 0 %>
-	<% acompteTotal = 0 %>
-
 	<div class="row">
 		<div class="col-sm-8">
 			<section class="clearfix orderSection padding">
@@ -33,7 +30,6 @@
 
 												<% if spa["option"] %>
 												Option : <%= spa["option"][0][0] %> à <%= spa["option"][0][1] %> € <br>
-												<% acompteTotal += spa["option"][0][1].to_f %>
 												<% end %>
 
 												Prix : <%= spa["price"][0] %> €<br>
@@ -42,9 +38,6 @@
 													Date et heure de livraison : le <%= session[:otherInfo]["date"] %> à <%= session[:otherInfo]["heureSpa"] %>
 												</div>
 											</div>
-
-											<% priceTotal += spa["price"][0].to_f %>
-											<% acompteTotal += spa["price"][1].to_f %>
 											<% end %>
 
 										</td>
@@ -72,10 +65,6 @@
 												Prix : <%= massage["price"][1] %> €<br>
 												Acompte : <%= massage["price"][2] %> €
 											</div>
-											
-											<% priceTotal += massage["price"][1].to_f %>
-											<% acompteTotal += massage["price"][2].to_f %>
-
 											<% end %>
 										</td>
 									</tr>
@@ -103,7 +92,6 @@
 												<%= cadeau[0] %> : <%= cadeau[2] %><br>
 												Prix : <%= cadeau[1].to_f * cadeau[2].to_i %> €
 											</div>
-											<% acompteTotal += cadeau[1].to_f*cadeau[2].to_i %>
 											<% end %>  
 										</td>
 									</tr>
@@ -147,9 +135,28 @@
 
 		<div class="col-sm-4">
 			<div class="alert alert-success">
-				Prix Total: <strong><%= priceTotal + acompteTotal %> € </strong><br>
-				Accompte à régler en ligne: <strong><%= acompteTotal %> €</strong><br>
-				Montant à régler sur place(CB ou éspèces uniquement) : <strong><%= priceTotal %> €</strong><br>
+				Prix Total: <strong><%= @totalAcompte + @totalPrice %> € </strong><br>
+				Montant à régler sur place(CB ou éspèces uniquement) : <strong><%= @totalPrice %> €</strong><br>
+				<div>
+					<%= form_tag payment_path do %>
+					  <article>
+					    <% if flash[:error].present? %>
+					      <div id="error_explanation">
+					        <p><%= flash[:error] %></p>
+					      </div>
+					    <% end %>
+					    <label class="amount">
+					    	<span>Acompte à régler en ligne: <strong><%= @totalAcompte %> €</strong></span>
+					    </label>
+					  </article>
+
+					  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+					          data-description="Payement de l'acompte"
+					          data-amount="<%= @totalAcompte*100 %>"
+					          data-currency="eur"
+					          data-locale="auto"></script>
+					<% end %>
+				</div>
 			</div>
 			<center class="infoImportant">
 				<h4><i class="fa fa-exclamation-circle" aria-hidden="true"></i> IMPORTANT</h4>
@@ -159,9 +166,6 @@
 			</center>
 
 		</div>
-	</div>
-	<div class="btn-resa">
-		<a href="<%= payment_path %>" class="confirm-command btn btn-primary text-btn btn-resa-text">Je finalise</a>
 	</div>
 
 </div>

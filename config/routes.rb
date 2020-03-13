@@ -45,8 +45,9 @@ Rails.application.routes.draw do
   
   get '/reservation-prestation/recapitulatif-commande', to:'orders#summary', as: "summary"
   #tokony post ito
-  get '/reservation-prestation/paye-commande', to:'orders#payment', as: "payment"
-  
+  post '/reservation-prestation/paye-commande', to:'orders#payment', as: "payment"
+  get '/reservation-prestation/payed-success', to:'orders#payedsuccess', as: "payedsuccess"
+  get '/reservation-prestation/payed-errors', to:'orders#payederrors', as: "payederrors"
 
 
 
