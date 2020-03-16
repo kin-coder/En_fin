@@ -37,12 +37,16 @@ function scriptPrincipal(){
 		add.addEventListener('change',addPraticientAtSession);
 	});
 
+	document.getElementById("heure-spa").addEventListener("change",addHoursInPrestation)
+
+	document.getElementById("heure-massage").addEventListener("change",addHoursInPrestation)
+
 	/*==========================================================================*/
 	/*~~~~~~~~~~~~Verifier si il y a un truc dans la session ~~~~~~~~~~~~~*/
 	verifySession()
 }
 // 
-// 
+//
 /*==========================================================================*/
 // verifier si la session est vide ou pas
 function verifySession(){
@@ -53,6 +57,7 @@ function verifySession(){
 	let cadeau = sessionStorage.getItem("cadeau")
 	// prestations.pays = "" // prestations.departement = "" // prestations.date = "" // prestations.heurs = "" // prestations.praticient = ""	
 	let prestations = sessionStorage.getItem("prestations")
+
 	if ( (spa == null || spa == "") && (massages == null || massages == "") ){
 		initSession()
 		return
@@ -115,6 +120,7 @@ function addDomIndex(){
 			htmlTimeSpaOrder(tmpTime,spa[i].id,dataOption,dataForm)
 			htmlOptionSpaOrder(spa[i].id,dataOption,dataForm,spa[i].option)
 		}
+		document.getElementById("heure-spa").value = prestations.heureSpa
 	}
 	// Ajouter les massages selectionné dans le dom
 	if (massages.length != 0) {
@@ -123,6 +129,7 @@ function addDomIndex(){
 			priceTotalForOneMassage(dataMassages,massages[i].id)
 			priceTotalForAllMassage(dataMassages)
 		}
+		document.getElementById("heure-massage").value = prestations.heureMassage
 	}
 	// Ajouter le cadeau selectionné dans le dom
 	if (cadeau.length != 0) {
@@ -362,6 +369,19 @@ function showTimesOnClickMassageSu(){
 			}
 		}
 	}
+}
+
+
+/*==========================================================================*/
+// Fonction pour l'enregistrement de l'heurs
+function addHoursInPrestation(){
+	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
+	if (this.name == "heureMassage"){
+		prestations.heureMassage = this.value
+	}else{
+		prestations.heureSpa = this.value
+	}
+	sessionStorage.setItem("prestations",JSON.stringify(prestations))
 }
 
 /*==========================================================================*/
@@ -643,8 +663,6 @@ function actualiseDomMassage(name,id,sub=null,time=null){
 	// Grand prix total
 	bigTotalPrice()
 }
-
-
 
 /* ########################################################################################################################################################################## */
 /* ########################################################################################################################################################################## */
