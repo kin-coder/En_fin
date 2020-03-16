@@ -321,6 +321,7 @@ function valueToHtmlMassage(name,id,sub=null,time=null){
 
 function showTimesOnClickMassageSu(){
 	// data-info=\"["+ [id,i] +"]\"
+	let dataMassages = JSON.parse(document.getElementById('form-data').dataset.massages)
 	let myData = JSON.parse(this.dataset.info)[0]
 	document.getElementById("list-order-"+myData).classList.add("hidden")
 	let timeListAll = document.getElementsByClassName("times-massage")
@@ -372,6 +373,9 @@ function showTimesOnClickMassageSu(){
 			}
 		}
 	}
+	priceTotalForAllMassage(dataMassages)
+	// Grand prix total
+	bigTotalPrice()
 }
 
 
@@ -657,16 +661,16 @@ function priceTotalForAllSpa(dataOption,dataForm){
 
 /*==========================================================================*/
 	// fonction principale MASSAGE
-	function addCategoryMassage(){
-		let id = incrementeInc()
-		let data = document.getElementById('form-data').dataset
-		let dataMassages = JSON.parse(data.massages)
-		let categories = []
-		if ( this.dataset.cat == "Homme") {
-			categories = dataMassages[0]
-		}else{
-			categories = dataMassages[1]
-		}
+function addCategoryMassage(){
+	let id = incrementeInc()
+	let data = document.getElementById('form-data').dataset
+	let dataMassages = JSON.parse(data.massages)
+	let categories = []
+	if ( this.dataset.cat == "Homme") {
+		categories = dataMassages[0]
+	}else{
+		categories = dataMassages[1]
+	}
 	// Enregistrement dans la session
 	let sessionSpa = JSON.parse(sessionStorage.getItem("massages"))
 	sessionSpa.push({id:id,cat:categories[0],sub:"",time:""})
@@ -782,6 +786,7 @@ function priceTotalForAllMassage(dataMassages){
 			break
 		}
 	}
+
 	let sessionMassage = JSON.parse(sessionStorage.getItem("massages"))
 	let price = 0
 	let acompte = 0
@@ -803,6 +808,7 @@ function priceTotalForAllMassage(dataMassages){
 			}
 		}
 	}
+
 	document.getElementById("massage-price-total").innerHTML = " : "+price+"€"+acompte+"€"
 	document.getElementById("massage-price-total").dataset.price = "["+[price,acompte]+"]"
 
@@ -833,8 +839,6 @@ function removeCategoryMassage(){
 		}
 	}
 	sessionStorage.setItem("massages",JSON.stringify(sessionMassage))
-	numberAtOrderBtn()
-	priceTotalForAllMassage(dataMassages)
 	// Modification dans le DOM
 	let list = document.getElementsByClassName('massage-list-'+this.dataset.cat)
 	if (list.length > 0) {
@@ -842,6 +846,9 @@ function removeCategoryMassage(){
 	}
 	// nombre de massage pour homme et femme
 	numberMassageSelected(this.dataset.cat)
+
+	numberAtOrderBtn()
+	priceTotalForAllMassage(dataMassages)
 	// Grand prix total
 	bigTotalPrice()
 }
