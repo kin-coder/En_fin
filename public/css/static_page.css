@@ -19,7 +19,7 @@ width: 139px;
 height: 139px;
 }
 @media (min-width: 768px) {
- .row-product {
+ .row-product {z-index: 100;
   margin-right: -15px;
   margin-left: -15px;
 }
@@ -468,6 +468,7 @@ left: 250px;*/
       position: absolute;
       left: 27%;
       border-radius: 50px;
+      z-index: 100;
     }
 
     .btn-teme{

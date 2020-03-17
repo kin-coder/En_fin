@@ -1,13 +1,12 @@
 <link href="/css/contact.css" rel="stylesheet">
+<link href="/css/page-devise.css" rel="stylesheet">
+
 <!-- EXPERT SECTION -->
 <section class="clearfix expertSection">
   <div class="secotionTitle contactTitle">
     <h2 class="police_massage"><span>Cocooning Spa ... <br><br>est à votre écoute</span></h2>
   </div>
   <div class=" container contenu">
-
-
-
     <div class="col-sm-12 phone">
       <div>
         <p class="p-contact"><strong>N’hésitez pas à nous contacter ! Nous serons heureux de répondre avec enthousiasme à toutes vos demandes.</strong><br>Étant l’interface entre clients et professionnels du bien-être, nous nous soucions tout autant des deux parties et mettons tout en œuvre pour que vous viviez une expérience parfaite. Nous sommes et resterons toujours à votre écoute et souhaitons que votre satisfaction soit maximale.</p>
@@ -35,76 +34,78 @@
       </div>
     </div> 
   -->
+<!-- CONTACT US SECTION -->
+  <section class="container-fluid clearfix productArea patternbg">
 
 
-  <div class="col-sm-12 phone">
-    <div>
-      <p class="p-contact">Vous êtes un <i><strong>particulier</strong></i> et souhaitez échanger avec nous ? Qu’il s’agisse d’une demande de renseignement ou pour toute autre question, pour nous faire part de vos feedbacks et de vos expériences ou alors pour nous transmettre vos suggestions ou vos propositions, nous sommes là pour vous.<br>
-        Vous êtes une <i><strong>entreprise</strong></i>, une <i><strong>piscine</strong></i>, une <i><strong>agence évènementielle</strong></i>, un <i><strong>service de conciergerie</strong></i>, <i><strong>organisateur d’événements, Comité d’Entreprise</strong></i>, etc ... ? Nous pouvons adapter nos prestations sur mesure pour vos clients ou vos salariés.</p>
+  </div>
+</section>
+
+<section class="clearfix contactSection">
+  <div class="container">
+    <div class="secotionTitle">
+      <div class="row">
+                    <div class="div-contact">Vous êtes un <i><strong>particulier</strong></i> et souhaitez échanger avec nous ? Qu’il s’agisse d’une demande de renseignement ou pour toute autre question, pour nous faire part de vos feedbacks et de vos expériences ou alors pour nous transmettre vos suggestions ou vos propositions, nous sommes là pour vous.<br>
+        Vous êtes une <i><strong>entreprise</strong></i>, une <i><strong>piscine</strong></i>, une <i><strong>agence évènementielle</strong></i>, un <i><strong>service de conciergerie</strong></i>, <i><strong>organisateur d’événements, Comité d’Entreprise</strong></i>, etc ... ? Nous pouvons adapter nos prestations sur mesure pour vos clients ou vos salariés.</div>
+        <div class="col-md-8 col-sm-7 col-xs-12">
+          <div class="contactTitle">
+            <h3></br></h3>
+          </div>
+
+          <div class="contactForm">
+            <div id="alert"></div><!--Response Holder-->
+            <form action="mail/contact-form.php" id="angelContactForm" method="post">
+              <div class="form-group">
+                <input type="text" name="contact-form-name" class="form-control" placeholder="Votre prénom" required>
+              </div>
+                            <div class="form-group">
+                <input type="text" name="contact-form-name" class="form-control" placeholder="Votre nom" required>
+              </div>
+              <div class="form-group">
+                <input type="email" name="contact-form-email" class="form-control" placeholder="Votre Email" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="contact-form-mobile" class="form-control" placeholder="Votre Mobile" required>
+              </div>
+                            <div class="form-group">
+                <input type="text" name="contact-form-mobile" class="form-control" placeholder="Nom Entreprise">
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="contact-form-message" placeholder="Dîtes-nous tout !" required></textarea>
+              </div>
+              <div class="form-group">
+                <button type="submit" id="contact-submit-btn" class="btn btn-primary first-btn">Envoyer</button>
+
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-5 col-xs-12">
+
+          <div class="holdingInfo patternbg">
+            <div class="">
+              <h3><center>Suivez-nous</center></h3>
+            </div>
+            <ul>
+              <a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa icon" aria-hidden="true">
+                <img src="/img/icon-reseau-social/facebook.png" alt="">
+              </i> Cocooning Spa officiel </li></a>
+              <a href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa icon" aria-hidden="true"> 
+                <img src="/img/icon-reseau-social/instagram.png" alt="">
+              </i> Cocooning Spa </li></a>
+              <a href="https://www.snapchat.com/add/cocooningspaev" class="btn"> <li><i class="fa icon" aria-hidden="true">
+                <img src="/img/icon-reseau-social/snapchat.png" alt="">
+              </i> Cocooning Spa snapchat</li> </a>
+            </ul>
+          </div>
+        </div>
       </div>
-      <form action="#" method="POST">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label for="nom" class="firstlabel">Nom</label>
-              <input type="text" name="nom" class="form-control zone" required id="nom">
-            </div>
-            <div class="form-group">
-              <label for="prenom">Prénom</label>
-              <input type="text" name="prenom" class="form-control zone" required id="prenom">
-            </div>
-
-            <div class="form-group">
-              <label for="mail">Mail</label>
-              <input type="email" name="mail" class="form-control zone" required id="mail">
-            </div>
-
-            <div class="form-group">
-              <label for="code">Code postal</label>
-              <input type="search" name="mail" class="form-control zone" required id="code">
-            </div>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label for="tel" class="firstlabel">Tél</label>
-              <input type="text" name="tel" class="form-control zone" required id="tel">
-            </div>
-            <div class="form-group">
-              <label for="societe">Nom société</label>
-              <input type="text" name="societe" class="form-control zone" required id="societe">
-            </div>
-
-            <div class="form-group">
-              <label for="objet">Objet</label>
-              <input type="text" name="objet" class="form-control zone" required id="objet">
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-10">
-            <div class="form-group">
-              <label for="idéé">Dites nous tout !</label>
-              <textarea name="idee" id="idee" cols="10" rows="10" class="form-control zone1 textearea" required></textarea>
-            </div>
-          </div>
-          <div class="col-sm-2">
-            <input type="submit" value="Envoyer" class="texteareabutton">
-          </div>
-        </div>
-      </form>
     </div>
-  </div> 
-  <section class="clearfix expertSection patternbg">
-
-    <div class="contenu">
-
-
-    </div> 
-
-
   </section>
 
-</div>
+
+  
+  </div> 
+
+  
 
