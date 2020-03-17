@@ -1,9 +1,5 @@
 <!-- media query -->
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-}
-
-
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .formPart .panel-body {
@@ -41,6 +37,67 @@
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+
+    /*RADIO BUTTON*/
+    .switch-field label {
+        background-color: #e4e4e4;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 14px;
+        line-height: 1;
+        text-align: center;
+        padding: 8px 16px;
+        margin-right: -1px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+        transition: all 0.1s ease-in-out;
+        position: relative;
+        left: -50px;
+    }
+
+    .switch-field label:hover {
+        cursor: pointer;
+    }
+
+    .switch-field input:checked + label {
+        background-color: #ec5598;
+        box-shadow: none;
+    }
+
+    .radio-one {
+        border-radius: 10px 0 0 10px;
+    }
+
+    .radio-two{
+        border-radius: 0 10px 10px 0;
+    }
+
+    .switch-field{
+        display: inline-block;
+        position: relative;
+        left: 43.5%;
+    }
+
+    .label2{
+        position: relative;
+        left: -20px;
+    }
+    .input-group {
+        position: relative;
+        display: table;
+        border-collapse: separate;
+        width: 212%;
+    }
+    .input-group-addon{
+        border-radius: 8px !important;
+    }
+
+    .form-groupp {
+        margin-bottom: 20px;
+        margin-top: 25px;
+    }
+
+
+
 	.btn-block {
         display: block;
         width: 200px !important;
@@ -90,10 +147,84 @@
 
     }
 }
+@media only screen and (max-width: 600px) {
+    
+    /*RADIO BUTTON*/
+    .switch-field label {
+        background-color: #e4e4e4;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 14px;
+        line-height: 1;
+        text-align: center;
+        padding: 8px 16px;
+        margin-right: -1px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+        transition: all 0.1s ease-in-out;
+        position: relative;
+        left: -50px;
+    }
+
+    .switch-field label:hover {
+        cursor: pointer;
+    }
+
+    .switch-field input:checked + label {
+        background-color: #ec5598;
+        box-shadow: none;
+    }
+
+    .radio-one {
+        border-radius: 10px 0 0 10px;
+    }
+
+    .radio-two{
+        border-radius: 0 10px 10px 0;
+    }
+
+    .switch-field{
+        display: inline-block;
+        position: relative;
+        left: 33%;
+    }
+
+    .label2{
+        position: relative;
+        left: -20px;
+    }
+    .input-group {
+        position: relative;
+        display: table;
+        border-collapse: separate;
+        width:98%;
+    }
+    .input-group-addon{
+        border-radius: 8px !important;
+    }
+
+    .form-groupp {
+        margin-bottom: 20px;
+        margin-top: 25px;
+    }
+    .switch-field {
+    display: inline-block;
+    position: relative;
+    left: 30%;
+    margin-bottom: 15px;
+}
+
+}
+
 
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+    .switch-field{
+        display: inline-block;
+        position: relative;
+        left: 46%;
+        margin-bottom: 15px;
+    }
 
     #contact-submit-btnn {
 
@@ -143,5 +274,67 @@
     .inscript {
         margin-left: 100px;
     }
+
+
+
+    /*RADIO BUTTON*/
+    .switch-field label {
+        background-color: #e4e4e4;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 14px;
+        line-height: 1;
+        text-align: center;
+        padding: 8px 16px;
+        margin-right: -1px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+        transition: all 0.1s ease-in-out;
+        position: relative;
+        left: -50px;
+    }
+
+    .switch-field label:hover {
+        cursor: pointer;
+    }
+
+    .switch-field input:checked + label {
+        background-color: #ec5598;
+        box-shadow: none;
+    }
+
+    .radio-one {
+        border-radius: 10px 0 0 10px;
+    }
+
+    .radio-two{
+        border-radius: 0 10px 10px 0;
+    }
+
+    .switch-field{
+        display: inline-block;
+        position: relative;
+    }
+
+    .label2{
+        position: relative;
+        left: -20px;
+    }
+    .input-group {
+        position: relative;
+        display: table;
+        border-collapse: separate;
+        width:98%;
+    }
+    .input-group-addon{
+        border-radius: 8px !important;
+    }
+
+    .form-groupp {
+        margin-bottom: 20px;
+        margin-top: 25px;
+    }
+
 }
+
+
 
