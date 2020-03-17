@@ -112,7 +112,7 @@ class OrdersController < ApplicationController
     @massages = []
     #.massage_sus liste sub sub[0].massage_su_prices //differen heurse
     caMassages = MassageCa.all
-    # sou massage_ca Name  || massage_su Name ||
+    # sou massage_ca Name || massage_su Name ||
     caMassages.each do |ca|
       isCa = [ca.name,[]]
       ca.massage_sus.each do |su|
@@ -277,7 +277,7 @@ class OrdersController < ApplicationController
 
   # 2 Selection des adresse de livraison et facturation
   def delivery
-    @client = Client.first
+    @client = current_client
     @countries = Country.all
   end
 

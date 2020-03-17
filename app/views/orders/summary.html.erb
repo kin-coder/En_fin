@@ -9,6 +9,7 @@
 			<section class="clearfix orderSection padding">
 				<div class="col-xs-12">
 					<div class="innerWrapper">
+						<% unless session[:myPrestation]["spa"].empty? %>
 						<div class="table-responsive">
 							<table class="table">
 								<thead>
@@ -46,6 +47,9 @@
 								</tbody>
 							</table>
 						</div>
+						<% end %>
+						
+						<% unless session[:myPrestation]["massage"].empty? %>
 						<div class="table-responsive">
 							<table class="table">
 								<thead>
@@ -72,7 +76,7 @@
 								</tbody>
 							</table>
 						</div>
-
+						<% end %>
 
 						<% unless session[:otherInfo]["cadeau"].empty? %>
 						<div class="table-responsive">
