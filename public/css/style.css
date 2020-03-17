@@ -4763,7 +4763,17 @@ footer {
 @media (min-width: 768px) {
   .footerInfo .col-sm-3 {
     padding: 0 15px;
+    text-align: left;
   }
+  .footerLogo img {
+    width: 40%;
+    margin-left: 32% !important; 
+    margin-bottom: -10px;
+}
+
+.copyRight {
+    text-align: left;
+}
 }
 
 @media (min-width: 320px) {
