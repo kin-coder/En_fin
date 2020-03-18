@@ -8,4 +8,7 @@ class Department < ApplicationRecord
     # relation Service N-N Department
     has_many :service_departments
 	has_many :services, through: :service_departments
+
+	validates :name, presence: true
+	validates :code, presence: true
 end

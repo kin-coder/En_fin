@@ -16,6 +16,5 @@ class Service < ApplicationRecord
 	has_many :service_departments
 	has_many :departments, through: :service_departments
 
-
 	validates :name, presence: true
 end

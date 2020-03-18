@@ -6,4 +6,6 @@ class MassageSu < ApplicationRecord
 	has_many :massage_su_prices, through: :other_su_prices
 	#relation massage_su 1---N order_massage
 	has_many :order_massages
+
+	validates :name, presence: true # description :ture
 end

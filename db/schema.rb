@@ -28,13 +28,19 @@ ActiveRecord::Schema.define(version: 2020_03_04_172623) do
   end
 
   create_table "candidates", force: :cascade do |t|
+    t.string "sexe"
     t.string "first_name"
     t.string "last_name"
-    t.string "adresse"
-    t.string "email"
-    t.string "telephone"
+    t.string "date_of_birth"
     t.string "raison_sociale"
     t.string "siret"
+    t.string "email"
+    t.string "telephone"
+    t.string "adresse"
+    t.string "zip_code"
+    t.string "ville"
+    t.string "country"
+    t.string "services"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
