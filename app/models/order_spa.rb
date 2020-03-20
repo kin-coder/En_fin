@@ -5,4 +5,8 @@ class OrderSpa < ApplicationRecord
 	belongs_to :spa
 	# relation spa -(1-N)- produit
 	belongs_to :product, optional: true
+
+	validates :logement, presence: true
+	validates :installation, presence: true
+	validates :syteme_eau, presence: true
 end

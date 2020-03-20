@@ -4,4 +4,6 @@ class MassageCa < ApplicationRecord
 	has_many :massage_sus, dependent: :destroy
 	#relation massage_ca 1---N order_massage
 	has_many :order_massages
+
+	validates :name, presence: true
 end
