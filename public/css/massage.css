@@ -435,6 +435,20 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+.text-p-index{
+left: 0px !important;
+    }
+    .textExtras{
+font-size: 18px;
+color: black;
+letter-spacing: 1px;
+text-align: center;
+margin-bottom: 35px;
+    }
+	.textNospa{
+font-size: 16px;
+margin-bottom: 35px;
+	}
 	.btn-spa{
 		margin-left: 0px !important;
 	}
@@ -630,8 +644,8 @@
 		max-width: 400px;
 	}
 
-	.engagements{
-		text-align: center;
+	.engagements, .text-p-ccmspa{
+		text-align: justify;
 		position: relative;
 		left: 2px;
 		font-size: 17px !important;
@@ -817,6 +831,7 @@
 	border: 3px white solid;
 	padding: 20px;
 	border-radius: 10px;
+	padding-top: 55px;
 }
 .optionnal-texte{
 	position: relative;
@@ -883,6 +898,19 @@
 		padding-bottom: 25px;
 		padding-top: 25px;
 	}
+	.secotionTitle h2 .spa {
+    display: block;
+    letter-spacing: normal;
+    color: #ec5598;
+    font-family: 'Quicksand', 'Open Sans';
+    font-size: 59px !important;
+    line-height: 70px;
+    text-transform: none;
+    font-weight: bold;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    text-align: left;
+}
 
 	.textMassages{
 		color:black;
@@ -897,6 +925,10 @@
 	.section1 {
 
 		width: 75% !important;
+	}
+	.sectionSpa {
+
+		width: 100% !important;
 	}
 	.priceInfo {
 		padding: 60px 0 0px 0;

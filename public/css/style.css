@@ -4085,7 +4085,7 @@ textarea.form-control {
 @media (min-width: 992px) {
   .priceImage {
     height: 190px;
-    border-radius: 15px;
+    border-radius: 15px 15px 0 0;
   }
 }
 .btn-reserver-massage{
@@ -4105,7 +4105,7 @@ textarea.form-control {
   background-color: rgba(0, 0, 0, 0.3);
   text-align: center;
   transition: all 0.4s;
-  border-radius: 15px;
+  border-radius: 15px 15px 0 0;
 }
 
 .maskImage h3 {
@@ -4207,7 +4207,7 @@ textarea.form-control {
   text-align: center;
   border: 1px solid #dedede;
   border-top: 0;
-  border-radius: 15px;
+  border-radius: 0 0 15px 15px;
 }
 
 @media (min-width: 320px) {
