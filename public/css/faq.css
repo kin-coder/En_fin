@@ -162,6 +162,9 @@ list-style-type: inherit;
   }
   .ul-faq li{
 list-style-type: inherit;
+letter-spacing: 1px;
+font-size: 17px !important;
+line-height: 1.5;
   }
   #contact-submit-btn {
     width: 172px;
@@ -195,13 +198,21 @@ width: 98.2%;
   max-width: 980px !important;
   text-align: justify !important;
   margin-bottom: 25px !important;
+  letter-spacing: 1px;
+font-size: 17px !important;
 }
-
+.div-fac-form{
+letter-spacing: 1px;
+font-size: 17px !important;
+}
 .ol-faq{
   margin-left: 120px;
   font-size: small;
   color:#6f6868;
   max-width: 900px;
+  letter-spacing: 1px;
+font-size: 17px !important;
+line-height: 1.5;
 }
 }
 

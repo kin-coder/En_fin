@@ -439,7 +439,7 @@
 left: 0px !important;
     }
     .textExtras{
-font-size: 18px;
+font-size: 17px;
 color: black;
 letter-spacing: 1px;
 text-align: center;
@@ -591,7 +591,7 @@ margin-bottom: 35px;
 	.massage-type{
 		width: 100%;
 		margin-left: 85px;
-		margin-bottom: 100px;
+		/*margin-bottom: 100px;*/
 	}
 	.flecheaccueil-right {
 		position: absolute;
@@ -804,7 +804,7 @@ margin-bottom: 35px;
 		margin-top: 20px !important;
 		max-width: 715px;
 		letter-spacing: 1px;
-		font-size: 18px !important;
+		font-size: 17px !important;
 	}
 }
 
