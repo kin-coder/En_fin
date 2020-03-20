@@ -12,6 +12,8 @@ color: #8aec8a;
 
 .textNotice{
 text-align: justify;
+letter-spacing: 1px;
+font-size: 17px !important;
 }
 
 /* Large devices (laptops/desktops, 992px and up) */

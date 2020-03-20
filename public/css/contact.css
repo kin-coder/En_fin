@@ -92,6 +92,9 @@ text-align: left;
 }
 	.div-contact{
 padding-top: 25px;
+letter-spacing: 1px;
+font-size: 17px !important;
+line-height: 1.8;
 	}
 .phone{
 	background: white;
@@ -252,6 +255,8 @@ margin-right: 3%;
 width: 94%;
 max-width: 100%;
 text-align: center;
+letter-spacing: 1px;
+font-size: 17px !important;
 }
 .police_massage{
 text-align: left;

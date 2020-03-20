@@ -332,6 +332,8 @@
     font-size: 14px;
     text-align: justify;
     line-height: 2em;
+    letter-spacing: 1px;
+font-size: 17px !important;
   }
 
   .accordion-body__contents {
@@ -394,6 +396,8 @@
 
   .li-cgu{
     margin-left: 50px;
+    letter-spacing: 1px;
+font-size: 17px !important;
   }
 
 }

@@ -726,6 +726,8 @@ body.bodyColor .bb-fixed-header {
     text-align: justify;
     position: relative;
     left: 23px;
+    letter-spacing: 1px;
+    font-size: 17px !important;
   }
 }
 
@@ -4751,12 +4753,12 @@ footer {
     rgba(0, 0, 0, 0.07);
     padding: 30px 0;
     text-align: center;
-}
-.footerLogo img {
+  }
+  .footerLogo img {
     width: 40%;
     margin-left: 0px !important;
     margin-bottom: -10px;
-}
+  }
 
 }
 
@@ -4769,11 +4771,11 @@ footer {
     width: 40%;
     margin-left: 32% !important; 
     margin-bottom: -10px;
-}
+  }
 
-.copyRight {
+  .copyRight {
     text-align: left;
-}
+  }
 }
 
 @media (min-width: 320px) {
@@ -7815,7 +7817,7 @@ input[type=number]::-webkit-inner-spin-button {
   .massage-type{
     width: 100%;
     margin-left: 40px;
-    margin-bottom: 100px;
+    /*margin-bottom: 100px;*/
   }
 
   .text-p-massage-slide{
@@ -7991,7 +7993,7 @@ input[type=number]::-webkit-inner-spin-button {
     text-align: justify
   }
   .section1{
-width: 100%;
+    width: 100%;
   }
 }
 
