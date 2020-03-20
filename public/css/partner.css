@@ -590,6 +590,8 @@
 		width: 94%;
 		max-width: 100%;
 		text-align: justify;
+		letter-spacing: 1px;
+		font-size: 17px !important;
 	}
 
 	.section1{
@@ -804,6 +806,8 @@
 	}
 	.p-part{
 		width: 100%;
+		letter-spacing: 1px;
+		font-size: 17px !important;
 	}
 	.contactSection {
 

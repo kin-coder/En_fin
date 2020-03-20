@@ -5,4 +5,6 @@ class Country < ApplicationRecord
 	# relation Service N-N Country
 	has_many :service_countries
 	has_many :services, through: :service_countries
+
+	validates :name, presence: true
 end

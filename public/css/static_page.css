@@ -1,25 +1,25 @@
 /* GESTION RESPONSIVE */
 .footerLogo img{
-width:40%;
-margin-left: 30%;
-margin-bottom: -10px;
+  width:40%;
+  margin-left: 30%;
+  margin-bottom: -10px;
 }
 .icon img{
-width:20px;
-margin-top: -5px;
+  width:20px;
+  margin-top: -5px;
 }
 .ccm-index img {
-width: 50px;
-margin-bottom: -10px;
-position: relative;
-top: -15px;
+  width: 50px;
+  margin-bottom: -10px;
+  position: relative;
+  top: -15px;
 }
 .suisse img {
-width: 139px;
-height: 139px;
+  width: 139px;
+  height: 139px;
 }
 @media (min-width: 768px) {
- .row-product {
+ .row-product {z-index: 100;
   margin-right: -15px;
   margin-left: -15px;
 }
@@ -468,6 +468,7 @@ left: 250px;*/
       position: absolute;
       left: 27%;
       border-radius: 50px;
+      z-index: 100;
     }
 
     .btn-teme{
@@ -738,12 +739,16 @@ left: 250px;*/
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  .ccm-index{
+letter-spacing: 1px;
+font-size: 17px !important;
+  }
   .contactSectionEngagement{
     padding-top:65px !important;
   }
 
   .bloc-engagement{
-    text-align: center !important;
+    /*text-align: center !important;*/
 
   }
   .reviewinfocontact{
@@ -785,6 +790,9 @@ left: 250px;*/
       color: #ec5598;
       font-family: Lato, 'Open Sans' !important;
       margin-left: -35px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 17px !important;
     }
     .ccm{
       position: relative;
@@ -792,6 +800,8 @@ left: 250px;*/
       padding-left: 5px;
       padding-right: 5px;
       font-family: Lato, 'Open Sans' !important;
+      letter-spacing: 1px;
+      font-size: 17px !important;
     }
     #ok{
       display: inline-block;
@@ -824,6 +834,8 @@ left: 250px;*/
       font-family: Lato, 'Open Sans' !important;
       position: relative;
       left: -17.5px;
+      letter-spacing: 1px;
+      font-size: 17px !important;
     }
     .modalText {
       text-align: center;

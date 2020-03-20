@@ -22,7 +22,8 @@ Comment.destroy_all
 
 increment = 0
 Admin.create(email:"admin@admin.com",password:"admin@admin.com")
-Client.create(email: "faly@google.fr", password:"faly@google.fr", first_name: "san", last_name: "goku", adresse: "Lot 404 Baché", tel: "0239732768362", sexe: "homme")
+
+Client.create(email: "faly@google.fr", password:"faly@google.fr", first_name: "san", last_name: "goku", adresse: "Lot 404 Baché", tel: "0239732768362", sexe: "homme", country: "France", zip_code: "75001")
 
 # =========================== CREE LES SERVICE =========================== #
 s1 = Service.create(name:"Massage")

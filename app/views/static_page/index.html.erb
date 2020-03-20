@@ -49,7 +49,7 @@
       letter-spacing: normal;
       color: #ec5598;
       font-family: Quicksand, 'Open Sans'!important;
-      font-size: 50px !important;
+      font-size: 45px !important;
       letter-spacing: 4px;
       line-height: 42px;
       text-transform: capitalize;
@@ -112,9 +112,9 @@
               </div>
             </div>
           </span><br>
-          <div class="baniere-btn">
-            <a href="#service" class="btn btn-primary first-btn waves-effect waves-light scale-up bout" id="first-btn">Découvrir</a>
-          </div>
+<!--           <div class="baniere-btn">
+            <a href="/#service" class="btn btn-primary first-btn waves-effect waves-light scale-up bout" id="first-btn">Découvrir</a>
+          </div> -->
         </div>
       </div>
     </div>
@@ -129,7 +129,7 @@
             en main. À domicile ou sur le lieu de votre choix, profitez d’un instant de
           détente et de relaxation inoubliable.</span><br>
           <div class="baniere-btnbis">
-            <a href="#"class="btn btn-primary first-btn waves-effect waves-light scale-up " id="first-btn" >Réserver</a>
+            <a href="<%= reservation_path %>"class="btn btn-primary first-btn waves-effect waves-light scale-up " id="first-btn" >Réserver</a>
           </div>
         </div>
       </div>
@@ -142,7 +142,7 @@
           <span class="h1 from-bottom poli1">Bookez votre Massage et sentez-vous au top ! </span><br>
           <span class="h4 from-bottom texte-baniere"><b>A</b> domicile, à l’hôtel ou encore au bureau … Le massage vient à vous, où vous le voulez, quand vous le souhaitez !</span><br>
           <div class="baniere-btnbis">
-            <a href="<%= reservation_path('location-spa') %>" class="btn btn-primary first-btn waves-effect waves-light scale-up" id="first-btn" >Réserver</a>
+            <a href="<%= reservation_path %>" class="btn btn-primary first-btn waves-effect waves-light scale-up" id="first-btn" >Réserver</a>
           </div>
         </div>
       </div>
@@ -202,7 +202,7 @@
                 Louer un spa/jacuzzi à domicile, c’est maintenant possible avec Cocooning Spa ! <br><br>
               </p> 
               <div class="a-btn btn-a">
-               <%= link_to "Je découvre", spa_path, class:"btn btn-primary first-btn mass text-btn" %>
+               <%= link_to "Je découvre", spa_path, class:"btn btn-primary first-btn mass text-btn", 'data-method':'GET' %>
 
              </div>
            </div>
@@ -219,7 +219,7 @@
             <center class="sansfa">Massage à domicile</center>
             <p class="text-p-index">Imaginez profiter d’un massage sans avoir à vous déplacer ou à attendre ... Ça donne envie, non ? Avec Cocooning Spa, ce rêve devient réalité : c'est le bien-être qui vient à vous au moment où vous l'avez décidé. Que ce soit pour un massage classique, sportif ou encore relaxant, vous pouvez réserver celui-ci quand vous voulez. Commandez en quelques secondes un massage de qualité à domicile, à l’hôtel, au bureau, dans un parc, à la plage ... Il est temps que le monde du massage s’adapte aux consommateurs !</p>
             <div class="a-btn btn-a">
-             <%= link_to "Je découvre", massage_path, class:"btn btn-primary first-btn mass text-btn" %>
+             <%= link_to "Je découvre", massage_path, class:"btn btn-primary first-btn mass text-btn", 'data-method':'GET' %>
 
            </div>
          </div>
@@ -257,7 +257,7 @@
             <div class="productMas"></div>
           </div>
           <div class="productCaption">
-            <p class="ccm">Nos services sont disponibles de 8h à 22h, tous les jours de l’année, même au dernier moment ! <br>On s’adapte à vous</p>
+            <p class="ccm">Nos services sont disponibles de 8h à 22h, tous les jours de l’année, même au dernier moment ! On s’adapte à vous</p>
           </div>
         </div>
       </div>
@@ -320,7 +320,7 @@
               Nous entendons bien, à travers ce concept totalement novateur, révolutionner l’univers du bien-être. </span> <a href="javascript:void(0)" class="lire-btn" id="more" aria-hidden="true" onclick="document.getElementById('lirelasuite').style.display = 'block'; this.style.display = 'none';">lire la suite</a href="">
               </p>
               <div class="a-btn">
-                <%= link_to "En savoir plus", propos_path, class:"btn btn-primary first-btn mass text-btn" %>
+                <%= link_to "En savoir plus", propos_path, class:"btn btn-primary first-btn mass text-btn", 'data-method':'GET'%>
 
               </div>
 
@@ -336,7 +336,7 @@
               <p class="text-p-index">Vous êtes déjà professionnels dans le domaine du massage ou de la location de spa ? Vous n’êtes pas encore en activité et vous souhaitez vous lancer, devenir indépendant ? Cocooning Spa est le tremplin qu’il vous faut. Nous avons besoin de partenaires comme vous ! <br>
               Alors rejoignez vous aussi l’aventure Cocooning Spa.</p>
               <div class="a-btn">
-               <%= link_to "En savoir plus", contact_path, class:"btn btn-primary first-btn mass text-btn" %>
+               <%= link_to "En savoir plus", partner_path, class:"btn btn-primary first-btn mass text-btn", 'data-method':'GET' %>
              </div>
            </div>
          </div>
@@ -356,7 +356,7 @@
     <div class="row">
       <center class="col-sm-6">
 
-        <div>
+        <div class='ccm-index'>
           <b><span><i class="fa fa-check-square-o" aria-hidden="true" id="ok"></i><br></span> Ecoute, disponibilité & réactivité</b>
         </div>
         <p class='text-p-index bloc-engagement'>De la réservation jusqu’au suivi de votre satisfaction, <br>nous comptons bien vous cocooner.</p>
@@ -373,7 +373,7 @@
 
     <div class="row">
       <center class="col-sm-6">
-        <div>
+        <div class="ccm-index">
           <b><span><i class="fa fa-lock" aria-hidden="true" id="ok"></i><br></span> Paiement CB sécurisé </b>
         </div>
         <p class='text-p-index bloc-engagement'>Grâce à nos partenaires Mercanet by BNP Paribas et Paypal, vous pourrez commander en toute tranquillité. Nous vous demandons seulement un acompte lors de votre réservation en ligne, puis le reste du paiement se fait directement sur place auprès du professionnel.</p>
@@ -537,8 +537,8 @@
   <div class="container">
     <div class="secotionTitle">
       <div class="row">
-                    <div>Vous êtes un particulier et souhaitez échanger avec nous ?
-Vous êtes une entreprise, une piscine, une agence évènementielle, un service de conciergerie, organisateur d’événements, Comité d’Entreprise, etc ... ? Nous pouvons adapter nos prestations sur mesure pour vos clients ou vos salariés.</div>
+                    <div class='textsectioncontact'>Vous êtes un <i><strong>particulier</strong></i> et souhaitez échanger avec nous ? <br>
+        Vous êtes une <i><strong>entreprise</strong></i>, une <i><strong>piscine</strong></i>, une <i><strong>agence évènementielle</strong></i>, un <i><strong>service de conciergerie</strong></i>, <i><strong>organisateur d’événements, Comité d’Entreprise</strong></i>, etc ... ? Nous pouvons adapter nos prestations sur mesure pour vos clients ou vos salariés.</div>
         <div class="col-md-8 col-sm-7 col-xs-12">
           <div class="contactTitle">
             <h3></br></h3>
@@ -548,6 +548,9 @@ Vous êtes une entreprise, une piscine, une agence évènementielle, un service 
             <div id="alert"></div><!--Response Holder-->
             <form action="mail/contact-form.php" id="angelContactForm" method="post">
               <div class="form-group">
+                <input type="text" name="contact-form-name" class="form-control" placeholder="Votre prénom" required>
+              </div>
+                            <div class="form-group">
                 <input type="text" name="contact-form-name" class="form-control" placeholder="Votre nom" required>
               </div>
               <div class="form-group">
@@ -556,8 +559,11 @@ Vous êtes une entreprise, une piscine, une agence évènementielle, un service 
               <div class="form-group">
                 <input type="text" name="contact-form-mobile" class="form-control" placeholder="Votre Mobile" required>
               </div>
+                            <div class="form-group">
+                <input type="text" name="contact-form-mobile" class="form-control" placeholder="Nom Entreprise">
+              </div>
               <div class="form-group">
-                <textarea class="form-control" name="contact-form-message" placeholder="Laissez votre Message" required></textarea>
+                <textarea class="form-control" name="contact-form-message" placeholder="Dîtes-nous tout !" required></textarea>
               </div>
               <div class="form-group">
                 <button type="submit" id="contact-submit-btn" class="btn btn-primary first-btn">Envoyer</button>
