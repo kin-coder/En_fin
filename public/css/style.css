@@ -117,7 +117,20 @@
     }}
     @media only screen and (max-width: 600px) {
 
-
+#flechindex{
+    position: absolute;
+    right:-155px !important;
+    top: 33px;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+}
       .areserver {
         position: fixed;
         right: 4px;
@@ -7854,7 +7867,7 @@ input[type=number]::-webkit-inner-spin-button {
   }
 
   .sectionSpa{
-width: 100%;
+    width: 100%;
   }
 
   .productInfoindex{
@@ -7863,7 +7876,7 @@ width: 100%;
   }
   #flecheindex{
     position: absolute;
-    right:4px;
+    right:4px !important;
     top: 40%;
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
@@ -7997,5 +8010,122 @@ width: 100%;
   .section1{
     width: 100%;
   }
+
+  #productSlider .carousel-control.left i.flechemassage-left{
+    text-shadow: none;
+    position: absolute;
+    right: 585px !important;
+    top: 33px !important;
+  }
+  #flechindex{
+    position: absolute;
+    right:0px !important;
+    top: 33px;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
 }
+
+@media only screen and (min-width: 992px) {
+
+  #productSlider .carousel-control.left i.fa-arrow-circle-left {
+    text-shadow: none;
+    position: absolute;
+    right: 1138px !important;
+    top: 40%;
+  }
+  #productSlider .carousel-control.left i.flechespa-left{
+    text-shadow: none;
+    position: absolute;
+    right: 1050px !important;
+    top: 40%;
+  }
+  #productSlider .carousel-control.left i.flechemassage-left{
+    text-shadow: none;
+    position: absolute;
+    right: 1000px !important;
+    top: 40%;
+  }
+
+  #flecheindex{
+    position: absolute;
+    right:150px !important;
+    top: 40%;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+  #flechindex{
+    position: absolute;
+    right: 0px !important;
+    top: 33px;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  #flecheindex{
+    position: absolute;
+    right:180px !important;
+    top: 40%;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+  #flechindex{
+    position: absolute;
+    right: 0px !important;
+    top: 33px;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+  #productSlider .carousel-control.left i.fa-arrow-circle-left {
+    text-shadow: none;
+    position: absolute;
+    right: 1185px !important;
+    top: 40%;
+  }
+  #productSlider .carousel-control.left i.flechespa-left{
+    text-shadow: none;
+    position: absolute;
+    right: 1050px !important;
+    top: 40%;
+  }
+  #productSlider .carousel-control.left i.flechemassage-left{
+    text-shadow: none;
+    position: absolute;
+    right: 1000px !important;
+    top: 40%;
+  }
+}
+
 

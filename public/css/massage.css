@@ -659,7 +659,7 @@ margin-bottom: 35px;
 		width: 96%;
 		background: white;
 	}
-	#flecheindex{
+	/*#flecheindex{
 		position: absolute;
 		right:145px;
 		top: 40%;
@@ -671,7 +671,7 @@ margin-bottom: 35px;
 		color:
 		rgb(238, 17, 190) !important;
 		padding: 10px;
-	}
+	}*/
 
 
 	.btn-teme{
@@ -703,13 +703,13 @@ margin-bottom: 35px;
 		text-shadow: none;
 		position: absolute;
 		right: 1130px;
-		top: 40%;
+		top: 33px;
 	}
 
 	#fleche{
 		position: absolute;
 		right:0px;
-		top: 40%;
+		top: 33px;
 		display: inline-block;
 		font: normal normal normal 14px/1 FontAwesome;
 		font-size: 14px;
