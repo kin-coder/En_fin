@@ -27,7 +27,10 @@ Rails.application.routes.draw do
   get "/engagement", to:'static_page#engagement', as: "engagement"
   get "/qui-sommes-nous", to:'static_page#propos', as: "propos"
 
+  #save candidature
   get "/devenir-partenaire", to:'static_page#partner', as: "partner"
+  post "/devenir-partenaire/save", to:'static_page#savePartner', as: "save_partner"
+  
 
 # Page pour chaque service
   get '/service', to:'static_page#service', as: "service"
@@ -49,11 +52,9 @@ Rails.application.routes.draw do
   get '/reservation-prestation/payed-success', to:'orders#payedsuccess', as: "payedsuccess"
   get '/reservation-prestation/payed-errors', to:'orders#payederrors', as: "payederrors"
 
-
-
   post '/reservation-prestation/validate-code', to:"orders#code_promo", as:"code_promo"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
-
 end
+
 

@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2020_03_04_172623) do
     t.string "ville"
     t.string "country"
     t.string "services"
+    t.string "countries"
+    t.string "developments"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
