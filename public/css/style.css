@@ -7853,7 +7853,9 @@ input[type=number]::-webkit-inner-spin-button {
     left: -15px;
   }
 
-
+  .sectionSpa{
+width: 100%;
+  }
 
   .productInfoindex{
 
@@ -7905,13 +7907,13 @@ input[type=number]::-webkit-inner-spin-button {
   #productSlider .carousel-control.left i.fa-arrow-circle-left {
     text-shadow: none;
     position: absolute;
-    right: 630px;
+    right: 630px !important;
     top: 40%;
   }
 
   #fleche{
     position: absolute;
-    right:0px;
+    right:0px !important;
     top: 40%;
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
