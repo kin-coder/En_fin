@@ -464,7 +464,7 @@
         <div class="textccm">
           <b><span><i class="fa fa-coffee" aria-hidden="true" id="ok"></i><br></span> Service clé en main  </b>
         </div>
-        <p class='engagements'>Vous ne vous occupez de rien, un professionnel formé et agréé <br>se charge de tout (livraison, installation, remplissage, <br>vidange et démontage du spa)</p>
+        <p class='engagements'>Vous ne vous occupez de rien, un professionnel formé et agréé se charge de tout (livraison, installation, remplissage, <br>vidange et démontage du spa)</p>
       </div>
 
       <div class="col-sm-6 engagement-spa">
@@ -658,41 +658,51 @@
                   </div>
                 </div>
                 <div class="row isotopeContainer" id="container">
+            <%for n_tout in (1..53) do%>
+
+
                   <div class="col-sm-3 isotopeSelector tout">
                     <div class="card">
                       <div class="card-img">
-                        <img class="img-full" src="img/home/gallery-1.jpg" alt="Image" >
+                        <img class="img-full" src="img/touts/tout<%=n_tout%>.jpg" alt="Image" >
                         <div class="overlay-content">
-                          <a href="img/home/gallery-1.jpg" data-fancybox="images" >
-                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3 isotopeSelector ambiance">
-                    <div class="card">
-                      <div class="card-img">
-                        <img class="img-full" src="img/home/gallery-2.jpg" alt="Image" >
-                        <div class="overlay-content">
-                          <a href="img/home/gallery-2.jpg" data-fancybox="images" >
-                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                          <a href="img/touts/tout<%=n_tout%>.jpg"data-fancybox="images" >
+                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
                           </a>
                         </div>
                       </div>
                     </div>
                   </div>
 
+          <%end%> 
+
+<%for n_ambiance in (1..32) do%>
+
+
+                  <div class="col-sm-3 isotopeSelector ambiance">
+                    <div class="card">
+                      <div class="card-img">
+                        <img class="img-full" src="img/ambiances/ambiance<%=n_ambiance%>.jpg" alt="Image" >
+                        <div class="overlay-content">
+                          <a href="img/ambiances/ambiance<%=n_ambiance%>.jpg"data-fancybox="images" >
+                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+          <%end%> 
                  
-<%for n in (1..16) do%>
+<%for n_extra in (1..16) do%>
 
 
                   <div class="col-sm-3 isotopeSelector extra">
                     <div class="card">
                       <div class="card-img">
-                        <img class="img-full" src="img/extras/extra<%=n%>.jpg" alt="Image" >
+                        <img class="img-full" src="img/extras/extra<%=n_extra%>.jpg" alt="Image" >
                         <div class="overlay-content">
-                          <a href="img/extras/extra<%=n%>.jpg"data-fancybox="images" >
+                          <a href="img/extras/extra<%=n_extra%>.jpg"data-fancybox="images" >
                             <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
                           </a>
                         </div>
