@@ -1,4 +1,3 @@
-
 <link href="/css/partner.css" rel="stylesheet">
 <link href="/css/page-devise.css" rel="stylesheet">
 <div class="container" style="background: white;">
@@ -111,30 +110,31 @@
 	<div class="secotionTitle contactTitle">
 		<h2 class="police_massage"><span>Rejoignez l’aventure Cocooning Spa </span>dès maintenant !</h2>
 	</div>
-	<form action="mail/contact-form.php" id="angelContactForm" method="post">
-		<div class="row">
 
+	<%= form_tag(save_partner_path) do %>
+		<div class="row">
 			<div class="col-sm-12">
 				<div class="switch-field">
-					<input type="radio" id="radio-one" name="switch-one" value="yes" checked/>
+					<input type="radio" id="radio-one" name="sex" value="Madame" checked/>
 					<label for="radio-one" class="radio-one">Madame</label>
-					<span class="label2"><input type="radio" id="radio-two" name="switch-one" value="no" />
+
+					<span class="label2">
+						<input type="radio" id="radio-two" name="sex" value="Monsieur" />
 						<label for="radio-two" class="radio-two">Monsieur</label>
 					</span>
+
 				</div>
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group">
-					<input autofocus="autofocus" class="form-control" id="fullname" placeholder="Votre nom" type="text" required>
+					<input autofocus="autofocus" name="first_name" class="form-control" id="fullname" placeholder="Votre nom" type="text" required>
 				</div>
 
 				<div class="form-group">
-					<input autofocus="autofocus" class="form-control" id="fullname" placeholder="Votre prénom" type="text" required>
+					<input autofocus="autofocus" name="last_name" class="form-control" id="fullname" placeholder="Votre prénom" type="text" required>
 				</div>
 
 				<div class="dateSelect form-half form-left select-date">
-					
-					
 					<div class="input-group date ed-datepicker filterDate input-calendar" data-provide="datepicker">
 						<input type="text" name="date" id="Date" placeholder="Date de naissance" class="form-control" required>
 						<div class="input-group-addon calendar-icone">
@@ -144,17 +144,16 @@
 				</div>
 
 				<div class="form-group">
-					<input autofocus="autofocus" class="form-control" id="fullname" placeholder="Raison sociale" type="text">
+					<input autofocus="autofocus" name="raison_sociale" class="form-control" id="fullname" placeholder="Raison sociale" type="text">
+				</div>
+
+				<div class="form-group">
+					<input autofocus="autofocus" name="siret" class="form-control" id="fullname" placeholder="SIRET" type="text">
 				</div>
 
 				<div class="form-group">
 
-					<input autofocus="autofocus" class="form-control" id="fullname" placeholder="SIREN" type="text">
-				</div>
-
-				<div class="form-group">
-
-					<input autofocus="autofocus" class="form-control" id="fullname" placeholder="Email" type="email" required>
+					<input autofocus="autofocus" name="email" class="form-control" id="fullname" placeholder="Email" type="email" required>
 				</div>
 			</div>
 
@@ -162,54 +161,67 @@
 
 				<div class="form-group">
 
-					<input autofocus="autofocus" class="form-control" id="fullname" placeholder="Téléphone" type="tel" required>
+					<input autofocus="autofocus" name="tel" class="form-control" id="fullname" placeholder="Téléphone" type="tel" required>
 				</div>
 
 				<div class="form-group">
-
-					<input autofocus="autofocus" class="form-control" id="fullname" placeholder="Adresse" type="text" required>
+					<input autofocus="autofocus" name="adresse" class="form-control" id="fullname" placeholder="Adresse" type="text" required>
 				</div>
 
 				<div class="form-group">
-
-					<input autofocus="autofocus" class="form-control" id="fullname" placeholder="Code Postal" type="text" required>
+					<input autofocus="autofocus" name="zip_code" class="form-control" id="fullname" placeholder="Code Postal" type="text" required>
 				</div>
 
 				<div class="form-group form-groupp">
-
-					<input autofocus="autofocus" class="form-control" id="fullname" placeholder="Ville" type="text" required>
+					<input autofocus="autofocus" name="town" class="form-control" id="fullname" placeholder="Ville" type="text" required>
 				</div>
 
 				<div class="form-group">
-
-					<input autofocus="autofocus" class="form-control" id="fullname" placeholder="Pays " type="text" required>
+					<input autofocus="autofocus" name="country" class="form-control" id="fullname" placeholder="Pays " type="text" required>
 				</div>
 
 				<div class="choix">
 					<i class="domaine">Choix Domaine d’activité : </i> 
 					<label for="massages">Massage</label>
 					<label class="switch">
-						<input id="massages" type="checkbox" class="switch-input" checked>
+						<input name="service[]" value="Massage" id="massages" type="checkbox" class="switch-input" checked>
 						<span class="switch-label" data-on="Oui" data-off="Non"></span>
 						<span class="switch-handle"></span>
 					</label>
 					<label for="spa">Location Spa/jacuzzi</label>
-
 					<label class="switch">
-						<input id="spa" type="checkbox" class="switch-input" checked>
+						<input name="service[]" value="Location Spa" id="spa" type="checkbox" class="switch-input" checked>
 						<span class="switch-label" data-on="Oui" data-off="Non"></span>
 						<span class="switch-handle"></span>
 					</label>
 				</div>
 			</div>
-
 		</div>
 
 		<div class="actions">
+			<h3>Dans quelle zone vous pouvez faire vos prestation ?</h3>
+			<div class="choix">
+				<h6>Dans quelle pays</h6>
+			    <% @countries.each do |country| %>
+					<input type="checkbox" class="js-country" name="countries[]" id="<%=dom_id(country)%>" value="<%= country.name %>">
+					<label for="<%=dom_id(country)%>"><%= country.name %></label><br>
+			    <% end %>
+		    </div>
+
+		    <div id="js-department-list" class="hidden">
+			    <h6>Dans quelle department</h6>
+			    <% @departments.each do |department| %>
+					<input type="checkbox" class="js-department" name="departments[]" id="<%=dom_id(department)%>" value="<%= department.name %>">
+					<label for="<%=dom_id(department)%>"><%= department.name %></label><br>
+			    <% end %>
+			</div>
+
 			<input id="cgu" type="checkbox"> <label for="cgu"> J'accepte les <a href="<%=cgu_path%>">conditions générales d'utilisation</a></label>
-			<input autofocus="autofocus" class="btn btn-primary btn-block" id="fullname" placeholder="Pays " type="submit" value="Je m'inscris">
+			
+			<%= submit_tag("Je m'inscris", class:"btn btn-primary btn-block")%>	
+
 		</div>
-	</form>
+	<% end %>
 
 
 	<!-- SECTION6 -->
@@ -281,3 +293,4 @@
 			</div>
 		</div>
 	</section>
+<script data-turbolinks-track = "reload" src="/js/department_partner.js"></script>
