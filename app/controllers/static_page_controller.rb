@@ -77,4 +77,23 @@ class StaticPageController < ApplicationController
   def propos
   end
 
+  def save_message
+    @message = Message.new
+    @message.first_name = params["first_name"]
+    @message.last_name = params["last_name"]
+    @message.email = params["email"]
+    @message.tel = params["mobile"]
+    @message.name_corp = params["corp_name"]
+    @message.content = params["content"]
+    if @message.save
+      flash[:success] = "Votre message a été bien envoyer en vous contactera très bientôt"
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:danger] = @message.errors.messages
+      redirect_back(fallback_location: root_path)
+    end
+
+    
+  end
+
 end

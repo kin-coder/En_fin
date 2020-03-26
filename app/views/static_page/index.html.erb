@@ -92,7 +92,8 @@
 =begin%>
  <link rel="stylesheet" href="/css/index.css"> 
 <%
-=end%>
+=end
+%>
 
 <section class="main-slider" data-loop="true" data-autoplay="true" data-interval="7000">
   <div class="inner">
@@ -537,8 +538,7 @@
   <div class="container">
     <div class="secotionTitle">
       <div class="row">
-                    <div class='textsectioncontact'>Vous êtes un <i><strong>particulier</strong></i> et souhaitez échanger avec nous ? <br>
-        Vous êtes une <i><strong>entreprise</strong></i>, une <i><strong>piscine</strong></i>, une <i><strong>agence évènementielle</strong></i>, un <i><strong>service de conciergerie</strong></i>, <i><strong>organisateur d’événements, Comité d’Entreprise</strong></i>, etc ... ? Nous pouvons adapter nos prestations sur mesure pour vos clients ou vos salariés.</div>
+        <div class='textsectioncontact'>Vous êtes un <i><strong>particulier</strong></i> et souhaitez échanger avec nous ? <br>Vous êtes une <i><strong>entreprise</strong></i>, une <i><strong>piscine</strong></i>, une <i><strong>agence évènementielle</strong></i>, un <i><strong>service de conciergerie</strong></i>, <i><strong>organisateur d’événements, Comité d’Entreprise</strong></i>, etc ... ? Nous pouvons adapter nos prestations sur mesure pour vos clients ou vos salariés.</div>
         <div class="col-md-8 col-sm-7 col-xs-12">
           <div class="contactTitle">
             <h3></br></h3>
@@ -546,30 +546,31 @@
 
           <div class="contactForm">
             <div id="alert"></div><!--Response Holder-->
-            <form action="mail/contact-form.php" id="angelContactForm" method="post">
-              <div class="form-group">
-                <input type="text" name="contact-form-name" class="form-control" placeholder="Votre prénom" required>
-              </div>
-                            <div class="form-group">
-                <input type="text" name="contact-form-name" class="form-control" placeholder="Votre nom" required>
-              </div>
-              <div class="form-group">
-                <input type="email" name="contact-form-email" class="form-control" placeholder="Votre Email" required>
-              </div>
-              <div class="form-group">
-                <input type="text" name="contact-form-mobile" class="form-control" placeholder="Votre Mobile" required>
-              </div>
-                            <div class="form-group">
-                <input type="text" name="contact-form-mobile" class="form-control" placeholder="Nom Entreprise">
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" name="contact-form-message" placeholder="Dîtes-nous tout !" required></textarea>
-              </div>
-              <div class="form-group">
-                <button type="submit" id="contact-submit-btn" class="btn btn-primary first-btn">Envoyer</button>
 
+            <!-- form action="mail/contact-form.php" id="angelContactForm" method="post" -->
+            <%= form_tag(save_message_path) do %>
+              <div class="form-group">
+                <input type="text" name="first_name" class="form-control" placeholder="Votre prénom" required>
               </div>
-            </form>
+              <div class="form-group">
+                <input type="text" name="last_name" class="form-control" placeholder="Votre nom" required>
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Votre Email" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="mobile" class="form-control" placeholder="Votre Mobile" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="corp_name" class="form-control" placeholder="Nom Entreprise">
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="content" placeholder="Dîtes-nous tout !" required></textarea>
+              </div>
+              <div class="form-group">
+                <%= submit_tag("Envoyer", class:"btn btn-primary first-btn", id:"contact-submit-btn")%> 
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="col-md-4 col-sm-5 col-xs-12">

@@ -161,6 +161,19 @@
       <p>Important: Pour les prestations, seul l'accompte est à régler en ligne, le reste du montant est à regler au prestataire en main propre (chèque ou éspèce uniquement)</p>
       <a href="/reservation-prestation#submi-tag">suivant</a>
     </div>
+    
+<!-- Flash pour l'envoye de message-->
+    <% if flash[:success]%>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:success] %>
+    </div>
+    <% end %>
+    <% if flash[:danger]%>
+    <div class="alert alert-danger" role="alert">
+      <%= flash[:danger] %>
+    </div>
+    <% end %>
+
 
     <%= yield %>
     
