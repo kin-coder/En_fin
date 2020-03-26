@@ -92,8 +92,6 @@ class StaticPageController < ApplicationController
       flash[:danger] = @message.errors.messages
       redirect_back(fallback_location: root_path)
     end
-
-
   end
 
 end
