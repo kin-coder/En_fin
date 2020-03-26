@@ -56,7 +56,7 @@ class StaticPageController < ApplicationController
   def legalnotice
   end
 
-  def cgu  
+  def cgu
   end
   # telechargement du doc cgu en pdf
   def dataDowCgu
@@ -93,7 +93,7 @@ class StaticPageController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
 
-    
+
   end
 
 end
