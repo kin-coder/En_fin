@@ -12,4 +12,11 @@ class Candidate < ApplicationRecord
 	validates :ville, presence: true
 	validates :country, presence: true
 	validates :services, presence: true
+
+	after_create :message_send
+
+  def message_send
+    AdminMailer.contac_us(self).deliver_now
+  end
+
 end
