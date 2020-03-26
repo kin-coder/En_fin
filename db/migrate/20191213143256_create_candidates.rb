@@ -13,11 +13,10 @@ class CreateCandidates < ActiveRecord::Migration[6.0]
       t.string :zip_code
       t.string :ville
       t.string :country
-
       t.string :services #spa || massage || coiffure
-
       t.string :countries #spa || France || Suisse
       t.string :developments #spa || Derap || Ain
+      t.boolean :is_see, default: :false
 
       t.timestamps
     end

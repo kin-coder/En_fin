@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.string "services"
     t.string "countries"
     t.string "developments"
+    t.boolean "is_see", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
