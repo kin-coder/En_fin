@@ -1,9 +1,9 @@
 <link href="/css/resa.css" rel="stylesheet">
 
 <% if flash[:delete_js] %>
-	<script type="text/javascript">
-		sessionStorage.clear();
-	</script>
+<script type="text/javascript">
+	sessionStorage.clear();
+</script>
 <% end %>
 
 <div class="container" id="container-principale">
@@ -11,7 +11,7 @@
 		<div id="text">
 			<div class="set-zones">
 				<div class="alert alert-danger hidden" role="alert" id="errorInZone">
-				  
+					
 				</div>
 				<h2 style="color:white;" class="titregeog">Je choisi ma zone géographique </h2>
 
@@ -57,9 +57,9 @@
 	<!-- ==========================CONTENU ACCORDEONS================= -->
 	<div class="container allfaq">
 		<% if flash[:notice] %>
-			<div class="alert alert-danger" role="alert" id="errorForDataFormulaire">
-				<%= flash[:notice] %>
-			</div>
+		<div class="alert alert-danger" role="alert" id="errorForDataFormulaire">
+			<%= flash[:notice] %>
+		</div>
 		<% end %>
 
 		<div class="row">
@@ -177,8 +177,8 @@
 												<div class="row">
 													<div class="col-sm-12 sm-9-spa">
 														<div class="innerWrapper">
-															<div class="table-responsive">
-																<table class="table">
+															<div class="table-responsive table-responsiveInfos">
+																<table class="table tableInfos">
 																	<thead>
 																		<tr class="tr">
 																			<th id="tableHead">Infos complémentaires</th>
