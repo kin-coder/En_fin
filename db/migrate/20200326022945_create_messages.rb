@@ -7,6 +7,7 @@ class CreateMessages < ActiveRecord::Migration[6.0]
       t.string :tel
       t.string :name_corp
       t.text :content
+      t.boolean :is_see, default: :false
 
       t.timestamps
     end
