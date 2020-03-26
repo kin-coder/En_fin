@@ -224,7 +224,7 @@ function valueToHtmlSpa(id,time=null,option="",info=""){ /* code html pour l'ajo
 	let dataSpas = JSON.parse(data.spas)
 	let dataSpaoptions = JSON.parse(data.spaoptions)
 	// spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte
-	let typeSpa = "<div class='col-sm-3'><h4><center class=\"titleSpa\">Durée location</center></h4>"
+	let typeSpa = "<div class='col-sm-3'><h4><center class=\"titleSpa dureTitle\">Durée location</center></h4>"
 	for (var i = 0; i < dataSpas.length ; i++) {
 		if (time == i) {
 			typeSpa += "<div class=\"duree-spa\"><input class=\"time-spa-list\" type=\"radio\" id=\""+id+"h"+dataSpas[i][0]+"\" checked name=\"timeSpa["+id+"][]\" value=\""+ dataSpas[i][0] +"\" data-prices=\"["+dataSpas[i][1]+","+dataSpas[i][2]+"]\" data-acompte=\"["+dataSpas[i][3]+","+dataSpas[i][4]+"]\" data-index=\""+id+"\" data-array=\""+i+"\"><label for=\""+id+"h"+dataSpas[i][0]+"\" class=\"label-spa\">"+ dataSpas[i][0] +"h</label></div>"
