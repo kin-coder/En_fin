@@ -37,6 +37,9 @@ Rails.application.routes.draw do
   get '/reservation-massage', to:'static_page#massage', as: "massage"
   get '/location-spa', to:'static_page#location_spa', as: "spa"
 
+# Save message and send email to admin
+  post '/admin/send-email', to:'static_page#save_message', as: "save_message"
+
 #ORDERS_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page tunelle d'achats dans le controller ORDERS
   post '/reservation-prestation/validate-zone', to:"orders#zone", as:"zone"

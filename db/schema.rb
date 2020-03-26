@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_172623) do
+ActiveRecord::Schema.define(version: 2020_03_26_022945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_172623) do
     t.string "services"
     t.string "countries"
     t.string "developments"
+    t.boolean "is_see", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -120,6 +121,17 @@ ActiveRecord::Schema.define(version: 2020_03_04_172623) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["massage_ca_id"], name: "index_massage_sus_on_massage_ca_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "tel"
+    t.string "name_corp"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "order_massages", force: :cascade do |t|
