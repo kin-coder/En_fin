@@ -1,4 +1,10 @@
 class StaticPageController < ApplicationController
+  before_action :authenticate_client!, only: [:client_profil]
+#page profil client
+  def client_profil
+    @client = current_client
+  end
+
 #page d'acceuil
   def index
     @comments = Comment.all
