@@ -439,7 +439,8 @@ left: 250px;*/
       padding: 14px !important;
       font-size: 9px;
       border-radius: 100px;
-      margin-left: 60px;
+      margin-left: 110px;
+      margin-bottom: 40px;
     }
     .formPart .panel-body {
       padding: 20px !important;
@@ -740,8 +741,8 @@ left: 250px;*/
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .ccm-index{
-letter-spacing: 1px;
-font-size: 17px !important;
+    letter-spacing: 1px;
+    font-size: 17px !important;
   }
   .contactSectionEngagement{
     padding-top:65px !important;

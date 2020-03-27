@@ -64,6 +64,7 @@
 .mail{
   Color:white !important;
 }
+
 </style>
 </head>
 
@@ -73,231 +74,205 @@
     <!-- HEADER -->
     <header id="pageTop" class="header">
 
-      <!-- TOP INFO BAR -->
-<!--       <div class="top-info-bar">
+
+      <!-- NAVBAR -->
+      <nav id="menuBar" class="navbar navbar-default lightHeader">
         <div class="container">
-          <div class="top-bar-right">
-            <ul class="list-inline">
-              <li><a href="" class="mail"><i class=" " aria-hidden="true"></i></a></li>
-              <li><span><i class=" " aria-hidden="true"></i></span></li>
+
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <%=link_to( image_tag("/img/logo-ccspa.png"), root_path, class:"navbar-brand", alt:"logo")%>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <%= link_to "Massage", massage_path %>
+              </li>
+              <li>
+                <%= link_to "Location Spa", spa_path %>
+              </li>
+              <li>
+                <%= link_to "Réservation", reservation_path %>
+              </li>
+
+              <%if client_signed_in?%>
+              <li>
+                <%= link_to "Se deconnecter", destroy_client_session_path, method:"delete"  %>
+              </li>
+              <% else %>
+              <li class=" dropdown singleDrop">
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Connexion</a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Se connecter", new_client_session_path%></li> 
+                  <li><%= link_to "S'inscrire", new_client_registration_path%></li> 
+                </ul>
+              </li>
+              <% end %>
             </ul>
           </div>
-        </div>
-      </div>
-    -->
-    <!-- NAVBAR -->
-    <nav id="menuBar" class="navbar navbar-default lightHeader">
-      <div class="container">
-
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <%=link_to( image_tag("/img/logo-ccspa.png"), root_path, class:"navbar-brand", alt:"logo")%>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <%= link_to "Massage", massage_path %>
-            </li>
-            <li>
-              <%= link_to "Location Spa", spa_path %>
-            </li>
-            <li>
-              <%= link_to "Réservation", reservation_path %>
-            </li>
-
-            <%if client_signed_in?%>
-            <li>
-              <%= link_to "Se deconnecter", destroy_client_session_path, method:"delete"  %>
-            </li>
-            <% else %>
-            <li class=" dropdown singleDrop">
-              <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Connexion</a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Se connecter", new_client_session_path%></li> 
-                <li><%= link_to "S'inscrire", new_client_registration_path%></li> 
-              </ul>
-            </li>
-            <% end %>
-          </ul>
-        </div>
-
-        <!-- Cart button -->
-        <div class="cart_btn">
-          <a id="cart-btn-ok"><i class="fa fa-shopping-basket" aria-hidden="true"></i><span id="number-cart-ok" class="badge">0</span></a>
-        </div>
-
-      </div>
-    </nav>
-  </header>
-  <div class="patternbg">
-
-    <div id="cart-inner-ok" class="hidden">
-      <h1>Votre commande</h1>
-      <div>
-        <h2>Prestation</h2>
-        <div id="cart-inner-prestation">
-        </div>
-      </div>
-      <div>
-        <h2>Produit</h2>
-        <div id="cart-inner-produit">
-        </div>
-      </div>
-      <div>
-        <h2>Code promo</h2>
-        <p id="promo-code"></p>
-      </div>
-      <div>
-        <h2>Prix total <span id="price-modal-cart">0 €</span></h2>
-      </div>
-      <p>Important: Pour les prestations, seul l'accompte est à régler en ligne, le reste du montant est à regler au prestataire en main propre (chèque ou éspèce uniquement)</p>
-      <a href="/reservation-prestation#submi-tag">suivant</a>
-    </div>
-    
-<!-- Flash pour l'envoye de message-->
-    <% if flash[:success]%>
-    <div class="alert alert-success" role="alert">
-      <%= flash[:success] %>
-    </div>
-    <% end %>
-    <% if flash[:danger]%>
-    <div class="alert alert-danger" role="alert">
-      <%= flash[:danger] %>
-    </div>
-    <% end %>
 
 
-    <%= yield %>
-    
-  </div>
-  <!-- FOOTER -->
-  <footer style="background-image: url(img/home/footer-bg.jpg);">
-    <!-- BACK TO TOP BUTTON -->
-    <a href="#pageTop" class="backToTop"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
-    <!-- FOOTER INFO -->
-    <div class="clearfix footerInfo">
-      <div class="container">
-        <div class="row">
 
 
-          <div class="col-sm-3 col-xs-12">
-            <div class="footerText">
-              <span class="footerLogo" data-method="GET">
-                <img src="/img/logo-ccspa.png" alt="Cocooningspa">
-
-              </span>
-              <p class="p-footer">Le nouveau partenaire de vos instants bien-être à domicile !</p>
-
-            </div>
+          <!-- Cart button -->
+          <div class="cart_btn">
+            <a id="cart-btn-ok"><i class="fa fa-shopping-basket" aria-hidden="true" data-toggle="modal" data-target="#myModal"></i><span id="number-cart-ok" class="badge">0</span></a>
           </div>
-          
-          <div class="col-sm-3 col-xs-12">
 
-            <div class="footerInfoTitle">
-              <h4>Notre concept</h4>
-            </div>
-            <div class="useLink">
-              <ul class="list-unstyle">
-                <li><a href="<%=root_path%>" data-method="GET">Accueil Cocooning Spa</a></li>
-
-                <li><a href="<%=spa_path%>" data-method="GET">Location spa/jacuzzi à domicile</a></li>
-
-                <li><a href="<%=massage_path%>" data-method="GET">Massage à domicile</a></li>
-
-                <li><a href="<%=partner_path%>" data-method="GET">Pour les entreprises </a></li>
-
-                <li><a href="/#zoneaction" data-method="GET">Nos zones d’action</a></li>
-
-              </ul>
-            </div>
-
-          </div>
-          <div class="col-sm-3 col-xs-12 paddingLeft">
-            <div class="footerInfoTitle">
-              <h4>Cocooning Spa</h4>
-            </div>
-            <div class="useLink">
-              <ul class="list-unstyle">
-                <li><a href="<%=propos_path%>" data-method="GET">À propos de nous</a></li>
-                <li><a href="/#avis" data-method="GET">Avis</a></li>
-                <li><a href="<%=partner_path%>" data-method="GET">Devenir partenaires</a></li>
-                <li><a href="<%=contact_path%>" data-method="GET">Nous contacter</a></li>
-                <li><a href="<%=faq_path%>" data-method="GET">FAQ</a></li>
-                <li><a href="<%=legalnotice_path%>" data-method="GET">Mentions légales </a>-<a href="<%=cgu_path%>" data-method="GET"> CGU</a></li>
-                <li><a href="<%=faq_path%>" data-method="GET">Conditions d'annulation</a></li>
+        </div>
+      </nav>
+    </header>
+    <div class="patternbg">
 
 
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-3 col-xs-12">
-            <div class="footerInfoTitle">
-              <h4 id="galerie">Restons connectés</h4>
-            </div>
-            <div class="footerGallery row">
-              <div class="col-xs-4">
-                <a href=" https://www.facebook.com/cocooningspaev/" style="background-image: url(/img/home/facebook.png);"></a>
+
+
+
+
+      <!-- Flash pour l'envoye de message-->
+      <% if flash[:success]%>
+      <div class="alert alert-success" role="alert">
+        <%= flash[:success] %>
+      </div>
+      <% end %>
+      <% if flash[:danger]%>
+      <div class="alert alert-danger" role="alert">
+        <%= flash[:danger] %>
+      </div>
+      <% end %>
+
+
+      <%= yield %>
+
+    </div>
+    <!-- FOOTER -->
+    <footer style="background-image: url(img/home/footer-bg.jpg);">
+      <!-- BACK TO TOP BUTTON -->
+      <a href="#pageTop" class="backToTop"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+      <!-- FOOTER INFO -->
+      <div class="clearfix footerInfo">
+        <div class="container">
+          <div class="row">
+
+
+            <div class="col-sm-3 col-xs-12">
+              <div class="footerText">
+                <span class="footerLogo" data-method="GET">
+                  <img src="/img/logo-ccspa.png" alt="Cocooningspa">
+
+                </span>
+                <p class="p-footer">Le nouveau partenaire de vos instants bien-être à domicile !</p>
+
               </div>
-              <div class="col-xs-4">
-                <a href="https://www.instagram.com/cocooningspaev/?hl=fr" style="background-image: url(/img/home/instagram.png);"></a>
+            </div>
+
+            <div class="col-sm-3 col-xs-12">
+
+              <div class="footerInfoTitle">
+                <h4>Notre concept</h4>
               </div>
-              <div class="col-xs-4">
-                <a href="https://www.snapchat.com/add/cocooningspaev" style="background-image: url(/img/home/snapchat.png);"></a>
+              <div class="useLink">
+                <ul class="list-unstyle">
+                  <li><a href="<%=root_path%>" data-method="GET">Accueil Cocooning Spa</a></li>
+
+                  <li><a href="<%=spa_path%>" data-method="GET">Location spa/jacuzzi à domicile</a></li>
+
+                  <li><a href="<%=massage_path%>" data-method="GET">Massage à domicile</a></li>
+
+                  <li><a href="<%=partner_path%>" data-method="GET">Pour les entreprises </a></li>
+
+                  <li><a href="/#zoneaction" data-method="GET">Nos zones d’action</a></li>
+
+                </ul>
               </div>
 
             </div>
-          </div>
+            <div class="col-sm-3 col-xs-12 paddingLeft">
+              <div class="footerInfoTitle">
+                <h4>Cocooning Spa</h4>
+              </div>
+              <div class="useLink">
+                <ul class="list-unstyle">
+                  <li><a href="<%=propos_path%>" data-method="GET">À propos de nous</a></li>
+                  <li><a href="/#avis" data-method="GET">Avis</a></li>
+                  <li><a href="<%=partner_path%>" data-method="GET">Devenir partenaires</a></li>
+                  <li><a href="<%=contact_path%>" data-method="GET">Nous contacter</a></li>
+                  <li><a href="<%=faq_path%>" data-method="GET">FAQ</a></li>
+                  <li><a href="<%=legalnotice_path%>" data-method="GET">Mentions légales </a>-<a href="<%=cgu_path%>" data-method="GET"> CGU</a></li>
+                  <li><a href="<%=faq_path%>" data-method="GET">Conditions d'annulation</a></li>
 
+
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+              <div class="footerInfoTitle">
+                <h4 id="galerie">Restons connectés</h4>
+              </div>
+              <div class="footerGallery row">
+                <div class="col-xs-4">
+                  <a href=" https://www.facebook.com/cocooningspaev/" style="background-image: url(/img/home/facebook.png);"></a>
+                </div>
+                <div class="col-xs-4">
+                  <a href="https://www.instagram.com/cocooningspaev/?hl=fr" style="background-image: url(/img/home/instagram.png);"></a>
+                </div>
+                <div class="col-xs-4">
+                  <a href="https://www.snapchat.com/add/cocooningspaev" style="background-image: url(/img/home/snapchat.png);"></a>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- COPY RIGHT -->
-    <div class="clearfix copyRight">
-      <div class="container">
-        <div class="row">
-                    <div class="col-sm-2 col-xs-12">
+      <!-- COPY RIGHT -->
+      <div class="clearfix copyRight">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-2 col-xs-12">
 
-         </div>
-          <div class="col-sm-3 col-xs-12">
-            <div class="copyRightText">
-              <div class="footerInfoTitle">     
-               <img src="/img/home/Mercanet.jpeg" alt="">
+            </div>
+            <div class="col-sm-3 col-xs-12">
+              <div class="copyRightText">
+                <div class="footerInfoTitle">     
+                 <img src="/img/home/Mercanet.jpeg" alt="">
+               </div>
              </div>
            </div>
-         </div>
-         <div class="col-sm-3 col-xs-12">
-          <div class="copyRightText">
-            <div class="footerInfoTitles">
-              <h4>Horaires services </h4>
-              <i>Lundi-Dimanche : 8:00 - 22:00 <br>
-              365 jours/an</i>
+           <div class="col-sm-3 col-xs-12">
+            <div class="copyRightText">
+              <div class="footerInfoTitles">
+                <h4>Horaires services </h4>
+                <i>Lundi-Dimanche : 8:00 - 22:00 <br>
+                365 jours/an</i>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-sm-3 col-xs-12">
-          <div class="copyRightText">
-            <div class="footerInfoTitles">
-              <h4>Horaires bureau </h4>
-              <i>Lundi-Dimanche : 8:00 - 20:00 <br>
-              06 67 07 65 87 </i>
+          <div class="col-sm-3 col-xs-12">
+            <div class="copyRightText">
+              <div class="footerInfoTitles">
+                <h4>Horaires bureau </h4>
+                <i>Lundi-Dimanche : 8:00 - 20:00 <br>
+                06 67 07 65 87 </i>
+              </div>
             </div>
           </div>
+
+
         </div>
-
-
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 </div>
 <!-- APPOINMENT MODAL -->
 <div id="appoinmentModal" class="modal fade modalCommon" role="dialog" tabindex="-1">
@@ -337,6 +312,77 @@
 </div>
 
 
+<div class="container">
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <!-- modal dialog -->
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- modal header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <div class="mohe">
+            <h4 class="modal-title">Votre commande</h4>
+          </div>
+        </div>
+        <!-- end modal header-->
+        <!-- modal body -->
+        <div class="modal-body">
+
+          <div id="cart-inner-ok" class="hidden">
+            <div class="row">
+              <div class="col-sm-6 smleft">
+                <div class="prest">
+                  <h4>Prestations</h4>
+                  <div id="cart-inner-prestation">
+                  </div>
+                </div>
+                <div>
+                  <h4>Produits</h4>
+                  <div id="cart-inner-produit">
+                  </div>
+                </div>
+                <div>
+                  <h4>Code promo</h4>
+                  <div id="promo-code"></div>
+                </div>
+              </div>
+              <div class="col-sm-6 smright">
+                <div class="important">
+                  <center><h4><i class="fa fa-exclamation-circle" aria-hidden="true"></i> IMPORTANT</h4></center>
+                  <p>Pour les prestations, seul l'accompte est à régler en ligne, le reste du montant est à regler au prestataire en main propre (chèque ou éspèce uniquement)</p>
+                </div>
+              </div>
+            </div>
+            
+
+          </div>
+
+
+
+          
+        </div>
+        <!-- end modal body -->
+        <!-- modal footer-->
+        <div class="modal-footer">
+          <div class="mohee">
+            <button  class="btn-default btn-md btn-sm"><h4>Prix total : <span id="price-modal-cart">0 €</span></h4></button>
+
+          </div>
+          <div class="mohes">
+            <a href="/reservation-prestation#submi-tag">
+              <button  class="btn btn-default btn-md btn-sm">SUIVANT</button>
+            </a>
+          </div>
+        </div>
+        <!-- end modal footer -->
+      </div>
+      <!-- end modal content-->
+    </div>
+    <!-- end modal dialog-->
+  </div>
+</div>
+<!-- end modal -->
 <!-- JAVASCRIPTS -->
 <script data-turbolinks-track = "reload" src="/plugins/jquery/jquery.min.js"></script>
 <script data-turbolinks-track = "reload" src="/plugins/jquery-ui/jquery-ui.min.js"></script>

@@ -549,3 +549,97 @@
 
 
               <% end %>
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+<!--   <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal"> Modal</button>
+ -->  
+ <div class="modal fade hidden" id="cart-inner-ok" role="dialog">
+    <!-- modal dialog -->
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- modal header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <div class="mohe">
+            <h4 class="modal-title"> Votre commande</h4>
+          </div>
+        </div>
+        <!-- end modal header-->
+        <!-- modal body -->
+        <div class="modal-body">
+         
+            <fieldset>
+              <legend> Prestations:</legend>
+        <div id="cart-inner-prestation">
+        </div>
+            </fieldset>
+
+            <fieldset>
+              <legend> Produits:</legend>
+        <div id="cart-inner-produit">
+        </div>
+            </fieldset>
+
+              <fieldset>
+              <legend> Code promo:</legend>
+        <p id="promo-code"></p>
+            </fieldset>
+                  <div>
+        <h2>Prix total <span id="price-modal-cart">0 €</span></h2>
+      </div>
+       <div>
+      <p>Important: Pour les prestations, seul l'accompte est à régler en ligne, le reste du montant est à regler au prestataire en main propre (chèque ou éspèce uniquement)</p>
+       </div>
+        </div>
+        <!-- end modal body -->
+        <!-- modal footer-->
+        <div class="modal-footer">
+          <div class="mohe">
+                  <a href="/reservation-prestation#submi-tag">
+
+            <button type="submit" class="btn btn-default btn-md btn-sm" data-dismiss="modal"> SEND</button>
+            </a>
+          </div>
+        </div>
+        <!-- end modal footer -->
+      </div>
+      <!-- end modal content-->
+    </div>
+    <!-- end modal dialog-->
+  </div>
+</div>
+<!-- end modal --> 
+
+
+<div id="cart-inner-ok" class="hidden">
+      <h1>Votre commande</h1>
+      <div>
+        <h2>Prestation</h2>
+        <div id="cart-inner-prestation">
+        </div>
+      </div>
+      <div>
+        <h2>Produit</h2>
+        <div id="cart-inner-produit">
+        </div>
+      </div>
+      <div>
+        <h2>Code promo</h2>
+        <p id="promo-code"></p>
+      </div>
+      <div>
+        <h2>Prix total <span id="price-modal-cart">0 €</span></h2>
+      </div>
+      <p>Important: Pour les prestations, seul l'accompte est à régler en ligne, le reste du montant est à regler au prestataire en main propre (chèque ou éspèce uniquement)</p>
+      <a href="/reservation-prestation#submi-tag">suivant</a>
+    </div>
