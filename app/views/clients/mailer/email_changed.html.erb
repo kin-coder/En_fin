@@ -560,7 +560,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <h3 style="text-align: center;"><span style="color:#F0339A">votre adresse e-mail a bien été remplacée !</span><br>
+                            <h3 style="text-align: center;"><span style="color:#F0339A">Valider le changement de votre adresse email !</span><br>
 &nbsp;</h3>
 
                         </td>
@@ -594,7 +594,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <span style="font-size:13px">Nous vous confirmons que la modification de votre adresse e-mail a bien été effectuée. Vous pouvez dès à présent vous connecter à votre espace client en renseignant votre nouveau adresse e-mail : <% if @resource.try(:unconfirmed_email?) %> <%= @resource.unconfirmed_email %> <% else %><%= @resource.email %><% end %>.<br>
+                            <span style="font-size:13px">Nous vous confirmons que la modification de votre adresse e-mail a bien été pris en compte. Merci de vérifier que vous avez reçu un e-mail à l'adresse : <% if @resource.try(:unconfirmed_email?) %> <%= @resource.unconfirmed_email %> <% else %><%= @resource.email %><% end %> pour valider le changement d'email.<br>
 							À très vite !</span>
                         </td>
                     </tr>
