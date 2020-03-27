@@ -34,6 +34,18 @@
 		height: 300px !important;
 
 	}
+	.pageTitleAreaApropos {
+
+		width: 108%;
+		background-size: cover;
+		background-position: center top;
+		padding-bottom: 0;
+		position: relative;
+		padding: 105px 0;
+		background-repeat: no-repeat;
+		left: -15px;
+
+	}
 
 	.policeBaniere{
 		text-align: left;
@@ -318,6 +330,20 @@
 		height: 300px !important;
 
 	}
+	.pageTitleAreaApropos {
+
+		width: 102.6%;
+		background-size: cover;
+		background-position: center top;
+		padding-bottom: 0;
+		position: relative;
+		padding: 105px 0;
+		background-repeat: no-repeat;
+		left: -15px;
+		
+
+	}
+
 	.p-partner{
 		margin-top: 3%;
 		margin-left: 3%;
@@ -582,6 +608,18 @@
 		height: 300px !important;
 
 	}
+	.pageTitleAreaApropos {
+
+		width: 102.6%;
+		background-size: cover;
+		background-position: center top;
+		padding-bottom: 0;
+		position: relative;
+		padding: 105px 0;
+		background-repeat: no-repeat;
+		left: -15px;
+
+	}
 
 	.p-partner{
 		margin-top: 3%;
@@ -817,3 +855,27 @@
 }
 
 
+.textAccroche{
+font-size: 17px;
+letter-spacing: 2px;
+color:black;
+text-align: justify;
+width: 80%;
+margin-left: 6.8%;
+}
+
+
+.imagebox img {
+    width: 80%;
+}
+
+.aboutInfo {
+    padding: 0 0 0 0;
+    max-width: 98%;
+}
+
+.aboutInfo h2 {
+    line-height: 40px;
+    color: #ec5598 !important;
+    letter-spacing: 1px;
+}
