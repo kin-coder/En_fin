@@ -115,6 +115,10 @@
 
             <%if client_signed_in?%>
             <li>
+              <!-- MILA APOTRA Asorina -->
+              <%= link_to "Mon compte", client_profil_path(current_client.last_name) %>
+            </li>
+            <li>
               <%= link_to "Se deconnecter", destroy_client_session_path, method:"delete"  %>
             </li>
             <% else %>

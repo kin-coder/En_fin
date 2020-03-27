@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
 #STATIC_PAGE_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page static dans le static_page
+  # page pour le profil du client
+  get '/client/:name', to:'static_page#client_profil', as: "client_profil"
+  
   # page d'acceul
   root 'static_page#index'
 
