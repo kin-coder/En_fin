@@ -23,8 +23,6 @@ Comment.destroy_all
 increment = 0
 Admin.create(email:"admin@admin.com",password:"admin@admin.com")
 
-Client.create(email: "faly@google.fr", password:"faly@google.fr", first_name: "san", last_name: "goku", adresse: "Lot 404 Baché", tel: "0239732768362", sexe: "homme", country: "France", zip_code: "75001")
-
 # =========================== CREE LES SERVICE =========================== #
 s1 = Service.create(name:"Massage")
 s2 = Service.create(name:"Location spa")
@@ -113,38 +111,6 @@ Product.create(name: "Fontaine chocolat", description: "Fournie avec chocolat", 
 Product.create(name: "Petits fours", description: "gateau", price: 20)
 Product.create(name: "Plateau de fruits frais", description: "Pour 2 personnes", price: 20)
 Product.create(name: "Table de massage", description: "Fournie avec huile de massage", price: 25)
-
-# ===================== ENREGISTREMENT D'UNE COMMANDE ===================== #
-# Order
-# OrderMassage
-# OrderProduct
-# OrderService
-# OrderSpa
-
-# ~~~~~ Order 1
-o1 = Order.create(prestation_date: "10/03/2020", billing_pays: "Madagascar", billing_ville: "Antananarivo", billing_code_postal: "301", billing_adresse: "Lot Ter Mandona JS", delivery_pays: "Madagascar", delivery_ville: "Antananarivo", delivery_code_postal: "490", delivery_adresse: "Lot KDD 34 ld", message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", client: Client.first, department: Department.first, praticien:"Homme",country:Country.last,billing_adresse_complet:"google is here",delivery_adresse_complet:"google is there")
-
-OrderService.create(order: o1, service: Service.first, service_time: "12:30")
-
-OrderMassage.create(order: o1, massage_ca:MassageSu.first.massage_ca, massage_su: MassageSu.first, massage_su_price: MassageSu.first.massage_su_prices[0])
-OrderMassage.create(order: o1, massage_ca:MassageSu.first.massage_ca, massage_su: MassageSu.first, massage_su_price: MassageSu.first.massage_su_prices[1])
-
-OrderProduct.create(number: 4, product: Product.find(Product.last.id-1), order: o1)
-OrderProduct.create(number: 1, product: Product.last, order: o1)
-# ~~~~~ Order 2
-o2 = Order.create(prestation_date: "12/04/2020", billing_pays: "France", billing_ville: "Paris", billing_code_postal: "301", billing_adresse: "Lot Ter Mandona JS", delivery_pays: "France", delivery_ville: "Paris", delivery_code_postal: "490", delivery_adresse: "Lot KDD 34 ld", message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", client: Client.first, department: Department.first, praticien:"Femme",country:Country.last,billing_adresse_complet:"google is here",delivery_adresse_complet:"google is there")
-OrderService.create(order: o2, service: Service.first, service_time: "12:20")
-OrderService.create(order: o2, service: Service.last, service_time: "10:30")
-
-OrderMassage.create(order: o2, massage_ca:MassageSu.last.massage_ca, massage_su: MassageSu.last, massage_su_price: MassageSu.last.massage_su_prices[0])
-OrderMassage.create(order: o2, massage_ca:MassageSu.last.massage_ca, massage_su: MassageSu.last, massage_su_price: MassageSu.last.massage_su_prices[0])
-OrderProduct.create(number: 2, product: Product.last, order: o2)
-# ~~~~~ Reservation Spa
-os1 = OrderSpa.create(logement: "Maison", installation: "Interieur", syteme_eau: "eau chaude", order: o2, spa: Spa.first, product:r)
-os2 = OrderSpa.create(logement: "Villa", installation: "Exterieur", syteme_eau: "eau froide", order: o2, spa: Spa.last, product:a)
-# ~~~~~ Sauvegrde option Spa
-OrderProduct.create(number: 1, product: Product.first, order: o1)
-OrderProduct.create(number: 1, product: Product.find(Product.first.id + 1), order: o1)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 	# Seed pour les comments
