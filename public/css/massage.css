@@ -967,7 +967,10 @@ margin-bottom: 35px;
 	line-height: 1.8;
 }
 
-
+.modal-titleSpa{
+position: relative;
+left: 0% !important;
+}
 
 
 
