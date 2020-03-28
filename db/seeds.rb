@@ -34,7 +34,7 @@ listdepartement = [[ "01", "Ain" ],[ "02", "Aisne" ],[ "03", "Allier" ],[ "04", 
 	Country.create(name: pays)
 end
 
-Country.find_by(name:"Belgique").services = [s1]
+Country.find_by(name:"Belgique").services = [s1,s2]
 Country.find_by(name:"Suisse").services = [s2]
 
 country = Country.create(name: "France")
@@ -43,14 +43,6 @@ country = Country.create(name: "France")
 listdepartement.each do |listdepartement|
 	d = Department.create(code: listdepartement[0], name: listdepartement[1], country: country)
 	d.services = allServices[rand(2)..rand(2)]
-	rand(5).times do |i|
-		p = Prestataire.create(email: Faker::Internet.free_email, first_name: Faker::Name.first_name, last_name: Faker::Name.middle_name , adresse: Faker::Address.full_address, tel: Faker::PhoneNumber.phone_number_with_country_code, raison_sociale: Faker::Commerce.department, siret: Faker::Number.leading_zero_number(digits: 10))
-		# Selection du zone qu'il peut faire
-		p.departments = [d]
-		# Selection des services que le prestataire peut faire
-		p.services = [Service.find(rand(1..2))]
-		puts increment+=1
-	end
 end
 
 # ======================= CREE LES SERVICE MASSAGE ======================= #
