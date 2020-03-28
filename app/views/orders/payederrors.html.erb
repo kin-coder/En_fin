@@ -1,4 +1,31 @@
+<link href="/css/echec.css" rel="stylesheet">
+
+<!-- error -->
 <script type="text/javascript">
-		sessionStorage.clear();
+	sessionStorage.clear();
 </script>
-<h1>Gross erreur de jugements</h1>
+
+
+<div class="padding confirmation confirmations">
+	<div class="container">
+
+		<div class="alert alert-success alert-common alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+			Echec de paiement !
+		</div>
+
+		<div class="confirm">
+			Nous sommes désolé, votre paiement n'a pas pu aboutir, vous ne serez donc pas prélevé. <br>
+			Veuillez vous rapprocher de votre établissement bancaire ou tenter à nouveau la résérvation. <br>
+			À très vite! <br><br>
+			Team Cocooning Spa
+		</div>
+		<div class="baniere-btnbis">
+			<a href="<%= reservation_path %>" class="btn btn-primary first-btn waves-effect waves-light scale-up" id="first-btn" >Réserver à nouveau</a>
+		</div>
+
+	</div>
+</div>

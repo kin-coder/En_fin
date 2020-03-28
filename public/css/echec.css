@@ -1,0 +1,60 @@
+@media only screen and (max-width: 600px) {
+
+	.confirmations .alert.alert-success {
+		border: 1px solid transparent;
+		background-color:#f0d1ca;
+		color:#ea0606;
+		padding: 15px 20px;
+		margin: 0 0 60px 0;
+		width: 100%;
+		border: none;
+		border-radius: 0;
+
+	}
+	.confirmations .alert .close {
+		color: #ea0606;
+		position: relative;
+		top: 0px;
+	}
+	.baniere-btnbis {
+		position: absolute;
+		right: 25%;
+		bottom: -40px;
+	}
+	.baniere-btnbis a {
+		padding: 10px;
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	.confirmations .alert.alert-success {
+		border: 1px solid transparent;
+		background-color:#f0d1ca;
+		color:#ea0606;
+		padding: 15px 20px;
+		margin: 0 0 60px 0;
+		width: 100%;
+		border: none;
+		border-radius: 0;
+
+	}
+	.confirmations .alert .close {
+		color: #ea0606;
+		position: relative;
+		top: 0px;
+	}
+
+	.confirm{
+		font-size: 17px;
+		letter-spacing: 2px;
+		line-height: 2.5;
+	}
+	.baniere-btnbis {
+		position: absolute;
+		right: 40%;
+		bottom: -40px;
+	}
+	.baniere-btnbis a {
+		padding: 10px;
+	}
+}

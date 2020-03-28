@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
 #STATIC_PAGE_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page static dans le static_page
+  # page pour le profil du client
+  get '/client/:name', to:'static_page#client_profil', as: "client_profil"
+  
   # page d'acceul
   root 'static_page#index'
 
@@ -27,12 +30,18 @@ Rails.application.routes.draw do
   get "/engagement", to:'static_page#engagement', as: "engagement"
   get "/qui-sommes-nous", to:'static_page#propos', as: "propos"
 
+  #save candidature
   get "/devenir-partenaire", to:'static_page#partner', as: "partner"
+  post "/devenir-partenaire/save", to:'static_page#savePartner', as: "save_partner"
+  
 
 # Page pour chaque service
   get '/service', to:'static_page#service', as: "service"
   get '/reservation-massage', to:'static_page#massage', as: "massage"
   get '/location-spa', to:'static_page#location_spa', as: "spa"
+
+# Save message and send email to admin
+  post '/admin/send-email', to:'static_page#save_message', as: "save_message"
 
 #ORDERS_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page tunelle d'achats dans le controller ORDERS
@@ -49,11 +58,9 @@ Rails.application.routes.draw do
   get '/reservation-prestation/payed-success', to:'orders#payedsuccess', as: "payedsuccess"
   get '/reservation-prestation/payed-errors', to:'orders#payederrors', as: "payederrors"
 
-
-
   post '/reservation-prestation/validate-code', to:"orders#code_promo", as:"code_promo"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
-
 end
+
 

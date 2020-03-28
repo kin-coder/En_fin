@@ -4,6 +4,108 @@
 }
 
 /* ===================MODAL==================== */
+<!-- media query -->
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  #text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /*  font-size: 50px;*/
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+  }
+  .field{
+    position: absolute;
+    left: 240px;
+    width: 140px;
+    margin-top: -1.6px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  .je-valide{
+    position: relative;
+    left: 40.8%;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  #text{
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    /*  font-size: 50px;*/
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    z-index: 100;
+  }
+  .titregeog{
+    font-size: 22.5px;
+  }
+  .field{
+    position: absolute;
+    left: 240px;
+    width: 140px;
+    margin-top: -1.6px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  .je-valide{
+    position: relative;
+    left: 40.8%;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  #text{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /*  font-size: 50px;*/
+
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+  }
+  .pays_dep{
+    position: relative;
+    left: -80px;
+  }
+  .field {
+
+    position: absolute;
+    left: 190px;
+    width: 140px;
+    margin-top: -1.6px;
+    border-radius: 5px;
+    text-align: center;
+
+  }
+  .titregeog{
+    font-size: 15px;
+    width: 400px;
+  }
+
+  .je-valide{
+    position: relative;
+    left: 65%;
+    font-size: 15px;
+    font-weight: bold;
+  }
+}
+
+
+
+
+
 #overlay {
   position: fixed;
   display: none;
@@ -18,15 +120,7 @@
   cursor: pointer;
 }
 
-#text{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  /*  font-size: 50px;*/
 
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-}
 /* ==================ACCORDEON================= */
 
 .accordion {
@@ -42,20 +136,11 @@
 .accordion-body {
   background: white;
 }
-
-.accordion-header {
-  padding: 1.5em 1.5em;
-  background: #ec5598;
-  color: white;
-  cursor: pointer;
-  font-size: x-large;
-  letter-spacing: .1em;
-  transition: all .3s;
-  text-transform: uppercase;
-  margin-top:20px;
-  font-family: Lato, "Open Sans";
-  font-weight: bold;
+.titleAccordion{
+  margin-top: -10px;
+  height: 10px;
 }
+
 
 .accordion__item {
   border-bottom: 1px solid white;
@@ -71,11 +156,7 @@
   z-index: 5;
 }
 
-.accordion-body {
-  background: #fcfcfc;
-  color: #353535;
-  display: none;
-}
+
 
 .accordion-body__contents {
   padding: 1.5em 1.5em;
@@ -137,12 +218,171 @@
 
 
 /* ==================custom================= */
-.set-zones{
-  background: deeppink;
-  opacity: 0.8;
-  padding: 50px;
-  border-radius: 8px;
+
+<!-- media query -->
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .set-zones{
+    background: deeppink;
+    opacity: 0.8;
+    padding: 50px;
+    border-radius: 8px;
+  }
+  .innerWrapper .table-responsive .table thead tr th:last-child {
+    border: none;
+    height: 100px;
+    font-size: x-large;
+  }
+  .accordion-header {
+    height: 10px;
+    padding: 1.5em 1.5em;
+    background: #ec5598;
+    color: white;
+    cursor: pointer;
+    font-size: x-large;
+    letter-spacing: .1em;
+    transition: all .3s;
+    text-transform: uppercase;
+    margin-top:20px;
+    font-family: Lato, "Open Sans";
+    font-weight: bold;
+  }
+  .accordion-body {
+    background: #fcfcfc;
+    color: #353535;
+    display: none;
+
+  }
+  .p-resa-spa{
+    letter-spacing: 2px;
+    font-family: Lato, "Open Sans";
+    font-size: large;
+    font-weight: bold;
+  }
+  .titleSpa{
+    font-weight: 700;
+  }
 }
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .set-zones{
+    background: deeppink;
+    opacity: 0.8;
+    padding: 50px;
+    border-radius: 8px;
+    width: 500px;
+  }
+  .innerWrapper .table-responsive .table thead tr th:last-child {
+    border: none;
+    height: 100px;
+    font-size: x-large;
+  }
+  .accordion-header {
+    height: 10px;
+    padding: 1.5em 1.5em;
+    background: #ec5598;
+    color: white;
+    cursor: pointer;
+    font-size: x-large;
+    letter-spacing: .1em;
+    transition: all .3s;
+    text-transform: uppercase;
+    margin-top:20px;
+    font-family: Lato, "Open Sans";
+    font-weight: bold;
+  }
+  .accordion-body {
+    background: #fcfcfc;
+    color: #353535;
+    display: none;
+
+  }
+  .p-resa-spa{
+    letter-spacing: 2px;
+    font-family: Lato, "Open Sans";
+    font-size: large;
+    font-weight: bold;
+  }
+  .titleSpa{
+    font-weight: 700;
+  }
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .set-zones{
+    background: deeppink;
+    opacity: 0.8;
+    padding: 50px;
+    border-radius: 8px;
+    width: 350px;
+  }
+  .table-responsive {
+    margin-top: 20px;
+    border-radius: 20px;
+    position: relative;
+    left: -28px;
+    width: 128%;
+  }
+  .innerWrapper .table-responsive .table thead tr th:last-child {
+    border: none;
+    height: 100px;
+    font-size: small;
+  }
+  .accordion-header {
+    height: 10px;
+    width: 128.5%;
+    padding: 1.5em 1.5em;
+    background: #ec5598;
+    color: white;
+    cursor: pointer;
+    font-size: x-large;
+    letter-spacing: .1em;
+    transition: all .3s;
+    text-transform: uppercase;
+    margin-top:20px;
+    font-family: Lato, "Open Sans";
+    font-weight: bold;
+  }
+  .js-accordion-header{
+    position: relative;
+    left: -28px;
+  }
+  .titleAccordion {
+    margin-top: -10px;
+    height: 10px;
+    font-size: small;
+  }
+  .accordion-body {
+    background: #fcfcfc;
+    color: #353535;
+    display: none;
+    width: 128.5%;
+    position: relative;
+    left: -28px;
+  }
+  .p-resa-spa {
+    letter-spacing: 2px;
+    font-family: Lato, "Open Sans";
+    font-size: small;
+    font-weight: bold;
+  }
+  .titleSpa {
+    font-weight: 700;
+    font-size: 15px;
+    position: relative;
+    left: -90px;
+  }
+
+}
+
+
+
+
+
+
+
+
 .dateSelect .calendar-icone {
   background-color: white;
   border-color:#dedede;
@@ -158,14 +398,7 @@
   font-size: 15px;
 }
 
-.field{
-  position: absolute;
-  left: 240px;
-  width: 140px;
-  margin-top: -1.6px;
-  border-radius: 5px;
-  text-align: center;
-}
+
 .input-calendar{
   position: relative;
   display: table;
@@ -178,12 +411,6 @@
   margin-right: 4%;
   height: 25px !important;
 }
-.je-valide{
-  position: relative;
-  left: 40.8%;
-  font-size: 15px;
-  font-weight: bold;
-}
 
 
 .image-produit{
@@ -192,33 +419,16 @@
 }
 
 
-.innerWrapper .table-responsive .table thead tr th:last-child {
-  border: none;
-  height: 100px;
-  font-size: x-large;
-}
-.innerWrapper .table-responsive .table thead .tr th:last-child {
-  border: none;
-  height: 10px;
-  font-size: large;
-  text-align: center;
-  margin-bottom: 10px;
-}
+
+
 .sm-9-spa{
   margin-bottom: 15px;
 }
-.sm-6-massage{
-  column-count: 2;
-}
 
 
 
-.p-resa-spa{
-  letter-spacing: 2px;
-  font-family: Lato, "Open Sans";
-  font-size: large;
-  font-weight: bold;
-}
+
+
 #number-spa{
   color: #ec5598;
   padding: 5px;
@@ -309,13 +519,7 @@ input.time-spa-list:focus ~ label:before {
  width: 30px;
 }
 
-.duree-spa{
-  position: relative;
-  margin-bottom: 25px;
-  margin-right: 10px;
-  left: 10px;
-  font-size: small;
-}
+
 
 .label-spa {
   display: inline-block;
@@ -325,23 +529,13 @@ input.time-spa-list:focus ~ label:before {
   position :relative;
 }
 
-.option-spa-list{
-  position: absolute;
-  left: 150px;
 
-}
 
-.label-option-spa{
-  position: relative;
-  left: -20px;
-  font-size: small;
-  top: -10px
-}
 
 
 /*CHECKBOX*/
 
-
+/*
 
 input[type="checkbox"]{
   position: relative;
@@ -351,7 +545,7 @@ input[type="checkbox"]{
   background: #D1D3D4;
   outline: none;
   border-radius: 100px;
-  /*box-shadow: inset 0 0 5px rgba(0,0,0,.2);*/
+
   transition: .5s;
 }
 
@@ -382,11 +576,8 @@ input[type="checkbox"]{
   margin-top: 1px\9;
   line-height: normal;
 }
+*/
 
-.list-ambiance{
-  margin-bottom: 10px;
-
-}
 
 .label-info-spa, .label-heure{
   font-size: small;
@@ -397,15 +588,7 @@ left: 70px;*/
 margin-top: -18px;
 }
 
-.selectElement{
-  width: 150px;
-  font-size: small;
-  margin-right: 5px;
-  font-family: Lato, "Open Sans";
-  position: absolute;
-  left: 150px;
-  margin-top: -2px;    
-}
+
 .select-dro{
   width: 150px;
   font-size: small;
@@ -413,21 +596,8 @@ margin-top: -18px;
   text-align: center;
 }
 
-.infoSpa{
-  margin-bottom: 26px;
-  position: relative;
-  top: -15px;
-  left: 52px;
-}
-}
 
-.fin-spa{
-  /*margin-bottom: 10px;*/
-}
 
-.titleSpa{
-  font-weight: 700;
-}
 .table-responsive {
   margin-top: 20px;
   border-radius: 20px;
@@ -576,132 +746,80 @@ margin-top: -18px;
 #codeP{
   width: 125px;
 }
-.subTitlePanier, .subTitlePanierSpa, .subTitlePanierMsg, .subTitleCadeau{
+
+
+#spa-price-total, #massage-price-total, #cadeau-price-total{
+  color: black;
+}
+
+.spa-duration{
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.li-acompte{
+  position: relative;
+  margin-left: 22px;
+}
+
+.ul-panier{
+  position: relative;
+
+}
+
+
+.msg-duration{
+  font-size: 1.2em;
+  font-weight: bold;
+  position: relative;
+  left: -28px;
+}
+
+
+
+
+
+.innerWrapper>.table-responsive>.table>thead>tr>th:last-child{
+
+  border-bottom: 1px solid transparent;
+  border-radius: 20px 20px 0 0;
+  height: 10px;
+}
+.prixTotals{
+  background:#ec5598;
+  border-radius: 20px;
+  margin-top: 10px;
+  padding: 5px;
   font-family: Quicksand, 'Open Sans', sans-serif !important;
-  font-weight: bold !important;
-  font-size: 1em !important;
+  font-weight: bold;
 }
-.subTitlePanier{
-  position: relative;
-  left: -48px;
+.p-prixTotal{
+
+  font-family: Quicksand, 'Open Sans', sans-serif !important;
+  font-weight: bold;
+  color: white;
 }
-.subTitlePanierSpa{
-  position: relative;
-  left: -27px;
+
+.cadeau-add, .cadeau-rmv{
+  color:#8c8383 !important;
+  font-size: 1.3em;
 }
-.subTitlePanierMsg{
+
+.li-cadeau{
   position: relative;
-  left: -45px;
+  margin-left: 60px;
+  list-style-type: inherit;
+  color: #685f5f !important;
 }
-.subTitleCadeau{
-  position: relative;
-  left: -36px;}
-  #spa-price-total, #massage-price-total, #cadeau-price-total{
-    color: black;
-  }
 
-  .spa-duration{
-    font-size: 1.2em;
-    font-weight: bold;
-  }
-  .li-acompte{
-    position: relative;
-    margin-left: 22px;
-  }
-  .li-ambiance{
-    position: relative;
-    margin-left: 84px;
-    list-style-type: inherit;
-    color: #685f5f !important;
 
-  }
-
-  .ul-panier{
-    position: relative;
-
-  }
-  #spa-order, #massage-order, #cadeau-order{
-    margin-bottom: 25px;
-  }
-
-  .msg-duration{
-    font-size: 1.2em;
-    font-weight: bold;
-    position: relative;
-    left: -28px;
-  }
-
-  .li-msgType , .li-msgPrix, .li-msgAcompte{
-    position: relative;
-    margin-left: 60px;
-    list-style-type: inherit;
-    color: #685f5f !important;
-  }
-
-  .prestation-message{
-    position: relative;
-    width: 200px;
-    left: 28px;
-    padding-left: 0px;
-    text-align: left;
-  }
+.btn-resa-text{
+  border-radius: 100px;
+}
 
 
 
-  .innerWrapper>.table-responsive>.table>thead>tr>th:last-child{
-
-    border-bottom: 1px solid transparent;
-    border-radius: 20px;
-  }
-  .prixTotals{
-    background:#ec5598;
-    border-radius: 20px;
-    margin-top: 10px;
-    padding: 5px;
-    font-family: Quicksand, 'Open Sans', sans-serif !important;
-    font-weight: bold;
-  }
-  .p-prixTotal{
-
-    font-family: Quicksand, 'Open Sans', sans-serif !important;
-    font-weight: bold;
-    color: white;
-  }
-
-  .cadeau-add, .cadeau-rmv{
-    color:#8c8383 !important;
-    font-size: 1.3em;
-  }
-
-  .li-cadeau{
-    position: relative;
-    margin-left: 60px;
-    list-style-type: inherit;
-    color: #685f5f !important;
-  }
-
-  .cadeaux{
-    position: relative;
-    width: 200px;
-    left: 28px;
-    padding-left: 0px;
-    text-align: left;
-  }
-  .nbr-cadeau{
-    margin-left: 15px;
-  }
-
-  .btn-resa{
-    position: relative;
-    left: 50%;
-    top: 20px;
-    font-family: Quicksand, 'Open Sans', sans-serif !important;
-    width: 30%;
-  }
-  .btn-resa-text{
-    border-radius: 100px;
-  }
-
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
   .pays-selected{
     font-size: large;
     position: relative;
@@ -711,9 +829,528 @@ margin-top: -18px;
     margin-top: 20px;
   }
 
+
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .col-sm2Duree{
+    position: relative;
+    left: 80px;
+    top: 20px;
+    margin-bottom: 50px;
+    max-width: 100px;
+  }
+  .sm-6-massage{
+    column-count: 1;
+  }
+  .innerWrapper .table-responsive .table thead .tr th:last-child {
+    border: none;
+    height: 10px;
+    font-size: large;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  /*======================*/
+  .duree-spa{
+    position: relative;
+    margin-bottom: 25px;
+    margin-right: 10px;
+    left: 40%;
+    font-size: small;
+    max-width: 200px;
+  }
+  .btn-resa {
+
+    position: relative;
+    left: 40%;
+    top: 20px;
+    font-family: Quicksand, 'Open Sans', sans-serif !important;
+    width: 30%;
+    margin-bottom: 50px;
+
+  }
+  .pays-selected{
+    font-size: large;
+    position: relative;
+    left: 1%;
+    font-family: Lato, 'Open Sans', sans-serif;
+    color: #9d9696;
+    margin-top: 20px;
+  }
+
   .label-selected{
     position: absolute;
-    left: 200px;
+    left: 100px;
+    font-family: Lato, 'Open Sans', sans-serif;
+  }
+  .pays-selected i{ 
+    margin-right: 200px;
+  }
+  .btn-pays {
+    border-radius: 12px;
+    padding: 10px;
+    position: relative;
+    left: -30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+
+  /*Checkbox*/
+
+
+  input[type="checkbox"]{
+    position: relative;
+    width: 60px;
+    height: 30px;
+    -webkit-appearance: none;
+    background: #D1D3D4;
+    outline: none;
+    border-radius: 100px;
+
+    transition: .5s;
+  }
+
+  input:checked[type="checkbox"]{
+    background: deeppink;
+  }
+
+  input[type="checkbox"]:before{
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    top: 5px;
+    left: 5px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    transition: .5s;
+  }
+
+  input:checked[type="checkbox"]:before{
+    left: 36px;
+  }
+
+  input[type="checkbox"]{
+
+    margin: 0px 0 0;
+    margin-top: 1px\9;
+    line-height: normal;
+  }
+  .option-spa-list{
+    position: absolute;
+    left: 250px;
+    top: -10px;
+    margin-bottom: 10px;
+  }
+  .label-option-spa{
+   position: relative;
+   left: 20%;
+   font-size: small;
+   top: -20px;
+   margin-bottom: 10px;
+ }
+ .list-ambiance{
+  margin-bottom: -10px;
+}
+
+.selectElement {
+  width: 150px;
+  font-size: small;
+  margin-right: 5px;
+  font-family: Lato, "Open Sans";
+  position: relative;
+  left: 5px;
+  margin-top: -2px;
+}
+.infoSpa{
+  margin-bottom: 5px;
+  position: relative;
+  top: -15px;
+  left: 52px;
+}
+
+/*panier*/
+
+.subTitlePanier{
+  position: relative;
+  left: -30px;
+}
+.subTitlePanierSpa{
+  position: relative;
+  left: -10px;
+}
+.subTitlePanierMsg{
+  position: relative;
+  left: -45px;
+}
+.subTitleCadeau{
+  position: relative;
+  left: -36px;}
+  .subTitlePanier, .subTitlePanierSpa, .subTitlePanierMsg, .subTitleCadeau{
+    font-family: Quicksand, 'Open Sans', sans-serif !important;
+    font-weight: bold !important;
+    font-size: 0.9em !important;
+  }
+  .li-ambiance{
+    position: relative;
+    margin-left:0px;
+    list-style-type: inherit;
+    color: #685f5f !important;
+  }
+
+  .innerWrapper .table-responsive .table thead tr th:last-child {
+    font-size: small;
+  }
+  .titleAccordion {
+    margin-top: -10px;
+    height: 10px;
+    font-size: small;
+  }
+  .p-prixTotal {
+    font-family: Quicksand, 'Open Sans', sans-serif !important;
+    font-weight: bold;
+    color: white;
+    font-size: 11px;
+  }
+  .description-produit{
+    font-size: 12.8px;
+  }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .nbr-cadeau{
+    margin-left: 15px;
+    max-width: 100px;
+  }
+
+  .prestation-message {
+    position: relative;
+    max-width: 200px;
+    left: 28px;
+    padding-left: 0px;
+    text-align: left;
+
+  }
+  #spa-order, #massage-order, #cadeau-order{
+    margin-bottom: 25px;
+    max-width: 140px
+  }
+  .li-msgType , .li-msgPrix, .li-msgAcompte{
+    position: relative;
+    margin-left: 0px;
+    list-style-type: inherit;
+    color: #685f5f !important;
+    max-width: 100px;
+  }
+  .col-sm2Duree{
+    position: relative;
+    left: -60px;
+  }
+  .sm-6-massage{
+    column-count: 1;
+    position: relative;
+    left: -50px;
+  }
+  .innerWrapper .table-responsive .table thead .tr th:last-child {
+    border: none;
+    height: 10px;
+    font-size: large;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  /*======================*/
+  .duree-spa{
+    position: relative;
+    margin-bottom: 25px;
+    margin-right: 10px;
+    left: 10px;
+    font-size: small;
+  }
+  .btn-resa{
+    position: relative;
+    left: 50%;
+    top: 20px;
+    font-family: Quicksand, 'Open Sans', sans-serif !important;
+    width: 30%;
+  }
+
+  .pays-selected{
+    font-size: large;
+    position: relative;
+    left: 8%;
+    font-family: Lato, 'Open Sans', sans-serif;
+    color: #9d9696;
+    margin-top: 20px;
+  }
+
+  .label-selected{
+    position: absolute;
+    left: 100px;
+    font-family: Lato, 'Open Sans', sans-serif;
+  }
+  .pays-selected i{ 
+    margin-right: 100px;
+  }
+  .btn-pays {
+    border-radius: 12px;
+    padding: 10px;
+    position: relative;
+    left: -30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+
+  /*Checkbox*/
+
+
+  input[type="checkbox"]{
+    position: relative;
+    width: 60px;
+    height: 30px;
+    -webkit-appearance: none;
+    background: #D1D3D4;
+    outline: none;
+    border-radius: 100px;
+
+    transition: .5s;
+  }
+
+  input:checked[type="checkbox"]{
+    background: deeppink;
+  }
+
+  input[type="checkbox"]:before{
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    top: 5px;
+    left: 5px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    transition: .5s;
+  }
+
+  input:checked[type="checkbox"]:before{
+    left: 36px;
+  }
+
+  input[type="checkbox"]{
+
+    margin: 0px 0 0;
+    margin-top: 1px\9;
+    line-height: normal;
+  }
+  .option-spa-list{
+    position: absolute;
+    left: 100px;
+    top: 25px;
+  }
+  .label-option-spa{
+    position: relative;
+    left: -10px;
+    font-size: small;
+    top: -10px
+  }
+  .list-ambiance{
+    margin-bottom: -10px;
+  }
+
+  .selectElement {
+    width: 150px;
+    font-size: small;
+    margin-right: 5px;
+    font-family: Lato, "Open Sans";
+    position: relative;
+    left: 5px;
+    margin-top: -2px;
+  }
+  .infoSpa{
+    margin-bottom: 5px;
+    position: relative;
+    top: -15px;
+    left: 52px;
+  }
+
+  /*panier*/
+
+  .subTitlePanier{
+    position: relative;
+    left: -30px;
+  }
+  .subTitlePanierSpa{
+    position: relative;
+    left: -10px;
+  }
+  .subTitlePanierMsg{
+    position: relative;
+    left: -25px;
+  }
+  .subTitleCadeau{
+    position: relative;
+    left: -15px;}
+    .subTitlePanier, .subTitlePanierSpa, .subTitlePanierMsg, .subTitleCadeau{
+      font-family: Quicksand, 'Open Sans', sans-serif !important;
+      font-weight: bold !important;
+      font-size: 0.9em !important;
+    }
+    .li-ambiance{
+      position: relative;
+      margin-left:0px;
+      list-style-type: inherit;
+      color: #685f5f !important;
+    }
+
+    .innerWrapper .table-responsive .table thead tr th:last-child {
+      font-size: small;
+    }
+    .titleAccordion {
+      margin-top: -10px;
+      height: 10px;
+      font-size: small;
+    }
+    .p-prixTotal {
+      font-family: Quicksand, 'Open Sans', sans-serif !important;
+      font-weight: bold;
+      color: white;
+      font-size: 11px;
+    }
+    .description-produit{
+      font-size: 12.8px;
+    }
+    .li-cadeau {
+
+      position: relative;
+      margin-left: 0px;
+      list-style-type: inherit;
+      color: #685f5f !important;
+      max-width: 116px;
+    }
+/*.cadeaux ul{
+max-width: 100px;
+}*/
+.cadeaux{
+  position: relative;
+  width: 100px;
+  left: 28px;
+  padding-left: 0px;
+  text-align: left;
+}
+
+
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .nbr-cadeau{
+    margin-left: 15px;
+  }
+
+  .li-cadeau {
+
+    position: relative;
+    margin-left: 60px;
+    list-style-type: inherit;
+    color: #685f5f !important;
+
+  }
+  .col-sm2Duree{
+    position: relative;
+    left: 20px;
+    top: 20px;
+    margin-bottom: 50px;
+    max-width: 100px;
+  }
+  .sm-6-massage{
+    column-count: 1;
+  }
+  .label-no-fa {
+
+    top: -40px;
+    position: relative;
+    font-size: small;
+    left: -50px;
+
+  }
+  .praticien-list:checked + label,
+  .praticien-list:not(:checked) + label
+  {
+    position: relative;
+    padding-left: 20px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+
+  }
+  .praticiens {
+
+    display: inline;
+    margin-right: 65px;
+    position: relative;
+    top: 70px;
+    left: 50px;
+
+  }
+  .table-responsiveInfos {
+    margin-top: 20px;
+    border-radius: 0px;
+    position: relative;
+    left: -15px;
+    width: 110%;
+  }
+  .tableInfos {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+    left: 0px;
+  }
+
+  .innerWrapper .table-responsive .table thead .tr th:last-child {
+    border: none;
+    height: 10px;
+    font-size: large;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 200px;
+  }
+  /*======================*/
+  .duree-spa{
+    position: relative;
+    margin-bottom: 25px;
+    margin-right: 10px;
+    left: 10px;
+    font-size: small;
+  }
+  .btn-resa{
+    position: relative;
+    left: 40%;
+    top: 20px;
+    font-family: Quicksand, 'Open Sans', sans-serif !important;
+    width: 30%;
+    margin-bottom: 50px;
+  }
+  .pays-selected{
+    font-size: large;
+    position: relative;
+    left: 0%;
+    font-family: Lato, 'Open Sans', sans-serif;
+    color: #9d9696;
+    margin-top: 20px;
+  }
+
+  .label-selected{
+    position: absolute;
+    left: 50px;
     font-family: Lato, 'Open Sans', sans-serif;
   }
 
@@ -721,7 +1358,306 @@ margin-top: -18px;
     border-radius: 12px;
     padding: 10px;
     position: relative;
-    left: -80px;
+    left: 0px;
     margin-top: 10px;
     margin-bottom: 10px;
   }
+
+  .pays-selected i{ 
+    margin-right: 150px;
+  }
+
+
+  /*Checkbox*/
+
+
+  input[type="checkbox"]{
+    position: relative;
+    width: 40px;
+    height: 20px;
+    -webkit-appearance: none;
+    background: #D1D3D4;
+    outline: none;
+    border-radius: 100px;
+
+    transition: .5s;
+  }
+
+  input:checked[type="checkbox"]{
+    background: deeppink;
+  }
+
+  input[type="checkbox"]:before{
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 100px;
+    top: 2.5px;
+    left: 2.5px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    transition: .5s;
+  }
+
+  input:checked[type="checkbox"]:before{
+    left: 22px;
+  }
+
+  input[type="checkbox"]{
+
+    margin: 0px 0 0;
+    margin-top: 1px\9;
+    line-height: normal;
+  }  
+  .option-spa-list{
+    position: absolute;
+    left: 120px;
+    top: -5px;
+  }
+  .label-option-spa{
+    position: relative;
+    left: -30px;
+    font-size: small;
+    top: -10px
+  }
+  .list-ambiance{
+    margin-bottom: 20px;
+  }
+
+  .selectElement {
+    width: 150px;
+    font-size: small;
+    margin-right: 5px;
+    font-family: Lato, "Open Sans";
+    position: relative;
+    left: 5px;
+    margin-top: -2px;
+  }
+  .infoSpa{
+    margin-bottom: 5px;
+    position: relative;
+    top: -15px;
+    left: 5px;
+  }
+
+  /*===========*/
+
+  .fin-spa {
+
+    margin-bottom: 10px;
+    position: relative;
+    top: -200px;
+    left: 0px;
+
+  }
+
+  .informationTitle{
+    position: relative;
+    left: 0px !important;
+  }
+  .spa-list-prestations{
+    max-height: 380px;
+  }
+
+  /*panier*/
+
+  .subTitlePanier{
+    position: relative;
+    left: -48px;
+  }
+  .subTitlePanierSpa{
+    position: relative;
+    left: -27px;
+  }
+  .subTitlePanierMsg{
+    position: relative;
+    left: -45px;
+  }
+  .subTitleCadeau{
+    position: relative;
+    left: -36px;}
+    .subTitlePanier, .subTitlePanierSpa, .subTitlePanierMsg, .subTitleCadeau{
+      font-family: Quicksand, 'Open Sans', sans-serif !important;
+      font-weight: bold !important;
+      font-size: 1em !important;
+    }
+    .li-ambiance{
+      position: relative;
+      margin-left: 84px;
+      list-style-type: inherit;
+      color: #685f5f !important;
+
+    }
+    .ambianceresponsive{
+      position: relative;
+      top: -195px;
+      right: -150px;
+      width: 208px;
+    }
+    .ambianceresponsive h4{
+      margin-left: 120px;
+      margin-bottom: 35px;
+    }
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .nbr-cadeau{
+      margin-left: 15px;
+      max-width: 100%;
+    }
+
+    .li-cadeau {
+
+      position: relative;
+      margin-left: 60px;
+      list-style-type: inherit;
+      color:#685f5f !important;
+
+    }
+    .prestation-message {
+
+      position: relative;
+      max-width: 200px;
+      left: 28px;
+      padding-left: 0px;
+      text-align: left;
+
+    }
+    #spa-order, #massage-order, #cadeau-order{
+      margin-bottom: 25px;
+      max-width: 100%;
+    }
+    .li-msgType , .li-msgPrix, .li-msgAcompte{
+      position: relative;
+      margin-left: 60px;
+      list-style-type: inherit;
+      color: #685f5f !important;
+      max-width: 100%;
+    }
+    .col-sm2Duree{
+      position: relative;
+      left: 0px;
+    }
+    .sm-6-massage{
+      column-count: 2;
+      position: relative;
+
+      left:-20px;
+    }
+    .innerWrapper .table-responsive .table thead .tr th:last-child {
+      border: none;
+      height: 10px;
+      font-size: large;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    /*======================*/
+    .duree-spa{
+      position: relative;
+      margin-bottom: 25px;
+      margin-right: 10px;
+      left: 10px;
+      font-size: small;
+    }
+    .pays-selected{
+      font-size: large;
+      position: relative;
+      left: 10%;
+      font-family: Lato, 'Open Sans', sans-serif;
+      color: #9d9696;
+      margin-top: 20px;
+    }
+    .pays-selected i{ 
+      margin-right: 20px;
+    }
+    .label-selected{
+      position: absolute;
+      left: 200px;
+      font-family: Lato, 'Open Sans', sans-serif;
+    }
+
+    .btn-pays{
+      border-radius: 12px;
+      padding: 10px;
+      position: relative;
+      left: -80px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .option-spa-list{
+      position: absolute;
+      left: 150px;
+      top: 0px;
+    }
+    .label-option-spa{
+      position: relative;
+      left: -20px;
+      font-size: small;
+      top: -10px
+    }
+    .list-ambiance{
+      margin-bottom: 10px;
+
+    }
+    .selectElement{
+      width: 150px;
+      font-size: small;
+      margin-right: 5px;
+      font-family: Lato, "Open Sans";
+      position: absolute;
+      left: 150px;
+      margin-top: -2px;    
+    }
+    .infoSpa{
+      margin-bottom: 26px;
+      position: relative;
+      top: -15px;
+      left: 52px;
+    }
+
+    /*panier*/
+
+    .subTitlePanier{
+      position: relative;
+      left: -48px;
+    }
+    .subTitlePanierSpa{
+      position: relative;
+      left: -27px;
+    }
+    .subTitlePanierMsg{
+      position: relative;
+      left: -45px;
+    }
+    .subTitleCadeau{
+      position: relative;
+      left: -36px;}
+
+      .subTitlePanier, .subTitlePanierSpa, .subTitlePanierMsg, .subTitleCadeau{
+        font-family: Quicksand, 'Open Sans', sans-serif !important;
+        font-weight: bold !important;
+        font-size: 1em !important;
+      }
+      .li-ambiance{
+        position: relative;
+        margin-left: 84px;
+        list-style-type: inherit;
+        color: #685f5f !important;
+
+      }
+
+      .cadeaux{
+        position: relative;
+        width: 200px;
+        left: 28px;
+        padding-left: 0px;
+        text-align: left;
+      }
+
+
+
+    }
+
+

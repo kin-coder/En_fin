@@ -220,11 +220,11 @@ function changeTypeSpa (){
 
 // "time":"1","option":[1,2,3]}]
 function valueToHtmlSpa(id,time=null,option="",info=""){ /* code html pour l'ajout d'un spa */
-	let data = document.getElementById('form-data').dataset
-	let dataSpas = JSON.parse(data.spas)
-	let dataSpaoptions = JSON.parse(data.spaoptions)
+let data = document.getElementById('form-data').dataset
+let dataSpas = JSON.parse(data.spas)
+let dataSpaoptions = JSON.parse(data.spaoptions)
 	// spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte
-	let typeSpa = "<div class='col-sm-3'><h4><center class=\"titleSpa\">Durée location</center></h4>"
+	let typeSpa = "<div class='col-sm-3'><h4><center class=\"titleSpa dureTitle\">Durée location</center></h4>"
 	for (var i = 0; i < dataSpas.length ; i++) {
 		if (time == i) {
 			typeSpa += "<div class=\"duree-spa\"><input class=\"time-spa-list\" type=\"radio\" id=\""+id+"h"+dataSpas[i][0]+"\" checked name=\"timeSpa["+id+"][]\" value=\""+ dataSpas[i][0] +"\" data-prices=\"["+dataSpas[i][1]+","+dataSpas[i][2]+"]\" data-acompte=\"["+dataSpas[i][3]+","+dataSpas[i][4]+"]\" data-index=\""+id+"\" data-array=\""+i+"\"><label for=\""+id+"h"+dataSpas[i][0]+"\" class=\"label-spa\">"+ dataSpas[i][0] +"h</label></div>"
@@ -232,7 +232,7 @@ function valueToHtmlSpa(id,time=null,option="",info=""){ /* code html pour l'ajo
 			typeSpa += "<div class=\"duree-spa\"><input class=\"time-spa-list\" type=\"radio\" id=\""+id+"h"+dataSpas[i][0]+"\" name=\"timeSpa["+id+"][]\" value=\""+ dataSpas[i][0] +"\" data-prices=\"["+dataSpas[i][1]+","+dataSpas[i][2]+"]\" data-acompte=\"["+dataSpas[i][3]+","+dataSpas[i][4]+"]\" data-index=\""+id+"\" data-array=\""+i+"\"><label for=\""+id+"h"+dataSpas[i][0]+"\" class=\"label-spa\">"+ dataSpas[i][0] +"h</label></div>"
 		}
 	}
-	typeSpa += "</div><div class='col-sm-3'><h4><center class=\"titleSpa\">Ambiance</center></h4>"
+	typeSpa += "</div><div class='col-sm-3 ambianceresponsive'><h4><center class=\"titleSpa\">Ambiance</center></h4>"
 	for (var i = 0; i < dataSpaoptions.length ; i++) {
 		if (option.includes(i)) {
 			typeSpa += "<div class=\"list-ambiance\"><input class=\"option-spa-list\" type=\"checkbox\" checked name=\"optionSpa["+id+"][]\" value=\""+dataSpaoptions[i][1]+"\" id=\"opt"+dataSpaoptions[i][0]+""+id+"\" data-array=\""+i+"\" data-price=\""+dataSpaoptions[i][2]+"\" data-index=\""+id+"\" ><label for=\"opt"+dataSpaoptions[i][0]+""+id+"\" class=\"label-option-spa\">"+dataSpaoptions[i][1]+"</label></div>"
@@ -253,9 +253,9 @@ function valueToHtmlSpa(id,time=null,option="",info=""){ /* code html pour l'ajo
 		}
 	}
 	if (info!="") {
-		typeSpa += "</div><div class=\"col-sm-6 fin-spa\"><h4><center class=\"titleSpa\">Informations sur la location</center></h4><br><div class=\"infoSpa\"><label class=\"label-info-spa\" for=\"logement"+id+"\">Type de logement</label><select class=\"logement selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"logement"+id+"\" ><option value=\"Appartement\" "+ isPresent(info[0],"Appartement") +">Appartement</option><option value=\"Villa - Maison\" "+ isPresent(info[0],"Villa - Maison") +" >Villa - Maison</option></select></div><div class=\"infoSpa\"><label for=\"installation"+id+"\" class=\"label-info-spa\">Type d'installation</label><select class=\"installation selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"installation"+id+"\"><option value=\"Intérieur\" "+ isPresent(info[1],"Intérieur") +">Intérieur</option><option value=\"Extérieur\" "+ isPresent(info[1],"Extérieur") +">Extérieur</option></select></div><div class=\"infoSpa\"><label for=\"eau"+id+"\" class=\"label-info-spa\">Système d'eau</label><select class=\"typeSpa selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"eau"+id+"\" ><option value=\"Cumulus - Ballon d'eau (eau chaude limitée)\"  "+ isPresent(info[2],"Cumulus - Ballon d'eau (eau chaude limitée)") +">Cumulus - Ballon d\'eau (eau chaude limitée)</option><option value=\"Chaudière (eau chaude continue)\" "+ isPresent(info[2],"Chaudière (eau chaude continue)") +" >Chaudière (eau chaude continue)</option></select></div></div>"
+		typeSpa += "</div><div class=\"col-sm-6 fin-spa\"><h4><center class=\"titleSpa informationTitle\">Informations sur la location</center></h4><br><div class=\"infoSpa\"><label class=\"label-info-spa\" for=\"logement"+id+"\">Type de logement</label><select class=\"logement selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"logement"+id+"\" ><option value=\"Appartement\" "+ isPresent(info[0],"Appartement") +">Appartement</option><option value=\"Villa - Maison\" "+ isPresent(info[0],"Villa - Maison") +" >Villa - Maison</option></select></div><div class=\"infoSpa\"><label for=\"installation"+id+"\" class=\"label-info-spa\">Type d'installation</label><select class=\"installation selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"installation"+id+"\"><option value=\"Intérieur\" "+ isPresent(info[1],"Intérieur") +">Intérieur</option><option value=\"Extérieur\" "+ isPresent(info[1],"Extérieur") +">Extérieur</option></select></div><div class=\"infoSpa\"><label for=\"eau"+id+"\" class=\"label-info-spa\">Système d'eau</label><select class=\"typeSpa selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"eau"+id+"\" ><option value=\"Cumulus - Ballon d'eau (eau chaude limitée)\"  "+ isPresent(info[2],"Cumulus - Ballon d'eau (eau chaude limitée)") +">Cumulus - Ballon d\'eau (eau chaude limitée)</option><option value=\"Chaudière (eau chaude continue)\" "+ isPresent(info[2],"Chaudière (eau chaude continue)") +" >Chaudière (eau chaude continue)</option></select></div></div>"
 	}else{
-		typeSpa += "</div><div class=\"col-sm-6 fin-spa\"><h4><center class=\"titleSpa\">Informations sur la location</center></h4><br><div class=\"infoSpa\"><label class=\"label-info-spa\" for=\"logement"+id+"\">Type de logement</label><select class=\"logement selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"logement"+id+"\" ><option value=\"Appartement\" selected=\"selected\">Appartement</option><option value=\"Villa - Maison\">Villa - Maison</option></select></div><div class=\"infoSpa\"><label for=\"installation"+id+"\" class=\"label-info-spa\">Type d'installation</label><select class=\"installation selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"installation"+id+"\"><option value=\"Intérieur\" selected=\"selected\">Intérieur</option><option value=\"Extérieur\">Extérieur</option></select></div><div class=\"infoSpa\"><label for=\"eau"+id+"\" class=\"label-info-spa\">Système d'eau</label><select class=\"typeSpa selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"eau"+id+"\" ><option value=\"Cumulus - Ballon d'eau (eau chaude limitée)\" selected=\"selected\">Cumulus - Ballon d\'eau (eau chaude limitée)</option><option value=\"Chaudière (eau chaude continue)\">Chaudière (eau chaude continue)</option></select></div></div>"
+		typeSpa += "</div><div class=\"col-sm-6 fin-spa\"><h4><center class=\"titleSpa informationTitle\">Informations sur la location</center></h4><br><div class=\"infoSpa\"><label class=\"label-info-spa\" for=\"logement"+id+"\">Type de logement</label><select class=\"logement selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"logement"+id+"\" ><option value=\"Appartement\" selected=\"selected\">Appartement</option><option value=\"Villa - Maison\">Villa - Maison</option></select></div><div class=\"infoSpa\"><label for=\"installation"+id+"\" class=\"label-info-spa\">Type d'installation</label><select class=\"installation selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"installation"+id+"\"><option value=\"Intérieur\" selected=\"selected\">Intérieur</option><option value=\"Extérieur\">Extérieur</option></select></div><div class=\"infoSpa\"><label for=\"eau"+id+"\" class=\"label-info-spa\">Système d'eau</label><select class=\"typeSpa selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"eau"+id+"\" ><option value=\"Cumulus - Ballon d'eau (eau chaude limitée)\" selected=\"selected\">Cumulus - Ballon d\'eau (eau chaude limitée)</option><option value=\"Chaudière (eau chaude continue)\">Chaudière (eau chaude continue)</option></select></div></div>"
 	}
 	return typeSpa
 }
@@ -310,7 +310,7 @@ function valueToHtmlMassage(name,id,sub=null,time=null){
 		}
 		htmlTime += "</ul></div>"
 	}
-	return "<div class=\"row\"><div class=\"col-sm-12 sm-9-spa\"><div class=\"innerWrapper\"><div class=\"table-responsive\"><table class=\"table\"><thead><tr class=\"tr\"><th id=\"tableHead\">"+name+"</th></tr></thead></table></div></div></div></div><div class=\"row\"><div class=\"col-sm-10\"><h4><center class=\"titleMassage\">Type de massages</center></h4><div class=\"sm-6-massage\">"+ htmlSub +"</div></div><div class=\"col-sm-2\"><h4>Durée(min)</h4>"+htmlTime+"</div></div>"
+	return "<div class=\"row\"><div class=\"col-sm-12 sm-9-spa\"><div class=\"innerWrapper\"><div class=\"table-responsive table-responsiveInfos\"><table class=\"table tableInfos\"><thead><tr class=\"tr\"><th id=\"tableHead\">"+name+"</th></tr></thead></table></div></div></div></div><div class=\"row\"><div class=\"col-sm-10\"><h4><center class=\"titleMassage\">Type de massages</center></h4><div class=\"sm-6-massage\">"+ htmlSub +"</div></div><div class=\"col-sm-2 col-sm2Duree\"><h4>Durée(min)</h4>"+htmlTime+"</div></div>"
 }
 
 
@@ -580,8 +580,8 @@ function priceTotalForOneSpa(index,dataOption,dataForm){
 // [spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte]
 // [24, 180, 100, 50, 30]
 
-	let exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
-	let zone = JSON.parse(sessionStorage.getItem("zone"))
+let exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+let zone = JSON.parse(sessionStorage.getItem("zone"))
 	zone = zone.date.split("/") // MM - DD - YYYY
 	let exceptionalPrice = false
 	for (var i = exceptionalDate.length - 1; i >= 0; i--) {
@@ -661,16 +661,16 @@ function priceTotalForAllSpa(dataOption,dataForm){
 
 /*==========================================================================*/
 	// fonction principale MASSAGE
-function addCategoryMassage(){
-	let id = incrementeInc()
-	let data = document.getElementById('form-data').dataset
-	let dataMassages = JSON.parse(data.massages)
-	let categories = []
-	if ( this.dataset.cat == "Homme") {
-		categories = dataMassages[0]
-	}else{
-		categories = dataMassages[1]
-	}
+	function addCategoryMassage(){
+		let id = incrementeInc()
+		let data = document.getElementById('form-data').dataset
+		let dataMassages = JSON.parse(data.massages)
+		let categories = []
+		if ( this.dataset.cat == "Homme") {
+			categories = dataMassages[0]
+		}else{
+			categories = dataMassages[1]
+		}
 	// Enregistrement dans la session
 	let sessionSpa = JSON.parse(sessionStorage.getItem("massages"))
 	sessionSpa.push({id:id,cat:categories[0],sub:"",time:""})
@@ -815,7 +815,7 @@ function priceTotalForAllMassage(dataMassages){
 	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
 	prestations.priceMassage = price
 	sessionStorage.setItem("prestations",JSON.stringify(prestations))	
-		document.getElementById("massage-price-total").innerHTML = " : "+price+" € "
+	document.getElementById("massage-price-total").innerHTML = " : "+price+" € "
 
 	if (price == 0 && acompte == 0) {
 		document.getElementById("massage-order").classList.add('hidden')
@@ -854,28 +854,28 @@ function removeCategoryMassage(){
 }
 /*==========================================================================*/
 	// fonction principale CADEAU
-function removeCadeau(){
-	let id = JSON.parse(this.dataset.id)
-	let cadeau = JSON.parse(sessionStorage.getItem("cadeau"))
-	for (var i = cadeau.length - 1; i >= 0; i--) {
-		if(cadeau[i][0] == id){
-			cadeau[i][1]--
-			document.getElementById(id+"-nbr").innerHTML = cadeau[i][1]
-			if(cadeau[i][1] == 0){
-				cadeau.splice(i,1)
+	function removeCadeau(){
+		let id = JSON.parse(this.dataset.id)
+		let cadeau = JSON.parse(sessionStorage.getItem("cadeau"))
+		for (var i = cadeau.length - 1; i >= 0; i--) {
+			if(cadeau[i][0] == id){
+				cadeau[i][1]--
+				document.getElementById(id+"-nbr").innerHTML = cadeau[i][1]
+				if(cadeau[i][1] == 0){
+					cadeau.splice(i,1)
+				}
+				break
 			}
-			break
 		}
-	}
-	sessionStorage.setItem("cadeau",JSON.stringify(cadeau))
-	numberAtOrderBtn()
+		sessionStorage.setItem("cadeau",JSON.stringify(cadeau))
+		numberAtOrderBtn()
 
-	let changeCadeau = JSON.parse(sessionStorage.getItem("cadeau"))
-	valueInInput = ""
-	for (var i = changeCadeau.length - 1; i >= 0; i--) {
-		valueInInput += changeCadeau[i][0]+"-"+changeCadeau[i][1]+"|"
-	}
-	document.getElementById("cadeau-id").value = valueInInput
+		let changeCadeau = JSON.parse(sessionStorage.getItem("cadeau"))
+		valueInInput = ""
+		for (var i = changeCadeau.length - 1; i >= 0; i--) {
+			valueInInput += changeCadeau[i][0]+"-"+changeCadeau[i][1]+"|"
+		}
+		document.getElementById("cadeau-id").value = valueInInput
 	// calcul du prix
 	priceForAllCadeau()
 }

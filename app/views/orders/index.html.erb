@@ -1,9 +1,9 @@
 <link href="/css/resa.css" rel="stylesheet">
 
 <% if flash[:delete_js] %>
-	<script type="text/javascript">
-		sessionStorage.clear();
-	</script>
+<script type="text/javascript">
+	sessionStorage.clear();
+</script>
 <% end %>
 
 <div class="container" id="container-principale">
@@ -11,11 +11,11 @@
 		<div id="text">
 			<div class="set-zones">
 				<div class="alert alert-danger hidden" role="alert" id="errorInZone">
-				  
+					
 				</div>
-				<h2 style="color:white;">Je choisi ma zone géographique </h2>
+				<h2 style="color:white;" class="titregeog">Je choisi ma zone géographique </h2>
 
-				<%= form_tag(zone_path, remote: true) do %>
+				<%= form_tag(zone_path, remote: true, class:"pays_dep") do %>
 				<div class="pays">
 					<label class="labelle" for="country-choice">Pays</label>
 					<select name="country" id="country-choice" class="field" required>
@@ -40,7 +40,7 @@
 					
 					<label class="labelle" for="Date">Date</label>
 					<div class="input-group date ed-datepicker filterDate input-calendar" data-provide="datepicker">
-						<input type="text" name="date" id="Date" placeholder="MM-DD-YYYY" class="form-control" required>
+						<input type="text" name="date" id="Date" placeholder="MM/DD/YYYY" class="form-control" required>
 						<div class="input-group-addon calendar-icone">
 							<span class="fa fa-calendar"></span>
 						</div>
@@ -57,9 +57,9 @@
 	<!-- ==========================CONTENU ACCORDEONS================= -->
 	<div class="container allfaq">
 		<% if flash[:notice] %>
-			<div class="alert alert-danger" role="alert" id="errorForDataFormulaire">
-				<%= flash[:notice] %>
-			</div>
+		<div class="alert alert-danger" role="alert" id="errorForDataFormulaire">
+			<%= flash[:notice] %>
+		</div>
 		<% end %>
 
 		<div class="row">
@@ -93,7 +93,7 @@
 					<div class="accordion js-accordion">
 
 						<div id="loc-spa-fafana" class="accordion__item js-accordion-item">
-							<div class="accordion-header js-accordion-header patternbg"><center>LOCATION SPA</center>
+							<div class="accordion-header js-accordion-header patternbg"><center class="titleAccordion">LOCATION SPA</center>
 							</div> 
 							<div class="accordion-body js-accordion-body">
 								<div class="accordion-body__contents">
@@ -151,7 +151,7 @@
 							</div><!-- end of accordion body -->
 						</div><!-- end of accordion item -->
 						<div id="massage-fafana" class="accordion__item js-accordion-item">
-							<div class="accordion-header js-accordion-header patternbg"><center>MASSAGE À DOMICILE</center>
+							<div class="accordion-header js-accordion-header patternbg"><center class="titleAccordion">MASSAGE À DOMICILE</center>
 							</div> 
 							<div class="accordion-body js-accordion-body">
 								<div class="accordion-body__contents">
@@ -177,8 +177,8 @@
 												<div class="row">
 													<div class="col-sm-12 sm-9-spa">
 														<div class="innerWrapper">
-															<div class="table-responsive">
-																<table class="table">
+															<div class="table-responsive table-responsiveInfos">
+																<table class="table tableInfos">
 																	<thead>
 																		<tr class="tr">
 																			<th id="tableHead">Infos complémentaires</th>

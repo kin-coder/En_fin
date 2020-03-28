@@ -117,7 +117,20 @@
     }}
     @media only screen and (max-width: 600px) {
 
-
+#flechindex{
+    position: absolute;
+    right:-155px !important;
+    top: 33px;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+}
       .areserver {
         position: fixed;
         right: 4px;
@@ -7853,7 +7866,9 @@ input[type=number]::-webkit-inner-spin-button {
     left: -15px;
   }
 
-
+  .sectionSpa{
+    width: 100%;
+  }
 
   .productInfoindex{
 
@@ -7861,7 +7876,7 @@ input[type=number]::-webkit-inner-spin-button {
   }
   #flecheindex{
     position: absolute;
-    right:4px;
+    right:4px !important;
     top: 40%;
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
@@ -7905,13 +7920,13 @@ input[type=number]::-webkit-inner-spin-button {
   #productSlider .carousel-control.left i.fa-arrow-circle-left {
     text-shadow: none;
     position: absolute;
-    right: 630px;
+    right: 630px !important;
     top: 40%;
   }
 
   #fleche{
     position: absolute;
-    right:0px;
+    right:0px !important;
     top: 40%;
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
@@ -7995,5 +8010,239 @@ input[type=number]::-webkit-inner-spin-button {
   .section1{
     width: 100%;
   }
+
+  #productSlider .carousel-control.left i.flechemassage-left{
+    text-shadow: none;
+    position: absolute;
+    right: 585px !important;
+    top: 33px !important;
+  }
+  #flechindex{
+    position: absolute;
+    right:0px !important;
+    top: 33px;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
 }
 
+@media only screen and (min-width: 992px) {
+
+  #productSlider .carousel-control.left i.fa-arrow-circle-left {
+    text-shadow: none;
+    position: absolute;
+    right: 1138px !important;
+    top: 40%;
+  }
+  #productSlider .carousel-control.left i.flechespa-left{
+    text-shadow: none;
+    position: absolute;
+    right: 1050px !important;
+    top: 40%;
+  }
+  #productSlider .carousel-control.left i.flechemassage-left{
+    text-shadow: none;
+    position: absolute;
+    right: 1000px !important;
+    top: 40%;
+  }
+
+  #flecheindex{
+    position: absolute;
+    right:150px !important;
+    top: 40%;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+  #flechindex{
+    position: absolute;
+    right: 0px !important;
+    top: 33px;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  #flecheindex{
+    position: absolute;
+    right:180px !important;
+    top: 40%;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+  #flechindex{
+    position: absolute;
+    right: 0px !important;
+    top: 33px;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+  #productSlider .carousel-control.left i.fa-arrow-circle-left {
+    text-shadow: none;
+    position: absolute;
+    right: 1185px !important;
+    top: 40%;
+  }
+  #productSlider .carousel-control.left i.flechespa-left{
+    text-shadow: none;
+    position: absolute;
+    right: 1050px !important;
+    top: 40%;
+  }
+  #productSlider .carousel-control.left i.flechemassage-left{
+    text-shadow: none;
+    position: absolute;
+    right: 1000px !important;
+    top: 40%;
+  }
+}
+
+
+
+
+
+
+/*css por modal panier*/
+
+
+.welcome-message .borderBtn {
+  position: absolute;
+  top: 300%;
+  left: 45%;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.05em;
+  color: white;
+  padding: 1.45em 3.35em;
+  border-radius: 0.25em;
+  background: #ec5598;
+}
+
+.ul-btn{
+  margin-top: -15px;
+  margin-left: 20px;
+  margin-bottom: 8px;
+}
+
+.container .btn-lg {
+  background: #ec5598;
+  border: 0.05em solid rgba(195, 40, 40, .7);
+  color: white;
+}
+
+.container .btn-lg:hover {
+  background: white;
+  border: 0.05em solid #ec5598;
+  color: #ec5598;
+}
+
+.modal-body  {
+  border-radius: 0.35em;
+  margin-right: 0.25em;
+  padding: 0.15em;
+}
+
+.modal-body  {
+  margin-left: 0.35em;
+}
+
+.modal-header {
+  background: #ec5598;
+}
+
+.modal-body{
+  text-align: left;
+}
+
+.close {
+  color: white !important;
+  opacity: 0.8 !important;
+}
+
+.mohe {
+  position: relative;
+  display: block;
+  color: #ec5598;
+  float: left;
+  padding: 0.75em;
+}
+
+@media only screen and (min-width: 768px) {
+  .modal-title{
+    position: relative;
+    left: 150%;
+  }
+}
+.mohe:afte {
+  position: absolute;
+  content: "";
+  top: -1.45em;
+  bottom: -1.45em;
+  right: -7.15em;
+  border-left: 0.05em solid rgba(0, 0, 0, 0.2);
+  border-right: 0.05em solid rgba(255, 255, 255, 0.7);
+  transform: rotate(25deg);
+}
+
+.modal-footer {
+  background: #ec5598;
+}
+
+.modal-footer button {
+  background: white;
+  color: black;
+  width: 9em;
+  border-radius: 0.35em;
+}
+.important{
+  margin-top: 0.3em;
+  text-align: justify;
+  border: 1px solid #9d9696;
+  padding: 20px;
+  border-radius: 5px;
+
+}
+
+.prest{
+  margin-top: 1.2em;
+}
+.mohee{
+  float: left;
+}
+.mohee button{
+  width: 100%;
+  padding: 12px;
+  height: 45px;
+}

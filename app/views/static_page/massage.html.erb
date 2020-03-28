@@ -86,7 +86,7 @@
 <!-- SERVICES SECTION -->
 <div class="container">
   <div class="areserver">
-    <a href="javascript:void(0)" class="btn btn-common btn-full-roundd btn-theme">JE RÉSERVE</a>
+    <a href="<%= reservation_path %>" class="btn btn-common btn-full-roundd btn-theme">JE RÉSERVE</a>
   </div>
 
   <section class="clearfix reviewSection patternbg">
@@ -678,7 +678,7 @@
                   <span class="sr-only">Previous</span>
                 </a>
                 <a class="right carousel-control" href="#productSlider" role="button" data-slide="next">
-                  <i class="fa fa-arrow-circle-right ok flechemassage-right" aria-hidden="true" id='flecheindex'></i>
+                  <i class="fa fa-arrow-circle-right ok flechemassage-right" aria-hidden="true" id='flechindex'></i>
                   <span class="sr-only">Next</span>
                 </a>
               </div>
@@ -757,30 +757,31 @@
 
           <div class="contactForm">
             <div id="alert"></div><!--Response Holder-->
-            <form action="mail/contact-form.php" id="angelContactForm" method="post">
+            
+            <%= form_tag(save_message_path) do %>
               <div class="form-group">
-                <input type="text" name="contact-form-name" class="form-control" placeholder="Votre prénom" required>
-              </div>
-                            <div class="form-group">
-                <input type="text" name="contact-form-name" class="form-control" placeholder="Votre nom" required>
+                <input type="text" name="first_name" class="form-control" placeholder="Votre prénom" required>
               </div>
               <div class="form-group">
-                <input type="email" name="contact-form-email" class="form-control" placeholder="Votre Email" required>
+                <input type="text" name="last_name" class="form-control" placeholder="Votre nom" required>
               </div>
               <div class="form-group">
-                <input type="text" name="contact-form-mobile" class="form-control" placeholder="Votre Mobile" required>
-              </div>
-                            <div class="form-group">
-                <input type="text" name="contact-form-mobile" class="form-control" placeholder="Nom Entreprise">
+                <input type="email" name="email" class="form-control" placeholder="Votre Email" required>
               </div>
               <div class="form-group">
-                <textarea class="form-control" name="contact-form-message" placeholder="Dîtes-nous tout !" required></textarea>
+                <input type="text" name="mobile" class="form-control" placeholder="Votre Mobile" required>
               </div>
               <div class="form-group">
-                <button type="submit" id="contact-submit-btn" class="btn btn-primary first-btn">Envoyer</button>
+                <input type="text" name="corp_name" class="form-control" placeholder="Nom Entreprise">
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="content" placeholder="Dîtes-nous tout !" required></textarea>
+              </div>
+              <div class="form-group">
+                <%= submit_tag("Envoyer", class:"btn btn-primary first-btn", id:"contact-submit-btn")%> 
+              </div>
+            <% end %>
 
-              </div>
-            </form>
           </div>
         </div>
         <div class="col-md-4 col-sm-5 col-xs-12">

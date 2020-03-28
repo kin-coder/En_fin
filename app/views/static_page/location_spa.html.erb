@@ -1,7 +1,3 @@
-
-
-
-
 <link href="/css/massage.css" rel="stylesheet">
 <link href="/css/avisslider.css" rel="stylesheet">
 
@@ -91,7 +87,7 @@
 <!-- SERVICES SECTION -->
 <div class="container">
   <div class="areserver">
-    <a href="javascript:void(0)" class="btn btn-common btn-full-roundd btn-theme">JE RÉSERVE</a>
+    <a href="<%= reservation_path %>" class="btn btn-common btn-full-roundd btn-theme">JE RÉSERVE</a>
   </div>
 
   <section class="clearfix reviewSection patternbg">
@@ -464,7 +460,7 @@
         <div class="textccm">
           <b><span><i class="fa fa-coffee" aria-hidden="true" id="ok"></i><br></span> Service clé en main  </b>
         </div>
-        <p class='engagements'>Vous ne vous occupez de rien, un professionnel formé et agréé <br>se charge de tout (livraison, installation, remplissage, <br>vidange et démontage du spa)</p>
+        <p class='engagements'>Vous ne vous occupez de rien, un professionnel formé et agréé se charge de tout (livraison, installation, remplissage, <br>vidange et démontage du spa)</p>
       </div>
 
       <div class="col-sm-6 engagement-spa">
@@ -658,41 +654,51 @@
                   </div>
                 </div>
                 <div class="row isotopeContainer" id="container">
+            <%for n_tout in (1..53) do%>
+
+
                   <div class="col-sm-3 isotopeSelector tout">
                     <div class="card">
                       <div class="card-img">
-                        <img class="img-full" src="img/home/gallery-1.jpg" alt="Image" >
+                        <img class="img-full" src="img/touts/tout<%=n_tout%>.jpg" alt="Image" >
                         <div class="overlay-content">
-                          <a href="img/home/gallery-1.jpg" data-fancybox="images" >
-                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3 isotopeSelector ambiance">
-                    <div class="card">
-                      <div class="card-img">
-                        <img class="img-full" src="img/home/gallery-2.jpg" alt="Image" >
-                        <div class="overlay-content">
-                          <a href="img/home/gallery-2.jpg" data-fancybox="images" >
-                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br>Skin Care</h5>
+                          <a href="img/touts/tout<%=n_tout%>.jpg"data-fancybox="images" >
+                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
                           </a>
                         </div>
                       </div>
                     </div>
                   </div>
 
+          <%end%> 
+
+<%for n_ambiance in (1..32) do%>
+
+
+                  <div class="col-sm-3 isotopeSelector ambiance">
+                    <div class="card">
+                      <div class="card-img">
+                        <img class="img-full" src="img/ambiances/ambiance<%=n_ambiance%>.jpg" alt="Image" >
+                        <div class="overlay-content">
+                          <a href="img/ambiances/ambiance<%=n_ambiance%>.jpg"data-fancybox="images" >
+                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+          <%end%> 
                  
-<%for n in (1..16) do%>
+<%for n_extra in (1..16) do%>
 
 
                   <div class="col-sm-3 isotopeSelector extra">
                     <div class="card">
                       <div class="card-img">
-                        <img class="img-full" src="img/extras/extra<%=n%>.jpg" alt="Image" >
+                        <img class="img-full" src="img/extras/extra<%=n_extra%>.jpg" alt="Image" >
                         <div class="overlay-content">
-                          <a href="img/extras/extra<%=n%>.jpg"data-fancybox="images" >
+                          <a href="img/extras/extra<%=n_extra%>.jpg"data-fancybox="images" >
                             <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
                           </a>
                         </div>
@@ -793,30 +799,29 @@
 
             <div class="contactForm">
               <div id="alert"></div><!--Response Holder-->
-              <form action="mail/contact-form.php" id="angelContactForm" method="post">
+              <%= form_tag(save_message_path) do %>
                 <div class="form-group">
-                  <input type="text" name="contact-form-name" class="form-control" placeholder="Votre prénom" required>
+                  <input type="text" name="first_name" class="form-control" placeholder="Votre prénom" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" name="contact-form-name" class="form-control" placeholder="Votre nom" required>
+                  <input type="text" name="last_name" class="form-control" placeholder="Votre nom" required>
                 </div>
                 <div class="form-group">
-                  <input type="email" name="contact-form-email" class="form-control" placeholder="Votre Email" required>
+                  <input type="email" name="email" class="form-control" placeholder="Votre Email" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" name="contact-form-mobile" class="form-control" placeholder="Votre Mobile" required>
+                  <input type="text" name="mobile" class="form-control" placeholder="Votre Mobile" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" name="contact-form-mobile" class="form-control" placeholder="Nom Entreprise">
+                  <input type="text" name="corp_name" class="form-control" placeholder="Nom Entreprise">
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" name="contact-form-message" placeholder="Dîtes-nous tout !" required></textarea>
+                  <textarea class="form-control" name="content" placeholder="Dîtes-nous tout !" required></textarea>
                 </div>
                 <div class="form-group">
-                  <button type="submit" id="contact-submit-btn" class="btn btn-primary first-btn">Envoyer</button>
-
+                  <%= submit_tag("Envoyer", class:"btn btn-primary first-btn", id:"contact-submit-btn")%> 
                 </div>
-              </form>
+              <% end %>
             </div>
           </div>
           <div class="col-md-4 col-sm-5 col-xs-12">
@@ -841,14 +846,6 @@
         </div>
       </div>
     </section>
-
-
-
-
-
-
-
-
 
     <!-- decoration MODAL -->
     <div id="romantique" class="modal fade modalCommon" role="dialog" tabindex="-1">
