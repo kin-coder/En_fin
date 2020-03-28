@@ -138,141 +138,204 @@
 
 
       <!-- Flash pour l'envoye de message-->
-      <% if flash[:success]%>
-      <div class="alert alert-success" role="alert">
-        <%= flash[:success] %>
-      </div>
-      <% end %>
-      <% if flash[:danger]%>
-      <div class="alert alert-danger" role="alert">
-        <%= flash[:danger] %>
-      </div>
-      <% end %>
-
-
-      <%= yield %>
-
-    </div>
-    <!-- FOOTER -->
-    <footer style="background-image: url(img/home/footer-bg.jpg);">
-      <!-- BACK TO TOP BUTTON -->
-      <a href="#pageTop" class="backToTop"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
-      <!-- FOOTER INFO -->
-      <div class="clearfix footerInfo">
-        <div class="container">
-          <div class="row">
-
-
-            <div class="col-sm-3 col-xs-12">
-              <div class="footerText">
-                <span class="footerLogo" data-method="GET">
-                  <img src="/img/logo-ccspa.png" alt="Cocooningspa">
-
-                </span>
-                <p class="p-footer">Le nouveau partenaire de vos instants bien-être à domicile !</p>
-
+      <center>
+        <% if flash[:success]%>
+        <div class="modal fade" id="flash">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
               </div>
-            </div>
-
-            <div class="col-sm-3 col-xs-12">
-
-              <div class="footerInfoTitle">
-                <h4>Notre concept</h4>
-              </div>
-              <div class="useLink">
-                <ul class="list-unstyle">
-                  <li><a href="<%=root_path%>" data-method="GET">Accueil Cocooning Spa</a></li>
-
-                  <li><a href="<%=spa_path%>" data-method="GET">Location spa/jacuzzi à domicile</a></li>
-
-                  <li><a href="<%=massage_path%>" data-method="GET">Massage à domicile</a></li>
-
-                  <li><a href="<%=partner_path%>" data-method="GET">Pour les entreprises </a></li>
-
-                  <li><a href="/#zoneaction" data-method="GET">Nos zones d’action</a></li>
-
-                </ul>
-              </div>
-
-            </div>
-            <div class="col-sm-3 col-xs-12 paddingLeft">
-              <div class="footerInfoTitle">
-                <h4>Cocooning Spa</h4>
-              </div>
-              <div class="useLink">
-                <ul class="list-unstyle">
-                  <li><a href="<%=propos_path%>" data-method="GET">À propos de nous</a></li>
-                  <li><a href="/#avis" data-method="GET">Avis</a></li>
-                  <li><a href="<%=partner_path%>" data-method="GET">Devenir partenaires</a></li>
-                  <li><a href="<%=contact_path%>" data-method="GET">Nous contacter</a></li>
-                  <li><a href="<%=faq_path%>" data-method="GET">FAQ</a></li>
-                  <li><a href="<%=legalnotice_path%>" data-method="GET">Mentions légales </a>-<a href="<%=cgu_path%>" data-method="GET"> CGU</a></li>
-                  <li><a href="<%=faq_path%>" data-method="GET">Conditions d'annulation</a></li>
-
-
-                </ul>
-              </div>
-            </div>
-            <div class="col-sm-3 col-xs-12">
-              <div class="footerInfoTitle">
-                <h4 id="galerie">Restons connectés</h4>
-              </div>
-              <div class="footerGallery row">
-                <div class="col-xs-4">
-                  <a href=" https://www.facebook.com/cocooningspaev/" style="background-image: url(/img/home/facebook.png);"></a>
+              <div class="modal-body">
+                <div class="alert alert-success" role="alert">
+                  <%= flash[:success] %>
                 </div>
-                <div class="col-xs-4">
-                  <a href="https://www.instagram.com/cocooningspaev/?hl=fr" style="background-image: url(/img/home/instagram.png);"></a>
-                </div>
-                <div class="col-xs-4">
-                  <a href="https://www.snapchat.com/add/cocooningspaev" style="background-image: url(/img/home/snapchat.png);"></a>
-                </div>
-
+                
               </div>
             </div>
-
           </div>
         </div>
-      </div>
+        <% end %>
+        <% if flash[:danger]%>
 
-      <!-- COPY RIGHT -->
-      <div class="clearfix copyRight">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-2 col-xs-12">
-
+        <div class="modal fade" id="flash">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+              </div>
+              <div class="modal-body">
+                <div class="alert alert-danger" role="alert">
+                  <%= flash[:danger] %>
+                </div>
+                
+              </div>
             </div>
-            <div class="col-sm-3 col-xs-12">
-              <div class="copyRightText">
-                <div class="footerInfoTitle">     
-                 <img src="/img/home/Mercanet.jpeg" alt="">
-               </div>
+          </div>
+        </div>
+
+        <% end %>
+
+        <% if notice %>
+        <div class="modal fade" id="flash">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-titl">Cocooning Spa</h4>
+              </div>
+              <div class="modal-body">
+               <div class="alert alert-success"><%= notice %></div>
+
              </div>
            </div>
-           <div class="col-sm-3 col-xs-12">
-            <div class="copyRightText">
-              <div class="footerInfoTitles">
-                <h4>Horaires services </h4>
-                <i>Lundi-Dimanche : 8:00 - 22:00 <br>
-                365 jours/an</i>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3 col-xs-12">
-            <div class="copyRightText">
-              <div class="footerInfoTitles">
-                <h4>Horaires bureau </h4>
-                <i>Lundi-Dimanche : 8:00 - 20:00 <br>
-                06 67 07 65 87 </i>
-              </div>
-            </div>
-          </div>
+         </div>
+       </div>
+       <% end %>
 
+       <% if alert %>
+       <div class="modal fade" id="flash">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Cocooning Spa</h4>
+            </div>
+            <div class="modal-body">
+             <div class="alert alert-danger"><%= alert %></div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <% end %>
+
+   </center> 
+
+   <%= yield %>
+
+ </div>
+ <!-- FOOTER -->
+ <footer style="background-image: url(img/home/footer-bg.jpg);">
+  <!-- BACK TO TOP BUTTON -->
+  <a href="#pageTop" class="backToTop"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+  <!-- FOOTER INFO -->
+  <div class="clearfix footerInfo">
+    <div class="container">
+      <div class="row">
+
+
+        <div class="col-sm-3 col-xs-12">
+          <div class="footerText">
+            <span class="footerLogo" data-method="GET">
+              <img src="/img/logo-ccspa.png" alt="Cocooningspa">
+
+            </span>
+            <p class="p-footer">Le nouveau partenaire de vos instants bien-être à domicile !</p>
+
+          </div>
+        </div>
+
+        <div class="col-sm-3 col-xs-12">
+
+          <div class="footerInfoTitle">
+            <h4>Notre concept</h4>
+          </div>
+          <div class="useLink">
+            <ul class="list-unstyle">
+              <li><a href="<%=root_path%>" data-method="GET">Accueil Cocooning Spa</a></li>
+
+              <li><a href="<%=spa_path%>" data-method="GET">Location spa/jacuzzi à domicile</a></li>
+
+              <li><a href="<%=massage_path%>" data-method="GET">Massage à domicile</a></li>
+
+              <li><a href="<%=partner_path%>" data-method="GET">Pour les entreprises </a></li>
+
+              <li><a href="/#zoneaction" data-method="GET">Nos zones d’action</a></li>
+
+            </ul>
+          </div>
 
         </div>
+        <div class="col-sm-3 col-xs-12 paddingLeft">
+          <div class="footerInfoTitle">
+            <h4>Cocooning Spa</h4>
+          </div>
+          <div class="useLink">
+            <ul class="list-unstyle">
+              <li><a href="<%=propos_path%>" data-method="GET">À propos de nous</a></li>
+              <li><a href="/#avis" data-method="GET">Avis</a></li>
+              <li><a href="<%=partner_path%>" data-method="GET">Devenir partenaires</a></li>
+              <li><a href="<%=contact_path%>" data-method="GET">Nous contacter</a></li>
+              <li><a href="<%=faq_path%>" data-method="GET">FAQ</a></li>
+              <li><a href="<%=legalnotice_path%>" data-method="GET">Mentions légales </a>-<a href="<%=cgu_path%>" data-method="GET"> CGU</a></li>
+              <li><a href="<%=faq_path%>" data-method="GET">Conditions d'annulation</a></li>
+
+
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-3 col-xs-12">
+          <div class="footerInfoTitle">
+            <h4 id="galerie">Restons connectés</h4>
+          </div>
+          <div class="footerGallery row">
+            <div class="col-xs-4">
+              <a href=" https://www.facebook.com/cocooningspaev/" style="background-image: url(/img/home/facebook.png);"></a>
+            </div>
+            <div class="col-xs-4">
+              <a href="https://www.instagram.com/cocooningspaev/?hl=fr" style="background-image: url(/img/home/instagram.png);"></a>
+            </div>
+            <div class="col-xs-4">
+              <a href="https://www.snapchat.com/add/cocooningspaev" style="background-image: url(/img/home/snapchat.png);"></a>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
-  </footer>
+  </div>
+
+  <!-- COPY RIGHT -->
+  <div class="clearfix copyRight">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-2 col-xs-12">
+
+        </div>
+        <div class="col-sm-3 col-xs-12">
+          <div class="copyRightText">
+            <div class="footerInfoTitle">     
+             <img src="/img/home/Mercanet.jpeg" alt="">
+           </div>
+         </div>
+       </div>
+       <div class="col-sm-3 col-xs-12">
+        <div class="copyRightText">
+          <div class="footerInfoTitles">
+            <h4>Horaires services </h4>
+            <i>Lundi-Dimanche : 8:00 - 22:00 <br>
+            365 jours/an</i>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 col-xs-12">
+        <div class="copyRightText">
+          <div class="footerInfoTitles">
+            <h4>Horaires bureau </h4>
+            <i>Lundi-Dimanche : 8:00 - 20:00 <br>
+            06 67 07 65 87 </i>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+</footer>
 </div>
 <!-- APPOINMENT MODAL -->
 <div id="appoinmentModal" class="modal fade modalCommon" role="dialog" tabindex="-1">

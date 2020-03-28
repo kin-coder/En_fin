@@ -503,5 +503,10 @@ $(document).ready(function(){
 });
 
 
+$('#flash').modal('show');
+
+setTimeout(function() {
+    $('#flash').modal('hide');
+}, 5000);
 
 
