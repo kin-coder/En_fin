@@ -6,7 +6,7 @@ class CreateCandidates < ActiveRecord::Migration[6.0]
       t.string :last_name
       t.string :date_of_birth
       t.string :raison_sociale
-      t.string :siret
+      t.string :siren
       t.string :email
       t.string :telephone
       t.string :adresse

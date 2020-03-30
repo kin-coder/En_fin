@@ -31,7 +31,7 @@ class StaticPageController < ApplicationController
     @candidate.last_name = params["last_name"]
     @candidate.date_of_birth = params["date"]
     @candidate.raison_sociale = params["raison_sociale"]
-    @candidate.siret = params["siret"]
+    @candidate.siren = params["siret"]
     @candidate.email = params["email"]
     @candidate.telephone = params["tel"]
     @candidate.adresse = params["adresse"]

@@ -1,6 +1,27 @@
 ---
 fr:
   activerecord:
+    attributes:
+      candidate:
+        sexe: 'le champ sexe'
+        first_name: 'le champ prénom'
+        last_name: 'le champ nom'
+        date_of_birth: 'le champ date de naissance'
+        raison_sociale: 'le champ raison sociale'
+        siren: 'le champ siren'
+        zip_code: 'le champ code postal'
+        country: 'le champ pays'
+        countries: 'Le(s) zone(s) où vous pouvez faire vos prestations'
+        email: 'le champ email'
+        telephone: 'le champ telephone'
+        ville: 'le champ ville'
+        adresse: 'le champ adresse'
+      message:
+        first_name: 'le champ prénom'
+        last_name: 'le champ nom'
+        email: 'le champ email'
+        tel: 'le champ telephone'
+        content: 'le contenue de votre messages'
     errors:
       messages:
         record_invalid: 'La validation a échoué : %{errors}'
