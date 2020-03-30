@@ -115,6 +115,7 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
+  # config for mailer
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
@@ -125,5 +126,8 @@ Rails.application.configure do
     authentication:       'plain',
     enable_starttls_auto: true 
   }
+  
+  # config for french error
+  config.i18n.available_locales = : fr
 
 end
