@@ -22,6 +22,17 @@ fr:
         email: 'le champ email'
         tel: 'le champ telephone'
         content: 'le contenue de votre messages'
+      client:
+        first_name: 'le champ prénom'
+        last_name: 'le champ nom'
+        tel: 'le champ telephone'
+        sexe: 'le champ sexe'
+        zip_code: 'le champ code postal'
+        country: 'le champ pays'
+        email: 'le champ email'
+        adresse: 'le champ adresse'
+        password: 'le champ mot de passe'
+        password_confirmation: 'le champ confirmation mot de passe'
     errors:
       messages:
         record_invalid: 'La validation a échoué : %{errors}'
