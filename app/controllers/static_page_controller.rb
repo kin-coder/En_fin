@@ -19,7 +19,6 @@ class StaticPageController < ApplicationController
   end
 # Devenir partenaire inscription prestataire
   def partner
-    @candidate = Candidate.new
     @services = Service.all
     @countries = Country.all
     @departments = Department.all
@@ -32,7 +31,7 @@ class StaticPageController < ApplicationController
     @candidate.last_name = params["last_name"]
     @candidate.date_of_birth = params["date"]
     @candidate.raison_sociale = params["raison_sociale"]
-    @candidate.siret = params["siret"]
+    @candidate.siren = params["siret"]
     @candidate.email = params["email"]
     @candidate.telephone = params["tel"]
     @candidate.adresse = params["adresse"]
@@ -40,18 +39,30 @@ class StaticPageController < ApplicationController
     @candidate.ville = params["town"]
     @candidate.country = params["country"]
     @candidate.services = params["service"].join('|')
-    @candidate.countries = params["countries"].join('|')
-    if params["countries"].include?("France")
-      if params["departments"]
-        @candidate.developments = params["departments"].join('|')
+
+    if params["countries"]
+      if params["countries"].include?("France")
+        if params["departments"]
+          @candidate.departments = params["departments"].join('|')
+          @candidate.countries = params["countries"].join('|')
+        else
+          @candidate.save
+          flash[:list_message_errors] = @candidate.errors.full_messages
+          flash[:list_message_errors].push("Si vous choisisser France veuillez cocher au moins un de ces départements")
+          redirect_back(fallback_location: root_path)
+          return
+        end
       else
-        redirect_to partner_path
+        @candidate.countries = params["countries"].join('|')
       end
     end
+
     if @candidate.save
-      redirect_to contact_path, notice: "Votre inscription a été envoyer avec succès! En attente de validation par l'administrateur du site."
+      flash[:notice] = "Votre inscription a été envoyer avec succès! En attente de validation par l'administrateur du site."
+      redirect_back(fallback_location: root_path)
     else
-      redirect_to partner_path
+      flash[:list_message_errors] = @candidate.errors.full_messages
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -95,7 +106,7 @@ class StaticPageController < ApplicationController
       flash[:success] = "Votre message a été bien envoyer en vous contactera très bientôt"
       redirect_back(fallback_location: root_path)
     else
-      flash[:danger] = @message.errors.messages
+      flash[:danger] = @message.errors.full_messages
       redirect_back(fallback_location: root_path)
     end
   end
