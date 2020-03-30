@@ -3,13 +3,11 @@
 <div class="container" style="background: white;">
 
 	<section class="clearfix pageTitleArea" style="background-image: url(img/blog/pageTitle-bg.jpg);">
-
 		<div class="pageTitle">
 			<div class="secotionTitle">
 				<h2 class="policeBaniere"><span>Cocooning Spa ... <br>est le tremplin qu’il vous faut !</span><em class="titlePartner">Développer votre clientèle et augmenter votre CA ne sera plus un souci !</em></h2>
 			</div>
 		</div>
-
 	</section>
 
 	<div class="secotionTitle contactTitle">
@@ -187,7 +185,7 @@
 			</div>
 
 			<dl class="form-group dropdown">
-				<input autofocus="autofocus" name="country" class="form-control" id="fullname" placeholder="Zone d'actions" type="text">
+				<input autofocus="autofocus" class="form-control" id="fullname" disabled="disabled" placeholder="Zone d'actions" type="text">
 				<dt>
 					<i >
 						<span class="hida fa fa-chevron-down"></span>    
@@ -198,12 +196,12 @@
 					<div class="mutliSelect">
 						<ul>
 							<% @countries.each do |country| %>
-
 							<li>
 								<input type="checkbox" class="js-country" name="countries[]" id="<%=dom_id(country)%>" value="<%= country.name %>">
 								<label for="<%=dom_id(country)%>"><%= country.name %></label><br>
 							</li>	
 							<% end %>
+
 							<div id="js-department-list" class="hidden">
 								<h6>Dans quels Départements</h6>
 								<div class="departements">
@@ -213,6 +211,7 @@
 									<% end %>
 								</div>
 							</div>
+
 						</ul>
 					</div>
 				</dd>

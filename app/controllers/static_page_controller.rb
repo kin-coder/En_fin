@@ -48,7 +48,7 @@ class StaticPageController < ApplicationController
         else
           @candidate.save
           flash[:list_message_errors] = @candidate.errors.full_messages
-          flash[:list_message_errors].push("Si vous choisisser France veuillez cocher au moins un de ces départements")
+          flash[:list_message_errors].push("Si vous choisisser France veuillez cocher au moins une de ces départements")
           redirect_back(fallback_location: root_path)
           return
         end
