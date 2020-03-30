@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.string "country"
     t.string "services"
     t.string "countries"
-    t.string "developments"
+    t.string "departments"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
