@@ -113,6 +113,22 @@
 
 	<%= form_tag(save_partner_path) do %>
 		<div class="row">
+			<% if true %>
+				<div class="alert alert-danger">
+					<%= @message %>
+				</div>
+			<% end %>
+
+			<% if @candidate %>
+			<div class="alert alert-danger">
+				<li><%= @candidate %></li>
+				<% @candidate.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</div>
+			<% end %>
+
+
 			<div class="col-sm-12">
 				<div class="switch-field">
 					<input type="radio" id="radio-one" name="sex" value="Madame" checked/>
@@ -127,7 +143,7 @@
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group">
-					<input autofocus="autofocus" name="first_name" class="form-control" id="fullname" placeholder="Votre nom" type="text" required>
+					<input autofocus="autofocus" name="first_name" class="form-control" id="fullname" placeholder="Votre nom" type="text" >
 				</div>
 
 				<div class="form-group">

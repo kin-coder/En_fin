@@ -12,5 +12,6 @@ class Candidate < ApplicationRecord
 	validates :ville, presence: true
 	validates :country, presence: true
 	validates :services, presence: true
-	
+	validates :countries, presence: true
+	validates :developments, presence: true
 end

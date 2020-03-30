@@ -126,8 +126,4 @@ Rails.application.configure do
     authentication:       'plain',
     enable_starttls_auto: true 
   }
-  
-  # config for french error
-  config.i18n.available_locales = : fr
-
 end

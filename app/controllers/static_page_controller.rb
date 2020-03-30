@@ -26,7 +26,9 @@ class StaticPageController < ApplicationController
   end
 
   def savePartner
+
     @candidate = Candidate.new
+
     @candidate.sexe = params["sex"]
     @candidate.first_name = params["first_name"]
     @candidate.last_name = params["last_name"]
@@ -39,19 +41,26 @@ class StaticPageController < ApplicationController
     @candidate.zip_code = params["zip_code"]
     @candidate.ville = params["town"]
     @candidate.country = params["country"]
-    @candidate.services = params["service"].join('|')
-    @candidate.countries = params["countries"].join('|')
-    if params["countries"].include?("France")
-      if params["departments"]
-        @candidate.developments = params["departments"].join('|')
-      else
-        redirect_to partner_path
-      end
-    end
+
+    # if params["countries"] && params["countries"].include?("France")
+    #   if params["departments"]
+    #     @candidate.developments = params["departments"].join('|')
+    #   else
+    #     flash[:danger] = "Votre zone de prestations"
+    #     redirect_back(fallback_location: root_path)
+    #   end
+    # end
+
+    # @candidate.services = params["service"].join('|')
+    # @candidate.countries = params["countries"].join('|')
+
     if @candidate.save
-      redirect_to contact_path, notice: "Votre inscription a été envoyer avec succès! En attente de validation par l'administrateur du site."
+      flash[:notice] = "Votre inscription a été envoyer avec succès! En attente de validation par l'administrateur du site."
+      redirect_back(fallback_location: root_path)
     else
+      @message = "dsqfdsfsdfsdf"
       redirect_to partner_path
+      redirect_back(fallback_location: root_path)
     end
   end
 
