@@ -112,6 +112,7 @@
 	</div>
 
 	<%= form_tag(save_partner_path) do %>
+
 		<div class="row">
 			
 			<% if flash[:list_message_errors] %>
@@ -121,20 +122,16 @@
 				<% end %>
 			</div>
 			<% end %>
-
-
 			<div class="col-sm-12">
 				<div class="switch-field">
 					<input type="radio" id="radio-one" name="sex" value="Madame" checked/>
 					<label for="radio-one" class="radio-one">Madame</label>
-
-					<span class="label2">
-						<input type="radio" id="radio-two" name="sex" value="Monsieur" />
-						<label for="radio-two" class="radio-two">Monsieur</label>
-					</span>
-
-				</div>
+				<span class="label2">
+					<input type="radio" id="radio-two" name="sex" value="Monsieur" />
+					<label for="radio-two" class="radio-two">Monsieur</label>
+				</span>
 			</div>
+		</div>
 			<div class="col-sm-6">
 				<div class="form-group">
 					<input autofocus="autofocus" name="last_name" class="form-control" id="fullname" placeholder="Votre nom" type="text" required>
@@ -143,52 +140,82 @@
 				<div class="form-group">
 					<input autofocus="autofocus" name="first_name" class="form-control" id="fullname" placeholder="Votre prénom" type="text" required>
 				</div>
-
-				<div class="dateSelect form-half form-left select-date">
-					<div class="input-group date ed-datepicker filterDate input-calendar" data-provide="datepicker">
-						<input type="text" name="date" id="Date" placeholder="Date de naissance" class="form-control" required>
-						<div class="input-group-addon calendar-icone">
-							<span class="fa fa-calendar"></span>
-						</div>
+			<div class="dateSelect form-half form-left select-date">
+				<div class="input-group date ed-datepicker filterDate input-calendar" data-provide="datepicker">
+					<input type="text" name="date" id="Date" placeholder="Date de naissance" class="form-control form-controldate" required>
+					<div class="input-group-addon calendar-icone">
+						<span class="fa fa-calendar"></span>
 					</div>
-				</div>
-
-				<div class="form-group">
-					<input autofocus="autofocus" name="raison_sociale" class="form-control" id="fullname" placeholder="Raison sociale" type="text">
-				</div>
-
-				<div class="form-group">
-					<input autofocus="autofocus" name="siret" class="form-control" id="fullname" placeholder="SIRET" type="text">
-				</div>
-
-				<div class="form-group">
-
-					<input autofocus="autofocus" name="email" class="form-control" id="fullname" placeholder="Email" type="email" required>
 				</div>
 			</div>
 
-			<div class="col-sm-6">
+			<div class="form-group">
+				<input autofocus="autofocus" name="raison_sociale" class="form-control" id="fullname" placeholder="Raison sociale" type="text">
+			</div>
 
-				<div class="form-group">
+			<div class="form-group">
+				<input autofocus="autofocus" name="siret" class="form-control" id="fullname" placeholder="SIRET" type="text">
+			</div>
 
-					<input autofocus="autofocus" name="tel" class="form-control" id="fullname" placeholder="Téléphone" type="tel" required>
-				</div>
+			<div class="form-group">
 
-				<div class="form-group">
-					<input autofocus="autofocus" name="adresse" class="form-control" id="fullname" placeholder="Adresse" type="text" required>
-				</div>
+				<input autofocus="autofocus" name="email" class="form-control" id="fullname" placeholder="Email" type="email" required>
+			</div>
+		</div>
 
-				<div class="form-group">
-					<input autofocus="autofocus" name="zip_code" class="form-control" id="fullname" placeholder="Code Postal" type="text" required>
-				</div>
+		<div class="col-sm-6">
 
-				<div class="form-group form-groupp">
-					<input autofocus="autofocus" name="town" class="form-control" id="fullname" placeholder="Ville" type="text" required>
-				</div>
+			<div class="form-group">
 
-				<div class="form-group">
-					<input autofocus="autofocus" name="country" class="form-control" id="fullname" placeholder="Pays " type="text" required>
-				</div>
+				<input autofocus="autofocus" name="tel" class="form-control" id="fullname" placeholder="Téléphone" type="tel" required>
+			</div>
+
+			<div class="form-group">
+				<input autofocus="autofocus" name="adresse" class="form-control" id="fullname" placeholder="Adresse" type="text" required>
+			</div>
+
+			<div class="form-group">
+				<input autofocus="autofocus" name="zip_code" class="form-control" id="fullname" placeholder="Code Postal" type="text" required>
+			</div>
+
+			<div class="form-group form-groupp">
+				<input autofocus="autofocus" name="town" class="form-control" id="fullname" placeholder="Ville" type="text" required>
+			</div>
+
+			<div class="form-group">
+				<input autofocus="autofocus" name="country" class="form-control" id="fullname" placeholder="Pays " type="text" required>
+			</div>
+
+			<dl class="form-group dropdown">
+				<input autofocus="autofocus" name="country" class="form-control" id="fullname" placeholder="Zone d'actions" type="text">
+				<dt>
+					<i >
+						<span class="hida fa fa-chevron-down"></span>    
+						<p class="multiSel"></p>  
+					</i>
+				</dt>
+				<dd>
+					<div class="mutliSelect">
+						<ul>
+							<% @countries.each do |country| %>
+
+							<li>
+								<input type="checkbox" class="js-country" name="countries[]" id="<%=dom_id(country)%>" value="<%= country.name %>">
+								<label for="<%=dom_id(country)%>"><%= country.name %></label><br>
+							</li>	
+							<% end %>
+							<div id="js-department-list" class="hidden">
+								<h6>Dans quels Départements</h6>
+								<div class="departements">
+									<% @departments.each do |department| %>
+									<input type="checkbox" class="js-department" name="departments[]" id="<%=dom_id(department)%>" value="<%= department.name %>">
+									<label for="<%=dom_id(department)%>"><%= department.name %></label><br>
+									<% end %>
+								</div>
+							</div>
+						</ul>
+					</div>
+				</dd>
 
 				<div class="choix">
 					<i class="domaine">Choix Domaine d’activité : </i> 
@@ -205,101 +232,90 @@
 						<span class="switch-handle"></span>
 					</label>
 				</div>
-			</div>
+			</dl>
 		</div>
-
+		<div class="col-sm-12">
 		<div class="actions">
-			<h3>Dans quelle zone vous pouvez faire vos prestation ?</h3>
-			<div class="choix">
-				<h6>Dans quelle pays</h6>
-			    <% @countries.each do |country| %>
-					<input type="checkbox" class="js-country" name="countries[]" id="<%=dom_id(country)%>" value="<%= country.name %>">
-					<label for="<%=dom_id(country)%>"><%= country.name %></label><br>
-			    <% end %>
-		    </div>
 
-		    <div id="js-department-list" class="hidden">
-			    <h6>Dans quelle department</h6>
-			    <% @departments.each do |department| %>
-					<input type="checkbox" class="js-department" name="departments[]" id="<%=dom_id(department)%>" value="<%= department.name %>">
-					<label for="<%=dom_id(department)%>"><%= department.name %></label><br>
-			    <% end %>
-			</div>
+
 
 			<input id="cgu" type="checkbox"> <label for="cgu"> J'accepte les <a href="<%=cgu_path%>">conditions générales d'utilisation</a></label>
-			
+
 			<%= submit_tag("Je m'inscris", class:"btn btn-primary btn-block")%>	
 
 		</div>
-	<% end %>
-
-
-	<!-- SECTION6 -->
-	<section class="container-fluid clearfix productArea">
-
-		<div class="secotionTitle">
-			<h2 class="police_massage"><span>Besoin d’infos ?</span>Des questions ?</h2>
 		</div>
+		<% end %>
 
 
-	</section>
+		<!-- SECTION6 -->
+		<section class="container-fluid clearfix productArea">
 
-	<section class="clearfix contactSection">
-		<div class="secotionTitle">
-			<div class="row">
-				<div class="p-part">Vous avez besoin de plus d’infos concernant nos partenariats ?<br> N’hésitez pas à nous contacter pour en savoir davantage !</div>
-				<div class="col-md-8 col-sm-7 col-xs-12">
-					<div class="contactTitle">
-						<h3></br></h3>
-					</div>
+			<div class="secotionTitle">
+				<h2 class="police_massage"><span>Besoin d’infos ?</span>Des questions ?</h2>
+			</div>
 
-					<div class="contactForm">
-						<div id="alert"></div><!--Response Holder-->
-						<%= form_tag(save_message_path) do %>
-			                <div class="form-group">
-			                  <input type="text" name="first_name" class="form-control" placeholder="Votre prénom" required>
-			                </div>
-			                <div class="form-group">
-			                  <input type="text" name="last_name" class="form-control" placeholder="Votre nom" required>
-			                </div>
-			                <div class="form-group">
-			                  <input type="email" name="email" class="form-control" placeholder="Votre Email" required>
-			                </div>
-			                <div class="form-group">
-			                  <input type="text" name="mobile" class="form-control" placeholder="Votre Mobile" required>
-			                </div>
-			                <div class="form-group">
-			                  <input type="text" name="corp_name" class="form-control" placeholder="Nom Entreprise">
-			                </div>
-			                <div class="form-group">
-			                  <textarea class="form-control" name="content" placeholder="Dîtes-nous tout !" required></textarea>
-			                </div>
-			                <div class="form-group">
-			                  <%= submit_tag("Envoyer", class:"btn btn-primary first-btn", id:"contact-submit-btn")%> 
-			                </div>
-			            <% end %>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-5 col-xs-12">
 
-					<div class="holdingInfo patternbg">
+		</section>
+
+		<section class="clearfix contactSection">
+			<div class="secotionTitle">
+				<div class="row">
+					<div class="p-part">Vous avez besoin de plus d’infos concernant nos partenariats ?<br> N’hésitez pas à nous contacter pour en savoir davantage !</div>
+					<div class="col-md-8 col-sm-7 col-xs-12">
 						<div class="contactTitle">
-							<h3><center>Suivez-nous</center></h3>
+							<h3></br></h3>
 						</div>
-						<ul>
-							<a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa icon" aria-hidden="true">
-								<img src="/img/icon-reseau-social/facebook.png" alt="">
-							</i> Cocooning Spa officiel </li></a>
-							<a href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa icon" aria-hidden="true"> 
-								<img src="/img/icon-reseau-social/instagram.png" alt="">
-							</i> Cocooning Spa </li></a>
-							<a href="https://www.snapchat.com/add/cocooningspaev" class="btn"> <li><i class="fa icon" aria-hidden="true">
-								<img src="/img/icon-reseau-social/snapchat.png" alt="">
-							</i> Cocooning Spa snapchat</li> </a>
-						</ul>
+
+						<div class="contactForm">
+							<div id="alert"></div><!--Response Holder-->
+							<%= form_tag(save_message_path) do %>
+							<div class="form-group">
+								<input type="text" name="first_name" class="form-control" placeholder="Votre prénom" required>
+							</div>
+							<div class="form-group">
+								<input type="text" name="last_name" class="form-control" placeholder="Votre nom" required>
+							</div>
+							<div class="form-group">
+								<input type="email" name="email" class="form-control" placeholder="Votre Email" required>
+							</div>
+							<div class="form-group">
+								<input type="text" name="mobile" class="form-control" placeholder="Votre Mobile" required>
+							</div>
+							<div class="form-group">
+								<input type="text" name="corp_name" class="form-control" placeholder="Nom Entreprise">
+							</div>
+							<div class="form-group">
+								<textarea class="form-control" name="content" placeholder="Dîtes-nous tout !" required></textarea>
+							</div>
+							<div class="form-group">
+								<%= submit_tag("Envoyer", class:"btn btn-primary first-btn", id:"contact-submit-btn")%> 
+							</div>
+							<% end %>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-5 col-xs-12">
+
+						<div class="holdingInfo patternbg">
+							<div class="contactTitle">
+								<h3><center>Suivez-nous</center></h3>
+							</div>
+							<ul>
+								<a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa icon" aria-hidden="true">
+									<img src="/img/icon-reseau-social/facebook.png" alt="">
+								</i> Cocooning Spa officiel </li></a>
+								<a href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa icon" aria-hidden="true"> 
+									<img src="/img/icon-reseau-social/instagram.png" alt="">
+								</i> Cocooning Spa </li></a>
+								<a href="https://www.snapchat.com/add/cocooningspaev" class="btn"> <li><i class="fa icon" aria-hidden="true">
+									<img src="/img/icon-reseau-social/snapchat.png" alt="">
+								</i> Cocooning Spa snapchat</li> </a>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-<script data-turbolinks-track = "reload" src="/js/department_partner.js"></script>
+		</section>
+		
+	</div>
+	<script data-turbolinks-track = "reload" src="/js/department_partner.js"></script>

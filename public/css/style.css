@@ -3199,6 +3199,7 @@ textarea.form-control {
 
 .aboutInner {
   position: relative;
+  top: 4px;
 }
 
 @media (min-width: 320px) {

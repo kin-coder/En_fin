@@ -1,5 +1,8 @@
 <link href="/css/partner.css" rel="stylesheet">
 <link href="/css/page-devise.css" rel="stylesheet">
+<link href="/css/accordeon-index.css" rel="stylesheet">
+<link href="/css/massage.css" rel="stylesheet">
+<link href="/css/avisslider.css" rel="stylesheet">
 
 <style>
 
@@ -77,13 +80,32 @@
    #nav {
     background-color: rgba(255, 255, 255, 0.01);
     position: relative;
-    top: -80px;
+    top: -150px;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
   }
 
   .flex-nav ul {
     flex-wrap: wrap;
-    column-count: 3;
   }
+  .flex-nav li {
+    flex: 2;
+        flex-basis: 0%;
+    display: flex;
+    flex-basis: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    max-width: 100px;
+}
+  .flex-nav li a {
+    color: white !important; 
+    font-size: 12px;
+}
 }
 
 
@@ -111,12 +133,12 @@
     <div class="wrapper">
       <nav class="flex-nav" id="nav">
         <ul>
-          <li><a href="#">Qui sommes-nous ?</a></li>
-          <li><a href="#">Notre but & nos projets</a></li>
-          <li><a href="#">Notre communauté</a></li>
-          <li><a href="#">Rejoignez-nous</a></li>
-          <li><a href="#">Zone d'action</a></li>
-          <li><a href="#">Contactez-nous</a></li>
+          <li><a href="#apropodenous" data-method="GET">Qui sommes-nous ?</a></li>
+          <li><a href="#notrebut" data-method="GET">Notre but & nos projets</a></li>
+          <li><a href="#communauté" data-method="GET">Notre communauté</a></li>
+          <li><a href="#rejoigneznous" data-method="GET">Rejoignez-nous</a></li>
+          <li><a href="#zoneaction" data-method="GET">Zone d'action</a></li>
+          <li><a href="#contacteznous" data-method="GET">Contactez-nous</a></li>
         </ul>
       </nav>
     </div>
@@ -124,29 +146,59 @@
 
 
   <!-- ABOUT SECTION -->
-  <section class="container-fluid clearfix aboutSection" >
-    <div class="secotionTitle">
+  <section class="container-fluid clearfix aboutSection aboutSectionSN" >
+    <div class="secotionTitle secotionQuisommes">
       <h2 class="police_massage"><span>A propos de nous</span></h2>
     </div>
     <div class="aboutInner">
-      <div class="sepcialContainer">
+      <div class="sepcialContainer" id="apropodenous">
         <div class="row">
           <div class="col-sm-6 col-xs-12 rightPadding">
-            <div class="imagebox ">
+            <div class="imagebox imagebox1">
               <img src="img/home/Photo3.png" alt="Image About" class="img-responsive">
             </div>
           </div>
           <div class="col-sm-6 col-xs-12">
             <div class="aboutInfo">
               <h2>Nous révolutionnons l’univers du bien-être</h2>
-              <p>
+              <p class="p-QSN">
                 Notre jeune start-up française a été lancé en 2016, nous sommes des pionniers dans la location de spa/jacuzzi à domicile et bénéficions d’une forte expérience dans les prestations de massage à domicile. Nous entendons bien, à travers ce concept totalement novateur, révolutionner l’univers du bien-être. En quelques clics, il est désormais possible de réserver le massage de son choix à domicile (redirection vers page de réservation) ou une location de spa/jacuzzi à domicile (redirection vers page de réservation), si besoin dans l’heure et à un prix tout-à-fait accessible. Mais le vrai avantage est que vous n’avez plus besoin de vous déplacer et de perdre votre temps ! Et oui, c’est nous qui venons à vous, et non l’inverse !
               </p>
 
-              <h2>Une plateforme web au service de votre détente</h2>
-              <p>Cocooning Spa surfe sur une nouvelle tendance de consommation, celle du plaisir immédiat et sans restriction. Nous vous proposons une plateforme web avec un astucieux système de réservation par lequel vous pouvez commander en quelques secondes une prestation de bien-être à domicile, sur le lieu de son choix et au moment voulu. Une flexibilité sans pareil ! Notre plateforme bénéficie à la fois aux professionnels et aux clients.
+              <!--  -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="autrediv"> 
+    <h2 class="infoQSN">Une plateforme web au service de votre détente</h2>
+    <p class="p-autrediv p-QSN">
+      Cocooning Spa surfe sur une nouvelle tendance de consommation, celle du plaisir immédiat et sans restriction. Nous vous proposons une plateforme web avec un astucieux système de réservation par lequel vous pouvez commander en quelques secondes une prestation de bien-être à domicile, sur le lieu de son choix et au moment voulu. Une flexibilité sans pareil ! Notre plateforme bénéficie à la fois aux professionnels et aux clients.
+    </p>
+  </div> 
+
+  <section class="container-fluid clearfix aboutSection aboutSectionQSN"  >
+    <div class="secotionTitle secotionTitle" id="notrebut">
+      <h2 class="police_massage"><span class="aproposSpan">Notre but & nos projets</span></h2>
+    </div>
+    <div class="aboutInner">
+      <div class="sepcialContainer specialContainerQSN">
+        <div class="row">
+
+          <div class="col-sm-6 col-xs-12" >
+            <div class="aboutInfo">
+              <h2 class="infoQSN">Inspirer le bien-être pour permettre aux gens de se reconnecter avec eux-mêmes</h2>
+              <p class="p-QSN">
+                Nous nous sommes entretenus avec nos employés, nos clients et la communauté des professionnels afin de leur parler de l’impact du bien-être en général. L'avis est unanime : lorsque vous accordez la priorité à votre bien-être, vous êtes plus épanoui. Plus d'énergie, de confiance, de détente, c’est différent pour chacun. Pour certains, un spa ou un massage font l'affaire. Pour d'autres, une promenade au grand air aide à lâcher prise. Et pourtant, ce n'est pas toujours évident de prendre du temps pour soi. Nous sommes confrontés à de longues heures de travail et souvent beaucoup de pression pour donner le meilleur de nous-même. <br> <br>
+                Notre mission est donc d'inciter les gens à faire de leur bien-être une priorité. Mais surtout de les aider à cultiver un sentiment de confiance, de détente et d'ambition qui leur permettent alors d'affronter les aléas de la vie.
               </p>
-              
+            </div>
+          </div>
+          <div class="col-sm-6 col-xs-12 rightPadding">
+            <div class="imagebox imageboxright">
+              <img src="img/home/Photo4.png" alt="Image About" class="img-responsive">
             </div>
           </div>
         </div>
@@ -154,6 +206,194 @@
     </div>
   </section>
 
+  <div class="autrediv div"> 
+    <h2 class="infoQSN">Voir plus loin</h2>
+    <p class="p-autrediv p-QSN">
+      Nous imaginons un monde où il est facile pour quiconque de se sentir bien. De nouveaux services seront proposés et nous étendrons nos activités à un plus grand nombre de villes. Nous proposons également nos services aux entreprises pour permettre à chacun de bénéficier de moments de douceur sur leur lieu de travail. Tout cela fait partie de notre objectif ultime : aider nos professionnels partenaires et nos clients à se sentir plus confiants, détendus, et autonomes. Car au final, c'est ça se sentir bien.
+    </p>
+  </div> 
+
+  <section class="container-fluid clearfix aboutSection aboutSectionQSN">
+    <div class="secotionTitle" id="communauté">
+      <h2 class="police_massage"><span class="aproposSpan">La communauté Cocooning Spa</span></h2>
+    </div>
+    <div class="aboutInner">
+      <div class="sepcialContainer specialContainerQSN">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12 rightPadding">
+            <div class="imagebox ">
+              <img src="img/home/communaute.jpg" alt="Image About" class="img-responsive">
+            </div>
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            <div class="aboutInfo">
+              <h2>Réserver sur Cocooning Spa, c’est soutenir l’entreprenariat à taille humaine</h2>
+              <p class="p-QSN">
+                Nous avons créé Cocooning Spa avec l’envie de mettre en lumière le talent individuel des artisans français. En commandant une prestation sur Cocooning Spa, vous soutenez des entrepreneurs indépendants qui ont choisi de mettre leur savoir-faire à votre service.
+                Leur principale motivation est de gérer leur vie comme ils/elles le souhaitent, en choisissant leurs horaires de travail pour concilier au mieux leur vie personnelle et professionnelle. <br><br>
+                Aujourd’hui, notre communauté rassemble plus de 2000 professionnels indépendants. Chaque jour, nous leur proposons des missions en fonction de critères qu’ils ont définis (zone de déplacement, horaires travaillés) et des notations de nos clients. <br><br>
+                Vous rencontrez des pros passionnants, motivés, soucieux de vous faire vivre un moment de qualité. Ils ont choisi le service à domicile pour prendre le temps de chouchouter leurs clients, tout en gérant leur emploi du temps et leur vie comme ils l’entendent.
+              </p>
+
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>  
+  <div class="autrediv"> 
+    <h2 class="infoQSN">Une solution win-win pour clients et professionnels du bien-être</h2>
+    <p class="p-autrediv p-QSN">
+      Cocooning Spa sélectionne scrupuleusement chaque professionnel, afin de garantir l’entière satisfaction de ses clients. Le profil et les diplômes de chaque pro sont analysés et nous choisissons les plus qualifiés et expérimentés, la majorité étant reconnus par des labels de qualité. <br> <br>
+      Parallèlement, Cocooning Spa apporte à ses partenaires l’environnement de travail nécessaire au bon déroulé de leurs activités, ce qui leur permet de se concentrer pleinement sur leur métier : le client et son bien-être. Ils bénéficient de plus d’une totale flexibilité d’horaires et touchent une rémunération avantageuse.
+      Grâce à la digitalisation du processus de commande et à l’élimination des coûts d’infrastructure, Cocooning Spa met à disposition des consommateurs des prestations de bien-être à domicile de qualité à un prix bien inférieur à celui habituellement pratiqué sur le marché. Le client profite d’une prestation de première qualité réalisée par des professionnels sélectionnés selon les plus hauts critères. <br> <br>
+      Le modèle économique est si pratique pour les consommateurs et pour les professionnels, qu’il en est révolutionnaire.
+
+    </p>
+  </div> 
+  <section class="container-fluid clearfix aboutSection" >
+    <div class="secotionTitle" id="rejoigneznous">
+      <h2 class="police_massage"><span class="aproposSpan">Rejoignez-nous</span></h2>
+    </div>
+    <div>
+      <p class="p-autrediv p-QSN">
+        Vous êtes déjà professionnels dans le domaine du massage ou de la location de spa ? Vous n’êtes pas encore en activité et vous souhaitez vous lancer, devenir indépendant ? Cocooning Spa est le tremplin qu’il vous faut. Nous avons besoin de partenaires comme vous ! <br>
+        Alors rejoignez vous aussi l’aventure Cocooning Spa.
+      </p>
+    </div>
+    <p style="text-align: center">
+      <%= link_to  "Nous rejoindre", partner_path, class:"btn btn-common btn-full-round btn-theme"%>
+    </P>
+
+
+  </section>   
+
+
+  <!-- ZONE CONCERNES -->
+  <section class="clearfix brandArea">
+    <div class="container">
+      <div class="secotionTitle" id="zoneaction">
+        <h2 id="a-propos" class="police_massage"><span>Où bénéficier </span>de nos services ?</h2>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="owl-carousel partnersLogoSlider">
+            <div class="slide">
+              <div class="partnersLogo clearfix">
+                <img src="img/home/france.png" alt="Image Partner">
+              </div>
+            </div>  
+            <div class="slide">
+              <div class="partnersLogo clearfix">
+                <img src="img/home/luxembourg.png" alt="Image Partner">
+              </div>
+            </div>
+            <div class="slide">
+              <div class="partnersLogo clearfix">
+                <img src="img/home/belgique.png" alt="Image Partner">
+              </div>
+            </div>
+            <div class="slide">
+              <div class="partnersLogo suisse clearfix">
+                <img src="img/home/suisse.png" alt="Image Partner">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-12">
+          <center>Nos services sont disponibles partout en France, Belgique, Luxembourg & Suisse. Alors n’attendez plus, nous ne sommes pas loin de chez vous ! <br><br>
+            <div class="accordion">
+              <div class="heading"><b>DÉCOUVRIR NOS SERVICES</b></div>
+              <div class="contents">
+                <ul>
+                  <li><b><a href="<%=spa_path%>" data-method="GET" class="dropdecouvrir">JACUZZI À DOMICILE</a></b></li> <br>
+                  <li><b><a href="<%=massage_path%>" data-method="GET" class="dropdecouvrir">MASSAGE À DOMICILE</a></b></li>
+                </ul>
+
+              </div>
+            </div>
+          </center>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTACT US SECTION -->
+  <section class="container-fluid clearfix productArea">
+
+    <div class="secotionTitle">
+      <h2 class="police_massage"><span>Besoin d’infos ?</span>Des questions ?</h2>
+    </div>
+
+  </div>
+</section>
+
+<section class="clearfix contactSection">
+  <div class="container">
+    <div class="secotionTitle" id="contacteznous">
+      <div class="row">
+        <div class='textsectioncontact'>Vous êtes un <i><strong>particulier</strong></i> et souhaitez échanger avec nous ? <br>Vous êtes une <i><strong>entreprise</strong></i>, une <i><strong>piscine</strong></i>, une <i><strong>agence évènementielle</strong></i>, un <i><strong>service de conciergerie</strong></i>, <i><strong>organisateur d’événements, Comité d’Entreprise</strong></i>, etc ... ? Nous pouvons adapter nos prestations sur mesure pour vos clients ou vos salariés.</div>
+        <div class="col-md-8 col-sm-7 col-xs-12">
+          <div class="contactTitle">
+            <h3></br></h3>
+          </div>
+
+          <div class="contactForm">
+            <div id="alert"></div><!--Response Holder-->
+
+            <!-- form action="mail/contact-form.php" id="angelContactForm" method="post" -->
+            <%= form_tag(save_message_path) do %>
+            <div class="form-group">
+              <input type="text" name="first_name" class="form-control" placeholder="Votre prénom" required>
+            </div>
+            <div class="form-group">
+              <input type="text" name="last_name" class="form-control" placeholder="Votre nom" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" class="form-control" placeholder="Votre Email" required>
+            </div>
+            <div class="form-group">
+              <input type="text" name="mobile" class="form-control" placeholder="Votre Mobile" required>
+            </div>
+            <div class="form-group">
+              <input type="text" name="corp_name" class="form-control" placeholder="Nom Entreprise">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="content" placeholder="Dîtes-nous tout !" required></textarea>
+            </div>
+            <div class="form-group">
+              <%= submit_tag("Envoyer", class:"btn btn-primary first-btn", id:"contact-submit-btn")%> 
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-5 col-xs-12">
+
+          <div class="holdingInfo patternbg"  >
+            <div class="contactTitle">
+              <h3><center>Suivez-nous</center></h3>
+            </div>
+            <ul>
+              <a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa icon" aria-hidden="true">
+                <img src="/img/icon-reseau-social/facebook.png" alt="">
+              </i> Cocooning Spa officiel </li></a>
+              <a href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa icon" aria-hidden="true"> 
+                <img src="/img/icon-reseau-social/instagram.png" alt="">
+              </i> Cocooning Spa </li></a>
+              <a href="https://www.snapchat.com/add/cocooningspaev" class="btn"> <li><i class="fa icon" aria-hidden="true">
+                <img src="/img/icon-reseau-social/snapchat.png" alt="">
+              </i> Cocooning Spa snapchat</li> </a>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 </div>
