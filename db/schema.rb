@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.string "last_name"
     t.string "date_of_birth"
     t.string "raison_sociale"
-    t.string "siret"
+    t.string "siren"
     t.string "email"
     t.string "telephone"
     t.string "adresse"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.string "country"
     t.string "services"
     t.string "countries"
-    t.string "developments"
+    t.string "departments"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -245,7 +245,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.string "adresse"
     t.string "tel"
     t.string "raison_sociale"
-    t.string "siret"
+    t.string "siren"
   end
 
   create_table "products", force: :cascade do |t|

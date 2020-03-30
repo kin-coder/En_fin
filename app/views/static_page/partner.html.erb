@@ -112,28 +112,34 @@
 	</div>
 
 	<%= form_tag(save_partner_path) do %>
-	<div class="row">
-		<div class="col-sm-12">
-			<div class="switch-field">
-				<input type="radio" id="radio-one" name="sex" value="Madame" checked/>
-				<label for="radio-one" class="radio-one">Madame</label>
 
+		<div class="row">
+			
+			<% if flash[:list_message_errors] %>
+			<div class="alert alert-danger">
+				<% flash[:list_message_errors].each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</div>
+			<% end %>
+			<div class="col-sm-12">
+				<div class="switch-field">
+					<input type="radio" id="radio-one" name="sex" value="Madame" checked/>
+					<label for="radio-one" class="radio-one">Madame</label>
 				<span class="label2">
 					<input type="radio" id="radio-two" name="sex" value="Monsieur" />
 					<label for="radio-two" class="radio-two">Monsieur</label>
 				</span>
-
 			</div>
 		</div>
-		<div class="col-sm-6">
-			<div class="form-group">
-				<input autofocus="autofocus" name="first_name" class="form-control" id="fullname" placeholder="Votre nom" type="text" required>
-			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<input autofocus="autofocus" name="last_name" class="form-control" id="fullname" placeholder="Votre nom" type="text" required>
+				</div>
 
-			<div class="form-group">
-				<input autofocus="autofocus" name="last_name" class="form-control" id="fullname" placeholder="Votre prénom" type="text" required>
-			</div>
-
+				<div class="form-group">
+					<input autofocus="autofocus" name="first_name" class="form-control" id="fullname" placeholder="Votre prénom" type="text" required>
+				</div>
 			<div class="dateSelect form-half form-left select-date">
 				<div class="input-group date ed-datepicker filterDate input-calendar" data-provide="datepicker">
 					<input type="text" name="date" id="Date" placeholder="Date de naissance" class="form-control form-controldate" required>
