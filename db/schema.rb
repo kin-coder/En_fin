@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.integer "note"
     t.text "content"
     t.string "user_name"
+    t.string "comment_for"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

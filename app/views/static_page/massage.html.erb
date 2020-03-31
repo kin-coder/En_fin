@@ -1,5 +1,4 @@
 <link href="/css/massage.css" rel="stylesheet">
-<link href="/css/massageipa.css" rel="stylesheet">
 <link href="/css/avisslider.css" rel="stylesheet">
 
 <style>
@@ -619,146 +618,95 @@
     </div>
     
   </section>
-  <section class="clearfix productSection patternbg">
-    <div class="container patternbg">
-      <div class="row">
-        <div class="col-xs-12">
-          <div id="productSlider" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <li data-target="#productSlider" data-slide-to="0" class="active"></li>
-              <li data-target="#productSlider" data-slide-to="1"></li>
-            </ol>
+  
+  <div id="slider">
+    <a href="javascript:void(0)" class="control_next">></a>
+    <a href="javascript:void(0)" class="control_prev"><</a>
+    
+    <ul>
+      <% @commentsMassage.each do |comment| %>
+      <li>
+       <p class='comments'>
+        <i class="stars" aria-hidden="true" id="iconetitle1"></i> <br>
+        <%=comment.content%> <br>
+        <i class="commentataire"><%=comment.user_name%></i>
+      </p>
+    </li>
+    <%end%>
+</ul>  
+</div>
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-              <div class="item active">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-sm-12 col-xs-12">
-                      <div class="productInfo productInfoindex">
-
-
-                        <center class="slide1">
-                          <i class="stars" aria-hidden="true" id="iconetitle1"></i> <br>
-
-                        </center> 
-                        <p class="p-slider">Merci beaucoup à Cocooningspa ! Très bonne service !</p>
-                        <i class="slide1 username">Alex</i>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <% @comments.each do |comment| %>
-              <div class="item">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-sm-12 col-xs-12">
-                      <div class="productInfo productInfoindex">
-
-                        <center class="slide1">
-                          <i class="stars" aria-hidden="true" id="iconetitle1"></i> 
-
-                        </center> 
-                        <p class="p-slider"><%=comment.content%></p>
-                        <i class="slide1 username"><%=comment.user_name%></i>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <%end%>
-              <!-- Left and right controls -->
-              <div class="vaetvient">
-                <a class="left carousel-control" href="#productSlider" role="button" data-slide="prev">
-                  <i class="fa fa-arrow-circle-left flechemassage-left" aria-hidden="true" id="ok"></i>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#productSlider" role="button" data-slide="next">
-                  <i class="fa fa-arrow-circle-right ok flechemassage-right" aria-hidden="true" id='flechindex'></i>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ZONE CONCERNES -->
-    <section class="clearfix brandArea patternbg">
-      <div class="container">
-        <div class="secotionTitle" id="zoneaction">
-          <h2 id="a-propos" class="police_massage"><span>Où bénéficier </span>de nos services ?</h2>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="owl-carousel partnersLogoSlider">
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <img src="img/home/france.png" alt="Image Partner">
-                </div>
-              </div>  
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <img src="img/home/luxembourg.png" alt="Image Partner">
-                </div>
-              </div>
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <img src="img/home/belgique.png" alt="Image Partner">
-                </div>
-              </div>
-              <div class="slide">
-                <div class="partnersLogo suisse clearfix">
-                  <img src="img/home/suisse.png" alt="Image Partner">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-sm-12">
-            <center>
-              Notre service de massage à domicile est disponible partout en France, Belgique, Luxembourg & Suisse
-              Alors n’attendez plus, nous ne sommes pas loin de chez vous ! 
-            </center>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-  <!-- CONTACT US SECTION -->
-  <section class="container-fluid clearfix productArea patternbg">
-
-    <div class="secotionTitle">
-      <h2 class="police_massage"><span>Besoin d’infos ?</span>Des questions ?</h2>
+<!-- ZONE CONCERNES -->
+<section class="clearfix brandArea patternbg">
+  <div class="container">
+    <div class="secotionTitle" id="zoneaction">
+      <h2 id="a-propos" class="police_massage"><span>Où bénéficier </span>de nos services ?</h2>
     </div>
-
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="owl-carousel partnersLogoSlider">
+          <div class="slide">
+            <div class="partnersLogo clearfix">
+              <img src="img/home/france.png" alt="Image Partner">
+            </div>
+          </div>  
+          <div class="slide">
+            <div class="partnersLogo clearfix">
+              <img src="img/home/luxembourg.png" alt="Image Partner">
+            </div>
+          </div>
+          <div class="slide">
+            <div class="partnersLogo clearfix">
+              <img src="img/home/belgique.png" alt="Image Partner">
+            </div>
+          </div>
+          <div class="slide">
+            <div class="partnersLogo suisse clearfix">
+              <img src="img/home/suisse.png" alt="Image Partner">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-12">
+        <center>
+          Notre service de massage à domicile est disponible partout en France, Belgique, Luxembourg & Suisse
+          Alors n’attendez plus, nous ne sommes pas loin de chez vous ! 
+        </center>
+      </div>
+    </div>
   </div>
+</section>
+
+
+
+<!-- CONTACT US SECTION -->
+<section class="container-fluid clearfix productArea patternbg">
+
+  <div class="secotionTitle">
+    <h2 class="police_massage"><span>Besoin d’infos ?</span>Des questions ?</h2>
+  </div>
+
+</div>
 </section>
 
 <section class="clearfix contactSection">
   <div class="container">
     <div class="secotionTitle">
       <div class="row">
-                    <div class='textsectioncontact'>Vous êtes un <i><strong>particulier</strong></i> et souhaitez échanger avec nous ? <br>
-        Vous êtes une <i><strong>entreprise</strong></i>, une <i><strong>piscine</strong></i>, une <i><strong>agence évènementielle</strong></i>, un <i><strong>service de conciergerie</strong></i>, <i><strong>organisateur d’événements, Comité d’Entreprise</strong></i>, etc ... ? Nous pouvons adapter nos prestations sur mesure pour vos clients ou vos salariés.</div>
-        <div class="col-md-8 col-sm-7 col-xs-12">
-          <div class="contactTitle">
-            <h3></br></h3>
-          </div>
+        <div class='textsectioncontact'>Vous êtes un <i><strong>particulier</strong></i> et souhaitez échanger avec nous ? <br>
+          Vous êtes une <i><strong>entreprise</strong></i>, une <i><strong>piscine</strong></i>, une <i><strong>agence évènementielle</strong></i>, un <i><strong>service de conciergerie</strong></i>, <i><strong>organisateur d’événements, Comité d’Entreprise</strong></i>, etc ... ? Nous pouvons adapter nos prestations sur mesure pour vos clients ou vos salariés.</div>
+          <div class="col-md-8 col-sm-7 col-xs-12">
+            <div class="contactTitle">
+              <h3></br></h3>
+            </div>
 
-          <div class="contactForm">
-            <div id="alert"></div><!--Response Holder-->
-            
-            <%= form_tag(save_message_path) do %>
+            <div class="contactForm">
+              <div id="alert"></div><!--Response Holder-->
+
+              <%= form_tag(save_message_path) do %>
               <div class="form-group">
                 <input type="text" name="first_name" class="form-control" placeholder="Votre prénom" required>
               </div>
@@ -780,32 +728,32 @@
               <div class="form-group">
                 <%= submit_tag("Envoyer", class:"btn btn-primary first-btn", id:"contact-submit-btn")%> 
               </div>
-            <% end %>
+              <% end %>
 
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-5 col-xs-12">
-
-          <div class="holdingInfo patternbg">
-            <div class="contactTitle">
-              <h3><center>Suivez-nous</center></h3>
             </div>
-            <ul>
-              <a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa icon" aria-hidden="true">
-                <img src="/img/icon-reseau-social/facebook.png" alt="">
-              </i> Cocooning Spa officiel </li></a>
-              <a href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa icon" aria-hidden="true"> 
-                <img src="/img/icon-reseau-social/instagram.png" alt="">
-              </i> Cocooning Spa </li></a>
-              <a href="https://www.snapchat.com/add/cocooningspaev" class="btn"> <li><i class="fa icon" aria-hidden="true">
-                <img src="/img/icon-reseau-social/snapchat.png" alt="">
-              </i> Cocooning Spa snapchat</li> </a>
-            </ul>
+          </div>
+          <div class="col-md-4 col-sm-5 col-xs-12">
+
+            <div class="holdingInfo patternbg">
+              <div class="contactTitle">
+                <h3><center>Suivez-nous</center></h3>
+              </div>
+              <ul>
+                <a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa icon" aria-hidden="true">
+                  <img src="/img/icon-reseau-social/facebook.png" alt="">
+                </i> Cocooning Spa officiel </li></a>
+                <a href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa icon" aria-hidden="true"> 
+                  <img src="/img/icon-reseau-social/instagram.png" alt="">
+                </i> Cocooning Spa </li></a>
+                <a href="https://www.snapchat.com/add/cocooningspaev" class="btn"> <li><i class="fa icon" aria-hidden="true">
+                  <img src="/img/icon-reseau-social/snapchat.png" alt="">
+                </i> Cocooning Spa snapchat</li> </a>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
     <!-- BUTTONS SECTION -->
 <!--     <section class="clearfix buttonArea">

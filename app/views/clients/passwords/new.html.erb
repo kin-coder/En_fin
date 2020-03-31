@@ -1,16 +1,21 @@
+<link href="/css/page-devise.css" rel="stylesheet">
+<center>
+<div class="mdp-oublie">
 <h2>Mot de passe oublié?</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", :required => true %>
+    <%= f.label :email, class:"hidden" %><br />
+    <%= f.email_field :email, autofocus: true, placeholder:"Votre adresse email ici", class:"mailmdp",autocomplete: "email", :required => true %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Envoyez-moi les instructions de réinitialisation du mot de passe" %>
+    <%= f.submit "Envoyez-moi les instructions de réinitialisation du mot de passe", class:"btn btn-primary btn-block btn-mdp" %>
   </div>
 <% end %>
 
 <%= render "clients/shared/links" %>
+</div>
+</center>

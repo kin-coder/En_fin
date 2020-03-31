@@ -7,15 +7,18 @@ class StaticPageController < ApplicationController
 
 #page d'acceuil
   def index
-    @comments = Comment.all
+    @commentsAccueil = Comment.where(comment_for:"accueil")
   end
 #Differents service {+ Page Service Par Departement}
   def massage
     @massages = MassageSu.all
-    @comments = Comment.all
+        @commentsMassage = Comment.where(comment_for:"massage")
+
   end
 
   def location_spa
+            @commentsSpa = Comment.where(comment_for:"spa")
+
   end
 # Devenir partenaire inscription prestataire
   def partner
