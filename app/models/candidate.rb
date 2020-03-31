@@ -1,4 +1,6 @@
 class Candidate < ApplicationRecord
+	after_create :message_send_to_admin_and_self
+
 	validates :sexe, presence: true
 	validates :first_name, presence: true
 	validates :last_name, presence: true
@@ -13,5 +15,9 @@ class Candidate < ApplicationRecord
 	validates :country, presence: true
 	validates :services, presence: true
 	validates :countries, presence: true
-
+	
+	def message_send_to_admin_and_self
+		AdminMailer.new_partner(self).deliver_now
+		PrestataireMailer.new_candidate(self).deliver_now
+	end
 end

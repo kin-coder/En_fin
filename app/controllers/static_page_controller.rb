@@ -58,7 +58,7 @@ class StaticPageController < ApplicationController
     end
 
     if @candidate.save
-      flash[:notice] = "Votre inscription a été envoyer avec succès! En attente de validation par l'administrateur du site."
+      flash[:notice] = "Merci pour votre inscription! un message vous est envoyé dans à votre email pour poursuivre l'inscription veuillez bien le lire s'il vous plaît!"
       redirect_back(fallback_location: root_path)
     else
       flash[:list_message_errors] = @candidate.errors.full_messages
