@@ -693,7 +693,10 @@ width: 340px !important;
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-
+	.aboutSectionQSN {
+		padding: 0 0 50px 0;
+		height: auto !important;
+	}
 	/*dropdown zone action*/
 	.hida{
 position: absolute;
