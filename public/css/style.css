@@ -7693,6 +7693,360 @@ input[type=number]::-webkit-inner-spin-button {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+
+  .secotionTitle h2 span {
+
+    display: block;
+    letter-spacing: normal;
+    color: #ec5598;
+    font-size: 40px !important;
+    letter-spacing: 4px;
+    line-height: 42px;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-family: 'Quicksand', 'Open Sans' !important;
+    padding-bottom: 25px;
+
+  }
+
+  .produtImage img{
+    display: inline-block;
+    transition: all 0.8s ease-in-out;
+    width: 150px;
+  }
+  .elsebgMassage{
+    /*width: 700px;*/
+  }
+  .areserver{
+    position: fixed;
+    right: 8px;
+    z-index: 100;
+    top: 20%;
+  }
+  .form-control {
+    height: 43px;
+    box-shadow: none;
+    border-radius: 0;
+    padding-left: 18px;
+    border-color: #dedede;
+    color: #666666;
+    margin-left: 10px;
+    border-radius: 8px;
+    width: 400px;
+  }
+  #contact-submit-btn{
+    width: 172px;
+    text-align: center;
+    position: absolute;
+    left: 79%;
+    border-radius: 50px;
+  }
+
+
+  .reviewImageMassage1spa {
+    position: absolute;
+    top: 80px;
+    width: 165px;
+    height: 160px;
+    border: 5px solid 
+    rgba(255, 255, 255, 0.7);
+    left: -150px;
+  }
+  .form-group {
+    position: relative;
+    width: 50%;
+    textarea.form-control {
+      height: 95px;
+
+    }
+  }
+  .colipad{
+    position: absolute;
+    right: 1px;
+  }
+
+  .flechespa-left{
+    position: absolute;
+
+    top: 20%;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 100px;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+  .flechemassage-left{
+    position: absolute;
+    right:585px !important;
+    top: 20%;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 100px;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+  .productImageMassage{
+    width: 100px;
+    position: relative;
+    top: 40px;
+    height: 200px;
+  }
+  #flechemassage-left{
+    position: absolute;
+    right:648px;
+    top: 20%;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 50px;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+  #flechemassage-right{
+    position: absolute;
+    right:-200px;
+    top: 20%;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 50px;
+    text-rendering: auto;
+    color: rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+  .flechemassage-right{
+    position: absolute;
+    right:-200px!important ;
+    top: 20%;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 100px;
+    text-rendering: auto;
+    color: rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+  .massage-type{
+    width: 100%;
+    margin-left: 40px;
+    /*margin-bottom: 100px;*/
+  }
+
+  .text-p-massage-slide{
+    position: fixed;
+    left: 110px;
+    text-align: justify;
+    margin-top: 20px !important;
+    max-width: 250px;
+    font-size: 12px !important;
+    line-height: 26px;
+    color: #222222 !important;
+    font-family: Lato, 'Open Sans' !important;
+    top:15px;
+    z-index: 100;
+  }
+
+.carousel-inner {
+
+    position: relative;
+    width: 100%;
+    overflow: scroll;
+
+}
+  .h3-massage-slide{
+    position: relative;
+    font-weight: bold !important;
+    font-size: 10px;
+    left: 130px;
+    font-family: Lato, 'Open Sans' !important;
+    top: -222px;
+  }
+  .intru{
+    text-align: left !important;
+  }
+
+  .col-massage-slide{
+    max-width: 400px;
+  }
+
+  .engagements{
+    text-align: center;
+    position: relative;
+    left: -15px;
+  }
+
+  .sectionSpa{
+    width: 100%;
+  }
+
+  .productInfoindex{
+
+    background: white;
+  }
+  #flecheindex{
+    position: absolute;
+    right:4px !important;
+    top: 40%;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+  .username{
+    position: relative;
+    left: 300px;
+    top: -25px;
+  }
+
+
+  .p-slider{
+    position: relative;
+    max-width: 550px !important;
+    left: 10%;
+    padding-bottom: 30px;
+    font-family: Lato, 'Open Sans' !important;
+
+
+  }
+  .productInfo p {
+    font-size: 16px;
+    line-height: 26px;
+    color: #666666;
+    margin: 0 0 0px 0 !important;
+    font-family: Lato, 'Open Sans' !important;
+  }
+
+  .productSection{
+    background-image: linear-gradient(white, white);
+    border-radius: 10px;
+  }
+
+
+  #productSlider .carousel-control.left i.fa-arrow-circle-left {
+    text-shadow: none;
+    position: absolute;
+    right: 630px !important;
+    top: 40%;
+  }
+
+  #fleche{
+    position: absolute;
+    right:0px !important;
+    top: 40%;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+
+  #iconetitle{
+    margin-top: 20px;
+    font-size: xx-large;
+  }
+  .slide0{
+    font-size: 20px;
+    text-transform: none;
+  }
+  .slide1{
+    color: #48D1CC;
+    font-size: 20px;
+    text-transform: none;
+  }
+  .slide2{
+    color: black;
+    font-size: 20px;
+    text-transform: none;
+  }
+
+  .slide3{
+    color: #9400D3;
+    font-size: 20px;
+    text-transform: none;
+  }
+  .slide4{
+    color: deeppink;
+    font-size: 20px;
+    text-transform: none;
+  }
+  .slide5{
+    color: #0000FF;
+    font-size: 20px;
+    text-transform: none;
+  }
+
+  .reviewImageMassage1 {
+    position: absolute;
+    top: 170px;
+    width: 165px;
+    height: 160px;
+    border: 5px solid 
+    rgba(255, 255, 255, 0.7);
+    left:-150px;
+  }
+  .reviewImageMassage2 {
+    position: absolute;
+    top: 80px;
+    width: 165px;
+    height: 160px;
+    border: 5px solid 
+    rgba(255, 255, 255, 0.7);
+    left:-150px;
+  }
+  .reviewImageMassage3 {
+    position: absolute;
+    top: 50px;
+    width: 165px;
+    height: 160px;
+    border: 5px solid 
+    rgba(255, 255, 255, 0.7);
+    left:-150px;
+  }
+
+
+  .text-p-massage{
+    position: relative;
+    left: 0px;
+    text-align: justify
+  }
+  .section1{
+    width: 100%;
+  }
+
+  #productSlider .carousel-control.left i.flechemassage-left{
+    text-shadow: none;
+    position: absolute;
+    right: 585px !important;
+    top: 33px !important;
+  }
+  #flechindex{
+    position: absolute;
+    right:0px !important;
+    top: 33px;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: xxx-large;
+    text-rendering: auto;
+    color:
+    rgb(238, 17, 190) !important;
+    padding: 10px;
+  }
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 768px) {
   .secotionTitle h2 span {
 
     display: block;
@@ -7844,6 +8198,7 @@ input[type=number]::-webkit-inner-spin-button {
     line-height: 26px;
     color: #222222 !important;
     font-family: Lato, 'Open Sans' !important;
+    top:-20px;
   }
 
   .h3-massage-slide{
@@ -7852,6 +8207,7 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 10px;
     left: -100px;
     font-family: Lato, 'Open Sans' !important;
+    top:0px;
   }
   .intru{
     text-align: left !important;
@@ -8034,6 +8390,13 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 @media only screen and (min-width: 992px) {
+  .carousel-inner {
+
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+}
 
   #productSlider .carousel-control.left i.fa-arrow-circle-left {
     text-shadow: none;

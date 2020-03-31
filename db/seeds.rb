@@ -107,17 +107,42 @@ Product.create(name: "Table de massage", description: "Fournie avec huile de mas
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 	# Seed pour les comments
 listavis = [
-	[5, "Super prestation effet de surprise garantie Décoration exceptionnelle mais je tiens surtout à souligner le professionnalisme de cette société Comme On en voit très peu de nos jours. Merci encore a toutes l'équipe.", "Vanessa Guez"], 
-	[5, "Prestation au top.. rapidité extrême. Ayant réservé à 13h pour être en place à 19h.. top qualité, 24h de bonheur dans son salon. Je recommande à ceux qui veulent passer un bon moment chez eux. Honnêtement c'est génial je recommencerais.", "Sami Tessier"],
-	[5,"Idée originale, très bon service et efficace","Michouu Moukengué"],
-	[5, "Excellent juste parfait pour notre part ! Bonne organisation et montage propre rien à dire ,nous avons passés un excellent moment à notre domicile avec le j'acuzzi et la personne qui monte le j'acuzzi est au top !!", "Cameron LO RE"], 
-	[5, "24h de magie à domicile . Ponctuel, professionnel, discret, n'hésitez pas à contacter Cocooning spa pour une surprise sur mesure. Nous avons passé des moments inoubliables dans l'intimité d'un chez soi, c'est mieux qu'à l'hôtel !", "Angé Lique"],
-	[5, "Effet de surprise garantie pour ce pack cocooning. 3 jours ou nous avons apprécié ce moment de détente absolu chez soi. A refaire très vite!! Equipe dynamique et commerciale!!! A recommander vivement", "Silvia La Toune"], 
-	[5, "Merci beaucoup pour cette prestation, service professionnel et rapide, je recommande à 100%.", "Nicolas Altenburger"]
-]
+	#Accueil
+[5,"accueil", "Très professionnelle, massage très agréable à mes attentes ! Merci beaucoup !", "Silvia"], 
+[5,"accueil",  "Merci beaucoup pour cette prestation spa et massage à domicile, service professionnel et rapide, je recommande à 100%.", "Nicolas"], 
+[5,"accueil",  "Merci beaucoup pour cette prestation spa au top, mon conjoint a adoré la surprise, c’était très réussi, je recommande mille fois !!", "Annabelle"], 
+[5,"accueil",  "Super prestation ! Réponse rapide et efficace, Camille est très pro et bien équipée (serviette chauffante comprise !!), on en ressort totalement détendu... je recommande sans hésiter !", "Mohamed"], 
+[5,"accueil",  "Praticienne et massage très pro. Je recommande ! ", "Alexandra"], 
+[5,"accueil",  "Merci encore à Cocooning Spa ! Très bon service de spa et massage à domicile ! Qualité du prestataire, des masseurs et ponctualité !", "Mounir"], 
+[5,"accueil",  "Massage de grande qualité. J’ai été massé par Mustapha qui est très professionnel, et très à l’écoute, précis dans ces gestes, bonheur retrouvé de ne plus avoir mal au dos. Mille merci !", "Myriam"],
+
+#Spa
+[5,"spa", "J’ai pris récemment une location de jacuzzi à domicile, c’était une première pour moi. Mon homme a adoré sa surprise, c’était comme à l’hôtel voir mieux. Cocooning Spa est une entreprise professionnelle, compréhensive, sociable et pointilleuse. Je recommande fortement.", "Chloé"],
+[5,"spa", "Effet de surprise garantie avec cette location de spa ! 3 jours où nous avons apprécié ce moment de détente absolu chez soi. Équipe dynamique et commerciale ! À refaire très vite ! Je recommande vivement !", "Aïcha"],
+[5,"spa", "Prestation au top ! Rapidité extrême, ayant réservé à 13h pour être en place à 19h ! Top qualité, 24h de bonheur dans son salon. Je recommande à ceux qui veulent passer un bon moment chez eux. Honnêtement c'est génial je recommencerai !", "Sami"],
+[5,"spa", "24h de magie à domicile ! Ponctuel, professionnel, discret, n'hésitez pas à contacter Cocooning spa pour une surprise sur mesure. Nous avons passé des moments inoubliables dans l'intimité d'un chez soi, c'est mieux qu'à l'hôtel !", "Angélique"],
+[5,"spa", "Rapidité, efficacité et service de qualité. L’équipe Cocooning Spa est à l’écoute et prend le temps de bien vous expliquer les règles de base. Merci encore pour cette prestation spa ! Je recommande ! À très bientôt ", "Nordine"],
+[5,"spa", "Superbe prestation ! À recommander, surprise assurée ! Top du top !", "Charlotte"],
+[5,"spa", "Excellent, juste parfait pour notre part ! Bonne organisation et montage propre rien à dire, nous avons passé un excellent moment à notre domicile avec le jacuzzi et la personne qui monte le jacuzzi est au top !!", "Toufik"],
+[5,"spa", "Super prestation, effet de surprise garantie. Décoration exceptionnelle mais je tiens surtout à souligner le professionnalisme de cette société comme on en voit très peu de nos jours. Merci encore a toutes l'équipe.", "Inès"],
+
+#Massages
+
+[5,"massage", "Très professionnelle, ponctuelle, bien équipée, souriante et massage relaxant au top !! Je la recontacterai c’est sur !! Bravo à Nathalie !! Et merci !", "Samir"],
+[5,"massage", "Très professionnelle, massage très agréable à mes attentes ! Merci beaucoup !", "Silvia"],
+[5,"massage", "Massage vraiment au top moment de détente absolue merciiii beaucoup", "Virginie"],
+[5,"massage", "Amine a été très à l'écoute de mon fils à qui j'ai offert ce massage. Massage du dos de la tête et des bras au top.", "Viviane"],
+[5,"massage", "Un vrai professionnel. Ponctuel et à l’écoute de ce qu’on lui demande. Il a su répondre à mes attentes, je vous le recommande les yeux fermés. Merci Adil et à très bientôt.", "Samantha"],
+[5,"massage", "Prestation Top : une bonne découverte des besoins, finalement le massage choisi n’était pas adapté. Très pédagogue, bon massage, à refaire !", "Cyril"],
+[5,"massage", "Super prestation ! Réponse rapide et efficace, Camille est très pro et bien équipée (serviette chauffante comprise !!), on en ressort totalement détendu... je recommande sans hésiter !", "Mohamed"],
+[5,"massage", "Gwendoline a été parfaite ! Elle est aux petits soins et complètement à l'écoute de vos besoins. Merci encore !", "Hugo"],
+[5,"massage", "Amandine est très professionnelle. Ponctuelle et agréable, elle m'a rapidement mise à l'aise pour une heure de massage. Très douce, je la recommande !!", "Fatima"]
+
+
+	]
 listavis.each do |avis|
-	c = Comment.create(note: avis[0], content: avis[1], user_name: avis[2])
-	puts "Comment-#{c.id}"
+	c = Comment.create(note: avis[0], content: avis[2], user_name: avis[3], comment_for:avis[1])
+	puts "Comment-#{c.comment_for}"
 end
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
