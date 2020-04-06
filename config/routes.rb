@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   devise_for :clients, path: 'clients'
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
-  devise_for :admins, path: 'admins', controllers: { 
+  devise_for :admins, path: 'admins',:skip => [:registrations], controllers: { 
     sessions: "admins/sessions"
   }
-  
+
   get "/admin", to:"admins#admin_page", as:"admin_page"
   get "/admin/prestataire", to:"admins#prestataire", as:"admin_prestataire"
   # # Lien pour gerer les prestataire via l'admin
