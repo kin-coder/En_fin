@@ -1,4 +1,3 @@
-Admin.destroy_all
 Candidate.destroy_all
 Client.destroy_all
 Country.destroy_all
@@ -21,7 +20,6 @@ OrderSpa.destroy_all
 Comment.destroy_all
 
 increment = 0
-Admin.create(email:"admin@admin.com",password:"admin@admin.com")
 
 # =========================== CREE LES SERVICE =========================== #
 s1 = Service.create(name:"Massage")

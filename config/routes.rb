@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   # Lien pour l'authentification du client, Logign, ...
   devise_for :clients, path: 'clients'
+  # page pour le profil du client
+  get '/client', to: 'clients#profil', as: "client_profil"
+  get '/client/order', to: 'clients#order', as: "client_order"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
   devise_for :admins, path: 'admins',:skip => [:registrations], controllers: { 
@@ -8,7 +11,7 @@ Rails.application.routes.draw do
   }
  
   get "/admin", to:"admins#admin_page", as:"admin_page"
-  get "/admin/index", to:"admins#index", as:"index"
+  get "/admin/index", to:"admins#index", as:"index_admin"
   get "/admin/prestataire", to:"admins#prestataire", as:"admin_prestataire"
   
   # # Lien pour gerer les prestataire via l'admin
@@ -21,9 +24,6 @@ Rails.application.routes.draw do
   # delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
 #STATIC_PAGE_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page static dans le static_page
-  # page pour le profil du client
-  get '/client/:name', to:'static_page#client_profil', as: "client_profil"
-  
   # page d'acceul
   root 'static_page#index'
 

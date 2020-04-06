@@ -44,8 +44,8 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.0]
 
     # Initialize first account:
     Admin.create! do |a|
-        a.email     = 'ramahafaly2.0@gmail.com'
-        a.password    = 'ramahafaly2.0@gmail.com'
+        a.email = 'ramahafaly2.0@gmail.com'
+        a.password = 'ramahafaly2.0@gmail.com'
     end
 
   end

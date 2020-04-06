@@ -9,7 +9,7 @@ module Accessible
     if current_admin
       flash.clear
       # if you have rails_admin. You can redirect anywhere really
-      redirect_to(rails_admin.dashboard_path) and return
+      redirect_to(index_admin_path) and return
   	end
     # elsif current_client
     #   flash.clear
