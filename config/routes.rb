@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   devise_for :admins, path: 'admins',:skip => [:registrations], controllers: { 
     sessions: "admins/sessions"
   }
-
+ 
   get "/admin", to:"admins#admin_page", as:"admin_page"
+  get "/admin/index", to:"admins#index", as:"index"
   get "/admin/prestataire", to:"admins#prestataire", as:"admin_prestataire"
+  
   # # Lien pour gerer les prestataire via l'admin
   # get "admin/prestataires", to:"prestataires#index", as:"index_prestataires"
   # get "admin/prestataires/:id", to:"prestataires#show", as:"show_prestataires"
