@@ -1,19 +1,22 @@
 Rails.application.routes.draw do
   # Lien pour l'authentification du client, Logign, ...
-  devise_for :clients
+  devise_for :clients, path: 'clients'
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
-  devise_for :admins
+  devise_for :admins, path: 'admins', controllers: { 
+    sessions: "admins/sessions"
+  }
+
   get "/admin", to:"admins#admin_page", as:"admin_page"
   get "/admin/prestataire", to:"admins#prestataire", as:"admin_prestataire"
-  # Lien pour gerer les prestataire via l'admin
-  get "admin/prestataires", to:"prestataires#index", as:"index_prestataires"
-  get "admin/prestataires/:id", to:"prestataires#show", as:"show_prestataires"
-  get "admin/prestataires-new", to:"prestataires#new", as:"new_prestataires"
-  post "admin/prestataires-new", to:"prestataires#create", as:"create_prestataires"
-  get "admin/prestataires/:id/edit", to:"prestataires#edit", as:"edit_prestataires"
-  patch "admin/prestataires/:id", to:"prestataires#update", as:"update_prestataires"
-  delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
+  # # Lien pour gerer les prestataire via l'admin
+  # get "admin/prestataires", to:"prestataires#index", as:"index_prestataires"
+  # get "admin/prestataires/:id", to:"prestataires#show", as:"show_prestataires"
+  # get "admin/prestataires-new", to:"prestataires#new", as:"new_prestataires"
+  # post "admin/prestataires-new", to:"prestataires#create", as:"create_prestataires"
+  # get "admin/prestataires/:id/edit", to:"prestataires#edit", as:"edit_prestataires"
+  # patch "admin/prestataires/:id", to:"prestataires#update", as:"update_prestataires"
+  # delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
 #STATIC_PAGE_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page static dans le static_page
   # page pour le profil du client
