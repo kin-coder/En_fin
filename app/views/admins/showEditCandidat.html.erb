@@ -103,6 +103,7 @@
 
   <div class="actions">
     <%= form.submit("Accepter l'inscription du prestataire") %>
+    <%= link_to "Refuser l'inscription", cancel_candidat_path(@candidate.id), method: :delete, data: { confirm: 'Etes vous sur de supprimer ce candidat?' } %>
   </div>
 
 <% end %>

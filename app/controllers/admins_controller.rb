@@ -84,7 +84,8 @@ class AdminsController < Application2Controller
     end
 
     def cancelCandidat
-        
+        Candidate.find(params[:id].to_i).destroy
+        redirect_to allcandidate_path, notice: 'Le (la) candidate a été supprimer avec succès.'
     end
 
     # page mandaraka

@@ -80,6 +80,5 @@ class PrestatairesController < Application2Controller
 
     def prestataire_params
       params.require(:prestataire).permit(:email,:sexe,:first_name,:last_name,:date_of_birth,:raison_sociale,:siren,:tel,:adresse,:zip_code,:ville,:pays)
-      #(:first_name, :last_name, :email, :tel, :adresse, :raison_sociale, :siret)
     end
 end
