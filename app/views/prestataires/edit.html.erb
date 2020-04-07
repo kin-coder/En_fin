@@ -61,7 +61,7 @@
     <% hidden_field_tag "prestataire[department_ids][]", nil %> 
     <% @departments.each do |department| %>
       <%= check_box_tag "prestataire[department_ids][]", department.id, @prestataire.department_ids.include?(department.id), id:dom_id(department) %>
-      <%= label_tag dom_id(department), department.namedepartment %><br>
+      <%= label_tag dom_id(department), department.name %><br>
     <% end %>
   </div>
 

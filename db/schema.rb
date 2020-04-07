@@ -246,7 +246,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.string "adresse"
     t.string "tel"
     t.string "raison_sociale"
-    t.string "siren"
+    t.string "siret"
   end
 
   create_table "products", force: :cascade do |t|
