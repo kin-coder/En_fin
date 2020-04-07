@@ -15,8 +15,9 @@ Rails.application.routes.draw do
   get "/admin/prestataire", to:"admins#prestataire", as:"admin_prestataire"
   # creation et gestion candidature
   
+  get "admin/candidates", to:"admins#allcandidate", as:"allcandidate"
   get "/admin/candidate/:id", to:"admins#showEditCandidat", as:"show_edit_candidate"
-  post "/admin/candidate-to-prestataire", to:"admins#createCandidateToPrestataire", as:"create_candidate_prestataire"
+  patch "/admin/candidate-to-prestataire/", to:"admins#createCandidateToPrestataire", as:"create_candidate_prestataire"
 
   # Lien pour gerer les prestataire via l'admin
   get "admin/prestataires", to:"prestataires#index", as:"index_prestataires"

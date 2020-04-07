@@ -9,45 +9,7 @@
 </ul>
 
 <hr>
-<h1>Liste des candidats</h1>
-<table border="2">
-	<tr>
-		<td>Action</td>
-		<td>Sexe</td>
-		<td>Prenom</td>
-		<td>Nom</td>
-		<td>Née</td>
-		<td>Raison sociale</td>
-		<td>Siren</td>
-		<td>Email</td>
-		<td>Telephone</td>
-		<td>Adresse</td>
-		<td>Code postale</td>
-		<td>Ville</td>
-		<td>Pays</td>
-		<td>Services</td>
-		<td>Zone de prestations</td>
-	</tr>
-<% @candidates.each do |candidate| %>
-	<tr>
-	<td><a href="<%= show_edit_candidate_path(candidate.id) %>">Afficher</a></td>
-	<td> <%= candidate.sexe %> </td>
-	<td> <%= candidate.first_name %> </td>
-	<td> <%= candidate.last_name %> </td>
-	<td> <%= candidate.date_of_birth %> </td>
-	<td> <%= candidate.raison_sociale %> </td>
-	<td> <%= candidate.siren %> </td>
-	<td> <%= candidate.email %> </td>
-	<td> <%= candidate.telephone %> </td>
-	<td> <%= candidate.adresse %> </td>
-	<td> <%= candidate.zip_code %> </td>
-	<td> <%= candidate.ville %> </td>
-	<td> <%= candidate.country %> </td>
-	<td> <%= candidate.services.gsub("|",", ") %> </td>
-	<td> <%= candidate.countries.gsub("|",", ") %><% if candidate.departments %> (dép: <%= candidate.departments.gsub("|",", ") %>)<% end %></td>
-	</tr>
-<% end %>
-</table>
+
 
 <hr>
 <h1>Liste des clients</h1>

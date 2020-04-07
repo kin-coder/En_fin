@@ -57,8 +57,24 @@ listdepartement.each do |listdepartement|
 		puts increment+=1
 	end
 end
+# ==================== CANDIDATES =========================== #
 
+ActionMailer::Base.perform_deliveries = false
 
+15.times do |i|
+	caService = ["Massage","Location spa"][0..rand(2)].join("|")
+	paysFake = ["Belgique","Luxembourg","Suisse"]
+	caCountry = paysFake[rand(0)..rand(3)].join("|")
+	Candidate.create(email: Faker::Internet.free_email,first_name: Faker::Name.first_name,last_name: Faker::Name.middle_name,adresse: Faker::Address.full_address,telephone: Faker::PhoneNumber.phone_number_with_country_code,raison_sociale: Faker::Commerce.department,siren: Faker::Number.leading_zero_number(digits: 10),sexe: sexe[rand(2)],date_of_birth: Faker::Date.in_date_period(year:1980),zip_code: Faker::Number.number(digits: 5),country: paysFake[rand(4)],ville: Faker::Nation.capital_city,services: caService,countries: caCountry)
+end
+
+5.times do |j|
+	caService = ["Massage","Location spa"][0..rand(2)].join("|")
+	caCountry = "France"
+	caDepartment = ['Ain','Aisne','Allier','Ardèche','Ardennes','Ariège','Manche','Marne','Mayenne']
+	caDepartment = caDepartment[rand(0)..rand(9)].join("|")
+	Candidate.create(email: Faker::Internet.free_email,first_name: Faker::Name.first_name,last_name: Faker::Name.middle_name,adresse: Faker::Address.full_address,telephone: Faker::PhoneNumber.phone_number_with_country_code,raison_sociale: Faker::Commerce.department,siren: Faker::Number.leading_zero_number(digits: 10),sexe: sexe[rand(2)],date_of_birth: Faker::Date.in_date_period(year:1980),zip_code: Faker::Number.number(digits: 5),country:"France",ville: Faker::Nation.capital_city,services: caService,countries: caCountry,departments: caDepartment)
+end
 
 # ======================= CREE LES SERVICE MASSAGE ======================= #
 sus = [["Massage Classique / découverte","Le massage classique est un traitement qui agit sur chaque partie du corps les unes après les autres. Il se pratique par pétrissage, lissage, vibration ou par des mouvements plus petits et plus subtils sur les points de tension. Il s’agit d’un massage global relaxant qui en plus de soulager les tensions musculaires superficielles et profondes, possède de multiples actions thérapeutiques. Il permet de renforcer le système immunitaire, d’améliorer les fonctions digestives, de stimuler la vitalité des tissus, favoriser une bonne circulation sanguine et d’apaiser les tensions nerveuses. Le massage classique est recommandé pour les insomnies, les angoisses, le stress, la nervosité, la constipation, les migraines."],
