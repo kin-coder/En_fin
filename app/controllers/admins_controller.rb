@@ -124,7 +124,7 @@ class AdminsController < Application2Controller
   def create
     @client = Client.new(client_params)
     if @client.save
-      redirect_to index_clients_path, notice: 'Client was successfully created.'
+      redirect_to show_clients_path(@client), notice: 'Client was successfully created.'
     else
       render :new
     end
