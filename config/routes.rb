@@ -13,14 +13,12 @@ Rails.application.routes.draw do
   get "/admin", to:"admins#index", as:"index_admin"
   get "/admin/page", to:"admins#admin_page", as:"admin_page"
   get "/admin/prestataire", to:"admins#prestataire", as:"admin_prestataire"
+
   # creation et gestion candidature
-  
   get "/admin/candidates", to:"admins#allcandidate", as:"allcandidate"
   get "/admin/candidate/:id", to:"admins#showEditCandidat", as:"show_edit_candidate"
   patch "/admin/candidate-to-prestataire/", to:"admins#createCandidateToPrestataire", as:"create_candidate_prestataire"
   delete "/admin/delete-candidate/:id", to:"admins#cancelCandidat", as:"cancel_candidat"
-
-
 
   # Lien pour gerer les prestataire via l'admin
   get "admin/prestataires", to:"prestataires#index", as:"index_prestataires"
@@ -30,6 +28,15 @@ Rails.application.routes.draw do
   get "admin/prestataires/:id/edit", to:"prestataires#edit", as:"edit_prestataires"
   patch "admin/prestataires/:id", to:"prestataires#update", as:"update_prestataires"
   delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
+
+  # Lien pour gerer les client via l'admin
+  get "admin/clients", to:"admins#allclient", as:"index_clients"
+  get "admin/clients/:id", to:"admins#show", as:"show_clients"
+  get "admin/clients-new", to:"admins#new", as:"new_clients"
+  post "admin/clients-new", to:"admins#create", as:"create_clients"
+  get "admin/clients/:id/edit", to:"admins#edit", as:"edit_clients"
+  patch "admin/clients/:id", to:"admins#update", as:"update_clients"
+  delete "admin/clients/:id", to:"admins#destroy", as:"delete_clients"
 
 #STATIC_PAGE_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page static dans le static_page
