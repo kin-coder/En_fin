@@ -28,9 +28,9 @@
         <td><%= client.country %></td>
         <td><%= client.zip_code %></td>
         <td><%= client.email %></td>
-        <td><%= link_to 'Show', show_clients_path %></td>
+        <td><%= link_to 'Show', show_clients_path(client) %></td>
         <td><%= link_to 'Edit', edit_clients_path(client) %></td>
-        <td><%= link_to 'Destroy', delete_clients_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', delete_clients_path(client), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
