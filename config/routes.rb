@@ -38,6 +38,11 @@ Rails.application.routes.draw do
   patch "admin/clients/:id", to:"admins#update", as:"update_clients"
   delete "admin/clients/:id", to:"admins#destroy", as:"delete_clients"
 
+  # Lien pour gerer la commande via l'admin
+  get "admin/liste-des-commande", to:'admin_order#index', as:"admin_order_index"
+  get "admin/allcommande/:id", to:'admin_order#show', as:"admin_order_show"
+  get "admin/allcommande/:id/edit", to:'admin_order#edit', as:"admin_order_edit"
+
 #STATIC_PAGE_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page static dans le static_page
   # page d'acceul
