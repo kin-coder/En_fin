@@ -10,9 +10,14 @@ Rails.application.routes.draw do
     sessions: "admins/sessions"
   }
  
-  get "/admin", to:"admins#admin_page", as:"admin_page"
-  get "/admin/index", to:"admins#index", as:"index_admin"
+  get "/admin", to:"admins#index", as:"index_admin"
+  get "/admin/page", to:"admins#admin_page", as:"admin_page"
   get "/admin/prestataire", to:"admins#prestataire", as:"admin_prestataire"
+  # creation et gestion candidature
+  
+  get "/admin/candidate/:id", to:"admins#showEditCandidat", as:"show_edit_candidate"
+  post "/admin/candidate-to-prestataire", to:"admins#createCandidateToPrestataire", as:"create_candidate_prestataire"
+  
   
   # # Lien pour gerer les prestataire via l'admin
   # get "admin/prestataires", to:"prestataires#index", as:"index_prestataires"
