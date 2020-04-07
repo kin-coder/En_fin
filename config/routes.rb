@@ -17,16 +17,16 @@ Rails.application.routes.draw do
   
   get "/admin/candidate/:id", to:"admins#showEditCandidat", as:"show_edit_candidate"
   post "/admin/candidate-to-prestataire", to:"admins#createCandidateToPrestataire", as:"create_candidate_prestataire"
-  
-  
-  # # Lien pour gerer les prestataire via l'admin
-  # get "admin/prestataires", to:"prestataires#index", as:"index_prestataires"
-  # get "admin/prestataires/:id", to:"prestataires#show", as:"show_prestataires"
-  # get "admin/prestataires-new", to:"prestataires#new", as:"new_prestataires"
-  # post "admin/prestataires-new", to:"prestataires#create", as:"create_prestataires"
-  # get "admin/prestataires/:id/edit", to:"prestataires#edit", as:"edit_prestataires"
-  # patch "admin/prestataires/:id", to:"prestataires#update", as:"update_prestataires"
-  # delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
+
+  # Lien pour gerer les prestataire via l'admin
+  get "admin/prestataires", to:"prestataires#index", as:"index_prestataires"
+  get "admin/prestataires/:id", to:"prestataires#show", as:"show_prestataires"
+  get "admin/prestataires-new", to:"prestataires#new", as:"new_prestataires"
+  post "admin/prestataires-new", to:"prestataires#create", as:"create_prestataires"
+  get "admin/prestataires/:id/edit", to:"prestataires#edit", as:"edit_prestataires"
+  patch "admin/prestataires/:id", to:"prestataires#update", as:"update_prestataires"
+  delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
+
 #STATIC_PAGE_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page static dans le static_page
   # page d'acceul
