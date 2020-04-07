@@ -21,12 +21,18 @@ class PrestatairesController < Application2Controller
 
   def create
     @prestataire = Prestataire.new(prestataire_params)
-    if params[:service]==nil || params[:prestataire][:department_ids]==nil
+    if params[:service] == nil || params[:prestataire][:country_ids] == nil
       redirect_back(fallback_location: root_path)
     else
-      @prestataire.department_ids = params[:prestataire][:department_ids]
+      testValue = params[:prestataire][:country_ids].include?(Country.find_by(name:"France").id.to_s) && (params[:prestataire][:department_ids] == nil)
+      if testValue
+        redirect_back(fallback_location: root_path)
+        return
+      end
       @prestataire.service_ids = params[:service][:service_ids]
-      @prestataire.save
+      @prestataire.country_ids = params[:prestataire][:country_ids]
+      @prestataire.department_ids = params[:prestataire][:department_ids]
+
       if @prestataire.save
         redirect_to show_prestataires_path(@prestataire.id), notice: 'Le prestataire a été créé avec succès.'
       else
@@ -42,10 +48,17 @@ class PrestatairesController < Application2Controller
   end
 
   def update
-    @prestataire.update(prestataire_params)
-    if params[:service]==nil || params[:prestataire][:department_ids]==nil
+    @prestataire.update(prestataire_params)   
+    if params[:service]==nil || params[:prestataire][:country_ids]==nil
+      #|| params[:prestataire][:department_ids]==nil
       redirect_back(fallback_location: root_path)
     else
+      testValue = params[:prestataire][:country_ids].include?(Country.find_by(name:"France").id.to_s) && (params[:prestataire][:department_ids] == nil)
+      if testValue
+        redirect_back(fallback_location: root_path)
+        return
+      end
+      @prestataire.country_ids = params[:prestataire][:country_ids]
       @prestataire.department_ids = params[:prestataire][:department_ids]
       @prestataire.service_ids = params[:service][:service_ids]
       if @prestataire.save
