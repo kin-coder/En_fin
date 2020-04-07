@@ -250,12 +250,17 @@ ActiveRecord::Schema.define(version: 2020_04_07_064344) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "sexe"
     t.string "first_name"
     t.string "last_name"
-    t.string "adresse"
-    t.string "tel"
+    t.string "date_of_birth"
     t.string "raison_sociale"
-    t.string "siret"
+    t.string "siren"
+    t.string "tel"
+    t.string "adresse"
+    t.string "zip_code"
+    t.string "ville"
+    t.string "pays"
   end
 
   create_table "products", force: :cascade do |t|

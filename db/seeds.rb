@@ -38,6 +38,8 @@ Country.find_by(name:"Suisse").services = [s2]
 
 country = Country.create(name: "France")
 
+sexe = ["Monsieur","Madame"]
+paysFake = ["Belgique","Luxembourg","Suisse","France"]
 
 # ======================== PRESTATAIRES ====================== #
 # creation département et prestataire
@@ -46,7 +48,7 @@ listdepartement.each do |listdepartement|
 	d.services = allServices[rand(2)..rand(2)]
 
 	rand(5).times do |i|
-		p = Prestataire.create(email: Faker::Internet.free_email, first_name: Faker::Name.first_name, last_name: Faker::Name.middle_name , adresse: Faker::Address.full_address, tel: Faker::PhoneNumber.phone_number_with_country_code, raison_sociale: Faker::Commerce.department, siret: Faker::Number.leading_zero_number(digits: 10))
+		p = Prestataire.create(email: Faker::Internet.free_email,first_name: Faker::Name.first_name,last_name: Faker::Name.middle_name,adresse: Faker::Address.full_address,tel: Faker::PhoneNumber.phone_number_with_country_code,raison_sociale: Faker::Commerce.department,siren: Faker::Number.leading_zero_number(digits: 10),sexe: sexe[rand(2)],date_of_birth: Faker::Date.in_date_period(year:1980),zip_code: Faker::Number.number(digits: 5),pays: paysFake[rand(4)],ville: Faker::Nation.capital_city)
 		# Selection du zone pays et departement qu'il peut faire
 		p.departments = [d]
 		p.countries = [country] + listPays[rand(3)..rand(3)]

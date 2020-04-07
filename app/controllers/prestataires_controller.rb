@@ -8,11 +8,13 @@ class PrestatairesController < Application2Controller
 
   def show
     @services = @prestataire.services
+    @countries = @prestataire.countries
     @departments = @prestataire.departments
   end
 
   def new
     @services = Service.all
+    @countries = Country.all
     @departments = Department.all
     @prestataire = Prestataire.new
   end
@@ -35,6 +37,7 @@ class PrestatairesController < Application2Controller
 
   def edit
     @services = Service.all
+    @countries = Country.all
     @departments = Department.all
   end
 
@@ -63,7 +66,7 @@ class PrestatairesController < Application2Controller
     end
 
     def prestataire_params
-      params.require(:prestataire).permit(:first_name, :last_name, :email, :tel, :adresse, :raison_sociale, :siret)
+      params.require(:prestataire).permit(:email,:sexe,:first_name,:last_name,:date_of_birth,:raison_sociale,:siren,:tel,:adresse,:zip_code,:ville,:pays)
+      #(:first_name, :last_name, :email, :tel, :adresse, :raison_sociale, :siret)
     end
 end
-

@@ -1,36 +1,41 @@
+<%()
+
 <p id="notice"><%= notice %></p>
 <div class="row">
 	<div class="col-sm-9">
 		<p>
-		  <strong>Nom:</strong>
-		  <%= @prestataire.first_name %> <%= @prestataire.last_name %>
+			<strong><%= @prestataire.sexe %> <%= @prestataire.first_name %> <%= @prestataire.last_name %></strong>
 		</p>
 
 		<p>
-		  <strong>Email:</strong>
-		  <%= @prestataire.email %>
+			<strong>Email:</strong> <%= @prestataire.email %>
 		</p>
 
 		<p>
-		  <strong>Numero télephone:</strong>
-		  <%= @prestataire.tel %>
+			<strong>Né(e): </strong> <%= @prestataire.date_of_birth %>
 		</p>
 
 		<p>
-		  <strong>Adresse:</strong>
-		  <%= @prestataire.adresse %>
+			<strong>Raison sociale:</strong> <%= @prestataire.raison_sociale %>
 		</p>
 
 		<p>
-		  <strong>Raison sociale:</strong>
-		  <%= @prestataire.raison_sociale %>
+			<strong>Siren:</strong> <%= @prestataire.siren %>
 		</p>
 
 		<p>
-		  <strong>Raison sociale:</strong>
-		  <%= @prestataire.siret %>
+			<strong>Numero télephone:</strong> <%= @prestataire.tel %>
 		</p>
+
+		<p>
+			<strong>Adresse:</strong> <%= @prestataire.adresse %><br>
+			<strong>Code postal:</strong> <%= @prestataire.zip_code %><br>
+			<strong>Ville:</strong> <%= @prestataire.ville %><br>
+			<strong>Pays:</strong> <%= @prestataire.pays %><br>
+		</p>
+
 	</div>
+
 	<div class="col-sm-3">
 		<strong>Ses services:</strong>
 		<ul>
