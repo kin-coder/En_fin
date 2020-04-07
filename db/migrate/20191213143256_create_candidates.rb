@@ -13,9 +13,9 @@ class CreateCandidates < ActiveRecord::Migration[6.0]
       t.string :zip_code
       t.string :ville
       t.string :country
-      t.string :services #spa || massage || coiffure
-      t.string :countries #spa || France || Suisse
-      t.string :departments #spa || Derap || Ain
+      t.string :services #spa | massage || coiffure
+      t.string :countries #spa | France || Suisse
+      t.string :departments #spa | Derap || Ain
 
       t.timestamps
     end

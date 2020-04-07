@@ -6,6 +6,9 @@ class Prestataire < ApplicationRecord
   #relation Prestataire N-N Departement
   has_many :prestataire_departments, dependent: :destroy
   has_many :departments, through: :prestataire_departments
+  #relation Prestataire N-N Country
+  has_many :prestataire_countries, dependent: :destroy
+  has_many :countries, through: :prestataire_countries
 
   #relation N-N entre la commande et le prestataire pour sauvgrder les prestataire en attente
   has_many :prestataire_orders

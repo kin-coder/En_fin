@@ -10,18 +10,39 @@ Rails.application.routes.draw do
     sessions: "admins/sessions"
   }
  
-  get "/admin", to:"admins#admin_page", as:"admin_page"
-  get "/admin/index", to:"admins#index", as:"index_admin"
+  get "/admin", to:"admins#index", as:"index_admin"
+  get "/admin/page", to:"admins#admin_page", as:"admin_page"
   get "/admin/prestataire", to:"admins#prestataire", as:"admin_prestataire"
-  
-  # # Lien pour gerer les prestataire via l'admin
-  # get "admin/prestataires", to:"prestataires#index", as:"index_prestataires"
-  # get "admin/prestataires/:id", to:"prestataires#show", as:"show_prestataires"
-  # get "admin/prestataires-new", to:"prestataires#new", as:"new_prestataires"
-  # post "admin/prestataires-new", to:"prestataires#create", as:"create_prestataires"
-  # get "admin/prestataires/:id/edit", to:"prestataires#edit", as:"edit_prestataires"
-  # patch "admin/prestataires/:id", to:"prestataires#update", as:"update_prestataires"
-  # delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
+
+  # creation et gestion candidature
+  get "/admin/candidates", to:"admins#allcandidate", as:"allcandidate"
+  get "/admin/candidate/:id", to:"admins#showEditCandidat", as:"show_edit_candidate"
+  patch "/admin/candidate-to-prestataire/", to:"admins#createCandidateToPrestataire", as:"create_candidate_prestataire"
+  delete "/admin/delete-candidate/:id", to:"admins#cancelCandidat", as:"cancel_candidat"
+
+  # Lien pour gerer les prestataire via l'admin
+  get "admin/prestataires", to:"prestataires#index", as:"index_prestataires"
+  get "admin/prestataires/:id", to:"prestataires#show", as:"show_prestataires"
+  get "admin/prestataires-new", to:"prestataires#new", as:"new_prestataires"
+  post "admin/prestataires-new", to:"prestataires#create", as:"create_prestataires"
+  get "admin/prestataires/:id/edit", to:"prestataires#edit", as:"edit_prestataires"
+  patch "admin/prestataires/:id", to:"prestataires#update", as:"update_prestataires"
+  delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
+
+  # Lien pour gerer les client via l'admin
+  get "admin/clients", to:"admins#allclient", as:"index_clients"
+  get "admin/clients/:id", to:"admins#show", as:"show_clients"
+  get "admin/clients-new", to:"admins#new", as:"new_clients"
+  post "admin/clients-new", to:"admins#create", as:"create_clients"
+  get "admin/clients/:id/edit", to:"admins#edit", as:"edit_clients"
+  patch "admin/clients/:id", to:"admins#update", as:"update_clients"
+  delete "admin/clients/:id", to:"admins#destroy", as:"delete_clients"
+
+  # Lien pour gerer la commande via l'admin
+  get "admin/liste-des-commande", to:'admin_order#index', as:"admin_order_index"
+  get "admin/allcommande/:id", to:'admin_order#show', as:"admin_order_show"
+  get "admin/allcommande/:id/edit", to:'admin_order#edit', as:"admin_order_edit"
+
 #STATIC_PAGE_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page static dans le static_page
   # page d'acceul

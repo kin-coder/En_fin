@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_022945) do
+ActiveRecord::Schema.define(version: 2020_04_07_064344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -219,6 +219,15 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.index ["massage_su_price_id"], name: "index_other_su_prices_on_massage_su_price_id"
   end
 
+  create_table "prestataire_countries", force: :cascade do |t|
+    t.bigint "country_id"
+    t.bigint "prestataire_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_prestataire_countries_on_country_id"
+    t.index ["prestataire_id"], name: "index_prestataire_countries_on_prestataire_id"
+  end
+
   create_table "prestataire_departments", force: :cascade do |t|
     t.bigint "department_id"
     t.bigint "prestataire_id"
@@ -241,12 +250,17 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "sexe"
     t.string "first_name"
     t.string "last_name"
-    t.string "adresse"
-    t.string "tel"
+    t.string "date_of_birth"
     t.string "raison_sociale"
     t.string "siren"
+    t.string "tel"
+    t.string "adresse"
+    t.string "zip_code"
+    t.string "ville"
+    t.string "pays"
   end
 
   create_table "products", force: :cascade do |t|
