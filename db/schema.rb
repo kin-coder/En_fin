@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_022945) do
+ActiveRecord::Schema.define(version: 2020_04_07_064344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -217,6 +217,15 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["massage_su_id"], name: "index_other_su_prices_on_massage_su_id"
     t.index ["massage_su_price_id"], name: "index_other_su_prices_on_massage_su_price_id"
+  end
+
+  create_table "prestataire_countries", force: :cascade do |t|
+    t.bigint "country_id"
+    t.bigint "prestataire_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_prestataire_countries_on_country_id"
+    t.index ["prestataire_id"], name: "index_prestataire_countries_on_prestataire_id"
   end
 
   create_table "prestataire_departments", force: :cascade do |t|

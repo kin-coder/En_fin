@@ -1,4 +1,5 @@
 class PrestatairesController < Application2Controller
+  before_action :authenticate_admin!
   before_action :set_prestataire, only: [:show, :edit, :update, :destroy]
 
   def index
