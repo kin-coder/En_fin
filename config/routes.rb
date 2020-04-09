@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # Lien pour l'authentification du client, Logign, ...
   devise_for :clients, path: 'clients'
   # page pour le profil du client
-  get '/client', to: 'clients#profil', as: "client_profil"
+  get '/client-profil', to: 'clients#profil', as: "client_profil"
   get '/client/order', to: 'clients#order', as: "client_order"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
