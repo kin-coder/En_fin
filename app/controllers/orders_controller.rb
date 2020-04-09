@@ -384,11 +384,13 @@ class OrdersController < ApplicationController
   end
 
   def payedsuccess
-    session.clear
+    session.delete(:otherInfo)
+    session.delete(:myPrestation)
   end
 
   def payederrors
-    session.clear
+    session.delete(:otherInfo)
+    session.delete(:myPrestation)
   end
 
   private
@@ -400,7 +402,8 @@ class OrdersController < ApplicationController
   def redirect_reservation
     flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
     flash[:delete_js] = true
-    session.clear
+    session.delete(:otherInfo)
+    session.delete(:myPrestation)
     redirect_to reservation_path
   end
 

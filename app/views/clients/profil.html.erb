@@ -2,6 +2,46 @@
 
 <div class="container">
 	<%= link_to "Editer mon profil", edit_client_registration_path %><br>
+	<h1>Commande</h1>
+	<div class="alert">
+		<h4><a href="">En cours</a></h4>
+		<h4><a href="">Traitées</a></h4>
+		<h4><a href="">Non traitées</a></h4>
+		<button class="alert success">Export DBB</button>
+	</div>
+
+	<label>Classer par: 
+	<select name="classerment">
+		<option value="N°" selected>N°</option>
+		<option value="Date">Date</option>
+		<option value="Prestataire">Prestataire</option>
+		<option value="Montant">Montant</option>
+		<option value="CP">CP</option>
+	</select>
+	</label>
+
+	<table border="2">
+		<tr>
+			<td>N°</td>
+			<td>Date</td>
+			<td>Prestataire associé</td>
+			<td>Montant</td>
+			<td>CP</td>
+			<td>Action</td>
+		</tr>
+
+		<% @orders.each do |order| %>
+		<tr>
+			<td><%= order.id %></td>
+			<td><%= order.prestation_date %></td>
+			<td>none</td>
+			<td>0.00 €</td>
+			<td>CP</td>
+			<td><a href="<%= client_order_path(order.id) %>">Afficher détails</a></td>
+		</tr>
+		<% end %>
+	</table>
+
 </div>
 
 <br><br><br><br><br><br>

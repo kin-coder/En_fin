@@ -6,13 +6,11 @@ class StaticPageController < ApplicationController
 #Differents service {+ Page Service Par Departement}
   def massage
     @massages = MassageSu.all
-        @commentsMassage = Comment.where(comment_for:"massage")
-
+    @commentsMassage = Comment.where(comment_for:"massage")
   end
 
   def location_spa
-            @commentsSpa = Comment.where(comment_for:"spa")
-
+    @commentsSpa = Comment.where(comment_for:"spa")
   end
 # Devenir partenaire inscription prestataire
   def partner
