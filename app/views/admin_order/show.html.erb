@@ -1,2 +1,120 @@
-<h1>AdminOrder#show</h1>
-<p>Find me in app/views/admin_order/show.html.erb</p>
+<h1>Commande N° <%= @order.id %> du client <strong><%= @order.client.first_name %> <%= @order.client.last_name %></strong></h1>
+<a href="<%= show_clients_path(@order.client.id) %>">Voir le profile du client</a>
+
+
+
+<!-- ============================================ -->
+<hr>
+<br><br><br><br>
+
+<h2>Prestataire disponible</h2>
+
+#relation N-N entre la commande et le prestataire pour sauvgarder les prestataire en attente
+prestataire_orders
+prestataires #liste des prestataires
+
+<br><br><br><br>
+
+<hr>
+<div class="row">
+	<div class="col-sm-6">
+		<!-- ============================================ -->
+		<h2>Service demandé</h2>
+		<ul>
+			<% @order.services.each do |service| %>
+				<li><%= service.name %></li>
+			<% end %>
+		</ul>
+
+		<!-- ============================================ -->
+
+		<% unless @order.order_massages.empty? %>
+		<h3>Massage</h3>
+		Praticien demandé: <strong><%= @order.praticien %></strong><br>
+		<% @order.order_massages.each do |o_massage| %>
+			<h5>Massage pour <%= o_massage.massage_ca.name %></h5>
+			<ul>
+				<li>Type  de massage: <%= o_massage.massage_su.name %></li>
+				<li>Durée: <%= o_massage.massage_su_price.duration %> mn</li>
+			</ul>
+		<% end %>
+		<% end %>
+
+		<!-- ============================================ -->
+
+		<% unless @order.order_spas.empty? %>
+		<h3>Location spa</h3>
+		<% @order.order_spas.each do |o_spa| %>
+			<h5>Location spa pour: <%= o_spa.spa.duration %>H</h5>
+			<ul>
+				<li>Type de logement: <%= o_spa.logement %></li>
+				<li>Type d'installation: <%= o_spa.installation %></li>
+				<li>Système d'eau: <%= o_spa.syteme_eau %></li>
+				<li>Ambiance:
+					<% if o_spa.product.nil? %>
+						aucun selectionné
+					<% else %>
+						<%= o_spa.product.name %>
+					<% end %>
+				</li>
+
+			</ul>
+		<% end %>
+		<% end %>
+
+		<!-- ============================================ -->
+
+		<% unless @order.order_products.empty? %>
+		<h3>Cadeau</h3>
+		<table border="2">
+			<tr>
+				<td>nom</td>
+				<td>nbr</td>
+				<td>PU</td>
+			</tr>
+			<% @order.order_products.each do |o_product| %>
+				<tr>
+					<td><%= o_product.product.name %></td>
+					<td><%= o_product.number %></td>
+					<td><%= o_product.product.price %> €</td>
+				</tr>
+			<% end %>
+		</table>
+		<% end %>
+	</div>
+
+	<div class="col-sm-6">
+		
+		<h2>OÙ ET QUAND?</h2>
+		<strong>Date de livraison:</strong> <%= @order.prestation_date %><br>
+		<strong>Pays:</strong> <%= @order.country.name %>
+		<% if !@order.department.nil? %>
+			<br><strong>Departement:</strong> <%= @order.department.name %>
+		<% end %>
+
+		<h3>ADRESSE DE LIVRAISON</h3>
+
+		Adresse: <%= @order.delivery_adresse %> <br>
+		Complement d'adresse: <%= @order.delivery_adresse_complet %> <br>
+		Code Postal: <%= @order.delivery_code_postal %> <br>
+		Ville: <%= @order.delivery_ville %> <br>
+		Pays: <%= @order.delivery_pays %> <br>
+
+		<h3>ADRESSE DE FACTURATION</h3>
+
+		Adresse: <%= @order.billing_adresse %> <br>
+		Complement d'adresse: <%= @order.billing_adresse_complet %> <br>
+		Code Postal: <%= @order.billing_code_postal %> <br>
+		Ville: <%= @order.billing_ville %> <br>
+		Pays: <%= @order.billing_pays %> <br>
+
+		<div>
+		<hr>
+		<h5><strong>Mots du client: </strong></h5>
+			<i><%= @order.message %></i>
+		</div>
+		<hr>	
+	</div>
+</div>
+
+<a href="<%= admin_order_index_path %>">Tous les commandes</a>

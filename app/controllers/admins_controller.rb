@@ -5,17 +5,17 @@ class AdminsController < Application2Controller
     # page d'accueil du page admin
     def index
     	@admin = current_admin
-        @services = Service.all
-        @candidates = Candidate.all
-        @clients = Client.all
-        @countries = Country.all
-        @departments = Department.all
-        @prestataires = Prestataire.all
-        @orders = Order.all
-        # @OrderMassage = OrderMassage.all
-        # @OrderProduct = OrderProduct.all
-        # @OrderService = OrderService.all
-        # @OrderSpa = OrderSpa.all
+      @services = Service.all
+      @candidates = Candidate.all
+      @clients = Client.all
+      @countries = Country.all
+      @departments = Department.all
+      @prestataires = Prestataire.all
+      @orders = Order.all
+      # @OrderMassage = OrderMassage.all
+      # @OrderProduct = OrderProduct.all
+      # @OrderService = OrderService.all
+      # @OrderSpa = OrderSpa.all
     end
 
     def allcandidate
@@ -108,6 +108,7 @@ class AdminsController < Application2Controller
   # GET /clients/1
   # GET /clients/1.json
   def show
+    @orders = @client.orders
   end
 
   # GET /clients/new

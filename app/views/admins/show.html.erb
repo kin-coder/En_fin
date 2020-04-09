@@ -1,44 +1,73 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @client.first_name %>
-</p>
+<div class="row">
+  <div class="col-sm-6">
+  <p>
+    <strong>First name:</strong>
+    <%= @client.first_name %>
+  </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @client.last_name %>
-</p>
+  <p>
+    <strong>Last name:</strong>
+    <%= @client.last_name %>
+  </p>
 
-<p>
-  <strong>Adresse:</strong>
-  <%= @client.adresse %>
-</p>
+  <p>
+    <strong>Adresse:</strong>
+    <%= @client.adresse %>
+  </p>
 
-<p>
-  <strong>Tel:</strong>
-  <%= @client.tel %>
-</p>
+  <p>
+    <strong>Tel:</strong>
+    <%= @client.tel %>
+  </p>
 
-<p>
-  <strong>Sexe:</strong>
-  <%= @client.sexe %>
-</p>
+  <p>
+    <strong>Sexe:</strong>
+    <%= @client.sexe %>
+  </p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @client.country %>
-</p>
+  <p>
+    <strong>Country:</strong>
+    <%= @client.country %>
+  </p>
 
-<p>
-  <strong>Zip code:</strong>
-  <%= @client.zip_code %>
-</p>
+  <p>
+    <strong>Zip code:</strong>
+    <%= @client.zip_code %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @client.email %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @client.email %>
+  </p>
+  <%= link_to 'Modifier', edit_clients_path(@client) %>
+  <%= link_to 'Liste des clients', index_clients_path %>
+  
+</div>
 
-<%= link_to 'Edit', edit_clients_path(@client) %>
-<%= link_to 'Back', index_clients_path %>
+  <div class="col-sm-6">
+    <h2>Liste de ses commandes</h2>
+    <table border="2">
+      <tr>
+        <td>N°</td>
+        <td>Date</td>
+        <td>Prestataire associé</td>
+        <td>Montant</td>
+        <td>CP</td>
+        <td>Action</td>
+      </tr>
+
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.prestation_date %></td>
+        <td>none</td>
+        <td>0.00 €</td>
+        <td>CP</td>
+        <td><a href="<%=admin_order_show_path(order.id)%>">Afficher détails</a></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

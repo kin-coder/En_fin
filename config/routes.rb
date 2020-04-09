@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :clients, path: 'clients'
   # page pour le profil du client
   get '/client-profil', to: 'clients#profil', as: "client_profil"
-  get '/client/order', to: 'clients#order', as: "client_order"
+  get '/client/order/:id', to: 'clients#order', as: "client_order"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
   devise_for :admins, path: 'admins',:skip => [:registrations], controllers: { 
