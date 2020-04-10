@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_064344) do
+ActiveRecord::Schema.define(version: 2020_04_10_071803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -235,6 +235,16 @@ ActiveRecord::Schema.define(version: 2020_04_07_064344) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["department_id"], name: "index_prestataire_departments_on_department_id"
     t.index ["prestataire_id"], name: "index_prestataire_departments_on_prestataire_id"
+  end
+
+  create_table "prestataire_orders", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "prestataire_id"
+    t.boolean "accepted", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_prestataire_orders_on_order_id"
+    t.index ["prestataire_id"], name: "index_prestataire_orders_on_prestataire_id"
   end
 
   create_table "prestataire_services", force: :cascade do |t|

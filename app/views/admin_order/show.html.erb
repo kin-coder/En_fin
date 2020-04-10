@@ -6,13 +6,40 @@
 <hr>
 <br><br><br><br>
 
-<h2>Prestataire disponible</h2>
+<div class="row">
+	<div class="col-sm-4">
+		<h2>Liste des prestataires invités</h2>
+		<table>
+			<tr>
+				<td>Prestataire</td>
+				<td>email</td>
+				<td>Action</td>
+			</tr>
+			<% @prestataire_orders.each do |p_order| %>
+				<tr>
+					<td><%= p_order.first_name %> <%= p_order.last_name %></td>
+					<td><%= p_order.email %></td>
+					<td><a href="">Faire la prestation</a>	<a href="">Ajouter dans liste d'attente</a> <%= link_to 'Afficher', show_prestataires_path(p_order.id) %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+	<div class="col-sm-4">
+		<h2>Prestataires qui va livré la commande</h2>
+	</div>
+	<div class="col-sm-4">
+		<h2>Prestataires qui sont dans la liste d'attente</h2>
+	</div>
+	<div class="col-sm-4">
+		<h2>Prestataires qui sont dans la liste d'attente</h2>
+	</div>
+</div>
 
-<ul>
-<% @prestataire_orders.each do |p_order| %>
-	<li><%= p_order.sexe %> <%= p_order.first_name %> <%= p_order.last_name %> <%= link_to 'Afficher', show_prestataires_path(p_order.id) %></li>
-<% end %>
-</ul>
+<div class="alert">
+	<center>
+		<a href="">Modifier la commande</a>	
+	</center>
+</div>
 
 <br><br><br><br>
 
@@ -28,7 +55,6 @@
 		</ul>
 
 		<!-- ============================================ -->
-
 		<% unless @order.order_massages.empty? %>
 		<h3>Massage</h3>
 		Praticien demandé: <strong><%= @order.praticien %></strong><br>
@@ -85,8 +111,7 @@
 	</div>
 
 	<div class="col-sm-6">
-		
-		<h2>OÙ ET QUAND?</h2>
+		<h2>Heure et date de livraison + lieu</h2>
 		<strong>Date de livraison:</strong> <%= @order.prestation_date %><br>
 		<strong>Pays:</strong> <%= @order.country.name %>
 		<% if !@order.department.nil? %>
