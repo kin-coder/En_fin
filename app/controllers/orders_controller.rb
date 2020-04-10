@@ -355,8 +355,7 @@ class OrdersController < ApplicationController
         end
       end
       #====== Send email to prestataire location spa =====
-      PrestataireMailer.new_orderSpa(mailToOrderServiceSpa).deliver_now
-
+      PrestataireMailer.new_orderSpa(mailToOrderServiceSpa.id).deliver_now
     end
     
     unless myPrestation["massage"].empty?
@@ -370,7 +369,7 @@ class OrdersController < ApplicationController
       @order.praticien = session[:otherInfo]["praticien"]
       @order.save
       #====== Send email to prestataire massage =====
-      PrestataireMailer.new_orderMassage(mailToOrderServiceMassage).deliver_now
+      PrestataireMailer.new_orderMassage(mailToOrderServiceMassage.id).deliver_now
     end
     
     unless session[:otherInfo]["cadeau"].empty?

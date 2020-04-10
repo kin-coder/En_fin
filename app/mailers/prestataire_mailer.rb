@@ -12,12 +12,14 @@ class PrestataireMailer < ApplicationMailer
   	mail(to: @candidate.email, subject: 'Bienvenue chez Cocooning Spa !')
   end
 
-  def new_orderSpa
-    
+  def new_orderSpa(order_service)
+    @oService = OrderService.find(order_service)
+    mail(to: "ctrlfaly@gmail.com", subject: 'Une nouvelle commande pour vous !')
   end
 
-  def new_orderMassage
-    
+  def new_orderMassage(order_service)
+    @oService = OrderService.find(order_service)
+    mail(to: "ctrlfaly@gmail.com", subject: 'Une nouvelle commande pour vous !')
   end
 
 end

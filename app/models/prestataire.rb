@@ -10,7 +10,6 @@ class Prestataire < ApplicationRecord
   has_many :prestataire_countries, dependent: :destroy
   has_many :countries, through: :prestataire_countries
 
-  #relation N-N entre la commande et le prestataire pour sauvgrder les prestataire en attente
-  has_many :prestataire_orders
-  has_many :orders, through: :prestataire_orders
+  #relation 1-N entre la commande et le prestataire
+  has_many :order_services
 end
