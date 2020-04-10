@@ -1,2 +1,30 @@
 <h1>Massage</h1>
-<p><%= @oService.service_time %></p>
+
+
+Date : <%= @date %><br>
+Heure (modifiable avec le client) : <%= @oService.service_time %><br>
+Adresse de livraison : <%= @order.delivery_adresse %><br>
+Type de praticien : <%= @order.praticien %><br>
+
+<hr>
+
+<% price = 0.0 %>
+<% acompte = 0.0 %>
+<% @order.order_massages.each do |o_massage| %>
+	<%= o_massage.massage_ca.name %><br>
+	<%= o_massage.massage_su.name %> <%= o_massage.massage_su_price.duration %>mn:
+	<% if @order.isExceptional? %>
+		<%= o_massage.massage_su_price.exceptional_price %>€<br>
+		<% price += o_massage.massage_su_price.exceptional_price %>
+		<% acompte += o_massage.massage_su_price.exceptional_acompte %>
+	<% else %>
+		<%= o_massage.massage_su_price.ordinary_price %>€<br>
+		<% price += o_massage.massage_su_price.ordinary_price %>
+		<% acompte += o_massage.massage_su_price.ordinary_acompte %>
+	<% end %>
+<% end %>
+
+Prix total : <%= price + acompte %>€<br>
+Remise code promo : 0€<br>
+Acompte versé par le client (commission CCSPA) : <%= acompte %>€<br>
+Total restant pour vous : <%= price %>€<br>

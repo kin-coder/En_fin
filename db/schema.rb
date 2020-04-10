@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_071803) do
+ActiveRecord::Schema.define(version: 2020_04_07_064344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -163,12 +163,15 @@ ActiveRecord::Schema.define(version: 2020_04_10_071803) do
   end
 
   create_table "order_services", force: :cascade do |t|
+    t.string "service_time"
+    t.boolean "is_done", default: false
     t.bigint "order_id"
     t.bigint "service_id"
-    t.string "service_time"
+    t.bigint "prestataire_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_services_on_order_id"
+    t.index ["prestataire_id"], name: "index_order_services_on_prestataire_id"
     t.index ["service_id"], name: "index_order_services_on_service_id"
   end
 
@@ -235,16 +238,6 @@ ActiveRecord::Schema.define(version: 2020_04_10_071803) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["department_id"], name: "index_prestataire_departments_on_department_id"
     t.index ["prestataire_id"], name: "index_prestataire_departments_on_prestataire_id"
-  end
-
-  create_table "prestataire_orders", force: :cascade do |t|
-    t.bigint "order_id"
-    t.bigint "prestataire_id"
-    t.boolean "accepted", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_prestataire_orders_on_order_id"
-    t.index ["prestataire_id"], name: "index_prestataire_orders_on_prestataire_id"
   end
 
   create_table "prestataire_services", force: :cascade do |t|
