@@ -6,14 +6,10 @@ class Order < ApplicationRecord
 	has_many :order_services
 	has_many :services, through: :order_services
 	
-	#relation N-N entre la commande et le prestataire pour sauvgarder les prestataire en attente
-	has_many :prestataire_orders, dependent: :destroy
-	has_many :prestataires, through: :prestataire_orders
-	
 	#pour la sauvegarde des produits N-N produit - order
 	has_many :order_products, dependent: :destroy
 	has_many :products, through: :order_products
-	
+
 	# relation order 1-N order_massage
 	has_many :order_massages, dependent: :destroy
 	
@@ -31,5 +27,15 @@ class Order < ApplicationRecord
 	validates :delivery_code_postal, presence: true
 	validates :delivery_adresse, presence: true
 	validates :delivery_adresse_complet, presence: true
+
+	def isExceptional?
+		exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+		current_date = self.prestation_date.split("/")
+		isExeptional = false
+		if exceptionalDate.include?(current_date[0..1])
+      isExeptional = true
+    end
+    return isExeptional
+	end
 
 end

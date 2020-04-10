@@ -1,14 +1,27 @@
 class PrestataireMailer < ApplicationMailer
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.prestataire_mailer.new_candidate.subject
-  #
   def new_candidate(candidate)
-	@candidate = candidate
-	@url = 'http://spamandona.herokuapp.com/'
-	# permet d'envoyer l'email à to: ...
-	mail(to: @candidate.email, subject: 'Bienvenue chez Cocooning Spa !')
+  	@candidate = candidate
+  	@url = 'http://spamandona.herokuapp.com/'
+  	# permet d'envoyer l'email à to: ...
+  	mail(to: @candidate.email, subject: 'Bienvenue chez Cocooning Spa !')
+  end
+
+  def new_orderSpa(order_service,id)
+    @prestataire = Prestataire.find(id)
+    @oService = OrderService.find(order_service)
+    @order = @oService.order
+    @date = @order.prestation_date.split("/")
+    @date = "#{@date[1]}/#{@date[0]}/#{@date[2]}"
+    mail(to: @prestataire.email, subject: 'Une nouvelle commande pour vous !')
+  end
+
+  def new_orderMassage(order_service,id)
+    @prestataire = Prestataire.find(id)
+    @oService = OrderService.find(order_service)
+    @order = @oService.order
+    @date = @order.prestation_date.split("/")
+    @date = "#{@date[1]}/#{@date[0]}/#{@date[2]}"
+    mail(to: @prestataire.email, subject: 'Une nouvelle commande pour vous !')
   end
 end

@@ -1,18 +1,6 @@
 <h1>Commande N° <%= @order.id %> du client <strong><%= @order.client.first_name %> <%= @order.client.last_name %></strong></h1>
 <a href="<%= show_clients_path(@order.client.id) %>">Voir le profile du client</a>
 
-
-
-<!-- ============================================ -->
-<hr>
-<br><br><br><br>
-
-<h2>Prestataire disponible</h2>
-
-#relation N-N entre la commande et le prestataire pour sauvgarder les prestataire en attente
-prestataire_orders
-prestataires #liste des prestataires
-
 <br><br><br><br>
 
 <hr>
@@ -27,7 +15,6 @@ prestataires #liste des prestataires
 		</ul>
 
 		<!-- ============================================ -->
-
 		<% unless @order.order_massages.empty? %>
 		<h3>Massage</h3>
 		Praticien demandé: <strong><%= @order.praticien %></strong><br>
@@ -84,8 +71,7 @@ prestataires #liste des prestataires
 	</div>
 
 	<div class="col-sm-6">
-		
-		<h2>OÙ ET QUAND?</h2>
+		<h2>Heure et date de livraison + lieu</h2>
 		<strong>Date de livraison:</strong> <%= @order.prestation_date %><br>
 		<strong>Pays:</strong> <%= @order.country.name %>
 		<% if !@order.department.nil? %>
@@ -116,5 +102,58 @@ prestataires #liste des prestataires
 		<hr>	
 	</div>
 </div>
+
+
+
+<hr>
+
+
+
+
+<div>
+		<h2>Liste des prestataires invités</h2>
+		<% unless @spa_prestataires.empty? %>
+		<h3>Pour la location spa</h3>
+		<table border="2" width="100%">
+			<tr>
+				<td>Prestataire</td>
+				<td>email</td>
+				<td>Action</td>
+			</tr>
+			<% @spa_prestataires.each do |p_order| %>
+				<tr>
+					<td><%= p_order.first_name %> <%= p_order.last_name %></td>
+					<td><%= p_order.email %></td>
+					<td><%= link_to 'Afficher', show_prestataires_path(p_order.id) %></td>
+				</tr>
+			<% end %>
+		</table>
+		<% end %>
+
+		<% unless @massage_prestataires.empty? %>
+		<h3>Pour le massage</h3>
+		<table border="2" width="100%">
+			<tr>
+				<td>Prestataire</td>
+				<td>email</td>
+				<td>Action</td>
+			</tr>
+			<% @massage_prestataires.each do |p_order| %>
+				<tr>
+					<td><%= p_order.sexe %> <%= p_order.first_name %> <%= p_order.last_name %></td>
+					<td><%= p_order.email %></td>
+					<td><%= link_to 'Afficher', show_prestataires_path(p_order.id) %></td>
+				</tr>
+			<% end %>
+		</table>
+		<% end %>
+</div>
+
+<div class="alert">
+	<center>
+		<a href="">Modifier la commande</a>	
+	</center>
+</div>
+
 
 <a href="<%= admin_order_index_path %>">Tous les commandes</a>

@@ -163,12 +163,15 @@ ActiveRecord::Schema.define(version: 2020_04_07_064344) do
   end
 
   create_table "order_services", force: :cascade do |t|
+    t.string "service_time"
+    t.boolean "is_done", default: false
     t.bigint "order_id"
     t.bigint "service_id"
-    t.string "service_time"
+    t.bigint "prestataire_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_services_on_order_id"
+    t.index ["prestataire_id"], name: "index_order_services_on_prestataire_id"
     t.index ["service_id"], name: "index_order_services_on_service_id"
   end
 

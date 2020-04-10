@@ -343,7 +343,7 @@ class OrdersController < ApplicationController
 
     myPrestation = session[:myPrestation]
     unless myPrestation["spa"].empty?
-      OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: session[:otherInfo]["heureSpa"])
+      mailToOrderServiceSpa = OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: session[:otherInfo]["heureSpa"])
       myPrestation["spa"].each do |spa|
         current_spa = Spa.find_by(duration:spa["time"])
         current_product = ""
@@ -354,10 +354,20 @@ class OrdersController < ApplicationController
           OrderSpa.create(logement: spa["type"][0], installation: spa["type"][1], syteme_eau: spa["type"][2], order: @order, spa: current_spa)
         end
       end
+      #====== Send email to prestataire location spa =====
+      @prestataires = []
+      if @order.department.nil?
+        @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:countries).where(countries:{name:@order.country.name})
+      else
+        @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:departments).where(departments:{name:@order.department.name})
+      end
+      @prestataires.each do |prestataire|
+        PrestataireMailer.new_orderSpa(mailToOrderServiceSpa.id,prestataire.id).deliver_now
+      end
     end
     
     unless myPrestation["massage"].empty?
-      OrderService.create(order: @order, service: Service.find_by(name:"Massage"), service_time: session[:otherInfo]["heureMassage"])
+      mailToOrderServiceMassage = OrderService.create(order: @order, service: Service.find_by(name:"Massage"), service_time: session[:otherInfo]["heureMassage"])
       myPrestation["massage"].each do |massage|
         current_ca = MassageCa.find_by(name:massage["ca"])      
         current_su = current_ca.massage_sus.find_by(name:massage["su"])
@@ -366,8 +376,20 @@ class OrdersController < ApplicationController
       end
       @order.praticien = session[:otherInfo]["praticien"]
       @order.save
+      #====== Send email to prestataire massage =====
+      @prestataires = []
+      if @order.department.nil?
+        @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:countries).where(countries:{name:@order.country.name})
+      else
+        @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:departments).where(departments:{name:@order.department.name})
+      end
+      @prestataires.each do |prestataire|
+        if (prestataire.sexe == @order.praticien) || (@order.praticien == "all")
+          PrestataireMailer.new_orderMassage(mailToOrderServiceMassage.id,prestataire.id).deliver_now
+        end
+      end
     end
-    
+
     unless session[:otherInfo]["cadeau"].empty?
       session[:otherInfo]["cadeau"].each do |cadeau|
         current_product = Product.find_by(name:cadeau[0])
@@ -380,7 +402,6 @@ class OrdersController < ApplicationController
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to payederrors_path
-
   end
 
   def payedsuccess

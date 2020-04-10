@@ -67,3 +67,5 @@ gem 'prawn'
 
 # traduction
 gem 'rails-i18n', '~> 6.0.0'
+
+gem "letter_opener", :group => :development
