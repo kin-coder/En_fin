@@ -7,36 +7,21 @@ class PrestataireMailer < ApplicationMailer
   	mail(to: @candidate.email, subject: 'Bienvenue chez Cocooning Spa !')
   end
 
-  def new_orderSpa(order_service)
+  def new_orderSpa(order_service,id)
+    @prestataire = Prestataire.find(id)
     @oService = OrderService.find(order_service)
     @order = @oService.order
     @date = @order.prestation_date.split("/")
     @date = "#{@date[1]}/#{@date[0]}/#{@date[2]}"
-    @prestataires = []
-    if @order.department.nil?
-      @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:countries).where(countries:{name:@order.country.name})
-    else
-      @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:departments).where(departments:{name:@order.department.name})
-    end
-    @prestataires.each do |prestataire|
-      mail(to: prestataire.email, subject: 'Une nouvelle commande pour vous !')
-    end
+    mail(to: @prestataire.email, subject: 'Une nouvelle commande pour vous !')
   end
 
-  def new_orderMassage(order_service)
+  def new_orderMassage(order_service,id)
+    @prestataire = Prestataire.find(id)
     @oService = OrderService.find(order_service)
     @order = @oService.order
     @date = @order.prestation_date.split("/")
     @date = "#{@date[1]}/#{@date[0]}/#{@date[2]}"
-    @prestataires = []
-    if @order.department.nil?
-      @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:countries).where(countries:{name:@order.country.name})
-    else
-      @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:departments).where(departments:{name:@order.department.name})
-    end
-    @prestataires.each do |prestataire|
-      mail(to: prestataire.email, subject: 'Une nouvelle commande pour vous !')
-    end
+    mail(to: @prestataire.email, subject: 'Une nouvelle commande pour vous !')
   end
-
 end

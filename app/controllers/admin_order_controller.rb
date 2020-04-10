@@ -9,34 +9,27 @@ class AdminOrderController < Application2Controller
   	
   end
   # affichage d'une commande 
+  
   def show
     @order = Order.find(params[:id])
-
-    @prestataire_orders = []
-
+    @massage_prestataires = []
+    @spa_prestataires = []
     @order.services.each do |service|
-      
-      @prestataire_orders += service.prestataires.ids
+      if @order.department.nil?
+        tmpPrestataires = Prestataire.joins(:services).where(services:{name:service.name}).joins(:countries).where(countries:{name:@order.country.name})
+      else
+        tmpPrestataires = Prestataire.joins(:services).where(services:{name:service.name}).joins(:departments).where(departments:{name:@order.department.name})
+      end
+      if service.name == "Massage"
+        if @order.praticien == "all"
+          @massage_prestataires = tmpPrestataires
+        else
+          @massage_prestataires = tmpPrestataires.where(sexe:@order.praticien)
+        end
+      elsif service.name == "Location spa"
+        @spa_prestataires = tmpPrestataires
+      end
     end
-    @prestataire_orders = @prestataire_orders.uniq
-
-    if @order.department.nil?
-      @prestataire_orders = @prestataire_orders & @order.country.prestataires.ids
-    else
-      @prestataire_orders = @prestataire_orders & @order.department.prestataires.ids
-    end
-
-    @prestataire_orders = Prestataire.where(id:@prestataire_orders)
-
-    # @order.order_services[0].service_time
-    # pour afficher l'heur du service
-
-#@prestataire_orders.joins(:countries).where(countries:{name:"Belgique"})
-#Prestataire.where(id:ps.ids)
-#irb(main):209:0> b = Order.last.services[1].prestataires.ids
-#irb(main):019:0> Prestataire.joins(:services).where(services:{id:[1,2]})
-#Book.joins(:comments).where("comments.id = 2") #version string
-
   end
 
   def edit

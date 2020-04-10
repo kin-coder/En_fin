@@ -17,7 +17,7 @@ class Candidate < ApplicationRecord
 	validates :countries, presence: true
 	
 	def message_send_to_admin_and_self
-		#AdminMailer.new_partner(self).deliver_now
-		#PrestataireMailer.new_candidate(self).deliver_now
+		AdminMailer.new_partner(self).deliver_now
+		PrestataireMailer.new_candidate(self).deliver_now
 	end
 end

@@ -355,7 +355,15 @@ class OrdersController < ApplicationController
         end
       end
       #====== Send email to prestataire location spa =====
-      PrestataireMailer.new_orderSpa(mailToOrderServiceSpa.id).deliver_now
+      @prestataires = []
+      if @order.department.nil?
+        @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:countries).where(countries:{name:@order.country.name})
+      else
+        @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:departments).where(departments:{name:@order.department.name})
+      end
+      @prestataires.each do |prestataire|
+        PrestataireMailer.new_orderSpa(mailToOrderServiceSpa.id,prestataire.id).deliver_now
+      end
     end
     
     unless myPrestation["massage"].empty?
@@ -369,9 +377,19 @@ class OrdersController < ApplicationController
       @order.praticien = session[:otherInfo]["praticien"]
       @order.save
       #====== Send email to prestataire massage =====
-      PrestataireMailer.new_orderMassage(mailToOrderServiceMassage.id).deliver_now
+      @prestataires = []
+      if @order.department.nil?
+        @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:countries).where(countries:{name:@order.country.name})
+      else
+        @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:departments).where(departments:{name:@order.department.name})
+      end
+      @prestataires.each do |prestataire|
+        if (prestataire.sexe == @order.praticien) || (@order.praticien == "all")
+          PrestataireMailer.new_orderMassage(mailToOrderServiceMassage.id,prestataire.id).deliver_now
+        end
+      end
     end
-    
+
     unless session[:otherInfo]["cadeau"].empty?
       session[:otherInfo]["cadeau"].each do |cadeau|
         current_product = Product.find_by(name:cadeau[0])
@@ -379,20 +397,11 @@ class OrdersController < ApplicationController
       end
     end
 
-
-
-
-
-
-
-
-
     redirect_to payedsuccess_path
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to payederrors_path
-
   end
 
   def payedsuccess
