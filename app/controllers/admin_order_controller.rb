@@ -13,7 +13,9 @@ class AdminOrderController < Application2Controller
     @order = Order.find(params[:id])
 
     @prestataire_orders = []
+
     @order.services.each do |service|
+      
       @prestataire_orders += service.prestataires.ids
     end
     @prestataire_orders = @prestataire_orders.uniq
@@ -26,6 +28,8 @@ class AdminOrderController < Application2Controller
 
     @prestataire_orders = Prestataire.where(id:@prestataire_orders)
 
+    # @order.order_services[0].service_time
+    # pour afficher l'heur du service
 
 #@prestataire_orders.joins(:countries).where(countries:{name:"Belgique"})
 #Prestataire.where(id:ps.ids)

@@ -343,7 +343,7 @@ class OrdersController < ApplicationController
 
     myPrestation = session[:myPrestation]
     unless myPrestation["spa"].empty?
-      OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: session[:otherInfo]["heureSpa"])
+      mailToOrderServiceSpa = OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: session[:otherInfo]["heureSpa"])
       myPrestation["spa"].each do |spa|
         current_spa = Spa.find_by(duration:spa["time"])
         current_product = ""
@@ -354,10 +354,13 @@ class OrdersController < ApplicationController
           OrderSpa.create(logement: spa["type"][0], installation: spa["type"][1], syteme_eau: spa["type"][2], order: @order, spa: current_spa)
         end
       end
+      #====== Send email to prestataire location spa =====
+      PrestataireMailer.new_orderSpa(mailToOrderServiceSpa).deliver_now
+
     end
     
     unless myPrestation["massage"].empty?
-      OrderService.create(order: @order, service: Service.find_by(name:"Massage"), service_time: session[:otherInfo]["heureMassage"])
+      mailToOrderServiceMassage = OrderService.create(order: @order, service: Service.find_by(name:"Massage"), service_time: session[:otherInfo]["heureMassage"])
       myPrestation["massage"].each do |massage|
         current_ca = MassageCa.find_by(name:massage["ca"])      
         current_su = current_ca.massage_sus.find_by(name:massage["su"])
@@ -366,6 +369,8 @@ class OrdersController < ApplicationController
       end
       @order.praticien = session[:otherInfo]["praticien"]
       @order.save
+      #====== Send email to prestataire massage =====
+      PrestataireMailer.new_orderMassage(mailToOrderServiceMassage).deliver_now
     end
     
     unless session[:otherInfo]["cadeau"].empty?
@@ -374,6 +379,14 @@ class OrdersController < ApplicationController
         OrderProduct.create(number: cadeau[2].to_i, product: current_product, order: @order)
       end
     end
+
+
+
+
+
+
+
+
 
     redirect_to payedsuccess_path
 
