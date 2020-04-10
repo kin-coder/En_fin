@@ -12,8 +12,15 @@ class PrestataireMailer < ApplicationMailer
     @order = @oService.order
     @date = @order.prestation_date.split("/")
     @date = "#{@date[1]}/#{@date[0]}/#{@date[2]}"
-
-    mail(to: "ctrlfaly@gmail.com", subject: 'Une nouvelle commande pour vous !')
+    @prestataires = []
+    if @order.department.nil?
+      @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:countries).where(countries:{name:@order.country.name})
+    else
+      @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:departments).where(departments:{name:@order.department.name})
+    end
+    @prestataires.each do |prestataire|
+      mail(to: prestataire.email, subject: 'Une nouvelle commande pour vous !')
+    end
   end
 
   def new_orderMassage(order_service)
@@ -21,7 +28,15 @@ class PrestataireMailer < ApplicationMailer
     @order = @oService.order
     @date = @order.prestation_date.split("/")
     @date = "#{@date[1]}/#{@date[0]}/#{@date[2]}"
-    mail(to: "ctrlfaly@gmail.com", subject: 'Une nouvelle commande pour vous !')
+    @prestataires = []
+    if @order.department.nil?
+      @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:countries).where(countries:{name:@order.country.name})
+    else
+      @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:departments).where(departments:{name:@order.department.name})
+    end
+    @prestataires.each do |prestataire|
+      mail(to: prestataire.email, subject: 'Une nouvelle commande pour vous !')
+    end
   end
 
 end
