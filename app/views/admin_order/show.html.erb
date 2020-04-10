@@ -1,17 +1,18 @@
 <h1>Commande N° <%= @order.id %> du client <strong><%= @order.client.first_name %> <%= @order.client.last_name %></strong></h1>
 <a href="<%= show_clients_path(@order.client.id) %>">Voir le profile du client</a>
 
-
-
 <!-- ============================================ -->
+
 <hr>
 <br><br><br><br>
 
 <h2>Prestataire disponible</h2>
 
-#relation N-N entre la commande et le prestataire pour sauvgarder les prestataire en attente
-prestataire_orders
-prestataires #liste des prestataires
+<ul>
+<% @prestataire_orders.each do |p_order| %>
+	<li><%= p_order.sexe %> <%= p_order.first_name %> <%= p_order.last_name %> <%= link_to 'Afficher', show_prestataires_path(p_order.id) %></li>
+<% end %>
+</ul>
 
 <br><br><br><br>
 
