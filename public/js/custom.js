@@ -556,6 +556,3 @@ $(".dropdown dt i").on('click', function () {
               
           }
       });
-
-
-

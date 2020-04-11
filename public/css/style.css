@@ -13,6 +13,7 @@
 
 }
 
+
 .h4 .from-bottom{
  color:green !important;
 }
@@ -7572,7 +7573,7 @@ input[type=number]::-webkit-inner-spin-button {
 @media (min-width: 768px) {
   .innerWrapper .table-responsive .table thead tr th {
     text-align: left;
-    font-size: 15px;
+    font-size: 14px;
   }
 }
 
@@ -8609,4 +8610,35 @@ input[type=number]::-webkit-inner-spin-button {
   width: 100%;
   padding: 12px;
   height: 45px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*APPLICATION ADMIN*/
+
+.bg-gradient-primary {
+background-image: linear-gradient(180deg,#ec5598 10%,#ec5598 100%);
+  background-size: cover;
+}
+
+.actionTableAdmin{
+width: 220px;
+}
+
+.filter-control{
+position: relative;
+
+left: -10px;
 }
