@@ -1,3 +1,37 @@
+<style>
+	/* Paste this css to your style sheet file or under head tag */
+  /* This only works with JavaScript,
+  if it's not present, don't show loader */
+  @media (min-width: 992px) {
+  	.paramsuser{
+  		position: absolute;
+  		left: 48%;
+  	}
+  	.profilUser li{
+  		margin-bottom: 20px;
+  	}
+  	.UserInfos{
+  		margin-left: 120px;
+  	}
+  }
+  @media (max-width: 600px) {
+
+  	.profilUser li{
+  		font-size: 13px;
+  	}
+
+  	.pageTitle h1{
+  		font-size: 40px;
+  	} 
+
+  }
+</style>
+
+
+
+
+<!-- 
+
 <br><br><br><br><br><br>
 
 <div class="container">
@@ -11,13 +45,13 @@
 	</div>
 
 	<label>Classer par: 
-	<select name="classerment">
-		<option value="N°" selected>N°</option>
-		<option value="Date">Date</option>
-		<option value="Prestataire">Prestataire</option>
-		<option value="Montant">Montant</option>
-		<option value="CP">CP</option>
-	</select>
+		<select name="classerment">
+			<option value="N°" selected>N°</option>
+			<option value="Date">Date</option>
+			<option value="Prestataire">Prestataire</option>
+			<option value="Montant">Montant</option>
+			<option value="CP">CP</option>
+		</select>
 	</label>
 
 	<table border="2">
@@ -45,3 +79,156 @@
 </div>
 
 <br><br><br><br><br><br>
+
+
+
+-->
+
+
+<!-- PAGE TITLE SECTION -->
+<section class="clearfix pageTitleArea patternbg">
+	<div class="container">
+		<div class="pageTitle">
+			<h1 style="  color: #ec5598;">Bienvenu sur votre espace personnel</h1>
+		</div>
+	</div>
+</section>
+
+<!-- GALLERY SECTION -->
+<section class="clearfix homeGallery padding" style="background: white;">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="filter-container isotopeFilters">
+					<ul class="list-inline filter">
+
+						<li class="active"><a href="#" data-filter=".infos">Infos personnelles</a></li>
+						<li id="commande"><a href="#commande" data-filter=".massage">Historique de vos commandes</a></li>
+						<!--   <li><a href="#" data-filter=".deconnexion"><i class="fa fa-power-off" aria-hidden="true"></i></a></li> -->
+
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row isotopeContainer" id="container">
+
+			<div class="col-sm-12 isotopeSelector infos">
+
+
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="innerWrapper">
+							<div class="orderBox  patternbg">
+
+							</div>
+							<div class="profile" style="margin-top: -30px;">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="UserInfos">
+											<ul class="profilUser">
+												<li><strong>Nom : </strong> <span class="paramsuser"><%= @client.last_name %></span></li>
+												<li><strong>Prenom : </strong><span class="paramsuser"><%= @client.first_name %></span></li>
+												<li><strong>Mail : </strong><span class="paramsuser"><%= @client.email %></span></li>
+												<li><strong>Adresse : </strong><span class="paramsuser"><%= @client.adresse %></span></li>
+											</ul>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="UserInfos">
+											<ul class="profilUser">
+												<li><strong>Code Postal : </strong><span class="paramsuser"><%= @client.zip_code %></span></li>
+												<li><strong>Téléphone : </strong><span class="paramsuser"><%= @client.tel %></span></li>
+												<li><strong>Sexe : </strong><span class="paramsuser"><%= @client.sexe %></span></li>
+												<li><strong>Pays : </strong><span class="paramsuser"><%= @client.country %></span></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<br> 
+
+								<ul class="list-inline fullRoundBtn">
+									<li class="li"><a href="<%=edit_client_registration_path%>" class="btn btn-common btn-full-round btn-theme">Modifier</a></li>
+								</ul>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+			<div id="classRemove" class="hidden">
+				<div class="col-sm-12 isotopeSelector massage">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="innerWrapper">
+								<div class="orderBox  patternbg">
+									<center>Vos commandes</center>
+								</div>
+								<% if  @orders!=[]%>
+								<div class="table-responsive">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>N°</th>
+												<th>Date</th>
+												<th>Préstation</th>
+												<th>Prix total</th>
+
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+
+											<% @orders.each do |order| %>
+											<tr>
+												<td><%= order.id %></td>
+												<td><%= order.prestation_date %></td>
+												<td>
+													<% order.services.each do |prestation| %>
+													<%= prestation.name %> <br>
+													<% end %>
+												</td>
+												<td>0.00 €</td>
+												<td><a href="<%= client_order_path(order.id) %>" class="btn btn-default" DATA-Method="GET">Afficher</a></td>
+
+											</tr>
+											<% end %>
+										</tbody>
+									</table>
+								</div>
+								<%else%>
+								<div class="table-responsive">
+									<table class="table">
+										<thead>
+
+										</thead>
+										<tbody>
+											<p>
+												Vous n'avez pas encore commandé sur notre site. Veuillez <a href="<%= reservation_path %>">commander </a>maintenant!!!	
+											</p>
+
+										</tbody>
+									</table>
+								</div>
+								<% end %>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+
+
+	let aeffacer = document.getElementById("classRemove");
+	let commande = document.getElementById("commande");
+	commande.addEventListener("click", function(){
+		aeffacer.classList.remove("hidden");
+	}); 
+</script>

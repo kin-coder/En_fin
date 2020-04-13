@@ -38,7 +38,7 @@ Country.find_by(name:"Suisse").services = [s2]
 
 country = Country.create(name: "France")
 
-sexe = ["Monsieur","Madame"]
+sexe = ["Féminin","Masculin"]
 paysFake = ["Belgique","Luxembourg","Suisse","France"]
 
 # ======================== PRESTATAIRES ====================== #
