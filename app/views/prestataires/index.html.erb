@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Prestataires</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -44,7 +44,7 @@
 
 
   <p id="notice"><%= notice %></p>
-  <section class="clearfix orderSection padding">
+  <section class="">
     <div class="secotionTitle">
       <h2 id="service" class="poli1 police_massage"><span>PRESTATAIRES</span></h2>
     </div>
@@ -90,7 +90,7 @@
                     <th data-field="zip_code" data-filter-control="input">Code Postal</th>
                     <th data-field="activite" data-filter-control="input" data-sortable="true">Activité</th>
                     <th data-field="zone" data-filter-control="input" data-sortable="true" style="max-width: 20px;">Zone d'activité</th>
-                    <th class="actionTableAdmin" data-field="note" data-sortable="true"> <center style="line-height: 35px;">Actions <br>     <%= link_to '<i class="fas fa-plus" title="Ajouter"></i>'.html_safe,  new_prestataires_path, title:"Ajouter", class:"btn btn-default"%>
+                    <th class="actionTableAdmin" data-field="note"> <center style="line-height: 35px;">Actions <br>     <%= link_to '<i class="fas fa-plus" title="Ajouter"></i>'.html_safe,  new_prestataires_path, title:"Ajouter", class:"btn btn-default"%>
                     </center>  
                   </th>
                 </tr>
