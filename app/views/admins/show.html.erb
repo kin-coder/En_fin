@@ -1,73 +1,298 @@
-<p id="notice"><%= notice %></p>
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">
 
-<div class="row">
-  <div class="col-sm-6">
-  <p>
-    <strong>First name:</strong>
-    <%= @client.first_name %>
-  </p>
+<!-- PLUGINS CSS STYLE -->
+<link href="/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="#" rel="stylesheet" id="bootstrap-rtl">
+<link href="/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/plugins/selectbox/select_option1.css" rel="stylesheet">
+<link href="/plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet" media="screen">
+<link href="/plugins/fancybox/jquery.fancybox.min.css" rel="stylesheet">
+<link href="/plugins/isotope/isotope.min.css" rel="stylesheet">
+<link href="/plugins/datepicker/datepicker.min.css" rel="stylesheet">
+<link href="/plugins/bootstrapthumbnail/bootstrap-thumbnail.css" rel="stylesheet">
 
-  <p>
-    <strong>Last name:</strong>
-    <%= @client.last_name %>
-  </p>
+<!-- CUSTOM CSS -->
+<link href="/css/style.css" rel="stylesheet">
+<link href="#" rel="stylesheet" id="rtl_css">
+<link href="/css/default.css" rel="stylesheet" id="option_color">
+<link href="/css/static_page.css" rel="stylesheet">
+<link rel="stylesheet" href="carousel/carousel.css">
+<link href="/css/product.css" rel="stylesheet">
 
-  <p>
-    <strong>Adresse:</strong>
-    <%= @client.adresse %>
-  </p>
+<!-- FAVICON -->
+<link href="img/favicon.png" rel="shortcut icon">
 
-  <p>
-    <strong>Tel:</strong>
-    <%= @client.tel %>
-  </p>
+<style>
+/* .container{ border: 2px solid green }
+.grid-item{ border: 2px solid red; padding: 20px;}
+.grid{ border: 1px solid blue} */
+.filters ul{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  border-bottom: 2px solid #D9D9D9;
+  margin: 30px 15px;
 
-  <p>
-    <strong>Sexe:</strong>
-    <%= @client.sexe %>
-  </p>
+}
+.filters ul li{
+  display: inlnie-block;
+  text-align: center;
+  margin-right: 50px;
+  padding: 0 5px 8px 5px;
+  font-weight: 700;
+  font-size: 16px; 
+  cursor: pointer;
+  position: relative;
+  margin-bottom: -2px;
+  color: #777;
+  transition: 0.3s;
+  text-transform: uppercase;
+}
+.filters ul li:hover{
+  color: deeppink;
+}
+.filters ul li.is-checked{
+  border-bottom: 2px solid deeppink;
+  color: deeppink;
+}
+.filters ul li:last-child{
+  margin-right: 0;
+}
 
-  <p>
-    <strong>Country:</strong>
-    <%= @client.country %>
-  </p>
 
-  <p>
-    <strong>Zip code:</strong>
-    <%= @client.zip_code %>
-  </p>
+@media (min-width: 992px) {
+  .paramsuser{
+    position: absolute;
+    left: 48%;
+  }
+  .profilUser li{
+    margin-bottom: 20px;
+  }
+  .UserInfos{
+    margin-left: 120px;
+  }
+}
+@media (max-width: 600px) {
 
-  <p>
-    <strong>Email:</strong>
-    <%= @client.email %>
-  </p>
-  <%= link_to 'Modifier', edit_clients_path(@client) %>
-  <%= link_to 'Liste des clients', index_clients_path %>
-  
-</div>
+  .profilUser li{
+    font-size: 13px;
+  }
 
-  <div class="col-sm-6">
-    <h2>Liste de ses commandes</h2>
-    <table border="2">
-      <tr>
-        <td>N°</td>
-        <td>Date</td>
-        <td>Prestataire associé</td>
-        <td>Montant</td>
-        <td>CP</td>
-        <td>Action</td>
-      </tr>
+  .pageTitle h1{
+    font-size: 40px;
+  } 
 
-      <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.id %></td>
-        <td><%= order.prestation_date %></td>
-        <td>none</td>
-        <td>0.00 €</td>
-        <td>CP</td>
-        <td><a href="<%=admin_order_show_path(order.id)%>">Afficher détails</a></td>
-      </tr>
-      <% end %>
-    </table>
+}
+
+/*.grid .grid-item h1{
+  background: #EEEEEE;
+  height: 150px;
+  line-height: 150px;
+  color: white;
+  font-size: 3em;
+  text-align: center;
+  margin-bottom: 30px;
+}
+*/
+
+
+</style>
+
+
+<div class="container">
+  <div class="secotionTitle contactTitle">
+    <h2 class="police_massage"><span>Informations sur <%= @client.first_name %></span></h2>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="filters">
+        <ul>
+          <li class="is-checked" data-filter=".moncompte">Infos personnelles</li>
+          <li data-filter=".commandes" id="commande">Ses commandes</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="col-md-12">
+      <div class="rows grid data-isotope='{ "itemSelector": ".grid-item", "masonry": { "columnWidth": 200 }}'">
+        <div class="col-md-12 grid-item moncompte" data-category="websites">
+         
+          <div class="col-sm-12 isotopeSelector infos">
+
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="innerWrapper">
+                  <div class="orderBox  patternbg">
+
+                  </div>
+                  <div class="profile" style="margin-top: -30px;">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="UserInfos">
+                          <ul class="profilUser">
+                            <li><strong>Nom : </strong> <span class="paramsuser"><%= @client.last_name %></span></li>
+                            <li><strong>Prenom : </strong><span class="paramsuser"><%= @client.first_name %></span></li>
+                            <li><strong> Sexe: </strong><span class="paramsuser"><%= @client.sexe %></span></li>
+                            <li><strong>Mail : </strong><span class="paramsuser"><%= @client.email %></span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="UserInfos">
+                          <ul class="profilUser">
+                            <li><strong>Téléphone : </strong><span class="paramsuser"><%= @client.tel %></span></li>
+                            <li><strong>Adresse : </strong><span class="paramsuser"><%= @client.adresse %></span></li>
+                            <li><strong>Code Postal : </strong><span class="paramsuser"><%= @client.zip_code %></span></li>
+                            <li><strong>Pays : </strong><span class="paramsuser"><%= @client.country %></span></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <br> 
+                    <div class="row">
+                      <div class="col-sm-3"></div>
+                      <div class="col-sm-3">
+                        <ul class="list-inline fullRoundBtn">
+                          <li class="li"><a href="<%= index_clients_path %>" class="btn btn-common btn-full-round btn-theme">Liste des clients</a></li>
+                        </ul>
+                      </div>
+
+                      <div class="col-sm-3">
+
+                        <ul class="list-inline fullRoundBtn">
+                          <li class="li"><a href="<%=edit_clients_path(@client)%>" class="btn btn-common btn-full-round btn-theme">Modifier</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-sm-3"></div>
+
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+
+        </div>
+        <div class="hidden" id="classRemove">
+
+          <div class="col-md-12 grid-item commandes" data-category="flyers">
+
+            <div class="col-sm-12 isotopeSelector massage">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="innerWrapper">
+                    
+                    <% if  @orders!=[]%>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>N°</th>
+                            <th>Date</th>
+                            <th>Préstation</th>
+                            <th>Prix total</th>
+
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+                          <% @orders.each do |order| %>
+                          <tr>
+                            <td><%= order.id %></td>
+                            <td><%= order.prestation_date %></td>
+                            <td>
+                              <% order.services.each do |prestation| %>
+                              <%= prestation.name %> <br>
+                              <% end %>
+                            </td>
+                            <td>0.00 €</td>
+                            <td><a href="<%=admin_order_show_path(order.id)%>" class="btn btn-default" DATA-Method="GET">Afficher</a></td>
+
+                          </tr>
+                          <% end %>
+                        </tbody>
+                      </table>
+                    </div>
+                    <%else%>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                          <p>
+                            Vous n'avez pas encore commandé sur notre site. Veuillez <a href="<%= reservation_path %>">commander </a>maintenant!!!  
+                          </p>
+
+                        </tbody>
+                      </table>
+                    </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </div>
 </div>
+
+
+
+<!-- JAVASCRIPTS -->
+<script data-turbolinks-track = "reload" src="/plugins/jquery/jquery.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/isotope/isotope.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/fancybox/jquery.fancybox.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/isotope/isotope-triger.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/smoothscroll/SmoothScroll.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/datepicker/bootstrap-datepicker.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/syotimer/jquery.syotimer.min.js"></script>
+<script data-turbolinks-track = "reload" src="/js/custom.js"></script>
+
+<script>
+
+
+  
+  document.getElementById("commande").addEventListener("click", function(){
+
+    document.getElementById("classRemove").classList.remove("hidden");
+  }); 
+</script>
+
+<script>
+  var $grid = $('.grid').isotope({
+  // options
+  itemSelector: '.grid-item',
+  layoutMode: 'fitRows',
+});
+
+// change is-checked class on buttons
+var $buttonGroup = $('.filters');
+$buttonGroup.on( 'click', 'li', function( event ) {
+  $buttonGroup.find('.is-checked').removeClass('is-checked');
+  var $button = $( event.currentTarget );
+  $button.addClass('is-checked');
+  var filterValue = $button.attr('data-filter');
+  $grid.isotope({ filter: filterValue });
+});
+
+</script>
