@@ -10,7 +10,7 @@ class ClientsController < ApplicationController
     order_lists = @client.orders
     @orders = []
     order_lists.each do |order|
-      if order.in_progress? && order.is_canceled == false
+      if order.in_progress? && order.is_canceled == false && order.prestataire_affected == false
         @orders.push(order)
       end
     end
@@ -23,7 +23,7 @@ class ClientsController < ApplicationController
     @orders = []
     if filtre == 1 # Traitées
       order_lists.each do |order|
-        if (order.in_progress? == false) && (order.is_canceled == false) && (order.prestataire_affected == true)
+        if order.is_canceled == false && order.prestataire_affected == true
           @orders.push(order)
         end
       end
