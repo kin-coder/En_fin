@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_064344) do
+ActiveRecord::Schema.define(version: 2020_04_14_082452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2020_04_07_064344) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -164,6 +166,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_064344) do
 
   create_table "order_services", force: :cascade do |t|
     t.string "service_time"
+    t.string "confirm_token"
     t.boolean "is_done", default: false
     t.bigint "order_id"
     t.bigint "service_id"
@@ -203,6 +206,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_064344) do
     t.string "delivery_adresse_complet"
     t.string "praticien"
     t.text "message"
+    t.boolean "is_canceled", default: false
     t.bigint "client_id"
     t.bigint "department_id"
     t.bigint "country_id"
@@ -240,6 +244,16 @@ ActiveRecord::Schema.define(version: 2020_04_07_064344) do
     t.index ["prestataire_id"], name: "index_prestataire_departments_on_prestataire_id"
   end
 
+  create_table "prestataire_orders", force: :cascade do |t|
+    t.boolean "is_accepted", default: true
+    t.bigint "order_service_id"
+    t.bigint "prestataire_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_service_id"], name: "index_prestataire_orders_on_order_service_id"
+    t.index ["prestataire_id"], name: "index_prestataire_orders_on_prestataire_id"
+  end
+
   create_table "prestataire_services", force: :cascade do |t|
     t.bigint "prestataire_id"
     t.bigint "service_id"
@@ -264,6 +278,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_064344) do
     t.string "zip_code"
     t.string "ville"
     t.string "pays"
+    t.string "confirm_token"
   end
 
   create_table "products", force: :cascade do |t|

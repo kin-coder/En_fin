@@ -14,6 +14,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.string :delivery_adresse_complet
       t.string :praticien
       t.text :message
+      t.boolean :is_canceled, default:false
       t.belongs_to :client, index:true
       t.belongs_to :department, index:true
       t.belongs_to :country, index:true

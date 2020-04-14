@@ -1,0 +1,25 @@
+<!-- Anle CLIENT CLIENT -->
+<table border="2">
+	<tr>
+		<td>Date <small>(MM/JJ/AAAA)</small></td>
+		<td>Prix</td>
+		<td>Prestation</td>
+		<td>Action</td>
+	</tr>
+
+	<% orders.each do |order| %>
+	<% prixAcompte = order.totalPrice %>
+	<tr>
+		<td><%= order.prestation_date %></td>
+		<td><%= prixAcompte[0] + prixAcompte[1] %> €</td>
+		<td>
+			<ul>
+				<% order.order_services.each do |o_s| %>
+					<li><%= o_s.service.name %></li>
+				<% end %>
+			</ul>
+		</td>
+		<td><a href="<%= client_order_path(order.id) %>">Afficher détails</a></td>
+	</tr>
+	<% end %>
+</table>

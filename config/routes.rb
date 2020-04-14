@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   devise_for :clients, path: 'clients'
   # page pour le profil du client
   get '/client-profil', to: 'clients#profil', as: "client_profil"
+  get '/client-profil/info', to: 'clients#personalInfo', as: "client_personal_info"
+  
   get '/client/order/:id', to: 'clients#order', as: "client_order"
+  get "/client-profil-list/:short", to:'clients#filtreIndex', as:"client_order_filtre_index"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
   devise_for :admins, path: 'admins',:skip => [:registrations], controllers: { 
@@ -40,6 +43,8 @@ Rails.application.routes.draw do
 
   # Lien pour gerer la commande via l'admin
   get "admin/liste-des-commande", to:'admin_order#index', as:"admin_order_index"
+  get "admin/liste-des-commande/:short", to:'admin_order#filtreIndex', as:"admin_order_filtre_index"
+  
   get "admin/allcommande/:id", to:'admin_order#show', as:"admin_order_show"
   get "admin/allcommande/:id/edit", to:'admin_order#edit', as:"admin_order_edit"
 
