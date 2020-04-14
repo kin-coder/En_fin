@@ -40,6 +40,8 @@ Rails.application.routes.draw do
 
   # Lien pour gerer la commande via l'admin
   get "admin/liste-des-commande", to:'admin_order#index', as:"admin_order_index"
+  get "admin/liste-des-commande/:short", to:'admin_order#filtreIndex', as:"admin_order_filtre_index"
+  
   get "admin/allcommande/:id", to:'admin_order#show', as:"admin_order_show"
   get "admin/allcommande/:id/edit", to:'admin_order#edit', as:"admin_order_edit"
 

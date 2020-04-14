@@ -18,7 +18,7 @@ class Prestataire < ApplicationRecord
 
   # relation N-N entre la commande et le prestataire pour sauvgrder les prestataire en attente
   has_many :prestataire_orders
-  has_many :orders, through: :prestataire_orders
+  has_many :order_services, through: :prestataire_orders
 
   private
 

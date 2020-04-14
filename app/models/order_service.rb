@@ -6,6 +6,10 @@ class OrderService < ApplicationRecord
   #relation 1-N entre la commande et le prestataire
   belongs_to :prestataire, optional: true
 
+  #relation N-N entre la commande et le prestataire pour sauvgarder les prestataire en attente
+  has_many :prestataire_orders, dependent: :destroy
+  has_many :prestataires, through: :prestataire_orders
+
   private
 
   def confirmation_token

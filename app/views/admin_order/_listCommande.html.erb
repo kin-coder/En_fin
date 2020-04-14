@@ -1,0 +1,24 @@
+<table border="2">
+	<tr>
+		<td>N°</td>
+		<td>Date</td>
+		<td>Prestataire associé</td>
+		<td>Nom Client</td>
+		<td>Montant</td>
+		<td>CP</td>
+		<td>Action</td>
+	</tr>
+
+	<% orders.each do |order| %>
+	<tr>
+		<td><%= order.id %></td>
+		<td><%= order.prestation_date %></td>
+		<td>none</td>
+		<td><%= order.client.first_name %> <%= order.client.last_name %></td>
+		<td>0.00 €</td>
+		<td>CP</td>
+		<td><a href="<%=admin_order_show_path(order.id)%>">Afficher détails</a></td>
+	</tr>
+	<% end %>
+
+</table>
