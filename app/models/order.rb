@@ -68,6 +68,40 @@ class Order < ApplicationRecord
   	return affected
   end
 
+  def totalPrice
+  	acompte = 0.0
+  	price = 0.0
+		self.order_services.each do |o_s|
+			if o_s.service.name == "Massage"
+				self.order_massages.each do |o_massage| 
+					if self.isExceptional?
+						price += o_massage.massage_su_price.exceptional_price 
+						acompte += o_massage.massage_su_price.exceptional_acompte 
+					else
+						price += o_massage.massage_su_price.ordinary_price 
+						acompte += o_massage.massage_su_price.ordinary_acompte 
+					end
+				end
+			elsif o_s.service.name == "Location spa"
+				self.order_spas.each do |o_spa|
+					if self.isExceptional?
+						price += o_spa.spa.exceptional_price 
+						acompte += o_spa.spa.exceptional_acompte 
+					else
+						price += o_spa.spa.ordinary_price 
+						acompte += o_spa.spa.ordinary_acompte 
+					end
+					unless o_spa.product.nil?
+						acompte += o_spa.product.price
+					end
+				end 
+			end
+		end
+		unless self.products.empty?
+			self.order_products.each do |o_product|
+				acompte += (o_product.product.price*o_product.number)
+			end
+		end
+		return [price,acompte]
+  end
 end
-
-

@@ -1,46 +1,19 @@
 <br><br><br><br><br><br>
 
 <div class="container">
-	<%= link_to "Editer mon profil", edit_client_registration_path %><br>
-	<h1>Commande</h1>
+	<h1>Bienvenu sur votre espace personnel</h1>
+	<h2><%= link_to "Info personnelles", client_personal_info_path %></h2>
+	<h2><%= link_to "Historique de vos commandes", client_profil_path %></h2>
+		
 	<div class="alert">
-		<h4><a href="">En cours</a></h4>
-		<h4><a href="">Traitées</a></h4>
-		<h4><a href="">Non traitées</a></h4>
-		<button class="alert success">Export DBB</button>
+		<h4><%= link_to "En cours", client_profil_path %></h4>
+		<h4><%= link_to "Traitées", client_order_filtre_index_path(1), class: " ", remote: true %></h4>
+		<h4><%= link_to "Non traitées", client_order_filtre_index_path(0), class: " ", remote: true %></h4>
 	</div>
 
-	<label>Classer par: 
-	<select name="classerment">
-		<option value="N°" selected>N°</option>
-		<option value="Date">Date</option>
-		<option value="Prestataire">Prestataire</option>
-		<option value="Montant">Montant</option>
-		<option value="CP">CP</option>
-	</select>
-	</label>
-
-	<table border="2">
-		<tr>
-			<td>N°</td>
-			<td>Date</td>
-			<td>Prestataire associé</td>
-			<td>Montant</td>
-			<td>CP</td>
-			<td>Action</td>
-		</tr>
-
-		<% @orders.each do |order| %>
-		<tr>
-			<td><%= order.id %></td>
-			<td><%= order.prestation_date %></td>
-			<td>none</td>
-			<td>0.00 €</td>
-			<td>CP</td>
-			<td><a href="<%= client_order_path(order.id) %>">Afficher détails</a></td>
-		</tr>
-		<% end %>
-	</table>
+	<div id="listCommande">
+		<%= render "listCommande.html.erb", orders: @orders %>
+	</div>
 
 </div>
 

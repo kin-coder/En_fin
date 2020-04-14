@@ -5,7 +5,7 @@ class AdminOrderController < Application2Controller
   	order_lists = Order.all
     @orders = []
     order_lists.each do |order|
-      if order.in_progress?
+      if order.in_progress? && order.is_canceled == false
         @orders.push(order)
       end
     end

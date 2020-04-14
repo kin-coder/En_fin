@@ -52,9 +52,7 @@
       <tr>
         <td>N°</td>
         <td>Date</td>
-        <td>Prestataire associé</td>
-        <td>Montant</td>
-        <td>CP</td>
+        <td>Services</td>
         <td>Action</td>
       </tr>
 
@@ -62,9 +60,11 @@
       <tr>
         <td><%= order.id %></td>
         <td><%= order.prestation_date %></td>
-        <td>none</td>
-        <td>0.00 €</td>
-        <td>CP</td>
+        <td>
+          <% order.services.each do |s| %>
+            <li><%= s.name %></li>
+          <% end %>
+        </td>
         <td><a href="<%=admin_order_show_path(order.id)%>">Afficher détails</a></td>
       </tr>
       <% end %>

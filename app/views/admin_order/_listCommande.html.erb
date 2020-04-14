@@ -1,7 +1,8 @@
+<!-- Anle ADMIN ADMIN -->
 <table border="2">
 	<tr>
 		<td>N°</td>
-		<td>Date</td>
+		<td>Date <small>(MM/JJ/AAAA)</small></td>
 		<td>Prestataire associé</td>
 		<td>Nom Client</td>
 		<td>Montant</td>
@@ -10,15 +11,24 @@
 	</tr>
 
 	<% orders.each do |order| %>
+		<% prestataires = order.prestataires %>
+		<% prixAcompte = order.totalPrice %>
 	<tr>
 		<td><%= order.id %></td>
 		<td><%= order.prestation_date %></td>
-		<td>none</td>
+		<td>
+			<% unless  prestataires.empty? %>
+				<% prestataires.each do |prestataire| %>
+					<li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
+				<% end %>
+			<% else %>
+				aucun
+			<% end %>
+		</td>
 		<td><%= order.client.first_name %> <%= order.client.last_name %></td>
-		<td>0.00 €</td>
-		<td>CP</td>
-		<td><a href="<%=admin_order_show_path(order.id)%>">Afficher détails</a></td>
+		<td><%= prixAcompte[0] %> €</td>
+		<td><%= prixAcompte[1] %> €</td>
+		<td><a href="<%= admin_order_show_path(order.id) %>">Afficher détails</a></td>
 	</tr>
 	<% end %>
-
 </table>

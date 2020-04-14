@@ -1,0 +1,29 @@
+<br><br><br><br><br><br>
+
+<div class="container">
+	<h1>Bienvenu sur votre espace personnel</h1>
+
+	<h2><%= link_to "Info personnelles", client_personal_info_path %></h2>
+	<h2><%= link_to "Historique de vos commandes", client_profil_path %></h2>
+
+
+	<div id="listCommande">
+
+		Nom: <%= @client.last_name %> <br> 
+		Prenom: <%= @client.first_name %> <br>
+		Mail: <%= @client.email %> <br>
+		Adresse: <%= @client.adresse %> <br> <!-- Ville: tsisy tamle inscription -->
+		
+		Code Postal:<%= @client.zip_code %><br>
+		Pays: <%= @client.country %><br>
+		
+		Telephone: <%= @client.tel %><br>
+		Sexe: <%= @client.sexe %> <br>
+		<!--  Date de naissance: <br> Ville: tsisy tamle inscription -->
+
+		<%= link_to "Editer mon profil", edit_client_registration_path %><br>
+	</div>
+
+</div>
+
+<br><br><br><br><br><br>
