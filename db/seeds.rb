@@ -20,6 +20,7 @@ OrderSpa.destroy_all
 Comment.destroy_all
 
 increment = 0
+Admin.create(email:'ramahafaly2.0@gmail.com',password:'ramahafaly2.0@gmail.com',first_name: "Vincent",last_name: "lae")
 
 # =========================== CREE LES SERVICE =========================== #
 s1 = Service.create(name:"Massage")
