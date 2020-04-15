@@ -1,10 +1,17 @@
 <br><br><br><br><br><br><br><br><br><br>
-<h1>deniedOrder</h1>
-<h2><%= @order_service.service_time %></h2>
-<h2><%= @prestataire.first_name  %></h2>
-<hr>
-<%= flash[:no_refuse] %>
-<hr>
-<%= flash[:refuse] %>
-<hr>
+
+<h1>Refuser une commande</h1>
+
+<% if flash[:no_refuse] %>
+<div class="alert alert-danger">
+	"Pour annuler votre affectation a cette commande veiller contacer l'administrateur du site"
+</div>
+<% end %>
+
+<% if flash[:refuse] %>
+<div class="alert alert-success">
+	"Votre refus a été pris en compte, nous reviendrons vers vous pour de nouvelles commandes."
+</div>
+<% end %>
+
 <br><br><br><br><br><br><br><br><br><br>

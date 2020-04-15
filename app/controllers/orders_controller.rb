@@ -11,13 +11,25 @@ class OrdersController < ApplicationController
     if @order_service.nil? || @prestataire.nil?
       redirect_to root_path #si erreur
     end
+
     if @order_service.prestataire.nil?
-      @order_service.update(prestataire:@prestataire)
+      p_o = PrestataireOrder.find_by(order_service:@order_service,prestataire:@prestataire)
+      unless p_o.nil?
+        p_o.destroy
+      end
+      @order_service.update(is_done:true,prestataire:@prestataire)
+      if @order_service.service.name == "Location spa"
+        PrestataireMailer.accepted_orderSpa(@order_service.id,@prestataire.id).deliver_now
+      end
+      if @order_service.service.name == "Massage"
+        PrestataireMailer.accepted_orderMassage(@order_service.id,@prestataire.id).deliver_now
+      end
       flash[:new] = "Vous ête afecter a cettre prestation"
     else
-      if @order_service.prestataire == @prestataire
+      if @order_service.prestataire.id == @prestataire.id
         flash[:ready] = "Vous faite dejà cette prestation"
       else
+        PrestataireMailer.oups_order_not_available(@prestataire.id).deliver_now
         flash[:oups] = "Cette prestation est déja prix par un autre prestataire"
         isPresent = PrestataireOrder.where(order_service:@order_service,prestataire:@prestataire)
         if isPresent.empty?

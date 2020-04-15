@@ -3,7 +3,7 @@ class Order < ApplicationRecord
 	belongs_to :department, optional: true  #plusieur commande dans une region
 	belongs_to :country #plusieur commande dans un pays
 	#relation Order N---N Service
-	has_many :order_services
+	has_many :order_services, dependent: :destroy
 	has_many :services, through: :order_services
 	#pour la sauvegarde des produits N-N produit - order
 	has_many :order_products, dependent: :destroy
