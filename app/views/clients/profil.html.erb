@@ -80,64 +80,6 @@
   }
 </style>
 
-
-
-
-<!-- 
-
-<br><br><br><br><br><br>
-
-<div class="container">
-	<%= link_to "Editer mon profil", edit_client_registration_path %><br>
-	<h1>Commande</h1>
-	<div class="alert">
-		<h4><a href="">En cours</a></h4>
-		<h4><a href="">Traitées</a></h4>
-		<h4><a href="">Non traitées</a></h4>
-		<button class="alert success">Export DBB</button>
-	</div>
-
-	<label>Classer par: 
-		<select name="classerment">
-			<option value="N°" selected>N°</option>
-			<option value="Date">Date</option>
-			<option value="Prestataire">Prestataire</option>
-			<option value="Montant">Montant</option>
-			<option value="CP">CP</option>
-		</select>
-	</label>
-
-	<table border="2">
-		<tr>
-			<td>N°</td>
-			<td>Date</td>
-			<td>Prestataire associé</td>
-			<td>Montant</td>
-			<td>CP</td>
-			<td>Action</td>
-		</tr>
-
-		<% @orders.each do |order| %>
-		<tr>
-			<td><%= order.id %></td>
-			<td><%= order.prestation_date %></td>
-			<td>none</td>
-			<td>0.00 €</td>
-			<td>CP</td>
-			<td><a href="<%= client_order_path(order.id) %>">Afficher détails</a></td>
-		</tr>
-		<% end %>
-	</table>
-
-</div>
-
-<br><br><br><br><br><br>
-
-
-
--->
-
-
 <!-- PAGE TITLE SECTION -->
 <section class="clearfix pageTitleArea patternbg">
 	<div class="container">
@@ -166,8 +108,7 @@
 		<div class="row isotopeContainer" id="container">
 
 			<div class="col-sm-12 isotopeSelector infos">
-
-
+				
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="innerWrapper">
@@ -207,9 +148,8 @@
 						</div>
 					</div>
 				</div>
-
-
 			</div>
+
 			<div id="classRemove" class="hidden">
 				<div class="col-sm-12 isotopeSelector massage">
 					<div class="row">
@@ -218,16 +158,14 @@
 								<div class="orderBox  patternbg">
 									<center>Vos commandes</center>
 								</div>
-								<% if  @orders!=[]%>
+								<% unless @orders.empty? %>
 								<div class="table-responsive">
 									<table class="table">
 										<thead>
 											<tr>
-												<th>N°</th>
 												<th>Date</th>
 												<th>Préstation</th>
 												<th>Prix total</th>
-
 												<th></th>
 											</tr>
 										</thead>
@@ -235,11 +173,10 @@
 
 											<% @orders.each do |order| %>
 											<tr>
-												<td><%= order.id %></td>
 												<td><%= order.prestation_date %></td>
 												<td>
 													<% order.services.each do |prestation| %>
-													<%= prestation.name %> <br>
+														<%= prestation.name %> <br>
 													<% end %>
 												</td>
 												<td>0.00 €</td>
@@ -277,8 +214,6 @@
 </section>
 
 <script>
-
-
 	let aeffacer = document.getElementById("classRemove");
 	let commande = document.getElementById("commande");
 	commande.addEventListener("click", function(){

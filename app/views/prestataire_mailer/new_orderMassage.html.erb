@@ -813,7 +813,7 @@
                     <tbody>
                         <tr>
                             <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Arial; font-size: 16px; padding: 18px;">
-                                <a class="mcnButton " title="J'accepte " href="" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">J'accepte </a>
+                            	<a class="mcnButton " title="J'accepte " href="<%= accept_order_prestataires_url(os_id:@oService.confirm_token.to_s,prestataire_id:@prestataire.confirm_token.to_s) %>" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">J'accepte </a>
                             </td>
                         </tr>
                     </tbody>
@@ -829,7 +829,7 @@
                     <tbody>
                         <tr>
                             <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Arial; font-size: 16px; padding: 18px;">
-                                <a class="mcnButton " title="Je refuse" href="" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Je refuse</a>
+                                <a class="mcnButton " title="Je refuse" href="<%= denied_order_prestataires_url(os_id:@oService.confirm_token.to_s,prestataire_id:@prestataire.confirm_token.to_s) %>" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Je refuse</a>
                             </td>
                         </tr>
                     </tbody>
@@ -854,8 +854,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><em><span style="font-size:12px">Lorsque vous acceptez une commande, vous recevez le récapitulatif complet de celle-ci par mail. Sur ce mail figure les coordonnées du client.<br>
-<u><strong>Vous devez immédiatement prendre contact avec le client pour confirmer les éléments de sa commande avec lui</strong></u></span></em></div>
+                            <div style="text-align: center;"><em><span style="font-size:12px">Lorsque vous acceptez une commande, vous recevez le récapitulatif complet de celle-ci par mail. Sur ce mail figure les coordonnées du client.<br><u><strong>Vous devez immédiatement prendre contact avec le client pour confirmer les éléments de sa commande avec lui</strong></u></span></em></div>
 
                         </td>
                     </tr>

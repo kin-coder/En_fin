@@ -51,7 +51,7 @@ Rails.application.routes.draw do
 #STATIC_PAGE_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page static dans le static_page
   # page d'acceul
-  root 'static_page#index'
+  root to:'static_page#index'
 
   get '/contact', to:'static_page#contact', as: "contact"
   get '/mentions-legales', to:'static_page#legalnotice', as: "legalnotice"
@@ -91,7 +91,7 @@ Rails.application.routes.draw do
 
   post '/reservation-prestation/validate-code', to:"orders#code_promo", as:"code_promo"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-
+  # call back après accepte ou réfus d'une commande
+  get "/accepter-une-commande/:os_id/:prestataire_id", to:"orders#acceptOrder", as:"accept_order_prestataires"
+  get "/refuser-une-commande/:os_id/:prestataire_id", to:"orders#deniedOrder", as:"denied_order_prestataires"
 end
-
-

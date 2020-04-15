@@ -4,6 +4,53 @@ class OrdersController < ApplicationController
   before_action :validate_pay_error_success, only: [:payedsuccess,:payederrors]
   before_action :authenticate_client!, only: [:delivery,:saveDelivery,:summary,:payment]
 
+# ~~~~~~~Accepter une commande par emails~~~~~~~~~~~
+  def acceptOrder
+    @order_service = OrderService.find_by(confirm_token: params[:os_id].to_s)
+    @prestataire = Prestataire.find_by(confirm_token: params[:prestataire_id].to_s)
+    if @order_service.nil? || @prestataire.nil?
+      redirect_to root_path #si erreur
+    end
+    if @order_service.prestataire.nil?
+      @order_service.update(prestataire:@prestataire)
+      flash[:new] = "Vous ête afecter a cettre prestation"
+    else
+      if @order_service.prestataire == @prestataire
+        flash[:ready] = "Vous faite dejà cette prestation"
+      else
+        flash[:oups] = "Cette prestation est déja prix par un autre prestataire"
+        isPresent = PrestataireOrder.where(order_service:@order_service,prestataire:@prestataire)
+        if isPresent.empty?
+          PrestataireOrder.create(order_service:@order_service,prestataire:@prestataire)
+        else
+          isPresent[0].update(is_accepted:true)
+        end
+      end
+    end
+  end
+
+  def deniedOrder
+    @order_service = OrderService.find_by(confirm_token: params[:os_id].to_s)
+    @prestataire = Prestataire.find_by(confirm_token: params[:prestataire_id].to_s)
+    if @order_service.nil? || @prestataire.nil?
+      redirect_to root_path #si erreur
+      return
+    end
+    if @order_service.prestataire == @prestataire
+      flash[:no_refuse] = "Pour annuler votre affectation a cette commande veiller contacer l'administrateur du site"
+    else
+      flash[:refuse] = "Votre refus a été pris en compte, nous reviendrons vers vous pour de nouvelles commandes."
+      isPresent = PrestataireOrder.where(order_service:@order_service,prestataire:@prestataire)
+      if isPresent.empty?
+        PrestataireOrder.create(is_accepted:false,order_service:@order_service,prestataire:@prestataire)
+      else
+        isPresent[0].update(is_accepted:false)
+      end
+    end
+  end
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   # 1/2 Selection des prestation
   def zone
     @country = params[:country]
