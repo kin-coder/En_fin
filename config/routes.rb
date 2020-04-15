@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get '/client-profil/info', to: 'clients#personalInfo', as: "client_personal_info"
   
   get '/client/order/:id', to: 'clients#order', as: "client_order"
-  get "/client-profil-list/:short", to:'clients#filtreIndex', as:"client_order_filtre_index"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
   devise_for :admins, path: 'admins',:skip => [:registrations], controllers: { 
@@ -43,15 +42,13 @@ Rails.application.routes.draw do
 
   # Lien pour gerer la commande via l'admin
   get "admin/liste-des-commande", to:'admin_order#index', as:"admin_order_index"
-  get "admin/liste-des-commande/:short", to:'admin_order#filtreIndex', as:"admin_order_filtre_index"
-  
   get "admin/allcommande/:id", to:'admin_order#show', as:"admin_order_show"
   get "admin/allcommande/:id/edit", to:'admin_order#edit', as:"admin_order_edit"
 
 #STATIC_PAGE_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page static dans le static_page
   # page d'acceul
-  root 'static_page#index'
+  root to:'static_page#index'
 
   get '/contact', to:'static_page#contact', as: "contact"
   get '/mentions-legales', to:'static_page#legalnotice', as: "legalnotice"
@@ -91,7 +88,7 @@ Rails.application.routes.draw do
 
   post '/reservation-prestation/validate-code', to:"orders#code_promo", as:"code_promo"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-
+  # call back après accepte ou réfus d'une commande
+  get "/accepter-une-commande/:os_id/:prestataire_id", to:"orders#acceptOrder", as:"accept_order_prestataires"
+  get "/refuser-une-commande/:os_id/:prestataire_id", to:"orders#deniedOrder", as:"denied_order_prestataires"
 end
-
-

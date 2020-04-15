@@ -7,35 +7,21 @@ class ClientsController < ApplicationController
 
   def profil #list de tous les commande
   	@client = current_client
-    order_lists = @client.orders
-    @orders = []
-    order_lists.each do |order|
-      if order.in_progress? && order.is_canceled == false && order.prestataire_affected == false
-        @orders.push(order)
-      end
-    end
-  end
+    @order_lists = @client.orders
 
-  def filtreIndex
-    filtre = params[:short].to_i
-    @client = current_client
-    order_lists = @client.orders
-    @orders = []
-    if filtre == 1 # Traitées
-      order_lists.each do |order|
-        if order.is_canceled == false && order.prestataire_affected == true
-          @orders.push(order)
-        end
+    @orders_in_progress = []    #en cours
+    @orders_progress = []       #traité
+    @orders_not_progress = []   #non traité
+    
+    @order_lists.each do |order|
+      if order.in_progress? && order.is_canceled == false && order.prestataire_affected == false
+        @orders_in_progress.push(order)
       end
-    else # 0 Non traitées
-      order_lists.each do |order|
-        if (order.is_canceled == true) || (order.prestataire_affected == false && order.in_progress? == false)
-          @orders.push(order)
-        end
+      if order.is_canceled == false && order.prestataire_affected == true
+        @orders_progress.push(order)
       end
-    end
-    respond_to do |format|
-      format.js do
+      if (order.is_canceled == true) || (order.prestataire_affected == false && order.in_progress? == false)
+        @orders_not_progress.push(order)
       end
     end
   end

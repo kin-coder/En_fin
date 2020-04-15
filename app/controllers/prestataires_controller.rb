@@ -73,6 +73,7 @@ class PrestatairesController < Application2Controller
     @prestataire.destroy
     redirect_to index_prestataires_path, notice: 'Le prestataire a été supprimer avec succès.'
   end
+
   private
     def set_prestataire
       @prestataire = Prestataire.find(params[:id])

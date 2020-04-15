@@ -2,37 +2,25 @@ class AdminOrderController < Application2Controller
 	before_action :authenticate_admin!
   #page d'accueill pour liste des commandes
   def index
-  	order_lists = Order.all
-    @orders = []
-    order_lists.each do |order|
+  	@order_lists = Order.all
+
+    @orders_in_progress = []  #commande en cours
+    @orders_progress = []     #traitées
+    @orders_not_progress = [] #non traitées
+
+    @order_lists.each do |order| 
       if order.in_progress? && order.is_canceled == false && order.prestataire_affected == false
-        @orders.push(order)
+        @orders_in_progress.push(order)
+      end
+      if order.is_canceled == false && order.prestataire_affected == true
+        @orders_progress.push(order)
+      end
+      if (order.is_canceled == true) || (order.prestataire_affected == false && order.in_progress? == false)
+        @orders_not_progress.push(order)
       end
     end
   end
 
-  def filtreIndex
-    filtre = params[:short].to_i
-    order_lists = Order.all
-    @orders = []
-    if filtre == 1 # Traitées
-      order_lists.each do |order|
-        if order.is_canceled == false && order.prestataire_affected == true
-          @orders.push(order)
-        end
-      end
-    else # 0 Non traitées
-      order_lists.each do |order|
-        if (order.is_canceled == true) || (order.prestataire_affected == false && order.in_progress? == false)
-          @orders.push(order)
-        end
-      end
-    end
-    respond_to do |format|
-      format.js do
-      end
-    end
-  end
   # affichage d'une commande
   def show
     @order = Order.find(params[:id])

@@ -1,0 +1,23 @@
+<br><br><br><br><br><br><br><br><br><br>
+
+<h1>Accepter une commande</h1>
+
+<% if flash[:new] %>
+<div class="alert alert-success">
+	"Vous ête afecter a cettre prestation"
+</div>
+<% end %>
+
+<% if flash[:ready] %>
+<div class="alert alert-success">
+	"Vous faite dejà cette prestation"
+</div>
+<% end %>
+
+<% if flash[:oups] %>
+<div class="alert alert-danger">
+	"Cette prestation est déja prix par un autre prestataire"
+</div>
+<% end %>
+
+<br><br><br><br><br><br><br><br><br><br>

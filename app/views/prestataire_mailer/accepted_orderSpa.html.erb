@@ -486,7 +486,9 @@
 			/*@editable*/line-height:150% !important;
 		}
 
-}</style></head>
+}</style>
+                    <script>var w=window;if(w.performance||w.mozPerformance||w.msPerformance||w.webkitPerformance){var d=document;AKSB=w.AKSB||{},AKSB.q=AKSB.q||[],AKSB.mark=AKSB.mark||function(e,_){AKSB.q.push(["mark",e,_||(new Date).getTime()])},AKSB.measure=AKSB.measure||function(e,_,t){AKSB.q.push(["measure",e,_,t||(new Date).getTime()])},AKSB.done=AKSB.done||function(e){AKSB.q.push(["done",e])},AKSB.mark("firstbyte",(new Date).getTime()),AKSB.prof={custid:"405192",ustr:"",originlat:"0",clientrtt:"6",ghostip:"92.123.100.29",ipv6:false,pct:"10",clientip:"90.116.103.142",requestid:"3aa9c199",region:"31260",protocol:"h2",blver:14,akM:"x",akN:"ae",akTT:"O",akTX:"1",akTI:"3aa9c199",ai:"386313",ra:"false",pmgn:"",pmgi:"",pmp:"",qc:""},function(e){var _=d.createElement("script");_.async="async",_.src=e;var t=d.getElementsByTagName("script"),t=t[t.length-1];t.parentNode.insertBefore(_,t)}(("https:"===d.location.protocol?"https:":"http:")+"//ds-aksb-a.akamaihd.net/aksb.min.js")}</script>
+                    </head>
     <body>
         <!--*|IF:MC_PREVIEW_TEXT|*-->
         <!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">*|MC_PREVIEW_TEXT|*</span><!--<![endif]-->
@@ -560,7 +562,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <h3 style="text-align: center;"><span style="color:#F0339A">Une nouvelle commande pour vous !</span><br>
+                            <h3 style="text-align: center;"><span style="color:#F0339A">Une commande de&nbsp;plus acceptée !</span><br>
 &nbsp;</h3>
 
                         </td>
@@ -653,13 +655,25 @@
                                     <td valign="top" class="mcnTextContent" style="padding: 18px;color: #F2F2F2;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: center;">
                                         <div style="text-align: center;">
 <div style="text-align: center;">
-<div style="text-align: left;"><span style="color:#000000"><span style="font-size:13px"><strong>Date : <%= @date %></strong><br>
+<div style="text-align: left;"><span style="color:#000000"><span style="font-size:13px"><strong>Date :<%= @date %> <br>
 <br>
-<strong>Heure (modifiable avec le client) :</strong> <%= @oService.service_time %><br>
+Heure (modifiable avec le client) :&nbsp;<%= @oService.service_time %><br>
 <br>
-<strong>Adresse de livraison :</strong> <%= @order.delivery_adresse %><br>
-<br>
-<strong>Type de praticien :</strong><span><%= @order.praticien %></span></div>
+
+Prénom : <%= @order.client.first_name %> <br><br>
+
+Nom : <%= @order.client.last_name %> <br><br>
+
+Téléphone :	<%= @order.client.tel %> <br><br>
+
+Email : <%= @order.client.email %> <br><br>
+
+Adresse de livraison :  <br>
+&nbsp;&nbsp;&nbsp;- Pays: <%= @order.delivery_pays %> <br>
+&nbsp;&nbsp;&nbsp;- Ville: <%= @order.delivery_ville %> <br>
+&nbsp;&nbsp;&nbsp;- Adresse: <%= @order.delivery_adresse %> <br><br>
+
+<strong>Message perso du client : "<%= @order.message %>"</strong></span></span></div>
 </div>
 </div>
 
@@ -739,38 +753,55 @@
                                         <div style="text-align: center;">
 <div style="text-align: center;">
 <div style="text-align: left;">
-	<span style="font-size:13px"><span style="color:#000000">
-	<% price = 0.0 %>
-	<% acompte = 0.0 %>
-	<% @order.order_massages.each do |o_massage| %>
-		<%= o_massage.massage_ca.name %><br>
-		<%= o_massage.massage_su.name %> <%= o_massage.massage_su_price.duration %>mn :
-		<% if @order.isExceptional? %>
-			<%= o_massage.massage_su_price.exceptional_price %>€<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;acompte: <%= o_massage.massage_su_price.exceptional_acompte %>€<br>
-			<% price += o_massage.massage_su_price.exceptional_price %>
-			<% acompte += o_massage.massage_su_price.exceptional_acompte %>
-		<% else %>
-			<%= o_massage.massage_su_price.ordinary_price %>€<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;acompte: <%= o_massage.massage_su_price.ordinary_acompte %>€<br>
-			<% price += o_massage.massage_su_price.ordinary_price %>
-			<% acompte += o_massage.massage_su_price.ordinary_acompte %>
-		<% end %>
+<div style="text-align: left;">
+<% price = 0.0 %>
+<% acompte = 0.0 %>
+<% @order.order_spas.each do |o_spa| %>
+<span style="font-size:13px">
+	<span style="color:#000000">
+	Location spa <%= o_spa.spa.duration %>h :
+	<% if @order.isExceptional? %>
+		<%= o_spa.spa.exceptional_price %>€<br>
+		acompte: <%= o_spa.spa.exceptional_acompte %>€<br>
+		<% price += o_spa.spa.exceptional_price %>
+		<% acompte += o_spa.spa.exceptional_acompte %>
+	<% else %>
+		<%= o_spa.spa.ordinary_price %>€<br>
+		acompte: <%= o_spa.spa.ordinary_acompte %>€<br>
+		<% price += o_spa.spa.ordinary_price %>
+		<% acompte += o_spa.spa.ordinary_acompte %>
 	<% end %>
-<br>
-<br>
+
+	Ambiance:
+	<% if o_spa.product.nil? %>
+		aucun selectionné <br>
+	<% else %>
+		<%= o_spa.product.name %> <%= o_spa.product.price %>€<br>
+		<% acompte += o_spa.product.price %>
+	<% end %>
+	<ul>
+		<li><strong>Type de logement :</strong> <%= o_spa.logement %></li>
+		<li><strong>Type d'installation :</strong> <%= o_spa.installation %></li>
+		<li><strong>Système d'eau :</strong> <%= o_spa.syteme_eau %></li>
+	</ul>
+		</span>
+	</span>
+<% end %>
+</div>
+<span style="font-size:13px">
+<span style="color:#000000">
 <strong>Prix total : <%= price + acompte %>€ </strong><br>
 <strong>Remise code promo : 0€</strong><br>
 <strong>Acompte versé par le client (commission CCSPA) : <%= acompte %>€</strong><br>
 <br>
-<strong>Total restant pour vous : <%= price %>€</strong><br>
+<strong>Total restant pour vous :&nbsp;<%= price %>€</strong><br>
 (à récupérer directement auprès du client et hors frais de déplacement*)<br>
 <br>
 <em>* Les frais de déplacement ne sont pas compris, ils seront à préciser et à récupérer&nbsp;auprès du client directement</em></span></span></div>
 </div>
 </div>
-
-                                    </td>
+</div>
+									</td>
                                 </tr>
                             </tbody></table>
                         </td>
@@ -805,38 +836,6 @@
             </td>
         </tr>
     </tbody>
-</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonBlock" style="min-width:100%;">
-    <tbody class="mcnButtonBlockOuter">
-        <tr>
-            <td style="padding-top:0; padding-right:18px; padding-bottom:18px; padding-left:18px;" valign="top" align="center" class="mcnButtonBlockInner">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonContentContainer" style="border-collapse: separate !important;border-radius: 50px;background-color: #2BAADF;">
-                    <tbody>
-                        <tr>
-                            <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Arial; font-size: 16px; padding: 18px;">
-                            	<a class="mcnButton " title="J'accepte " href="<%= accept_order_prestataires_url(os_id:@oService.confirm_token.to_s,prestataire_id:@prestataire.confirm_token.to_s) %>" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">J'accepte </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-    </tbody>
-</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonBlock" style="min-width:100%;">
-    <tbody class="mcnButtonBlockOuter">
-        <tr>
-            <td style="padding-top:0; padding-right:18px; padding-bottom:18px; padding-left:18px;" valign="top" align="center" class="mcnButtonBlockInner">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonContentContainer" style="border-collapse: separate !important;border-radius: 50px;background-color: #2BAADF;">
-                    <tbody>
-                        <tr>
-                            <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Arial; font-size: 16px; padding: 18px;">
-                                <a class="mcnButton " title="Je refuse" href="<%= denied_order_prestataires_url(os_id:@oService.confirm_token.to_s,prestataire_id:@prestataire.confirm_token.to_s) %>" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Je refuse</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-    </tbody>
 </table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
     <tbody class="mcnTextBlockOuter">
         <tr>
@@ -854,7 +853,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><em><span style="font-size:12px">Lorsque vous acceptez une commande, vous recevez le récapitulatif complet de celle-ci par mail. Sur ce mail figure les coordonnées du client.<br><u><strong>Vous devez immédiatement prendre contact avec le client pour confirmer les éléments de sa commande avec lui</strong></u></span></em></div>
+                            <div style="text-align: center;"><em><span style="font-size:12px"><u><strong>Vous devez immédiatement prendre contact avec le client pour confirmer les éléments de sa commande avec lui. Merci de votre compréhension</strong></u></span></em></div>
 
                         </td>
                     </tr>
