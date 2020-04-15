@@ -1,23 +1,130 @@
-<h1>Commande</h1>
-
-<div class="alert">
-	<h4><%= link_to "En cours", admin_order_index_path %></h4>
-	<h4><%= link_to "Traitées", admin_order_filtre_index_path(1), class: " ", remote: true %></h4>
-	<h4><%= link_to "Non traitées", admin_order_filtre_index_path(0), class: " ", remote: true %></h4>
-	<button class="alert success">Export DBB</button>
+<h1>Commandes</h1>
+<h2 style="color: #ec5598;">Commande en cours</h2>
+<div class="commande-en-cours">
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<td>N°</td>
+					<td>Date <small>(MM/JJ/AAAA)</small></td>
+					<td>Prestataire associé</td>
+					<td>Nom Client</td>
+					<td>Montant</td>
+					<td>CP</td>
+					<td>Action</td>
+				</tr>
+			</thead>
+			<tbody>
+				<% @orders_in_progress.each do |order| %>
+					<% prestataires = order.prestataires %>
+					<% prixAcompte = order.totalPrice %>
+				<tr>
+					<td><%= order.id %></td>
+					<td><%= order.prestation_date %></td>
+					<td>
+						<% unless  prestataires.empty? %>
+							<% prestataires.each do |prestataire| %>
+								<li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
+							<% end %>
+						<% else %>
+							aucun
+						<% end %>
+					</td>
+					<td><%= order.client.first_name %> <%= order.client.last_name %></td>
+					<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
+					<td><%= order.client.zip_code %></td>
+					<td><a href="<%= admin_order_show_path(order.id) %>">Afficher détails</a></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
 </div>
 
+<hr>
 
-<label>Classer par: 
-<select name="classerment">
-	<option value="N°" selected>N°</option>
-	<option value="Date">Date</option>
-	<option value="Prestataire">Prestataire</option>
-	<option value="Montant">Montant</option>
-	<option value="CP">CP</option>
-</select>
-</label>
+<h2 style="color: #ec5598;">Commande traitées</h2>
+<div class="commande-traitees">
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<td>N°</td>
+					<td>Date <small>(MM/JJ/AAAA)</small></td>
+					<td>Prestataire associé</td>
+					<td>Nom Client</td>
+					<td>Montant</td>
+					<td>CP</td>
+					<td>Action</td>
+				</tr>
+			</thead>
+			<tbody>
+				<% @orders_progress.each do |order| %>
+					<% prestataires = order.prestataires %>
+					<% prixAcompte = order.totalPrice %>
+				<tr>
+					<td><%= order.id %></td>
+					<td><%= order.prestation_date %></td>
+					<td>
+						<% unless  prestataires.empty? %>
+							<% prestataires.each do |prestataire| %>
+								<li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
+							<% end %>
+						<% else %>
+							aucun
+						<% end %>
+					</td>
+					<td><%= order.client.first_name %> <%= order.client.last_name %></td>
+					<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
+					<td><%= order.client.zip_code %></td>
+					<td><a href="<%= admin_order_show_path(order.id) %>">Afficher détails</a></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
 
-<div id="listCommande">
-	<%= render "listCommande.html.erb", orders: @orders %>
+<hr>
+
+<h2 style="color: #ec5598;">Commande non traitées</h2>
+<div class="commande-non-traitees">
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<td>N°</td>
+					<td>Date <small>(MM/JJ/AAAA)</small></td>
+					<td>Prestataire associé</td>
+					<td>Nom Client</td>
+					<td>Montant</td>
+					<td>CP</td>
+					<td>Action</td>
+				</tr>
+			</thead>
+			<tbody>
+				<% @orders_not_progress.each do |order| %>
+					<% prestataires = order.prestataires %>
+					<% prixAcompte = order.totalPrice %>
+				<tr>
+					<td><%= order.id %></td>
+					<td><%= order.prestation_date %></td>
+					<td>
+						<% unless  prestataires.empty? %>
+							<% prestataires.each do |prestataire| %>
+								<li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
+							<% end %>
+						<% else %>
+							aucun
+						<% end %>
+					</td>
+					<td><%= order.client.first_name %> <%= order.client.last_name %></td>
+					<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
+					<td><%= order.client.zip_code %></td>
+					<td><a href="<%= admin_order_show_path(order.id) %>">Afficher détails</a></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
 </div>

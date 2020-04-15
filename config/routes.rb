@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get '/client-profil/info', to: 'clients#personalInfo', as: "client_personal_info"
   
   get '/client/order/:id', to: 'clients#order', as: "client_order"
-  get "/client-profil-list/:short", to:'clients#filtreIndex', as:"client_order_filtre_index"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin
   devise_for :admins, path: 'admins',:skip => [:registrations], controllers: { 
