@@ -88,19 +88,6 @@
   } 
 
 }
-
-/*.grid .grid-item h1{
-  background: #EEEEEE;
-  height: 150px;
-  line-height: 150px;
-  color: white;
-  font-size: 3em;
-  text-align: center;
-  margin-bottom: 30px;
-}
-*/
-
-
 </style>
 
 
@@ -108,6 +95,7 @@
   <div class="secotionTitle contactTitle">
     <h2 class="police_massage"><span>Informations sur <%= @client.first_name %></span></h2>
   </div>
+
   <div class="row">
     <div class="col-md-12">
       <div class="filters">
@@ -121,16 +109,11 @@
     <div class="col-md-12">
       <div class="rows grid data-isotope='{ "itemSelector": ".grid-item", "masonry": { "columnWidth": 200 }}'">
         <div class="col-md-12 grid-item moncompte" data-category="websites">
-         
           <div class="col-sm-12 isotopeSelector infos">
-
-
             <div class="row">
               <div class="col-xs-12">
                 <div class="innerWrapper">
-                  <div class="orderBox  patternbg">
-
-                  </div>
+                  <div class="orderBox  patternbg"></div>
                   <div class="profile" style="margin-top: -30px;">
                     <div class="row">
                       <div class="col-sm-6">
@@ -165,8 +148,6 @@
                       </div>
 
                       <div class="col-sm-3">
-
-
                         <ul class="list-inline fullRoundBtn">
                           <li class="li"><a href="<%=edit_clients_path(@client)%>" class="btn btn-common btn-full-round btn-theme">Modifier</a></li>
                         </ul>
@@ -179,12 +160,10 @@
                 </div>
               </div>
             </div>
-
-
           </div>
-
-
         </div>
+
+
         <div class="hidden" id="classRemove">
 
           <div class="col-md-12 grid-item commandes" data-category="flyers">
@@ -247,41 +226,9 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
-    
-  
-  
-<!-- A modifier (manomboka eto ny dev farany) -->
-  
-  <div class="col-sm-6">
-    <h2>Liste de ses commandes</h2>
-    <table border="2">
-      <tr>
-        <td>N°</td>
-        <td>Date</td>
-        <td>Services</td>
-        <td>Action</td>
-      </tr>
-
-      <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.id %></td>
-        <td><%= order.prestation_date %></td>
-        <td>
-          <% order.services.each do |s| %>
-            <li><%= s.name %></li>
-          <% end %>
-        </td>
-        <td><a href="<%=admin_order_show_path(order.id)%>">Afficher détails</a></td>
-      </tr>
-      <% end %>
-    </table>
-
-  </div>
-</div>
-
-
 
 <!-- JAVASCRIPTS -->
 <script data-turbolinks-track = "reload" src="/plugins/jquery/jquery.min.js"></script>

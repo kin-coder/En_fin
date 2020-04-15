@@ -1,5 +1,5 @@
 <!-- Anle CLIENT CLIENT -->
-<table border="2">
+<!-- <table border="2">
 	<tr>
 		<td>Date <small>(MM/JJ/AAAA)</small></td>
 		<td>Prix</td>
@@ -22,4 +22,36 @@
 		<td><a href="<%= client_order_path(order.id) %>">Afficher détails</a></td>
 	</tr>
 	<% end %>
-</table>
+</table> -->
+
+<div class="table-responsive">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>N°</th>
+												<th>Date</th>
+												<th>Préstation</th>
+												<th>Prix total</th>
+												<th>Actions</th>
+											</tr>
+										</thead>
+										<tbody>
+
+											<% @orders.each do |order| %>
+											<% prixAcompte = order.totalPrice %>
+											<tr>
+												<td><%= order.id %></td>
+												<td><%= order.prestation_date %></td>
+												<td>
+													<% order.order_services.each do |prestation| %>
+													<%= prestation.service.name %> <br>
+													<% end %>
+												</td>
+												<td><%= prixAcompte[0] + prixAcompte[1] %> €</td>
+												<td><a href="<%= client_order_path(order.id) %>" class="btn btn-default" DATA-Method="GET">Afficher</a></td>
+
+											</tr>
+											<% end %>
+										</tbody>
+									</table>
+								</div>
