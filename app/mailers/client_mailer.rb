@@ -14,7 +14,7 @@ class ClientMailer < ApplicationMailer
     		@heurs[1] = o_s.service_time
     	end
     end
-    
+
     mail(to: @client.email, subject: 'Votre commande Cocooning Spa !')
 	end
 

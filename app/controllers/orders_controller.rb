@@ -18,26 +18,29 @@ class OrdersController < ApplicationController
         p_o.destroy
       end
       @order_service.update(is_done:true,prestataire:@prestataire)
-      if @order_service.service.name == "Location spa"
-        PrestataireMailer.accepted_orderSpa(@order_service.id,@prestataire.id).deliver_now
+      current_order = @order_service.order
+      if current_order.order_services.where(is_done:false).empty?
+        current_order.update(is_done:true,prestataire:@prestataire)
       end
-      if @order_service.service.name == "Massage"
-        PrestataireMailer.accepted_orderMassage(@order_service.id,@prestataire.id).deliver_now
+      case @order_service.service.name
+        when "Location spa"
+          PrestataireMailer.accepted_orderSpa(@order_service.id,@prestataire.id).deliver_now
+        when "Massage"
+          PrestataireMailer.accepted_orderMassage(@order_service.id,@prestataire.id).deliver_now
+        else
       end
       flash[:new] = "Vous ête afecter a cettre prestation"
+    elsif @order_service.prestataire.id == @prestataire.id
+      flash[:ready] = "Vous faite dejà cette prestation"
     else
-      if @order_service.prestataire.id == @prestataire.id
-        flash[:ready] = "Vous faite dejà cette prestation"
+      isPresent = PrestataireOrder.where(order_service:@order_service,prestataire:@prestataire)
+      if isPresent.empty?
+        PrestataireOrder.create(order_service:@order_service,prestataire:@prestataire)
       else
-        PrestataireMailer.oups_order_not_available(@prestataire.id).deliver_now
-        flash[:oups] = "Cette prestation est déja prix par un autre prestataire"
-        isPresent = PrestataireOrder.where(order_service:@order_service,prestataire:@prestataire)
-        if isPresent.empty?
-          PrestataireOrder.create(order_service:@order_service,prestataire:@prestataire)
-        else
-          isPresent[0].update(is_accepted:true)
-        end
+        isPresent[0].update(is_accepted:true)
       end
+      flash[:oups] = "Cette prestation est déja prix par un autre prestataire"
+      PrestataireMailer.oups_order_not_available(@prestataire.id).deliver_now
     end
   end
 
