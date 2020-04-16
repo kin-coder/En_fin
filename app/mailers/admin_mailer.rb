@@ -12,7 +12,7 @@ class AdminMailer < ApplicationMailer
 		@candidate = candidate
 		@url = 'http://spamandona.herokuapp.com/'
 		# permet d'envoyer l'email à to: ...
-		mail(to: 'ramahafaly2.0@gmail.com', subject: 'Nouvelle demande de partenariat !')
+		mail(to: 'ramahafaly2.0@gmail.com', subject: '​Nouvelle demande de partenariat !')
 	end
 
 end

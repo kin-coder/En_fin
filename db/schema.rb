@@ -207,6 +207,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_082452) do
     t.string "delivery_adresse_complet"
     t.string "praticien"
     t.text "message"
+    t.boolean "is_done", default: false
     t.boolean "is_canceled", default: false
     t.bigint "client_id"
     t.bigint "department_id"

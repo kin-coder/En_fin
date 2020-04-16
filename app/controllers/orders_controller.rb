@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
       @order_service.update(is_done:true,prestataire:@prestataire)
       current_order = @order_service.order
       if current_order.order_services.where(is_done:false).empty?
-        current_order.update(is_done:true,prestataire:@prestataire)
+        current_order.update(is_done:true)
       end
       case @order_service.service.name
         when "Location spa"
