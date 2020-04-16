@@ -88,19 +88,6 @@
   } 
 
 }
-
-/*.grid .grid-item h1{
-  background: #EEEEEE;
-  height: 150px;
-  line-height: 150px;
-  color: white;
-  font-size: 3em;
-  text-align: center;
-  margin-bottom: 30px;
-}
-*/
-
-
 </style>
 
 
@@ -251,36 +238,6 @@
     </div>
     
   
-  
-<!-- A modifier (manomboka eto ny dev farany) -->
-  
-  <div class="col-sm-6">
-    <h2>Liste de ses commandes</h2>
-    <table border="2">
-      <tr>
-        <td>N°</td>
-        <td>Date</td>
-        <td>Services</td>
-        <td>Action</td>
-      </tr>
-
-      <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.id %></td>
-        <td><%= order.prestation_date %></td>
-        <td>
-          <% order.services.each do |s| %>
-            <li><%= s.name %></li>
-          <% end %>
-        </td>
-        <td><a href="<%=admin_order_show_path(order.id)%>">Afficher détails</a></td>
-      </tr>
-      <% end %>
-    </table>
-
-  </div>
-</div>
-
 
 
 <!-- JAVASCRIPTS -->

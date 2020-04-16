@@ -151,7 +151,7 @@
                   <td><%= client.zip_code %></td>
     
                   <td>
-                    <a href="<%=show_clients_path(client.id)%>" class="btn btn-default" title="Afficher"><i class="far fa-eye"></i></a> 
+                    <a href="<%=show_clients_path(client.id)%>" class="btn btn-default" title="Afficher" DATA-METHOD="GET"> <i class="far fa-eye"></i></a> 
                     <a href="<%=edit_clients_path(client.id)%>" class="btn btn-default" title="Editer"><i class="fas fa-user-edit"></i></a> 
                     <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_clients_path(client.id), method: :delete, data: { confirm: 'Etes vous sur?' }, title:"Supprimer",class:"btn btn-default" %></td>
 
