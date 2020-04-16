@@ -16,7 +16,12 @@ class ClientMailer < ApplicationMailer
     mail(to: @client.email, subject: 'Votre commande Cocooning Spa !')
   end
 
-	def abandoned_order
-		
-	end
+  def abandoned_order
+  	
+  end
+
+  def welcome_client(client)
+    @client = client
+    mail(to: @client.email, subject: '​Suite à votre visite sur Cocooning Spa !')
+  end
 end
