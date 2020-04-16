@@ -657,11 +657,13 @@
 <br>
 <strong>Heure (modifiable avec le client) :</strong> <%= @oService.service_time %><br>
 <br>
-<strong>Adresse de livraison :</strong><%= @order.delivery_adresse %><br>
+<strong>Adresse de livraison :</strong> <br>
+&nbsp;&nbsp;&nbsp;-Pays: <%= @order.delivery_pays %> <br>
+&nbsp;&nbsp;&nbsp;-Ville: <%= @order.delivery_ville %> <br>
+&nbsp;&nbsp;&nbsp;-Adresse: <%= @order.delivery_adresse %> <br>
 </span></span></div>
 </div>
 </div>
-
                                     </td>
                                 </tr>
                             </tbody></table>

@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_082452) do
     t.string "sexe"
     t.string "country"
     t.string "zip_code"
+    t.string "is_type", default: "prospect"
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
@@ -206,6 +207,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_082452) do
     t.string "delivery_adresse_complet"
     t.string "praticien"
     t.text "message"
+    t.boolean "is_done", default: false
     t.boolean "is_canceled", default: false
     t.bigint "client_id"
     t.bigint "department_id"

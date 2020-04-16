@@ -1,10 +1,27 @@
 class ClientMailer < ApplicationMailer
-    def validation_commande
 
-        @client = params[:client]
-        @commande = params[:commande]
+  def confirm_order(order_id,client_id)
+    @client = Client.find(client_id)
+    @order = Order.find(order_id)
+    @date = @order.prestation_date.split("/")
+    @date = "#{@date[1]}/#{@date[0]}/#{@date[2]}"
+    @heurs = ["",""]
+    @order.order_services.each do |o_s|
+    	if o_s.service.name == "Location spa"
+    		@heurs[0] = o_s.service_time
+    	elsif o_s.service.name == "Massage"
+    		@heurs[1] = o_s.service_time
+    	end
+    end
+    mail(to: @client.email, subject: 'Votre commande Cocooning Spa !')
+  end
 
-        @url  = 'http://example.com/login'
-        mail(to: "michael77rakotovao@gmail.com", subject: 'Confirmation commandes')
-      end
+  def abandoned_order
+  	
+  end
+
+  def welcome_client(client)
+    @client = client
+    mail(to: @client.email, subject: '​Suite à votre visite sur Cocooning Spa !')
+  end
 end
