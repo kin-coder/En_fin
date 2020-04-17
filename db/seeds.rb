@@ -1,26 +1,32 @@
+Admin.destroy_all
 Candidate.destroy_all
 Client.destroy_all
+CodePromo.destroy_all
+Comment.destroy_all
 Country.destroy_all
 Department.destroy_all
-Prestataire.destroy_all
-PrestataireDepartment.destroy_all
-PrestataireService.destroy_all
-Service.destroy_all
-Spa.destroy_all
 MassageCa.destroy_all
 MassageSu.destroy_all
 MassageSuPrice.destroy_all
-OtherSuPrice.destroy_all
-Product.destroy_all
+Message.destroy_all
 Order.destroy_all
 OrderMassage.destroy_all
 OrderProduct.destroy_all
 OrderService.destroy_all
 OrderSpa.destroy_all
-Comment.destroy_all
+OtherSuPrice.destroy_all
+Prestataire.destroy_all
+PrestataireCountry.destroy_all
+PrestataireDepartment.destroy_all
+PrestataireService.destroy_all
+Product.destroy_all
+Service.destroy_all
+ServiceCountry.destroy_all
+ServiceDepartment.destroy_all
+Spa.destroy_all
 
 increment = 0
-Admin.create(email:'ramahafaly2.0@gmail.com',password:'ramahafaly2.0@gmail.com',first_name: "Vincent",last_name: "lae")
+Admin.create(email:'myadmin@gmail.com',password:'myadmin@gmail.com',first_name: "Vincent",last_name: "lae")
 
 # =========================== CREE LES SERVICE =========================== #
 s1 = Service.create(name:"Massage")
@@ -34,8 +40,8 @@ listPays = []
 	listPays.push(Country.create(name: pays))
 end
 
-Country.find_by(name:"Belgique").services = [s1,s2]
-Country.find_by(name:"Suisse").services = [s2]
+Country.find_by(name:"Belgique").services = Service.all
+Country.find_by(name:"Suisse").services = Service.all
 
 country = Country.create(name: "France")
 
@@ -46,35 +52,7 @@ paysFake = ["Belgique","Luxembourg","Suisse","France"]
 # creation département et prestataire
 listdepartement.each do |listdepartement|
 	d = Department.create(code: listdepartement[0], name: listdepartement[1], country: country)
-	d.services = allServices[rand(2)..rand(2)]
-
-	rand(5).times do |i|
-		p = Prestataire.create(email: Faker::Internet.free_email,first_name: Faker::Name.first_name,last_name: Faker::Name.middle_name,adresse: Faker::Address.full_address,tel: Faker::PhoneNumber.phone_number_with_country_code,raison_sociale: Faker::Commerce.department,siren: Faker::Number.leading_zero_number(digits: 10),sexe: sexe[rand(2)],date_of_birth: Faker::Date.in_date_period(year:1980),zip_code: Faker::Number.number(digits: 5),pays: paysFake[rand(4)],ville: Faker::Nation.capital_city)
-		# Selection du zone pays et departement qu'il peut faire
-		p.departments = [d]
-		p.countries = [country] + listPays[rand(3)..rand(3)]
-		# Selection des services que le prestataire peut faire
-		p.services = [Service.find(rand(1..2))]
-		puts increment+=1
-	end
-end
-# ==================== CANDIDATES =========================== #
-
-ActionMailer::Base.perform_deliveries = false
-
-15.times do |i|
-	caService = ["Massage","Location spa"][0..rand(2)].join("|")
-	paysFake = ["Belgique","Luxembourg","Suisse"]
-	caCountry = paysFake[rand(0)..rand(3)].join("|")
-	Candidate.create(email: Faker::Internet.free_email,first_name: Faker::Name.first_name,last_name: Faker::Name.middle_name,adresse: Faker::Address.full_address,telephone: Faker::PhoneNumber.phone_number_with_country_code,raison_sociale: Faker::Commerce.department,siren: Faker::Number.leading_zero_number(digits: 10),sexe: sexe[rand(2)],date_of_birth: Faker::Date.in_date_period(year:1980),zip_code: Faker::Number.number(digits: 5),country: paysFake[rand(4)],ville: Faker::Nation.capital_city,services: caService,countries: caCountry)
-end
-
-5.times do |j|
-	caService = ["Massage","Location spa"][0..rand(2)].join("|")
-	caCountry = "France"
-	caDepartment = ['Ain','Aisne','Allier','Ardèche','Ardennes','Ariège','Manche','Marne','Mayenne']
-	caDepartment = caDepartment[rand(0)..rand(9)].join("|")
-	Candidate.create(email: Faker::Internet.free_email,first_name: Faker::Name.first_name,last_name: Faker::Name.middle_name,adresse: Faker::Address.full_address,telephone: Faker::PhoneNumber.phone_number_with_country_code,raison_sociale: Faker::Commerce.department,siren: Faker::Number.leading_zero_number(digits: 10),sexe: sexe[rand(2)],date_of_birth: Faker::Date.in_date_period(year:1980),zip_code: Faker::Number.number(digits: 5),country:"France",ville: Faker::Nation.capital_city,services: caService,countries: caCountry,departments: caDepartment)
+	d.services = Service.all
 end
 
 # ======================= CREE LES SERVICE MASSAGE ======================= #
