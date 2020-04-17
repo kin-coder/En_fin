@@ -3,11 +3,9 @@ class AdminOrderController < Application2Controller
   # page d'accueill pour liste des commandes
   def index
   	@order_lists = Order.all
-
     @orders_in_progress = []    #en cours
     @orders_progress = []       #traité
     @orders_not_progress = []   #non traité
-    
     @order_lists.each do |order|
       if order.is_canceled == false && order.is_done == false && order.is_future? == true
         @orders_in_progress.push(order)
@@ -51,6 +49,33 @@ class AdminOrderController < Application2Controller
     end
   end
 
-  def edit
+  def afect_prestataire
+    @prestataire = Prestataire.find(params[:id])
+    @order = Order.find(params[:order_id])
+    case params[:name]
+    when "spa"
+      @order.order_services.find_by(service_id:Service.find_by_name("Location spa").id).update(prestataire:@prestataire)
+      @order.order_services.find_by(service_id:Service.find_by_name("Location spa").id).prestataire_orders.where(prestataire_id:@prestataire.id).destroy_all
+    when "massage"
+      @order.order_services.find_by(service_id:Service.find_by_name("Massage").id).update(prestataire:@prestataire)
+      @order.order_services.find_by(service_id:Service.find_by_name("Massage").id).prestataire_orders.where(prestataire_id:@prestataire.id).destroy_all
+    else
+    end
+    flash[:sucess] = "Le nouveau prestataire a été afecter à la commande"
+    redirect_to admin_order_show_path(@order.id)
+  end
+
+  def delete_prestataire
+    @prestataire = Prestataire.find(params[:id])
+    @order = Order.find(params[:order_id])
+    case params[:name]
+    when "spa"
+      @order.order_services.find_by(service_id:Service.find_by_name("Location spa").id).update(prestataire:nil)
+    when "massage"
+      @order.order_services.find_by(service_id:Service.find_by_name("Massage").id).update(prestataire:nil)
+    else
+    end
+    flash[:sucess] = "Le prestataire a bien été retirer de la commande"
+    redirect_to admin_order_show_path(@order.id)
   end
 end
