@@ -8647,3 +8647,12 @@ left: -10px;
 .secotionTitleEditPresta {
     padding: 0px 0 30px 0 !important;
 }
+
+.sidebar .nav-item .nav-link span {
+  font-size: 1.4rem;
+  display: inline;
+}
+
+  .sidebar {
+    width: 18rem !important;
+  }
