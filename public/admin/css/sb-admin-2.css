@@ -10093,7 +10093,7 @@ background-image: linear-gradient(180deg,#ec5598 10%,#ec5598 100%);
 }
 
 .sidebar .nav-item .nav-link span {
-  font-size: 0.65rem;
+  font-size: 1.4rem;
   display: block;
 }
 
@@ -10231,7 +10231,7 @@ background-image: linear-gradient(180deg,#ec5598 10%,#ec5598 100%);
 
 @media (min-width: 768px) {
   .sidebar {
-    width: 14rem !important;
+    width: 18rem !important;
   }
   .sidebar .nav-item .collapse {
     position: relative;

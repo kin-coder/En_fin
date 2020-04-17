@@ -201,13 +201,14 @@
 
 
 									<div class="page">
-
+										<% unless @order.order_spas.empty? %>
 										<h3>Pour la location spa</h3>
 										<% unless @spa_prestataires.empty? %>
 										<table class="layout display responsive-table">
 											<thead>
 												<tr>
 													<th>Nom du prestataire</th>
+													<th>Sexe</th>
 													<th>Adresse email</th>
 													<th><center>Action</center></th>
 												</tr>
@@ -215,11 +216,11 @@
 											<tbody>
 												<% @spa_prestataires.each do |p_order| %>
 												<tr>
-													<% if p_order.sexe = "Masculin" %>
-													<td class="organisationnumber">Mr <%= p_order.first_name %> <%= p_order.last_name %></td>
-													<% else %>
-													<td class="organisationnumber">Mme <%= p_order.first_name %> <%= p_order.last_name %></td>
-													<% end %>
+													
+													<td class="organisationnumber"> <%= p_order.first_name %> <%= p_order.last_name %></td>
+													
+													<td class="organisationnumber"><%= p_order.sexe %></td>
+													
 													<td class="organisationname"><%= p_order.email %></td>
 													<td class="action">
 														<center><button class="button button1"><%= link_to 'Afficher', show_prestataires_path(p_order.id) %></button></center>
@@ -245,11 +246,13 @@
 										</table>
 
 										<% end %>
+										<% end %>
 									</div>
 
 
 
 									<div class="page">
+										<% unless @order.order_massages.empty? %>
 
 										<h3>Pour le massage</h3>
 										<% unless @massage_prestataires.empty? %>
@@ -257,6 +260,7 @@
 											<thead>
 												<tr>
 													<th>Nom du prestataire</th>
+													<th>Sexe</th>
 													<th>Adresse email</th>
 													<th><center>Action</center></th>
 												</tr>
@@ -265,11 +269,10 @@
 												<% @massage_prestataires.each do |p_order| %>
 												<tr>
 
-													<% if p_order.sexe = "Masculin" %>
-													<td class="organisationnumber">Mr <%= p_order.first_name %> <%= p_order.last_name %></td>
-													<% else %>
-													<td class="organisationnumber">Mme <%= p_order.first_name %> <%= p_order.last_name %></td>
-													<% end %>
+													
+													<td class="organisationnumber"><%= p_order.first_name %> <%= p_order.last_name %></td>
+													
+													<td class="organisationnumber"><%= p_order.sexe %></td>
 													<td class="organisationname"><%= p_order.email %></td>
 													<td class="action">
 														<center><button class="button button1"><%= link_to 'Afficher', show_prestataires_path(p_order.id) %></button></center>
@@ -294,6 +297,7 @@
 												</tr>
 											</tbody>
 										</table>
+										<% end %>
 										<% end %>
 									</div>
 
