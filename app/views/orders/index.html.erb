@@ -13,7 +13,7 @@
 				<div class="alert alert-danger hidden" role="alert" id="errorInZone">
 					
 				</div>
-				<h2 style="color:white;" class="titregeog">Je choisi ma zone géographique </h2>
+				<h2 style="color:white;" class="titregeog">Je choisis ma zone géographique </h2>
 
 				<%= form_tag(zone_path, remote: true, class:"pays_dep") do %>
 				<div class="pays">
@@ -191,15 +191,15 @@
 												</div>
 												<h4><span class="titlePraticien">Type de praticien</span></h4>
 												<div class="praticiens">
-													<input type="radio" id="man" name="praticien" value="Homme" class="praticien-list">
+													<input type="radio" id="man" name="praticien" value="Monsieur" class="praticien-list">
 													<label for="man"><i id="praticienman-label" class="fa fa-male" aria-hidden="true"></i></label>
 												</div>
 												<div class="praticiens">
-													<input type="radio" id="woman" name="praticien" value="Femme" class="praticien-list">
+													<input type="radio" id="woman" name="praticien" value="Madame" class="praticien-list">
 													<label for="woman"><i id="praticien-label" class="fa fa-female" aria-hidden="true"></i></label>
 												</div>
 												<div class="praticiens pratText">
-													<input type="radio" id="other" name="praticien" value="Peu importe" class="praticien-list" >
+													<input type="radio" id="other" name="praticien" value="all" class="praticien-list" >
 													<label for="other"> <span class="label-no-fa">Peu importe</span></label>
 												</div>
 											</center>

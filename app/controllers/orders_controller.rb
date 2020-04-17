@@ -4,6 +4,68 @@ class OrdersController < ApplicationController
   before_action :validate_pay_error_success, only: [:payedsuccess,:payederrors]
   before_action :authenticate_client!, only: [:delivery,:saveDelivery,:summary,:payment]
 
+# ~~~~~~~Accepter une commande par emails~~~~~~~~~~~
+  def acceptOrder
+    @order_service = OrderService.find_by(confirm_token: params[:os_id].to_s)
+    @prestataire = Prestataire.find_by(confirm_token: params[:prestataire_id].to_s)
+    if @order_service.nil? || @prestataire.nil?
+      redirect_to root_path #si erreur
+    end
+
+    if @order_service.prestataire.nil?
+      p_o = PrestataireOrder.find_by(order_service:@order_service,prestataire:@prestataire)
+      unless p_o.nil?
+        p_o.destroy
+      end
+      @order_service.update(is_done:true,prestataire:@prestataire)
+      current_order = @order_service.order
+      if current_order.order_services.where(is_done:false).empty?
+        current_order.update(is_done:true)
+      end
+      case @order_service.service.name
+        when "Location spa"
+          PrestataireMailer.accepted_orderSpa(@order_service.id,@prestataire.id).deliver_now
+        when "Massage"
+          PrestataireMailer.accepted_orderMassage(@order_service.id,@prestataire.id).deliver_now
+        else
+      end
+      flash[:new] = "Vous ête afecter a cettre prestation"
+    elsif @order_service.prestataire.id == @prestataire.id
+      flash[:ready] = "Vous faite dejà cette prestation"
+    else
+      isPresent = PrestataireOrder.where(order_service:@order_service,prestataire:@prestataire)
+      if isPresent.empty?
+        PrestataireOrder.create(order_service:@order_service,prestataire:@prestataire)
+      else
+        isPresent[0].update(is_accepted:true)
+      end
+      flash[:oups] = "Cette prestation est déja prix par un autre prestataire"
+      PrestataireMailer.oups_order_not_available(@prestataire.id).deliver_now
+    end
+  end
+
+  def deniedOrder
+    @order_service = OrderService.find_by(confirm_token: params[:os_id].to_s)
+    @prestataire = Prestataire.find_by(confirm_token: params[:prestataire_id].to_s)
+    if @order_service.nil? || @prestataire.nil?
+      redirect_to root_path #si erreur
+      return
+    end
+    if @order_service.prestataire == @prestataire
+      flash[:no_refuse] = "Pour annuler votre affectation a cette commande veiller contacer l'administrateur du site"
+    else
+      flash[:refuse] = "Votre refus a été pris en compte, nous reviendrons vers vous pour de nouvelles commandes."
+      isPresent = PrestataireOrder.where(order_service:@order_service,prestataire:@prestataire)
+      if isPresent.empty?
+        PrestataireOrder.create(is_accepted:false,order_service:@order_service,prestataire:@prestataire)
+      else
+        isPresent[0].update(is_accepted:false)
+      end
+    end
+  end
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   # 1/2 Selection des prestation
   def zone
     @country = params[:country]
@@ -71,7 +133,7 @@ class OrdersController < ApplicationController
     end
 
     respond_to do |format|
-       format.js
+      format.js
     end
 
   end
@@ -343,7 +405,7 @@ class OrdersController < ApplicationController
 
     myPrestation = session[:myPrestation]
     unless myPrestation["spa"].empty?
-      OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: session[:otherInfo]["heureSpa"])
+      mailToOrderServiceSpa = OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: session[:otherInfo]["heureSpa"])
       myPrestation["spa"].each do |spa|
         current_spa = Spa.find_by(duration:spa["time"])
         current_product = ""
@@ -354,10 +416,20 @@ class OrdersController < ApplicationController
           OrderSpa.create(logement: spa["type"][0], installation: spa["type"][1], syteme_eau: spa["type"][2], order: @order, spa: current_spa)
         end
       end
+      #====== Send email to prestataire location spa =====
+      @prestataires = []
+      if @order.department.nil?
+        @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:countries).where(countries:{name:@order.country.name})
+      else
+        @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:departments).where(departments:{name:@order.department.name})
+      end
+      @prestataires.each do |prestataire|
+        PrestataireMailer.new_orderSpa(mailToOrderServiceSpa.id,prestataire.id).deliver_now
+      end
     end
     
     unless myPrestation["massage"].empty?
-      OrderService.create(order: @order, service: Service.find_by(name:"Massage"), service_time: session[:otherInfo]["heureMassage"])
+      mailToOrderServiceMassage = OrderService.create(order: @order, service: Service.find_by(name:"Massage"), service_time: session[:otherInfo]["heureMassage"])
       myPrestation["massage"].each do |massage|
         current_ca = MassageCa.find_by(name:massage["ca"])      
         current_su = current_ca.massage_sus.find_by(name:massage["su"])
@@ -366,29 +438,46 @@ class OrdersController < ApplicationController
       end
       @order.praticien = session[:otherInfo]["praticien"]
       @order.save
+      #====== Send email to prestataire massage =====
+      @prestataires = []
+      if @order.department.nil?
+        @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:countries).where(countries:{name:@order.country.name})
+      else
+        @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:departments).where(departments:{name:@order.department.name})
+      end
+      @prestataires.each do |prestataire|
+        if (prestataire.sexe == @order.praticien) || (@order.praticien == "all")
+          PrestataireMailer.new_orderMassage(mailToOrderServiceMassage.id,prestataire.id).deliver_now
+        end
+      end
     end
-    
+
     unless session[:otherInfo]["cadeau"].empty?
       session[:otherInfo]["cadeau"].each do |cadeau|
         current_product = Product.find_by(name:cadeau[0])
         OrderProduct.create(number: cadeau[2].to_i, product: current_product, order: @order)
       end
     end
-
+    if current_client.is_type == 'prospect'
+      current_client.update(is_type:'client')
+    end
+    ClientMailer.confirm_order(@order.id,current_client.id).deliver_now
+    
     redirect_to payedsuccess_path
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to payederrors_path
-
   end
 
   def payedsuccess
-    session.clear
+    session.delete(:otherInfo)
+    session.delete(:myPrestation)
   end
 
   def payederrors
-    session.clear
+    session.delete(:otherInfo)
+    session.delete(:myPrestation)
   end
 
   private
@@ -400,7 +489,8 @@ class OrdersController < ApplicationController
   def redirect_reservation
     flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
     flash[:delete_js] = true
-    session.clear
+    session.delete(:otherInfo)
+    session.delete(:myPrestation)
     redirect_to reservation_path
   end
 

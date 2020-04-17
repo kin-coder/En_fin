@@ -1,16 +1,21 @@
-<h2>Resend confirmation instructions</h2>
+<link href="/css/page-devise.css" rel="stylesheet">
+<center>
+<div class="mdp-oublie">
+<h2>Renvoyer les instructions de confirmation</h2>
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    <%= f.label :email , class:"hidden"%><br />
+    <%= f.email_field :email, autofocus: true,placeholder:"Votre adresse email ici", class:"mailmdp", autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
+    <%= f.submit "Renvoyez-moi les instructions de confirmation", class:"btn btn-primary btn-block btn-mdp" %>
   </div>
 <% end %>
 
 <%= render "clients/shared/links" %>
+ </div>
+</center>

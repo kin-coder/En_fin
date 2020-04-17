@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Prestataires</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+	<link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
+
+	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+
+	<style>
+		/* Paste this css to your style sheet file or under head tag */
+  /* This only works with JavaScript,
+  if it's not present, don't show loader */
+
+  .innerWrapper .table-responsive .table tbody tr .encoursTd, .traitéeTd, .nontraitéeTd{
+  	position: relative;
+  	top: 10px;
+  	left: 5px;
+  	font-size: 16px;
+  	padding: 10px;
+  	width: 100px;
+  	display: block ;
+  }
+
+  .filters ul{
+  	display: flex;
+  	justify-content: center;
+  	list-style: none;
+  	border-bottom: 2px solid #D9D9D9;
+  	margin: 30px 15px;
+
+  }
+  .filters ul li{
+  	display: inlnie-block;
+  	text-align: center;
+  	margin-right: 50px;
+  	padding: 0 5px 8px 5px;
+  	font-weight: 700;
+  	font-size: 16px; 
+  	cursor: pointer;
+  	position: relative;
+  	margin-bottom: -2px;
+  	color: #777;
+  	transition: 0.3s;
+  	text-transform: uppercase;
+  }
+  .filters ul li:hover{
+  	color: deeppink;
+  }
+  .filters ul li.is-checked{
+  	border-bottom: 2px solid deeppink;
+  	color: deeppink;
+  }
+  .filters ul li:last-child{
+  	margin-right: 0;
+  }
+
+</style>
+
+<style>
+	.toolBarSelect{
+		position: absolute;
+		left: 880px;
+	}
+
+	.search-control{
+		position: relative;
+		left: 655px;
+	}
+
+</style>
+</head>
+
+<body>
+
+	<section class="">
+		<div class="secotionTitle">
+			<h2 id="service" class="poli1 police_massage"><span>COMMANDES</span></h2>
+		</div>
+		<!-- <div class="containr">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="filters">
+						<ul>
+							<li class="is-checked" data-filter=".encours">En cours</li>
+							<li data-filter=".traitées" id="traitée">Traitées</li>
+							<li data-filter=".nontraitées" id="nontraitée">Non traitées</li>							
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-12">
+					<div class="rows grid data-isotope='{ "itemSelector": ".grid-item", "masonry": { "columnWidth": 200 }}'">
+						<div class="col-md-12 grid-item encours" data-category="websites">
+
+
+						</div>
+
+						T==============================Raitées===================== -->
+<!-- 						<div lass="hidden" id="classRemoveTraitée">
+
+							<div class="col-md-12 grid-item traitées" data-category="flyers">
+
+
+							</div>
+						</div>
+					-->
+						<!-- T==============================Raitées===================== --> <!-- 
+						<div class="hidden" id="classRemoveNonTraitée">
+
+							<div class="col-md-12 grid-item nontraitées" data-category="flyers">
+
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div> -->
+
+
+
+
+			<div id="toolbar">
+				<select class="form-control toolBarSelect"> 
+
+					<option value="selected">Exporter les sélectionnés</option>
+					<option value="all">Exporter tous</option>
+
+				</select>
+				<div class="search-control">
+					<input class="form-control" id="myInput" type="text" placeholder="chercher dans la table..">
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="innerWrapper">
+						<div class="table-responsive">
+							<table id="table" 
+							data-toggle="table"
+							data-filter-control="true" 
+							data-show-export="true"
+							data-click-to-select="true"
+							data-toolbar="#toolbar"
+							class="table-responsive"
+							style="">
+							<thead>
+
+								<tr>
+									<th data-field="state" data-checkbox="true"></th>
+									<th data-field="commandeID" data-filter-control="input" data-sortable="true">N°</th>
+									<th data-field="date" data-filter-control="input" data-sortable="true">Date (MM/JJ/AAAA)</th>
+									<th data-field="presta" data-filter-control="select" data-sortable="true">Prestataire associé</th>
+									<th data-field="nom" >Nom du client</th>
+									<th>Montant</th>
+									<th data-field="zip_code" data-filter-control="input">Code Postal</th>
+
+									<th data-field="status" data-filter-control="select" data-sortable="true">Status</th>
+
+									<th class="actionTableAdmin" data-field="note"> <center style="line-height: 35px;">Actions
+									</center>  
+								</th>
+							</tr>
+						</thead>
+
+
+						<tbody id="myTable">
+
+							<% @orders_in_progress.each do |order| %>
+							<% prestataires = order.prestataires %>
+							<% prixAcompte = order.totalPrice %>
+							<tr>
+								<td class="bs-checkbox "><input data-index="" name="btSelectItem" type="checkbox"></td>
+								<td><%= order.id %></td>
+								<td><%= order.prestation_date %></td>
+								<td>
+									<% unless  prestataires.empty? %>
+									<% prestataires.each do |prestataire| %>
+									<li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
+									<% end %>
+									<% else %>
+									Aucun
+									<% end %>
+								</td>
+								<td><%= order.client.first_name %> <%= order.client.last_name %></td>
+								<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
+								<td><%= order.client.zip_code %></td>
+								<td class="encoursTd label label-primary" >En cours</td>
+
+								<td><a href="<%= admin_order_show_path(order.id) %>" class="btn btn-default">Afficher</a></td>
+							</tr>
+							<% end %>
+
+
+							<!-- =============Traitées=========== -->
+
+							<% @orders_progress.each do |order| %>
+							<% prestataires = order.prestataires %>
+							<% prixAcompte = order.totalPrice %>
+							<tr>
+								<td class="bs-checkbox "><input data-index="" name="btSelectItem" type="checkbox"></td>
+
+								<td><%= order.id %></td>
+								<td><%= order.prestation_date %></td>
+								<td>
+									<% unless  prestataires.empty? %>
+									<% prestataires.each do |prestataire| %>
+									<ul><li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
+									</ul>
+									<% end %>
+									<% else %>
+									aucun
+									<% end %>
+								</td>
+								<td><%= order.client.first_name %> <%= order.client.last_name %></td>
+								<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
+								<td><%= order.client.zip_code %></td>
+								<td class=" traitéeTd label label-success">Traitée</td>
+								<td><a href="<%= admin_order_show_path(order.id) %>" class="btn btn-default">Afficher</a></td>
+							</tr>
+							<% end %>
+
+
+							<!-- ===============================Non Traitées============== -->
+
+							<% @orders_not_progress.each do |order| %>
+							<% prestataires = order.prestataires %>
+							<% prixAcompte = order.totalPrice %>
+							<tr>
+								<td class="bs-checkbox "><input data-index="" name="btSelectItem" type="checkbox"></td>
+								<td><%= order.id %></td>
+								<td><%= order.prestation_date %></td>
+								<td>
+									<% unless  prestataires.empty? %>
+									<% prestataires.each do |prestataire| %>
+									<ul>
+										<li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
+									</ul>
+									<% end %>
+									<% else %>
+									aucun
+									<% end %>
+								</td>
+								<td><%= order.client.first_name %> <%= order.client.last_name %></td>
+								<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
+								<td><%= order.client.zip_code %></td>
+								<td class=" nontraitéeTd label label-warning">Non Traitée</td>
+								<td><a href="<%= admin_order_show_path(order.id) %>" class="btn btn-default">Afficher</a></td>
+							</tr>
+							<% end %>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<script>
+//exporte les données sélectionnées
+var $table = $('#table');
+
+$(function() {
+	$('#toolbar').find('select').change(function () {
+		$table.bootstrapTable('destroy').bootstrapTable({
+			exportDataType: $(this).val(),
+			exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf']
+		})
+	}).trigger('change')
+})
+
+
+var trBoldBlue = $("table");
+
+$(trBoldBlue).on("click", "tr", function (){
+	$(this).toggleClass("bold-blue");
+});
+
+$(document).ready(function(){
+	$("#myInput").on("keyup", function() {
+		var value = $(this).val().toLowerCase();
+		$("#myTable tr").filter(function() {
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		});
+	});
+});
+
+</script>
+
+
+<script>
+	var $grid = $('.grid').isotope({
+  // options
+  itemSelector: '.grid-item',
+  layoutMode: 'fitRows',
+});
+
+// change is-checked class on buttons
+var $buttonGroup = $('.filters');
+$buttonGroup.on( 'click', 'li', function( event ) {
+	$buttonGroup.find('.is-checked').removeClass('is-checked');
+	var $button = $( event.currentTarget );
+	$button.addClass('is-checked');
+	var filterValue = $button.attr('data-filter');
+	$grid.isotope({ filter: filterValue });
+});
+
+</script>
+
+
+<script>
+
+
+
+	// afficher commande traitées	
+	let comTraitéeAafficher = document.getElementById("classRemoveTraitée");
+	let comTraitéeClic = document.getElementById("traitée");
+
+	comTraitéeClic.addEventListener("click", function(){
+		comTraitéeAafficher.classList.remove("hidden");
+	});
+
+		// afficher commande non traitées	
+		let comNonTraitéeAafficher = document.getElementById("classRemoveNonTraitée");
+		let comNonTraitéeClic = document.getElementById("nontraitée");
+
+		comNonTraitéeClic.addEventListener("click", function(){
+			comNonTraitéeAafficher.classList.remove("hidden");
+		});
+
+
+	</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+
+
+
+
+<h1>Commandes</h1>
+<h2 style="color: #ec5598;">Commande en cours</h2>
+<div class="commande-en-cours">
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<td>N°</td>
+					<td>Date <small>(MM/JJ/AAAA)</small></td>
+					<td>Prestataire associé</td>
+					<td>Nom Client</td>
+					<td>Montant</td>
+					<td>CP</td>
+					<td>Action</td>
+				</tr>
+			</thead>
+			<tbody>
+				<% @orders_in_progress.each do |order| %>
+				<% prestataires = order.prestataires %>
+				<% prixAcompte = order.totalPrice %>
+				<tr>
+					<td><%= order.id %></td>
+					<td><%= order.prestation_date %></td>
+					<td>
+						<% unless  prestataires.empty? %>
+						<% prestataires.each do |prestataire| %>
+						<li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
+						<% end %>
+						<% else %>
+						aucun
+						<% end %>
+					</td>
+					<td><%= order.client.first_name %> <%= order.client.last_name %></td>
+					<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
+					<td><%= order.client.zip_code %></td>
+					<td><a href="<%= admin_order_show_path(order.id) %>">Afficher détails</a></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<hr>
+
+<h2 style="color: #ec5598;">Commande traitées</h2>
+<div class="commande-traitees">
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<td>N°</td>
+					<td>Date <small>(MM/JJ/AAAA)</small></td>
+					<td>Prestataire associé</td>
+					<td>Nom Client</td>
+					<td>Montant</td>
+					<td>CP</td>
+					<td>Action</td>
+				</tr>
+			</thead>
+			<tbody>
+				<% @orders_progress.each do |order| %>
+				<% prestataires = order.prestataires %>
+				<% prixAcompte = order.totalPrice %>
+				<tr>
+					<td><%= order.id %></td>
+					<td><%= order.prestation_date %></td>
+					<td>
+						<% unless  prestataires.empty? %>
+						<% prestataires.each do |prestataire| %>
+						<li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
+						<% end %>
+						<% else %>
+						aucun
+						<% end %>
+					</td>
+					<td><%= order.client.first_name %> <%= order.client.last_name %></td>
+					<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
+					<td><%= order.client.zip_code %></td>
+					<td><a href="<%= admin_order_show_path(order.id) %>">Afficher détails</a></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<hr>
+
+<h2 style="color: #ec5598;">Commande non traitées</h2>
+<div class="commande-non-traitees">
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<td>N°</td>
+					<td>Date <small>(MM/JJ/AAAA)</small></td>
+					<td>Prestataire associé</td>
+					<td>Nom Client</td>
+					<td>Montant</td>
+					<td>CP</td>
+					<td>Action</td>
+				</tr>
+			</thead>
+			<tbody>
+				<% @orders_not_progress.each do |order| %>
+				<% prestataires = order.prestataires %>
+				<% prixAcompte = order.totalPrice %>
+				<tr>
+					<td><%= order.id %></td>
+					<td><%= order.prestation_date %></td>
+					<td>
+						<% unless  prestataires.empty? %>
+						<% prestataires.each do |prestataire| %>
+						<li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
+						<% end %>
+						<% else %>
+						aucun
+						<% end %>
+					</td>
+					<td><%= order.client.first_name %> <%= order.client.last_name %></td>
+					<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
+					<td><%= order.client.zip_code %></td>
+					<td><a href="<%= admin_order_show_path(order.id) %>">Afficher détails</a></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div> -->

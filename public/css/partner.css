@@ -1,6 +1,51 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+	.hida{
+position: absolute;
+top: 20px;
+left: 300px;
+}
+.multiSel{
+position: relative;
+top: -35px;
+left: 50px;
+}
+.departements{
+column-count: 3;
+display: inline-block;
+z-index: 100;
+}
+.dropdown dd ul {
+	background-color: #4F6877;
+	border:0;
+	color:#fff;
+	display:none;
+	right:0px;
+	padding: 2px 15px 2px 5px;
+	position:absolute;
+	top:2px;
+	width:300px;
+	list-style:none;
+	height: auto;
+	overflow: auto;
+	z-index: 100;
+}
+	.textAccroche{
+		font-size: 17px;
+		letter-spacing: 2px;
+		color:black;
+		text-align: justify;
+		width: 80%;
+		margin-left: 6.8%;
+		position: relative;
+		top: -50px;
+	}
+
+	.p-autrediv, .p-QSN{
+
+		text-align: justify;
+	}
 
 	.secotionTitle h2 span {
 		display: block;
@@ -288,7 +333,87 @@
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+	.hida{
+position: absolute;
+top: 20px;
+left: 320px;
+}
+.multiSel{
+position: relative;
+top: -35px;
+left: 130px;
+}
+.departements{
+column-count: 3;
+display: inline-block;
+}
+.dropdown dd ul {
+	background-color: #4F6877;
+	border:0;
+	color:#fff;
+	display:none;
+	right:0px;
+	padding: 2px 15px 2px 5px;
+	position:absolute;
+	top:2px;
+	width:450px;
+	list-style:none;
+	height: auto;
+	overflow: auto;
+	z-index: 100;
+}
+	.form-control{
+width: 340px !important;
+	}
+	.textAccroche{
+		font-size: 17px;
+		letter-spacing: 2px;
+		color:black;
+		text-align: justify;
+		width: 80%;
+		margin-left: 6.8%;
+	}
 
+	.imagebox1 img {
+		margin: 10px 0 6px 0px;
+		max-height: 500px;
+	}
+	.p-QSN{
+		font-size: 17px !important;
+	}
+	.autrediv{
+		margin-top: -32px;
+	}
+	.div{
+		margin-top: -132px;
+	}
+	.p-autrediv{
+		width: 1100px;
+		max-width: 100%;
+		text-align: justify;
+	}
+	.infoQSN{
+		margin-left: 30px;
+	}
+	.aboutSectionQSN {
+		padding: 0 0 50px 0;
+		height: 1200px !important;
+	}
+
+
+	.aproposSpan{
+		margin-top: 100px !important;
+	}
+	.imageboxright img{
+		width: 90% !important;
+		margin-top: 20px !important;
+	}
+
+
+
+	.secotionQuisommes{
+		margin: -100px 0 -50px 0;
+	}
 
 	.secotionTitle h2 span {
 		display: block;
@@ -541,6 +666,7 @@
 	.choix{
 		font-style: normal;
 		margin: 30px 0 20px 12px;
+		width: 350px;
 	}
 	.actions{
 		position: relative;
@@ -567,6 +693,76 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+	.aboutSectionQSN {
+		padding: 0 0 50px 0;
+		height: auto !important;
+	}
+	/*dropdown zone action*/
+	.hida{
+position: absolute;
+top: 20px;
+left: 530px;
+}
+.multiSel{
+position: relative;
+top: -33px;
+left: 30px;
+}
+.departements{
+column-count: 3;
+display: inline-block;
+}
+.dropdown dd ul {
+	background-color: #4F6877;
+	border:0;
+	color:#fff;
+	display:none;
+	right:0px;
+	padding: 2px 15px 2px 5px;
+	position:absolute;
+	top:2px;
+	width:auto;
+	list-style:none;
+	height: auto;
+	overflow: auto;
+	z-index: 100;
+}
+
+.form-control {
+    width: 540px !important;
+}
+.form-controldate{
+    width: 500px !important;
+}
+	.textAccroche{
+		font-size: 17px;
+		letter-spacing: 2px;
+		color:black;
+		text-align: justify;
+		width: 80%;
+		margin-left: 6.8%;
+	}
+	.imagebox1 img {
+		margin: 10px 0 6px 0px;
+		max-height: 500px;
+	}
+	.p-QSN{
+		font-size: 17px !important;
+	}
+	.autrediv{
+		margin-top: -32px;
+	}
+	.div{
+		margin-top: -132px;
+	}
+	.p-autrediv{
+		width: 1100px;
+		max-width: 100%;
+		text-align: justify;
+	}
+	.infoQSN{
+		margin-left: 30px;
+	}
 
 	.secotionTitle h2 span {
 		display: block;
@@ -580,6 +776,10 @@
 		padding-bottom: 10px;
 		padding-top: 25px;
 		margin-left: 6.8%;
+		margin-top: 50px !important;
+	}
+	.specialContainerQSN{
+		margin-top: -100px;
 	}
 
 	.policeBaniere{
@@ -819,11 +1019,12 @@
 	.choix{
 		font-style: normal;
 		margin: 30px 0 20px 12px;
+		width: 600px;
 	}
 	.actions{
 		position: relative;
 		width: 400px;
-		top: 10px;
+		top: 40px;
 		margin-bottom: 50px;
 		left: 36%;
 	}
@@ -855,40 +1056,91 @@
 }
 
 
-.textAccroche{
-font-size: 17px;
-letter-spacing: 2px;
-color:black;
-text-align: justify;
-width: 80%;
-margin-left: 6.8%;
-}
+
 
 .aboutInfo p {
 
-    font-size: 14px;
-    text-align: justify;
-    padding-right: 10px;
+	font-size: 14px;
+	text-align: justify;
+	padding-right: 10px;
 
 }
 
 .imagebox img {
 
-    margin: -60px 0 60px 0px;
+	margin: 10px 0 60px 0px;
+	
 
 }
 
 .aboutInfo {
 
-    padding: 0 0 0 5px;
+	padding: 0 0 0 5px;
 
 }
 
 .aboutInfo h2 {
 
-    letter-spacing: 2px;
-    font-size: 18px;
-    color: #222222;
-    margin-bottom: 0px;
+	letter-spacing: 2px;
+	font-size: 18px;
+	color: #222222;
+	margin-bottom: 0px;
 
+}
+
+.dropdecouvrir{
+	color: black;
+}
+
+
+
+
+/*DROP DOWN ZONE ACTION*/
+
+
+.dropdown dd, .dropdown dt {
+	margin:0px;
+	padding:0px;
+}
+.dropdown ul {
+	margin: -1px 0 0 0;
+}
+.dropdown dd {
+	position:relative;
+}
+.dropdown a, 
+.dropdown a:visited {
+	color:#fff;
+	text-decoration:none;
+	outline:none;
+	font-size: 12px;
+}
+.dropdown dt a {
+	background-color:#4F6877;
+	display:block;
+	padding: 8px 20px 5px 10px;
+	min-height: 25px;
+	line-height: 24px;
+	overflow: hidden;
+	border:0;
+	width:272px;
+}
+.dropdown dt a span, .multiSel span {
+	cursor:pointer;
+	display:inline-block;
+	padding: 0 3px 2px 0;
+}
+
+.dropdown span.value {
+	display:none;
+}
+.dropdown dd ul li a {
+	padding:5px;
+	display:block;
+}
+.dropdown dd ul li a:hover {
+	background-color:#fff;
+}
+.departements label{
+font-size: 12px;
 }

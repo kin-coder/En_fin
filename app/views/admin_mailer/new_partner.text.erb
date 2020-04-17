@@ -1,0 +1,35 @@
+Nouvelle demande de partenariat !
+
+Le profil suivant souhaite rejoindre la communauté Cocooning Spa :
+
+<%= @candidate.sexe %> <%= @candidate.last_name %> <%= @candidate.first_name %>
+Date de naissance: <%= @candidate.date_of_birth %>
+Raison sociale: <%= @candidate.raison_sociale %>
+SIREN: <%= @candidate.siren %>
+Email: <%= @candidate.email %>
+Téléphone: <%= @candidate.telephone %>
+Adresse: <%= @candidate.adresse %>
+Code Postal: <%= @candidate.zip_code %>
+Ville: <%= @candidate.ville %>
+Pays: <%= @candidate.country %>
+Activité(s): <% @candidate.services.split('|').each do |service| %>
+				<%= service %> 
+			<% end %>
+Zone d'action: Pays(<% @candidate.countries.split('|').each do |country| %>
+				<%= country %>, 
+			<% end %>)
+
+			<%if @candidate.departments %>
+				Departement de france : (<% @candidate.departments.split('|').each do |department| %>
+															<%= department %> - 
+														<% end %>)
+			<%end%>
+
+L'Équipe Cocooning Spa
+
+Facebook
+Link
+Link
+Website
+Email
+06 67 07 65 87

@@ -1,0 +1,109 @@
+<h1>Candidature de <%= @candidate.sexe %>. <%= @candidate.first_name %> <%= @candidate.last_name %></h1>
+
+<%= form_for(@candidate, url: create_candidate_prestataire_path) do |form| %>
+  <% if @candidate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@candidate.errors.count, "error") %> prohibited this prestataire from being saved:</h2>
+      <ul>
+        <% @candidate.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <input type="text" name="id" style="display:none;" value="<%=@candidate.id%>">
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telephone %>
+    <%= form.text_field :telephone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :adresse %>
+    <%= form.text_field :adresse %>
+  </div>
+
+  <div class="field">
+    <%= form.label :raison_sociale %>
+    <%= form.text_field :raison_sociale %>
+  </div>
+
+  <div class="field">
+    <%= form.label :siren %>
+    <%= form.text_field :siren %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sexe %>
+    <%= form.text_field :sexe %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_of_birth %>
+    <%= form.text_field :date_of_birth %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zip_code %>
+    <%= form.text_field :zip_code %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :ville %>
+    <%= form.text_field :ville %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="field">
+    <h6>CHOIX DES SERVICE</h6>
+    <% hidden_field_tag "service[service_ids][]", nil %> 
+    <% @services.each do |service| %>
+      <%= check_box_tag "service[service_ids][]", service.id, @allServices.include?(service.id), id:dom_id(service) %>
+      <%= label_tag dom_id(service), service.name %><br>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <h6>CHOIX DES PAYS</h6>
+    <% hidden_field_tag "prestataire[country_ids][]", nil %> 
+    <% @countries.each do |country| %>
+      <%= check_box_tag "prestataire[country_ids][]", country.id, @allCountries.include?(country.id), id:dom_id(country) %>
+      <%= label_tag dom_id(country), country.name %><br>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <h6>CHOIX DES DEPARTEMENTS</h6>
+    <% hidden_field_tag "prestataire[department_ids][]", nil %> 
+    <% @departments.each do |department| %>
+      <%= check_box_tag "prestataire[department_ids][]", department.id, @allDepartment.include?(department.id), id:dom_id(department) %>
+      <%= label_tag dom_id(department), department.name %><br>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit("Accepter l'inscription du prestataire") %>
+    <%= link_to "Refuser l'inscription", cancel_candidat_path(@candidate.id), method: :delete, data: { confirm: 'Etes vous sur de supprimer ce candidat?' } %>
+  </div>
+
+<% end %>

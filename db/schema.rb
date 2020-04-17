@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_022945) do
+ActiveRecord::Schema.define(version: 2020_04_14_082452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -33,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.string "last_name"
     t.string "date_of_birth"
     t.string "raison_sociale"
-    t.string "siret"
+    t.string "siren"
     t.string "email"
     t.string "telephone"
     t.string "adresse"
@@ -42,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.string "country"
     t.string "services"
     t.string "countries"
-    t.string "developments"
+    t.string "departments"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -66,6 +68,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.string "sexe"
     t.string "country"
     t.string "zip_code"
+    t.string "is_type", default: "prospect"
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
@@ -80,6 +83,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.integer "note"
     t.text "content"
     t.string "user_name"
+    t.string "comment_for"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -162,12 +166,16 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
   end
 
   create_table "order_services", force: :cascade do |t|
+    t.string "service_time"
+    t.string "confirm_token"
+    t.boolean "is_done", default: false
     t.bigint "order_id"
     t.bigint "service_id"
-    t.string "service_time"
+    t.bigint "prestataire_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_services_on_order_id"
+    t.index ["prestataire_id"], name: "index_order_services_on_prestataire_id"
     t.index ["service_id"], name: "index_order_services_on_service_id"
   end
 
@@ -199,6 +207,8 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.string "delivery_adresse_complet"
     t.string "praticien"
     t.text "message"
+    t.boolean "is_done", default: false
+    t.boolean "is_canceled", default: false
     t.bigint "client_id"
     t.bigint "department_id"
     t.bigint "country_id"
@@ -218,6 +228,15 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.index ["massage_su_price_id"], name: "index_other_su_prices_on_massage_su_price_id"
   end
 
+  create_table "prestataire_countries", force: :cascade do |t|
+    t.bigint "country_id"
+    t.bigint "prestataire_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_prestataire_countries_on_country_id"
+    t.index ["prestataire_id"], name: "index_prestataire_countries_on_prestataire_id"
+  end
+
   create_table "prestataire_departments", force: :cascade do |t|
     t.bigint "department_id"
     t.bigint "prestataire_id"
@@ -225,6 +244,16 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["department_id"], name: "index_prestataire_departments_on_department_id"
     t.index ["prestataire_id"], name: "index_prestataire_departments_on_prestataire_id"
+  end
+
+  create_table "prestataire_orders", force: :cascade do |t|
+    t.boolean "is_accepted", default: true
+    t.bigint "order_service_id"
+    t.bigint "prestataire_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_service_id"], name: "index_prestataire_orders_on_order_service_id"
+    t.index ["prestataire_id"], name: "index_prestataire_orders_on_prestataire_id"
   end
 
   create_table "prestataire_services", force: :cascade do |t|
@@ -240,12 +269,18 @@ ActiveRecord::Schema.define(version: 2020_03_26_022945) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "sexe"
     t.string "first_name"
     t.string "last_name"
-    t.string "adresse"
-    t.string "tel"
+    t.string "date_of_birth"
     t.string "raison_sociale"
-    t.string "siret"
+    t.string "siren"
+    t.string "tel"
+    t.string "adresse"
+    t.string "zip_code"
+    t.string "ville"
+    t.string "pays"
+    t.string "confirm_token"
   end
 
   create_table "products", force: :cascade do |t|
