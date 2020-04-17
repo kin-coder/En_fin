@@ -1,21 +1,21 @@
 class AdminOrderController < Application2Controller
 	before_action :authenticate_admin!
-  #page d'accueill pour liste des commandes
+  # page d'accueill pour liste des commandes
   def index
   	@order_lists = Order.all
 
-    @orders_in_progress = []  #commande en cours
-    @orders_progress = []     #traitées
-    @orders_not_progress = [] #non traitées
-
-    @order_lists.each do |order| 
-      if order.in_progress? && order.is_canceled == false && order.prestataire_affected == false
+    @orders_in_progress = []    #en cours
+    @orders_progress = []       #traité
+    @orders_not_progress = []   #non traité
+    
+    @order_lists.each do |order|
+      if order.is_canceled == false && order.is_done == false && order.is_future? == true
         @orders_in_progress.push(order)
       end
-      if order.is_canceled == false && order.prestataire_affected == true
+      if order.is_canceled == false && order.is_done == true
         @orders_progress.push(order)
       end
-      if (order.is_canceled == true) || (order.prestataire_affected == false && order.in_progress? == false)
+      if (order.is_canceled == true) || (order.is_done == false && order.is_future? == false)
         @orders_not_progress.push(order)
       end
     end
