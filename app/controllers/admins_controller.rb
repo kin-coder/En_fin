@@ -90,15 +90,7 @@ class AdminsController < Application2Controller
     end
 
 # ============================# ============================# ============================
-    def admin_page
-        
-    end
-    
-    def prestataire
-    	
-    end
-# ============================# ============================# ============================
-  
+
   # GET /clients
   # GET /clients.json
   def allclient

@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   }
  
   get "/admin", to:"admins#index", as:"index_admin"
-  get "/admin/page", to:"admins#admin_page", as:"admin_page"
-  get "/admin/prestataire", to:"admins#prestataire", as:"admin_prestataire"
 
   # creation et gestion candidature
   get "/admin/candidates", to:"admins#allcandidate", as:"allcandidate"

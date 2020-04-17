@@ -24,8 +24,13 @@ class AdminOrderController < Application2Controller
   # affichage d'une commande
   def show
     @order = Order.find(params[:id])
+    # list des prestataire invité
     @massage_prestataires = []
     @spa_prestataires = []
+    # list des prestataire qui on répondu à l'invitation
+    @massage_result_prestataire = []
+    @spa_result_prestataire = []
+    # ~~~~
     @order.services.each do |service|
       if @order.department.nil?
         tmpPrestataires = Prestataire.joins(:services).where(services:{name:service.name}).joins(:countries).where(countries:{name:@order.country.name})
@@ -38,8 +43,10 @@ class AdminOrderController < Application2Controller
         else
           @massage_prestataires = tmpPrestataires.where(sexe:@order.praticien)
         end
+        @massage_result_prestataire = @order.order_services.find_by(service_id:service.id).prestataire_orders
       elsif service.name == "Location spa"
         @spa_prestataires = tmpPrestataires
+        @spa_result_prestataire = @order.order_services.find_by(service_id:service.id).prestataire_orders
       end
     end
   end

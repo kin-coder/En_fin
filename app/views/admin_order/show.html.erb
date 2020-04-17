@@ -334,5 +334,47 @@
 
 
 
+<h1>Prestataire qui on répondu l'invitation</h1>
+<table border="2">
+	<tr>
+		<th>Nom</th>
+		<th>Etat</th>
+	</tr>
+<% unless @massage_result_prestataire.empty? %>
+	<tr>
+		<td colspan="2"><center>Prestation "Massage"</center></td>
+	</tr>
+	<% @massage_result_prestataire.each do |m_r_p| %>
+	<tr>
+		<td><a href="<%=show_prestataires_path(m_r_p.prestataire.id)%>" title="Afficher"><%= m_r_p.prestataire.first_name %> <%= m_r_p.prestataire.last_name %></a></td>
+		<td><%= m_r_p.is_accepted ? "a accepte" : "a refuser" %></td>
+	</tr>
+	<% end %>
+<% else %>
+	<tr>
+		<td colspan="2"><center>Prestation "Massage"</center></td>
+	</tr>
+	<tr>
+		<td colspan="2"><center>Aucun autre prestataire n'a réagi pour l'instant</center></td>
+	</tr>
+<% end %>
 
-
+<% unless @spa_result_prestataire.empty? %>
+	<tr>
+		<td colspan="2"><center>Prestation "Location spa"</center></td>
+	</tr>
+	<% @spa_result_prestataire.each do |m_r_p| %>
+	<tr>
+		<td><a href="<%=show_prestataires_path(m_r_p.prestataire.id)%>" title="Afficher"><%= m_r_p.prestataire.first_name %> <%= m_r_p.prestataire.last_name %></a></td>
+		<td><%= m_r_p.is_accepted ? "a accepte" : "a refuser" %></td>
+	</tr>
+	<% end %>
+<% else %>
+	<tr>
+		<td colspan="2"><center>Prestation "Location spa"</center></td>
+	</tr>
+	<tr>
+		<td colspan="2"><center>Aucun autre prestataire n'a réagi pour l'instant</center></td>
+	</tr>
+<% end %>
+</table>
