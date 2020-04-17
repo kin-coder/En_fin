@@ -48,7 +48,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3"><%=current_admin.email%></div>
+            <div class="sidebar-brand-text mx-3"><%= current_admin.last_name %><%= current_admin.first_name %></div>
         </a>
 
         <!-- Divider -->
@@ -60,6 +60,25 @@
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
             </li>
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link" href="<%= admin_order_index_path %>"> 
+                <i class="far fa-file-alt"></i>   
+                <span>Commandes</span></a>
+            </li>
+
+        <!-- Divider -->
+            <hr class="sidebar-divider">
+
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="<%= allcandidate_path %>">
+                    <i class="far fa-address-book"></i>
+                    <span>Candidats</span></a>
+                </li>
 
 
             <!-- Divider -->
@@ -85,14 +104,6 @@
                     </li>
 
 
-                    <hr class="sidebar-divider">
-
-                    <!-- Nav Item - Dashboard -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="<%= admin_order_index_path %>"> 
-                            <i class="far fa-file-alt"></i>   
-                            <span>Commandes</span></a>
-                        </li>
 
                         <hr class="sidebar-divider">
 
@@ -347,7 +358,7 @@
                                             <li class="nav-item dropdown no-arrow">
                                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <% if admin_signed_in?%>
-                                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=current_admin.email%></span>
+                                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= current_admin.last_name %><%= current_admin.first_name %></span>
                                                     <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                                                     <%end%>
                                                 </a>

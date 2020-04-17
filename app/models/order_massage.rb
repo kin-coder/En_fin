@@ -7,4 +7,8 @@ class OrderMassage < ApplicationRecord
 	belongs_to :massage_su
 	#relation massage_su_price 1---N order_massage
 	belongs_to :massage_su_price
+
+	def prestataire
+		self.order.order_services.find_by(service_id:Service.find_by_name("Massage").id).prestataire
+	end
 end

@@ -34,18 +34,18 @@ class Order < ApplicationRecord
     end
     return isExeptional
 	end
-	
-  def in_progress?
+
+  def is_future?
   	current_date = self.prestation_date.split("/")
-		in_progress = false
+		is_future_date = false
   	self.order_services.each do |o_s|
   		current_time = o_s.service_time.split(":")
   		current_DateTime = Time.new(current_date[2],current_date[0],current_date[1],current_time[0],current_time[1])
   		if current_DateTime.future?
-  			in_progress = true
+  			is_future_date = true
   		end
   	end
-  	return in_progress
+  	return is_future_date
   end
 
   def prestataires
@@ -56,16 +56,6 @@ class Order < ApplicationRecord
   		end
   	end
   	return list_prestataires
-  end
-
-  def prestataire_affected
-  	affected = true
-  	self.order_services.each do |o_s|
-  		unless o_s.is_done
-  			affected = false
-  		end
-  	end
-  	return affected
   end
 
   def totalPrice
