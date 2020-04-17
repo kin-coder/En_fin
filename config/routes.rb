@@ -40,9 +40,9 @@ Rails.application.routes.draw do
 
   # Lien pour gerer la commande via l'admin
   get "admin/liste-des-commande", to:'admin_order#index', as:"admin_order_index"
-  get "admin/allcommande/:id", to:'admin_order#show', as:"admin_order_show"
+  get "admin/commande-numero/:id", to:'admin_order#show', as:"admin_order_show"
   #lien pour la modification de commande
-  get "admin/allcommande/:id/edit", to:'admin_order#edit', as:"admin_order_edit"
+  get "admin/commande-numero/:id/edit", to:'admin_order#edit', as:"admin_order_edit"
   
   patch "/admin/:name/:order_id/modifier-prestataire/:id", to:"admin_order#afect_prestataire", as:"afect_prestataire_to_order"
   delete "/admin/:name/:order_id/retirer-prestataire/:id", to:"admin_order#delete_prestataire", as:"delete_prestataire_to_order"
