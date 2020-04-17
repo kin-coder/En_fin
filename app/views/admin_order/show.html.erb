@@ -27,9 +27,6 @@
 										<thead>
 											<tr>
 												<th colspan="3" style="border-bottom: 1px solid white;"> <h4><center>Prestations</center></h4></th>
-
-
-
 											</tr>
 											<tr>
 												<th>Services</th>
@@ -38,48 +35,80 @@
 											</tr>
 										</thead>
 										<tbody>
-
 											<% unless @order.order_massages.empty? %>
-
-											<% @order.order_massages.each do |o_massage| %>
-											<tr>
-
-												<td> Massage <%= o_massage.massage_ca.name %> </td>
-
-												<td> 
-													<li>Type  de massage: <%= o_massage.massage_su.name %></li>
-													<li>Durée: <%= o_massage.massage_su_price.duration %> mn</li>
-													<li>Praticien demandé: <%= @order.praticien %></li>
-													<li>Praticien associé: Mme ou Mr</li>
-
-												</td>
-
-												<td> none</td>
-											</tr>
-											<% end %>
+												<% @order.order_massages.each do |o_massage| %>
+												<tr>
+													<td> Massage pour <%= o_massage.massage_ca.name %> </td>
+													<td> 
+														<li>Type  de massage: <%= o_massage.massage_su.name %></li>
+														<li>Durée: <%= o_massage.massage_su_price.duration %> mn</li>
+													</td>
+													<td>
+														<% if @order.isExceptional? %>
+															<li><%= o_massage.massage_su_price.exceptional_price %>€</li>
+															<li>~ acompte: <%= o_massage.massage_su_price.exceptional_acompte %>€</li>
+														<% else %>
+															<li><%= o_massage.massage_su_price.ordinary_price %>€</li>
+															<li>~ acompte: <%= o_massage.massage_su_price.ordinary_acompte %>€</li>
+														<% end %>
+													</td>
+												</tr>
+												<% end %>
+												<tr>
+													<th colspan="3" style="border-bottom: 1px solid white;">
+														<center>
+															Type de praticien: <i>"<%= @order.praticien == "all" ? "peut importe" : @order.praticien %>"</i><br>
+															<% presta =  @order.order_massages.first.prestataire %>
+															Prestataire associer: 
+															<% if presta.nil? %>
+																<i>"aucun prestataire affecter pour le moment"</i>
+															<% else %>
+																<i><a href="<%=show_prestataires_path(presta.id)%>" title="Afficher">"<%= presta.first_name %> <%= presta.last_name %>"</a></i>
+															<% end %>
+														</center>
+													</th>
+												</tr>
 											<% end %>
 											<% unless @order.order_spas.empty? %>
 											<% @order.order_spas.each do |o_spa| %>
 											<tr>
-
-												<td> Location Spa <%= o_spa.spa.duration %>H</td>
-
-												<td> 
+												<td> Location Spa pour <%= o_spa.spa.duration %>H</td>
+												<td>
 													<li>Type de logement: <%= o_spa.logement %></li>
 													<li>Type d'installation: <%= o_spa.installation %></li>
 													<li>Système d'eau: <%= o_spa.syteme_eau %></li>
 													<li>Ambiance:
 														<% if o_spa.product.nil? %>
-														aucun selectionné
+															aucun selectionné
 														<% else %>
-														<%= o_spa.product.name %>
+															<%= o_spa.product.name %> à <%= o_spa.product.price %>€<br>
 														<% end %>
 													</li>
 												</td>
-
-												<td> none</td>
+												<td>
+													<% if @order.isExceptional? %>
+														<li><%= o_spa.spa.exceptional_price %>€</li>
+														<li>~ acompte: <%= o_spa.spa.exceptional_acompte %>€</li>
+													<% else %>
+														<li><%= o_spa.spa.ordinary_price %>€</li>
+														<li>~ acompte: <%= o_spa.spa.ordinary_acompte %>€</li>
+													<% end %>
+												</td>
 											</tr>
 											<% end %>
+											<tr>
+												<th colspan="3" style="border-bottom: 1px solid white;">
+													<center>
+														<% presta =  @order.order_spas.first.prestataire %>
+														Prestataire associer: 
+														<% if presta.nil? %>
+															<i>"aucun prestataire affecter pour le moment"</i>
+														<% else %>
+															<i><a href="<%=show_prestataires_path(presta.id)%>" title="Afficher">"<%= presta.first_name %> <%= presta.last_name %>"</a></i>
+														<% end %>
+													</center>
+												</th>
+											</tr>
 											<% end %>
 										</tbody>
 									</table>
@@ -94,34 +123,24 @@
 									<table class="table">
 										<thead>
 											<tr>
-												<th colspan="3" style="border-bottom: 1px solid white;"> <h4><center>Produits</center></h4></th>
-
+												<th colspan="3" style="border-bottom: 1px solid white;"><h4><center>Produits</center></h4></th>
 											</tr>
 											<tr>
 												<th>Nom</th>
 												<th>Nombres</th>
 												<th>P.U</th>
 											</tr>
-
 										</thead>
 										<tbody>
 											<% @order.order_products.each do |o_product| %>
-
-
 											<tr>
-
 												<td style="color: #666666;"><%= o_product.product.name %></td>
 												<td><%= o_product.number %></td>
 												<td><%= o_product.product.price %> €</td>
 											</tr>
 											<% end %>
-
 										</tbody>
-
-
 									</table>
-
-
 								</div>
 								<% end %>
 
@@ -134,17 +153,10 @@
 										<thead>
 											<tr>
 												<th colspan="3" style="border-bottom: 1px solid white;"> <h4><center>Livraison</center></h4></th>
-
-
-
 											</tr>
-
 										</thead>
 										<tbody>
-
-
 											<tr>
-
 												<td style="color: #666666;">
 													<strong><h3>Coordonnées</h3></strong> 
 													<strong>Date de livraison:</strong> <%= @order.prestation_date %><br> <br>
@@ -152,7 +164,6 @@
 													<% if !@order.department.nil? %> <br>
 													<br><strong>Departement:</strong> <%= @order.department.name %>
 													<% end %>
-
 												</td>
 
 												<td> 
