@@ -670,8 +670,7 @@ Adresse de livraison : <br>
 &nbsp;&nbsp;&nbsp;-Ville: <%= @order.delivery_ville %> <br>
 &nbsp;&nbsp;&nbsp;-Adresse: <%= @order.delivery_adresse %> <br>
 
-Type de praticien : <%= @order.praticien %> </strong><br><br>
-
+Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe" : @order.praticien %>"</span><br><br>
 <strong>Message perso du client : "<%= @order.message %>"</strong></span></span></div>
 </div>
 </div>
