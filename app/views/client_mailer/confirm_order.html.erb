@@ -874,7 +874,7 @@
 <br>
 <strong>Heure (modifiable avec le client):</strong> <%= @heurs[1] %><br>
 <br>
-<strong>Type de praticien :</strong><span><%= @order.praticien %></span> <br>
+<strong>Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe" : @order.praticien %>"</span> <br>
 <% price = 0.0 %>
 <% acompte = 0.0 %>
 <% @order.order_massages.each do |o_massage| %>
