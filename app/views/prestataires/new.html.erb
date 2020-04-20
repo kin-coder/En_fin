@@ -30,6 +30,24 @@
 
 <link href="/css/partner.css" rel="stylesheet">
 <link href="/css/page-devise.css" rel="stylesheet">
+<style>
+
+#dropZone {
+
+    width: 100px !important;
+    height: 50px;
+    padding-left: 500px;
+    padding-right: 50px;
+    padding-top: 20px;
+
+}
+
+.hida {
+    position: absolute;
+    top: 0px;
+    left: 10px;
+}
+</style>
 
 <!-- <h1>Ajouter un nouveau prestataire</h1>
 
@@ -245,7 +263,7 @@
     <input autofocus="autofocus" class="form-control" id="fullname" disabled="disabled" placeholder="Zone d'actions" type="text">
     <dt>
       <i >
-        <span class="hida fa fa-chevron-down"></span>    
+        <span class="hida fa fa-chevron-down" id='dropZone'></span>    
         <p class="multiSel"></p>  
       </i>
     </dt>
@@ -314,7 +332,7 @@
     <script data-turbolinks-track = "reload" src="/plugins/smoothscroll/SmoothScroll.min.js"></script>
     <script data-turbolinks-track = "reload" src="/plugins/datepicker/bootstrap-datepicker.min.js"></script>
     <script data-turbolinks-track = "reload" src="/plugins/syotimer/jquery.syotimer.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/js/custom.js"></script>
+    
 
 <script>
 
@@ -344,6 +362,47 @@ function showDepartementIfFrance() {
     })
   }
 }
+
+
+</script>
+
+<script>
+
+$(".dropdown dt i").on('click', function () {
+          $(".dropdown dd ul").slideToggle('fast');
+      });
+
+      $(".dropdown dd ul li a").on('click', function () {
+          $(".dropdown dd ul").hide();
+      });
+
+      function getSelectedValue(id) {
+           return $("#" + id).find("dt a span.value").html();
+      }
+
+      $(document).bind('click', function (e) {
+          var $clicked = $(e.target);
+          if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+      });
+
+
+      $('.mutliSelect input[type="checkbox"]').on('click', function () {
+        
+          var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+              title = $(this).val() + ",";
+        
+          if ($(this).is(':checked')) {
+              var html = '<span title="' + title + '" class="hidden">' + title + '</span>';
+              $('.multiSel').append(html);
+              /*$(".hida").hide();*/ 
+          } 
+          else {
+              $('span[title="' + title + '"]').remove();
+              var ret = $(".hida");
+              $('.dropdown dt i').append(ret);
+              
+          }
+      });
 
 
 </script>
