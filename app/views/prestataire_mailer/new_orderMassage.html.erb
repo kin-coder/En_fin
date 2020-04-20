@@ -662,7 +662,7 @@
 &nbsp;&nbsp;&nbsp;-Ville: <%= @order.delivery_ville %> <br>
 &nbsp;&nbsp;&nbsp;-Adresse: <%= @order.delivery_adresse %> <br>
 <br>
-<strong>Type de praticien :</strong><span><%= @order.praticien %></span></div>
+<strong>Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe" : @order.praticien %>"</span></div>
 </div>
 </div>
 

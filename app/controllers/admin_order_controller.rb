@@ -28,7 +28,7 @@ class AdminOrderController < Application2Controller
     # list des prestataire qui on répondu à l'invitation
     @massage_result_prestataire = []
     @spa_result_prestataire = []
-    # ~~~~
+    # ~~~~ 
     @order.services.each do |service|
       if @order.department.nil?
         tmpPrestataires = Prestataire.joins(:services).where(services:{name:service.name}).joins(:countries).where(countries:{name:@order.country.name})
