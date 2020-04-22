@@ -80,6 +80,18 @@
       position: relative;
       left: 655px;
     }
+    .btnPresta{
+position: relative;
+top: 45px;
+left: 5px;
+z-index: 100;
+    }
+#AjoutNouveau{
+position: absolute;
+left: -24px;
+font-size: 35px;
+top: -2px;
+  }
 
   </style>
 </head>
@@ -90,9 +102,12 @@
   <p id="notice"><%= notice %></p>
   <section class="">
     <div class="secotionTitle">
-      <h2 id="service" class="poli1 police_massage"><span>CLIENTS</span></h2>
+      <h2 id="service" class="poli1 police_massage"><span>CLIENTS/PROSPECTS</span></h2>
     </div>
+    <div>
+<a href="<%= new_clients_path %>" class="btn btn-default btnPresta">  Prospect </a>
 
+    </div>
     <div id="toolbar">
       <select class="form-control toolBarSelect"> 
 
@@ -105,6 +120,7 @@
       </div>
     </div>
 <!--     <%= link_to 'Nouveau prestataire', new_prestataires_path %>
+  <%= link_to '<i class="fas fa-plus" title="Ajouter nouveau"></i>'.html_safe,  new_clients_path, title:"Ajouter nouveau", class:"btn btn-default"%>
 -->
 
 
@@ -132,7 +148,7 @@
                     <th data-field="email" class="">Email</th>
                     <th>Tel</th>
                     <th data-field="zip_code" data-filter-control="input">Code Postal</th>
-                    <th class="actionTableAdmin" data-field="note"> <center style="line-height: 35px;">Actions <br>     <%= link_to '<i class="fas fa-plus" title="Ajouter nouveau"></i>'.html_safe,  new_clients_path, title:"Ajouter nouveau", class:"btn btn-default"%>
+                    <th class="actionTableAdmin" data-field="note"> <center style="line-height: 35px;">Actions
                     </center>  
                   </th>
                 </tr>
