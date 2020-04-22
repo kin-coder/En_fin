@@ -1,34 +1,69 @@
 <link href="/admin/css/table-responsive.css" rel="stylesheet">
 
+<style>
 
-<h1>Liste des candidats</h1>
-<table border="2">
+	.button {
+		width: 50px;
+	}
+	.button1 {
+		padding: 5px 2px;
+	}
+
+	table{
+		box-shadow:0 1px 10px rgba(0, 0, 0, 0.2);
+		overflow: scroll;
+	}
+
+	table.entete th {
+		background: #D5E0CC;
+		padding: 5px;
+	}
+	table.entete td{
+		padding: 5px;
+	}
+	ul li{
+margin-left: 5px;
+	}
+	.aucuncandidat{
+border-top: 1px solid black;
+height: 100px;
+font-size: x-large;
+	}
+</style>
+
+    <div class="secotionTitle">
+      <h2 id="service" class="poli1 police_massage"><span>Liste des candidats</span></h2>
+    </div>
+<table border="1" class='entete'>
 	<tr>
-		<td>Action</td>
-		<td>Sexe</td>
-		<td>Prenom</td>
-		<td>Nom</td>
-		<td>Née</td>
-		<td>Raison sociale</td>
-		<td>Siren</td>
-		<td>Email</td>
-		<td>Telephone</td>
-		<td>Adresse</td>
-		<td>Code postale</td>
-		<td>Ville</td>
-		<td>Pays</td>
-		<td>Services</td>
-		<td>Zone de prestations</td>
+		<th>Action</th>
+		<th>Sexe</th>
+		<th>Prenom</th>
+		<th>Nom</th>
+		<th>Date de naissance</th>
+		<th>Raison sociale</th>
+		<th >Siren</th>
+		<th>Email</th>
+		<th>Télephone</th>
+		<th>Adresse</th>
+		<th>Code postale</th>
+		<th>Ville</th>
+		<th>Pays</th>
+		<th>Services</th>
+		<th>Zone de prestations</th>
 	</tr>
+	<% unless @candidates.empty? %>
 	<% @candidates.each do |candidate| %>
 	<tr>
-		<td><a href="<%= show_edit_candidate_path(candidate.id) %>">Afficher</a></td>
+		<td>
+<%= link_to '<i class="fas fa-eye button1 "></i>'.html_safe, show_edit_candidate_path(candidate.id), title:"Apropos du candidat",class:"button1 button" %> 
+		</td>
 		<td> <%= candidate.sexe %> </td>
 		<td> <%= candidate.first_name %> </td>
 		<td> <%= candidate.last_name %> </td>
 		<td> <%= candidate.date_of_birth %> </td>
 		<td> <%= candidate.raison_sociale %> </td>
-		<td> <%= candidate.siren %> </td>
+		<td style="max-width: 70px;word-wrap: break-word;"> <%= candidate.siren %> </td>
 		<td> <%= candidate.email %> </td>
 		<td> <%= candidate.telephone %> </td>
 		<td> <%= candidate.adresse %> </td>
@@ -36,45 +71,18 @@
 		<td> <%= candidate.ville %> </td>
 		<td> <%= candidate.country %> </td>
 		<td> <%= candidate.services.gsub("|",", ") %> </td>
-		<td> <%= candidate.countries.gsub("|",", ") %><% if candidate.departments %> (dép: <%= candidate.departments.gsub("|",", ") %>)<% end %></td>
+		<td> <%= candidate.countries.gsub("|",", ") %><% if candidate.departments %> : <br>	<ul><li> <%= candidate.departments.gsub("|",", ") %></li></ul><% end %></td>
 	</tr>
-	<% end %>
+	<% end %> 
+	<% else%> 
+	<tr>
+		<td colspan="15" class="alert alert-danger aucuncandidat"> <center>	Aucun candidat postule pour l'instant </center></td>
+
+	</tr>
+	<% end %> 
 </table>
 
-<!-- 
-<div class="page">
+
 	
-	<table class="layout display responsive-table">
-		<thead>
-			<tr>
-				<th>Nom du prestataire</th>
-				<th>Sexe</th>
-				<th>Adresse email</th>
-				<th><center>Action</center></th>
-			</tr>
-		</thead>
-		<tbody>
-			
-			<tr>
-
-
-				<td class="organisationnumber"></td>
-
-				<td class="organisationnumber"></td>
-				<td class="organisationname"></td>
-
-
-
-				<td class="action">
-					<center>
-						
-
-					</center>		
-				</td>
-			</tr>
-			
-		</tbody>
-	</table>
 	
 
-</div> -->
