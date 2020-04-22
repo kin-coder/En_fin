@@ -8656,3 +8656,40 @@ left: -10px;
   .sidebar {
     width: 18rem !important;
   }
+
+  #leftFa{
+width: 30px;
+font-size: 20px;
+  }
+
+  .shadow {
+    box-shadow: 0 .15rem 1.75rem 0 
+    rgb(236, 85, 152) !important;
+}
+
+.badge-counter {
+color: #fff !important;
+background-color:#e74a3b !important;
+}
+
+.navbarTopLeft{
+font-family: "Quicksand";
+font-weight: bold;
+}
+
+.sidebar #sidebarToggle {
+
+    width: 2.5rem;
+    height: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    position: relative;
+    left: 130px;
+    top: -355px;
+
+}
+
+.container-fluid {
+    max-width: max-content;
+}

@@ -17,6 +17,9 @@
     <title>Admin-CocooninG</title>
 
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <!-- Custom fonts for this template-->
     <link href="/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -57,7 +60,7 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
             <a class="nav-link" href="<%= index_admin_path %>" data-method="GET">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-fw fa-tachometer-alt" id='leftFa'></i>
                 <span>Dashboard</span></a>
             </li>
         <hr class="sidebar-divider">
@@ -65,7 +68,7 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
             <a class="nav-link" href="<%= admin_order_index_path %>" data-method="GET"> 
-                <i class="far fa-file-alt"></i>   
+                <i class="far fa-file-alt" id='leftFa'></i>   
                 <span>Commandes</span></a>
             </li>
 
@@ -76,19 +79,19 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="<%= allcandidate_path %>" data-method="GET">
-                    <i class="far fa-address-book"></i>
+                    <i class="fas fa-user-plus" id='leftFa'></i>
                     <span>Candidats</span></a>
                 </li>
 
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            <hr class="sidebar-divider" >
 
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="<%= index_prestataires_path %>" data-method="GET">
-                    <i class="far fa-address-book"></i>
+                    <i class="far fa-address-book" id='leftFa'></i>
                     <span>Prestataires</span></a>
                 </li>
 
@@ -99,7 +102,7 @@
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item">
                     <a class="nav-link" href="<%= index_clients_path %>" data-method="GET">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-users" id='leftFa'></i>
                         <span>Client / Prospect</span></a>
                     </li>
 
@@ -107,18 +110,30 @@
 
                         
                         <!-- Nav Item - Charts -->
+                            <li class="nav-item">
+                            <a class="nav-link" href="#">
+
+                                <i class="fas fa-tools" id='leftFa'></i>
+                                <span>Utilities</span></a>
+                            </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <i class="fas fa-fw fa-chart-area"></i>
-                                <span>Charts</span></a>
+                                <i class="fas fa-fw fa-chart-area" id='leftFa'></i>
+                                <span>Pages</span></a>
                             </li>
 
                             <!-- Nav Item - Tables -->
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                    <i class="fas fa-fw fa-table"></i>
+                                    <i class="fas fa-fw fa-table" id='leftFa'></i>
                                     <span>Tables</span></a>
                                 </li>
+
+                                    <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-cog" id='leftFa'></i>
+                                <span>Paramètres</span></a>
+                            </li>
 
                                 <!-- Divider -->
                                 <hr class="sidebar-divider d-none d-md-block">
@@ -147,7 +162,7 @@
                                         </button>
 
                                         <!-- Topbar Search -->
-                                        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+<!--                                         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                                             <div class="input-group">
                                                 <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                                 <div class="input-group-append">
@@ -156,7 +171,12 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </form> -->
+
+                                        <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                            <div class="navbarTopLeft">COCOONING SPA ADMIN</div>
+
+                                        </div>
 
                                         <!-- Topbar Navbar -->
                                         <ul class="navbar-nav ml-auto">
@@ -184,7 +204,7 @@
                                             <!-- Nav Item - Alerts -->
                                             <li class="nav-item dropdown no-arrow mx-1">
                                                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-bell fa-fw"></i>
+                                                    <i class="fas fa-bell fa-fw" id="leftFa"></i>
                                                     <!-- Counter - Alerts -->
                                                     <span class="badge badge-danger badge-counter">3+</span>
                                                 </a>
@@ -233,7 +253,7 @@
                                             <!-- Nav Item - Messages -->
                                             <li class="nav-item dropdown no-arrow mx-1">
                                                 <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-envelope fa-fw"></i>
+                                                    <i class="fas fa-envelope fa-fw" id="leftFa"></i>
                                                     <!-- Counter - Messages -->
                                                     <span class="badge badge-danger badge-counter">7</span>
                                                 </a>
@@ -344,7 +364,7 @@
                                 <footer class="sticky-footer bg-white">
                                     <div class="container my-auto">
                                         <div class="copyright text-center my-auto">
-                                            <span>Copyright &copy; Your Website 2019</span>
+                                            <span>Copyright &copy; Cocooning Spa</span>
                                         </div>
                                     </div>
                                 </footer>
