@@ -37,7 +37,20 @@
       left: 655px;
     }
 
+    .btnPresta{
+position: relative;
+top: 45px;
+left: 35px;
+z-index: 100;
+    }
+#AjoutNouveau{
+position: absolute;
+left: -24px;
+font-size: 35px;
+top: -2px;
+  }
   </style>
+
 </head>
 
 <body>
@@ -47,6 +60,11 @@
   <section class="">
     <div class="secotionTitle">
       <h2 id="service" class="poli1 police_massage"><span>PRESTATAIRES</span></h2>
+    </div>
+
+    <div>
+<a href="<%= new_prestataires_path %>" class="btn btn-default btnPresta"> <i class="fas fa-plus-circle" id="AjoutNouveau"></i> Ajout prestataire </a>
+
     </div>
 
     <div id="toolbar">

@@ -29,8 +29,8 @@
     <link href="/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-  <link href="/css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+    <link href="/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
 
     <!-- pack tag --> 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -43,8 +43,8 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-       <!-- Sidebar -->
-       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+     <!-- Sidebar -->
+     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
@@ -63,36 +63,13 @@
                 <i class="fas fa-fw fa-tachometer-alt" id='leftFa'></i>
                 <span>Dashboard</span></a>
             </li>
-        <hr class="sidebar-divider">
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
-            <a class="nav-link" href="<%= admin_order_index_path %>" data-method="GET"> 
-                <i class="far fa-file-alt" id='leftFa'></i>   
-                <span>Commandes</span></a>
-            </li>
-
-        <!-- Divider -->
             <hr class="sidebar-divider">
 
-
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="<%= allcandidate_path %>" data-method="GET">
-                    <i class="fas fa-user-plus" id='leftFa'></i>
-                    <span>Candidats</span></a>
-                </li>
-
-
-            <!-- Divider -->
-            <hr class="sidebar-divider" >
-
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="<%= index_prestataires_path %>" data-method="GET">
-                    <i class="far fa-address-book" id='leftFa'></i>
-                    <span>Prestataires</span></a>
+                <a class="nav-link" href="<%= admin_order_index_path %>" data-method="GET"> 
+                    <i class="far fa-file-alt" id='leftFa'></i>   
+                    <span>Commandes</span></a>
                 </li>
 
                 <!-- Divider -->
@@ -101,67 +78,90 @@
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link" href="<%= index_clients_path %>" data-method="GET">
-                        <i class="fas fa-users" id='leftFa'></i>
-                        <span>Client / Prospect</span></a>
+                    <a class="nav-link" href="<%= allcandidate_path %>" data-method="GET">
+                        <i class="fas fa-user-plus" id='leftFa'></i>
+                        <span>Candidats</span></a>
                     </li>
 
 
+                    <!-- Divider -->
+                    <hr class="sidebar-divider" >
 
-                        
-                        <!-- Nav Item - Charts -->
-                            <li class="nav-item">
-                            <a class="nav-link" href="#">
 
-                                <i class="fas fa-tools" id='leftFa'></i>
-                                <span>Utilities</span></a>
-                            </li>
+                    <!-- Nav Item - Dashboard -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= index_prestataires_path %>" data-method="GET">
+                            <i class="far fa-address-book" id='leftFa'></i>
+                            <span>Prestataires</span></a>
+                        </li>
+
+                        <!-- Divider -->
+                        <hr class="sidebar-divider">
+
+
+                        <!-- Nav Item - Dashboard -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-fw fa-chart-area" id='leftFa'></i>
-                                <span>Pages</span></a>
+                            <a class="nav-link" href="<%= index_clients_path %>" data-method="GET">
+                                <i class="fas fa-users" id='leftFa'></i>
+                                <span>Client / Prospect</span></a>
                             </li>
 
-                            <!-- Nav Item - Tables -->
+
+
+                            
+                            <!-- Nav Item - Charts -->
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                    <i class="fas fa-fw fa-table" id='leftFa'></i>
-                                    <span>Tables</span></a>
+
+                                    <i class="fas fa-tools" id='leftFa'></i>
+                                    <span>Utilities</span></a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <i class="fas fa-fw fa-chart-area" id='leftFa'></i>
+                                        <span>Pages</span></a>
+                                    </li>
 
+                                    <!-- Nav Item - Tables -->
                                     <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-cog" id='leftFa'></i>
-                                <span>Paramètres</span></a>
-                            </li>
+                                        <a class="nav-link" href="#">
+                                            <i class="fas fa-fw fa-table" id='leftFa'></i>
+                                            <span>Tables</span></a>
+                                        </li>
 
-                                <!-- Divider -->
-                                <hr class="sidebar-divider d-none d-md-block">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">
+                                                <i class="fas fa-cog" id='leftFa'></i>
+                                                <span>Paramètres</span></a>
+                                            </li>
 
-                                <!-- Sidebar Toggler (Sidebar) -->
-                                <div class="text-center d-none d-md-inline">
-                                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                                </div>
+                                            <!-- Divider -->
+                                            <hr class="sidebar-divider d-none d-md-block">
 
-                            </ul>
-                            <!-- End of Sidebar -->
+                                            <!-- Sidebar Toggler (Sidebar) -->
+                                            <div class="text-center d-none d-md-inline">
+                                                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                                            </div>
+
+                                        </ul>
+                                        <!-- End of Sidebar -->
 
 
-                            <!-- Content Wrapper -->
-                            <div id="content-wrapper" class="d-flex flex-column">
+                                        <!-- Content Wrapper -->
+                                        <div id="content-wrapper" class="d-flex flex-column">
 
-                                <!-- Main Content -->
-                                <div id="content">
+                                            <!-- Main Content -->
+                                            <div id="content">
 
-                                    <!-- Topbar -->
-                                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                                                <!-- Topbar -->
+                                                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                                        <!-- Sidebar Toggle (Topbar) -->
-                                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                                            <i class="fa fa-bars"></i>
-                                        </button>
+                                                    <!-- Sidebar Toggle (Topbar) -->
+                                                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                                                        <i class="fa fa-bars"></i>
+                                                    </button>
 
-                                        <!-- Topbar Search -->
+                                                    <!-- Topbar Search -->
 <!--                                         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                                             <div class="input-group">
                                                 <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -402,10 +402,10 @@
 
                         <!-- Bootstrap core JavaScript-->
                         <script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- JAVASCRIPTS -->
-<script data-turbolinks-track = "reload" src="/plugins/jquery/jquery.min.js"></script>
-<script data-turbolinks-track = "reload" src="/plugins/jquery-ui/jquery-ui.min.js"></script>
-<script data-turbolinks-track = "reload" src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+                        <!-- JAVASCRIPTS -->
+                        <script data-turbolinks-track = "reload" src="/plugins/jquery/jquery.min.js"></script>
+                        <script data-turbolinks-track = "reload" src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+                        <script data-turbolinks-track = "reload" src="/plugins/bootstrap/js/bootstrap.min.js"></script>
                         <!-- Core plugin JavaScript-->
                         <script src="/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 

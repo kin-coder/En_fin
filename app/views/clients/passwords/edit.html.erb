@@ -1,28 +1,67 @@
-<h2>Change your password</h2>
 
+<link href="/css/page-devise.css" rel="stylesheet">
+<style>
+.editMdp{
+position: relative;
+text-align: left;
+display: block;
+left:200px;
+}
+
+.formMdpEdit{
+position: relative;
+top:-30px;
+left: 100px;
+max-width: 120px;
+
+}
+
+@media only screen and (max-width: 600px) {
+
+.editMdp{
+position: relative;
+text-align: left;
+display: block;
+left:40px;
+}
+
+.formMdpEdit{
+position: relative;
+top:-30px;
+left: 90px;
+max-width: 120px;
+
+}
+}
+
+</style>
+<center>
+  <div class="mdp-oublie">
+<h2>Changer votre mot de passe</h2>
+<br><br><br>
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
   <div class="field">
-    <%= f.label :password, "Nouveau mot de passe" %><br />
+    <%= f.label :password, "Nouveau mot de passe", class:"editMdp" %>
     <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+      <% @minimum_password_length %></em>
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "nouveau-password",:required => true %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "nouveau-password",placeholder:"6 caractères minimum", :required => true, class:"formMdpEdit" %>
   </div>
+ 
 
   <div class="field">
-    <%= f.label :password_confirmation, "Confirmer le nouveau mot de passe" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password",:required => true %>
+    <%= f.label :password_confirmation, "Confirmer", class:"editMdp" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",:required => true, class:"formMdpEdit" %>
   </div>
-
+<br>
   <div class="actions">
-    <%= f.submit "Changer mon mot de passe" %>
+    <%= f.submit "Valider", class:"btn btn-primary btn-block btn-mdp"%>
   </div>
 <% end %>
 
 <%= render "clients/shared/links" %>
-
-
-
+ </div>
+</center>
