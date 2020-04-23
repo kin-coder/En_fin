@@ -447,7 +447,7 @@ class OrdersController < ApplicationController
           @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:departments).where(departments:{name:@order.department.name})
         end
         @prestataires.each do |prestataire|
-          if (prestataire.sexe == @order.praticien) || (@order.praticien == "all")
+          if prestataire.sexe == @order.praticien || @order.praticien == "all"
             PrestataireMailer.new_orderMassage(mailToOrderServiceMassage.id,prestataire.id).deliver_now
           end
         end
