@@ -8691,11 +8691,15 @@ font-weight: bold;
     margin-bottom: 1rem;
     cursor: pointer;
     position: relative;
-    left: 130px;
-    top: -355px;
+    left: 150px;
+    top: -370px;
 
 }
 
 .container-fluid {
     max-width: max-content;
+}
+
+.sidebar .nav-item .nav-link {
+    width: 18rem !important;
 }
