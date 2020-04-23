@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  protect_from_forgery except: :payment
   before_action :validate_session, only: [:delivery,:saveDelivery,:summary,:payment]
   before_action :validate_value_in_session, only: [:summary,:payment]
   before_action :validate_pay_error_success, only: [:payedsuccess,:payederrors]
@@ -365,109 +366,106 @@ class OrdersController < ApplicationController
 
   # 3 Affiche la recapitulatif de commande
   def summary
-    
+    @amount = (@totalAcompte*100).to_i
+    # Génère un numéro de transaction aléatoire
+    transactionReference = "simu" + rand(100000..999999).to_s
+    #Construit l'URL de retour pour récupérer le résultat du paiement sur le site e-commerce du marchand
+    normalReturnUrl = "http://localhost:3000/reservation-prestation/paye-commande"
+    # Contruit la requête des données à envoyer à Mercanet
+    @data = "amount=#{@amount}|currencyCode=978|merchantId=002001000000001|normalReturnUrl=" + normalReturnUrl + "|transactionReference=" + transactionReference + "|keyVersion=1"
+    # Encode en UTF-8 des données à envoyer à Mercanet
+    dataToSend = (@data).encode('utf-8')
+    # Clé secrète correspondant au merchandId de simulation
+    secretKey = "002001000000001_KEY1"
+    # Calcul du certificat par un cryptage SHA256 des données envoyées suffixé par la clé secrète
+    @seal = Digest::SHA256.hexdigest dataToSend + secretKey    # MILA JERANA !!
   end
 
   # 4 Le Payement
   def payment
-    @amount = (@totalAcompte*100).to_i
-
-    customer = Stripe::Customer.create({
-      email: params[:stripeEmail],
-      source: params[:stripeToken],
-    })
-
-    charge = Stripe::Charge.create({
-      customer: customer.id,
-      amount: @amount,
-      description: 'Payement de votre prestation',
-      currency: 'eur',
-    })
-
-    # =============================== Enregistrement des commandes si payer
-    @order = Order.new
-    @order.prestation_date = session[:otherInfo]["date"]
-    @order.billing_pays = session[:otherInfo]["countryF"]
-    @order.billing_ville = session[:otherInfo]["villeF"]
-    @order.billing_code_postal = session[:otherInfo]["codePostaF"]
-    @order.billing_adresse = session[:otherInfo]["adresseF"]
-    @order.billing_adresse_complet = session[:otherInfo]["complAdresseF"]
-    @order.delivery_pays = session[:otherInfo]["countryL"]
-    @order.delivery_ville = session[:otherInfo]["villeL"]
-    @order.delivery_code_postal = session[:otherInfo]["codePostaL"]
-    @order.delivery_adresse = session[:otherInfo]["adresseL"]
-    @order.delivery_adresse_complet = session[:otherInfo]["complAdresseL"]
-    @order.message = session[:otherInfo]["message"]
-    @order.client = current_client
-    @order.department = Department.find_by(name:session[:otherInfo]["department"])
-    @order.country = Country.find_by(name:session[:otherInfo]["pays"])
-    @order.save
-
-    myPrestation = session[:myPrestation]
-    unless myPrestation["spa"].empty?
-      mailToOrderServiceSpa = OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: session[:otherInfo]["heureSpa"])
-      myPrestation["spa"].each do |spa|
-        current_spa = Spa.find_by(duration:spa["time"])
-        current_product = ""
-        if spa["option"]
-          current_product = Product.find_by(name:spa["option"][0])
-          OrderSpa.create(logement: spa["type"][0], installation: spa["type"][1], syteme_eau: spa["type"][2], order: @order, spa: current_spa, product: current_product)
-        else
-          OrderSpa.create(logement: spa["type"][0], installation: spa["type"][1], syteme_eau: spa["type"][2], order: @order, spa: current_spa)
-        end
-      end
-      #====== Send email to prestataire location spa =====
-      @prestataires = []
-      if @order.department.nil?
-        @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:countries).where(countries:{name:@order.country.name})
-      else
-        @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:departments).where(departments:{name:@order.department.name})
-      end
-      @prestataires.each do |prestataire|
-        PrestataireMailer.new_orderSpa(mailToOrderServiceSpa.id,prestataire.id).deliver_now
-      end
-    end
-    
-    unless myPrestation["massage"].empty?
-      mailToOrderServiceMassage = OrderService.create(order: @order, service: Service.find_by(name:"Massage"), service_time: session[:otherInfo]["heureMassage"])
-      myPrestation["massage"].each do |massage|
-        current_ca = MassageCa.find_by(name:massage["ca"])      
-        current_su = current_ca.massage_sus.find_by(name:massage["su"])
-        current_prix = MassageSuPrice.find(massage["price"][0].to_i)
-        OrderMassage.create(order: @order, massage_ca:current_ca, massage_su: current_su, massage_su_price: current_prix)
-      end
-      @order.praticien = session[:otherInfo]["praticien"]
+    data = params['Data'].split('|')
+    if data.include?("responseCode=00")
+      # =============================== Enregistrement des commandes si payer
+      @order = Order.new
+      @order.prestation_date = session[:otherInfo]["date"]
+      @order.billing_pays = session[:otherInfo]["countryF"]
+      @order.billing_ville = session[:otherInfo]["villeF"]
+      @order.billing_code_postal = session[:otherInfo]["codePostaF"]
+      @order.billing_adresse = session[:otherInfo]["adresseF"]
+      @order.billing_adresse_complet = session[:otherInfo]["complAdresseF"]
+      @order.delivery_pays = session[:otherInfo]["countryL"]
+      @order.delivery_ville = session[:otherInfo]["villeL"]
+      @order.delivery_code_postal = session[:otherInfo]["codePostaL"]
+      @order.delivery_adresse = session[:otherInfo]["adresseL"]
+      @order.delivery_adresse_complet = session[:otherInfo]["complAdresseL"]
+      @order.message = session[:otherInfo]["message"]
+      @order.client = current_client
+      @order.department = Department.find_by(name:session[:otherInfo]["department"])
+      @order.country = Country.find_by(name:session[:otherInfo]["pays"])
       @order.save
-      #====== Send email to prestataire massage =====
-      @prestataires = []
-      if @order.department.nil?
-        @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:countries).where(countries:{name:@order.country.name})
-      else
-        @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:departments).where(departments:{name:@order.department.name})
-      end
-      @prestataires.each do |prestataire|
-        if (prestataire.sexe == @order.praticien) || (@order.praticien == "all")
-          PrestataireMailer.new_orderMassage(mailToOrderServiceMassage.id,prestataire.id).deliver_now
+
+      myPrestation = session[:myPrestation]
+      unless myPrestation["spa"].empty?
+        mailToOrderServiceSpa = OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: session[:otherInfo]["heureSpa"])
+        myPrestation["spa"].each do |spa|
+          current_spa = Spa.find_by(duration:spa["time"])
+          current_product = ""
+          if spa["option"]
+            current_product = Product.find_by(name:spa["option"][0])
+            OrderSpa.create(logement: spa["type"][0], installation: spa["type"][1], syteme_eau: spa["type"][2], order: @order, spa: current_spa, product: current_product)
+          else
+            OrderSpa.create(logement: spa["type"][0], installation: spa["type"][1], syteme_eau: spa["type"][2], order: @order, spa: current_spa)
+          end
+        end
+        #====== Send email to prestataire location spa =====
+        @prestataires = []
+        if @order.department.nil?
+          @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:countries).where(countries:{name:@order.country.name})
+        else
+          @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:departments).where(departments:{name:@order.department.name})
+        end
+        @prestataires.each do |prestataire|
+          PrestataireMailer.new_orderSpa(mailToOrderServiceSpa.id,prestataire.id).deliver_now
         end
       end
-    end
-
-    unless session[:otherInfo]["cadeau"].empty?
-      session[:otherInfo]["cadeau"].each do |cadeau|
-        current_product = Product.find_by(name:cadeau[0])
-        OrderProduct.create(number: cadeau[2].to_i, product: current_product, order: @order)
+      
+      unless myPrestation["massage"].empty?
+        mailToOrderServiceMassage = OrderService.create(order: @order, service: Service.find_by(name:"Massage"), service_time: session[:otherInfo]["heureMassage"])
+        myPrestation["massage"].each do |massage|
+          current_ca = MassageCa.find_by(name:massage["ca"])      
+          current_su = current_ca.massage_sus.find_by(name:massage["su"])
+          current_prix = MassageSuPrice.find(massage["price"][0].to_i)
+          OrderMassage.create(order: @order, massage_ca:current_ca, massage_su: current_su, massage_su_price: current_prix)
+        end
+        @order.praticien = session[:otherInfo]["praticien"]
+        @order.save
+        #====== Send email to prestataire massage =====
+        @prestataires = []
+        if @order.department.nil?
+          @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:countries).where(countries:{name:@order.country.name})
+        else
+          @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:departments).where(departments:{name:@order.department.name})
+        end
+        @prestataires.each do |prestataire|
+          if prestataire.sexe == @order.praticien || @order.praticien == "all"
+            PrestataireMailer.new_orderMassage(mailToOrderServiceMassage.id,prestataire.id).deliver_now
+          end
+        end
       end
-    end
-    if current_client.is_type == 'prospect'
-      current_client.update(is_type:'client')
-    end
-    ClientMailer.confirm_order(@order.id,current_client.id).deliver_now
-    
-    redirect_to payedsuccess_path
-
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
+      unless session[:otherInfo]["cadeau"].empty?
+        session[:otherInfo]["cadeau"].each do |cadeau|
+          current_product = Product.find_by(name:cadeau[0])
+          OrderProduct.create(number: cadeau[2].to_i, product: current_product, order: @order)
+        end
+      end
+      if current_client.is_type == 'prospect'
+        current_client.update(is_type:'client')
+      end
+      ClientMailer.confirm_order(@order.id,current_client.id).deliver_now
+      redirect_to payedsuccess_path
+    else
       redirect_to payederrors_path
+    end
   end
 
   def payedsuccess
