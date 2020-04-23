@@ -2162,7 +2162,7 @@ textarea.form-control {
 }
 
 .navbar-brand {
-  height: auto;
+  height: 0px;
   float: left;
   position: absolute;
   z-index: 1000;
@@ -2170,8 +2170,8 @@ textarea.form-control {
 }
 
 .navbar-brand > img {
-  width: 70%;
-  margin-top: 10px;
+  width: 78%;
+  margin-top: 8px;
   margin-left: 20px;
 }
 
@@ -2186,11 +2186,11 @@ textarea.form-control {
 
 @media (min-width: 768px) {
   .navbar-brand {
-    height: auto;
+    height: 0px;
     padding: 40px 50px;
     width: 230px;
     top: -45px;
-    box-shadow: 0 7px 21px rgba(0, 0, 0, 0.1);
+    
   }
 }
 
@@ -2210,7 +2210,13 @@ textarea.form-control {
     background-color: transparent;
   }
 }
-
+    @media only screen and (max-width: 600px) {
+      .navbar-brand > img {
+    width: 78%;
+    margin-top: -6px;
+    margin-left: 20px;
+}
+}
 @media (min-width: 768px) {
   .navbar-default .navbar-nav.navbar-right {
     margin-right: 40px;

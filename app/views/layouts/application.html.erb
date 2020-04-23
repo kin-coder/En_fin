@@ -106,7 +106,7 @@
               <%if client_signed_in?%>
 
                 <li class=" dropdown singleDrop">
-                  <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon compte</a>
+                  <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>
                   <ul class="dropdown-menu">
                   <li><%= link_to "Mon profil", client_profil_path , class:"liDropDown" %></li> 
                   <li><%= link_to "Se deconnecter", destroy_client_session_path, method:"delete"  , class:"liDropDown" %></li> 
@@ -115,7 +115,7 @@
 
               <% else %>
                 <li class=" dropdown singleDrop">
-                  <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Connexion</a>
+                  <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>
                   <ul class="dropdown-menu">
                     <li><%= link_to "Se connecter", new_client_session_path, class:"liDropDown" %></li> 
                     <li><%= link_to "S'inscrire", new_client_registration_path, class:"liDropDown" %></li> 
