@@ -69,16 +69,17 @@
   <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
   <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
   <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
-
+  <!-- Custom scripts for load all pages-->
+  <script src="/admin/js/reload-page.js"></script>
   <style>
     .toolBarSelect{
       position: absolute;
-      left: 880px;
+      left: 858px;
     }
 
     .search-control{
       position: relative;
-      left: 655px;
+      left: 635px;
     }
     .btnPresta{
 position: relative;
@@ -111,8 +112,8 @@ top: -2px;
     <div id="toolbar">
       <select class="form-control toolBarSelect"> 
 
-        <option value="selected">Exporter les sélectionnés</option>
         <option value="all">Exporter tous</option>
+        <option value="selected">Exporter les sélectionnés</option>
         
       </select>
       <div class="search-control">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Prestataires</title>
+	<title>Commandes</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -17,6 +17,9 @@
 	<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
 	<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
 	<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+
+	<!-- Custom scripts for load all pages-->
+	<script src="/admin/js/reload-page.js"></script>
 
 	<style>
 		/* Paste this css to your style sheet file or under head tag */
@@ -71,12 +74,12 @@
 <style>
 	.toolBarSelect{
 		position: absolute;
-		left: 880px;
+		left: 858px;
 	}
 
 	.search-control{
 		position: relative;
-		left: 655px;
+		left: 635px;
 	}
 
 </style>
@@ -85,6 +88,7 @@
 <body>
 
 	<section class="">
+		
 		<div class="secotionTitle">
 			<h2 id="service" class="poli1 police_massage"><span>COMMANDES</span></h2>
 		</div>
@@ -134,9 +138,9 @@
 
 			<div id="toolbar">
 				<select class="form-control toolBarSelect"> 
-
-					<option value="selected">Exporter les sélectionnés</option>
 					<option value="all">Exporter tous</option>
+					<option value="selected">Exporter les sélectionnés</option>
+					
 
 				</select>
 				<div class="search-control">
@@ -344,6 +348,8 @@ $buttonGroup.on( 'click', 'li', function( event ) {
 
 
 	</script>
+
+
 
 
 </body>
