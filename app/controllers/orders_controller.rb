@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  protect_from_forgery except: :payment
   before_action :validate_session, only: [:delivery,:saveDelivery,:summary,:payment]
   before_action :validate_value_in_session, only: [:summary,:payment]
   before_action :validate_pay_error_success, only: [:payedsuccess,:payederrors]
@@ -365,24 +366,41 @@ class OrdersController < ApplicationController
 
   # 3 Affiche la recapitulatif de commande
   def summary
-    
+    @amount = (@totalAcompte*100).to_i
+    # Génère un numéro de transaction aléatoire
+    transactionReference = "simu" + rand(100000..999999).to_s
+    #Construit l'URL de retour pour récupérer le résultat du paiement sur le site e-commerce du marchand
+    normalReturnUrl = "http://localhost:3000/reservation-prestation/paye-commande"
+    # Contruit la requête des données à envoyer à Mercanet
+    @data = "amount=#{@amount}|currencyCode=978|merchantId=002001000000001|normalReturnUrl=" + normalReturnUrl + "|transactionReference=" + transactionReference + "|keyVersion=1"
+    # Encode en UTF-8 des données à envoyer à Mercanet
+    dataToSend = (@data).encode('utf-8')
+    # Clé secrète correspondant au merchandId de simulation
+    secretKey = "002001000000001_KEY1"
+    # Calcul du certificat par un cryptage SHA256 des données envoyées suffixé par la clé secrète
+    @seal = Digest::SHA256.hexdigest dataToSend + secretKey    # MILA JERANA !!
   end
 
   # 4 Le Payement
   def payment
+
+    puts "#################################################################"
+    puts params['Data'].inspect
+    puts "#################################################################"
+
     @amount = (@totalAcompte*100).to_i
 
-    customer = Stripe::Customer.create({
-      email: params[:stripeEmail],
-      source: params[:stripeToken],
-    })
+    # customer = Stripe::Customer.create({
+    #   email: params[:stripeEmail],
+    #   source: params[:stripeToken],
+    # })
 
-    charge = Stripe::Charge.create({
-      customer: customer.id,
-      amount: @amount,
-      description: 'Payement de votre prestation',
-      currency: 'eur',
-    })
+    # charge = Stripe::Charge.create({
+    #   customer: customer.id,
+    #   amount: @amount,
+    #   description: 'Payement de votre prestation',
+    #   currency: 'eur',
+    # })
 
     # =============================== Enregistrement des commandes si payer
     @order = Order.new
@@ -465,9 +483,9 @@ class OrdersController < ApplicationController
     
     redirect_to payedsuccess_path
 
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
-      redirect_to payederrors_path
+    # rescue Stripe::CardError => e
+    #   flash[:error] = e.message
+    #   redirect_to payederrors_path
   end
 
   def payedsuccess
