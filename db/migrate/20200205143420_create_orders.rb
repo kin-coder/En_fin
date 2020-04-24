@@ -14,9 +14,11 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.string :delivery_adresse_complet
       t.string :praticien
       t.text :message
-      t.boolean :is_done, default:false
+
+      t.boolean :is_done, default:false #verifi si le commande est traité ou en cours
+      t.boolean :is_validate, default:false #verifi si la commande est payer ou non
       
-      t.boolean :is_canceled, default:false
+      t.boolean :is_canceled, default:false # command annulé par le client
       t.belongs_to :client, index:true
       t.belongs_to :department, index:true
       t.belongs_to :country, index:true

@@ -404,10 +404,7 @@ class OrdersController < ApplicationController
 
   # 3 Affiche la recapitulatif de commande
   def summary
-    
-
     @order = current_client.orders.order('id ASC').last
-
     @amount = (@totalAcompte*100).to_i
     # Génère un numéro de transaction aléatoire
     transactionReference = "simu" + rand(100000..999999).to_s
@@ -428,9 +425,8 @@ class OrdersController < ApplicationController
     data = params['Data'].split('|')
     if data.include?("responseCode=00")
       # =============================== Enregistrement des commandes si payer
-      puts "========="*5
-      puts "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-      puts "========="*5
+      @order = current_client.orders.order('id ASC').last
+      @order.update(is_validate:true)
       # =====================================================================
       redirect_to payedsuccess_path
     else
