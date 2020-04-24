@@ -94,7 +94,8 @@ class AdminsController < Application2Controller
   # GET /clients
   # GET /clients.json
   def allclient
-    @clients = Client.all
+    @clients = Client.where(is_client:true)
+    @prospect = Client.where(is_client:false)
   end
 
   # GET /clients/1
