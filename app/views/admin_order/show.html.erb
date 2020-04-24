@@ -52,7 +52,7 @@
 													<li>
 														Type de praticien: <i>"<%= @order.praticien == "all" ? "Peu importe" : @order.praticien %>"</i><br>
 														<% presta =  @order.order_massages.first.prestataire %>
-														<li>Prestataire associé: 
+														<li><strong>Prestataire associé:</strong> 
 															<% if presta.nil? %>
 															<i>"Aucun prestataire affecté pour le moment"</i>
 															<% else %>
@@ -248,8 +248,11 @@
 															<td class="action">
 																<center>
 																	<%= link_to '<i class="fas fa-eye button button1"></i>'.html_safe, show_prestataires_path(p_order.id), title:"Apropos du prestataire",class:"btn btn-default" %> 
+																	<% if @order.prestataires.include?(p_order) %>
+																		<strong>Déjà affecter</strong>
+																	<% else %>
 																	<%= link_to '<i class="fas fa-exchange-alt button button1"></i>'.html_safe, afect_prestataire_to_order_path("spa",@order.id,p_order.id), method: :patch, data: { confirm: "Etes vous sur d'affecter ce prestataire à cette commande ?" }, title:"Affecter ce prestataire à cette commande",class:"btn btn-default" %> 
-
+																	<% end %>
 																</center>		
 															</td>
 														</tr>
