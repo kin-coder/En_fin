@@ -90,11 +90,6 @@ class Order < ApplicationRecord
 				end 
 			end
 		end
-		unless self.products.empty?
-			self.order_products.each do |o_product|
-				acompte += (o_product.product.price*o_product.number)
-			end
-		end
 		return [price,acompte]
   end
 end

@@ -155,20 +155,10 @@ ActiveRecord::Schema.define(version: 2020_04_14_082452) do
     t.index ["order_id"], name: "index_order_massages_on_order_id"
   end
 
-  create_table "order_products", force: :cascade do |t|
-    t.integer "number"
-    t.bigint "product_id"
-    t.bigint "order_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_order_products_on_order_id"
-    t.index ["product_id"], name: "index_order_products_on_product_id"
-  end
-
   create_table "order_services", force: :cascade do |t|
     t.string "service_time"
     t.string "confirm_token"
-    t.boolean "is_done", default: false
+    t.string "status_order", default: "en cours"
     t.bigint "order_id"
     t.bigint "service_id"
     t.bigint "prestataire_id"
@@ -207,9 +197,8 @@ ActiveRecord::Schema.define(version: 2020_04_14_082452) do
     t.string "delivery_adresse_complet"
     t.string "praticien"
     t.text "message"
-    t.boolean "is_done", default: false
     t.boolean "is_validate", default: false
-    t.boolean "is_canceled", default: false
+    t.string "status_order", default: "en cours"
     t.bigint "client_id"
     t.bigint "department_id"
     t.bigint "country_id"

@@ -92,49 +92,6 @@
 		<div class="secotionTitle">
 			<h2 id="service" class="poli1 police_massage"><span>COMMANDES</span></h2>
 		</div>
-		<!-- <div class="containr">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="filters">
-						<ul>
-							<li class="is-checked" data-filter=".encours">En cours</li>
-							<li data-filter=".traitées" id="traitée">Traitées</li>
-							<li data-filter=".nontraitées" id="nontraitée">Non traitées</li>							
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-md-12">
-					<div class="rows grid data-isotope='{ "itemSelector": ".grid-item", "masonry": { "columnWidth": 200 }}'">
-						<div class="col-md-12 grid-item encours" data-category="websites">
-
-
-						</div>
-
-						T==============================Raitées===================== -->
-<!-- 						<div lass="hidden" id="classRemoveTraitée">
-
-							<div class="col-md-12 grid-item traitées" data-category="flyers">
-
-
-							</div>
-						</div>
-					-->
-						<!-- T==============================Raitées===================== --> <!-- 
-						<div class="hidden" id="classRemoveNonTraitée">
-
-							<div class="col-md-12 grid-item nontraitées" data-category="flyers">
-
-
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div> -->
-
-
-
 
 			<div id="toolbar">
 				<select class="form-control toolBarSelect"> 
@@ -193,7 +150,7 @@
 								<td>
 									<% unless  prestataires.empty? %>
 									<% prestataires.each do |prestataire| %>
-									<li><%= prestataire[1].first_name %> <%= prestataire.last_name %></li>
+									<li><%= prestataire[1].first_name %> <%= prestataire[1].last_name %></li>
 									<% end %>
 									<% else %>
 									Aucun
@@ -222,7 +179,7 @@
 								<td>
 									<% unless  prestataires.empty? %>
 									<% prestataires.each do |prestataire| %>
-									<ul><li><%= prestataire[1].first_name %> <%= prestataire.last_name %></li>
+									<ul><li><%= prestataire[1].first_name %> <%= prestataire[1].last_name %></li>
 									</ul>
 									<% end %>
 									<% else %>
@@ -346,193 +303,6 @@ $buttonGroup.on( 'click', 'li', function( event ) {
 			comNonTraitéeAafficher.classList.remove("hidden");
 		});
 
-
 	</script>
-
-
-
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-
-
-
-
-
-
-
-<h1>Commandes</h1>
-<h2 style="color: #ec5598;">Commande en cours</h2>
-<div class="commande-en-cours">
-	<div class="table-responsive">
-		<table class="table">
-			<thead>
-				<tr>
-					<td>N°</td>
-					<td>Date <small>(MM/JJ/AAAA)</small></td>
-					<td>Prestataire associé</td>
-					<td>Nom Client</td>
-					<td>Montant</td>
-					<td>CP</td>
-					<td>Action</td>
-				</tr>
-			</thead>
-			<tbody>
-				<% @orders_in_progress.each do |order| %>
-				<% prestataires = order.prestataires %>
-				<% prixAcompte = order.totalPrice %>
-				<tr>
-					<td><%= order.id %></td>
-					<td><%= order.prestation_date %></td>
-					<td>
-						<% unless  prestataires.empty? %>
-						<% prestataires.each do |prestataire| %>
-						<li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
-						<% end %>
-						<% else %>
-						aucun
-						<% end %>
-					</td>
-					<td><%= order.client.first_name %> <%= order.client.last_name %></td>
-					<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
-					<td><%= order.client.zip_code %></td>
-					<td><a href="<%= admin_order_show_path(order.id) %>">Afficher détails</a></td>
-				</tr>
-				<% end %>
-			</tbody>
-		</table>
-	</div>
-</div>
-
-<hr>
-
-<h2 style="color: #ec5598;">Commande traitées</h2>
-<div class="commande-traitees">
-	<div class="table-responsive">
-		<table class="table">
-			<thead>
-				<tr>
-					<td>N°</td>
-					<td>Date <small>(MM/JJ/AAAA)</small></td>
-					<td>Prestataire associé</td>
-					<td>Nom Client</td>
-					<td>Montant</td>
-					<td>CP</td>
-					<td>Action</td>
-				</tr>
-			</thead>
-			<tbody>
-				<% @orders_progress.each do |order| %>
-				<% prestataires = order.prestataires %>
-				<% prixAcompte = order.totalPrice %>
-				<tr>
-					<td><%= order.id %></td>
-					<td><%= order.prestation_date %></td>
-					<td>
-						<% unless  prestataires.empty? %>
-						<% prestataires.each do |prestataire| %>
-						<li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
-						<% end %>
-						<% else %>
-						aucun
-						<% end %>
-					</td>
-					<td><%= order.client.first_name %> <%= order.client.last_name %></td>
-					<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
-					<td><%= order.client.zip_code %></td>
-					<td><a href="<%= admin_order_show_path(order.id) %>">Afficher détails</a></td>
-				</tr>
-				<% end %>
-			</tbody>
-		</table>
-	</div>
-</div>
-
-<hr>
-
-<h2 style="color: #ec5598;">Commande non traitées</h2>
-<div class="commande-non-traitees">
-	<div class="table-responsive">
-		<table class="table">
-			<thead>
-				<tr>
-					<td>N°</td>
-					<td>Date <small>(MM/JJ/AAAA)</small></td>
-					<td>Prestataire associé</td>
-					<td>Nom Client</td>
-					<td>Montant</td>
-					<td>CP</td>
-					<td>Action</td>
-				</tr>
-			</thead>
-			<tbody>
-				<% @orders_not_progress.each do |order| %>
-				<% prestataires = order.prestataires %>
-				<% prixAcompte = order.totalPrice %>
-				<tr>
-					<td><%= order.id %></td>
-					<td><%= order.prestation_date %></td>
-					<td>
-						<% unless  prestataires.empty? %>
-						<% prestataires.each do |prestataire| %>
-						<li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
-						<% end %>
-						<% else %>
-						aucun
-						<% end %>
-					</td>
-					<td><%= order.client.first_name %> <%= order.client.last_name %></td>
-					<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
-					<td><%= order.client.zip_code %></td>
-					<td><a href="<%= admin_order_show_path(order.id) %>">Afficher détails</a></td>
-				</tr>
-				<% end %>
-			</tbody>
-		</table>
-	</div>
-</div> -->
