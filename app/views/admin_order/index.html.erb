@@ -193,7 +193,7 @@
 								<td>
 									<% unless  prestataires.empty? %>
 									<% prestataires.each do |prestataire| %>
-									<li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
+									<li><%= prestataire[1].first_name %> <%= prestataire.last_name %></li>
 									<% end %>
 									<% else %>
 									Aucun
@@ -222,7 +222,7 @@
 								<td>
 									<% unless  prestataires.empty? %>
 									<% prestataires.each do |prestataire| %>
-									<ul><li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
+									<ul><li><%= prestataire[1].first_name %> <%= prestataire.last_name %></li>
 									</ul>
 									<% end %>
 									<% else %>
@@ -251,7 +251,7 @@
 									<% unless  prestataires.empty? %>
 									<% prestataires.each do |prestataire| %>
 									<ul>
-										<li><%= prestataire.first_name %> <%= prestataire.last_name %></li>
+										<li><%= prestataire[1].first_name %> <%= prestataire.last_name %></li>
 									</ul>
 									<% end %>
 									<% else %>

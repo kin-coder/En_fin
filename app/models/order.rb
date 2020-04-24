@@ -52,7 +52,13 @@ class Order < ApplicationRecord
   	list_prestataires = []
   	self.order_services.each do |o_s|
   		unless o_s.prestataire.nil?
-  			list_prestataires.push(o_s.prestataire)
+  			case o_s.service.name
+  				when "Location spa"
+  					list_prestataires.push(['spa',o_s.prestataire])
+  				when "Massage"
+  					list_prestataires.push(['massage',o_s.prestataire])
+  				else
+  			end
   		end
   	end
   	return list_prestataires
