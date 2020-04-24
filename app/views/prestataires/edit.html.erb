@@ -33,7 +33,7 @@
 
 <style>
 
-#dropZone {
+  #dropZone {
 
     width: 100px !important;
     height: 50px;
@@ -41,13 +41,13 @@
     padding-right: 50px;
     padding-top: 20px;
 
-}
+  }
 
-.hida {
+  .hida {
     position: absolute;
     top: 0px;
     left: 10px;
-}
+  }
 </style>
 
 
@@ -74,141 +74,141 @@
 
    <div class="col-sm-12">
     <div class="switch-field">
-      <input type="radio" id="radio-one" name="prestataire[sexe]" value="Féminin" required/>
-      <label for="radio-one" class="radio-one">Madame</label>
-      <span class="label2">
-        <input type="radio" id="radio-two" name="prestataire[sexe]" value="Masculin" />
-        <label for="radio-two" class="radio-two">Monsieur</label>
-      </span>
-    </div>
+     <%= form.radio_button :sexe, 'Féminin', id:"candidate_sexe_féminin" %>
+     <label for="candidate_sexe_féminin" class="radio-one">Madame</label>
+     <span class="label2">
+      <%= form.radio_button :sexe, 'Masculin', id:"candidate_sexe_masculin" %>
+       <label for="candidate_sexe_masculin" class="radio-two">Monsieur</label>
+     </span>
+   </div>
+ </div>
+
+ <div class="col-sm-6">
+  <div class="form-group">
+    <%= form.text_field :last_name, autofocus: true, autocomplete: "Nom", class:"form-control", id:"fullname", placeholder:"Nom",:required => true %>
+
   </div>
 
-  <div class="col-sm-6">
-    <div class="form-group">
-      <%= form.text_field :last_name, autofocus: true, autocomplete: "Nom", class:"form-control", id:"fullname", placeholder:"Nom",:required => true %>
+  <div class="form-group">
+    <%= form.text_field :first_name, autofocus: true, autocomplete: "Prénom", class:"form-control", id:"fullname", placeholder:"Prénom",:required => true %>
 
-    </div>
+  </div>
 
-    <div class="form-group">
-      <%= form.text_field :first_name, autofocus: true, autocomplete: "Prénom", class:"form-control", id:"fullname", placeholder:"Prénom",:required => true %>
+  <div class="dateSelect form-half form-left select-date">
+    <div class="input-group date ed-datepicker filterDate input-calendar" data-provide="datepicker">
+      <%= form.text_field :date_of_birth , autofocus: true, autocomplete: "DateDeNaissance", class:"form-control form-controldate", id:"date", placeholder:"Date de naissance",:required => true %>
 
-    </div>
-
-    <div class="dateSelect form-half form-left select-date">
-      <div class="input-group date ed-datepicker filterDate input-calendar" data-provide="datepicker">
-        <%= form.text_field :date_of_birth , autofocus: true, autocomplete: "DateDeNaissance", class:"form-control form-controldate", id:"date", placeholder:"Date de naissance",:required => true %>
-
-        <div class="input-group-addon calendar-icone">
-          <span class="fa fa-calendar"></span>
-        </div>
+      <div class="input-group-addon calendar-icone">
+        <span class="fa fa-calendar"></span>
       </div>
     </div>
-
-    <div class="form-group">
-      <%= form.text_field :raison_sociale, autofocus: true, autocomplete: "RaisonSociale", class:"form-control", id:"fullname", placeholder:"Raison sociale" %>
-
-    </div>
-
-    <div class="form-group">
-
-      <%= form.text_field :siren, autofocus: true, autocomplete: "Siren", class:"form-control", id:"fullname", placeholder:"Siren" %>
-
-    </div>
-
-    <div class="form-group">
-
-      <%= form.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"Email",:required => true %>
-
-    </div>
   </div>
 
-  <div class="col-sm-6">
+  <div class="form-group">
+    <%= form.text_field :raison_sociale, autofocus: true, autocomplete: "RaisonSociale", class:"form-control", id:"fullname", placeholder:"Raison sociale" %>
 
-    <div class="form-group">
+  </div>
 
-      <%= form.telephone_field :tel, autofocus: true, autocomplete: "Tel", class:"form-control", id:"fullname", placeholder:"Numéro tél",:required => true %>
+  <div class="form-group">
 
-    </div>
+    <%= form.text_field :siren, autofocus: true, autocomplete: "Siren", class:"form-control", id:"fullname", placeholder:"Siren" %>
 
-    <div class="form-group">
-      <%= form.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control", id:"fullname", placeholder:"Adresse",:required => true %>
+  </div>
 
-    </div>
+  <div class="form-group">
 
-    <div class="form-group">
-      <%= form.text_field :zip_code, autofocus: true, autocomplete: "zipcode", class:"form-control", id:"fullname", placeholder:"Code Postal",:required => true %>
-    </div>
+    <%= form.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"Email",:required => true %>
 
-    <div class="form-group form-groupp">
-      <%= form.text_field :ville, autofocus: true, autocomplete: "ville", class:"form-control", id:"fullname", placeholder:"Ville",:required => true %>
+  </div>
+</div>
 
-    </div>
+<div class="col-sm-6">
 
-    <div class="form-group">
-      <%= form.text_field :pays, autofocus: true, autocomplete: "Pays", class:"form-control", id:"fullname", placeholder:"Pays",:required => true %>
+  <div class="form-group">
 
-    </div>
+    <%= form.telephone_field :tel, autofocus: true, autocomplete: "Tel", class:"form-control", id:"fullname", placeholder:"Numéro tél",:required => true %>
 
-    <dl class="form-group dropdown">
-      <input autofocus="autofocus" class="form-control" id="fullname" disabled="disabled" placeholder="Zone d'actions" type="text">
-      <dt>
-        <i >
-          <span class="hida fa fa-chevron-down" id="dropZone"></span>    
-          <p class="multiSel"></p>  
-        </i>
-      </dt>
-      <dd>
-        <div class="mutliSelect">
-          <ul>
-            <% hidden_field_tag "prestataire[country_ids][]", nil %> 
-            <% @countries.each do |country| %>
-            <li>
-              <%= check_box_tag "prestataire[country_ids][]", country.id, @prestataire.country_ids.include?(country.id), id:dom_id(country), class:"js-country" %>
-              <%= label_tag dom_id(country), country.name %><br>
-            </li> 
-            <% end %>
+  </div>
 
-            <div id="js-department-list" class="hidden">
-              <h6>Dans quels Départements</h6>
-              <div class="departements">
-                <% hidden_field_tag "prestataire[department_ids][]", nil %> 
-                <% @departments.each do |department| %>
-                <%= check_box_tag "prestataire[department_ids][]", department.id, @prestataire.department_ids.include?(department.id), id:dom_id(department), class:"js-department" %>
-                <%= label_tag dom_id(department), department.name %><br>
-                <% end %>
-              </div>
+  <div class="form-group">
+    <%= form.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control", id:"fullname", placeholder:"Adresse",:required => true %>
+
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :zip_code, autofocus: true, autocomplete: "zipcode", class:"form-control", id:"fullname", placeholder:"Code Postal",:required => true %>
+  </div>
+
+  <div class="form-group form-groupp">
+    <%= form.text_field :ville, autofocus: true, autocomplete: "ville", class:"form-control", id:"fullname", placeholder:"Ville",:required => true %>
+
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :pays, autofocus: true, autocomplete: "Pays", class:"form-control", id:"fullname", placeholder:"Pays",:required => true %>
+
+  </div>
+
+  <dl class="form-group dropdown">
+    <input autofocus="autofocus" class="form-control" id="fullname" disabled="disabled" placeholder="Zone d'actions" type="text">
+    <dt>
+      <i >
+        <span class="hida fa fa-chevron-down" id="dropZone"></span>    
+        <p class="multiSel"></p>  
+      </i>
+    </dt>
+    <dd>
+      <div class="mutliSelect">
+        <ul>
+          <% hidden_field_tag "prestataire[country_ids][]", nil %> 
+          <% @countries.each do |country| %>
+          <li>
+            <%= check_box_tag "prestataire[country_ids][]", country.id, @prestataire.country_ids.include?(country.id), id:dom_id(country), class:"js-country" %>
+            <%= label_tag dom_id(country), country.name %><br>
+          </li> 
+          <% end %>
+
+          <div id="js-department-list" class="hidden">
+            <h6>Dans quels Départements</h6>
+            <div class="departements">
+              <% hidden_field_tag "prestataire[department_ids][]", nil %> 
+              <% @departments.each do |department| %>
+              <%= check_box_tag "prestataire[department_ids][]", department.id, @prestataire.department_ids.include?(department.id), id:dom_id(department), class:"js-department" %>
+              <%= label_tag dom_id(department), department.name %><br>
+              <% end %>
             </div>
+          </div>
 
-          </ul>
-        </div>
-      </dd>
-
-      <div class="choix">
-        <i class="domaine">Choix Domaine d’activité : </i> 
-
-        <% hidden_field_tag "service[service_ids][]", nil %> 
-        <% @services.each do |service| %>
-
-        <%= label_tag dom_id(service), service.name %>
-        <label class="switch">
-          <%= check_box_tag "service[service_ids][]", service.id, @prestataire.service_ids.include?(service.id), id:dom_id(service), class:"switch-input" %>
-          <span class="switch-label" data-on="Oui" data-off="Non"></span>
-          <span class="switch-handle"></span>
-        </label>
-        <% end %>
-
+        </ul>
       </div>
-    </dl>
-  </div>
+    </dd>
 
+    <div class="choix">
+      <i class="domaine">Choix Domaine d’activité : </i> 
 
-  <div class="col-sm-12">
-    <div class="actions">
-      <center><%= form.submit "Valider", class:"btn btn-primary btn-block" %></center> </br>
-      <center><%= link_to 'Retour', index_prestataires_path, class:"btn btn-primary btn-block" %>
-      </center>
+      <% hidden_field_tag "service[service_ids][]", nil %> 
+      <% @services.each do |service| %>
+
+      <%= label_tag dom_id(service), service.name %>
+      <label class="switch">
+        <%= check_box_tag "service[service_ids][]", service.id, @prestataire.service_ids.include?(service.id), id:dom_id(service), class:"switch-input" %>
+        <span class="switch-label" data-on="Oui" data-off="Non"></span>
+        <span class="switch-handle"></span>
+      </label>
+      <% end %>
+
     </div>
+  </dl>
+</div>
+
+
+<div class="col-sm-12">
+  <div class="actions">
+    <center><%= form.submit "Valider", class:"btn btn-primary btn-block" %></center> </br>
+    <center><%= link_to 'Retour', index_prestataires_path, class:"btn btn-primary btn-block" %>
+    </center>
   </div>
+</div>
 </section>
 <% end %>
 <!-- JAVASCRIPTS -->
@@ -227,41 +227,41 @@
 
 <script>
 
-$(".dropdown dt i").on('click', function () {
-          $(".dropdown dd ul").slideToggle('fast');
-      });
+  $(".dropdown dt i").on('click', function () {
+    $(".dropdown dd ul").slideToggle('fast');
+  });
 
-      $(".dropdown dd ul li a").on('click', function () {
-          $(".dropdown dd ul").hide();
-      });
+  $(".dropdown dd ul li a").on('click', function () {
+    $(".dropdown dd ul").hide();
+  });
 
-      function getSelectedValue(id) {
-           return $("#" + id).find("dt a span.value").html();
-      }
+  function getSelectedValue(id) {
+   return $("#" + id).find("dt a span.value").html();
+ }
 
-      $(document).bind('click', function (e) {
-          var $clicked = $(e.target);
-          if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
-      });
+ $(document).bind('click', function (e) {
+  var $clicked = $(e.target);
+  if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+});
 
 
-      $('.mutliSelect input[type="checkbox"]').on('click', function () {
-        
-          var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
-              title = $(this).val() + ",";
-        
-          if ($(this).is(':checked')) {
-              var html = '<span title="' + title + '" class="hidden">' + title + '</span>';
-              $('.multiSel').append(html);
-              /*$(".hida").hide();*/ 
-          } 
-          else {
-              $('span[title="' + title + '"]').remove();
-              var ret = $(".hida");
-              $('.dropdown dt i').append(ret);
-              
-          }
-      });
+ $('.mutliSelect input[type="checkbox"]').on('click', function () {
+
+  var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+  title = $(this).val() + ",";
+
+  if ($(this).is(':checked')) {
+    var html = '<span title="' + title + '" class="hidden">' + title + '</span>';
+    $('.multiSel').append(html);
+    /*$(".hida").hide();*/ 
+  } 
+  else {
+    $('span[title="' + title + '"]').remove();
+    var ret = $(".hida");
+    $('.dropdown dt i').append(ret);
+
+  }
+});
 
 
 </script>

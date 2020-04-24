@@ -185,18 +185,22 @@
   <input type="text" name="id" style="display:none;" value="<%=@candidate.id%>">
 
 
+
+
   <div class="row">
 
    <div class="col-sm-12">
     <div class="switch-field">
-      <input type="radio" id="radio-one" name="prestataire[sexe]" value="Féminin" required/>
-      <label for="radio-one" class="radio-one">Madame</label>
+       <%= form.radio_button :sexe, 'Féminin', id:"candidate_sexe_féminin" %>
+      <label for="candidate_sexe_féminin" class="radio-one">Madame</label>
       <span class="label2">
-        <input type="radio" id="radio-two" name="prestataire[sexe]" value="Masculin" />
-        <label for="radio-two" class="radio-two">Monsieur</label>
+               <%= form.radio_button :sexe, 'Masculin', id:"candidate_sexe_masculin" %>
+
+        <label for="candidate_sexe_masculin" class="radio-two">Monsieur</label>
       </span>
     </div>
   </div>
+
 
   <div class="col-sm-6">
     <div class="form-group">
@@ -424,6 +428,5 @@ $(".dropdown dt i").on('click', function () {
       })
     }
   }
-
-
 </script>
+
