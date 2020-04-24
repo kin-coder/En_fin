@@ -220,7 +220,7 @@
 										<div>
 											
 											<br><br>
-											<h2 style="color:#EC5598;">Liste des prestataires invités</h2>
+											<h2 style="color:#EC5598;">Liste des prestataires disponible</h2>
 
 
 											<div class="page">
@@ -335,7 +335,7 @@
 											</div>
 
 											<br> <br>		
-											<h2 style="color:#EC5598;">Liste des prestataires répondus</h2>
+											<h2 style="color:#EC5598;">Liste des prestataires qui on répondus à la commande</h2>
 
 											<div class="page">
 
@@ -473,58 +473,3 @@
 				</div>
 			</div>
 		</section>
-
-
-<!-- 
-				<h1>Liste des préstataires répondus</h1>
-				<table border="2">
-					<tr>
-						<th>Nom</th>
-						<th>Etat</th>
-						<th>Action</th>
-					</tr>
-					<% unless @massage_result_prestataire.empty? %>
-					<tr>
-						<td colspan="3"><center>Prestation "Massage"</center></td>
-					</tr>
-					<% @massage_result_prestataire.each do |m_r_p| %>
-					<tr>
-						<td><a href="<%=show_prestataires_path(m_r_p.prestataire.id)%>" title="Afficher"><%= m_r_p.prestataire.first_name %> <%= m_r_p.prestataire.last_name %></a></td>
-						<td><%= m_r_p.is_accepted ? "a accepte" : "a refuser" %></td>
-						<td>
-							<i><%= link_to  "Affecter au commande pour le massage", afect_prestataire_to_order_path("massage",@order.id,m_r_p.prestataire.id), method: :patch, data: { confirm: "Etes vous sur d'affecter ce prestataire à cette commande ?" }, title:"Retirer" %></i>
-						</td>
-					</tr>
-					<% end %>
-					<% else %>
-					<tr>
-						<td colspan="3"><center>Prestation "Massage"</center></td>
-					</tr>
-					<tr>
-						<td colspan="3"><center>Aucun autre prestataire n'a réagi pour l'instant</center></td>
-					</tr>
-					<% end %>
-
-					<% unless @spa_result_prestataire.empty? %>
-					<tr>
-						<td colspan="3"><center>Prestation "Location spa"</center></td>
-					</tr>
-					<% @spa_result_prestataire.each do |m_r_p| %>
-					<tr>
-						<td><a href="<%= show_prestataires_path(m_r_p.prestataire.id)%>" title="Afficher"><%= m_r_p.prestataire.first_name %> <%= m_r_p.prestataire.last_name %></a></td>
-						<td><%= m_r_p.is_accepted ? "a accepte" : "a refuser" %></td>
-						<td>
-							<i><%= link_to  "Affecter au commande pour la location spa", afect_prestataire_to_order_path("spa",@order.id,m_r_p.prestataire.id), method: :patch, data: { confirm: "Etes vous sur d'affecter ce prestataire à cette commande ?" }, title:"affecter" %></i>
-						</td>
-					</tr>
-					<% end %>
-					<% else %>
-					<tr>
-						<td colspan="3"><center>Prestation "Location spa"</center></td>
-					</tr>
-					<tr>
-						<td colspan="3"><center>Aucun autre prestataire n'a réagi pour l'instant</center></td>
-					</tr>
-					<% end %>
-				</table>
- -->
