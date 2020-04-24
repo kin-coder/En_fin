@@ -402,7 +402,6 @@ class OrdersController < ApplicationController
       @order = current_client.orders.order('id ASC').last
       @order.update(is_validate:true)
 
-
       # send email #
 
       # =====================================================================
