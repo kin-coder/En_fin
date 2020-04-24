@@ -401,20 +401,37 @@ class OrdersController < ApplicationController
       # =============================== Enregistrement des commandes si payer Mila amboarina ny mailer
       @order = current_client.orders.order('id ASC').last
       @order.update(is_validate:true)
-      
       @order.services.each do |service|
         case service.name
           when "Location spa"
-
-            @order.order_services.find_by(service_id:service.id)
-
-            PrestataireMailer.accepted_orderSpa(@order_service.id,@prestataire.id).deliver_now
+            mailToOrderServiceSpa = @order.order_services.find_by(service_id:service.id)
+            #====== Send email to prestataire location spa =====
+            @prestataires = []
+            if @order.department.nil?
+              @prestataires = Prestataire.joins(:services).where(services:{name:service.name}).joins(:countries).where(countries:{name:@order.country.name})
+            else
+              @prestataires = Prestataire.joins(:services).where(services:{name:service.name}).joins(:departments).where(departments:{name:@order.department.name})
+            end
+            @prestataires.each do |prestataire|
+              PrestataireMailer.new_orderSpa(mailToOrderServiceSpa.id,prestataire.id).deliver_now
+            end
           when "Massage"
-            PrestataireMailer.accepted_orderMassage(@order_service.id,@prestataire.id).deliver_now
+            mailToOrderServiceMassage = @order.order_services.find_by(service_id:service.id)
+            #====== Send email to prestataire massage =====
+            @prestataires = []
+            if @order.department.nil?
+              @prestataires = Prestataire.joins(:services).where(services:{name:service.name}).joins(:countries).where(countries:{name:@order.country.name})
+            else
+              @prestataires = Prestataire.joins(:services).where(services:{name:service.name}).joins(:departments).where(departments:{name:@order.department.name})
+            end
+            @prestataires.each do |prestataire|
+              if prestataire.sexe == @order.praticien || @order.praticien == "all"
+                PrestataireMailer.new_orderMassage(mailToOrderServiceMassage.id,prestataire.id).deliver_now
+              end
+            end
           else
         end
       end
-
       # =====================================================================
       redirect_to payedsuccess_path
     else
@@ -438,8 +455,10 @@ class OrdersController < ApplicationController
     
   end
 
-  def redirect_reservation
-    flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+  def redirect_reservation(test=true)
+    if test
+      flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
+    end
     flash[:delete_js] = true
     session.delete(:otherInfo)
     session.delete(:myPrestation)
@@ -448,11 +467,11 @@ class OrdersController < ApplicationController
 
   def validate_session
     if session[:myPrestation] == nil || session[:otherInfo] == nil
-      redirect_reservation
+      redirect_reservation(false)
     end
     if session[:otherInfo] != nil
       unless session[:otherInfo]["date"]
-        redirect_reservation
+        redirect_reservation(false)
       end      
     end
   end
