@@ -70,8 +70,13 @@ class PrestatairesController < Application2Controller
   end
 
   def destroy
-    @prestataire.destroy
-    redirect_to index_prestataires_path, notice: 'Le prestataire a été supprimer avec succès.'
+    o_services = OrderService.all.where(prestataire_id:@prestataire.id)
+    if o_services.empty?
+      @prestataire.destroy
+      redirect_to index_prestataires_path, notice: 'Le prestataire a été supprimer avec succès.'
+    else
+      redirect_to index_prestataires_path, notice: 'Impossible de supprimer ce prestataire car il est attribué a une commande.'
+    end
   end
 
   private

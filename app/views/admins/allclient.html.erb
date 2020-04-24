@@ -1,55 +1,3 @@
-<!-- <p id="notice"><%= notice %></p>
-
-<h1>Clients</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Adresse</th>
-      <th>Tel</th>
-      <th>Sexe</th>
-      <th>Country</th>
-      <th>Zip code</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @clients.each do |client| %>
-      <tr>
-        <td><%= client.first_name %></td>
-        <td><%= client.last_name %></td>
-        <td><%= client.adresse %></td>
-        <td><%= client.tel %></td>
-        <td><%= client.sexe %></td>
-        <td><%= client.country %></td>
-        <td><%= client.zip_code %></td>
-        <td><%= client.email %></td>
-        <td><%= link_to 'Show', show_clients_path(client) %></td>
-        <td><%= link_to 'Edit', edit_clients_path(client) %></td>
-        <td><%= link_to 'Destroy', delete_clients_path(client), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Client', new_clients_path %>
- -->
-
-
-
-<!-- <p id="notice"><%= notice %></p>
-<div class="secotionTitle">
-  <h2 id="service" class="poli1 police_massage"><span>PRESTATAIRES</span></h2>
-</div>
-<%= link_to 'Nouveau prestataire', new_prestataires_path %>
- 
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,8 +54,6 @@ top: -2px;
       <h2 id="service" class="poli1 police_massage"><span>CLIENTS/PROSPECTS</span></h2>
     </div>
     <div>
-<a href="<%= new_clients_path %>" class="btn btn-default btnPresta">  Prospect </a>
-
     </div>
     <div id="toolbar">
       <select class="form-control toolBarSelect"> 
@@ -120,10 +66,6 @@ top: -2px;
         <input class="form-control" id="myInput" type="text" placeholder="chercher dans la table..">
       </div>
     </div>
-<!--     <%= link_to 'Nouveau prestataire', new_prestataires_path %>
-  <%= link_to '<i class="fas fa-plus" title="Ajouter nouveau"></i>'.html_safe,  new_clients_path, title:"Ajouter nouveau", class:"btn btn-default"%>
--->
-
 
 <div class="row">
   <div class="col-xs-12">
@@ -183,6 +125,30 @@ top: -2px;
           </div>
         </div>
       </section>
+
+
+<!-- ==================  reto le prospect ======================= -->
+<section>
+<table>
+<% @prospects.each do |prospect| %>
+<tr>
+<td class="bs-checkbox "><input data-index="<%= prospect.id %>" name="btSelectItem" type="checkbox"></td>
+<td><%= prospect.last_name %></td>
+<td><%= prospect.first_name %></td>
+<td><%= prospect.sexe %></td>
+<td class=""><%= prospect.email %></td>
+<td><%= prospect.tel %></td>
+<td><%= prospect.zip_code %></td>
+<td>
+  <a href="<%=show_clients_path(prospect.id)%>" class="btn btn-default" title="Afficher" DATA-METHOD="GET"> <i class="far fa-eye"></i></a> 
+  <a href="<%=edit_clients_path(prospect.id)%>" class="btn btn-default" title="Editer"><i class="fas fa-user-edit"></i></a> 
+  <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_clients_path(prospect.id), method: :delete, data: { confirm: 'Etes vous sur?' }, title:"Supprimer",class:"btn btn-default" %></td>
+</tr>
+<% end %>
+</table>
+</section>
+<!-- ================================================== -->
+
       <script>
 //exporte les données sélectionnées
 var $table = $('#table');

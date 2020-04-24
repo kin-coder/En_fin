@@ -458,8 +458,8 @@ class OrdersController < ApplicationController
           OrderProduct.create(number: cadeau[2].to_i, product: current_product, order: @order)
         end
       end
-      if current_client.is_type == 'prospect'
-        current_client.update(is_type:'client')
+      unless current_client.is_client
+        current_client.update(is_client:true)
       end
       ClientMailer.confirm_order(@order.id,current_client.id).deliver_now
       redirect_to payedsuccess_path

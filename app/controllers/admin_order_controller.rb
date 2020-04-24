@@ -1,6 +1,7 @@
 class AdminOrderController < Application2Controller
 	before_action :authenticate_admin!
-  # page d'accueill pour liste des commandes
+
+  # page d'accueil du page admin
   def index
   	@order_lists = Order.all
     @orders_in_progress = []    #en cours
@@ -53,13 +54,23 @@ class AdminOrderController < Application2Controller
     @prestataire = Prestataire.find(params[:id])
     @order = Order.find(params[:order_id])
     case params[:name]
-    when "spa"
-      @order.order_services.find_by(service_id:Service.find_by_name("Location spa").id).update(prestataire:@prestataire)
-      @order.order_services.find_by(service_id:Service.find_by_name("Location spa").id).prestataire_orders.where(prestataire_id:@prestataire.id).destroy_all
-    when "massage"
-      @order.order_services.find_by(service_id:Service.find_by_name("Massage").id).update(prestataire:@prestataire)
-      @order.order_services.find_by(service_id:Service.find_by_name("Massage").id).prestataire_orders.where(prestataire_id:@prestataire.id).destroy_all
-    else
+      when "spa"
+        @order_service = @order.order_services.find_by(service_id:Service.find_by_name("Location spa").id)
+        unless @order_service.prestataire.nil?
+          PrestataireMailer.delete_prestataire_for_order(@order_service.prestataire.id,@order.id).deliver_now
+        end
+        @order_service.update(prestataire:@prestataire)
+        @order.order_services.find_by(service_id:Service.find_by_name("Location spa").id).prestataire_orders.where(prestataire_id:@prestataire.id).destroy_all
+        PrestataireMailer.accepted_orderSpa(@order_service.id,@prestataire.id).deliver_now
+      when "massage"
+        @order_service = @order.order_services.find_by(service_id:Service.find_by_name("Massage").id)
+        unless @order_service.prestataire.nil?
+          PrestataireMailer.delete_prestataire_for_order(@order_service.prestataire.id,@order.id).deliver_now
+        end
+        @order_service.update(prestataire:@prestataire)
+        @order.order_services.find_by(service_id:Service.find_by_name("Massage").id).prestataire_orders.where(prestataire_id:@prestataire.id).destroy_all
+        PrestataireMailer.accepted_orderMassage(@order_service.id,@prestataire.id).deliver_now
+      else
     end
     flash[:sucess] = "Le nouveau prestataire a été afecter à la commande"
     redirect_to admin_order_show_path(@order.id)
@@ -75,6 +86,7 @@ class AdminOrderController < Application2Controller
       @order.order_services.find_by(service_id:Service.find_by_name("Massage").id).update(prestataire:nil)
     else
     end
+    PrestataireMailer.delete_prestataire_for_order(@prestataire.id,@order.id).deliver_now
     flash[:sucess] = "Le prestataire a bien été retirer de la commande"
     redirect_to admin_order_show_path(@order.id)
   end
