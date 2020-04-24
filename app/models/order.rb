@@ -5,9 +5,6 @@ class Order < ApplicationRecord
 	#relation Order N---N Service
 	has_many :order_services, dependent: :destroy
 	has_many :services, through: :order_services
-	#pour la sauvegarde des produits N-N produit - order
-	has_many :order_products, dependent: :destroy
-	has_many :products, through: :order_products
 	# relation order 1-N order_massage
 	has_many :order_massages, dependent: :destroy
 	# relation order 1-N order_spa
