@@ -1,4 +1,4 @@
-<br><br><br><br><br><br><br><br><br><br>
+<!-- <br><br><br><br><br><br><br><br><br><br>
 
 <h1>Refuser une commande</h1>
 
@@ -15,3 +15,51 @@
 <% end %>
 
 <br><br><br><br><br><br><br><br><br><br>
+
+ -->
+<link href="/css/echec.css" rel="stylesheet">
+
+<% if flash[:no_refuse] %>
+<div class="padding confirmation">
+<div class="container">
+
+  <div class="alert alert-info alert-common alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <i class="fa fa-info-circle"></i>
+    <span>Pour annuler votre affectation à cette commande, veuiller contacter l'administrateur <br> <center>du site</center></span>
+  </div>
+
+  <div class="confirms">
+    <h2> </h2>
+    <span>Cocooning Spa vous remercie et vous souhaite de passer un agréable moment ! <br>
+    À très vite. </span>
+  </div>
+
+</div>
+</div>
+<% end %>
+
+<% if flash[:refuse] %>
+<div class="padding confirmation">
+<div class="container">
+
+  <div class="alert alert-info alert-common alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <i class="fa fa-info-circle"></i>
+
+    <span>Votre refus a été prise en compte, nous reviendrons vers vous pour de nouvelles <br><center>commandes</center></span>
+  </div>
+
+  <div class="confirms">
+    <h2> </h2>
+    <span>Cocooning Spa vous remercie et vous souhaite de passer un agréable moment ! <br>
+    À très vite.</span> 
+  </div>
+
+</div>
+</div>
+<% end %>

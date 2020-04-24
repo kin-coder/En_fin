@@ -5872,6 +5872,14 @@ footer {
   .confirmation .alert.alert-success {
     font-size: 24px;
   }
+
+  .confirmation .alert.alert-info {
+    font-size: 24px;
+    background-color: #4da5c959;
+}
+  .confirmation .alert.alert-warning {
+    font-size: 24px;
+  }
 }
 
 .confirmation .alert .fa-check {
