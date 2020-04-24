@@ -349,39 +349,24 @@ class OrdersController < ApplicationController
     if emptyIsInclude
       redirect_back(fallback_location: root_path)
     else
-      session[:otherInfo]["adresseL"] = params[:adresseL]
-      session[:otherInfo]["complAdresseL"] = params[:complAdresseL]
-      session[:otherInfo]["codePostaL"] = params[:codePostaL]
-      session[:otherInfo]["villeL"] = params[:villeL]
-      session[:otherInfo]["countryL"] = params[:countryL]
-      session[:otherInfo]["adresseF"] = params[:adresseF]
-      session[:otherInfo]["complAdresseF"] = params[:complAdresseF]
-      session[:otherInfo]["codePostaF"] = params[:codePostaF]
-      session[:otherInfo]["villeF"] = params[:villeF]
-      session[:otherInfo]["countryF"] = params[:countryF]
-      session[:otherInfo]["message"] = params[:message]
-      redirect_to summary_path
-    end
-# ==========================  ENREGISTREMENT DES COMMANDE =========
-    
-    @order = Order.new
+# ==========================  ENREGISTREMENT DES COMMANDE =========    
+      @order = Order.new
       @order.prestation_date = session[:otherInfo]["date"]
-      @order.billing_pays = session[:otherInfo]["countryF"]
-      @order.billing_ville = session[:otherInfo]["villeF"]
-      @order.billing_code_postal = session[:otherInfo]["codePostaF"]
-      @order.billing_adresse = session[:otherInfo]["adresseF"]
-      @order.billing_adresse_complet = session[:otherInfo]["complAdresseF"]
-      @order.delivery_pays = session[:otherInfo]["countryL"]
-      @order.delivery_ville = session[:otherInfo]["villeL"]
-      @order.delivery_code_postal = session[:otherInfo]["codePostaL"]
-      @order.delivery_adresse = session[:otherInfo]["adresseL"]
-      @order.delivery_adresse_complet = session[:otherInfo]["complAdresseL"]
-      @order.message = session[:otherInfo]["message"]
+      @order.billing_pays = params[:countryF]
+      @order.billing_ville = params[:villeF]
+      @order.billing_code_postal = params[:codePostaF]
+      @order.billing_adresse = params[:adresseF]
+      @order.billing_adresse_complet = params[:complAdresseF]
+      @order.delivery_pays = params[:countryL]
+      @order.delivery_ville = params[:villeL]
+      @order.delivery_code_postal = params[:codePostaL]
+      @order.delivery_adresse = params[:adresseL]
+      @order.delivery_adresse_complet = params[:complAdresseL]
+      @order.message = params[:message]
       @order.client = current_client
       @order.department = Department.find_by(name:session[:otherInfo]["department"])
       @order.country = Country.find_by(name:session[:otherInfo]["pays"])
       @order.save
-
       myPrestation = session[:myPrestation]
       unless myPrestation["spa"].empty?
         mailToOrderServiceSpa = OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: session[:otherInfo]["heureSpa"])
@@ -395,18 +380,7 @@ class OrdersController < ApplicationController
             OrderSpa.create(logement: spa["type"][0], installation: spa["type"][1], syteme_eau: spa["type"][2], order: @order, spa: current_spa)
           end
         end
-        #====== Send email to prestataire location spa =====
-        @prestataires = []
-        if @order.department.nil?
-          @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:countries).where(countries:{name:@order.country.name})
-        else
-          @prestataires = Prestataire.joins(:services).where(services:{name:"Location spa"}).joins(:departments).where(departments:{name:@order.department.name})
-        end
-        @prestataires.each do |prestataire|
-          PrestataireMailer.new_orderSpa(mailToOrderServiceSpa.id,prestataire.id).deliver_now
-        end
       end
-      
       unless myPrestation["massage"].empty?
         mailToOrderServiceMassage = OrderService.create(order: @order, service: Service.find_by(name:"Massage"), service_time: session[:otherInfo]["heureMassage"])
         myPrestation["massage"].each do |massage|
@@ -417,18 +391,6 @@ class OrdersController < ApplicationController
         end
         @order.praticien = session[:otherInfo]["praticien"]
         @order.save
-        #====== Send email to prestataire massage =====
-        @prestataires = []
-        if @order.department.nil?
-          @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:countries).where(countries:{name:@order.country.name})
-        else
-          @prestataires = Prestataire.joins(:services).where(services:{name:"Massage"}).joins(:departments).where(departments:{name:@order.department.name})
-        end
-        @prestataires.each do |prestataire|
-          if prestataire.sexe == @order.praticien || @order.praticien == "all"
-            PrestataireMailer.new_orderMassage(mailToOrderServiceMassage.id,prestataire.id).deliver_now
-          end
-        end
       end
       unless session[:otherInfo]["cadeau"].empty?
         session[:otherInfo]["cadeau"].each do |cadeau|
@@ -436,11 +398,8 @@ class OrdersController < ApplicationController
           OrderProduct.create(number: cadeau[2].to_i, product: current_product, order: @order)
         end
       end
-      unless current_client.is_client
-        current_client.update(is_client:true)
-      end
-      ClientMailer.confirm_order(@order.id,current_client.id).deliver_now
-# =================================================================
+      redirect_to summary_path
+    end
   end
 
   # 3 Affiche la recapitulatif de commande
@@ -465,8 +424,9 @@ class OrdersController < ApplicationController
     data = params['Data'].split('|')
     if data.include?("responseCode=00")
       # =============================== Enregistrement des commandes si payer
-      
-
+      puts "========="*5
+      puts "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      puts "========="*5
       # =====================================================================
       redirect_to payedsuccess_path
     else
@@ -510,19 +470,14 @@ class OrdersController < ApplicationController
   end
 
   def validate_value_in_session
-
     exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
-    
     current_date = session[:otherInfo]["date"].split("/")
-
     isExeptional = false #[curent_Spa.ordinary_price,curent_Spa.ordinary_acompte]
     if exceptionalDate.include?(current_date[0..1])
       isExeptional = true #[curent_Spa.exceptional_price,curent_Spa.exceptional_acompte]
     end
-
     @totalPrice = 0
     @totalAcompte = 0
-
     myPrestation = session[:myPrestation]
     unless myPrestation["spa"].empty?
       myPrestation["spa"].each do |spa|
@@ -594,5 +549,4 @@ class OrdersController < ApplicationController
       end
     end
   end
-
 end
