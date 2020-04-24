@@ -86,37 +86,11 @@ margin-left: 10px;
 						</div>
 						<% end %>
 
-						<% unless session[:otherInfo]["cadeau"].empty? %>
-						<div class="table-responsive">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>PRODUITS</th>
-
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>
-											<% session[:otherInfo]["cadeau"].each do |cadeau| %>
-											<div class="reservationSpa">
-												<%= cadeau[0] %> : <%= cadeau[2] %><br>
-												Prix : <%= cadeau[1].to_f * cadeau[2].to_i %> €
-											</div>
-											<% end %>  
-										</td>
-									</tr>
-									
-								</tbody>
-							</table>
-						</div>
-						<% end %>
 						<div class="table-responsive">
 							<table class="table">
 								<thead>
 									<tr>
 										<th>INFOS COMPLEMENTAIRES</th>
-
 									</tr>
 								</thead>
 								<tbody>

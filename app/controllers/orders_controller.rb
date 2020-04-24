@@ -398,11 +398,22 @@ class OrdersController < ApplicationController
   def payment
     data = params['Data'].split('|')
     if data.include?("responseCode=00")
-      # =============================== Enregistrement des commandes si payer
+      # =============================== Enregistrement des commandes si payer Mila amboarina ny mailer
       @order = current_client.orders.order('id ASC').last
       @order.update(is_validate:true)
+      
+      @order.services.each do |service|
+        case service.name
+          when "Location spa"
 
-      # send email #
+            @order.order_services.find_by(service_id:service.id)
+
+            PrestataireMailer.accepted_orderSpa(@order_service.id,@prestataire.id).deliver_now
+          when "Massage"
+            PrestataireMailer.accepted_orderMassage(@order_service.id,@prestataire.id).deliver_now
+          else
+        end
+      end
 
       # =====================================================================
       redirect_to payedsuccess_path
