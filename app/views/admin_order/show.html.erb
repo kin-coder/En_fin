@@ -127,41 +127,8 @@
 												</tbody>
 											</table>
 										</div>
-
-
 										<br>
-										<!-- Produit -->
-
-										<% unless @order.order_products.empty? %>
-										<div class="table-responsive" style="background: white;">
-											<table class="table">
-												<thead>
-													<tr>
-														<th colspan="3" style="border-bottom: 1px solid white;"><h4><center>Produits</center></h4></th>
-													</tr>
-													<tr>
-														<th>Nom</th>
-														<th>Nombres</th>
-														<th>P.U</th>
-													</tr>
-												</thead>
-												<tbody>
-													<% @order.order_products.each do |o_product| %>
-													<tr>
-														<td style="color: #666666;"><%= o_product.product.name %></td>
-														<td><%= o_product.number %></td>
-														<td><%= o_product.product.price %> €</td>
-													</tr>
-													<% end %>
-												</tbody>
-											</table>
-										</div>
-										<% end %>
-
-										<br>
-
 										<!-- livraison -->
-
 										<div class="table-responsive" style="background: white;">
 											<table class="table">
 												<thead>

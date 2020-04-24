@@ -12,16 +12,15 @@ class OrdersController < ApplicationController
     if @order_service.nil? || @prestataire.nil?
       redirect_to root_path #si erreur
     end
-
     if @order_service.prestataire.nil?
       p_o = PrestataireOrder.find_by(order_service:@order_service,prestataire:@prestataire)
       unless p_o.nil?
         p_o.destroy
       end
-      @order_service.update(is_done:true,prestataire:@prestataire)
+      @order_service.update(status_order:'traitée',prestataire:@prestataire)
       current_order = @order_service.order
-      if current_order.order_services.where(is_done:false).empty?
-        current_order.update(is_done:true)
+      if current_order.order_services.where(status_order:'en cours').empty? && current_order.order_services.where(status_order:'non traitée').empty?
+        current_order.update(status_order:'traitée')
       end
       case @order_service.service.name
         when "Location spa"

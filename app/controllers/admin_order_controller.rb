@@ -3,21 +3,10 @@ class AdminOrderController < Application2Controller
 
   # page d'accueil du page admin
   def index
-  	@order_lists = Order.all
-    @orders_in_progress = []    #en cours
-    @orders_progress = []       #traité
-    @orders_not_progress = []   #non traité
-    @order_lists.each do |order|
-      if order.is_canceled == false && order.is_done == false && order.is_future? == true
-        @orders_in_progress.push(order)
-      end
-      if order.is_canceled == false && order.is_done == true
-        @orders_progress.push(order)
-      end
-      if (order.is_canceled == true) || (order.is_done == false && order.is_future? == false)
-        @orders_not_progress.push(order)
-      end
-    end
+  	@order_lists = Order.where(is_validate:true)
+    @orders_in_progress = @order_lists(status_order: 'en cours')
+    @orders_progress = @order_lists(status_order: 'traitée')
+    @orders_not_progress = @order_lists(status_order: 'non traitée')
   end
 
   # affichage d'une commande
@@ -59,7 +48,7 @@ class AdminOrderController < Application2Controller
         unless @order_service.prestataire.nil?
           PrestataireMailer.delete_prestataire_for_order(@order_service.prestataire.id,@order.id).deliver_now
         end
-        @order_service.update(prestataire:@prestataire)
+        @order_service.update(prestataire:@prestataire,status_order:'traitée')
         @order.order_services.find_by(service_id:Service.find_by_name("Location spa").id).prestataire_orders.where(prestataire_id:@prestataire.id).destroy_all
         PrestataireMailer.accepted_orderSpa(@order_service.id,@prestataire.id).deliver_now
       when "massage"
@@ -67,10 +56,13 @@ class AdminOrderController < Application2Controller
         unless @order_service.prestataire.nil?
           PrestataireMailer.delete_prestataire_for_order(@order_service.prestataire.id,@order.id).deliver_now
         end
-        @order_service.update(prestataire:@prestataire)
+        @order_service.update(prestataire:@prestataire,status_order:'traitée')
         @order.order_services.find_by(service_id:Service.find_by_name("Massage").id).prestataire_orders.where(prestataire_id:@prestataire.id).destroy_all
         PrestataireMailer.accepted_orderMassage(@order_service.id,@prestataire.id).deliver_now
       else
+    end
+    if @order.order_services.where(status_order:'en cours').empty? && @order.order_services.where(status_order:'non traitée').empty?
+      @order.update(status_order:'traitée')
     end
     flash[:sucess] = "Le nouveau prestataire a été afecter à la commande"
     redirect_to admin_order_show_path(@order.id)
@@ -81,9 +73,11 @@ class AdminOrderController < Application2Controller
     @order = Order.find(params[:order_id])
     case params[:name]
     when "spa"
-      @order.order_services.find_by(service_id:Service.find_by_name("Location spa").id).update(prestataire:nil)
+      @order.order_services.find_by(service_id:Service.find_by_name("Location spa").id).update(prestataire:nil,status_order:'en cours')
+      @order.update(status_order:'en cours')
     when "massage"
-      @order.order_services.find_by(service_id:Service.find_by_name("Massage").id).update(prestataire:nil)
+      @order.order_services.find_by(service_id:Service.find_by_name("Massage").id).update(prestataire:nil,status_order:'en cours')
+      @order.update(status_order:'en cours')
     else
     end
     PrestataireMailer.delete_prestataire_for_order(@prestataire.id,@order.id).deliver_now
