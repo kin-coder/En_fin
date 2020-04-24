@@ -404,6 +404,10 @@ class OrdersController < ApplicationController
 
   # 3 Affiche la recapitulatif de commande
   def summary
+    
+
+    @order = current_client.orders.order('id ASC').last
+
     @amount = (@totalAcompte*100).to_i
     # Génère un numéro de transaction aléatoire
     transactionReference = "simu" + rand(100000..999999).to_s
