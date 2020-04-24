@@ -27,6 +27,10 @@ Rails.application.routes.draw do
   patch "admin/prestataires/:id", to:"prestataires#update", as:"update_prestataires"
   delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
 
+
+  # Lien pour gerer les prospect via l'admin
+  get "admin/prospects", to:"admins#allprospect", as:"index_prospects"
+
   # Lien pour gerer les client via l'admin
   get "admin/clients", to:"admins#allclient", as:"index_clients"
   get "admin/clients/:id", to:"admins#show", as:"show_clients"
@@ -62,12 +66,12 @@ Rails.application.routes.draw do
   
 
 # Page pour chaque service
-  get '/service', to:'static_page#service', as: "service"
-  get '/reservation-massage', to:'static_page#massage', as: "massage"
-  get '/location-spa', to:'static_page#location_spa', as: "spa"
+get '/service', to:'static_page#service', as: "service"
+get '/reservation-massage', to:'static_page#massage', as: "massage"
+get '/location-spa', to:'static_page#location_spa', as: "spa"
 
 # Save message and send email to admin
-  post '/admin/send-email', to:'static_page#save_message', as: "save_message"
+post '/admin/send-email', to:'static_page#save_message', as: "save_message"
 
 #ORDERS_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page tunelle d'achats dans le controller ORDERS

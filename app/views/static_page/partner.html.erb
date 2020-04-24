@@ -1,5 +1,23 @@
 <link href="/css/partner.css" rel="stylesheet">
 <link href="/css/page-devise.css" rel="stylesheet">
+<style>
+#dropZone {
+
+    width: 100px !important;
+    height: 50px;
+    padding-left: 500px;
+    padding-right: 50px;
+    padding-top: 20px;
+
+}
+
+.hida {
+    position: absolute;
+    top: 0px;
+    left: 10px;
+}
+
+</style>
 <div class="container" style="background: white;">
 
 	<section class="clearfix pageTitleArea" style="background-image: url(img/blog/pageTitle-bg.jpg);">
@@ -188,7 +206,7 @@
 				<input autofocus="autofocus" class="form-control" id="fullname" disabled="disabled" placeholder="Zone d'actions" type="text">
 				<dt>
 					<i >
-						<span class="hida fa fa-chevron-down"></span>    
+						<span class="hida fa fa-chevron-down" id='dropZone'></span>    
 						<p class="multiSel"></p>  
 					</i>
 				</dt>
