@@ -11,7 +11,6 @@ MassageSuPrice.destroy_all
 Message.destroy_all
 Order.destroy_all
 OrderMassage.destroy_all
-OrderProduct.destroy_all
 OrderService.destroy_all
 OrderSpa.destroy_all
 OtherSuPrice.destroy_all

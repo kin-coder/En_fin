@@ -5,9 +5,6 @@ class Order < ApplicationRecord
 	#relation Order N---N Service
 	has_many :order_services, dependent: :destroy
 	has_many :services, through: :order_services
-	#pour la sauvegarde des produits N-N produit - order
-	has_many :order_products, dependent: :destroy
-	has_many :products, through: :order_products
 	# relation order 1-N order_massage
 	has_many :order_massages, dependent: :destroy
 	# relation order 1-N order_spa
@@ -52,7 +49,13 @@ class Order < ApplicationRecord
   	list_prestataires = []
   	self.order_services.each do |o_s|
   		unless o_s.prestataire.nil?
-  			list_prestataires.push(o_s.prestataire)
+  			case o_s.service.name
+  				when "Location spa"
+  					list_prestataires.push(['spa',o_s.prestataire])
+  				when "Massage"
+  					list_prestataires.push(['massage',o_s.prestataire])
+  				else
+  			end
   		end
   	end
   	return list_prestataires
@@ -85,11 +88,6 @@ class Order < ApplicationRecord
 						acompte += o_spa.product.price
 					end
 				end 
-			end
-		end
-		unless self.products.empty?
-			self.order_products.each do |o_product|
-				acompte += (o_product.product.price*o_product.number)
 			end
 		end
 		return [price,acompte]
