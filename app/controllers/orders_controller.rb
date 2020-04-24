@@ -198,7 +198,7 @@ class OrdersController < ApplicationController
     timeSpas = params[:timeSpa]
     orderSpa = []
     isError = false
-    
+
     # gestion de l'heurs pour les prixs MM-DD 
     exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
     current_date = session[:otherInfo]["date"].split("/")
@@ -305,23 +305,6 @@ class OrdersController < ApplicationController
       end
     end
 
-    allCadeau = []
-    if params[:cadeau]
-      a_cadeau = params[:cadeau].split("|")
-      a_cadeau.each do |c|
-        # id: 0 nbr: 1
-        infoC = c.split("-")
-        produit = Product.find(infoC[0].to_i)
-        if produit
-          allCadeau.push([produit.name,produit.price,infoC[1].to_i])
-        else
-          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
-          redirect_back(fallback_location: root_path)
-          return
-        end
-      end
-    end
-
     if orderSpa.empty? && orderMassage.empty?
       flash[:notice] = "Veuillez selectioner au moin une prestation"
       redirect_back(fallback_location: root_path)
@@ -332,10 +315,7 @@ class OrdersController < ApplicationController
     session[:otherInfo]["heureSpa"] = params[:heureSpa]
     session[:otherInfo]["praticien"] = params[:praticien]
     session[:otherInfo]["heureMassage"] = params[:heureMassage]
-    session[:otherInfo]["cadeau"] = allCadeau
-
     redirect_to delivery_path
-
   end
 
   # 2 Selection des adresse de livraison et facturation
@@ -392,12 +372,6 @@ class OrdersController < ApplicationController
         @order.praticien = session[:otherInfo]["praticien"]
         @order.save
       end
-      unless session[:otherInfo]["cadeau"].empty?
-        session[:otherInfo]["cadeau"].each do |cadeau|
-          current_product = Product.find_by(name:cadeau[0])
-          OrderProduct.create(number: cadeau[2].to_i, product: current_product, order: @order)
-        end
-      end
       redirect_to summary_path
     end
   end
@@ -427,6 +401,10 @@ class OrdersController < ApplicationController
       # =============================== Enregistrement des commandes si payer
       @order = current_client.orders.order('id ASC').last
       @order.update(is_validate:true)
+
+
+      # send email #
+
       # =====================================================================
       redirect_to payedsuccess_path
     else
@@ -536,16 +514,6 @@ class OrdersController < ApplicationController
       end
       unless session[:otherInfo]["heureMassage"]
         redirect_reservation
-      end
-    end
-    unless session[:otherInfo]["cadeau"].empty?
-      session[:otherInfo]["cadeau"].each do |cadeau|
-        current_product = Product.find_by(name:cadeau[0])
-        unless current_product
-          redirect_reservation
-        else
-          @totalAcompte += current_product.price*cadeau[2].to_i
-        end
       end
     end
   end
