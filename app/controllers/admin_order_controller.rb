@@ -1,6 +1,7 @@
 class AdminOrderController < Application2Controller
 	before_action :authenticate_admin!
-  # page d'accueill pour liste des commandes
+
+  # page d'accueil du page admin
   def index
   	@order_lists = Order.all
     @orders_in_progress = []    #en cours
