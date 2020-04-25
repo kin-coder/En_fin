@@ -164,11 +164,18 @@
 
 <!-- SECTION5 -->
 <section class="">
-  <div class="secotionTitle secotionTitleEditPresta">
-    <h2 class="police_massage"><span><h1>Candidature de <%= @candidate.sexe %>. <%= @candidate.first_name %> <%= @candidate.last_name %></h1>
+  <% if @candidate.sexe === "Masculin" %>
+  <div class="secotionTitle">
+    <h2 class="police_massage"><span>Candidature de Mr. <%= @candidate.first_name %> <%= @candidate.last_name %>
     </span></h2>
   </div>
+  <% else %>
 
+    <div class="secotionTitle">
+    <h2 class="police_massage"><span>Candidature de Mme. <%= @candidate.first_name %> <%= @candidate.last_name %>
+    </span></h2>
+  </div>
+  <% end %>
 
   <%= form_for(@candidate, url: create_candidate_prestataire_path) do |form| %>
   <% if @candidate.errors.any? %>
