@@ -2,7 +2,6 @@ class OrdersController < ApplicationController
   protect_from_forgery except: :payment
   before_action :validate_session, only: [:delivery,:saveDelivery,:summary,:payment]
   before_action :validate_value_in_session, only: [:summary,:payment]
-  before_action :validate_pay_error_success, only: [:payedsuccess,:payederrors]
   before_action :authenticate_client!, only: [:delivery,:saveDelivery,:summary,:payment]
 
 # ~~~~~~~Accepter une commande par emails~~~~~~~~~~~
@@ -431,8 +430,9 @@ class OrdersController < ApplicationController
           else
         end
       end
-      # =====================================================================
+      ClientMailer.confirm_order(@order.id,current_client.id).deliver_now
       redirect_to payedsuccess_path
+      # =====================================================================
     else
       redirect_to payederrors_path
     end
@@ -449,10 +449,6 @@ class OrdersController < ApplicationController
   end
 
   private
-
-  def validate_pay_error_success
-    
-  end
 
   def redirect_reservation(test=true)
     if test
