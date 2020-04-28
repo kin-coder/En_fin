@@ -1,5 +1,10 @@
 <link href="/css/summary.css" rel="stylesheet">
 <div class="container" style="background: white;">
+	<style>
+i{
+margin-left: 10px;
+}
+	</style>
 
 	<div class="secotionTitle">
 		<h2 id="service" class="poli1 police_massage"><span>Récapitulatif de votre commande</span></h2>
@@ -22,23 +27,24 @@
 										<td>
 											<% session[:myPrestation]["spa"].each do |spa| %> 
 											<div class="reservationSpa">
-												Durée : <%= spa["time"] %>h<br>
+												<strong style="font-family: Quicksand; text-transform: uppercase;color: black;">spa pour <%= spa["time"] %>h </strong><br>
 												<ul>
-													<li>Type de logement : <%= spa["type"][0] %></li>
-													<li>Type d'installation : <%= spa["type"][1] %></li>
-													<li>Système d'eau : <%= spa["type"][2] %></li>
+													<li><i>Type de logement :</i> <%= spa["type"][0] %></li>
+													<li><i>Type d'installation :</i> <%= spa["type"][1] %></li>
+													<li><i>Système d'eau : </i><%= spa["type"][2] %></li>
 												</ul>
 
 												<% if spa["option"] %>
-												Option : <%= spa["option"][0][0] %> à <%= spa["option"][0][1] %> € <br>
+												<i>Option :</i> <%= spa["option"][0][0] %> à <%= spa["option"][0][1] %> € <br>
 												<% end %>
 
-												Prix : <%= spa["price"][0] %> €<br>
-												Acompte :<%= spa["price"][1] %> €<br>
+												<i>Prix : </i><%= spa["price"][0] %> €<br>
+												<i>Acompte :</i><%= spa["price"][1] %> €<br>
 												<div>
-													Date et heure de livraison : le <%= session[:otherInfo]["date"] %> à <%= session[:otherInfo]["heureSpa"] %>
+													<i>Date et heure de livraison : </i>le <%= session[:otherInfo]["date"] %> à <%= session[:otherInfo]["heureSpa"] %>
 												</div>
 											</div>
+											<hr style="">
 											<% end %>
 
 										</td>
@@ -64,11 +70,13 @@
 										<td>
 											<% session[:myPrestation]["massage"].each do |massage| %>
 											<div class="reservationSpa">
-												Pour : <%= massage["ca"] %><br>
-												Type de massage : <%= massage["su"] %><br>
-												Prix : <%= massage["price"][1] %> €<br>
-												Acompte : <%= massage["price"][2] %> €
+												<strong style="font-family: Quicksand; text-transform: uppercase;color: black;">Massage pour <%= massage["ca"] %></strong>	<br>
+												<i>Type de massage : </i> <%= massage["su"] %><br>
+												<i>Prix : </i><%= massage["price"][1] %> €<br>
+												<i>Acompte : </i> <%= massage["price"][2] %> €
 											</div>
+															<hr style="">
+
 											<% end %>
 										</td>
 									</tr>
@@ -78,62 +86,32 @@
 						</div>
 						<% end %>
 
-						<% unless session[:otherInfo]["cadeau"].empty? %>
-						<div class="table-responsive">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>PRODUITS</th>
-
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-
-										<td>
-											<% session[:otherInfo]["cadeau"].each do |cadeau| %>
-											<div class="reservationSpa">
-												<%= cadeau[0] %> : <%= cadeau[2] %><br>
-												Prix : <%= cadeau[1].to_f * cadeau[2].to_i %> €
-											</div>
-											<% end %>  
-										</td>
-									</tr>
-									
-								</tbody>
-							</table>
-						</div>
-						<% end %>
 						<div class="table-responsive">
 							<table class="table">
 								<thead>
 									<tr>
 										<th>INFOS COMPLEMENTAIRES</th>
-
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-
 										<td>
 											<div class="reservationSpa">
-												Pays : <%= session[:otherInfo]["pays"] %> <br>
-												Departement : <%= session[:otherInfo]["department"] %><br>
-												Adresse de facturation: <%= session[:otherInfo]["adresseF"] %> <br>
-												Adresse de livraison: <%= session[:otherInfo]["adresseL"] %> <br>
+												Pays : <%= @order.country.name %> <br>
+												<% unless @order.department.nil? %>
+												Departement : <%= @order.department.name %><br>
+												<% end %>
+												Adresse de facturation: <%= @order.billing_adresse %><br>
+												Adresse de livraison: <%= @order.delivery_adresse %><br>
 											</div>
-											
 										</td>
 									</tr>
-									
 								</tbody>
 							</table>
 						</div>
 
 					</div>
-				</div>
-				
-				
+				</div>		
 			</section>
 		</div>
 
@@ -141,26 +119,13 @@
 			<div class="alert alert-success">
 				Prix Total: <strong><%= @totalAcompte + @totalPrice %> € </strong><br>
 				Montant à régler sur place(CB ou éspèces uniquement) : <strong><%= @totalPrice %> €</strong><br>
-				<div>
-					<%= form_tag payment_path do %>
-					  <article>
-					    <% if flash[:error].present? %>
-					      <div id="error_explanation">
-					        <p><%= flash[:error] %></p>
-					      </div>
-					    <% end %>
-					    <label class="amount">
-					    	<span>Acompte à régler en ligne: <strong><%= @totalAcompte %> €</strong></span>
-					    </label>
-					  </article>
-
-					  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-					          data-description="Payement de l'acompte"
-					          data-amount="<%= @totalAcompte*100 %>"
-					          data-currency="eur"
-					          data-locale="auto"></script>
-					<% end %>
-				</div>
+				<span>Acompte à régler en ligne: <strong><%= @totalAcompte %> €</strong></span>
+				<form method="post" action="https://payment-webinit.simu.mercanet.bnpparibas.net/paymentInit">
+					<input type="hidden" name="Data" value="<%=@data%>">
+					<input type="hidden" name="InterfaceVersion" value="HP_2.20">
+					<input type="hidden" name="Seal" value="<%=@seal%>"> <br>
+					<center><input type="submit" value="Payer via CB" class="confirm-command btn btn-primary btn-resa-text text-btn btn-resa-text"></center><br>
+				</form>
 			</div>
 			<center class="infoImportant">
 				<h4><i class="fa fa-exclamation-circle" aria-hidden="true"></i> IMPORTANT</h4>

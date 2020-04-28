@@ -1,5 +1,12 @@
+.liPrix{
+text-align: left;
+margin-left: 15px;
+}
 
-
+.innerWrapper .table-responsive {
+    overflow-x: scroll;
+    width: 1100px;
+}
 .button {
   background-color: #EC5598; /* Green */
   border: none;

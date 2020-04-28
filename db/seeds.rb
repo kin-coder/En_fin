@@ -11,7 +11,6 @@ MassageSuPrice.destroy_all
 Message.destroy_all
 Order.destroy_all
 OrderMassage.destroy_all
-OrderProduct.destroy_all
 OrderService.destroy_all
 OrderSpa.destroy_all
 OtherSuPrice.destroy_all
@@ -42,11 +41,9 @@ end
 
 Country.find_by(name:"Belgique").services = Service.all
 Country.find_by(name:"Suisse").services = Service.all
+Country.find_by(name:"Luxembourg").services = Service.all
 
 country = Country.create(name: "France")
-
-sexe = ["Féminin","Masculin"]
-paysFake = ["Belgique","Luxembourg","Suisse","France"]
 
 # ======================== PRESTATAIRES ====================== #
 # creation département et prestataire

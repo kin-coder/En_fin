@@ -2,22 +2,6 @@ class AdminsController < Application2Controller
     before_action :authenticate_admin!
     before_action :set_client, only: [:show, :edit, :update, :destroy]
     
-    # page d'accueil du page admin
-    def index
-    	@admin = current_admin
-      @services = Service.all
-      @candidates = Candidate.all
-      @clients = Client.all
-      @countries = Country.all
-      @departments = Department.all
-      @prestataires = Prestataire.all
-      @orders = Order.all
-      # @OrderMassage = OrderMassage.all
-      # @OrderProduct = OrderProduct.all
-      # @OrderService = OrderService.all
-      # @OrderSpa = OrderSpa.all
-    end
-
     def allcandidate
         @candidates = Candidate.all
     end
@@ -94,34 +78,38 @@ class AdminsController < Application2Controller
   # GET /clients
   # GET /clients.json
   def allclient
-    @clients = Client.all
+    @clients = Client.where(is_client:true)
+    @prospects = Client.where(is_client:false)
   end
-
+  def allprospect
+    @clients = Client.where(is_client:true)
+    @prospects = Client.where(is_client:false)
+  end
   # GET /clients/1
   # GET /clients/1.json
   def show
     @orders = @client.orders
   end
 
-  # GET /clients/new
-  def new
-    @client = Client.new
-  end
+  # # GET /clients/new
+  # def new
+  #   @client = Client.new
+  # end
 
   # GET /clients/1/edit
   def edit
   end
 
-  # POST /clients
-  # POST /clients.json
-  def create
-    @client = Client.new(client_params)
-    if @client.save
-      redirect_to show_clients_path(@client), notice: 'Client was successfully created.'
-    else
-      render :new
-    end
-  end
+  # # POST /clients
+  # # POST /clients.json
+  # def create
+  #   @client = Client.new(client_params)
+  #   if @client.save
+  #     redirect_to show_clients_path(@client), notice: 'Client was successfully created.'
+  #   else
+  #     render :new
+  #   end
+  # end
 
   # PATCH/PUT /clients/1
   # PATCH/PUT /clients/1.json

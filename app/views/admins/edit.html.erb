@@ -1,63 +1,119 @@
-<h1>Editing Client</h1>
 
-<%= form_for(@client, url: update_clients_path(@client)) do |form| %>
-  <% if @client.errors.any? %>
-    <div id="error_explanation">
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">
+
+<!-- PLUGINS CSS STYLE -->
+<link href="/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="#" rel="stylesheet" id="bootstrap-rtl">
+<link href="/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/plugins/selectbox/select_option1.css" rel="stylesheet">
+<link href="/plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet" media="screen">
+<link href="/plugins/fancybox/jquery.fancybox.min.css" rel="stylesheet">
+<link href="/plugins/isotope/isotope.min.css" rel="stylesheet">
+<link href="/plugins/datepicker/datepicker.min.css" rel="stylesheet">
+<link href="/plugins/bootstrapthumbnail/bootstrap-thumbnail.css" rel="stylesheet">
+
+<!-- CUSTOM CSS -->
+<link href="/css/style.css" rel="stylesheet">
+<link href="#" rel="stylesheet" id="rtl_css">
+<link href="/css/default.css" rel="stylesheet" id="option_color">
+<link href="/css/static_page.css" rel="stylesheet">
+<link rel="stylesheet" href="carousel/carousel.css">
+<link href="/css/product.css" rel="stylesheet">
+
+<!-- FAVICON -->
+<link href="img/favicon.png" rel="shortcut icon">
+
+
+<link href="/css/partner.css" rel="stylesheet">
+<link href="/css/page-devise.css" rel="stylesheet">
+
+
+
+<!-- FORM AREA SECTION -->
+<section class="clearfix">
+  <div class="container">
+    <div class="formPart">
+     <div class="secotionTitle secotionTitleEditPresta">
+      <h2 class="police_massage"><span>Editer client</span></h2>
+    </div>
+    <div class="panel-body">
+
+     <%= form_for(@client, url: update_clients_path(@client)) do |f| %>
+     <% if @client.errors.any? %>
+     <div id="error_explanation">
       <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
 
       <ul>
         <% @client.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <li><%= message %></li>
         <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
+    <div class="switch-field">
+      <%= f.radio_button :sexe, 'Femme', :required => true %>
+      <label for="client_sexe_femme" class="radio-one">Madame</label> 
+      <span class="label2"><%= f.radio_button :sexe, 'Homme'%> 
+        <label for="client_sexe_homme" class="radio-two">Monsieur</label></span>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "Nom", class:"form-control", id:"fullname", placeholder:"Votre nom",:required => true %>
+          </div>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :adresse %>
-    <%= form.text_field :adresse %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tel %>
-    <%= form.text_field :tel %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sexe %>
-    <%= form.text_field :sexe %>
-  </div>
-
-  <div class="field">
-    <%= form.label :country %>
-    <%= form.text_field :country %>
-  </div>
-
-  <div class="field">
-    <%= form.label :zip_code %>
-    <%= form.text_field :zip_code %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+          <div class="form-group">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "Prénom", class:"form-control", id:"fullname", placeholder:"Votre prénom",:required => true %>
+          </div>
+          <div class="form-group">
+            <i class="fa fa-globe" aria-hidden="true"></i>
+            <%= f.text_field :country, autofocus: true, autocomplete: "Pays", class:"form-control", id:"fullname", placeholder:"Votre Pays",:required => true %>
+          </div>
 
 
-<%= link_to 'Show', show_clients_path(@client) %> |
-<%= link_to 'Back', index_clients_path %>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <i class="fa fa-address-card-o" aria-hidden="true"></i>                <%= f.text_field :zip_code, autofocus: true, autocomplete: "zipcode", class:"form-control", id:"fullname", placeholder:"Code Postal",:required => true %>
+          </div>
+          <div class="form-group">
+            <i class="fa fa-location-arrow" aria-hidden="true"></i>
+            <%= f.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control", id:"fullname", placeholder:"Votre adresse",:required => true %>
+          </div>
+
+          <div class="form-group">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <%= f.telephone_field :tel, autofocus: true, autocomplete: "Tel", class:"form-control", id:"fullname", placeholder:"Numéro tél",:required => true %>
+          </div>
+          <div class="form-group">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"email",:required => true %>
+          </div>
+
+        </div>
+
+
+
+        <div class="col-sm-12">
+          <div class="actions">
+            <center><%= f.submit "Valider", class:"btn btn-primary btn-block" %></center> </br>
+            <center><%= link_to 'Retour', index_clients_path, class:"btn btn-primary btn-block" %>
+            </center>
+          </div>
+        </div>
+
+
+        <% end %>
+      </div>
+
+    </div>
+  </section>

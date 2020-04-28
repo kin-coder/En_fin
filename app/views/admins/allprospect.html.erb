@@ -61,6 +61,7 @@ top: -2px;
   -webkit-overflow-scrolling: touch;
 }
 
+
 .TableAll{
 min-width: 1180px !important;
 }
@@ -68,7 +69,7 @@ min-width: 1180px !important;
   </style>
 </head>
 
-<body>
+<body onload="uncheck()">
 
 
   <p id="notice"><%= notice %></p>
@@ -77,12 +78,12 @@ min-width: 1180px !important;
       <h2 id="service" class="poli1 police_massage"><span>CLIENTS/PROSPECTS</span></h2>
     </div>
    
-   <div class="row TableAll">
+   <div class="row ">
             <div class="col-xs-12">
               <ul class="list-inline squareBtn">
             
-                <li class="li"><a href="<%= index_clients_path %>" data-method="GET" class="btn btn-common btn-theme">Client</a></li>
-                <li class="li"><a href="<%= index_prospects_path %>" data-method="GET" style="border-color: #c6b8b8 !important;" class="btn btn-common">Prospect</a></li>
+                <li class="li"><a href="<%= index_clients_path %>" data-method="GET" style="border-color: #c6b8b8 !important;" class="btn btn-common">Client</a></li>
+                <li class="li"><a href="<%= index_prospects_path %>" data-method="GET" class="btn btn-common btn-theme">Prospect</a></li>
               </ul>
             </div>
           </div>
@@ -101,7 +102,7 @@ min-width: 1180px !important;
       </div>
     </div>
 
-<div class="row">
+<div class="row TableAll">
   <div class="col-xs-12">
     <div class="innerWrapper">
       <div class="table-responsive">
@@ -111,6 +112,8 @@ min-width: 1180px !important;
         data-show-export="true"
         data-click-to-select="true"
         data-toolbar="#toolbar"
+          data-pagination="true"
+
         class="table-responsive"
         style="">
 
@@ -118,14 +121,14 @@ min-width: 1180px !important;
         <thead>
 
           <tr>
-            <th data-field="state" data-checkbox="true"></th>
-                    <th data-field="nom" data-filter-control="input" data-sortable="true">Nom</th>
-                    <th data-field="prenom">Prénom</th>
+            <th data-field="state" data-checkbox="true" ></th>
+                    <th data-field="nom" data-sortable="true"data-filter-control="input">Nom</th>
+                    <th data-field="prénom">Prénom</th>
                     <th data-field="sexe" data-filter-control="select" data-sortable="true">Sexe</th>
                     <th data-field="email" class="">Email</th>
-                    <th>Tel</th>
+                    <th data-field="tel">Tel</th>
                     <th data-field="zip_code" data-filter-control="input">Code Postal</th>
-                    <th class="actionTableAdmin" data-field="note"> <center style="line-height: 35px;">Actions
+                    <th data-field="action" class="actionTableAdmin"> <center style="line-height: 35px;">Actions
                     </center>  
                   </th>
                 </tr>
@@ -133,20 +136,20 @@ min-width: 1180px !important;
 
 
               <tbody id="myTable">
-                <% @clients.each do |client| %>
+                <% @prospects.each do |prospect| %>
                 <tr>
-                  <td class="bs-checkbox "><input data-index="<%= client.id %>" name="btSelectItem" type="checkbox"></td>
-                  <td><%= client.last_name %></td>
-                  <td><%= client.first_name %></td>
-                  <td><%= client.sexe %></td>
-                  <td class=""><%= client.email %></td>
-                  <td><%= client.tel %></td>
-                  <td><%= client.zip_code %></td>
+                  <td class="bs-checkbox "><input data-index="<%= prospect.id %>" name="btSelectItem" type="checkbox" checked="false"></td>
+                  <td><%= prospect.last_name %></td>
+                  <td><%= prospect.first_name %></td>
+                  <td><%= prospect.sexe %></td>
+                  <td class=""><%= prospect.email %></td>
+                  <td><%= prospect.tel %></td>
+                  <td><%= prospect.zip_code %></td>
     
                   <td>
-                    <a href="<%=show_clients_path(client.id)%>" class="btn btn-default" title="Afficher" DATA-METHOD="GET"> <i class="far fa-eye"></i></a> 
-                    <a href="<%=edit_clients_path(client.id)%>" class="btn btn-default" title="Editer"><i class="fas fa-user-edit"></i></a> 
-                    <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_clients_path(client.id), method: :delete, data: { confirm: 'Etes vous sur?' }, title:"Supprimer",class:"btn btn-default" %></td>
+                    <a href="<%=show_clients_path(prospect.id)%>" class="btn btn-default" title="Afficher" DATA-METHOD="GET"> <i class="far fa-eye"></i></a> 
+  <a href="<%=edit_clients_path(prospect.id)%>" class="btn btn-default" title="Editer"><i class="fas fa-user-edit"></i></a> 
+  <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_clients_path(prospect.id), method: :delete, data: { confirm: 'Etes vous sur?' }, title:"Supprimer",class:"btn btn-default" %>
 
                   </tr>
 
@@ -161,6 +164,26 @@ min-width: 1180px !important;
       </section>
 
 
+<!-- ==================  reto le prospect ======================= -->
+<!-- <section>
+<table>
+<% @prospects.each do |prospect| %>
+<tr>
+<td class="bs-checkbox "><input data-index="<%= prospect.id %>" name="btSelectItem" type="checkbox"></td>
+<td><%= prospect.last_name %></td>
+<td><%= prospect.first_name %></td>
+<td><%= prospect.sexe %></td>
+<td class=""><%= prospect.email %></td>
+<td><%= prospect.tel %></td>
+<td><%= prospect.zip_code %></td>
+<td>
+  <a href="<%=show_clients_path(prospect.id)%>" class="btn btn-default" title="Afficher" DATA-METHOD="GET"> <i class="far fa-eye"></i></a> 
+  <a href="<%=edit_clients_path(prospect.id)%>" class="btn btn-default" title="Editer"><i class="fas fa-user-edit"></i></a> 
+  <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_clients_path(prospect.id), method: :delete, data: { confirm: 'Etes vous sur?' }, title:"Supprimer",class:"btn btn-default" %></td>
+</tr>
+<% end %>
+</table>
+</section> -->
 <!-- ================================================== -->
 
       <script>
@@ -194,6 +217,18 @@ $(document).ready(function(){
   });
 });
 
+</script>
+
+<script>
+
+function UncheckAll(){ 
+      var w = document.getElementsByTagName('input'); 
+      for(var i = 0; i < w.length; i++){ 
+        if(w[i].type=='checkbox'){ 
+          w[i].checked = false; 
+        }
+      }
+  } 
 </script>
 
 </body>

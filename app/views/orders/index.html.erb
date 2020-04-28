@@ -261,22 +261,61 @@
 											<tbody>
 												<tr>
 													<td>
-														<div class="row">
-															<% @cadeaus.each do |cadeau| %>
-															<div class="col-sm-3">
-																<div><img src="/img/products/<%= cadeau.name %>.jpg" alt="" class="image-produit"> 
-																</div>
-																<div class="description-produit">
-																	<%= cadeau.name %> <br>
-																	Prix : <%= cadeau.price %> € <br>
-																	<strong>Nombres : </strong>
-																	<i class="fa fa-minus-circle cadeau-rmv btn-produits" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
-																	<strong><span class="nbr-cadeau-wa" id="<%= cadeau.id %>-nbr">0</span></strong>
-																	<i class="fa fa-plus-circle cadeau-add btn-produits" data-id="<%= cadeau.id %>" data-price="<%= cadeau.price %>" data-name="<%= cadeau.name %>"></i>
-																</div>
-															</div>
-															<% end %>
-														</div>
+														
+														<section class="clearfix offersSection">
+      <h3 class="police_spa"><span> </span>Proposés directement par nos professionnels lors de votre mise en relation</h3>
+    <div class="row spa-suppl">
+      <div class="col-sm-3 col-xs-12">
+        <span data-toggle="modal" data-target="#fontaine">
+          <div class="offerContent">
+            <img src="img/home/fontainechocolat.jpg" alt="Image Offer">
+            <div class="offerMasking">
+              <div class="offerTitle"><h4>Fontaine  <br>chocolat</h4></div>
+            </div>
+            <!-- <div class="offerPrice"><h5>€20</h5></div> -->
+          </div>
+        </span>
+      </div>
+      <div class="col-sm-3 col-xs-12">
+        <span data-toggle="modal" data-target="#tables">
+          <div class="offerContent">
+            <img src="img/home/tablemassage.jpg" alt="Image Offer">
+            <div class="offerMasking">
+              <div class="offerTitle"><h4>Table de <br>massage(avec huile)</h4></div>
+            </div>
+            <!-- <div class="offerPrice"><h5>€20</h5></div> -->
+          </div>
+        </span>
+      </div>
+      <div class="col-sm-3 col-xs-12">
+        <span data-toggle="modal" data-target="#plateaux">
+          <div class="offerContent">
+            <img src="img/home/plateau.jpg" alt="Image Offer">
+            <div class="offerMasking">
+              <div class="offerTitle"><h4>Plateau de <br>fruits frais</h4></div>
+            </div>
+            <!-- <div class="offerPrice"><h5>€20</h5></div> -->
+          </div>
+        </span>
+      </div>
+
+      <div class="col-sm-3 col-xs-12">
+        <span data-toggle="modal" data-target="#fours">
+          <div class="offerContent">
+            <img src="img/home/petitfour.jpg" alt="Image Offer">
+            <div class="offerMasking">
+              <div class="offerTitle"><h4>Petits Fours<br>salés/sucrés</h4></div>
+            </div>
+            <!-- <div class="offerPrice"><h5>€20</h5></div> -->
+          </div>
+        </span>
+      </div>
+      <div class="col-sm-12 textExtras">
+        Et bien d’autres encore (enceinte bluetooth, eau parfumée, boissons (soft et alcool), etc…)
+      </div>
+    </div>
+
+  </section>
 													</td>
 												</tr>
 											</tbody>
@@ -287,6 +326,8 @@
 							</div>
 						</div>
 					</div>
+
+
 					
 					<div class="btn-resa">
 						<%= submit_tag("Suivant", id:"submi-tag",  class:"confirm-command btn btn-primary btn-resa-text text-btn btn-resa-text") %>

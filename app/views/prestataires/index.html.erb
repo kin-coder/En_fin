@@ -13,6 +13,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="/css/echec.css" rel="stylesheet">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -26,43 +28,61 @@
   <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
   <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
 
+  <!-- Custom scripts for load all pages-->
+  <script src="/admin/js/reload-page.js"></script>
+
   <style>
     .toolBarSelect{
       position: absolute;
-      left: 880px;
+      left: 845px;
     }
 
     .search-control{
       position: relative;
-      left: 655px;
+      left: 622px;
     }
 
+    .btnPresta{
+      position: relative;
+      top: 45px;
+      left: 35px;
+      z-index: 100;
+    }
+    #AjoutNouveau{
+      position: absolute;
+      left: -24px;
+      font-size: 35px;
+      top: -2px;
+    }
   </style>
+
 </head>
 
 <body>
-
 
   <p id="notice"><%= notice %></p>
   <section class="">
     <div class="secotionTitle">
       <h2 id="service" class="poli1 police_massage"><span>PRESTATAIRES</span></h2>
     </div>
+<% unless  @prestataires.empty? %>
+
+    <div>
+      <a href="<%= new_prestataires_path %>" class="btn btn-default btnPresta"> <i class="fas fa-plus-circle" id="AjoutNouveau"></i> Ajout prestataire </a>
+
+    </div>
 
     <div id="toolbar">
       <select class="form-control toolBarSelect"> 
-
-        <option value="selected">Exporter les sélectionnés</option>
         <option value="all">Exporter tous</option>
+        <option value="selected">Exporter les sélectionnés</option>
+        
         
       </select>
       <div class="search-control">
         <input class="form-control" id="myInput" type="text" placeholder="chercher dans la table..">
       </div>
     </div>
-<!--     <%= link_to 'Nouveau prestataire', new_prestataires_path %>
--->
-
 
 <div class="row">
   <div class="col-xs-12">
@@ -82,61 +102,82 @@
 
           <tr>
             <th data-field="state" data-checkbox="true"></th>
-                    <th data-field="nom" data-filter-control="input" data-sortable="true">Nom</th>
-                    <th data-field="prenom" data-filter-control="input" data-sortable="true">Prénom</th>
-                    <th data-field="sexe" data-filter-control="select" data-sortable="true">Sexe</th>
-                    <th data-field="email" class="hidden">Email</th>
-                    <th>Tel</th>
-                    <th data-field="zip_code" data-filter-control="input">Code Postal</th>
-                    <th data-field="activite" data-filter-control="input" data-sortable="true">Activité</th>
-                    <th data-field="zone" data-filter-control="input" data-sortable="true" style="max-width: 20px;">Zone d'activité</th>
-                    <th class="actionTableAdmin" data-field="note"> <center style="line-height: 35px;">Actions <br>     <%= link_to '<i class="fas fa-plus" title="Ajouter"></i>'.html_safe,  new_prestataires_path, title:"Ajouter", class:"btn btn-default"%>
-                    </center>  
-                  </th>
-                </tr>
-              </thead>
+            <th data-field="nom" data-filter-control="input" data-sortable="true">Nom</th>
+            <th data-field="prenom" data-filter-control="input" data-sortable="true">Prénom</th>
+            <th data-field="sexe" data-filter-control="select" data-sortable="true">Sexe</th>
+            <th data-field="email" class="hidden">Email</th>
+            <th>Tel</th>
+            <th data-field="zip_code" data-filter-control="input">Code Postal</th>
+            <th data-field="activite" data-filter-control="input" data-sortable="true">Activité</th>
+            <th data-field="zone" data-filter-control="input" data-sortable="true" style="max-width: 20px;">Zone d'activité</th>
+            <th class="actionTableAdmin" data-field="note"> <center style="line-height: 35px;">Actions <br>     <%= link_to '<i class="fas fa-plus" title="Ajouter"></i>'.html_safe,  new_prestataires_path, title:"Ajouter", class:"btn btn-default"%>
+            </center>  
+          </th>
+        </tr>
+      </thead>
 
 
-              <tbody id="myTable">
-                <% @prestataires.each do |prestataire| %>
-                <tr>
-                  <td class="bs-checkbox "><input data-index="<%= prestataire.id %>" name="btSelectItem" type="checkbox"></td>
-                  <td><%= prestataire.last_name %></td>
-                  <td><%= prestataire.first_name %></td>
-                  <td><%= prestataire.sexe %></td>
-                  <td class="hidden"><%= prestataire.email %></td>
-                  <td><%= prestataire.tel %></td>
-                  <td><%= prestataire.zip_code %></td>
-                  <td><% prestataire.services.each do |service| %>
-                    <%= service.name %> <br>
-                    <% end %>
+      <tbody id="myTable">
+        <% @prestataires.each do |prestataire| %>
+        <tr>
+          <td class="bs-checkbox "><input data-index="<%= prestataire.id %>" name="btSelectItem" type="checkbox"></td>
+          <td><%= prestataire.last_name %></td>
+          <td><%= prestataire.first_name %></td>
+          <td><%= prestataire.sexe %></td>
+          <td class="hidden"><%= prestataire.email %></td>
+          <td><%= prestataire.tel %></td>
+          <td><%= prestataire.zip_code %></td>
+          <td><% prestataire.services.each do |service| %>
+            <%= service.name %> <br>
+            <% end %>
 
-                  </td>
+          </td>
 
-                  <td>
+          <td>
 
-                    <% prestataire.countries.each do |serviceZone| %>
-                    <%= serviceZone.name %><br>
-                    <% end %>
+            <% prestataire.countries.each do |serviceZone| %>
+            <%= serviceZone.name %><br>
+            <% end %>
 
-                  </td>
-                  <td>
-                    <a href="<%=show_prestataires_path(prestataire.id)%>" class="btn btn-default" title="Afficher"><i class="far fa-eye"></i></a> 
-                    <a href="<%=edit_prestataires_path(prestataire.id)%>" class="btn btn-default" title="Editer"><i class="fas fa-user-edit"></i></a> 
-                    <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_prestataires_path(prestataire.id), method: :delete, data: { confirm: 'Etes vous sur?' }, title:"Supprimer",class:"btn btn-default" %></td>
+          </td>
+          <td>
+            <a href="<%=show_prestataires_path(prestataire.id)%>" class="btn btn-default" title="Afficher"><i class="far fa-eye" data-method="GET"></i></a> 
+            <a href="<%=edit_prestataires_path(prestataire.id)%>" class="btn btn-default" title="Editer"><i class="fas fa-user-edit"></i></a> 
+            <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_prestataires_path(prestataire.id), method: :delete, data: { confirm: 'Etes vous sur?' }, title:"Supprimer",class:"btn btn-default" %></td>
 
-                  </tr>
+          </tr>
 
-                  <% end %>
+          <% end %>
 
 
-                </tbody>
-              </table>
-            </div>
-          </div>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<% else %>
+  <div class="confirmation">
+    <div class="container">
+
+      <div class="alert alert-info alert-common alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+        <center><i class="fa fa-info-circle" aria-hidden="true"></i>
+          <span>Aucun prestataire enregistré pour l'instant</span></center>
         </div>
-      </section>
-      <script>
+
+      </div>
+    </div>
+    
+   <center><div>
+      <a href="<%= new_prestataires_path %>" class="btn btn-default btnPresta"> <i class="fas fa-plus-circle" id="AjoutNouveau"></i> Ajout prestataire </a>
+
+    </div></center>
+    <% end %>
+</section>
+<script>
 //exporte les données sélectionnées
 var $table = $('#table');
 

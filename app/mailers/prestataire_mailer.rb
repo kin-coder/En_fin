@@ -47,4 +47,10 @@ class PrestataireMailer < ApplicationMailer
     mail(to: @prestataire.email, subject: "​Commande déjà prise !")
   end
 
+  def delete_prestataire_for_order(id,order_id)
+    @prestataire = Prestataire.find(id)
+    @order_id = order_id
+    mail(to: @prestataire.email, subject: "Prise en charge annulée!")
+  end
+
 end

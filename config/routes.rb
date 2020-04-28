@@ -11,8 +11,6 @@ Rails.application.routes.draw do
   devise_for :admins, path: 'admins',:skip => [:registrations], controllers: { 
     sessions: "admins/sessions"
   }
- 
-  get "/admin", to:"admins#index", as:"index_admin"
 
   # creation et gestion candidature
   get "/admin/candidates", to:"admins#allcandidate", as:"allcandidate"
@@ -29,20 +27,26 @@ Rails.application.routes.draw do
   patch "admin/prestataires/:id", to:"prestataires#update", as:"update_prestataires"
   delete "admin/prestataires/:id", to:"prestataires#destroy", as:"delete_prestataires"
 
+
+  # Lien pour gerer les prospect via l'admin
+  get "admin/prospects", to:"admins#allprospect", as:"index_prospects"
+
   # Lien pour gerer les client via l'admin
   get "admin/clients", to:"admins#allclient", as:"index_clients"
   get "admin/clients/:id", to:"admins#show", as:"show_clients"
-  get "admin/clients-new", to:"admins#new", as:"new_clients"
-  post "admin/clients-new", to:"admins#create", as:"create_clients"
   get "admin/clients/:id/edit", to:"admins#edit", as:"edit_clients"
   patch "admin/clients/:id", to:"admins#update", as:"update_clients"
   delete "admin/clients/:id", to:"admins#destroy", as:"delete_clients"
 
   # Lien pour gerer la commande via l'admin
-  get "admin/liste-des-commande", to:'admin_order#index', as:"admin_order_index"
-  get "admin/commande-numero/:id", to:'admin_order#show', as:"admin_order_show"
+#================================================================================#
+  get "/admin", to:'admin_order#index', as:"admin_order_index"
+  get "/admin/commande-traitées", to:'admin_order#processed', as:"admin_order_processed"
+  get "/admin/commande-non-traitées", to:'admin_order#notprocessed', as:"admin_order_not_processed"
+#================================================================================#
+  get "/admin/commande-numero/:id", to:'admin_order#show', as:"admin_order_show"
   #lien pour la modification de commande
-  get "admin/commande-numero/:id/edit", to:'admin_order#edit', as:"admin_order_edit"
+  get "/admin/commande-numero/:id/edit", to:'admin_order#edit', as:"admin_order_edit"
   
   patch "/admin/:name/:order_id/modifier-prestataire/:id", to:"admin_order#afect_prestataire", as:"afect_prestataire_to_order"
   delete "/admin/:name/:order_id/retirer-prestataire/:id", to:"admin_order#delete_prestataire", as:"delete_prestataire_to_order"
@@ -66,12 +70,12 @@ Rails.application.routes.draw do
   
 
 # Page pour chaque service
-  get '/service', to:'static_page#service', as: "service"
-  get '/reservation-massage', to:'static_page#massage', as: "massage"
-  get '/location-spa', to:'static_page#location_spa', as: "spa"
+get '/service', to:'static_page#service', as: "service"
+get '/reservation-massage', to:'static_page#massage', as: "massage"
+get '/location-spa', to:'static_page#location_spa', as: "spa"
 
 # Save message and send email to admin
-  post '/admin/send-email', to:'static_page#save_message', as: "save_message"
+post '/admin/send-email', to:'static_page#save_message', as: "save_message"
 
 #ORDERS_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page tunelle d'achats dans le controller ORDERS

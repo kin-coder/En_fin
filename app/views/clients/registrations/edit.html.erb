@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <center>
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
@@ -66,3 +66,88 @@
 </center>
 
 </div>
+-->
+
+<link href="/css/page-devise.css" rel="stylesheet">
+
+<!-- FORM AREA SECTION -->
+<section class="clearfix formArea">
+  <div class="container">
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="panel panel-default formPart">
+      <div class="panel-heading patternbg"><center><span style="color:deeppink;">Editer mon compte</span></center></div>
+      <div class="panel-body">
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <div class="switch-field">
+          <%= f.radio_button :sexe, 'Femme', :required => true %>
+          <label for="client_sexe_femme" class="radio-one">Madame</label> 
+          <span class="label2"><%= f.radio_button :sexe, 'Homme'%> 
+            <label for="client_sexe_homme" class="radio-two">Monsieur</label></span>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <%= f.text_field :last_name, autofocus: true, autocomplete: "Nom", class:"form-control", id:"fullname", placeholder:"Votre nom",:required => true %>
+              </div>
+
+              <div class="form-group">
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <%= f.text_field :first_name, autofocus: true, autocomplete: "Prénom", class:"form-control", id:"fullname", placeholder:"Votre prénom",:required => true %>
+              </div>
+              <div class="form-group">
+                <i class="fa fa-globe" aria-hidden="true"></i>
+                <%= f.text_field :country, autofocus: true, autocomplete: "Pays", class:"form-control", id:"fullname", placeholder:"Votre Pays",:required => true %>
+              </div>
+              <div class="form-group">
+                <i class="fa fa-address-card-o" aria-hidden="true"></i>                <%= f.text_field :zip_code, autofocus: true, autocomplete: "zipcode", class:"form-control", id:"fullname", placeholder:"Code Postal",:required => true %>
+              </div>
+
+
+              <div class="form-group">
+                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                <%= f.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control", id:"fullname", placeholder:"Votre adresse",:required => true %>
+              </div>
+
+            </div>
+
+            <div class="col-sm-6">
+
+
+              <div class="form-group">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <%= f.telephone_field :tel, autofocus: true, autocomplete: "Tel", class:"form-control", id:"fullname", placeholder:"Numéro tél",:required => true %>
+              </div>
+              <div class="form-group">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"email",:required => true %>
+              </div>
+
+              <div class="form-group">
+                <i class="fa fa-key" aria-hidden="true"></i>
+                <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"fullname", placeholder:"Nouveau mot de pass",:required => true %>
+              </div>
+
+              <div class="form-group">
+                <i class="fa fa-undo fa-stack-2x"></i>
+                <i class="fa fa-key fa-stack-1x"></i>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", id:"fullname", placeholder:"confirmer mot de pass", :required => true %>
+              </div>
+
+              <div class="form-group">
+                <i class="fa fa-key" aria-hidden="true"></i>
+                <%= f.password_field :current_password, autocomplete: "current-password",:required => true, class:"form-control", id:"fullname", placeholder:"Ancien mot de pass",:required => true %>
+              </div>
+
+            </div>
+            <div class="actions">
+              <center><%= f.submit "Envoyer", class:"btn btn-primary btn-block" %></center> </br>
+              <center><p><p><%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr?" }, method: :delete, style:"border-radius:20px; padding:5px;" %></p>
+
+                <%= link_to "Retour", :back %></p></center>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </section>

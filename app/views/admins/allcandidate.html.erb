@@ -1,80 +1,300 @@
-<link href="/admin/css/table-responsive.css" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Commandes</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+			<link href="/css/echec.css" rel="stylesheet">
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<h1>Liste des candidats</h1>
-<table border="2">
-	<tr>
-		<td>Action</td>
-		<td>Sexe</td>
-		<td>Prenom</td>
-		<td>Nom</td>
-		<td>Née</td>
-		<td>Raison sociale</td>
-		<td>Siren</td>
-		<td>Email</td>
-		<td>Telephone</td>
-		<td>Adresse</td>
-		<td>Code postale</td>
-		<td>Ville</td>
-		<td>Pays</td>
-		<td>Services</td>
-		<td>Zone de prestations</td>
-	</tr>
-	<% @candidates.each do |candidate| %>
-	<tr>
-		<td><a href="<%= show_edit_candidate_path(candidate.id) %>">Afficher</a></td>
-		<td> <%= candidate.sexe %> </td>
-		<td> <%= candidate.first_name %> </td>
-		<td> <%= candidate.last_name %> </td>
-		<td> <%= candidate.date_of_birth %> </td>
-		<td> <%= candidate.raison_sociale %> </td>
-		<td> <%= candidate.siren %> </td>
-		<td> <%= candidate.email %> </td>
-		<td> <%= candidate.telephone %> </td>
-		<td> <%= candidate.adresse %> </td>
-		<td> <%= candidate.zip_code %> </td>
-		<td> <%= candidate.ville %> </td>
-		<td> <%= candidate.country %> </td>
-		<td> <%= candidate.services.gsub("|",", ") %> </td>
-		<td> <%= candidate.countries.gsub("|",", ") %><% if candidate.departments %> (dép: <%= candidate.departments.gsub("|",", ") %>)<% end %></td>
-	</tr>
-	<% end %>
-</table>
+	<link href="/admin/css/table-responsive.css" rel="stylesheet">
 
-<!-- 
-<div class="page">
-	
-	<table class="layout display responsive-table">
-		<thead>
-			<tr>
-				<th>Nom du prestataire</th>
-				<th>Sexe</th>
-				<th>Adresse email</th>
-				<th><center>Action</center></th>
-			</tr>
-		</thead>
-		<tbody>
-			
-			<tr>
+	<link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
 
+	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
 
-				<td class="organisationnumber"></td>
-
-				<td class="organisationnumber"></td>
-				<td class="organisationname"></td>
+	<!-- Custom scripts for load all pages-->
+	<script src="/admin/js/reload-page.js"></script>
 
 
 
-				<td class="action">
-					<center>
-						
 
-					</center>		
-				</td>
-			</tr>
-			
-		</tbody>
-	</table>
-	
+	<style>
+		/* Paste this css to your style sheet file or under head tag */
+  /* This only works with JavaScript,
+  if it's not present, don't show loader */
 
-</div> -->
+  .innerWrapper .table-responsive .table tbody tr .encoursTd, .traitéeTd, .nontraitéeTd{
+  	position: relative;
+  	top: 10px;
+  	left: 3px;
+  	font-size: 16px;
+  	padding: 5px !important; 
+  	width: 105px;
+  	display: block ;
+  }
+
+  .filters ul{
+  	display: flex;
+  	justify-content: center;
+  	list-style: none;
+  	border-bottom: 2px solid #D9D9D9;
+  	margin: 30px 15px;
+
+  }
+  .filters ul li{
+  	display: inlnie-block;
+  	text-align: center;
+  	margin-right: 50px;
+  	padding: 0 5px 8px 5px;
+  	font-weight: 700;
+  	font-size: 16px; 
+  	cursor: pointer;
+  	position: relative;
+  	margin-bottom: -2px;
+  	color: #777;
+  	transition: 0.3s;
+  	text-transform: uppercase;
+  }
+  .filters ul li:hover{
+  	color: deeppink;
+  }
+  .filters ul li.is-checked{
+  	border-bottom: 2px solid deeppink;
+  	color: deeppink;
+  }
+  .filters ul li:last-child{
+  	margin-right: 0;
+  }
+
+  ul li{
+  	margin-left: 5px;
+  }
+  .aucuncandidat{
+  	border-top: 1px solid black;
+  	height: 100px;
+  	font-size: x-large;
+  }
+  .button {
+  	width: 50px;
+  }
+  .button1 {
+  	padding: 5px 2px;
+  }
+</style>
+
+<style>
+	.toolBarSelect{
+		position: absolute;
+		left: 800px;
+	}
+
+	.search-control{
+		position: relative;
+		left: 575px;
+	}
+
+</style>
+</head>
+
+<body>
+
+	<section class="">
+		
+		<div class="secotionTitle">
+			<h2 id="service" class="poli1 police_massage"><span>LISTE DES CANDIDATS</span></h2>
+		</div>
+		<% unless @candidates.empty? %>
+
+		<div id="toolbar">
+			<select class="form-control toolBarSelect"> 
+				<option value="all">Exporter tous</option>
+				<option value="selected">Exporter les sélectionnés</option>
+
+
+			</select>
+			<div class="search-control">
+				<input class="form-control" id="myInput" type="text" placeholder="chercher dans la table..">
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="innerWrapper">
+					<div class="table-responsive">
+						<table id="table" 
+						data-toggle="table"
+						data-filter-control="true" 
+						data-show-export="true"
+						data-click-to-select="true"
+						data-toolbar="#toolbar"
+						class="table-responsive"
+						style="">
+
+						<thead>
+
+							<tr>
+								<th data-field="state" data-checkbox="true"></th>
+
+
+
+
+								<th>Action</th>
+								<th>Sexe</th>
+								<th>Prenom</th>
+								<th>Nom</th>
+								<th>Date de naissance</th>
+								<th data-field="services" data-filter-control="input">Services</th>
+								<th data-field="zone" data-filter-control="input">Zone de prestations</th>
+								<th>Raison sociale</th>
+								<th >Siren</th>
+								<th>Email</th>
+								<th>Télephone</th>
+								<th>Adresse</th>
+								<th>Code postale</th>
+								<th>Ville</th>
+								<th>Pays</th>
+
+							</tr>
+						</thead>
+
+
+						<tbody id="myTable">
+
+							
+
+							<% @candidates.each do |candidate| %>
+							<tr>
+								<td class="bs-checkbox "><input data-index="" name="btSelectItem" type="checkbox"></td>
+
+								<td>
+									<%= link_to '<i class="fas fa-eye button1 "></i>'.html_safe, show_edit_candidate_path(candidate.id), title:"Apropos du candidat",class:"button1 button" %> 
+								</td>
+								<td> <%= candidate.sexe %> </td>
+								<td> <%= candidate.first_name %> </td>
+								<td> <%= candidate.last_name %> </td>
+								<td> <%= candidate.date_of_birth %> </td>
+								<td> <%= candidate.services.gsub("|",", ") %> </td>
+								<td> <%= candidate.countries.gsub("|",", ") %><% if candidate.departments %> : <br>	<ul><li> <%= candidate.departments.gsub("|",", ") %></li></ul><% end %></td>
+								<td> <%= candidate.raison_sociale %> </td>
+								<td style="max-width: 70px;word-wrap: break-word;"> <%= candidate.siren %> </td>
+								<td> <%= candidate.email %> </td>
+								<td> <%= candidate.telephone %> </td>
+								<td> <%= candidate.adresse %> </td>
+								<td> <%= candidate.zip_code %> </td>
+								<td> <%= candidate.ville %> </td>
+								<td> <%= candidate.country %> </td>
+								
+							</tr>
+							
+						</tbody>
+						<% end %> 
+
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<% else%> 
+
+		<div class="confirmation">
+			<div class="container">
+
+				<div class="alert alert-info alert-common alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true"></span>
+					</button>
+					<center><i class="fa fa-info-circle" aria-hidden="true"></i>
+					<span>Aucun candidat a postulé pour l'instant</span></center>
+				</div>
+
+			</div>
+		</div>
+		<% end %> 
+	</section>
+
+
+	<script>
+//exporte les données sélectionnées
+var $table = $('#table');
+
+$(function() {
+	$('#toolbar').find('select').change(function () {
+		$table.bootstrapTable('destroy').bootstrapTable({
+			exportDataType: $(this).val(),
+			exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf']
+		})
+	}).trigger('change')
+})
+
+
+var trBoldBlue = $("table");
+
+$(trBoldBlue).on("click", "tr", function (){
+	$(this).toggleClass("bold-blue");
+});
+
+$(document).ready(function(){
+	$("#myInput").on("keyup", function() {
+		var value = $(this).val().toLowerCase();
+		$("#myTable tr").filter(function() {
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		});
+	});
+});
+
+</script>
+
+
+<script>
+	var $grid = $('.grid').isotope({
+  // options
+  itemSelector: '.grid-item',
+  layoutMode: 'fitRows',
+});
+
+// change is-checked class on buttons
+var $buttonGroup = $('.filters');
+$buttonGroup.on( 'click', 'li', function( event ) {
+	$buttonGroup.find('.is-checked').removeClass('is-checked');
+	var $button = $( event.currentTarget );
+	$button.addClass('is-checked');
+	var filterValue = $button.attr('data-filter');
+	$grid.isotope({ filter: filterValue });
+});
+
+</script>
+
+
+<script>
+
+
+
+	// afficher commande traitées	
+	let comTraitéeAafficher = document.getElementById("classRemoveTraitée");
+	let comTraitéeClic = document.getElementById("traitée");
+
+	comTraitéeClic.addEventListener("click", function(){
+		comTraitéeAafficher.classList.remove("hidden");
+	});
+
+		// afficher commande non traitées	
+		let comNonTraitéeAafficher = document.getElementById("classRemoveNonTraitée");
+		let comNonTraitéeClic = document.getElementById("nontraitée");
+
+		comNonTraitéeClic.addEventListener("click", function(){
+			comNonTraitéeAafficher.classList.remove("hidden");
+		});
+
+	</script>
+</body>
+</html>

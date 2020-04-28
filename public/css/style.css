@@ -2162,7 +2162,7 @@ textarea.form-control {
 }
 
 .navbar-brand {
-  height: auto;
+  height: 0px;
   float: left;
   position: absolute;
   z-index: 1000;
@@ -2170,8 +2170,8 @@ textarea.form-control {
 }
 
 .navbar-brand > img {
-  width: 70%;
-  margin-top: 10px;
+  width: 78%;
+  margin-top: 8px;
   margin-left: 20px;
 }
 
@@ -2186,11 +2186,11 @@ textarea.form-control {
 
 @media (min-width: 768px) {
   .navbar-brand {
-    height: auto;
+    height: 0px;
     padding: 40px 50px;
     width: 230px;
     top: -45px;
-    box-shadow: 0 7px 21px rgba(0, 0, 0, 0.1);
+    
   }
 }
 
@@ -2210,7 +2210,13 @@ textarea.form-control {
     background-color: transparent;
   }
 }
-
+    @media only screen and (max-width: 600px) {
+      .navbar-brand > img {
+    width: 78%;
+    margin-top: -6px;
+    margin-left: 20px;
+}
+}
 @media (min-width: 768px) {
   .navbar-default .navbar-nav.navbar-right {
     margin-right: 40px;
@@ -5866,6 +5872,14 @@ footer {
   .confirmation .alert.alert-success {
     font-size: 24px;
   }
+
+  .confirmation .alert.alert-info {
+    font-size: 24px;
+    background-color: #4da5c959;
+}
+  .confirmation .alert.alert-warning {
+    font-size: 24px;
+  }
 }
 
 .confirmation .alert .fa-check {
@@ -8656,3 +8670,46 @@ left: -10px;
   .sidebar {
     width: 18rem !important;
   }
+
+  #leftFa{
+width: 30px;
+font-size: 20px;
+  }
+
+  .shadow {
+    box-shadow: 0 .15rem 1.75rem 0 
+    rgb(236, 85, 152) !important;
+}
+
+.badge-counter {
+color: #fff !important;
+background-color:#e74a3b !important;
+}
+
+.navbarTopLeft{
+font-family: "Quicksand";
+font-weight: bold;
+}
+
+.sidebar #sidebarToggle {
+
+    width: 2.5rem;
+    height: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    position: relative;
+    left: 150px;
+    top: -370px;
+/*reduire slideLeft
+*/    display: none;
+
+}
+
+.container-fluid {
+    max-width: max-content;
+}
+
+.sidebar .nav-item .nav-link {
+    width: 18rem !important;
+}
