@@ -266,6 +266,28 @@
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  .offerContent {
+    width: 115px;
+    height: 115px;
+}
+
+.offerContent .offerTitle h4 {
+    margin: 0;
+    font-size: 14px;
+}
+
+
+.textExtras {
+
+    font-size: 17px;
+    color: 
+
+    black;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 35px;
+
+}
   .set-zones{
     background: deeppink;
     opacity: 0.8;
@@ -1503,6 +1525,24 @@ max-width: 100px;
 
   /* Large devices (laptops/desktops, 992px and up) */
   @media only screen and (min-width: 992px) {
+
+    .offerContent {
+    width: 180px;
+    height: 180px;
+}
+
+
+.textExtras {
+
+    font-size: 17px;
+    color: 
+
+    black;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 35px;
+
+}
     .nbr-cadeau{
       margin-left: 15px;
       max-width: 100%;
