@@ -13,6 +13,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="/css/echec.css" rel="stylesheet">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -63,6 +65,7 @@
     <div class="secotionTitle">
       <h2 id="service" class="poli1 police_massage"><span>PRESTATAIRES</span></h2>
     </div>
+<% unless  @prestataires.empty? %>
 
     <div>
       <a href="<%= new_prestataires_path %>" class="btn btn-default btnPresta"> <i class="fas fa-plus-circle" id="AjoutNouveau"></i> Ajout prestataire </a>
@@ -80,9 +83,6 @@
         <input class="form-control" id="myInput" type="text" placeholder="chercher dans la table..">
       </div>
     </div>
-<!--     <%= link_to 'Nouveau prestataire', new_prestataires_path %>
--->
-
 
 <div class="row">
   <div class="col-xs-12">
@@ -155,6 +155,27 @@
     </div>
   </div>
 </div>
+
+<% else %>
+  <div class="confirmation">
+    <div class="container">
+
+      <div class="alert alert-info alert-common alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+        <center><i class="fa fa-info-circle" aria-hidden="true"></i>
+          <span>Aucun prestataire enregistré pour l'instant</span></center>
+        </div>
+
+      </div>
+    </div>
+    
+   <center><div>
+      <a href="<%= new_prestataires_path %>" class="btn btn-default btnPresta"> <i class="fas fa-plus-circle" id="AjoutNouveau"></i> Ajout prestataire </a>
+
+    </div></center>
+    <% end %>
 </section>
 <script>
 //exporte les données sélectionnées
