@@ -39,7 +39,11 @@ Rails.application.routes.draw do
   delete "admin/clients/:id", to:"admins#destroy", as:"delete_clients"
 
   # Lien pour gerer la commande via l'admin
+#================================================================================#
   get "/admin", to:'admin_order#index', as:"admin_order_index"
+  get "/admin/commande-traitées", to:'admin_order#processed', as:"admin_order_processed"
+  get "/admin/commande-non-traitées", to:'admin_order#notprocessed', as:"admin_order_not_processed"
+#================================================================================#
   get "/admin/commande-numero/:id", to:'admin_order#show', as:"admin_order_show"
   #lien pour la modification de commande
   get "/admin/commande-numero/:id/edit", to:'admin_order#edit', as:"admin_order_edit"

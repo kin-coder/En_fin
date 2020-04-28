@@ -1,8 +1,24 @@
 class AdminOrderController < Application2Controller
 	before_action :authenticate_admin!
-  # page d'accueil du page admin
-  def index
+  # page d'accueil du page admin(commande traitée) 
+  def processed
   	@order_lists = Order.where(is_validate:true)
+    @orders_in_progress = @order_lists.where(status_order:'en cours')
+    @orders_progress = @order_lists.where(status_order:'traitée')
+    @orders_not_progress = @order_lists.where(status_order:'non traitée')
+  end
+
+    # page d'accueil du page admin(commande non traitée) 
+  def notprocessed
+    @order_lists = Order.where(is_validate:true)
+    @orders_in_progress = @order_lists.where(status_order:'en cours')
+    @orders_progress = @order_lists.where(status_order:'traitée')
+    @orders_not_progress = @order_lists.where(status_order:'non traitée')
+  end
+
+    # page d'accueil du page admin(commande encours) 
+  def index
+    @order_lists = Order.where(is_validate:true)
     @orders_in_progress = @order_lists.where(status_order:'en cours')
     @orders_progress = @order_lists.where(status_order:'traitée')
     @orders_not_progress = @order_lists.where(status_order:'non traitée')

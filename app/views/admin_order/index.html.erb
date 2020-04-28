@@ -7,10 +7,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-
 	<link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
-
 	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
 	<script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
 	<script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
@@ -93,6 +90,17 @@
 			<h2 id="service" class="poli1 police_massage"><span>COMMANDES</span></h2>
 		</div>
 
+		   <div class="row TableAll">
+            <div class="col-xs-12">
+              <ul class="list-inline squareBtn">
+            
+                <li class="li"><a href="<%= admin_order_index_path %>" data-method="GET" class="btn btn-common btn-theme">En cours</a></li>
+                <li class="li"><a href="<%= admin_order_processed_path %>" data-method="GET" style="border-color: #c6b8b8 !important;" class="btn btn-common">Traitée</a></li>
+                <li class="li"><a href="<%= admin_order_not_processed_path %>" data-method="GET" style="border-color: #c6b8b8 !important;" class="btn btn-common">Non traitée</a></li>
+              </ul>
+            </div>
+          </div>
+
 			<div id="toolbar">
 				<select class="form-control toolBarSelect"> 
 					<option value="all">Exporter tous</option>
@@ -129,7 +137,6 @@
 									<th>Montant</th>
 									<th data-field="zip_code" data-filter-control="input">Code Postal</th>
 
-									<th data-field="status" data-filter-control="select" data-sortable="true">Status</th>
 
 									<th class="actionTableAdmin" data-field="note"> <center style="line-height: 35px;">Actions
 									</center>  
@@ -159,69 +166,11 @@
 								<td><%= order.client.first_name %> <%= order.client.last_name %></td>
 								<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
 								<td><%= order.client.zip_code %></td>
-								<td class="encoursTd label label-primary" >En cours</td>
 
 								<td><a href="<%= admin_order_show_path(order.id) %>" class="btn btn-default">Afficher</a></td>
 							</tr>
 							<% end %>
 
-
-							<!-- =============Traitées=========== -->
-
-							<% @orders_progress.each do |order| %>
-							<% prestataires = order.prestataires %>
-							<% prixAcompte = order.totalPrice %>
-							<tr>
-								<td class="bs-checkbox "><input data-index="" name="btSelectItem" type="checkbox"></td>
-
-								<td><%= order.id %></td>
-								<td><%= order.prestation_date %></td>
-								<td>
-									<% unless  prestataires.empty? %>
-									<% prestataires.each do |prestataire| %>
-									<ul><li><%= prestataire[1].first_name %> <%= prestataire[1].last_name %></li>
-									</ul>
-									<% end %>
-									<% else %>
-									aucun
-									<% end %>
-								</td>
-								<td><%= order.client.first_name %> <%= order.client.last_name %></td>
-								<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
-								<td><%= order.client.zip_code %></td>
-								<td class=" traitéeTd label label-success">Traitée</td>
-								<td><a href="<%= admin_order_show_path(order.id) %>" class="btn btn-default">Afficher</a></td>
-							</tr>
-							<% end %>
-
-
-							<!-- ===============================Non Traitées============== -->
-
-							<% @orders_not_progress.each do |order| %>
-							<% prestataires = order.prestataires %>
-							<% prixAcompte = order.totalPrice %>
-							<tr>
-								<td class="bs-checkbox "><input data-index="" name="btSelectItem" type="checkbox"></td>
-								<td><%= order.id %></td>
-								<td><%= order.prestation_date %></td>
-								<td>
-									<% unless  prestataires.empty? %>
-									<% prestataires.each do |prestataire| %>
-									<ul>
-										<li><%= prestataire[1].first_name %> <%= prestataire.last_name %></li>
-									</ul>
-									<% end %>
-									<% else %>
-									aucun
-									<% end %>
-								</td>
-								<td><%= order.client.first_name %> <%= order.client.last_name %></td>
-								<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
-								<td><%= order.client.zip_code %></td>
-								<td class=" nontraitéeTd label label-warning">Non Traitée</td>
-								<td><a href="<%= admin_order_show_path(order.id) %>" class="btn btn-default">Afficher</a></td>
-							</tr>
-							<% end %>
 
 						</tbody>
 					</table>
