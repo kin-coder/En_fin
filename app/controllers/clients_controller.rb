@@ -7,7 +7,7 @@ class ClientsController < ApplicationController
 
   def profil #list de tous les commande
   	@client = current_client
-    @order_lists = @client.orders
+    @order_lists = @client.orders.where(is_validate:true)
     @orders_progress = @order_lists.where(status_order:'traitée')
     @orders_not_progress = @order_lists.where(status_order:'non traitée')
     @orders_in_progress = @order_lists.where(status_order:'en cours')
