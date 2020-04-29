@@ -30,7 +30,6 @@ Rails.application.routes.draw do
 
   # Lien pour gerer les prospect via l'admin
   get "admin/prospects", to:"admins#allprospect", as:"index_prospects"
-
   # Lien pour gerer les client via l'admin
   get "admin/clients", to:"admins#allclient", as:"index_clients"
   get "admin/clients/:id", to:"admins#show", as:"show_clients"
