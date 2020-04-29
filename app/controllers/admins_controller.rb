@@ -86,7 +86,7 @@ class AdminsController < Application2Controller
   # GET /clients/1
   # GET /clients/1.json
   def show
-    @orders = @client.orders
+    @orders = @client.orders.where(is_validate:true)
   end
 
   # # GET /clients/new
