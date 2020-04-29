@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-			<link href="/css/echec.css" rel="stylesheet">
+	<link href="/css/echec.css" rel="stylesheet">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -132,7 +132,7 @@
 				<div class="innerWrapper">
 					<div class="table-responsive">
 						<table id="table" 
-						data-toggle="table"
+						
 						data-filter-control="true" 
 						data-show-export="true"
 						data-click-to-select="true"
@@ -144,9 +144,6 @@
 
 							<tr>
 								<th data-field="state" data-checkbox="true"></th>
-
-
-
 
 								<th>Action</th>
 								<th>Sexe</th>
@@ -174,7 +171,7 @@
 
 							<% @candidates.each do |candidate| %>
 							<tr>
-								<td class="bs-checkbox "><input data-index="" name="btSelectItem" type="checkbox"></td>
+								<td class="bs-checkbox "><input data-index="<%= candidate.id %>" name="btSelectItem" type="checkbox"></td>
 
 								<td>
 									<%= link_to '<i class="fas fa-eye button1 "></i>'.html_safe, show_edit_candidate_path(candidate.id), title:"Apropos du candidat",class:"button1 button" %> 
@@ -195,9 +192,9 @@
 								<td> <%= candidate.country %> </td>
 								
 							</tr>
-							
+							<% end %> 
 						</tbody>
-						<% end %> 
+
 
 					</table>
 				</div>
@@ -214,16 +211,16 @@
 						<span aria-hidden="true"></span>
 					</button>
 					<center><i class="fa fa-info-circle" aria-hidden="true"></i>
-					<span>Aucun candidat a postulé pour l'instant</span></center>
+						<span>Aucun candidat a postulé pour l'instant</span></center>
+					</div>
+
 				</div>
-
 			</div>
-		</div>
-		<% end %> 
-	</section>
+			<% end %> 
+		</section>
 
 
-	<script>
+		<script>
 //exporte les données sélectionnées
 var $table = $('#table');
 
@@ -274,27 +271,5 @@ $buttonGroup.on( 'click', 'li', function( event ) {
 
 </script>
 
-
-<script>
-
-
-
-	// afficher commande traitées	
-	let comTraitéeAafficher = document.getElementById("classRemoveTraitée");
-	let comTraitéeClic = document.getElementById("traitée");
-
-	comTraitéeClic.addEventListener("click", function(){
-		comTraitéeAafficher.classList.remove("hidden");
-	});
-
-		// afficher commande non traitées	
-		let comNonTraitéeAafficher = document.getElementById("classRemoveNonTraitée");
-		let comNonTraitéeClic = document.getElementById("nontraitée");
-
-		comNonTraitéeClic.addEventListener("click", function(){
-			comNonTraitéeAafficher.classList.remove("hidden");
-		});
-
-	</script>
 </body>
 </html>

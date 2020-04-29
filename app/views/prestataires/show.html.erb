@@ -70,6 +70,12 @@
 		} 
 
 	}
+
+	#container{
+		width: 1000px;
+	}
+
+
 </style>
 
 </head>
@@ -172,46 +178,84 @@
 													<% end %>
 												</ul>
 											</span></li>
+
 											<li><strong>Departements  </strong><span class="">
 
 												<ul>
+													<% if @departments.length < 3 %>
 													<% @departments.each do |department| %>
+
 													<li><%= department.name %></li>
 													<% end %>
-												</ul>
-											</span></li>
-										</ul>
+
+													<% else %>
+													<% @departments[0..1].each do |department| %>
+
+													<li><%= department.name %></li>
+													<% end %>
+
+
+
+													<span id="lirelasuite" style="display:none;width:200px;"> 
+														<% @departments[2..].each do |department| %>
+
+														<li><%= department.name %></li>
+														<% end %>
+
+													</span> 
+
+													<a href="javascript:void(0)" class="lire-btn" id="more" aria-hidden="true" onclick="document.getElementById('lirelasuite').style.display = 'block'; this.style.display = 'none';">Plus...</a href="">
+
+
+
+
+
+														<% end %>
+													</ul>
+												</span></li>
+											</ul>
+										</div>
 									</div>
 								</div>
-							</div>
 
+							</div>
 						</div>
 					</div>
 				</div>
+
+
+
 			</div>
+		</section>
+	</div>
 
 
-
-		</div>
-	</section>
-</div>
-
-
-<!-- JAVASCRIPTS -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
-<script src="plugins/owl-carousel/owl.carousel.min.js"></script>
-<script src="plugins/isotope/isotope.min.js"></script>
-<script src="plugins/fancybox/jquery.fancybox.min.js"></script>
-<script src="plugins/isotope/isotope-triger.min.js"></script>
-<script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
-<script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
-<script src="plugins/syotimer/jquery.syotimer.min.js"></script>
-<script src="js/custom.js"></script>
+	<!-- JAVASCRIPTS -->
+	<script src="plugins/jquery/jquery.min.js"></script>
+	<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+	<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
+	<script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+	<script src="plugins/isotope/isotope.min.js"></script>
+	<script src="plugins/fancybox/jquery.fancybox.min.js"></script>
+	<script src="plugins/isotope/isotope-triger.min.js"></script>
+	<script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+	<script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
+	<script src="plugins/syotimer/jquery.syotimer.min.js"></script>
+	<script src="js/custom.js"></script>
 
 
+	<script>
+		// afficher commande non traitées	
+		let affiche = document.getElementById("affiche");
+		let plusClic = document.getElementById("plus");
+
+		plusClic.addEventListener("click", function(){
+			affiche.classList.remove("hidden");
+		});
+
+
+	</script>
 
 </body>
 
