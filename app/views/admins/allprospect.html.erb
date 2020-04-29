@@ -162,31 +162,7 @@ min-width: 1180px !important;
           </div>
         </div>
       </section>
-
-
-<!-- ==================  reto le prospect ======================= -->
-<!-- <section>
-<table>
-<% @prospects.each do |prospect| %>
-<tr>
-<td class="bs-checkbox "><input data-index="<%= prospect.id %>" name="btSelectItem" type="checkbox"></td>
-<td><%= prospect.last_name %></td>
-<td><%= prospect.first_name %></td>
-<td><%= prospect.sexe %></td>
-<td class=""><%= prospect.email %></td>
-<td><%= prospect.tel %></td>
-<td><%= prospect.zip_code %></td>
-<td>
-  <a href="<%=show_clients_path(prospect.id)%>" class="btn btn-default" title="Afficher" DATA-METHOD="GET"> <i class="far fa-eye"></i></a> 
-  <a href="<%=edit_clients_path(prospect.id)%>" class="btn btn-default" title="Editer"><i class="fas fa-user-edit"></i></a> 
-  <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_clients_path(prospect.id), method: :delete, data: { confirm: 'Etes vous sur?' }, title:"Supprimer",class:"btn btn-default" %></td>
-</tr>
-<% end %>
-</table>
-</section> -->
-<!-- ================================================== -->
-
-      <script>
+<script>
 //exporte les données sélectionnées
 var $table = $('#table');
 
