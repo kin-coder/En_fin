@@ -30,41 +30,41 @@
       left: 620px;
     }
     .btnPresta{
-position: relative;
-top: 45px;
-left: 5px;
-z-index: 100;
+      position: relative;
+      top: 45px;
+      left: 5px;
+      z-index: 100;
     }
-#AjoutNouveau{
-position: absolute;
-left: -24px;
-font-size: 35px;
-top: -2px;
-  }
+    #AjoutNouveau{
+      position: absolute;
+      left: -24px;
+      font-size: 35px;
+      top: -2px;
+    }
 
-  .squareBtn, .fullRoundBtn, .roundBtn {
+    .squareBtn, .fullRoundBtn, .roundBtn {
 
-    margin: 0 0 30px 0;
-    margin-left: 0px;
-    
-    position: absolute;
-    left: 430px;
-    top: 11px;
-    z-index: 100;
+      margin: 0 0 30px 0;
+      margin-left: 0px;
+      
+      position: absolute;
+      left: 430px;
+      top: 11px;
+      z-index: 100;
 
-}
+    }
 
-.table-responsive {
-  display: table;
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
+    .table-responsive {
+      display: table;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
 
 
-.TableAll{
-min-width: 1180px !important;
-}
+    .TableAll{
+      min-width: 1180px !important;
+    }
 
   </style>
 </head>
@@ -77,16 +77,16 @@ min-width: 1180px !important;
     <div class="secotionTitle">
       <h2 id="service" class="poli1 police_massage"><span>CLIENTS/PROSPECTS</span></h2>
     </div>
-   
-   <div class="row ">
-            <div class="col-xs-12">
-              <ul class="list-inline squareBtn">
-            
-                <li class="li"><a href="<%= index_clients_path %>" data-method="GET" style="border-color: #c6b8b8 !important;" class="btn btn-common">Client</a></li>
-                <li class="li"><a href="<%= index_prospects_path %>" data-method="GET" class="btn btn-common btn-theme">Prospect</a></li>
-              </ul>
-            </div>
-          </div>
+    
+    <div class="row ">
+      <div class="col-xs-12">
+        <ul class="list-inline squareBtn">
+          
+          <li class="li"><a href="<%= index_clients_path %>" data-method="GET" style="border-color: #c6b8b8 !important;" class="btn btn-common">Client</a></li>
+          <li class="li"><a href="<%= index_prospects_path %>" data-method="GET" class="btn btn-common btn-theme">Prospect</a></li>
+        </ul>
+      </div>
+    </div>
 
 
 
@@ -102,91 +102,67 @@ min-width: 1180px !important;
       </div>
     </div>
 
-<div class="row TableAll">
-  <div class="col-xs-12">
-    <div class="innerWrapper">
-      <div class="table-responsive">
-        <table id="table" 
-        data-toggle="table"
-        data-filter-control="true" 
-        data-show-export="true"
-        data-click-to-select="true"
-        data-toolbar="#toolbar"
-          data-pagination="true"
+    <div class="row TableAll">
+      <div class="col-xs-12">
+        <div class="innerWrapper">
+          <div class="table-responsive">
+            <table id="table" 
+            data-toggle="table"
+            data-filter-control="true" 
+            data-show-export="true"
+            data-click-to-select="true"
+            data-toolbar="#toolbar"
+            data-pagination="true"
 
-        class="table-responsive"
-        style="">
-
-
-        <thead>
-
-          <tr>
-            <th data-field="state" data-checkbox="true" ></th>
-                    <th data-field="nom" data-sortable="true"data-filter-control="input">Nom</th>
-                    <th data-field="prénom">Prénom</th>
-                    <th data-field="sexe" data-filter-control="select" data-sortable="true">Sexe</th>
-                    <th data-field="email" class="">Email</th>
-                    <th data-field="tel">Tel</th>
-                    <th data-field="zip_code" data-filter-control="input">Code Postal</th>
-                    <th data-field="action" class="actionTableAdmin"> <center style="line-height: 35px;">Actions
-                    </center>  
-                  </th>
-                </tr>
-              </thead>
+            class="table-responsive"
+            style="">
 
 
-              <tbody id="myTable">
-                <% @prospects.each do |prospect| %>
-                <tr>
-                  <td class="bs-checkbox "><input data-index="<%= prospect.id %>" name="btSelectItem" type="checkbox" checked="false"></td>
-                  <td><%= prospect.last_name %></td>
-                  <td><%= prospect.first_name %></td>
-                  <td><%= prospect.sexe %></td>
-                  <td class=""><%= prospect.email %></td>
-                  <td><%= prospect.tel %></td>
-                  <td><%= prospect.zip_code %></td>
-    
-                  <td>
-                    <a href="<%=show_clients_path(prospect.id)%>" class="btn btn-default" title="Afficher" DATA-METHOD="GET"> <i class="far fa-eye"></i></a> 
-  <a href="<%=edit_clients_path(prospect.id)%>" class="btn btn-default" title="Editer"><i class="fas fa-user-edit"></i></a> 
-  <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_clients_path(prospect.id), method: :delete, data: { confirm: 'Etes vous sur?' }, title:"Supprimer",class:"btn btn-default" %>
+            <thead>
 
-                  </tr>
-
-                  <% end %>
+              <tr>
+                <th data-field="state" data-checkbox="true" ></th>
+                <th data-field="nom" data-sortable="true"data-filter-control="input">Nom</th>
+                <th data-field="prénom">Prénom</th>
+                <th data-field="sexe" data-filter-control="select" data-sortable="true">Sexe</th>
+                <th data-field="email" class="">Email</th>
+                <th data-field="tel">Tel</th>
+                <th data-field="zip_code" data-filter-control="input">Code Postal</th>
+                <th data-field="action" class="actionTableAdmin"> <center style="line-height: 35px;">Actions
+                </center>  
+              </th>
+            </tr>
+          </thead>
 
 
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <tbody id="myTable">
+            <% @prospects.each do |prospect| %>
+            <tr>
+              <td class="bs-checkbox "><input data-index="<%= prospect.id %>" name="btSelectItem" type="checkbox" checked="false"></td>
+              <td><%= prospect.last_name %></td>
+              <td><%= prospect.first_name %></td>
+              <td><%= prospect.sexe %></td>
+              <td class=""><%= prospect.email %></td>
+              <td><%= prospect.tel %></td>
+              <td><%= prospect.zip_code %></td>
+              
+              <td>
+                <a href="<%=show_clients_path(prospect.id)%>" class="btn btn-default" title="Afficher" DATA-METHOD="GET"> <i class="far fa-eye"></i></a> 
+                <a href="<%=edit_clients_path(prospect.id)%>" class="btn btn-default" title="Editer"><i class="fas fa-user-edit"></i></a> 
+                <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_clients_path(prospect.id), method: :delete, data: { confirm: 'Etes vous sur?' }, title:"Supprimer",class:"btn btn-default" %>
+
+              </tr>
+
+              <% end %>
+
+
+            </tbody>
+          </table>
         </div>
-      </section>
-
-
-<!-- ==================  reto le prospect ======================= -->
-<!-- <section>
-<table>
-<% @prospects.each do |prospect| %>
-<tr>
-<td class="bs-checkbox "><input data-index="<%= prospect.id %>" name="btSelectItem" type="checkbox"></td>
-<td><%= prospect.last_name %></td>
-<td><%= prospect.first_name %></td>
-<td><%= prospect.sexe %></td>
-<td class=""><%= prospect.email %></td>
-<td><%= prospect.tel %></td>
-<td><%= prospect.zip_code %></td>
-<td>
-  <a href="<%=show_clients_path(prospect.id)%>" class="btn btn-default" title="Afficher" DATA-METHOD="GET"> <i class="far fa-eye"></i></a> 
-  <a href="<%=edit_clients_path(prospect.id)%>" class="btn btn-default" title="Editer"><i class="fas fa-user-edit"></i></a> 
-  <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_clients_path(prospect.id), method: :delete, data: { confirm: 'Etes vous sur?' }, title:"Supprimer",class:"btn btn-default" %></td>
-</tr>
-<% end %>
-</table>
-</section> -->
-<!-- ================================================== -->
-
-      <script>
+      </div>
+    </div>
+  </section>
+  <script>
 //exporte les données sélectionnées
 var $table = $('#table');
 
@@ -221,13 +197,13 @@ $(document).ready(function(){
 
 <script>
 
-function UncheckAll(){ 
-      var w = document.getElementsByTagName('input'); 
-      for(var i = 0; i < w.length; i++){ 
-        if(w[i].type=='checkbox'){ 
-          w[i].checked = false; 
-        }
+  function UncheckAll(){ 
+    var w = document.getElementsByTagName('input'); 
+    for(var i = 0; i < w.length; i++){ 
+      if(w[i].type=='checkbox'){ 
+        w[i].checked = false; 
       }
+    }
   } 
 </script>
 

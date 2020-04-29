@@ -7,23 +7,10 @@ class ClientsController < ApplicationController
 
   def profil #list de tous les commande
   	@client = current_client
-    @order_lists = @client.orders
-
-    @orders_in_progress = []    #en cours
-    @orders_progress = []       #traité
-    @orders_not_progress = []   #non traité
-    
-    @order_lists.each do |order|
-      if order.is_canceled == false && order.is_done == false && order.is_future? == true
-        @orders_in_progress.push(order)
-      end
-      if order.is_canceled == false && order.is_done == true
-        @orders_progress.push(order)
-      end
-      if (order.is_canceled == true) || (order.is_done == false && order.is_future? == false)
-        @orders_not_progress.push(order)
-      end
-    end
+    @order_lists = @client.orders.where(is_validate:true)
+    @orders_progress = @order_lists.where(status_order:'traitée')
+    @orders_not_progress = @order_lists.where(status_order:'non traitée')
+    @orders_in_progress = @order_lists.where(status_order:'en cours')
   end
 
   def order #show d'une order

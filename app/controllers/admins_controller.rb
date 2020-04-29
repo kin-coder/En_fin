@@ -79,16 +79,14 @@ class AdminsController < Application2Controller
   # GET /clients.json
   def allclient
     @clients = Client.where(is_client:true)
-    @prospects = Client.where(is_client:false)
   end
   def allprospect
-    @clients = Client.where(is_client:true)
     @prospects = Client.where(is_client:false)
   end
   # GET /clients/1
   # GET /clients/1.json
   def show
-    @orders = @client.orders
+    @orders = @client.orders.where(is_validate:true)
   end
 
   # # GET /clients/new

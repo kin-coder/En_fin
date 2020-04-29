@@ -92,120 +92,120 @@
 			<h2 id="service" class="poli1 police_massage"><span>COMMANDES</span></h2>
 		</div>
 
-		   <div class="row TableAll">
-            <div class="col-xs-12">
-              <ul class="list-inline squareBtn">
-            
-                <li class="li"><a href="<%= admin_order_index_path %>" data-method="GET" class="btn btn-common " style="border-color: #c6b8b8 !important;">En cours</a></li>
-                <li class="li"><a href="<%= admin_order_processed_path%>" data-method="GET" style="border-color: #c6b8b8 !important;" class="btn btn-common btn-theme">Traitée</a></li>
-                <li class="li"><a href="<%= admin_order_not_processed_path %>" data-method="GET" style="border-color: #c6b8b8 !important;" class="btn btn-common">Non traitée</a></li>
-              </ul>
-            </div>
-          </div>
-<% unless  @orders_progress.empty? %>
-
-			<div id="toolbar">
-				<select class="form-control toolBarSelect"> 
-					<option value="all">Exporter tous</option>
-					<option value="selected">Exporter les sélectionnés</option>
+		<div class="row TableAll">
+			<div class="col-xs-12">
+				<ul class="list-inline squareBtn">
 					
-
-				</select>
-				<div class="search-control">
-					<input class="form-control" id="myInput" type="text" placeholder="chercher dans la table..">
-				</div>
+					<li class="li"><a href="<%= admin_order_index_path %>" data-method="GET" class="btn btn-common " style="border-color: #c6b8b8 !important;">En cours</a></li>
+					<li class="li"><a href="<%= admin_order_processed_path%>" data-method="GET" style="border-color: #c6b8b8 !important;" class="btn btn-common btn-theme">Traitée</a></li>
+					<li class="li"><a href="<%= admin_order_not_processed_path %>" data-method="GET" style="border-color: #c6b8b8 !important;" class="btn btn-common">Non traitée</a></li>
+				</ul>
 			</div>
+		</div>
+		<% unless  @orders_progress.empty? %>
 
+		<div id="toolbar">
+			<select class="form-control toolBarSelect"> 
+				<option value="all">Exporter tous</option>
+				<option value="selected">Exporter les sélectionnés</option>
+				
 
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="innerWrapper">
-						<div class="table-responsive">
-							<table id="table" 
-							data-toggle="table"
-							data-filter-control="true" 
-							data-show-export="true"
-							data-click-to-select="true"
-							data-toolbar="#toolbar"
-							class="table-responsive"
-							style="">
-							<thead>
-
-								<tr>
-									<th data-field="state" data-checkbox="true"></th>
-									<th data-field="commandeID" data-filter-control="input" data-sortable="true">N°</th>
-									<th data-field="date" data-filter-control="input" data-sortable="true">Date (MM/JJ/AAAA)</th>
-									<th data-field="presta" data-filter-control="input">Prestataire associé</th>
-									<th data-field="nom" data-filter-control="input">Nom du client</th>
-									<th>Montant</th>
-									<th data-field="zip_code" data-filter-control="input">Code Postal</th>
-
-									
-
-									<th class="actionTableAdmin" data-field="note"> <center style="line-height: 35px;">Actions
-									</center>  
-								</th>
-							</tr>
-						</thead>
-
-
-						<tbody id="myTable">
-
-							
-
-							<!-- =============Traitées=========== -->
-
-							<% @orders_progress.each do |order| %>
-							<% prestataires = order.prestataires %>
-							<% prixAcompte = order.totalPrice %>
-							<tr>
-								<td class="bs-checkbox "><input data-index="" name="btSelectItem" type="checkbox"></td>
-
-								<td><%= order.id %></td>
-								<td><%= order.prestation_date %></td>
-								<td>
-									<% unless  prestataires.empty? %>
-									<% prestataires.each do |prestataire| %>
-									<ul><li><%= prestataire[1].first_name %> <%= prestataire[1].last_name %></li>
-									</ul>
-									<% end %>
-									<% else %>
-									aucun
-									<% end %>
-								</td>
-								<td><%= order.client.first_name %> <%= order.client.last_name %></td>
-								<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
-								<td><%= order.client.zip_code %></td>
-								<td><a href="<%= admin_order_show_path(order.id) %>" class="btn btn-default">Afficher</a></td>
-							</tr>
-							<% end %>
-
-
-							
-
-						</tbody>
-					</table>
-				</div>
+			</select>
+			<div class="search-control">
+				<input class="form-control" id="myInput" type="text" placeholder="chercher dans la table..">
 			</div>
 		</div>
 
-		<% else %>
-		<div class="confirmation">
-			<div class="container">
 
-				<div class="alert alert-info alert-common alert-dismissible" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true"></span>
-					</button>
-					<center><i class="fa fa-info-circle" aria-hidden="true"></i>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="innerWrapper">
+					<div class="table-responsive">
+						<table id="table" 
+						data-toggle="table"
+						data-filter-control="true" 
+						data-show-export="true"
+						data-click-to-select="true"
+						data-toolbar="#toolbar"
+						class="table-responsive"
+						style="">
+						<thead>
+
+							<tr>
+								<th data-field="state" data-checkbox="true"></th>
+								<th data-field="commandeID" data-filter-control="input" data-sortable="true">N°</th>
+								<th data-field="date" data-filter-control="input" data-sortable="true">Date (MM/JJ/AAAA)</th>
+								<th data-field="presta" data-filter-control="input">Prestataire associé</th>
+								<th data-field="nom" data-filter-control="input">Nom du client</th>
+								<th>Montant</th>
+								<th data-field="zip_code" data-filter-control="input">Code Postal</th>
+
+								
+
+								<th class="actionTableAdmin" data-field="note"> <center style="line-height: 35px;">Actions
+								</center>  
+							</th>
+						</tr>
+					</thead>
+
+
+					<tbody id="myTable">
+
+						
+
+						<!-- =============Traitées=========== -->
+
+						<% @orders_progress.each do |order| %>
+						<% prestataires = order.prestataires %>
+						<% prixAcompte = order.totalPrice %>
+						<tr>
+							<td class="bs-checkbox "><input data-index="" name="btSelectItem" type="checkbox"></td>
+
+							<td><%= order.id %></td>
+							<td><%= order.prestation_date %></td>
+							<td>
+								<% unless  prestataires.empty? %>
+								<% prestataires.each do |prestataire| %>
+								<ul><li><%= prestataire[1].first_name %> <%= prestataire[1].last_name %></li>
+								</ul>
+								<% end %>
+								<% else %>
+								aucun
+								<% end %>
+							</td>
+							<td><%= order.client.first_name %> <%= order.client.last_name %></td>
+							<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
+							<td><%= order.client.zip_code %></td>
+							<td><a href="<%= admin_order_show_path(order.id) %>" class="btn btn-default">Afficher</a></td>
+						</tr>
+						<% end %>
+
+
+						
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<% else %>
+	<div class="confirmation">
+		<div class="container">
+
+			<div class="alert alert-info alert-common alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true"></span>
+				</button>
+				<center><i class="fa fa-info-circle" aria-hidden="true"></i>
 					<span>Aucune commande enregistrée pour l'instant</span></center>
 				</div>
 
 			</div>
 		</div>
-							
+		
 
-<% end %>
+		<% end %>
 	</section>
 
 

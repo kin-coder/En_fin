@@ -3,25 +3,19 @@ class AdminOrderController < Application2Controller
   # page d'accueil du page admin(commande traitée) 
   def processed
   	@order_lists = Order.where(is_validate:true)
-    @orders_in_progress = @order_lists.where(status_order:'en cours')
     @orders_progress = @order_lists.where(status_order:'traitée')
-    @orders_not_progress = @order_lists.where(status_order:'non traitée')
   end
 
-    # page d'accueil du page admin(commande non traitée) 
+  # page d'accueil du page admin(commande non traitée) 
   def notprocessed
     @order_lists = Order.where(is_validate:true)
-    @orders_in_progress = @order_lists.where(status_order:'en cours')
-    @orders_progress = @order_lists.where(status_order:'traitée')
     @orders_not_progress = @order_lists.where(status_order:'non traitée')
   end
 
-    # page d'accueil du page admin(commande encours) 
+  # page d'accueil du page admin(commande encours) 
   def index
     @order_lists = Order.where(is_validate:true)
     @orders_in_progress = @order_lists.where(status_order:'en cours')
-    @orders_progress = @order_lists.where(status_order:'traitée')
-    @orders_not_progress = @order_lists.where(status_order:'non traitée')
   end
 
   # affichage d'une commande

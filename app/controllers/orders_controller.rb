@@ -399,6 +399,7 @@ class OrdersController < ApplicationController
       # =============================== Enregistrement des commandes si payer Mila amboarina ny mailer
       @order = current_client.orders.order('id ASC').last
       @order.update(is_validate:true)
+      current_client.update(is_client:true)
       @order.services.each do |service|
         case service.name
           when "Location spa"

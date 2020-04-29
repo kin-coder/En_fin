@@ -163,7 +163,7 @@
           <% hidden_field_tag "prestataire[country_ids][]", nil %> 
           <% @countries.each do |country| %>
           <li>
-            <%= check_box_tag "prestataire[country_ids][]", country.id, @prestataire.country_ids.include?(country.id), id:dom_id(country), class:"js-country" %>
+            <%= check_box_tag "prestataire[country_ids][]", country.id, @prestataire.country_ids.include?(country.id), id:dom_id(country), class:"js-country",'data-cname':country.name  %>
             <%= label_tag dom_id(country), country.name %><br>
           </li> 
           <% end %>
@@ -268,32 +268,34 @@
 
 <script>
 
-  main();
 
-  function main(){
-    let countries = document.querySelectorAll('.js-country');
+main();
 
-    countries.forEach(country => {
-      country.addEventListener('change',showDepartementIfFrance);
-      if(country.value == "4" && country.checked == true){
-        document.getElementById("js-department-list").classList.remove("hidden")
-      }
-    }); 
-  }
+function main(){
+  let countries = document.querySelectorAll('.js-country');
 
-  function showDepartementIfFrance() {
-    let departments = document.querySelectorAll('.js-department');
-    if(this.checked == true && this.value == "4"){
+  countries.forEach(country => {
+    country.addEventListener('change',showDepartementIfFrance);
+    if(country.dataset.cname == "France" && country.checked == true){
       document.getElementById("js-department-list").classList.remove("hidden")
     }
-    if(this.checked == false && this.value == "4"){
-      document.getElementById("js-department-list").classList.remove("hidden")
-      document.getElementById("js-department-list").classList.add("hidden")
-      departments.forEach(department => {
-        department.checked = false
-      })
-    }
+  }); 
+}
+
+function showDepartementIfFrance() {
+  let departments = document.querySelectorAll('.js-department');
+  if(this.checked == true && this.dataset.cname == "France"){
+    document.getElementById("js-department-list").classList.remove("hidden")
   }
+  if(this.checked == false && this.dataset.cname == "France"){
+    document.getElementById("js-department-list").classList.remove("hidden")
+    document.getElementById("js-department-list").classList.add("hidden")
+    departments.forEach(department => {
+      department.checked = false
+    })
+  }
+}
+
 
 
 </script>

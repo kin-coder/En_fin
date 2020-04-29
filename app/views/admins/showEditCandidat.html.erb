@@ -1,115 +1,3 @@
-<!-- <h1>Candidature de <%= @candidate.sexe %>. <%= @candidate.first_name %> <%= @candidate.last_name %></h1>
-
-<%= form_for(@candidate, url: create_candidate_prestataire_path) do |form| %>
-  <% if @candidate.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@candidate.errors.count, "error") %> prohibited this prestataire from being saved:</h2>
-      <ul>
-        <% @candidate.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <input type="text" name="id" style="display:none;" value="<%=@candidate.id%>">
-
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :telephone %>
-    <%= form.text_field :telephone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :adresse %>
-    <%= form.text_field :adresse %>
-  </div>
-
-  <div class="field">
-    <%= form.label :raison_sociale %>
-    <%= form.text_field :raison_sociale %>
-  </div>
-
-  <div class="field">
-    <%= form.label :siren %>
-    <%= form.text_field :siren %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sexe %>
-    <%= form.text_field :sexe %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date_of_birth %>
-    <%= form.text_field :date_of_birth %>
-  </div>
-
-  <div class="field">
-    <%= form.label :zip_code %>
-    <%= form.text_field :zip_code %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :ville %>
-    <%= form.text_field :ville %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :country %>
-    <%= form.text_field :country %>
-  </div>
-
-  <div class="field">
-    <h6>CHOIX DES SERVICE</h6>
-    <% hidden_field_tag "service[service_ids][]", nil %> 
-    <% @services.each do |service| %>
-      <%= check_box_tag "service[service_ids][]", service.id, @allServices.include?(service.id), id:dom_id(service) %>
-      <%= label_tag dom_id(service), service.name %><br>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <h6>CHOIX DES PAYS</h6>
-    <% hidden_field_tag "prestataire[country_ids][]", nil %> 
-    <% @countries.each do |country| %>
-      <%= check_box_tag "prestataire[country_ids][]", country.id, @allCountries.include?(country.id), id:dom_id(country) %>
-      <%= label_tag dom_id(country), country.name %><br>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <h6>CHOIX DES DEPARTEMENTS</h6>
-    <% hidden_field_tag "prestataire[department_ids][]", nil %> 
-    <% @departments.each do |department| %>
-      <%= check_box_tag "prestataire[department_ids][]", department.id, @allDepartment.include?(department.id), id:dom_id(department) %>
-      <%= label_tag dom_id(department), department.name %><br>
-    <% end %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit("Accepter l'inscription du prestataire") %>
-    <%= link_to "Refuser l'inscription", cancel_candidat_path(@candidate.id), method: :delete, data: { confirm: 'Etes vous sur de supprimer ce candidat?' } %>
-  </div>
-
-<% end %>
-
-
--->
 <!-- GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,600,700" rel="stylesheet">
@@ -144,7 +32,7 @@
 <link href="/css/page-devise.css" rel="stylesheet">
 
 <style>
-#dropZone {
+  #dropZone {
 
     width: 100px !important;
     height: 50px;
@@ -152,13 +40,13 @@
     padding-right: 50px;
     padding-top: 20px;
 
-}
+  }
 
-.hida {
+  .hida {
     position: absolute;
     top: 0px;
     left: 10px;
-}
+  }
 </style>
 </style>
 
@@ -171,7 +59,7 @@
   </div>
   <% else %>
 
-    <div class="secotionTitle">
+  <div class="secotionTitle">
     <h2 class="police_massage"><span>Candidature de Mme. <%= @candidate.first_name %> <%= @candidate.last_name %>
     </span></h2>
   </div>
@@ -198,158 +86,159 @@
 
    <div class="col-sm-12">
     <div class="switch-field">
-       <%= form.radio_button :sexe, 'Féminin', id:"candidate_sexe_féminin" %>
-      <label for="candidate_sexe_féminin" class="radio-one">Madame</label>
-      <span class="label2">
-               <%= form.radio_button :sexe, 'Masculin', id:"candidate_sexe_masculin" %>
+     <%= form.radio_button :sexe, 'Féminin', id:"candidate_sexe_féminin" %>
+     <label for="candidate_sexe_féminin" class="radio-one">Madame</label>
+     <span class="label2">
+       <%= form.radio_button :sexe, 'Masculin', id:"candidate_sexe_masculin" %>
 
-        <label for="candidate_sexe_masculin" class="radio-two">Monsieur</label>
-      </span>
-    </div>
+       <label for="candidate_sexe_masculin" class="radio-two">Monsieur</label>
+     </span>
+   </div>
+ </div>
+
+
+ <div class="col-sm-6">
+  <div class="form-group">
+    <%= form.text_field :last_name, autofocus: true, autocomplete: "Nom", class:"form-control", id:"fullname", placeholder:"Nom",:required => true %>
+
   </div>
 
+  <div class="form-group">
+    <%= form.text_field :first_name, autofocus: true, autocomplete: "Prénom", class:"form-control", id:"fullname", placeholder:"Prénom",:required => true %>
 
-  <div class="col-sm-6">
-    <div class="form-group">
-      <%= form.text_field :last_name, autofocus: true, autocomplete: "Nom", class:"form-control", id:"fullname", placeholder:"Nom",:required => true %>
+  </div>
 
-    </div>
+  <div class="dateSelect form-half form-left select-date">
+    <div class="input-group date ed-datepicker filterDate input-calendar" data-provide="datepicker">
+      <%= form.text_field :date_of_birth , autofocus: true, autocomplete: "DateDeNaissance", class:"form-control form-controldate", id:"date", placeholder:"Date de naissance",:required => true %>
 
-    <div class="form-group">
-      <%= form.text_field :first_name, autofocus: true, autocomplete: "Prénom", class:"form-control", id:"fullname", placeholder:"Prénom",:required => true %>
-
-    </div>
-
-    <div class="dateSelect form-half form-left select-date">
-      <div class="input-group date ed-datepicker filterDate input-calendar" data-provide="datepicker">
-        <%= form.text_field :date_of_birth , autofocus: true, autocomplete: "DateDeNaissance", class:"form-control form-controldate", id:"date", placeholder:"Date de naissance",:required => true %>
-
-        <div class="input-group-addon calendar-icone">
-          <span class="fa fa-calendar"></span>
-        </div>
+      <div class="input-group-addon calendar-icone">
+        <span class="fa fa-calendar"></span>
       </div>
     </div>
-
-    <div class="form-group">
-      <%= form.text_field :raison_sociale, autofocus: true, autocomplete: "RaisonSociale", class:"form-control", id:"fullname", placeholder:"Raison sociale" %>
-
-    </div>
-
-    <div class="form-group">
-
-      <%= form.text_field :siren, autofocus: true, autocomplete: "Siren", class:"form-control", id:"fullname", placeholder:"Siren" %>
-
-    </div>
-
-    <div class="form-group">
-
-      <%= form.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"Email",:required => true %>
-
-    </div>
   </div>
 
-  <div class="col-sm-6">
+  <div class="form-group">
+    <%= form.text_field :raison_sociale, autofocus: true, autocomplete: "RaisonSociale", class:"form-control", id:"fullname", placeholder:"Raison sociale" %>
 
-    <div class="form-group">
+  </div>
 
-      <%= form.telephone_field :telephone, autofocus: true, autocomplete: "Tel", class:"form-control", id:"fullname", placeholder:"Numéro tél",:required => true %>
+  <div class="form-group">
 
-    </div>
+    <%= form.text_field :siren, autofocus: true, autocomplete: "Siren", class:"form-control", id:"fullname", placeholder:"Siren" %>
 
-    <div class="form-group">
-      <%= form.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control", id:"fullname", placeholder:"Adresse",:required => true %>
+  </div>
 
-    </div>
+  <div class="form-group">
 
-    <div class="form-group">
-      <%= form.text_field :zip_code, autofocus: true, autocomplete: "zipcode", class:"form-control", id:"fullname", placeholder:"Code Postal",:required => true %>
-    </div>
+    <%= form.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"Email",:required => true %>
 
-    <div class="form-group form-groupp">
-      <%= form.text_field :ville, autofocus: true, autocomplete: "ville", class:"form-control", id:"fullname", placeholder:"Ville",:required => true %>
+  </div>
+</div>
 
-    </div>
+<div class="col-sm-6">
 
-    <div class="form-group">
-      <%= form.text_field :country, autofocus: true, autocomplete: "Pays", class:"form-control", id:"fullname", placeholder:"Pays",:required => true %>
+  <div class="form-group">
 
-    </div>
+    <%= form.telephone_field :telephone, autofocus: true, autocomplete: "Tel", class:"form-control", id:"fullname", placeholder:"Numéro tél",:required => true %>
 
-    <dl class="form-group dropdown">
-      <input autofocus="autofocus" class="form-control" id="fullname" disabled="disabled" placeholder="Zone d'actions" type="text">
-      <dt>
-        <i >
-          <span class="hida fa fa-chevron-down" id='dropZone'></span>    
-          <p class="multiSel"></p>  
-        </i>
-      </dt>
-      <dd>
+  </div>
 
-        <div class="mutliSelect">
-          <ul>
-            <% hidden_field_tag "prestataire[country_ids][]", nil %> 
-            <% @countries.each do |country| %>
-            <li>
-              <%= check_box_tag "prestataire[country_ids][]", country.id, @allCountries.include?(country.id), id:dom_id(country), class:"js-country" %>
-              <%= label_tag dom_id(country), country.name %><br>
-            </li> 
-            <% end %>
+  <div class="form-group">
+    <%= form.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control", id:"fullname", placeholder:"Adresse",:required => true %>
 
-            <div id="js-department-list" class="hidden">
-              <h6>Dans quels Départements</h6>
-              <div class="departements">
-                <% hidden_field_tag "prestataire[department_ids][]", nil %> 
-                <% @departments.each do |department| %>
-                <%= check_box_tag "prestataire[department_ids][]", department.id, @allDepartment.include?(department.id), id:dom_id(department), class:"js-department" %>
-                <%= label_tag dom_id(department), department.name %><br>
-                <% end %>
-              </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :zip_code, autofocus: true, autocomplete: "zipcode", class:"form-control", id:"fullname", placeholder:"Code Postal",:required => true %>
+  </div>
+
+  <div class="form-group form-groupp">
+    <%= form.text_field :ville, autofocus: true, autocomplete: "ville", class:"form-control", id:"fullname", placeholder:"Ville",:required => true %>
+
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :country, autofocus: true, autocomplete: "Pays", class:"form-control", id:"fullname", placeholder:"Pays",:required => true %>
+
+  </div>
+
+  <dl class="form-group dropdown">
+    <input autofocus="autofocus" class="form-control" id="fullname" disabled="disabled" placeholder="Zone d'actions" type="text">
+    <dt>
+      <i >
+        <span class="hida fa fa-chevron-down" id='dropZone'></span>    
+        <p class="multiSel"></p>  
+      </i>
+    </dt>
+    <dd>
+
+      <div class="mutliSelect">
+        <ul>
+          <% hidden_field_tag "prestataire[country_ids][]", nil %> 
+          <% @countries.each do |country| %>
+          <li>
+            <%= check_box_tag "prestataire[country_ids][]", country.id, @allCountries.include?(country.id), id:dom_id(country), class:"js-country", 'data-cname':country.name %>
+            <%= label_tag dom_id(country), country.name %><br>
+          </li> 
+          <% end %>
+          <div id="js-department-list" class="hidden">
+            <h6>Dans quels Départements</h6>
+            <div class="departements">
+              <% hidden_field_tag "prestataire[department_ids][]", nil %> 
+              <% @departments.each do |department| %>
+              <%= check_box_tag "prestataire[department_ids][]", department.id, @allDepartment.include?(department.id), id:dom_id(department), class:"js-department" %>
+              <%= label_tag dom_id(department), department.name %><br>
+              <% end %>
             </div>
-          </ul>
-        </div>
-      </dd>
-
-      <div class="choix">
-        <i class="domaine">Choix Domaine d’activité : </i> 
-
-        <% hidden_field_tag "service[service_ids][]", nil %> 
-        <% @services.each do |service| %>
-
-        <%= label_tag dom_id(service), service.name %>
-        <label class="switch">
-          <%= check_box_tag "service[service_ids][]", service.id, @allServices.include?(service.id), id:dom_id(service), class:"switch-input" %>
-          <span class="switch-label" data-on="Oui" data-off="Non"></span>
-          <span class="switch-handle"></span>
-        </label>
-        <% end %>
-
-      </div>
-    </dl>
-  </div>
-  <div class="col-sm-12">
-    <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-3">
-        <ul class="list-inline fullRoundBtn">
-          <li class="li" ><a style="background: #f2150b94;" href="<%= cancel_candidat_path(@candidate.id) %>" class="btn btn-primary btn-block">Refuser</a></li>
+          </div>
         </ul>
       </div>
+    </dd>
 
-      <div class="col-sm-3">
+    <div class="choix">
+      <i class="domaine">Choix Domaine d’activité : </i> 
 
-        <ul class="list-inline fullRoundBtn">
-          <li class="li">
-            <center><%= form.submit "Accepter", class:"btn btn-primary btn-block" %></center>
+      <% hidden_field_tag "service[service_ids][]", nil %> 
+      <% @services.each do |service| %>
 
-          </li>
-        </ul>
-      </div>
-      <div class="col-sm-3"></div>
+      <%= label_tag dom_id(service), service.name %>
+      <label class="switch">
+        <%= check_box_tag "service[service_ids][]", service.id, @allServices.include?(service.id), id:dom_id(service), class:"switch-input" %>
+        <span class="switch-label" data-on="Oui" data-off="Non"></span>
+        <span class="switch-handle"></span>
+      </label>
+      <% end %>
 
     </div>
-  </div>
+  </dl>
+</div>
+<div class="col-sm-12">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3">
+      <ul class="list-inline fullRoundBtn">
+        <li class="li" >
+          <%= link_to "Refuser", cancel_candidat_path(@candidate.id), method: :delete, data: { confirm: 'Etes vous sur de supprimer ce candidat?' }, class:"btn btn-primary btn-block", style:"background: #f2150b94;" %>
+        </li>
+      </ul>
+    </div>
 
-  <% end %>
+    <div class="col-sm-3">
+
+      <ul class="list-inline fullRoundBtn">
+        <li class="li">
+          <center><%= form.submit "Accepter", class:"btn btn-primary btn-block" %></center>
+
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-3"></div>
+
+  </div>
+</div>
+
+<% end %>
 
 </section>
 <!-- JAVASCRIPTS -->
@@ -368,41 +257,41 @@
 
 <script>
 
-$(".dropdown dt i").on('click', function () {
-          $(".dropdown dd ul").slideToggle('fast');
-      });
+  $(".dropdown dt i").on('click', function () {
+    $(".dropdown dd ul").slideToggle('fast');
+  });
 
-      $(".dropdown dd ul li a").on('click', function () {
-          $(".dropdown dd ul").hide();
-      });
+  $(".dropdown dd ul li a").on('click', function () {
+    $(".dropdown dd ul").hide();
+  });
 
-      function getSelectedValue(id) {
-           return $("#" + id).find("dt a span.value").html();
-      }
+  function getSelectedValue(id) {
+   return $("#" + id).find("dt a span.value").html();
+ }
 
-      $(document).bind('click', function (e) {
-          var $clicked = $(e.target);
-          if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
-      });
+ $(document).bind('click', function (e) {
+  var $clicked = $(e.target);
+  if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+});
 
 
-      $('.mutliSelect input[type="checkbox"]').on('click', function () {
-        
-          var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
-              title = $(this).val() + ",";
-        
-          if ($(this).is(':checked')) {
-              var html = '<span title="' + title + '" class="hidden">' + title + '</span>';
-              $('.multiSel').append(html);
-              /*$(".hida").hide();*/ 
-          } 
-          else {
-              $('span[title="' + title + '"]').remove();
-              var ret = $(".hida");
-              $('.dropdown dt i').append(ret);
-              
-          }
-      });
+ $('.mutliSelect input[type="checkbox"]').on('click', function () {
+  
+  var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+  title = $(this).val() + ",";
+  
+  if ($(this).is(':checked')) {
+    var html = '<span title="' + title + '" class="hidden">' + title + '</span>';
+    $('.multiSel').append(html);
+    /*$(".hida").hide();*/ 
+  } 
+  else {
+    $('span[title="' + title + '"]').remove();
+    var ret = $(".hida");
+    $('.dropdown dt i').append(ret);
+    
+  }
+});
 
 
 </script>
@@ -416,7 +305,7 @@ $(".dropdown dt i").on('click', function () {
 
     countries.forEach(country => {
       country.addEventListener('change',showDepartementIfFrance);
-      if(country.value == "4" && country.checked == true){
+      if(country.dataset.cname == "France" && country.checked == true){
         document.getElementById("js-department-list").classList.remove("hidden")
       }
     }); 
@@ -424,10 +313,10 @@ $(".dropdown dt i").on('click', function () {
 
   function showDepartementIfFrance() {
     let departments = document.querySelectorAll('.js-department');
-    if(this.checked == true && this.value == "4"){
+    if(this.checked == true && this.dataset.cname == "France"){
       document.getElementById("js-department-list").classList.remove("hidden")
     }
-    if(this.checked == false && this.value == "4"){
+    if(this.checked == false && this.dataset.cname == "France"){
       document.getElementById("js-department-list").classList.remove("hidden")
       document.getElementById("js-department-list").classList.add("hidden")
       departments.forEach(department => {
@@ -435,5 +324,6 @@ $(".dropdown dt i").on('click', function () {
       })
     }
   }
+
 </script>
 
