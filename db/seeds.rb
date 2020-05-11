@@ -116,6 +116,7 @@ Product.create(name: "Table de massage", description: "Fournie avec huile de mas
 listavis = [
 	#Accueil
 [5,"accueil", "Très professionnelle, massage très agréable à mes attentes ! Merci beaucoup !", "Silvia"], 
+[5,"accueil", "Merci beaucoup à Cocooningspa ! Très bon service !", "Alex"], 
 [5,"accueil",  "Merci beaucoup pour cette prestation spa et massage à domicile, service professionnel et rapide, je recommande à 100%.", "Nicolas"], 
 [5,"accueil",  "Merci beaucoup pour cette prestation spa au top, mon conjoint a adoré la surprise, c’était très réussi, je recommande mille fois !!", "Annabelle"], 
 [5,"accueil",  "Super prestation ! Réponse rapide et efficace, Camille est très pro et bien équipée (serviette chauffante comprise !!), on en ressort totalement détendu... je recommande sans hésiter !", "Mohamed"], 
