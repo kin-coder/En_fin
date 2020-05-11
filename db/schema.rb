@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_082452) do
     t.string "first_name"
     t.string "last_name"
     t.string "adresse"
+    t.string "adresse_complet"
     t.string "tel"
     t.string "sexe"
     t.string "country"
