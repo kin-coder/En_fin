@@ -118,27 +118,27 @@
     }}
     @media only screen and (max-width: 600px) {
 
-#flechindex{
-    position: absolute;
-    right:-155px !important;
-    top: 33px;
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 14px;
-    font-size: xxx-large;
-    text-rendering: auto;
-    color:
-    rgb(238, 17, 190) !important;
-    padding: 10px;
+      #flechindex{
+        position: absolute;
+        right:-155px !important;
+        top: 33px;
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: 14px;
+        font-size: xxx-large;
+        text-rendering: auto;
+        color:
+        rgb(238, 17, 190) !important;
+        padding: 10px;
+      }
+    }
+    .areserver {
+      position: fixed;
+      right: 4px;
+      z-index: 100;
+      top: 25%;
+    }
   }
-}
-      .areserver {
-        position: fixed;
-        right: 4px;
-        z-index: 100;
-        top: 25%;
-      }
-    }
 
 
 
@@ -154,69 +154,69 @@
 
 
 
+  .aboutInner2 {
+    position: relative;
+  }
+
+  @media (min-width: 320px) {
     .aboutInner2 {
+      height: auto;
+      padding: 0 15px 0 15px;
+      background-color: transparent;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .aboutInner2 {
+      width: 50%;
+      float: right;
+      height: 650px;
+      padding: 120px 0 0 0;
+    }
+
+    .gauche{
+      background-color: #ffffff;
+      padding: 130px 50px 120px 0;
       position: relative;
+      left: 30px;
+      bottom: 100px;
     }
+  }
 
-    @media (min-width: 320px) {
-      .aboutInner2 {
-        height: auto;
-        padding: 0 15px 0 15px;
-        background-color: transparent;
-      }
+  @media (min-width: 320px) {
+    .imagebox2 {
+      border: 5px solid #ffffff;
     }
+  }
 
-    @media (min-width: 768px) {
-      .aboutInner2 {
-        width: 50%;
-        float: right;
-        height: 650px;
-        padding: 120px 0 0 0;
-      }
-
-      .gauche{
-        background-color: #ffffff;
-        padding: 130px 50px 120px 0;
-        position: relative;
-        left: 30px;
-        bottom: 100px;
-      }
+  @media (min-width: 768px) {
+    .imagebox2 {
+      border: 5px solid #ffffff;
+      border-left: 0;
     }
+  }
 
-    @media (min-width: 320px) {
-      .imagebox2 {
-        border: 5px solid #ffffff;
-      }
-    }
+  .imagebox2 img {
+    width: 100%;
+  }
 
-    @media (min-width: 768px) {
-      .imagebox2 {
-        border: 5px solid #ffffff;
-        border-left: 0;
-      }
-    }
-
+  @media (min-width: 320px) {
     .imagebox2 img {
-      width: 100%;
+      margin: -10px 0 10px 10px;
     }
+  }
 
-    @media (min-width: 320px) {
-      .imagebox2 img {
-        margin: -10px 0 10px 10px;
-      }
+  @media (min-width: 768px) {
+    .imagebox2 img {
+      margin: -40px 0 40px 40px;
     }
+  }
 
-    @media (min-width: 768px) {
-      .imagebox2 img {
-        margin: -40px 0 40px 40px;
-      }
+  @media (min-width: 992px) {
+    .imagebox2 img {
+      margin: -60px 0 60px 60px;
     }
-
-    @media (min-width: 992px) {
-      .imagebox2 img {
-        margin: -60px 0 60px 60px;
-      }
-    }
+  }
 
 
 
@@ -459,8 +459,8 @@ a:hover, a:focus {
   }
 
   .specialWidth{
-width: 500px; 
-margin-top: 50px;
+    width: 500px; 
+    margin-top: 50px;
   }
 }
 
@@ -2215,12 +2215,12 @@ textarea.form-control {
     background-color: transparent;
   }
 }
-    @media only screen and (max-width: 600px) {
-      .navbar-brand > img {
+@media only screen and (max-width: 600px) {
+  .navbar-brand > img {
     width: 78%;
     margin-top: -6px;
     margin-left: 20px;
-}
+  }
 }
 @media (min-width: 768px) {
   .navbar-default .navbar-nav.navbar-right {
@@ -5881,7 +5881,7 @@ footer {
   .confirmation .alert.alert-info {
     font-size: 24px;
     background-color: #4da5c959;
-}
+  }
   .confirmation .alert.alert-warning {
     font-size: 24px;
   }
@@ -7700,8 +7700,8 @@ input[type=number]::-webkit-inner-spin-button {
 /*FOOTER*/
 
 .footerInfoTitles{
-position: relative;
-top: 60px;
+  position: relative;
+  top: 60px;
 
 }
 .p-footer{
@@ -7882,13 +7882,13 @@ top: 60px;
     z-index: 100;
   }
 
-.carousel-inner {
+  .carousel-inner {
 
     position: relative;
     width: 100%;
     overflow: scroll;
 
-}
+  }
   .h3-massage-slide{
     position: relative;
     font-weight: bold !important;
@@ -8138,12 +8138,14 @@ top: 60px;
     rgba(255, 255, 255, 0.7);
     left: -150px;
   }
+  .form-group-accueil{
+    width: 100% !important;
+  }
   .form-group {
     position: relative;
     width: 50%;
     textarea.form-control {
       height: 95px;
-
     }
   }
   .colipad{
@@ -8429,7 +8431,7 @@ top: 60px;
     width: 100%;
     overflow: hidden;
 
-}
+  }
 
   #productSlider .carousel-control.left i.fa-arrow-circle-left {
     text-shadow: none;
@@ -8645,7 +8647,7 @@ top: 60px;
 }
 
 .liDropDown{
-font-size: 17px !important;
+  font-size: 17px !important;
 }
 
 
@@ -8661,23 +8663,23 @@ font-size: 17px !important;
 /*APPLICATION ADMIN*/
 
 .bg-gradient-primary {
-background-image: linear-gradient(180deg,#ec5598 10%,#ec5598 100%);
+  background-image: linear-gradient(180deg,#ec5598 10%,#ec5598 100%);
   background-size: cover;
 }
 
 .actionTableAdmin{
-width: 250px;
+  width: 250px;
 }
 
 .filter-control{
-position: relative;
+  position: relative;
 
-left: -10px;
+  left: -10px;
 }
 
 
 .secotionTitleEditPresta {
-    padding: 0px 0 30px 0 !important;
+  padding: 0px 0 30px 0 !important;
 }
 
 .sidebar .nav-item .nav-link span {
@@ -8685,49 +8687,49 @@ left: -10px;
   display: inline;
 }
 
-  .sidebar {
-    width: 18rem !important;
-  }
+.sidebar {
+  width: 18rem !important;
+}
 
-  #leftFa{
-width: 30px;
-font-size: 20px;
-  }
+#leftFa{
+  width: 30px;
+  font-size: 20px;
+}
 
-  .shadow {
-    box-shadow: 0 .15rem 1.75rem 0 
-    rgb(236, 85, 152) !important;
+.shadow {
+  box-shadow: 0 .15rem 1.75rem 0 
+  rgb(236, 85, 152) !important;
 }
 
 .badge-counter {
-color: #fff !important;
-background-color:#e74a3b !important;
+  color: #fff !important;
+  background-color:#e74a3b !important;
 }
 
 .navbarTopLeft{
-font-family: "Quicksand";
-font-weight: bold;
+  font-family: "Quicksand";
+  font-weight: bold;
 }
 
 .sidebar #sidebarToggle {
 
-    width: 2.5rem;
-    height: 2.5rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    cursor: pointer;
-    position: relative;
-    left: 150px;
-    top: -370px;
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  position: relative;
+  left: 150px;
+  top: -370px;
 /*reduire slideLeft
 */    display: none;
 
 }
 
 .container-fluid {
-    max-width: max-content;
+  max-width: max-content;
 }
 
 .sidebar .nav-item .nav-link {
-    width: 18rem !important;
+  width: 18rem !important;
 }
