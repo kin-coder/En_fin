@@ -8,6 +8,7 @@ class AddIndexToPrestataires < ActiveRecord::Migration[6.0]
 	  add_column :prestataires, :siren, :string
 	  add_column :prestataires, :tel, :string
 	  add_column :prestataires, :adresse, :string
+	  add_column :prestataires, :adresse_complet, :string
 	  add_column :prestataires, :zip_code, :string
 	  add_column :prestataires, :ville, :string
 	  add_column :prestataires, :pays, :string

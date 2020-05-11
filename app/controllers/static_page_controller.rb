@@ -30,6 +30,7 @@ class StaticPageController < ApplicationController
     @candidate.email = params["email"]
     @candidate.telephone = params["tel"]
     @candidate.adresse = params["adresse"]
+    @candidate.adresse_complet = params["adresse_complet"]
     @candidate.zip_code = params["zip_code"]
     @candidate.ville = params["town"]
     @candidate.country = params["country"]
