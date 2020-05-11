@@ -5,8 +5,6 @@ class Candidate < ApplicationRecord
 	validates :first_name, presence: true
 	validates :last_name, presence: true
 	validates :date_of_birth, presence: true
-	validates :raison_sociale, presence: true
-	validates :siren, presence: true
 	validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 	validates :telephone, presence: true
 	validates :adresse, presence: true

@@ -32,15 +32,12 @@
 <link href="/css/page-devise.css" rel="stylesheet">
 
 <style>
-
   #dropZone {
-
     width: 100px !important;
     height: 50px;
     padding-left: 500px;
     padding-right: 50px;
     padding-top: 20px;
-
   }
 
   .hida {
@@ -68,6 +65,14 @@
       <% end %>
     </ul>
   </div>
+  <% end %>
+  
+  <% if flash[:list_message_errors] %>
+    <div class="alert alert-danger">
+      <% flash[:list_message_errors].each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </div>
   <% end %>
 
   <div class="row">
@@ -116,23 +121,23 @@
   </div>
 
   <div class="form-group">
-
     <%= form.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"Email",:required => true %>
-
   </div>
+
+  <div class="form-group">
+    <%= form.telephone_field :tel, autofocus: true, autocomplete: "Tel", class:"form-control", id:"fullname", placeholder:"Numéro tél",:required => true %>
+  </div>
+
 </div>
 
 <div class="col-sm-6">
 
   <div class="form-group">
-
-    <%= form.telephone_field :tel, autofocus: true, autocomplete: "Tel", class:"form-control", id:"fullname", placeholder:"Numéro tél",:required => true %>
-
+    <%= form.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control", id:"fullname", placeholder:"Adresse",:required => true %>
   </div>
 
   <div class="form-group">
-    <%= form.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control", id:"fullname", placeholder:"Adresse",:required => true %>
-
+    <%= form.text_field :adresse_complet, autofocus: true, autocomplete: "Complément adresse", class:"form-control", id:"fullname", placeholder:"Complément adresse"%>
   </div>
 
   <div class="form-group">

@@ -13,12 +13,12 @@
 
 					<div class="inline-form">
 						<%= label_tag 'complAdresseL', 'Complement d\'adresse', class: 'small_label' %>
-						<%= text_field_tag 'complAdresseL', nil, class: "input", required:true %>
+						<%= text_field_tag 'complAdresseL', @client.adresse_complet, class: "input" %>
 					</div>
 
 					<div class="inline-form">
 						<%= label_tag 'codePostaL', 'Code Postal', class: 'small_label' %>
-						<%= text_field_tag 'codePostaL', nil, class: "input", required:true %>
+						<%= text_field_tag 'codePostaL', @client.zip_code, class: "input", required:true %>
 					</div>
 
 					<div class="inline-form">
@@ -42,17 +42,17 @@
 				<h2><center class="adresseTitle">Adresse de facturation</center></h2>
 				<div class="inline-form">
 					<%= label_tag 'adresseF', 'Adresse', class: 'small_label' %>
-					<%= text_field_tag 'adresseF', nil, class: "input", required:true %>
+					<%= text_field_tag 'adresseF', @client.adresse, class: "input", required:true %>
 				</div>
 
 				<div class="inline-form">
 					<%= label_tag 'complAdresseF', 'Complement d\'adresse', class: 'small_label' %>
-					<%= text_field_tag 'complAdresseF', nil, class: "input", required:true %>
+					<%= text_field_tag 'complAdresseF', @client.adresse_complet, class: "input" %>
 				</div>
 
 				<div class="inline-form">
 					<%= label_tag 'codePostaF', 'Code Postal', class: 'small_label' %>
-					<%= text_field_tag 'codePostaF', nil, class: "input", required:true %>
+					<%= text_field_tag 'codePostaF', @client.zip_code, class: "input", required:true %>
 				</div>
 
 				<div class="inline-form">

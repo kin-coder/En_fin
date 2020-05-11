@@ -34,13 +34,18 @@
                 <i class="fa fa-address-card-o" aria-hidden="true"></i>                <%= f.text_field :zip_code, autofocus: true, autocomplete: "zipcode", class:"form-control", id:"fullname", placeholder:"Code Postal",:required => true %>
               </div>
 
+              <div class="form-group">
+                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                <%= f.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control", id:"fullname", placeholder:"Votre adresse",:required => true %>
+              </div>
+
             </div>
 
             <div class="col-sm-6">
 
               <div class="form-group">
                 <i class="fa fa-location-arrow" aria-hidden="true"></i>
-                <%= f.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control", id:"fullname", placeholder:"Votre adresse",:required => true %>
+                <%= f.text_field :adresse_complet, autofocus: true, autocomplete: "Complement d'adresse", class:"form-control", id:"fullname", placeholder:"Votre complement d'adresse"%>
               </div>
 
               <div class="form-group">
