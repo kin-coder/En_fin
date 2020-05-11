@@ -269,6 +269,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_082452) do
     t.string "siren"
     t.string "tel"
     t.string "adresse"
+    t.string "adresse_complet"
     t.string "zip_code"
     t.string "ville"
     t.string "pays"

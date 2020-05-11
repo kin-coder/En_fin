@@ -34,7 +34,9 @@ class StaticPageController < ApplicationController
     @candidate.zip_code = params["zip_code"]
     @candidate.ville = params["town"]
     @candidate.country = params["country"]
-    @candidate.services = params["service"].join('|')
+    if params["services"]
+      @candidate.services = params["service"].join('|')
+    end
 
     if params["countries"]
       if params["countries"].include?("France")
