@@ -568,7 +568,7 @@ margin-bottom: 35px;
 
 	#flechemassage-left{
 		position: absolute;
-		right:1045px;
+		right:1030px;
 		top: 20%;
 		display: inline-block;
 		font: normal normal normal 14px/1 FontAwesome;
@@ -640,6 +640,8 @@ margin-bottom: 35px;
 	}
 	.intru{
 		text-align: left !important;
+		margin-left: 42px !important;
+
 	}
 
 	.col-massage-slide{
