@@ -145,7 +145,7 @@ margin: 20px;
         #666666;
         margin-left: 10px;
         border-radius: 8px;
-        width: 100%;
+        width: 100% !important;
     }
 
     .inscript {
@@ -314,7 +314,7 @@ margin: 20px;
         #666666;
         margin-left: 10px;
         border-radius: 8px;
-        width: 100%;
+        width: 100% !important;
     }
     .inscript {
         margin-left: 100px;

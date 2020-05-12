@@ -1036,12 +1036,12 @@ display: inline-block;
 
 	/*CCM*/
 	#contact-submit-btn {
-		width: auto;
-		text-align: center;
-		border-radius: 50px;
-		padding: 10px;
-		position: relative;
-		left: 45%;
+		width: auto !important;
+		text-align: center !important;
+		border-radius: 50px !important;
+		padding: 10px !important;
+		position: relative !important;
+		left: 45% !important;
 	}
 	.p-part{
 		width: 100%;
