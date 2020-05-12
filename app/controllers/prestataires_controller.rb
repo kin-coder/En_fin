@@ -43,7 +43,8 @@ class PrestatairesController < Application2Controller
       @prestataire.department_ids = params[:prestataire][:department_ids]
 
       if @prestataire.save
-        redirect_to show_prestataires_path(@prestataire.id), notice: 'Le prestataire a été créé avec succès.'
+        flash[:admin_notice] = 'Le prestataire a été créé avec succès.'
+        redirect_to show_prestataires_path(@prestataire.id)
       else
         render :new
       end
@@ -79,7 +80,8 @@ class PrestatairesController < Application2Controller
       @prestataire.department_ids = params[:prestataire][:department_ids]
       @prestataire.service_ids = params[:service][:service_ids]
       if @prestataire.save
-        redirect_to show_prestataires_path(@prestataire.id), notice: 'Le prestataire a été modifié avec succès.'
+        flash[:admin_notice] = 'Le prestataire a été modifié avec succès.'
+        redirect_to show_prestataires_path(@prestataire.id)
       else
         render :edit
       end
@@ -90,9 +92,11 @@ class PrestatairesController < Application2Controller
     o_services = OrderService.all.where(prestataire_id:@prestataire.id)
     if o_services.empty?
       @prestataire.destroy
-      redirect_to index_prestataires_path, notice: 'Le prestataire a été supprimer avec succès.'
+      flash[:admin_notice] = 'Le prestataire a été supprimer avec succès.'
+      redirect_to index_prestataires_path
     else
-      redirect_to index_prestataires_path, notice: 'Impossible de supprimer ce prestataire car il est attribué a une commande.'
+      flash[:admin_notice] = 'Impossible de supprimer ce prestataire car il est attribué a une commande.'
+      redirect_to index_prestataires_path
     end
   end
 
@@ -102,6 +106,6 @@ class PrestatairesController < Application2Controller
     end
 
     def prestataire_params
-      params.require(:prestataire).permit(:email,:sexe,:first_name,:last_name,:date_of_birth,:raison_sociale,:siren,:tel,:adresse,:zip_code,:ville,:pays)
+      params.require(:prestataire).permit(:email,:sexe,:first_name,:last_name,:date_of_birth,:raison_sociale,:siren,:tel,:adresse,:adresse_complet,:zip_code,:ville,:pays)
     end
 end

@@ -675,6 +675,11 @@ function priceTotalForAllSpa(dataOption,dataForm){
 	let sessionSpa = JSON.parse(sessionStorage.getItem("massages"))
 	sessionSpa.push({id:id,cat:categories[0],sub:"",time:""})
 	sessionStorage.setItem("massages",JSON.stringify(sessionSpa))
+/* ************************************** MILA MODAL NGAMBA */
+	if (sessionSpa.length >= 2){
+		document.getElementById('pushMassage2').classList.remove('hidden');
+	}
+/* ************************************** MILA MODAL NGAMBA */
 	// Modification dans le DOM
 	actualiseDomMassage(this.dataset.cat,id)
 }

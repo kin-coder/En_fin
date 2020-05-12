@@ -34,7 +34,7 @@ class StaticPageController < ApplicationController
     @candidate.zip_code = params["zip_code"]
     @candidate.ville = params["town"]
     @candidate.country = params["country"]
-    if params["services"]
+    if params["service"]
       @candidate.services = params["service"].join('|')
     end
 
