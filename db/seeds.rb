@@ -132,7 +132,7 @@ listavis = [
 [5,"spa", "Rapidité, efficacité et service de qualité. L’équipe Cocooning Spa est à l’écoute et prend le temps de bien vous expliquer les règles de base. Merci encore pour cette prestation spa ! Je recommande ! À très bientôt ", "Nordine"],
 [5,"spa", "Superbe prestation ! À recommander, surprise assurée ! Top du top !", "Charlotte"],
 [5,"spa", "Excellent, juste parfait pour notre part ! Bonne organisation et montage propre rien à dire, nous avons passé un excellent moment à notre domicile avec le jacuzzi et la personne qui monte le jacuzzi est au top !!", "Toufik"],
-[5,"spa", "Super prestation, effet de surprise garantie. Décoration exceptionnelle mais je tiens surtout à souligner le professionnalisme de cette société comme on en voit très peu de nos jours. Merci encore a toutes l'équipe.", "Inès"],
+[5,"spa", "Super prestation, effet de surprise garantie. Décoration exceptionnelle mais je tiens surtout à souligner le professionnalisme de cette société comme on en voit très peu de nos jours. Merci encore a toute l'équipe.", "Inès"],
 
 #Massages
 
