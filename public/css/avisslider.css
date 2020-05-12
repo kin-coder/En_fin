@@ -146,6 +146,11 @@ a.control_next {
   width: 100%;
   max-width: 80%;
 }
+
+.comIntru{
+ position: absolute;
+  top: 70px !important;
+}
 .comments .commentataire{
   color: #48D1CC;
 
