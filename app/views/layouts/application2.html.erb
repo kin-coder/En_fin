@@ -181,6 +181,13 @@
 
                                             <!-- Begin Page Content -->
                                             <div class="container-fluid">
+<% if flash[:admin_notice] %>
+<div class="alert alert-success">
+    <%= flash[:admin_notice]  %>
+</div>
+<% end %>
+                                                
+                                                
 
                                                 <!-- Page Heading -->
                                                 <%= yield %>
