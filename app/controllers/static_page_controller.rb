@@ -70,6 +70,9 @@ class StaticPageController < ApplicationController
 
   def cgu
   end
+
+   def galery
+  end
   # telechargement du doc cgu en pdf
   def dataDowCgu
     send_file(

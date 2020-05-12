@@ -1,0 +1,211 @@
+<link href="/css/massage.css" rel="stylesheet">
+<link href="/css/avisslider.css" rel="stylesheet">
+
+<style>
+  .heure{
+    font-family: Quicksand, fantasy!important;
+  }
+  .police_massage{
+
+    font-family: Quicksand, 'Open Sans';
+    z-index: -4;
+  }
+  @media (min-width: 992px){
+    .lireBtn{
+      position: relative;
+      top: 20px;
+      left: 41%;
+      margin-bottom: 100px;
+      max-width: 100px;
+
+    }
+    .isotopeContainer{
+      width: 1140px !important;
+    }
+    .h1 {
+      font-size: 55px;
+      line-height: 55px;
+      margin: 0 0 10px;
+    }
+    .poli2{
+
+     font-family:Georgia, serif!important;
+     text-align: left !important;
+     
+     
+   } 
+   .police_spa{
+
+    font-family: Quicksand, fantasy!important;
+    z-index: -4;
+  }
+}
+@media (min-width: 768px){
+  .isotopeContainer{
+    width: 700px !important;
+  }
+  .lireBtn{
+    position: relative;
+    top: 20px;
+    left: 38%;
+    margin-bottom: 100px;
+    max-width: 100px;
+  }
+  .h1 {
+    font-size: 50px;
+    line-height: 50px;
+    margin: 0 0 10px;
+  }
+  .poli2{
+
+   font-family:Georgia, serif!important;
+   text-align: left !important;
+   color:black!important ;
+ }
+ 
+ .poli2 b{
+
+   font-family:Brush Script MT, Brush Script Std, cursive!important;
+   text-align: left !important;
+   color:black!important ;
+   font-size: 30px;
+   
+ }
+ .police_spa{
+
+  font-family: Quicksand, fantasy !important;
+  z-index: -4;
+}
+}
+@media (max-width: 600px){
+  .lireBtn{
+    position: relative;
+    top: 20px;
+    left: 18%;
+    margin-bottom: 100px;
+    max-width: 100px;
+  }
+}
+@media (min-width: 320px){
+
+  .h1 {
+    font-size: 20px;
+    line-height: 20px;
+    margin: 0;
+    
+  }
+  
+  .poli2{
+
+   font-family:Georgia, serif!important;
+   text-align: left !important;
+   margin-bottom:1px !important;
+   
+ }
+ 
+ .police_spa{
+
+
+  font-family: Quicksand, fantasy !important;
+  z-index: -4;
+
+}
+}
+.elsebg{
+  background-color: white;
+  padding: 50px;
+}
+
+</style>
+
+<!-- HOME GALLERY SECTION -->
+<section>
+  <div class="clearfix homeGalleryTitle">
+    <div class="container">
+      <div class="secotionTitle" ID="galerie">
+        <h2 class="police_massage"><span>Galerie </span>Un aperçu de nos réalisations jacuzzi à domicile</h2>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid clearfix homeGallery">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="filter-container isotopeFilters">
+          <ul class="list-inline filter">
+            <li class="active"><a href="#" data-filter=".tout">tout</a></li>
+            <li><a href="#" data-filter=".ambiance">Nos Ambiances</a></li>
+            <li><a href="#" data-filter=".extra">les extras</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row isotopeContainer" id="container">
+      <%for n_tout in (1..53) do%>
+      <div class="col-sm-3 isotopeSelector tout">
+        <div class="card">
+          <div class="card-img">
+            <ul class="list-inline">
+              <li>
+                <img class="img-full img-thumbnail" src="img/touts/tout<%=n_tout%>.jpg" alt="Image" >
+                <div class="overlay-content">
+                  <a href="img/touts/tout<%=n_tout%>.jpg"data-fancybox="images" >
+                    <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <%end%> 
+
+      <%for n_ambiance in (1..32) do%>
+
+      <div class="col-sm-3 isotopeSelector ambiance">
+        <div class="card">
+          <div class="card-img">
+           <ul class="list-inline">
+            <li>
+              <img class="img-full img-thumbnail" src="img/ambiances/ambiance<%=n_ambiance%>.jpg" alt="Image" >
+              <div class="overlay-content">
+                <a href="img/ambiances/ambiance<%=n_ambiance%>.jpg"data-fancybox="images" >
+                  <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <%end%> 
+
+    <%for n_extra in (1..16) do%>
+
+    <div class="col-sm-3 isotopeSelector extra">
+      <div class="card">
+        <div class="card-img">
+         <ul class="list-inline">
+          <li>
+            <img class="img-full img-thumbnail" src="img/extras/extra<%=n_extra%>.jpg" alt="Image" >
+            <div class="overlay-content">
+              <a href="img/extras/extra<%=n_extra%>.jpg"data-fancybox="images" >
+                <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <%end%>        
+</div>
+<div class="lireBtn">
+  <a style="position: absolute;" href="<%=spa_path%>" class="btn btn-common btn-full-round btn-theme" id="more">revenir en arrière</a>
+</div>
+</section>
+<div class="secotionTitle">
+  <h2 id="contacter" class="police_massage"><span> </span></h2>
+</div>

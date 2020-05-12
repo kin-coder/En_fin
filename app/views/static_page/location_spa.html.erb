@@ -2,12 +2,25 @@
 <link href="/css/avisslider.css" rel="stylesheet">
 
 <style>
+  .heure{
+    font-family: Quicksand, fantasy!important;
+  }
   .police_massage{
 
     font-family: Quicksand, 'Open Sans';
     z-index: -4;
   }
   @media (min-width: 992px){
+    .lireBtn{
+      position: relative;
+      top: 20px;
+      left: 41%;
+      margin-bottom: 100px;
+      max-width: 100px;
+    }
+    .isotopeContainer{
+      width: 1140px !important;
+    }
     .h1 {
       font-size: 55px;
       line-height: 55px;
@@ -27,6 +40,16 @@
   }
 }
 @media (min-width: 768px){
+      .isotopeContainer{
+      width: 700px !important;
+    }
+      .lireBtn{
+      position: relative;
+      top: 20px;
+      left: 38%;
+      margin-bottom: 100px;
+      max-width: 100px;
+    }
   .h1 {
     font-size: 50px;
     line-height: 50px;
@@ -54,7 +77,18 @@
 }
 }
 
+@media (max-width: 600px){
+  .lireBtn{
+    position: relative;
+    top: 20px;
+    left: 25%;
+    margin-bottom: 100px;
+    max-width: 100px;
+  }
+}
+
 @media (min-width: 320px){
+
   .h1 {
     font-size: 20px;
     line-height: 20px;
@@ -177,7 +211,7 @@
               <h3>   </h3>
             </div>
             <div class="priceTag">
-              <h4>€100</h4>
+              <h4>100€</h4>
             </div>
           </div>
           <div class="priceInfo">
@@ -201,7 +235,7 @@
               <h3>     </h3>
             </div>
             <div class="priceTag">
-              <h4>€150</h4>
+              <h4>150€</h4>
             </div>
           </div>
           <div class="priceInfo">
@@ -223,7 +257,7 @@
               <h3>     </h3>
             </div>
             <div class="priceTag">
-              <h4>€200</h4>
+              <h4>200€</h4>
             </div>
           </div>
           <div class="priceInfo">
@@ -256,7 +290,7 @@
             <div class="offerMasking">
               <div class="offerTitle"><h4>Romantique</h4></div>
             </div>
-            <div class="offerPrice"><h5>€20</h5></div>
+            <div class="offerPrice"><h5>20€</h5></div>
           </div>
         </a>
       </div>
@@ -267,7 +301,7 @@
             <div class="offerMasking">
               <div class="offerTitle"><h4>Anniversaire</h4></div>
             </div>
-            <div class="offerPrice"><h5>€20</h5></div>
+            <div class="offerPrice"><h5>20€</h5></div>
           </div>
         </a>
       </div>
@@ -278,663 +312,770 @@
             <div class="offerMasking">
               <div class="offerTitle"><h4>Event/Fête</h4></div>
             </div>
-            <div class="offerPrice"><h5>€30</h5></div>
+            <div class="offerPrice"><h5>30€</h5></div>
           </div>
         </a>
       </div>
-      <!-- <div class="col-sm-3 col-xs-12">
-        <a href="#" data-toggle="modal" data-target="#plateau">
-          <div class="offerContent">
-            <img src="img/home/offer-4.jpg" alt="Image Offer">
-            <div class="offerMasking">
-              <div class="offerTitle"><h4>Plateau de <br>fruits frais</h4></div>
+
+    </section>
+
+
+    <!-- EXTRAS SPA -->
+
+    <section class="clearfix offersSection patternbg">
+      <div class="secotionTitle">
+        <h2 class="police_spa"><span> Les extras </span>Proposés directement par nos professionnels lors de votre mise en relation</h2>
+      </div>
+      <div class="row spa-suppl">
+        <div class="col-sm-3 col-xs-12">
+          <span data-toggle="modal" data-target="#fontaine">
+            <div class="offerContent">
+              <img src="img/home/fontainechocolat.jpg" alt="Image Offer">
+              <div class="offerMasking">
+                <div class="offerTitle"><h4>Fontaine  <br>Chocolat</h4></div>
+              </div>
+              <!-- <div class="offerPrice"><h5>€20</h5></div> -->
             </div>
-            <div class="offerPrice"><h5>€20</h5></div>
-          </div>
-        </a>
-      </div>
-      <div class="col-sm-12 col-xs-12">
-        <a href="#" data-toggle="modal" data-target="#table">
-          <div class="offerContent">
-            <img src="img/home/offer-3.jpg" alt="Image Offer">
-            <div class="offerMasking">
-              <div class="offerTitle"><h4>Des Tables <br>de massages</h4></div>
+          </span>
+        </div>
+        <div class="col-sm-3 col-xs-12">
+          <span data-toggle="modal" data-target="#tables">
+            <div class="offerContent">
+              <img src="img/home/tablemassage.jpg" alt="Image Offer">
+              <div class="offerMasking">
+                <div class="offerTitle" ><h4 style="text-transform: none;">Table de <br>Massage (avec huile)</h4></div>
+              </div>
+              <!-- <div class="offerPrice"><h5>€20</h5></div> -->
             </div>
-            <div class="offerPrice"><h5>€20</h5></div>
-          </div>
-        </a>
+          </span>
+        </div>
+        <div class="col-sm-3 col-xs-12">
+          <span data-toggle="modal" data-target="#plateaux">
+            <div class="offerContent">
+              <img src="img/home/plateau.jpg" alt="Image Offer">
+              <div class="offerMasking">
+                <div class="offerTitle"><h4 style="text-transform: none;">Plateau de <br>Fruits Frais</h4></div>
+              </div>
+              <!-- <div class="offerPrice"><h5>€20</h5></div> -->
+            </div>
+          </span>
+        </div>
+
+        <div class="col-sm-3 col-xs-12">
+          <span data-toggle="modal" data-target="#fours">
+            <div class="offerContent">
+              <img src="img/home/petitfour.jpg" alt="Image Offer">
+              <div class="offerMasking">
+                <div class="offerTitle"><h4 style="text-transform: none;">Petits Fours<br>Salés/sucrés</h4></div>
+              </div>
+              <!-- <div class="offerPrice"><h5>€20</h5></div> -->
+            </div>
+          </span>
+        </div>
+        <div class="col-sm-12 textExtras">
+          Et bien d’autres encore (enceinte bluetooth, eau parfumée, boissons (soft et alcool), etc…)
+        </div>
       </div>
-    </div> -->
 
-  </section>
+    </section>
 
-
-  <!-- EXTRAS SPA -->
-
-  <section class="clearfix offersSection patternbg">
+    <!-- comment ca marche SECTION -->
     <div class="secotionTitle">
-      <h2 class="police_spa"><span> Les extras </span>Proposés directement par nos professionnels lors de votre mise en relation</h2>
+      <h2 id="contacter" class="police_massage"><span>Comment </span>ça marche?</h2>
     </div>
-    <div class="row spa-suppl">
-      <div class="col-sm-3 col-xs-12">
-        <span data-toggle="modal" data-target="#fontaine">
-          <div class="offerContent">
-            <img src="img/home/fontainechocolat.jpg" alt="Image Offer">
-            <div class="offerMasking">
-              <div class="offerTitle"><h4>Fontaine  <br>chocolat</h4></div>
+    <section class="clearfix contactSection contactSectionEngagementMassage">
+      <center>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="textccm">
+              <b><span><i class="fa fa-thum" aria-hidden="true" id="ok"><img src="img/home/Reservation.png" alt="Image Partner">
+              </i> <br></span> Réservation</b>
             </div>
-            <!-- <div class="offerPrice"><h5>€20</h5></div> -->
-          </div>
-        </span>
-      </div>
-      <div class="col-sm-3 col-xs-12">
-        <span data-toggle="modal" data-target="#tables">
-          <div class="offerContent">
-            <img src="img/home/tablemassage.jpg" alt="Image Offer">
-            <div class="offerMasking">
-              <div class="offerTitle"><h4>Table de <br>massage(avec huile)</h4></div>
-            </div>
-            <!-- <div class="offerPrice"><h5>€20</h5></div> -->
-          </div>
-        </span>
-      </div>
-      <div class="col-sm-3 col-xs-12">
-        <span data-toggle="modal" data-target="#plateaux">
-          <div class="offerContent">
-            <img src="img/home/plateau.jpg" alt="Image Offer">
-            <div class="offerMasking">
-              <div class="offerTitle"><h4>Plateau de <br>fruits frais</h4></div>
-            </div>
-            <!-- <div class="offerPrice"><h5>€20</h5></div> -->
-          </div>
-        </span>
-      </div>
+            <p class='text-p-ccmspa'>Choisissez vos prestations et <strong><%= link_to "réservez", reservation_path, 'data-method':'GET' %></strong> le jour et l’heure de votre choix directement en ligne. 
 
-      <div class="col-sm-3 col-xs-12">
-        <span data-toggle="modal" data-target="#fours">
-          <div class="offerContent">
-            <img src="img/home/petitfour.jpg" alt="Image Offer">
-            <div class="offerMasking">
-              <div class="offerTitle"><h4>Petits Fours<br>salés/sucrés</h4></div>
-            </div>
-            <!-- <div class="offerPrice"><h5>€20</h5></div> -->
+            </p>
           </div>
-        </span>
-      </div>
-      <div class="col-sm-12 textExtras">
-        Et bien d’autres encore (enceinte bluetooth, eau parfumée, boissons (soft et alcool), etc…)
-      </div>
+          <div class="col-sm-6">
+            <div class="textccm">
+              <b><span><i class="fa fa-truck" aria-hidden="true" id="ok"></i><br></span> Livraison</b>
+            </div>
+            <p class='text-p-ccmspa'>Un professionnel sélectionné et formé se charge <br>de la <strong><a href="/#zoneaction" data-method="GET">livraison </a></strong> de votre spa. 
+            </p>
+          </div>
+        </div>
+      </center>
+      <center>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="textccm">
+              <b><span><i class="fa fa-thum" aria-hidden="true" id="ok"><img src="img/home/Installation.png" alt="Image Partner">
+              </i> <br></span> Installation</b>
+            </div>
+            <p class='text-p-ccmspa'>Un professionnel sélectionné et formé effectue l’<strong><%= link_to "installation", faq_path , 'data-method':'GET'%></strong> de votre spa (nettoyage & remplissage compris) en vérifiant et respectant les normes d’hygiène, de sécurité et de qualité. Il met également en place les différentes prestations choisies (décorations, table de massage, etc…). Il se charge de tout, vous ne vous occupez de rien. En moins de 1h30, vous pourrez utiliser votre jacuzzi !
+            </p>
+          </div>
+          <div class="col-sm-6">
+            <div class="textccm">
+             <b><span><i class="fa fa-unlock" aria-hidden="true" id="ok"></i> <br></span> Désinstallation</b>
+           </div>
+           <p class='text-p-ccmspa'> Un professionnel sélectionné et formé effectue la <strong><%= link_to "désinstallation", faq_path , 'data-method':'GET'%></strong> de votre spa (vidange et nettoyage compris) en vérifiant et respectant les normes d’hygiène, de sécurité et de qualité. Il enlève et range les différentes prestations choisies (décorations, table de massage, etc…). Il se charge de tout, vous ne vous occupez de rien. En moins de 1h, le démontage sera fini !
+           </div>
+
+         </div> 
+       </center>
+       <center>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="textccm">
+              <b><span><i class="fa fa-thum" aria-hidden="true" id="ok"><img src="img/home/detente.png" alt="Image Partner">
+              </i> <br></span> Détente</b>
+            </div>
+            <p class='text-p-ccmspa'>La chaleur et les bulles de  <strong><a href="#galerie" data-method="GET">nos spas </a></strong>permettront de vous détendre et de passer un moment magique en couple, entre amis ou encore en famille !
+
+            </p>
+          </div> 
+        </div>
+      </center>
+    </section>
+
+
+
+    <!-- NOS ENGAGEMENTS -->
+    <div class="secotionTitle">
+      <h2 id="contacter" class="police_massage"><span>Nos engagements</span></h2>
     </div>
-
-  </section>
-
-  <!-- comment ca marche SECTION -->
-  <div class="secotionTitle">
-    <h2 id="contacter" class="police_massage"><span>Comment ça marche?</span></h2>
-  </div>
-  <section class="clearfix contactSection contactSectionEngagementMassage">
-    <center>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="textccm">
-            <b><span><i class="fa fa-thum" aria-hidden="true" id="ok"><img src="img/home/Reservation.png" alt="Image Partner">
-            </i> <br></span> Réservation</b>
-          </div>
-          <p class='text-p-ccmspa'>Choisissez vos prestations et <strong><%= link_to "réservez", reservation_path, 'data-method':'GET' %></strong> le jour et l’heure de votre choix directement en ligne. 
-
-          </p>
-        </div>
-        <div class="col-sm-6">
-          <div class="textccm">
-            <b><span><i class="fa fa-truck" aria-hidden="true" id="ok"></i><br></span> Livraison</b>
-          </div>
-          <p class='text-p-ccmspa'>Un professionnel sélectionné et formé se charge <br>de la <strong><a href="/#zoneaction" data-method="GET">livraison </a></strong> de votre spa. 
-          </p>
-        </div>
-      </div>
-    </center>
-    <center>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="textccm">
-            <b><span><i class="fa fa-thum" aria-hidden="true" id="ok"><img src="img/home/Installation.png" alt="Image Partner">
-            </i> <br></span> Installation</b>
-          </div>
-          <p class='text-p-ccmspa'>Un professionnel sélectionné et formé effectue l’<strong><%= link_to "installation", faq_path , 'data-method':'GET'%></strong> de votre spa (nettoyage & remplissage compris) en vérifiant et respectant les normes d’hygiène, de sécurité et de qualité. Il met également en place les différentes prestations choisies (décorations, table de massage, etc…). Il se charge de tout, vous ne vous occupez de rien. En moins de 1h30, vous pourrez utiliser votre jacuzzi!
-          </p>
-        </div>
-        <div class="col-sm-6">
-          <div class="textccm">
-           <b><span><i class="fa fa-unlock" aria-hidden="true" id="ok"></i> <br></span> Désinstallation</b>
-         </div>
-         <p class='text-p-ccmspa'> Un professionnel sélectionné et formé effectue la <strong><%= link_to "désinstallation", faq_path , 'data-method':'GET'%></strong> de votre spa (vidange et nettoyage compris) en vérifiant et respectant les normes d’hygiène, de sécurité et de qualité. Il enlève et range les différentes prestations choisies (décorations, table de massage, etc…). Il se charge de tout, vous ne vous occupez de rien. En moins de 1h, le démontage sera fini !
-         </div>
-
-       </div> 
-     </center>
+    <section class="clearfix contactSection contactSectionEngagementMassage">
      <center>
       <div class="row">
-        <div class="col-sm-12">
-          <div class="textccm">
-            <b><span><i class="fa fa-thum" aria-hidden="true" id="ok"><img src="img/home/detente.png" alt="Image Partner">
-            </i> <br></span> Détente</b>
-          </div>
-          <p class='text-p-ccmspa'>La chaleur et les bulles de  <strong><a href="#galerie" data-method="GET">nos spas </a></strong>permettront de vous détendre et de passer un moment magique en couple, entre amis ou encore en famille !
+        <div class="col-sm-6 engagement-spa">
 
-          </p>
-        </div> 
+          <div class="textccm">
+            <b><span><i class="fa fa-check-square-o" aria-hidden="true" id="ok"></i><br></span> Ecoute, disponibilité & réactivité</b>
+          </div>
+          <p class='engagements'>De la réservation jusqu’au suivi de votre satisfaction, <br>nous comptons bien vous cocooner.</p>
+
+        </div>
+        <div class="col-sm-6 engagement-spa">
+          <div class="textccm">
+            <b><span><i class="fa fa-thum" aria-hidden="true" id="ok">              <img src="img/home/professionnel.png" alt="Image Partner">
+            </i> <br></span> Professionnels sélectionnés, formés et diplômés</b>
+
+          </div>
+          <p class='engagements'>Toutes nos prestations sont réalisées par des professionnels sélectionnés, formés et diplômés. Ils s’occuperont de vous avec talent et gentillesse !</p>
+        </div>
       </div>
     </center>
+    <center>
+      <div class="row">
+        <div class="col-sm-6 engagement-spa">
+          <div class="textccm">
+            <b><span><i class="fa fa-coffee" aria-hidden="true" id="ok"></i><br></span> Service clé en main  </b>
+          </div>
+          <p class='engagements'>Vous ne vous occupez de rien, un professionnel formé et agréé se charge de tout (livraison, installation, remplissage, <br>vidange et démontage du spa)</p>
+        </div>
+
+        <div class="col-sm-6 engagement-spa">
+          <div class="textccm">
+            <b><span><i class="fa fa-thum" aria-hidden="true" id="ok"><img src="img/home/cible.png" alt="Image Partner">
+            </i> <br></span> Prestations sur mesure et Flexibilité</b>
+
+          </div>
+          <p class='engagements'>C’est vous qui choisissez votre prestation et vos horaires, nous qui nous adaptons. Vous pouvez personnaliser votre moment en fonction de vos envies. Installation possible tous les jours de l’année, en appartement ou villa, <br> en intérieur ou extérieur.
+          </p>
+        </div>
+
+      </div> 
+    </center>
+    <center>
+      <div class="row spaengagement">
+
+        <div class="col-sm-4">
+          <div class="textccm">
+            <b><span><i class="fa fa-eur" aria-hidden="true" id="ok"></i><br></span> Tarifs abordables </b>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="textccm">
+            <b><span><i class="fa fa-thum" aria-hidden="true" id="ok"><img src="img/home/hygiene.png" alt="Image Partner">
+            </i> <br></span> Hygiène garantie</b>
+
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="textccm">
+            <b><span><i class="fa fa-thumbs-up" aria-hidden="true" id="ok"></i><br></span> Respect des normes de qualité et de sécurité  </b>
+          </div>
+        </div>
+      </div>  
+    </center>
+
+  </section>
+
+  <!-- avis SECTION -->
+  <section class="container-fluid clearfix productArea patternbg">
+    <div class="container">
+      <div class="secotionTitle">
+        <h2 class="police_massage"><span>Idées originales</span></h2>
+      </div>
+
+    </div>
   </section>
 
 
 
-  <!-- NOS ENGAGEMENTS -->
-  <div class="secotionTitle">
-    <h2 id="contacter" class="police_massage"><span>Nos engagements</span></h2>
-  </div>
-  <section class="clearfix contactSection contactSectionEngagementMassage">
-   <center>
+  <section class="clearfix productSection">
+
     <div class="row">
-      <div class="col-sm-6 engagement-spa">
+      <div class="col-xs-12">
+        <div id="productSlider" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#productSlider" data-slide-to="0" class="active"></li>
+            <li data-target="#productSlider" data-slide-to="1"></li>
+          </ol>
 
-        <div class="textccm">
-          <b><span><i class="fa fa-check-square-o" aria-hidden="true" id="ok"></i><br></span> Ecoute, disponibilité & réactivité</b>
-        </div>
-        <p class='engagements'>De la réservation jusqu’au suivi de votre satisfaction, <br>nous comptons bien vous cocooner.</p>
-
-      </div>
-      <div class="col-sm-6 engagement-spa">
-        <div class="textccm">
-          <b><span><i class="fa fa-thum" aria-hidden="true" id="ok">              <img src="img/home/professionnel.png" alt="Image Partner">
-          </i> <br></span> Professionnels sélectionnés, formés et diplômés</b>
-
-        </div>
-        <p class='engagements'>Toutes nos prestations sont réalisées par des professionnels sélectionnés, formés et diplômés. Ils s’occuperont de vous avec talent et gentillesse !</p>
-      </div>
-    </div>
-  </center>
-  <center>
-    <div class="row">
-      <div class="col-sm-6 engagement-spa">
-        <div class="textccm">
-          <b><span><i class="fa fa-coffee" aria-hidden="true" id="ok"></i><br></span> Service clé en main  </b>
-        </div>
-        <p class='engagements'>Vous ne vous occupez de rien, un professionnel formé et agréé se charge de tout (livraison, installation, remplissage, <br>vidange et démontage du spa)</p>
-      </div>
-
-      <div class="col-sm-6 engagement-spa">
-        <div class="textccm">
-          <b><span><i class="fa fa-thum" aria-hidden="true" id="ok"><img src="img/home/cible.png" alt="Image Partner">
-          </i> <br></span> Prestations sur mesure et Flexibilité</b>
-
-        </div>
-        <p class='engagements'>C’est vous qui choisissez votre prestation et vos horaires, nous qui nous adaptons. Vous pouvez personnaliser votre moment en fonction de vos envies. Installation possible tous les jours de l’année, en appartement ou villa, <br> en intérieur ou extérieur.
-        </p>
-      </div>
-
-    </div> 
-  </center>
-  <center>
-    <div class="row spaengagement">
-
-      <div class="col-sm-4">
-        <div class="textccm">
-          <b><span><i class="fa fa-eur" aria-hidden="true" id="ok"></i><br></span> Tarifs abordables </b>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="textccm">
-          <b><span><i class="fa fa-thum" aria-hidden="true" id="ok"><img src="img/home/hygiene.png" alt="Image Partner">
-          </i> <br></span> Hygiène garantie</b>
-
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="textccm">
-          <b><span><i class="fa fa-thumbs-up" aria-hidden="true" id="ok"></i><br></span> Respect des normes de qualité et de sécurité  </b>
-        </div>
-      </div>
-    </div>  
-  </center>
-
-</section>
-
-<!-- avis SECTION -->
-<section class="container-fluid clearfix productArea patternbg">
-  <div class="container">
-    <div class="secotionTitle">
-      <h2 class="police_massage"><span>Idées originales</span></h2>
-    </div>
-
-  </div>
-</section>
-
-
-
-<section class="clearfix productSection">
-
-  <div class="row">
-    <div class="col-xs-12">
-      <div id="productSlider" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#productSlider" data-slide-to="0" class="active"></li>
-          <li data-target="#productSlider" data-slide-to="1"></li>
-        </ol>
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-          <div class="item active">
-            <div class="row">
-
-              <div class="col-sm-12 col-xs-12">
-                <div class="productInfo">
-
-                  <h4>
-                    <center class="slide0">
-                      <i class="fa fa-heart" aria-hidden="true" id="iconetitle"></i> <br>
-                    Un week-end en amoureux ave jacuzzi !</center> </h4>
-                    <p class="p-slider">Surprise à votre moitié ? Anniversaire de rencontre ou de mariage ? Une nuit de noces ? <br>Surprenez votre partenaire et retrouvez-vous en amoureux pour une soirée romantique unique ! </p>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="item">
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
               <div class="row">
+
                 <div class="col-sm-12 col-xs-12">
                   <div class="productInfo">
+
                     <h4>
-                      <center class="slide1">
-                        <i class="fa fa-female" aria-hidden="true" id="iconetitle1"></i> <br>
-                      Spa entre copines !</center> </h4>
-                      <p class="p-slider">Passez du bon temps entre  filles, une pause bien-être pour vivre un moment de <br>relaxation et de complicité ! </p>
+                      <center class="slide0">
+                        <i class="fa fa-heart" aria-hidden="true" id="iconetitle"></i> <br>
+                      Un week-end en amoureux avec jacuzzi !</center> </h4>
+                      <p class="p-slider">Surprise à votre moitié ? Anniversaire de rencontre ou de mariage ? Une nuit de noces ? <br>Surprenez votre partenaire et retrouvez-vous en amoureux pour une soirée romantique unique ! </p>
 
                     </div>
                   </div>
                 </div>
               </div>
+
               <div class="item">
                 <div class="row">
                   <div class="col-sm-12 col-xs-12">
                     <div class="productInfo">
                       <h4>
-                        <center class="slide2">
-                          <i class="fa fa-check-square" aria-hidden="true" id="iconetitle2"></i> <br>
-                        Toute occasion est bonne pour un instant inoubliable !</center> </h4>
-                        <p class="p-slider">Passez du bon temps entre les filles, une pause bien-etre pour vivre un moment de <br>relaxation et de complicité ! </p>
+                        <center class="slide1">
+                          <i class="fa fa-female" aria-hidden="true" id="iconetitle1"></i> <br>
+                        Spa entre copines !</center> </h4>
+                        <p class="p-slider">Passez du bon temps entre  filles, une pause bien-être pour vivre un moment de <br>relaxation et de complicité ! </p>
+
                       </div>
                     </div>
                   </div>
                 </div>
-
                 <div class="item">
                   <div class="row">
                     <div class="col-sm-12 col-xs-12">
                       <div class="productInfo">
                         <h4>
-                          <center class="slide3">
-                            <i class="fa fa-glass" aria-hidden="true" id="iconetitle3"></i> <br>
-                          Louer un spa pour une soirée, un moment festif !</center> </h4>
-                          <p class="p-slider">Que ce soit pour une fête entre amis ou en famille, pour un apéritif, un barbecue, une cremaillère, <br>offrez-vous un moment de détente et de convivialité originale qui ravira tous vos convives ! </p>
+                          <center class="slide2">
+                            <i class="fa fa-check-square" aria-hidden="true" id="iconetitle2"></i> <br>
+                          Toute occasion est bonne pour un instant inoubliable !</center> </h4>
+                          <p class="p-slider">Que ce soit pour une occasion spéciale ou un simple moment de détente et de relaxation à domicile, vous vous laisserez <br>séduire par ce concept ! </p>
                         </div>
                       </div>
                     </div>
                   </div>
-
 
                   <div class="item">
                     <div class="row">
                       <div class="col-sm-12 col-xs-12">
                         <div class="productInfo">
                           <h4>
-                            <center class="slide4">
-                              <i class="fa fa-gratipay" aria-hidden="true" id="iconetitle4"></i> <br>
-                            Un spa pour un enterrement de vie de jeune fille ! </center> </h4>
-                            <p class="p-slider">Une très bonne idée pour immortaliser votre enterrement de vie de jeune fille ! </p>
+                            <center class="slide3">
+                              <i class="fa fa-glass" aria-hidden="true" id="iconetitle3"></i> <br>
+                            Louer un spa pour une soirée, un moment festif !</center> </h4>
+                            <p class="p-slider">Que ce soit pour une fête entre amis ou en famille, pour un apéritif, un barbecue, une crémaillère, <br>offrez-vous un moment de détente et de convivialité originale qui ravira tous vos convives ! </p>
                           </div>
                         </div>
                       </div>
                     </div>
+
 
                     <div class="item">
                       <div class="row">
                         <div class="col-sm-12 col-xs-12">
                           <div class="productInfo">
                             <h4>
-                              <center class="slide5">
-                                <i class="fa fa-birthday-cake" aria-hidden="true" id="iconetitle5"></i> <br>
-                              Un jacuzzi pour fêter un anniversaire ! </center> </h4>
-                              <p class="p-slider">Vous cherchez une idée de cadeau unique ? Mais aussi, une idée qui soit fun originale ? Quelque chose qui marque ? <br>Que vous cherchiez un cadeau d'anniversaire por vos parents, vos amis, vos enfants, <br>vous les surprendrez à coup sûr avec un spa o domicile !</p>
+                              <center class="slide4">
+                                <i class="fa fa-gratipay" aria-hidden="true" id="iconetitle4"></i> <br>
+                              Un spa pour un enterrement de vie de jeune fille ! </center> </h4>
+                              <p class="p-slider">Une très bonne idée pour immortaliser votre enterrement de vie de jeune fille ! </p>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
 
-                    <!-- Left and right controls -->
-                    <div class="vaetvient">
-                      <a class="left carousel-control" href="#productSlider" role="button" data-slide="prev">
-                        <i class="fa fa-arrow-circle-left flechespa-left" aria-hidden="true" id="ok"></i>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="right carousel-control" href="#productSlider" role="button" data-slide="next">
-                        <i class="fa fa-arrow-circle-right ok" aria-hidden="true" id='fleche'></i>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </section>
-
-
-            <!-- HOME GALLERY SECTION -->
-            <section>
-              <div class="clearfix homeGalleryTitle">
-                <div class="container">
-                  <div class="secotionTitle" ID="galerie">
-                    <h2 class="police_massage"><span>Galerie </span>Un aperçu de nos réalisations jacuzzi à domicile</h2>
-                  </div>
-                </div>
-              </div>
-              <div class="container-fluid clearfix homeGallery">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <div class="filter-container isotopeFilters">
-                      <ul class="list-inline filter">
-                        <li class="active"><a href="#" data-filter=".tout">tout</a></li>
-                        <li><a href="#" data-filter=".ambiance">Nos Ambiances</a></li>
-                        <li><a href="#" data-filter=".extra">les extras</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="row isotopeContainer" id="container">
-                  <%for n_tout in (1..53) do%>
-
-
-                  <div class="col-sm-3 isotopeSelector tout">
-                    <div class="card">
-                      <div class="card-img">
-                        <img class="img-full" src="img/touts/tout<%=n_tout%>.jpg" alt="Image" >
-                        <div class="overlay-content">
-                          <a href="img/touts/tout<%=n_tout%>.jpg"data-fancybox="images" >
-                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
-                          </a>
+                      <div class="item">
+                        <div class="row">
+                          <div class="col-sm-12 col-xs-12">
+                            <div class="productInfo">
+                              <h4>
+                                <center class="slide5">
+                                  <i class="fa fa-birthday-cake" aria-hidden="true" id="iconetitle5"></i> <br>
+                                Un jacuzzi pour fêter un anniversaire ! </center> </h4>
+                                <p class="p-slider">Vous cherchez une idée de cadeau unique ? Mais aussi, une idée qui soit fun et originale ? Quelque chose qui marque ? <br>Que vous cherchiez un cadeau d'anniversaire pour vos parents, vos amis, vos enfants, <br>vous les surprendrez à coup sûr avec un spa à domicile !</p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
+                      </div>
+
+                      <!-- Left and right controls -->
+                      <div class="vaetvient">
+                        <a class="left carousel-control" href="#productSlider" role="button" data-slide="prev">
+                          <i class="fa fa-arrow-circle-left flechespa-left" aria-hidden="true" id="ok"></i>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#productSlider" role="button" data-slide="next">
+                          <i class="fa fa-arrow-circle-right ok" aria-hidden="true" id='fleche'></i>
+                          <span class="sr-only">Next</span>
+                        </a>
                       </div>
                     </div>
                   </div>
-
-                  <%end%> 
-
-                  <%for n_ambiance in (1..32) do%>
-
-
-                  <div class="col-sm-3 isotopeSelector ambiance">
-                    <div class="card">
-                      <div class="card-img">
-                        <img class="img-full" src="img/ambiances/ambiance<%=n_ambiance%>.jpg" alt="Image" >
-                        <div class="overlay-content">
-                          <a href="img/ambiances/ambiance<%=n_ambiance%>.jpg"data-fancybox="images" >
-                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <%end%> 
-                  
-                  <%for n_extra in (1..16) do%>
-
-
-                  <div class="col-sm-3 isotopeSelector extra">
-                    <div class="card">
-                      <div class="card-img">
-                        <img class="img-full" src="img/extras/extra<%=n_extra%>.jpg" alt="Image" >
-                        <div class="overlay-content">
-                          <a href="img/extras/extra<%=n_extra%>.jpg"data-fancybox="images" >
-                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <%end%>        
                 </div>
+
               </section>
 
-              <!-- avis SECTION -->
-              <section class="container-fluid clearfix productArea patternbg">
-                <div class="secotionTitle">
-                  <h2 class="police_massage"><span>Avis et notes</span>Clients</h2>
-                </div>
-                
-              </section>
-              
-              <div id="slider">
-                <a href="javascript:void(0)" class="control_next">></a>
-                <a href="javascript:void(0)" class="control_prev"><</a>
-                
-                <ul>
-                  <% @commentsSpa.each do |comment| %>
-                  <li>
-                   <p class='comments'>
-                    <i class="stars" aria-hidden="true" id="iconetitle1"></i> <br>
-                    <%=comment.content%> <br>
-                    <i class="commentataire"><%=comment.user_name%></i>
-                  </p>
-                </li>
-                <%end%>
-              </ul>  
-            </div>
 
-
-            <!-- ZONE CONCERNES -->
-            <section class="clearfix brandArea patternbg">
-              <div class="container">
-                <div class="secotionTitle" id="zoneaction">
-                  <h2 id="a-propos" class="police_massage"><span>Où bénéficier </span>de nos services ?</h2>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12">
-                    <div class="owl-carousel partnersLogoSlider">
-                      <div class="slide">
-                        <div class="partnersLogo clearfix">
-                          <img src="img/home/france.png" alt="Image Partner">
-                        </div>
-                      </div>  
-                      <div class="slide">
-                        <div class="partnersLogo clearfix">
-                          <img src="img/home/luxembourg.png" alt="Image Partner">
-                        </div>
-                      </div>
-                      <div class="slide">
-                        <div class="partnersLogo clearfix">
-                          <img src="img/home/belgique.png" alt="Image Partner">
-                        </div>
-                      </div>
-                      <div class="slide">
-                        <div class="partnersLogo suisse clearfix">
-                          <img src="img/home/suisse.png" alt="Image Partner">
-                        </div>
-                      </div>
+              <!-- HOME GALLERY SECTION -->
+              <section>
+                <div class="clearfix homeGalleryTitle">
+                  <div class="container">
+                    <div class="secotionTitle" id="galerie">
+                      <h2 class="police_massage"><span>Galerie </span>Un aperçu de nos réalisations jacuzzi à domicile</h2>
                     </div>
                   </div>
                 </div>
-                <br>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <center>
-                      Notre service de location de jacuzzi à domicile est disponible partout en France, Belgique, Luxembourg & Suisse
-                      Alors n’attendez plus, nous ne sommes pas loin de chez vous !
-                    </center>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-
-
-            <!-- CONTACT US SECTION -->
-            <section class="container-fluid clearfix productArea patternbg">
-
-              <div class="secotionTitle">
-                <h2 class="police_massage"><span>Besoin d’infos ?</span>Des questions ?</h2>
-              </div>
-
-            </div>
-          </section>
-
-          <section class="clearfix contactSection">
-            <div class="container">
-              <div class="secotionTitle">
-                <div class="row">
-                  <div class='textsectioncontact'>Vous êtes un <i><strong>particulier</strong></i> et souhaitez échanger avec nous ? <br>
-                    Vous êtes une <i><strong>entreprise</strong></i>, une <i><strong>piscine</strong></i>, une <i><strong>agence évènementielle</strong></i>, un <i><strong>service de conciergerie</strong></i>, <i><strong>organisateur d’événements, Comité d’Entreprise</strong></i>, etc ... ? Nous pouvons adapter nos prestations sur mesure pour vos clients ou vos salariés.</div>
-                    <div class="col-md-8 col-sm-7 col-xs-12">
-                      <div class="contactTitle">
-                        <h3></br></h3>
-                      </div>
-
-                      <div class="contactForm">
-                        <div id="alert"></div><!--Response Holder-->
-                        <%= form_tag(save_message_path) do %>
-                        <div class="form-group">
-                          <input type="text" name="first_name" class="form-control" placeholder="Votre prénom" required>
-                        </div>
-                        <div class="form-group">
-                          <input type="text" name="last_name" class="form-control" placeholder="Votre nom" required>
-                        </div>
-                        <div class="form-group">
-                          <input type="email" name="email" class="form-control" placeholder="Votre Email" required>
-                        </div>
-                        <div class="form-group">
-                          <input type="text" name="mobile" class="form-control" placeholder="Votre Mobile" required>
-                        </div>
-                        <div class="form-group">
-                          <input type="text" name="corp_name" class="form-control" placeholder="Nom Entreprise">
-                        </div>
-                        <div class="form-group">
-                          <textarea class="form-control" name="content" placeholder="Dîtes-nous tout !" required></textarea>
-                        </div>
-                        <div class="form-group">
-                          <%= submit_tag("Envoyer", class:"btn btn-primary first-btn", id:"contact-submit-btn")%> 
-                        </div>
-                        <% end %>
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-sm-5 col-xs-12">
-
-                      <div class="holdingInfo patternbg">
-                        <div class="contactTitle">
-                          <h3><center>Suivez-nous</center></h3>
-                        </div>
-                        <ul>
-                          <a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa icon" aria-hidden="true">
-                            <img src="/img/icon-reseau-social/facebook.png" alt="">
-                          </i> Cocooning Spa officiel </li></a>
-                          <a href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa icon" aria-hidden="true"> 
-                            <img src="/img/icon-reseau-social/instagram.png" alt="">
-                          </i> Cocooning Spa </li></a>
-                          <a href="https://www.snapchat.com/add/cocooningspaev" class="btn"> <li><i class="fa icon" aria-hidden="true">
-                            <img src="/img/icon-reseau-social/snapchat.png" alt="">
-                          </i> Cocooning Spa snapchat</li> </a>
+                <div class="container-fluid clearfix homeGallery">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="filter-container isotopeFilters">
+                        <ul class="list-inline filter">
+                          <li class="active"><a href="#" data-filter=".tout">tout</a></li>
+                          <li><a href="#" data-filter=".ambiance" id="ambiance">Nos Ambiances</a></li>
+                          <li><a href="#" data-filter=".extra" id="extra">les extras</a></li>
                         </ul>
                       </div>
                     </div>
                   </div>
-                </div>
-              </section>
+                  <div class="row isotopeContainer" id="container">
+                    <%for n_tout in (1..4) do%>
+                    <div class="col-sm-3 isotopeSelector tout">
+                      <div class="card">
+                        <div class="card-img">
+                          <ul class="list-inline">
+                            <li>
+                              <img class="img-full img-thumbnail" src="img/touts/tout<%=n_tout%>.jpg" alt="Image" >
+                              <div class="overlay-content">
+                                <a href="img/touts/tout<%=n_tout%>.jpg"data-fancybox="images" >
+                                  <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
+                                </a>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
 
-              <!-- decoration MODAL -->
-              <div id="romantique" class="modal fade modalCommon" role="dialog" tabindex="-1">
-                <div class="modal-dialog">
-                  <!-- MODAL CONTENT-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title modal-titleSpa ">Décoration romantique</h4>
-                    </div>
-                    <div class="modal-body">
-                      <div id="appointment-alert" class="my-alert"></div>
-                      <p class="text-p-index modalText">la décoration romantique est composée de ballons, pétales de roses, bougies, lumière tamisée & spot lumineux dans le spa.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- anniversaire MODAL -->
-              <div id="anniversaire" class="modal fade modalCommon" role="dialog" tabindex="-1">
-                <div class="modal-dialog">
-                  <!-- MODAL CONTENT-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title modal-titleSpa">Décoration anniversaire</h4>
-                    </div>
-                    <div class="modal-body">
-                      <div id="appointment-alert" class="my-alert"></div>
-                      <p class="text-p-index modalText">La décoration anniversaire/fête est composée Ballons, confettis, accessoires anniversaire & spot lumineux dans le spa.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- fontaine MODAL -->
-              <div id="fete" class="modal fade modalCommon" role="dialog" tabindex="-1">
-                <div class="modal-dialog">
-                  <!-- MODAL CONTENT-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title modal-titleSpa">Event/Fête</h4>
-                    </div>
-                    <div class="modal-body">
-                      <div id="appointment-alert" class="my-alert"></div>
-                      <p class="text-p-index modalText">Exemples : décoration personnalisée pour nouvel an, noël, fête des pères/mères, EVJF, Girly, Zen, etc…</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- plateau MODAL -->
-              <div id="plateau" class="modal fade modalCommon" role="dialog" tabindex="-1">
-                <div class="modal-dialog">
-                  <!-- MODAL CONTENT-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title modal-titleSpa">Plateau de fruits frais</h4>
-                    </div>
-                    <div class="modal-body">
-                      <div id="appointment-alert" class="my-alert"></div>
-                      <p class="text-p-index modalText">Pour 2 personnes</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- table de massage MODAL -->
-              <div id="table" class="modal fade modalCommon" role="dialog" tabindex="-1">
-                <div class="modal-dialog">
-                  <!-- MODAL CONTENT-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title modal-titleSpa">Table de massage</h4>
-                    </div>
-                    <div class="modal-body">
-                      <div id="appointment-alert" class="my-alert"></div>
-                      <p class="text-p-index modalText">Fournie avec huile de massage</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    <%end%> 
 
 
 
+                    <div class="hidden" id="classRemoveAmbiance" style="max-width: max-content;">
+                      <div class="col-sm-3 isotopeSelector ambiance">
+                        <div class="card">
+                          <div class="card-img">
+                           <ul class="list-inline">
+                            <li>
+                              <img class="img-full img-thumbnail" src="img/ambiances/ambiance5.jpg" alt="Image" >
+                              <div class="overlay-content">
+                                <a href="img/ambiances/ambiance5.jpg"data-fancybox="images" >
+                                  <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
+                                </a>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 isotopeSelector ambiance">
+                      <div class="card">
+                        <div class="card-img">
+                         <ul class="list-inline">
+                          <li>
+                            <img class="img-full img-thumbnail" src="img/ambiances/ambiance2.jpg" alt="Image" >
+                            <div class="overlay-content">
+                              <a href="img/ambiances/ambiance2.jpg"data-fancybox="images" >
+                                <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
+                              </a>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 isotopeSelector ambiance">
+                    <div class="card">
+                      <div class="card-img">
+                       <ul class="list-inline">
+                        <li>
+                          <img class="img-full img-thumbnail" src="img/ambiances/ambiance3.jpg" alt="Image" >
+                          <div class="overlay-content">
+                            <a href="img/ambiances/ambiance3.jpg"data-fancybox="images" >
+                              <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
+                            </a>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3 isotopeSelector ambiance">
+                  <div class="card">
+                    <div class="card-img">
+                     <ul class="list-inline">
+                      <li>
+                        <img class="img-full img-thumbnail" src="img/ambiances/ambiance4.jpg" alt="Image" >
+                        <div class="overlay-content">
+                          <a href="img/ambiances/ambiance4.jpg"data-fancybox="images" >
+                            <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
+                          </a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-<%= javascript_pack_tag 'index-js' %>
+
+
+            <div class="hidden" id="classRemoveExtra" style="max-width: max-content;">
+              <div class="col-sm-3 isotopeSelector extra">
+                <div class="card">
+                  <div class="card-img">
+                   <ul class="list-inline">
+                    <li>
+                      <img class="img-full img-thumbnail" src="img/extras/extra1.jpg" alt="Image" >
+                      <div class="overlay-content">
+                        <a href="img/extras/extra1.jpg"data-fancybox="images" >
+                          <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-3 isotopeSelector extra">
+              <div class="card">
+                <div class="card-img">
+                 <ul class="list-inline">
+                  <li>
+                    <img class="img-full img-thumbnail" src="img/extras/extra2.jpg" alt="Image" >
+                    <div class="overlay-content">
+                      <a href="img/extras/extra2.jpg"data-fancybox="images" >
+                        <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 isotopeSelector extra">
+            <div class="card">
+              <div class="card-img">
+               <ul class="list-inline">
+                <li>
+                  <img class="img-full img-thumbnail" src="img/extras/extra3.jpg" alt="Image" >
+                  <div class="overlay-content">
+                    <a href="img/extras/extra3.jpg"data-fancybox="images" >
+                      <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 isotopeSelector extra">
+          <div class="card">
+            <div class="card-img">
+             <ul class="list-inline">
+              <li>
+                <img class="img-full img-thumbnail" src="img/extras/extra4.jpg" alt="Image" >
+                <div class="overlay-content">
+                  <a href="img/extras/extra4.jpg"data-fancybox="images" >
+                    <h5><i class="fa fa-plus" aria-hidden="true"></i> <br></h5>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="lireBtn">
+    <a data-method="GET" style="position: absolute;" href="<%=galery_path%>" class="btn btn-common btn-full-round btn-theme" id="more">Voir tous</a>
+  </div>
+</section>
+
+<!-- avis SECTION -->
+<section class="container-fluid clearfix productArea patternbg">
+  <div class="secotionTitle">
+    <h2 class="police_massage"><span>Avis et notes</span>Clients</h2>
+  </div>
+
+</section>
+
+<div id="slider">
+  <a href="javascript:void(0)" class="control_next">></a>
+  <a href="javascript:void(0)" class="control_prev"><</a>
+
+  <ul>
+    <% @commentsSpa.each do |comment| %>
+    <li>
+     <p class='comments'>
+      <i class="stars" aria-hidden="true" id="iconetitle1"></i> <br>
+      <%=comment.content%> <br>
+      <i class="commentataire"><%=comment.user_name%></i>
+    </p>
+  </li>
+  <%end%>
+</ul>  
+</div>
+
+
+<!-- ZONE CONCERNES -->
+<section class="clearfix brandArea patternbg">
+  <div class="container">
+    <div class="secotionTitle" id="zoneaction">
+      <h2 id="a-propos" class="police_massage"><span>Où bénéficier </span>de nos services ?</h2>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="owl-carousel partnersLogoSlider">
+          <div class="slide">
+            <div class="partnersLogo clearfix">
+              <img src="img/home/france.png" alt="Image Partner">
+            </div>
+          </div>  
+          <div class="slide">
+            <div class="partnersLogo clearfix">
+              <img src="img/home/luxembourg.png" alt="Image Partner">
+            </div>
+          </div>
+          <div class="slide">
+            <div class="partnersLogo clearfix">
+              <img src="img/home/belgique.png" alt="Image Partner">
+            </div>
+          </div>
+          <div class="slide">
+            <div class="partnersLogo suisse clearfix">
+              <img src="img/home/suisse.png" alt="Image Partner">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-12">
+        <center>
+          Notre service de location de jacuzzi à domicile est disponible partout en France, Belgique, Luxembourg & Suisse
+          Alors n’attendez plus, nous ne sommes pas loin de chez vous !
+        </center>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CONTACT US SECTION -->
+<section class="container-fluid clearfix productArea patternbg">
+
+  <div class="secotionTitle">
+    <h2 class="police_massage"><span>Besoin d’infos ?</span>Des questions ?</h2>
+  </div>
+
+</div>
+</section>
+
+<section class="clearfix contactSection">
+  <div class="container">
+    <div class="secotionTitle">
+      <div class="row">
+        <div class='textsectioncontact'>Vous êtes un <i><strong>particulier</strong></i> et souhaitez échanger avec nous ? <br>
+          Vous êtes une <i><strong>entreprise</strong></i>, une <i><strong>piscine</strong></i>, une <i><strong>agence évènementielle</strong></i>, un <i><strong>service de conciergerie</strong></i>, <i><strong>organisateur d’événements, Comité d’Entreprise</strong></i>, etc ... ? Nous pouvons adapter nos prestations sur mesure pour vos clients ou vos salariés.</div>
+          <div class="col-md-8 col-sm-7 col-xs-12">
+            <div class="contactTitle">
+              <h3></br></h3>
+            </div>
+
+            <div class="contactForm">
+              <div id="alert"></div><!--Response Holder-->
+              <%= form_tag(save_message_path) do %>
+              <div class="form-group">
+                <input type="text" name="first_name" class="form-control" placeholder="Votre prénom" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="last_name" class="form-control" placeholder="Votre nom" required>
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Votre Email" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="mobile" class="form-control" placeholder="Votre Mobile" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="corp_name" class="form-control" placeholder="Nom Entreprise">
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="content" placeholder="Dîtes-nous tout !" required></textarea>
+              </div>
+              <div class="form-group">
+                <%= submit_tag("Envoyer", class:"btn btn-primary first-btn", id:"contact-submit-btn")%> 
+              </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-5 col-xs-12">
+
+            <div class="holdingInfo patternbg">
+              <div class="contactTitle">
+                <h3><center>Suivez-nous</center></h3>
+              </div>
+              <ul>
+                <a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa icon" aria-hidden="true">
+                  <img src="/img/icon-reseau-social/facebook.png" alt="">
+                </i> Cocooning Spa officiel </li></a>
+                <a href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa icon" aria-hidden="true"> 
+                  <img src="/img/icon-reseau-social/instagram.png" alt="">
+                </i> Cocooning Spa </li></a>
+                <a href="https://www.snapchat.com/add/cocooningspaev" class="btn"> <li><i class="fa icon" aria-hidden="true">
+                  <img src="/img/icon-reseau-social/snapchat.png" alt="">
+                </i> Cocooning Spa snapchat</li> </a>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- decoration MODAL -->
+    <div id="romantique" class="modal fade modalCommon" role="dialog" tabindex="-1">
+      <div class="modal-dialog">
+        <!-- MODAL CONTENT-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title modal-titleSpa ">Décoration romantique ?</h4>
+          </div>
+          <div class="modal-body">
+            <div id="appointment-alert" class="my-alert"></div>
+            <p class="text-p-index modalText">La décoration romantique est composée de ballons, pétales de roses, bougies, lumière tamisée & spot lumineux dans le spa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- anniversaire MODAL -->
+    <div id="anniversaire" class="modal fade modalCommon" role="dialog" tabindex="-1">
+      <div class="modal-dialog">
+        <!-- MODAL CONTENT-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title modal-titleSpa">Décoration anniversaire ?</h4>
+          </div>
+          <div class="modal-body">
+            <div id="appointment-alert" class="my-alert"></div>
+            <p class="text-p-index modalText">La décoration anniversaire est composée de ballons, confettis, accessoires anniversaire & spot lumineux dans le spa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- fontaine MODAL -->
+    <div id="fete" class="modal fade modalCommon" role="dialog" tabindex="-1">
+      <div class="modal-dialog">
+        <!-- MODAL CONTENT-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title modal-titleSpa">Event/Fête ?</h4>
+          </div>
+          <div class="modal-body">
+            <div id="appointment-alert" class="my-alert"></div>
+            <p class="text-p-index modalText">Exemples : décoration personnalisée pour nouvel an, noël, fête des pères/mères, EVJF, Girly, Zen, etc…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- plateau MODAL -->
+    <div id="plateau" class="modal fade modalCommon" role="dialog" tabindex="-1">
+      <div class="modal-dialog">
+        <!-- MODAL CONTENT-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title modal-titleSpa">Plateau de fruits frais ?</h4>
+          </div>
+          <div class="modal-body">
+            <div id="appointment-alert" class="my-alert"></div>
+            <p class="text-p-index modalText">Pour 2 personnes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- table de massage MODAL -->
+    <div id="table" class="modal fade modalCommon" role="dialog" tabindex="-1">
+      <div class="modal-dialog">
+        <!-- MODAL CONTENT-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title modal-titleSpa">Table de massage ?</h4>
+          </div>
+          <div class="modal-body">
+            <div id="appointment-alert" class="my-alert"></div>
+            <p class="text-p-index modalText">Fournie avec huile de massage</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <%= javascript_pack_tag 'index-js' %>
+    <script>
+
+
+  // afficher commande traitées 
+  let Aafficher = document.getElementById("classRemoveAmbiance");
+  let AClic = document.getElementById("ambiance");
+
+  AClic.addEventListener("click", function(){
+    Aafficher.classList.remove("hidden");
+  });
+
+    // afficher commande non traitées 
+    let AafficherExtra = document.getElementById("classRemoveExtra");
+    let AClicExtra = document.getElementById("extra");
+
+    AClicExtra.addEventListener("click", function(){
+      AafficherExtra.classList.remove("hidden");
+    });
+
+  </script>
+</script>
