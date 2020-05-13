@@ -196,12 +196,12 @@ text-align: center !important;
 .phonetext{
 	position: relative;
 	top: -45px;
-	left: 150px;
+	left: 75px;
 	letter-spacing: 3px;
 }
 .fatext{
 	position:relative;
-	left: 33%;
+	left: 40%;
 	top: 10px;
 	width: 300px;
 }
