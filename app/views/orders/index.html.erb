@@ -54,18 +54,28 @@
 		</div>
 	</div>
 
-<!-- =================================================================================== -->
-<!--     			 ATAO MODAL AM'LE + DE PRESTATION NA MASSAGE ITO 				-->
-	<div id="pushMassage2" class="hidden">
-		<p>“Attention : une réservation correspond à 1 praticien. En réservant pour plusieurs personnes, le même praticien pratiquera les massages à la suite. Si vous souhaitez réserver 2 massages simultanément, il vous faut faire 2 réservations séparées à la même heure.”</p>
-		<button onclick="myFunction()">Fermer</button>
+	<!-- =================================================================================== -->
+	<!--     			 ATAO MODAL AM'LE + DE PRESTATION NA MASSAGE ITO 				-->
+
+	<div id="pushMassage2" class="modal fade modalCommon" role="dialog" tabindex="-1">
+		<div class="modal-dialog">
+			<!-- MODAL CONTENT-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title modal-titleSpa" style="font-size:18px;">INFORMATION MASSAGE DUOS</h4>
+				</div>
+				<div class="modal-body">
+					<div id="appointment-alert" class="my-alert"></div>
+					<p class="text-p-index modalText" style="text-align: justify;">
+						“Attention : une réservation correspond à 1 praticien. En réservant pour plusieurs personnes, le même praticien pratiquera les massages à la suite. Si vous souhaitez réserver 2 massages simultanément, il vous faut faire 2 réservations séparées à la même heure.” <br>
+						<center><button type="button" class="onfirm-command btn btn-primary btn-resa-text text-btn btn-resa-text" data-dismiss="modal">fermer</button></center>
+					</p>
+				</div>
+			</div>
+		</div>
 	</div>
-	<script type="text/javascript">
-		function myFunction(){
-			document.getElementById('pushMassage2').classList.add('hidden');
-		}
-	</script>
-<!-- =================================================================================== -->
+	<!-- =================================================================================== -->
 
 
 	<!-- ==========================CONTENU ACCORDEONS================= -->
@@ -114,7 +124,7 @@
 									<div class="spa">
 										
 										<div class="spa-click">
-											<p class="p-resa-spa">Je souhaite reserver <i class="fa fa-minus-circle" id="remove-spa"></i><span id="number-spa"> 0 </span><i class="fa fa-plus-circle" id="add-spa"></i> spa</p>
+											<p class="p-resa-spa">Je souhaite réserver <i class="fa fa-minus-circle" id="remove-spa"></i><span id="number-spa"> 0 </span><i class="fa fa-plus-circle" id="add-spa"></i> spa</p>
 										</div>
 										<hr class="interligne">
 										<div class="row">
@@ -174,10 +184,10 @@
 										<div id="select-prestation">
 											<p class="p-resa-spa">Je souhaite reserver pour :<p>
 												<div>
-													<p class="p-resa-spa">Homme <i class="fa fa-minus-circle remove-massage" data-cat="Homme"></i><span id="number-Homme"> 0 </span><i class="fa fa-plus-circle add-massage" data-cat="Homme"></i></p>
+													<p class="p-resa-spa">Homme <i class="fa fa-minus-circle remove-massage" data-cat="Homme"></i><span id="number-Homme"> 0 </span><i class="fa fa-plus-circle add-massage" data-cat="Homme" id="addHomme"></i></p>
 												</div>
 												<div>
-													<p class="p-resa-spa">Femme <i class="fa fa-minus-circle remove-massage" data-cat="Femme"></i><span id="number-Femme"> 0 </span><i class="fa fa-plus-circle add-massage" data-cat="Femme"></i></p>
+													<p class="p-resa-spa">Femme <i class="fa fa-minus-circle remove-massage" data-cat="Femme"></i><span id="number-Femme"> 0 </span><i class="fa fa-plus-circle add-massage" data-cat="Femme" id="addFemme"></i></p>
 												</div>
 											</div>
 
@@ -277,59 +287,59 @@
 													<td>
 														
 														<section class="clearfix offersSection">
-      <h3 class="police_spa"><span> </span>Proposés directement par nos professionnels lors de votre mise en relation</h3>
-    <div class="row spa-suppl">
-      <div class="col-sm-3 col-xs-12">
-        <span data-toggle="modal" data-target="#fontaine">
-          <div class="offerContent">
-            <img src="img/home/fontainechocolat.jpg" alt="Image Offer">
-            <div class="offerMasking">
-              <div class="offerTitle"><h4>Fontaine  <br>chocolat</h4></div>
-            </div>
-            <!-- <div class="offerPrice"><h5>€20</h5></div> -->
-          </div>
-        </span>
-      </div>
-      <div class="col-sm-3 col-xs-12">
-        <span data-toggle="modal" data-target="#tables">
-          <div class="offerContent">
-            <img src="img/home/tablemassage.jpg" alt="Image Offer">
-            <div class="offerMasking">
-              <div class="offerTitle"><h4>Table de <br>massage(avec huile)</h4></div>
-            </div>
-            <!-- <div class="offerPrice"><h5>€20</h5></div> -->
-          </div>
-        </span>
-      </div>
-      <div class="col-sm-3 col-xs-12">
-        <span data-toggle="modal" data-target="#plateaux">
-          <div class="offerContent">
-            <img src="img/home/plateau.jpg" alt="Image Offer">
-            <div class="offerMasking">
-              <div class="offerTitle"><h4>Plateau de <br>fruits frais</h4></div>
-            </div>
-            <!-- <div class="offerPrice"><h5>€20</h5></div> -->
-          </div>
-        </span>
-      </div>
+															<h3 class="police_spa"><span> </span>Proposés directement par nos professionnels lors de votre mise en relation</h3>
+															<div class="row spa-suppl">
+																<div class="col-sm-3 col-xs-12">
+																	<span data-toggle="modal" data-target="#fontaine">
+																		<div class="offerContent">
+																			<img src="img/home/fontainechocolat.jpg" alt="Image Offer">
+																			<div class="offerMasking">
+																				<div class="offerTitle"><h4>Fontaine  <br>chocolat</h4></div>
+																			</div>
+																			<!-- <div class="offerPrice"><h5>€20</h5></div> -->
+																		</div>
+																	</span>
+																</div>
+																<div class="col-sm-3 col-xs-12">
+																	<span data-toggle="modal" data-target="#tables">
+																		<div class="offerContent">
+																			<img src="img/home/tablemassage.jpg" alt="Image Offer">
+																			<div class="offerMasking">
+																				<div class="offerTitle"><h4>Table de <br>massage(avec huile)</h4></div>
+																			</div>
+																			<!-- <div class="offerPrice"><h5>€20</h5></div> -->
+																		</div>
+																	</span>
+																</div>
+																<div class="col-sm-3 col-xs-12">
+																	<span data-toggle="modal" data-target="#plateaux">
+																		<div class="offerContent">
+																			<img src="img/home/plateau.jpg" alt="Image Offer">
+																			<div class="offerMasking">
+																				<div class="offerTitle"><h4>Plateau de <br>fruits frais</h4></div>
+																			</div>
+																			<!-- <div class="offerPrice"><h5>€20</h5></div> -->
+																		</div>
+																	</span>
+																</div>
 
-      <div class="col-sm-3 col-xs-12">
-        <span data-toggle="modal" data-target="#fours">
-          <div class="offerContent">
-            <img src="img/home/petitfour.jpg" alt="Image Offer">
-            <div class="offerMasking">
-              <div class="offerTitle"><h4>Petits Fours<br>salés/sucrés</h4></div>
-            </div>
-            <!-- <div class="offerPrice"><h5>€20</h5></div> -->
-          </div>
-        </span>
-      </div>
-      <div class="col-sm-12 textExtras">
-        Et bien d’autres encore (enceinte bluetooth, eau parfumée, boissons (soft et alcool), etc…)
-      </div>
-    </div>
+																<div class="col-sm-3 col-xs-12">
+																	<span data-toggle="modal" data-target="#fours">
+																		<div class="offerContent">
+																			<img src="img/home/petitfour.jpg" alt="Image Offer">
+																			<div class="offerMasking">
+																				<div class="offerTitle"><h4>Petits Fours<br>salés/sucrés</h4></div>
+																			</div>
+																			<!-- <div class="offerPrice"><h5>€20</h5></div> -->
+																		</div>
+																	</span>
+																</div>
+																<div class="col-sm-12 textExtras">
+																	Et bien d’autres encore (enceinte bluetooth, eau parfumée, boissons (soft et alcool), etc…)
+																</div>
+															</div>
 
-  </section>
+														</section>
 													</td>
 												</tr>
 											</tbody>
@@ -350,6 +360,7 @@
 				</div>
 
 				<!-- PANIER DYNAMIQUE -->
+
 				<div class="col-sm-3 sm-3-spa" id="panierTable">
 					<div class="innerWrapper">
 						<div class="table-responsive " >
@@ -412,81 +423,51 @@
 	<script data-turbolinks-track = "reload" src="/js/resa-js.js"></script>
 
 	
-
-				<!-- <div class="col-sm-3">
-					<h2>Votre commande</h2>
-					<p id="empty-order">Vous n'avez pas encore sélectionné de prestation</p>
-					<div id="spa-order" class="hidden">
-						<h3>Location spa <span id="spa-price-total" data-price=""></span></h3>
-					</div>
-					<div id="massage-order" class="hidden">
-						<h3>Massage <span id="massage-price-total" data-price=""></span></h3>
-
-					</div>
-					<div id="cadeau-order" class="hidden">
-						<h3>Vos cadeaux <span id="cadeau-price-total"></span> €</h3>
-						<div>
-						</div>
-					</div>
-					<div id="code-promo">
-						<h3>Code promo?</h3>
-						<%= form_tag(code_promo_path, remote: true) do %>
-						<div id="alert-code" class="hidden alert alert-success" role="alert">
-							Votre code promo est validé avec succès
-						</div>
-						<label for="codeP">code promo : </label>
-						<input type="text" name="code" id="codeP">
-						<%= submit_tag("valider") %>	
-						<% end %>
-					</div>
-					<div>
-						<p>PRIX TOTAL: <strong id="total-price">0,00</strong> €</p>
-						<p>ACOMPTE TOTAL: <strong id="total-acompte">0,00</strong> €</p>
-					</div>
-
-				</div> -->
-
-
-				<!-- Fin formulaire -->
-				<!-- ======================================================================== -->
-
-
-<!--
-
-<div id="spa-order" class="">
-	<h3>Location spa <span id="spa-price-total" data-price="[350,225]">prix: 350€ acompte: 225€</span></h3>
-	<div class="spa-order" id="spa-list-3">
-		<p>Pour <span id="spa-time-3">72</span> h <span id="spa-price-3">prix: 200€ acompte: 120€</span></p>
-		<ul>
-			<li>Décoration romantique</li>
-			<li>Décoration anniversaire / fête</li>
-			<li>Fontaine chocolat (fournie avec chocolat)</li>
-		</ul>
+	<!-- decoration MODAL -->
+	<div id="Romantique" class="modal fade modalCommon" role="dialog" tabindex="-1">
+		<div class="modal-dialog">
+			<!-- MODAL CONTENT-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title modal-titleSpa ">Décoration romantique</h4>
+				</div>
+				<div class="modal-body">
+					<div id="appointment-alert" class="my-alert"></div>
+					<p class="text-p-index modalText">La décoration romantique est composée de ballons, pétales de roses, bougies, lumière tamisée & spot lumineux dans le spa.</p>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="spa-order" id="spa-list-4">
-		<p>Pour <span id="spa-time-4">48</span> h <span id="spa-price-4">prix: 150€ acompte: 105€</span></p>
-		<ul>
-			<li>Décoration romantique</li>
-			<li>Décoration anniversaire / fête</li>
-			<li>Fontaine chocolat (fournie avec chocolat)</li>
-		</ul>
+	<!-- anniversaire MODAL -->
+	<div id="Anniversaire" class="modal fade modalCommon" role="dialog" tabindex="-1">
+		<div class="modal-dialog">
+			<!-- MODAL CONTENT-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title modal-titleSpa">Décoration anniversaire</h4>
+				</div>
+				<div class="modal-body">
+					<div id="appointment-alert" class="my-alert"></div>
+					<p class="text-p-index modalText">La décoration anniversaire est composée de ballons, confettis, accessoires anniversaire & spot lumineux dans le spa.</p>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
-
-
- ##################################################################################################### 
-selected=\"selected\"
--->	
-
-
-
-
-
-
-
-
-
-
-<!-- <div class=\"row\"><div class=\"col-sm-6\"><h5>Massages</h5>"+ htmlSub +"</div></div> -->
-
-
+	<!-- fontaine MODAL -->
+	<div id="Personnalisée" class="modal fade modalCommon" role="dialog" tabindex="-1">
+		<div class="modal-dialog">
+			<!-- MODAL CONTENT-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title modal-titleSpa">Event/Fête</h4>
+				</div>
+				<div class="modal-body">
+					<div id="appointment-alert" class="my-alert"></div>
+					<p class="text-p-index modalText">Exemples : décoration personnalisée pour nouvel an, noël, fête des pères/mères, EVJF, Girly, Zen, etc…</p>
+				</div>
+			</div>
+		</div>
+	</div>
