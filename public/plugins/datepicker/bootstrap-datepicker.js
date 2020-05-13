@@ -22,6 +22,7 @@
 
 (function ($, undefined) {
 
+
   var $window = $(window);
 
   function UTCDate() {
