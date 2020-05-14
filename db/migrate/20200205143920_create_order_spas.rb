@@ -7,6 +7,7 @@ class CreateOrderSpas < ActiveRecord::Migration[6.0]
 
       t.belongs_to :order
       t.belongs_to :spa
+      t.belongs_to :spa_ambiance, index:true
       
       t.timestamps
     end

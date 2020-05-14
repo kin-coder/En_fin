@@ -3,6 +3,9 @@ class OrderSpa < ApplicationRecord
 	belongs_to :order
 	belongs_to :spa
 
+	# relation 1 - N entre order_spa et spa_ambiance
+	belongs_to :spa_ambiance
+
 	validates :logement, presence: true
 	validates :installation, presence: true
 	validates :syteme_eau, presence: true

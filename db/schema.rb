@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_082154) do
+ActiveRecord::Schema.define(version: 2020_05_14_093458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,16 +160,23 @@ ActiveRecord::Schema.define(version: 2020_05_14_082154) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "order_massages", force: :cascade do |t|
-    t.bigint "order_id"
-    t.bigint "massage_ca_id"
-    t.bigint "massage_su_id"
-    t.bigint "massage_su_price_id"
+  create_table "order_massage_types", force: :cascade do |t|
+    t.bigint "order_massage_id"
+    t.bigint "massage_type_id"
+    t.bigint "massage_duration_price_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["massage_ca_id"], name: "index_order_massages_on_massage_ca_id"
-    t.index ["massage_su_id"], name: "index_order_massages_on_massage_su_id"
-    t.index ["massage_su_price_id"], name: "index_order_massages_on_massage_su_price_id"
+    t.index ["massage_duration_price_id"], name: "index_order_massage_types_on_massage_duration_price_id"
+    t.index ["massage_type_id"], name: "index_order_massage_types_on_massage_type_id"
+    t.index ["order_massage_id"], name: "index_order_massage_types_on_order_massage_id"
+  end
+
+  create_table "order_massages", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "massage_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["massage_id"], name: "index_order_massages_on_massage_id"
     t.index ["order_id"], name: "index_order_massages_on_order_id"
   end
 
@@ -193,11 +200,11 @@ ActiveRecord::Schema.define(version: 2020_05_14_082154) do
     t.string "syteme_eau"
     t.bigint "order_id"
     t.bigint "spa_id"
-    t.bigint "product_id"
+    t.bigint "spa_ambiance_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_spas_on_order_id"
-    t.index ["product_id"], name: "index_order_spas_on_product_id"
+    t.index ["spa_ambiance_id"], name: "index_order_spas_on_spa_ambiance_id"
     t.index ["spa_id"], name: "index_order_spas_on_spa_id"
   end
 
@@ -216,6 +223,8 @@ ActiveRecord::Schema.define(version: 2020_05_14_082154) do
     t.string "praticien"
     t.text "message"
     t.boolean "is_validate", default: false
+    t.boolean "is_spa", default: false
+    t.boolean "is_massage", default: false
     t.string "status_order", default: "en cours"
     t.bigint "client_id"
     t.bigint "department_id"
@@ -287,7 +296,6 @@ ActiveRecord::Schema.define(version: 2020_05_14_082154) do
     t.string "name"
     t.text "description"
     t.float "price"
-    t.boolean "is_option_spa", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
