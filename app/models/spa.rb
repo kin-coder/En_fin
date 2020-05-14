@@ -6,6 +6,10 @@ class Spa < ApplicationRecord
 	has_many :spa_spa_ambiances
 	has_many :spa_ambiances, through: :spa_spa_ambiances
 
+	# relation N - N entre Order et Sapa
+	has_many :order_spas, dependent: :destroy
+	has_many :orders, through: :order_spas
+
 	validates :duration, presence: true
 	validates :exceptional_price, presence: true
 	validates :ordinary_price, presence: true

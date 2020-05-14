@@ -12,12 +12,13 @@ class Order < ApplicationRecord
 	has_many :order_services, dependent: :destroy
 	has_many :services, through: :order_services
 
-	# relation order 1-N order_massage
+	# relation N - N entre Order et Massage
 	has_many :order_massages, dependent: :destroy
+	has_many :massages, through: :order_massages
 
-	# relation order 1-N order_spa
+	# relation N - N entre Order et Sapa
 	has_many :order_spas, dependent: :destroy
-
+	has_many :spas, through: :order_spas
 
 
 	validates :prestation_date, presence: true

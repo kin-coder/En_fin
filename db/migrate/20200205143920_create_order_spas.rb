@@ -5,9 +5,8 @@ class CreateOrderSpas < ActiveRecord::Migration[6.0]
       t.string :installation
       t.string :syteme_eau
 
-      t.belongs_to :order, index:true
-      t.belongs_to :spa, index:true
-      t.belongs_to :product, index:true
+      t.belongs_to :order
+      t.belongs_to :spa
       
       t.timestamps
     end
