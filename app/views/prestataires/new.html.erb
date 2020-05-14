@@ -32,19 +32,19 @@
 <link href="/css/page-devise.css" rel="stylesheet">
 <style>
 
-#dropZone {
-  width: 100px !important;
-  height: 50px;
-  padding-left: 500px;
-  padding-right: 50px;
-  padding-top: 20px;
-}
+  #dropZone {
+    width: 100px !important;
+    height: 50px;
+    padding-left: 500px;
+    padding-right: 50px;
+    padding-top: 20px;
+  }
 
-.hida {
-  position: absolute;
-  top: 0px;
-  left: 10px;
-}
+  .hida {
+    position: absolute;
+    top: 0px;
+    left: 10px;
+  }
 </style>
 
 <!-- SECTION5 -->
@@ -54,22 +54,56 @@
 
 <%= form_for(@prestataire, url: new_prestataires_path) do |form| %>
 <% if @prestataire.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@prestataire.errors.count, "error") %> prohibited this prestataire from being saved:</h2>
-  <ul>
-    <% @prestataire.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
+
+<div class="modal fade" id="flash">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-titl">Cocooning spa</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-warning" role="alert">
+          <div id="error_explanation">
+            <h3 style="text-transform: uppercase;font-family: Quicksand;text-align: center;">
+              <%= pluralize(@prestataire.errors.count, "error") %> a empêchée(s) ce prestataire d'être sauvegardé:
+            </h3>
+            <ul>
+              <% @prestataire.errors.full_messages.each do |message| %>
+              <li style="text-align: center; text-transform: uppercase;font-family: Quicksand;"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>               
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
+
 <% end %>
 
 <% if flash[:list_message_errors] %>
-  <div class="alert alert-danger">
-    <% flash[:list_message_errors].each do |message| %>
-      <li><%= message %></li>
-    <% end %>
+
+<div class="modal fade" id="flash">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-titl">Cocooning spa</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-warning" role="alert">
+          <% flash[:list_message_errors].each do |message| %>
+          <li style="text-align: center; text-transform: uppercase;font-family: Quicksand;"><%= message %></li>  
+          <% end %>
+        </div>
+
+      </div>
+    </div>
   </div>
+</div>
+
 <% end %>
 
 <div class="row">
@@ -209,93 +243,107 @@
   <div class="actions">
     <center><%= form.submit "Valider", class:"btn btn-primary btn-block" %></center> </br>
     <center><%= link_to 'Retour', index_prestataires_path, class:"btn btn-primary btn-block" %>
-</center>
+    </center>
   </div>
 </div>
 <% end %>
-    <!-- JAVASCRIPTS -->
-    <script data-turbolinks-track = "reload" src="/plugins/jquery/jquery.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/owl-carousel/owl.carousel.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/isotope/isotope.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/fancybox/jquery.fancybox.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/isotope/isotope-triger.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/smoothscroll/SmoothScroll.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/datepicker/bootstrap-datepicker.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/syotimer/jquery.syotimer.min.js"></script>
-    
+<!-- JAVASCRIPTS -->
+<script data-turbolinks-track = "reload" src="/plugins/jquery/jquery.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/isotope/isotope.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/fancybox/jquery.fancybox.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/isotope/isotope-triger.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/smoothscroll/SmoothScroll.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/datepicker/bootstrap-datepicker.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/datepicker/bootstrap-datepicker.js"></script>
+
+<script data-turbolinks-track = "reload" src="/plugins/syotimer/jquery.syotimer.min.js"></script>
+
 
 <script>
 
-main();
+  main();
 
-function main(){
-  let countries = document.querySelectorAll('.js-country');
+  function main(){
+    let countries = document.querySelectorAll('.js-country');
 
-  countries.forEach(country => {
-    country.addEventListener('change',showDepartementIfFrance);
-    if(country.dataset.cname == "France" && country.checked == true){
+    countries.forEach(country => {
+      country.addEventListener('change',showDepartementIfFrance);
+      if(country.dataset.cname == "France" && country.checked == true){
+        document.getElementById("js-department-list").classList.remove("hidden")
+      }
+    }); 
+  }
+
+  function showDepartementIfFrance() {
+    let departments = document.querySelectorAll('.js-department');
+    if(this.checked == true && this.dataset.cname == "France"){
       document.getElementById("js-department-list").classList.remove("hidden")
     }
-  }); 
-}
-
-function showDepartementIfFrance() {
-  let departments = document.querySelectorAll('.js-department');
-  if(this.checked == true && this.dataset.cname == "France"){
-    document.getElementById("js-department-list").classList.remove("hidden")
+    if(this.checked == false && this.dataset.cname == "France"){
+      document.getElementById("js-department-list").classList.remove("hidden")
+      document.getElementById("js-department-list").classList.add("hidden")
+      departments.forEach(department => {
+        department.checked = false
+      })
+    }
   }
-  if(this.checked == false && this.dataset.cname == "France"){
-    document.getElementById("js-department-list").classList.remove("hidden")
-    document.getElementById("js-department-list").classList.add("hidden")
-    departments.forEach(department => {
-      department.checked = false
-    })
-  }
-}
 
 
 </script>
 
 <script>
 
-$(".dropdown dt i").on('click', function () {
-          $(".dropdown dd ul").slideToggle('fast');
-      });
+  $(".dropdown dt i").on('click', function () {
+    $(".dropdown dd ul").slideToggle('fast');
+  });
 
-      $(".dropdown dd ul li a").on('click', function () {
-          $(".dropdown dd ul").hide();
-      });
+  $(".dropdown dd ul li a").on('click', function () {
+    $(".dropdown dd ul").hide();
+  });
 
-      function getSelectedValue(id) {
-           return $("#" + id).find("dt a span.value").html();
-      }
+  function getSelectedValue(id) {
+   return $("#" + id).find("dt a span.value").html();
+ }
 
-      $(document).bind('click', function (e) {
-          var $clicked = $(e.target);
-          if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
-      });
+ $(document).bind('click', function (e) {
+  var $clicked = $(e.target);
+  if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+});
 
 
-      $('.mutliSelect input[type="checkbox"]').on('click', function () {
-        
-          var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
-              title = $(this).val() + ",";
-        
-          if ($(this).is(':checked')) {
-              var html = '<span title="' + title + '" class="hidden">' + title + '</span>';
-              $('.multiSel').append(html);
-              /*$(".hida").hide();*/ 
-          } 
-          else {
-              $('span[title="' + title + '"]').remove();
-              var ret = $(".hida");
-              $('.dropdown dt i').append(ret);
-              
-          }
-      });
+ $('.mutliSelect input[type="checkbox"]').on('click', function () {
 
+  var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+  title = $(this).val() + ",";
+
+  if ($(this).is(':checked')) {
+    var html = '<span title="' + title + '" class="hidden">' + title + '</span>';
+    $('.multiSel').append(html);
+    /*$(".hida").hide();*/ 
+  } 
+  else {
+    $('span[title="' + title + '"]').remove();
+    var ret = $(".hida");
+    $('.dropdown dt i').append(ret);
+
+  }
+});
+
+
+</script>
+
+
+
+
+<script>
+$('#flash').modal('show');
+
+setTimeout(function() {
+    $('#flash').modal('hide');
+}, 6000);
 
 </script>
