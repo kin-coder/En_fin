@@ -17,13 +17,49 @@ class OrdersController < ApplicationController
 
   # 1/2 Selection des prestation
   def index
-    
+    @spas = []
+    Spa.all.each do |spa|
+      @spas.push([spa.id,spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte])
+    end
+
+    @ambiances = []
+    SpaAmbiance.all.each do |ambiance|
+      @ambiances.push([ambiance.id,ambiance.name,ambiance.price])
+    end
+
+    @massagesDuration = MassageDurationPrice.all
+
+#tp MassageDurationPrice.last.massageTypes("Homme")
+
+
+#     Massage.all.each do |massage|
+#       category = [massage.name,[]]
+#       massage.massage_types.each do |massage_type|
+#         mtype = [massage_type.name,[]]
+#         massage_type.massage_duration_prices.each do |price|
+#           mtype[1].push([price.duration,price.exceptional_price,price.ordinary_price,price.exceptional_acompte,price.ordinary_acompte])
+#         end
+#         category[1].push(mtype)
+#       end
+#       @massages.push(category)
+#     end
+
+# tp MassageDurationPrice.find(3).massage_types.joins(:massage_massage_types).where(massage_massage_types:{massage_id:1})
+
+# mh = Massage.find_by_name("Homme")
+# mf = Massage.find_by_name("Femme")
+
+
+
   end
 
   # 2/2 Sauvegarder dans une session les données
   def saveSession
+    puts "================"*4
+    puts params.inspect
+    puts "================"*4
   end
-
+  
   # 2 Selection des adresse de livraison et facturation
   def delivery
   end
