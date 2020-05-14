@@ -1,6 +1,9 @@
 <!-- media query -->
 /* Extra small devices (phones, 600px and down) */
 /* Large devices (laptops/desktops, 992px and up) */
+
+  .error {border: 1px red solid;}
+
 @media only screen and (min-width: 992px) {
 
 
