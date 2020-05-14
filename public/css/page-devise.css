@@ -152,6 +152,9 @@
     .form-controlDevise{
         min-width: 399px !important;
     }
+    .form-controlDeviseSignUp{
+        min-width: 310px !important;
+    }
     .panel-title{
         text-align: center;
     }
