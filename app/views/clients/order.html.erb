@@ -1,4 +1,4 @@
-<!-- GALLERY SECTION -->
+
 <section class="clearfix homeGallery padding">
 	<div class="container">
 		<div class="pageTitle" style="background: white;">
@@ -35,161 +35,131 @@
 													<li>Durée: <%= o_massage.massage_su_price.duration %> mn</li>
 													<li>
 														Type de praticien: <i>"<%= @order.praticien == "all" ? "Peu importe" : @order.praticien %>"</i><br>
-														<% presta =  @order.order_massages.first.prestataire %>
-														<li>Prestataire associé: 
-															<% if presta.nil? %>
-															<i>"Aucun prestataire affecté pour le moment"</i>
-															<% else %>
-															<i>"<%= presta.first_name %> <%= presta.last_name %>"</i>
-															<% end %>
 
+													</li>
 
-														</li>
-													</td>
-													<td style="text-align:left;">
-														<% if @order.isExceptional? %>
-														<li><%= o_massage.massage_su_price.exceptional_price %>€</li>
-														<li>~ acompte: <%= o_massage.massage_su_price.exceptional_acompte %>€</li>
+													<li>
+														Heure de la prestation: <%= @service_massage.first.service_time %>
+													</li>				
+
+												</td>
+												<td style="text-align:left;">
+													<% if @order.isExceptional? %>
+													<li><%= o_massage.massage_su_price.exceptional_price %>€</li>
+													<li>~ acompte: <%= o_massage.massage_su_price.exceptional_acompte %>€</li>
+													<% else %>
+													<li><%= o_massage.massage_su_price.ordinary_price %>€</li>
+													<li>~ acompte: <%= o_massage.massage_su_price.ordinary_acompte %>€</li>
+													<% end %>
+												</td>
+											</tr>
+											<% end %>
+											<tr>
+
+											</tr>
+											<% end %>									
+											<% unless @order.order_spas.empty? %>
+											<% @order.order_spas.each do |o_spa| %>
+											<tr>
+												<td> Location Spa pour <%= o_spa.spa.duration %>H</td>
+												<td>
+													<li>Type de logement: <%= o_spa.logement %></li>
+													<li>Type d'installation: <%= o_spa.installation %></li>
+													<li>Système d'eau: <%= o_spa.syteme_eau %></li>
+													<li>Ambiance:
+														<% if o_spa.product.nil? %>
+														aucun selectionné
 														<% else %>
-														<li><%= o_massage.massage_su_price.ordinary_price %>€</li>
-														<li>~ acompte: <%= o_massage.massage_su_price.ordinary_acompte %>€</li>
+														<%= o_spa.product.name %> à <%= o_spa.product.price %>€<br>
 														<% end %>
-													</td>
-												</tr>
-												<% end %>
-												<tr>
-													
-												</tr>
-												<% end %>									
-												<% unless @order.order_spas.empty? %>
-												<% @order.order_spas.each do |o_spa| %>
-												<tr>
-													<td> Location Spa pour <%= o_spa.spa.duration %>H</td>
-													<td>
-														<li>Type de logement: <%= o_spa.logement %></li>
-														<li>Type d'installation: <%= o_spa.installation %></li>
-														<li>Système d'eau: <%= o_spa.syteme_eau %></li>
-														<li>Ambiance:
-															<% if o_spa.product.nil? %>
-															aucun selectionné
-															<% else %>
-															<%= o_spa.product.name %> à <%= o_spa.product.price %>€<br>
-															<% end %>
-														</li>
-														<li>
-															<% presta =  @order.order_spas.first.prestataire %>
-															Prestataire associé: 
-															<% if presta.nil? %>
-															<i>"Aucun prestataire affecter pour le moment"</i>
-															<% else %>
-															<i>"<%= presta.first_name %> <%= presta.last_name %>"</i>
-															<% end %>
+													</li>
+													<li>
+														Heure de la prestation: <%= @service_spa.first.service_time %>
+													</li>
 
-														</li>
-													</td>
-													<td style="text-align:left;margin-left: 20px;">
-														<% if @order.isExceptional? %>
-														<li><%= o_spa.spa.exceptional_price %>€</li>
-														<li>~ acompte: <%= o_spa.spa.exceptional_acompte %>€</li>
-														<% else %>
-														<li><%= o_spa.spa.ordinary_price %>€</li>
-														<li>~ acompte: <%= o_spa.spa.ordinary_acompte %>€</li>
-														<% end %>
-													</td>
-												</tr>
-												<% end %>
+												</td>
+												<td style="text-align:left;margin-left: 20px;">
+													<% if @order.isExceptional? %>
+													<li><%= o_spa.spa.exceptional_price %>€</li>
+													<li>~ acompte: <%= o_spa.spa.exceptional_acompte %>€</li>
+													<% else %>
+													<li><%= o_spa.spa.ordinary_price %>€</li>
+													<li>~ acompte: <%= o_spa.spa.ordinary_acompte %>€</li>
+													<% end %>
+												</td>
+											</tr>
+											<% end %>
 
-												<% end %>
-											</tbody>
-										</table>
-									</div>
+											<% end %>
+										</tbody>
+									</table>
+								</div>
+								<br>
 
+								<!-- livraison -->
 
-									
+								<div class="table-responsive" style="background: white;">
+									<table class="table">
+										<thead>
+											<tr>
+												<th colspan="3" style="border-bottom: 1px solid white;"> <h4><center>Livraison</center></h4></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td style="color: #666666;">
+													<strong><h3>Coordonnées</h3></strong> 
+													<strong>Date de livraison:</strong> <%= @order.prestation_date %><br> <br>
+													<strong>Pays:</strong> <%= @order.country.name %>
+													<% if !@order.department.nil? %> <br>
+													<br><strong>Département:</strong> <%= @order.department.name %>
+													<% end %>
+												</td>
+												<td> 
+													<strong><h3>ADRESSE DE LIVRAISON</h3></strong> 
 
-									<br>
+													<strong>Adresse: </strong> <%= @order.delivery_adresse %> <br>
+													<strong>Complément d'adresse: </strong> <%= @order.delivery_adresse_complet %> <br>
+													<strong>Code Postal:</strong>  <%= @order.delivery_code_postal %> <br>
+													<strong>Ville: </strong> <%= @order.delivery_ville %> <br>
+													<strong>Pays: </strong> <%= @order.delivery_pays %> <br>	
+												</td>
 
-									<!-- livraison -->
+												<td style="text-align: left;"> 
 
-									<div class="table-responsive" style="background: white;">
-										<table class="table">
-											<thead>
-												<tr>
-													<th colspan="3" style="border-bottom: 1px solid white;"> <h4><center>Livraison</center></h4></th>
+													<strong><h3>ADRESSE DE FACTURATION</h3></strong> 
 
+													<strong>Adresse: </strong> <%= @order.billing_adresse %> <br>
+													<strong>Complément d'adresse: </strong> <%= @order.billing_adresse_complet %> <br>
+													<strong>Code Postal: </strong> <%= @order.billing_code_postal %> <br>
+													<strong>Ville: </strong> <%= @order.billing_ville %> <br>
+													<strong>Pays: </strong> <%= @order.billing_pays %> <br>
 
+												</td>
+											</tr>
 
-												</tr>
+										</tbody>
 
-											</thead>
-											<tbody>
+										<tfoot>
+											<tr>
+												<th colspan="3" style="border-bottom: 1px solid white;"> 	<strong><h3>Message du client : </h3></strong>
 
+													<i>
+														"<%= @order.message %>"
+													</i>
 
-												<tr>
+												</th>
+											</tr>
 
-													<td style="color: #666666;">
-														<strong><h3>Coordonnées</h3></strong> 
-														<strong>Date de livraison:</strong> <%= @order.prestation_date %><br> <br>
-														<strong>Pays:</strong> <%= @order.country.name %>
-														<% if !@order.department.nil? %> <br>
-														<br><strong>Departement:</strong> <%= @order.department.name %>
-														<% end %>
-
-													</td>
-
-													<td> 
-														<strong><h3>ADRESSE DE LIVRAISON</h3></strong> 
-
-														<strong>Adresse: </strong> <%= @order.delivery_adresse %> <br>
-														<strong>Complement d'adresse: </strong> <%= @order.delivery_adresse_complet %> <br>
-														<strong>Code Postal:</strong>  <%= @order.delivery_code_postal %> <br>
-														<strong>Ville: </strong> <%= @order.delivery_ville %> <br>
-														<strong>Pays: </strong> <%= @order.delivery_pays %> <br>	
-													</td>
-
-													<td style="text-align: left;"> 
-
-														<strong><h3>ADRESSE DE FACTURATION</h3></strong> 
-
-														<strong>Adresse: </strong> <%= @order.billing_adresse %> <br>
-														<strong>Complement d'adresse: </strong> <%= @order.billing_adresse_complet %> <br>
-														<strong>Code Postal: </strong> <%= @order.billing_code_postal %> <br>
-														<strong>Ville: </strong> <%= @order.billing_ville %> <br>
-														<strong>Pays: </strong> <%= @order.billing_pays %> <br>
-
-													</td>
-												</tr>
-
-											</tbody>
-
-											<tfoot>
-												<tr>
-													<th colspan="3" style="border-bottom: 1px solid white;"> 	<strong><h3>Message du client : </h3></strong>
-
-														<i>
-
-
-															"<%= @order.message %>"
-
-														</i>
-
-													</th>
-
-
-
-												</tr>
-
-											</tfoot>
-										</table>
-
-
-									</div>
+										</tfoot>
+									</table>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
+
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
