@@ -7,8 +7,10 @@ $(".add-massage").click(function() {
 	$prestationGroups = $($("#"+$(this).data().category).html())
 	let category = $(this).data().category;
 	let longeur = $(".prestation-group[data-category='"+category+"']").length;
-/*---------------------GERER LES ID ET LES ATTRIBUTS DES INPUT --------------------*/
+	let session_massages = JSON.parse(sessionStorage.getItem("massages"));
+/*--------------------- GERER LES ID ET LES ATTRIBUTS DES INPUT --------------------*/
 	if (category === "for_massage_man") {
+		session_massages.push({"category":"massage_man","prestations":[]});
 		$prestationGroups.find("input").each(function(index, element){
 			let valueAttribute = $(element).attr("id");
 			$(element).attr("id",valueAttribute+"man"+longeur);
@@ -17,8 +19,8 @@ $(".add-massage").click(function() {
 			let valueAttribute = $(element).attr("for");
 			$(element).attr("for",valueAttribute+"man"+longeur);
 		});
-	}
-	if (category === "for_massage_woman") {
+	}else{
+		session_massages.push({"category":"massage_woman","prestations":[]});
 		$prestationGroups.find("input").each(function(index, element){
 			let valueAttribute = $(element).attr("id");
 			$(element).attr("id",valueAttribute+"woman"+longeur);
@@ -33,11 +35,18 @@ $(".add-massage").click(function() {
 	    showListSubcategoriesInBascket(this);
 	})
 /*---------------------GERER LES ID ET LES ATTRIBUTS DES INPUT --------------------*/
+	sessionStorage.setItem("massages",JSON.stringify(session_massages));
 	$("#select-list-massage").append($prestationGroups);
+
+
+	session_massages.length
+
+$(".presta-list")
+
+basket-group-1
+
+
 	numberOfPrestationMassage(category);
-
-// id = "basket-group-1"
-
 });
 
 
@@ -96,8 +105,7 @@ function numberOfPrestationMassage(category) {
 	list_length = $(".prestation-group[data-category='"+category+"']").length;
 	if (category === "for_massage_man") {
 		$("#number_man").text(list_length);
-	}
-	if (category === "for_massage_woman") {
+	}else{
 		$("#number_woman").text(list_length);
 	}
 	return list_length;
@@ -108,9 +116,9 @@ function numberOfPrestationMassage(category) {
 
 
 function initSession(){
-	sessionStorage.setItem("prestations","{}")
+	sessionStorage.setItem("prestations","[]")
 	sessionStorage.setItem("spa","[]")
-	sessionStorage.setItem("massages","[]")
+	
 	sessionStorage.setItem("cadeau","[]")
 	sessionStorage.setItem("inc","0")
 }
@@ -130,6 +138,13 @@ let prestations = JSON.parse(sessionStorage.getItem("prestations"))
 "prestations":["woman_shampoo","woman_color"]
 }
 
+]
+
+
+[
+{"category":"man","prestations":[]}
+{"category":"man","prestations":["man_haircut","man_color"]}
+{"category":"man","prestations":["man_shampoo"]}
 ]
 
 
