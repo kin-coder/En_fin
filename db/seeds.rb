@@ -120,9 +120,8 @@ listavis = [
 [5,"massage", "Super prestation ! Réponse rapide et efficace, Camille est très pro et bien équipée (serviette chauffante comprise !!), on en ressort totalement détendu... je recommande sans hésiter !", "Mohamed"],
 [5,"massage", "Gwendoline a été parfaite ! Elle est aux petits soins et complètement à l'écoute de vos besoins. Merci encore !", "Hugo"],
 [5,"massage", "Amandine est très professionnelle. Ponctuelle et agréable, elle m'a rapidement mise à l'aise pour une heure de massage. Très douce, je la recommande !!", "Fatima"]
+]
 
-
-	]
 listavis.each do |avis|
 	c = Comment.create(note: avis[0], content: avis[2], user_name: avis[3], comment_for:avis[1])
 	puts "Comment-#{c.comment_for}"
@@ -147,6 +146,14 @@ end
 	▶ rails g model MassageTypeMDurationPrice
 	▶ rails g model SpaAmbiance name:string description:text price:float
 	▶ rails g model SpaSpaAmbiance
+Order.create(prestation_date: "dfsf", billing_pays: "dfsf", billing_ville: "dfsf", billing_code_postal: "dfsf", billing_adresse: "dfsf", billing_adresse_complet: "dfsf", delivery_pays: "dfsf", delivery_ville: "dfsf", delivery_code_postal: "dfsf", delivery_adresse: "dfsf", delivery_adresse_complet: "dfsf", praticien: "dfsf", message: "dfsf", is_validate: false, is_spa: false, is_massage: false, status_order: "en cours", client_id: Client.first.id, country_id: Country.first.id)
+
+tp Order.first.order_massages.first.massage_types = MassageType.find([1,2,3])
+
+
+Order.first.massages
+
+
 =end
 
 

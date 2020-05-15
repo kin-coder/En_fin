@@ -1,142 +1,121 @@
+<div class="container">
 <style type="text/css">
 	.flexbox {
 		display: flex;
 	}
+	p {
+		font-size: 30px;
+		text-align: left;
+	}
 </style>
 <hr>
 <br><br><br><br><br><br><br><br><br><br><br><br>
-<div class="container">
+
+<div id="select-prestation">
+	<p>Je souhaite reserver pour : </p>
+	<br>
+	<div>
+		<p class="p-resa-spa">Homme <i class="fa fa-minus-circle remove-massage" data-category="for_massage_man"></i> <span id="number_man">0</span> <i class="fa fa-plus-circle add-massage" data-category="for_massage_man"></i></p>
+	</div>
+
+	<div>
+		<p class="p-resa-spa">Femme <i class="fa fa-minus-circle remove-massage" data-category="for_massage_woman"></i> <span id="number_woman">0</span> <i class="fa fa-plus-circle add-massage" data-category="for_massage_woman"></i></p>
+	</div>
+</div>
+
 
 
 <%= form_tag(save_session_path, id:"form-data") do %>
+	<div id="select-list-massage">
 
-
-
-<h2>Homme</h2>
-<div class="flexbox">
-<% @massagesDuration.each do |mduration| %>
-<fieldset class="form-group">
-	<legend><%= mduration.duration %> minutes</legend>
-	<% mduration.massageTypes("Homme").each do |massage_type| %>
-	<div>
-		<input type="checkbox" name="potential[prestations][]" id="prestation<%= mduration.duration %>min_<%= massage_type.id %>man" value="discovery_massage_30min" data-title="Massage Découverte" data-price="{&quot;1&quot;:<%= mduration.exceptional_price %>,&quot;2&quot;:<%= mduration.exceptional_acompte %>,&quot;3&quot;:<%= mduration.ordinary_price %>,&quot;4&quot;:<%= mduration.ordinary_acompte %>,&quot;}" data-subcategory="massage_man_<%= mduration.duration %>min" data-duration="<%= mduration.duration %>" data-bonus="false">
-		<label for="prestation<%= mduration.duration %>min_<%= massage_type.id %>man"><%= massage_type.name %></label>
 	</div>
-	<% end %>
-</fieldset>
+	<br><br><br><br><br><br>
+	<%= submit_tag("Je valide", class:"je-valide")%>
 <% end %>
-</div>
-<hr>
 
-<h2>Femme</h2>
-<div class="flexbox">
-<% @massagesDuration.each do |mduration| %>
-<fieldset class="form-group">
-	<legend><%= mduration.duration %> minutes</legend>
-	<% mduration.massageTypes("Femme").each do |massage_type| %>
-	<div>
-		<input type="checkbox" name="potential[prestations][]" id="prestation<%= mduration.duration %>min_<%= massage_type.id %>woman" value="discovery_massage_30min" data-title="Massage Découverte" data-price="{&quot;1&quot;:<%= mduration.exceptional_price %>,&quot;2&quot;:<%= mduration.exceptional_acompte %>,&quot;3&quot;:<%= mduration.ordinary_price %>,&quot;4&quot;:<%= mduration.ordinary_acompte %>,&quot;}" data-subcategory="massage_woman_<%= mduration.duration %>min" data-duration="<%= mduration.duration %>" data-bonus="false">
-		<label for="prestation<%= mduration.duration %>min_<%= massage_type.id %>woman"><%= massage_type.name %></label>
+
+
+
+
+
+
+
+
+
+	
+
+<script type="text/html" id="for_massage_man">
+<div class='prestation-group' data-category='for_massage_man'>
+	<h2>Homme</h2>
+	<div class="flexbox">
+		<% @massagesDuration.each do |mduration| %>
+		<fieldset class="form-group">
+			<legend><%= mduration.duration %> minutes</legend>
+			<% mduration.massageTypes("Homme").each do |massage_type| %>
+			<div>
+				<input type="checkbox" name="massages[homme_0][]" id="prestation<%= mduration.duration %>min_<%= massage_type.id %>_man0" value="<%= massage_type.name %>||<%= mduration.duration %>" data-category="massage_man" data-title="<%= massage_type.name %>" data-price="[<%= mduration.exceptional_price %>,<%= mduration.exceptional_acompte %>,<%= mduration.ordinary_price %>,<%= mduration.ordinary_acompte %>]" data-group="man_0" data-duration="<%= mduration.duration %>">
+				<label for="prestation<%= mduration.duration %>min_<%= massage_type.id %>_man0"><%= massage_type.name %></label>
+			</div>
+			<% end %>
+		</fieldset>
+		<% end %>
 	</div>
+</div>
+</script>
+
+<script type="text/html" id="for_massage_woman">
+<div class='prestation-group' data-category='for_massage_woman'>
+	<h2>Femme</h2>
+	<div class="flexbox">
+	<% @massagesDuration.each do |mduration| %>
+	<fieldset class="form-group">
+		<legend><%= mduration.duration %> minutes</legend>
+		<% mduration.massageTypes("Femme").each do |massage_type| %>
+		<div>
+			<input type="checkbox" name="massages[femme_0][]" id="prestation<%= mduration.duration %>min_<%= massage_type.id %>woman" value="<%= massage_type.name %>||<%= mduration.duration %>" data-title="Massage Découverte" data-category="massage_woman" data-price="[<%= mduration.exceptional_price %>,<%= mduration.exceptional_acompte %>,<%= mduration.ordinary_price %>,<%= mduration.ordinary_acompte %>]" data-subcategory="massage_woman_<%= mduration.duration %>min" data-duration="<%= mduration.duration %>" data-bonus="false">
+			<label for="prestation<%= mduration.duration %>min_<%= massage_type.id %>woman"><%= massage_type.name %></label>
+		</div>
+		<% end %>
+	</fieldset>
 	<% end %>
-</fieldset>
-<% end %>
+	</div>
 </div>
-
-	<%= submit_tag("Je valide", class:"je-valide")%>	
-<% end %>
-
-</div>
-<!-- 
-
-<input type="checkbox" value="Massage Anti-stress&nbsp;/ relaxant" id="sub110" class="massage-su" name="massageSu[10][]" data-info="[10,1]">
+</script>	
 
 
-<input type="checkbox" value="Massage Anti-stress&nbsp;/ relaxant" id="sub111" class="massage-su" name="massageSu[11][]" data-info="[11,1]">
- -->
-
-<br><br><br><br><br><br><br><br><br><br><br><br>
-<hr>
-
-<!-- <style type="text/css">
-	p {
-		font-size: 30px;	
-	}
-</style>
-
-<br><br><br><br><br><br>
-
-
-
-
-
-
-
-
-
-
-
-
- 2) Algorithme ::::
- amle boucle ( répétition)
- Misy oe:
- Début
- Écrire :'entrer un nombre'
-     Lire A
- Pour i= 1 jusqu'à 10
- Afficher :''faire i questions''
-    A<=i+A
- Fin Pour
- 
- 
- Eo tsy azoko mihintsy 😪
- 
- 
- 
- 3)
- Reef te IConnecte am ordi otranla zan!!
- De atao wifi ny phone de aveo ???
- 
- 
- 
- Répond moi stp merci 💪💪🤗🤗
-
-
-
-
-
-
-
-
-
-
-
-
-<p class="p-resa-spa">
-	Je souhaite reserver <i class="fa fa-minus-circle" id="remove-spa"></i><span id="number-spa"> 0 </span><i class="fa fa-plus-circle" id="add-spa"></i> spa
-</p>
-
-
-
-<%= form_tag(save_session_path, id:"form-data", 'data-spas':"#{@spas}",'data-ambiances':"#{@ambiances}",'data-massages':"#{@massages}") do %>
-
-
-<% end %>
 
 <%= javascript_pack_tag 'orders_index' %>
 
 
 
 
-<br><br><br><br><br><br>
-
-<script id='massage_man' type='text/html'>
-	<h2>Google</h2>
-</script>
 
 
-.gsub(" ","_")
 
 
-<script id='massage_woman' type='text/html'>
-</script> -->
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+</div>
+
+
+
+<!-- 
+
+
+
+a = $($("#for_massage_man").html())
+m.fn.init [div.prestation-group]
+a
+m.fn.init [div.prestation-group]
+a[0]
+<div class=​"prestation-group" data-category=​"for_massage_man">​<h2>​Homme​</h2>​<div class=​"flexbox">​…​</div>​</div>​
+a = $($("#for_massage_man").html())
+m.fn.init [div.prestation-group]
+a.find("input")
+
+
+
+ -->

@@ -17,17 +17,11 @@ class OrdersController < ApplicationController
 
   # 1/2 Selection des prestation
   def index
-    @spas = []
-    Spa.all.each do |spa|
-      @spas.push([spa.id,spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte])
-    end
-
-    @ambiances = []
-    SpaAmbiance.all.each do |ambiance|
-      @ambiances.push([ambiance.id,ambiance.name,ambiance.price])
-    end
-
     @massagesDuration = MassageDurationPrice.all
+
+    @spas = Spa.all
+
+    
 
 #tp MassageDurationPrice.last.massageTypes("Homme")
 
@@ -56,7 +50,12 @@ class OrdersController < ApplicationController
   # 2/2 Sauvegarder dans une session les données
   def saveSession
     puts "================"*4
-    puts params.inspect
+    params["massages"].each do |k,v|
+      puts "-------"
+      puts "key en 2: #{k.split('|')}"
+      puts "value : #{v}"
+      puts "-------"
+    end
     puts "================"*4
   end
   
