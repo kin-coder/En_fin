@@ -10,29 +10,88 @@ $(".add-massage").click(function() {
 /*---------------------GERER LES ID ET LES ATTRIBUTS DES INPUT --------------------*/
 	if (category === "for_massage_man") {
 		$prestationGroups.find("input").each(function(index, element){
-			let valueAttribute = $(element).attr("id")
-			$(element).attr("id",valueAttribute+"man"+longeur)
+			let valueAttribute = $(element).attr("id");
+			$(element).attr("id",valueAttribute+"man"+longeur);
 		});
 		$prestationGroups.find("label").each(function(index, element){
-			let valueAttribute = $(element).attr("for")
-			$(element).attr("for",valueAttribute+"man"+longeur)
+			let valueAttribute = $(element).attr("for");
+			$(element).attr("for",valueAttribute+"man"+longeur);
 		});
 	}
 	if (category === "for_massage_woman") {
 		$prestationGroups.find("input").each(function(index, element){
-			let valueAttribute = $(element).attr("id")
-			$(element).attr("id",valueAttribute+"woman"+longeur)
+			let valueAttribute = $(element).attr("id");
+			$(element).attr("id",valueAttribute+"woman"+longeur);
 		});
 		$prestationGroups.find("label").each(function(index, element){
-			let valueAttribute = $(element).attr("for")
-			$(element).attr("for",valueAttribute+"woman"+longeur)
+			let valueAttribute = $(element).attr("for");
+			$(element).attr("for",valueAttribute+"woman"+longeur);
 		});
 	}
+/* ---------------- Clique sur un input ------------------- */
+	$prestationGroups.find(".subcategory_massage_input").click(function(){
+	    showListSubcategoriesInBascket(this);
+	})
 /*---------------------GERER LES ID ET LES ATTRIBUTS DES INPUT --------------------*/
 	$("#select-list-massage").append($prestationGroups);
 	numberOfPrestationMassage(category);
+
+// id = "basket-group-1"
+
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------ Autre fonction primaire --------------*/
+// afficher les donné cocher dans la liste
+function showListSubcategoriesInBascket(input) {
+	let parentsGroup = $(input).parents(".prestation-group")
+	let arrayIndex = ""
+	$('.prestation-group').each(function(index,element){
+	    if(element == parentsGroup[0]){
+	    	arrayIndex = index
+			return false
+	   	}
+	})
+	parentsGroup.find("input:checked")
+}
+
+
+
+// nombre de massage selectionné
 function numberOfPrestationMassage(category) {
 	list_length = $(".prestation-group[data-category='"+category+"']").length;
 	if (category === "for_massage_man") {
@@ -46,7 +105,6 @@ function numberOfPrestationMassage(category) {
 
 
 /*
-
 
 
 function initSession(){
