@@ -40,38 +40,3 @@
 </div>
 </div>
 </div>
-
-
-<form action="#" class="group" method="post" onsubmit="return checkforblank()">
-    <legend><span class="number">1</span>Departing & Arriving</legend>
-    <fielset class="col-sm-6">
-        <label for="FDestination">From</label>
-        <select name="Location" id="Location" onchange="checkforblank()">
-            <option value="Please Select">Please Select</option>
-            <option value="Newport">Newport</option>
-            <option value="Mahdi">Mahdi</option>
-            <option value="Cardiff">Cardiff</option>
-            <option value="Cilo">Cilo is</option>
-        </select>
-    </fieldset>
-    <button>Save</button>
-</form>
-
-<script>
-
-function checkforblank() {
-    
-    var location = document.getElementById('Location');
-    var invalid = location.value == "Please Select";
- 
-    if (invalid) {
-        alert('Please enter first name');
-        location.className = 'error';
-    }
-    else {
-        location.className = '';
-    }
-    
-    return !invalid;
-}
-</script>
