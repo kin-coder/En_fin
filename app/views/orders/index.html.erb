@@ -2,14 +2,14 @@
 <style type="text/css">
 	.flexbox {
 		display: flex;
+		flex-wrap: wrap;
 	}
 	p {
 		font-size: 30px;
 		text-align: left;
 	}
 </style>
-<hr>
-<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br>
 
 <div id="select-prestation">
 	<p>Je souhaite reserver pour : </p>
@@ -25,17 +25,19 @@
 
 
 
-<%= form_tag(save_session_path, id:"form-data") do %>
-	<div id="select-list-massage">
+<div class="row">
+	<div class="col-sm-9">
+		<%= form_tag(save_session_path, id:"form-data") do %>
+			<div id="select-list-massage" style="margin-bottom: 200px;">
 
+			</div>
+			<%= submit_tag("Je valide", class:"je-valide")%>
+		<% end %>
 	</div>
-	<br><br><br><br><br><br>
-	<%= submit_tag("Je valide", class:"je-valide")%>
-<% end %>
-
-
-
-
+	<div class="col-sm-3">
+		<h1>Harona</h1>
+	</div>
+</div>
 
 
 
@@ -49,34 +51,39 @@
 	<h2>Homme</h2>
 	<div class="flexbox">
 		<% @massagesDuration.each do |mduration| %>
+		<div>
 		<fieldset class="form-group">
 			<legend><%= mduration.duration %> minutes</legend>
 			<% mduration.massageTypes("Homme").each do |massage_type| %>
 			<div>
-				<input type="checkbox" name="massages[homme_0][]" id="prestation<%= mduration.duration %>min_<%= massage_type.id %>_man0" value="<%= massage_type.name %>||<%= mduration.duration %>" data-category="massage_man" data-title="<%= massage_type.name %>" data-price="[<%= mduration.exceptional_price %>,<%= mduration.exceptional_acompte %>,<%= mduration.ordinary_price %>,<%= mduration.ordinary_acompte %>]" data-group="man_0" data-duration="<%= mduration.duration %>">
-				<label for="prestation<%= mduration.duration %>min_<%= massage_type.id %>_man0"><%= massage_type.name %></label>
+				<input type="checkbox" name="massages[homme_0][]" id="prestation<%= mduration.duration %>min_<%= massage_type.id %>" value="<%= massage_type.name %>||<%= mduration.duration %>" data-category="massage_man" data-title="<%= massage_type.name %>" data-price="[<%= mduration.exceptional_price %>,<%= mduration.exceptional_acompte %>,<%= mduration.ordinary_price %>,<%= mduration.ordinary_acompte %>]" data-group="man_0" data-duration="<%= mduration.duration %>">
+				<label for="prestation<%= mduration.duration %>min_<%= massage_type.id %>"><%= massage_type.name %></label>
 			</div>
 			<% end %>
 		</fieldset>
+		</div>
 		<% end %>
 	</div>
 </div>
 </script>
+
 
 <script type="text/html" id="for_massage_woman">
 <div class='prestation-group' data-category='for_massage_woman'>
 	<h2>Femme</h2>
 	<div class="flexbox">
 	<% @massagesDuration.each do |mduration| %>
+	<div>
 	<fieldset class="form-group">
 		<legend><%= mduration.duration %> minutes</legend>
 		<% mduration.massageTypes("Femme").each do |massage_type| %>
 		<div>
-			<input type="checkbox" name="massages[femme_0][]" id="prestation<%= mduration.duration %>min_<%= massage_type.id %>woman" value="<%= massage_type.name %>||<%= mduration.duration %>" data-title="Massage Découverte" data-category="massage_woman" data-price="[<%= mduration.exceptional_price %>,<%= mduration.exceptional_acompte %>,<%= mduration.ordinary_price %>,<%= mduration.ordinary_acompte %>]" data-subcategory="massage_woman_<%= mduration.duration %>min" data-duration="<%= mduration.duration %>" data-bonus="false">
-			<label for="prestation<%= mduration.duration %>min_<%= massage_type.id %>woman"><%= massage_type.name %></label>
+			<input type="checkbox" name="massages[femme_0][]" id="prestation<%= mduration.duration %>min_<%= massage_type.id %>" value="<%= massage_type.name %>||<%= mduration.duration %>" data-title="Massage Découverte" data-category="massage_woman" data-price="[<%= mduration.exceptional_price %>,<%= mduration.exceptional_acompte %>,<%= mduration.ordinary_price %>,<%= mduration.ordinary_acompte %>]" data-subcategory="massage_woman_<%= mduration.duration %>min" data-duration="<%= mduration.duration %>" data-bonus="false">
+			<label for="prestation<%= mduration.duration %>min_<%= massage_type.id %>"><%= massage_type.name %></label>
 		</div>
 		<% end %>
 	</fieldset>
+	</div>
 	<% end %>
 	</div>
 </div>
