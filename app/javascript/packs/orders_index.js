@@ -7,9 +7,33 @@ function main(){
 	}else{
 		actualiseValueMassage(JSON.parse(session_massages));
 	}
+	let session_spas = sessionStorage.getItem("spas")
+	if ( session_spas == null) {
+		sessionStorage.setItem("spas","[]");
+	}else{
+		actualiseValueSpa(JSON.parse(session_spas));
+	}
 }
 
-/*-------------------------- PRESTATION MASSAGE  ----------------------------*/
+/* ------------------------------------------------------------------------------------ */
+/*--------------------------------- PRESTATION SPA  -----------------------------------*/
+/* ------------------------------------------------------------------------------------ */
+
+
+
+// remove-spa
+// add-spa
+
+
+
+
+
+
+
+/* ------------------------------------------------------------------------------------ */
+/* ------------------------------ PRESTATION MASSAGE  --------------------------------- */
+/* ------------------------------------------------------------------------------------ */
+
 $(".remove-massage").click(function() {
 	let $parentsGroup = $(".prestation-group[data-category='"+$(this).data().category+"']").last();
 	let arrayIndex = groupMassagePosition($parentsGroup);
@@ -94,6 +118,8 @@ function showListSubcategoriesInBascket(input) {
 
 function refreachListCommande(arrayIndex = "") {
 	let innerHTML = ""
+	let totalAcompte = 0.0
+	let totalPrice = 0.0
 	$('.prestation-group').each(function(index,element){
 		$inputList= $(element).find("input:checked")
 		if ($inputList.length > 0) {
@@ -105,12 +131,25 @@ function refreachListCommande(arrayIndex = "") {
 			}
 		    $inputList.each(function(i,elm){
 				ul += '<li>'+ $(elm).data().title +'</li>';
-				price += $(elm).data().price[2]; // [exceptional_price,exceptional_acompte,ordinary_price,ordinary_acompte]
+				// [exceptional_price,exceptional_acompte,ordinary_price,ordinary_acompte]
+		    	if(true){ // is exeptiona true
+		    		price += $(elm).data().price[0]+$(elm).data().price[1]
+					totalPrice += $(elm).data().price[0]
+		    		totalAcompte += $(elm).data().price[1]
+		    	}else{ // is exeptional false
+		    		price += $(elm).data().price[2]+$(elm).data().price[3]
+		    		totalPrice += $(elm).data().price[2]
+		    		totalAcompte += $(elm).data().price[3]
+		    	}
 		    });
 		    ul += '</ul>';
 		    innerHTML += '<div class="showOnClick" data-list="basket-group-'+ index +'">'+'<a>'+ $(element).data().title+'</a>'+' <span>'+ price + '€</span>'+ '</div>'+ ul;
 	    }
 	});
+
+	$("#totalPricePrestation").html(totalPrice)
+	$("#totalAcomptePrestation").html(totalAcompte)
+
 	$(".presta-list").html(innerHTML);
 	// on click affiche ou cacher les liste des massages
 	$(".showOnClick").click(function() {
@@ -149,6 +188,7 @@ function changeInputIdAndLabelFor($prestationGroups,name,longeur,dataInput=[]){
 	$prestationGroups.find("input").each(function(index, element){
 		let valueAttribute = $(element).attr("id");
 		$(element).attr("id",valueAttribute+name+longeur);
+		$(element).attr("name",name+"["+longeur+"][]");
 		if (dataInput.length > 0) {
 			if(dataInput.indexOf($(element).data().subcategory) !== -1){
 				$(element).prop("checked",true)
@@ -161,4 +201,3 @@ function changeInputIdAndLabelFor($prestationGroups,name,longeur,dataInput=[]){
 	});
 	return $prestationGroups;
 }
-
