@@ -33,16 +33,19 @@ class OrdersController < ApplicationController
     puts "================"*4
     puts params.inspect
     puts "================"*4
+=begin
+"spas"=>{
+"0"=>{"time"=>["48"], "ambiance"=>["Anniversaire"], "type"=>["Applimitée)"]}, 
+"1"=>{"time"=>["24"], "ambiance"=>["Personnalisée"], "type"=>["Appaue)"]}
+} 
 
-
-
-
-    
-
-
-
-
-
+"man"=>{
+"0"=>["Maaire||90"]}
+"woman"=>{
+"0"=>["Massage al||120"], 
+"1"=>["Massaprénatal||120"]
+}
+=end
 
   end
   

@@ -52,9 +52,14 @@
 	<div class="col-sm-3">
 		<div>
 			<h1>Harona</h1>
-			<p><small>Vous n'avez pas encore sélectionné de prestation</small></p>
+			<p id="warnning-message"><small>Vous n'avez pas encore sélectionné de prestation</small></p>
+			<h3 class="hidden" id="totalPriceSpa">LOCATION SPA : <span ></span>€</h3>
+			<div class="presta-spa-list" data-price="[0,0]">
+				
+			</div>
 			<hr>
-			<div class="presta-list">
+			<h3 class="hidden" id="totalPriceMassage">MASSAGE : <span></span> €</h3>
+			<div class="presta-list" data-price="[0,0]">
 				
 			</div>
 			<hr>
@@ -100,7 +105,7 @@
 					<legend>Ambiance</legend>
 					<% @spa_ambiances.each do |spa_ambiance| %>
 						<div>
-							<input type="checkbox" name="spas[1][ambiance][]" value="<%= spa_ambiance.name %>" data-price="<%= spa_ambiance.price %>" id="a<%= spa_ambiance.id %>mbiance" class="input-ambiance-spa" data-category="ambiance">
+							<input type="checkbox" name="spas[1][ambiance][]" value="<%= spa_ambiance.name %>" data-price="<%= spa_ambiance.price %>" id="a<%= spa_ambiance.id %>mbiance" class="input-ambiance-spa" data-category="ambiance" disabled="disabled">
 							<label for="a<%= spa_ambiance.id %>mbiance" class="label-ambiance-spa"><%= spa_ambiance.name %></label>
 						</div>
 					<% end %>
