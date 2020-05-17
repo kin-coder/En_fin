@@ -11,7 +11,7 @@ function main(){
 	if ( session_spas == null) {
 		sessionStorage.setItem("spas","[]");
 	}else{
-		actualiseValueSpa(JSON.parse(session_spas));
+		//actualiseValueSpa(JSON.parse(session_spas));
 	}
 }
 
@@ -20,9 +20,55 @@ function main(){
 /* ------------------------------------------------------------------------------------ */
 
 
+$("#remove-spa").click(function(){
+	$(".prestation-group-spa").last().remove();
 
-// remove-spa
-// add-spa
+});
+
+$("#add-spa").click(function(){
+	let number = $(".prestation-group-spa").length
+	let $prestationSpa = $($("#for_location_spa").html());
+
+/*-------------------------------- MODIFIER DOM ----------------------------------*/
+	$prestationSpa.find(".label-time-spa,.label-ambiance-spa").each(function(index,element){
+		let label = $(element).attr("for")
+		$(element).attr("for",label+number)
+	});
+	$prestationSpa.find(".input-time-spa").each(function(index,element){
+		let id = $(element).attr("id")
+		$(element).attr("id",id+number)
+		$(element).attr("name","spas["+number+"][time][]")
+	});
+	$prestationSpa.find(".input-ambiance-spa").each(function(index,element){
+		let id = $(element).attr("id")
+		$(element).attr("id",id+number)
+		$(element).attr("name","spas["+number+"][ambiance][]")
+	});
+	$prestationSpa.find('.label-type-spa').each(function(index,element){
+		let label = $(element).attr("for")
+		$(element).attr("for",label+number)
+	});
+	$prestationSpa.find(".select-type-spa").each(function(index,element){
+		let id = $(element).attr("id");
+		$(element).attr("name","spas["+number+"][type][]");
+		$(element).attr("id",id+number);
+	});
+/*-------------------------------- MODIFIER DOM ----------------------------------*/
+	//event manokana ,.select-type-spa
+	
+	$prestationSpa.find(".input-time-spa,.input-ambiance-spa").click(function(){
+		showListTimeAndAmbianceInBascket($(this));
+	});
+
+	$("#select-list-spa").append($prestationSpa);
+});
+
+
+
+
+
+
+
 
 
 

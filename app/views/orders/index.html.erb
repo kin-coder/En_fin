@@ -4,9 +4,14 @@
 		display: flex;
 		flex-wrap: wrap;
 	}
+
 	p {
 		font-size: 30px;
 		text-align: left;
+	}
+
+	.prestation-group-spa, .prestation-group{
+		margin-bottom: 40px; 
 	}
 </style>
 
@@ -20,61 +25,10 @@
 			<div>
 				<p>Je souhaite reserver <i class="fa fa-minus-circle" id="remove-spa"></i><span id="number-spa">0</span><i class="fa fa-plus-circle" id="add-spa"></i> spa</p>
 			</div>
+			<br><br><br><br>
+
 			<div id="select-list-spa" style="margin-bottom: 200px;">
 				<!-- les input type checkbox s'affiche ici a chaque clique -->
-
-
-
-	<div>
-		<h4>Informations sur la location</h4>
-		<div class="flexbox">
-			<div>
-			<% @spas.each do |spa| %>
-				<div>
-					<label for="<%= spa.duration %>h"><%= spa.duration %>h</label>
-					<input type="checkbox" id="<%= spa.duration %>h" name="spa_times[1][]" value="<%= spa.duration %>" data-price="[<%= spa.exceptional_price %>,<%= spa.exceptional_acompte %>,<%= spa.ordinary_price %>,<%= spa.ordinary_acompte %>]">
-				</div>
-			<% end %>
-			</div>
-			<div>
-			<% @spa_ambiances.each do |spa_ambiance| %>
-				<div>
-					<input type="checkbox" name="spa_ambiances[1][]" value="<%= spa_ambiance.name %>" data-price="<%= spa_ambiance.price %>" id="a<%= spa_ambiance.id %>mbiance">
-					<label for="a<%= spa_ambiance.id %>mbiance" class="label-option-spa"><%= spa_ambiance.name %></label>
-				</div>
-			<% end %>
-			</div>
-			<div>
-				<div>
-					<label for="logement1">Type de logement</label>
-						<select data-index="1" name="spa_types[1][]" id="logement1">
-							<option value="Appartement" selected="selected">Appartement</option>
-							<option value="Villa - Maison">Villa - Maison</option>
-						</select>
-				</div>
-				<div>
-					<label for="installation1">Type d'installation</label>
-					<select name="spa_types[1][]" id="installation1">
-						<option value="Intérieur" selected="selected">Intérieur</option>
-						<option value="Extérieur">Extérieur</option>
-					</select>
-				</div>
-				<div>
-					<label for="eau1">Système d'eau</label>
-					<select name="spa_types[1][]" id="eau1">
-						<option value="Cumulus - Ballon d'eau (eau chaude limitée)" selected="selected">Cumulus - Ballon d'eau (eau chaude limitée)</option>
-						<option value="Chaudière (eau chaude continue)">Chaudière (eau chaude continue)</option>
-					</select>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-
-
-
 				
 			</div>
 		</div>
@@ -115,11 +69,72 @@
 </div>
 
 <%= submit_tag("Je valide", class:"je-valide")%>
+
 <% end %>
 
 
 
 
+
+
+
+
+
+<script type="text/html" id="for_location_spa">
+	<div class="prestation-group-spa">
+		<div class="flexbox">
+			<div>
+				<fieldset>
+					<legend>Durée Location</legend>
+					<% @spas.each do |spa| %>
+						<div>
+							<label for="<%= spa.duration %>h" class="label-time-spa"><%= spa.duration %>h</label>
+							<input type="checkbox" id="<%= spa.duration %>h" name="spas[1][time][]" value="<%= spa.duration %>" data-price="[<%= spa.exceptional_price %>,<%= spa.exceptional_acompte %>,<%= spa.ordinary_price %>,<%= spa.ordinary_acompte %>]" class="input-time-spa" data-category="time">
+						</div>
+					<% end %>
+				</fieldset>
+			</div>
+
+			<div>
+				<fieldset>
+					<legend>Ambiance</legend>
+					<% @spa_ambiances.each do |spa_ambiance| %>
+						<div>
+							<input type="checkbox" name="spas[1][ambiance][]" value="<%= spa_ambiance.name %>" data-price="<%= spa_ambiance.price %>" id="a<%= spa_ambiance.id %>mbiance" class="input-ambiance-spa" data-category="ambiance">
+							<label for="a<%= spa_ambiance.id %>mbiance" class="label-ambiance-spa"><%= spa_ambiance.name %></label>
+						</div>
+					<% end %>
+				</fieldset>
+			</div>
+			<div>
+				<fieldset>
+					<legend>Informations Sur La Location</legend>
+					<div>
+						<label for="logement" class="label-type-spa">Type de logement</label>
+						<select name="spas[1][type][]" id="logement" class="select-type-spa">
+							<option value="Appartement" selected="selected">Appartement</option>
+							<option value="Villa - Maison">Villa - Maison</option>
+						</select>
+					</div>
+					<div>
+						<label for="installation" class="label-type-spa">Type d'installation</label>
+						<select name="spas[1][type][]" id="installation" class="select-type-spa">
+							<option value="Intérieur" selected="selected">Intérieur</option>
+							<option value="Extérieur">Extérieur</option>
+						</select>
+					</div>
+					<div>
+						<label for="eau" class="label-type-spa">Système d'eau</label>
+						<select name="spas[1][type][]" id="eau" class="select-type-spa">
+							<option value="Cumulus - Ballon d'eau (eau chaude limitée)" selected="selected">Cumulus - Ballon d'eau (eau chaude limitée)</option>
+							<option value="Chaudière (eau chaude continue)">Chaudière (eau chaude continue)</option>
+						</select>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+</script>
 
 <script type="text/html" id="for_massage_man">
 	<div class='prestation-group' data-category='for_massage_man' data-title="Homme">
@@ -127,7 +142,7 @@
 		<div class="flexbox">
 			<% @massagesDuration.each do |mduration| %>
 			<div>
-			<fieldset class="form-group">
+			<fieldset>
 				<legend><%= mduration.duration %> minutes</legend>
 				<% mduration.massageTypes("Homme").each do |massage_type| %>
 				<div>
@@ -148,7 +163,7 @@
 		<div class="flexbox">
 		<% @massagesDuration.each do |mduration| %>
 		<div>
-		<fieldset class="form-group">
+		<fieldset>
 			<legend><%= mduration.duration %> minutes</legend>
 			<% mduration.massageTypes("Femme").each do |massage_type| %>
 			<div>
@@ -162,5 +177,7 @@
 		</div>
 	</div>
 </script>
+
 </div>
+
 <%= javascript_pack_tag 'orders_index' %>

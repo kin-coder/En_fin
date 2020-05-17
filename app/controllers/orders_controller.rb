@@ -31,13 +31,19 @@ class OrdersController < ApplicationController
   # 2/2 Sauvegarder dans une session les données
   def saveSession
     puts "================"*4
-    params["massages"].each do |k,v|
-      puts "-------"
-      puts "key en 2: #{k.split('|')}"
-      puts "value : #{v}"
-      puts "-------"
-    end
+    puts params.inspect
     puts "================"*4
+
+
+
+
+    
+
+
+
+
+
+
   end
   
   # 2 Selection des adresse de livraison et facturation
