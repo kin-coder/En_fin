@@ -12,6 +12,13 @@ position: sticky !important;
     <!-- media query -->
     /* Large devices (laptops/desktops, 992px and up) */
     @media only screen and (min-width: 992px) {
+      .modalCommon .modal-content {
+    width: 35% !important;
+    height: auto;
+    position: absolute;
+    left: 33%;
+    top: 30px;
+}
       #text{
         position: absolute;
         top: 50%;
@@ -47,11 +54,11 @@ position: sticky !important;
 }
 
 .modalCommon .modal-content {
-    width: 35% !important;
+    width: 75% !important;
     height: auto;
     position: absolute;
-    left: 33%;
-    top: 100px;
+    left: 11%;
+    top: 30px;
 }
       #text{
         position: absolute;
@@ -721,7 +728,7 @@ margin-top: -18px;
   font-weight: 700;
   text-transform: none;
   letter-spacing: 2px;
-  margin-left: -95px;
+  margin-left: 0px;
   color: #666;
 
 }
@@ -1057,6 +1064,7 @@ margin-top: -18px;
   .col-sm2Duree{
     position: relative;
     left: -60px;
+    top: -1px;
   }
   .sm-6-massage{
     column-count: 1;
@@ -1520,8 +1528,15 @@ max-width: 100px;
 
   /* Large devices (laptops/desktops, 992px and up) */
   @media only screen and (min-width: 992px) {
+          .modalCommon .modal-content {
+    width: 35% !important;
+    height: auto;
+    position: absolute;
+    left: 33%;
+    top: 30px;
+}
       .modalText {
-    text-align: center;
+    text-align: justify;
     margin-top: -35px !important;
     margin-left: 15px;
 }
@@ -1578,6 +1593,7 @@ max-width: 100px;
     .col-sm2Duree{
       position: relative;
       left: 0px;
+      top: -2px;
     }
     .sm-6-massage{
       column-count: 2;
