@@ -12,7 +12,7 @@
 					</div>
 
 					<div class="inline-form">
-						<%= label_tag 'complAdresseL', 'Complement d\'adresse', class: 'small_label' %>
+						<%= label_tag 'complAdresseL', 'Complément d\'adresse', class: 'small_label' %>
 						<%= text_field_tag 'complAdresseL', @client.adresse_complet, class: "input" %>
 					</div>
 
@@ -39,14 +39,14 @@
 		<!-- ADRESSE FACTURATION -->
 		<div class="col-sm-12">
 			<div class="livraison">
-				<h2><center class="adresseTitle">Adresse de facturation</center></h2>
+				<h2><center class="adresseTitle adresseTitleFac">Adresse de facturation</center></h2>
 				<div class="inline-form">
 					<%= label_tag 'adresseF', 'Adresse', class: 'small_label' %>
 					<%= text_field_tag 'adresseF', @client.adresse, class: "input", required:true %>
 				</div>
 
 				<div class="inline-form">
-					<%= label_tag 'complAdresseF', 'Complement d\'adresse', class: 'small_label' %>
+					<%= label_tag 'complAdresseF', 'Complément d\'adresse', class: 'small_label' %>
 					<%= text_field_tag 'complAdresseF', @client.adresse_complet, class: "input" %>
 				</div>
 
@@ -73,7 +73,7 @@
 		<div class="col-sm-12">
 			<div class="livraison">
 
-				<h2><center class="adresseTitle">Un message à nous faire parvenir?</center></h2>
+				<h2><center class="adresseTitle">Un message à nous faire parvenir ?</center></h2>
 
 				<div>
 					<%= label_tag 'message', 'Message perso', class: 'small_label messages' %>
