@@ -2,7 +2,9 @@
       z-index: 100;
     }
     #panierTable{
-      position: sticky !important;
+      position: sticky; 
+      position: -webkit-sticky;
+      top: 0px;
     }
     .container{
       background: white;
@@ -609,6 +611,8 @@ margin-top: -18px;
   font-size: small;
   font-family: Lato, "Open Sans";   
   text-align: center;
+  border: solid 1px #666;
+  border-radius: 5px;
 }
 
 
@@ -1101,7 +1105,7 @@ margin-top: -18px;
   }
   .btn-resa{
     position: relative;
-    left: 50%;
+    left: 33%;
     top: 20px;
     font-family: Quicksand, 'Open Sans', sans-serif !important;
     width: 30%;

@@ -608,7 +608,7 @@ let zone = JSON.parse(sessionStorage.getItem("zone"))
 			for (var j = spa.length - 1; j >= 0; j--) {
 				price[1] += dataOption[spa[j]][2]
 			}
-			spaPrice.innerHTML = "<li class=\"li-prix\">Prix : "+price[0]+"€ </li><li class=\"li-acompte\">Acompte : "+price[1]+"€</li>"
+			spaPrice.innerHTML = "<li class=\"li-prix hidden\">Prix : "+price[0]+"€ </li><li class=\"li-acompte hidden\">Acompte : "+price[1]+"€</li>"
 			break
 		}
 	}
@@ -786,9 +786,9 @@ function priceTotalForOneMassage(dataMassages,myData){
 	divMassage.getElementsByTagName("li")[0].innerHTML = categories[1][sub][0]
 	//  [30, 70, 30, 50, 20]
 	if (exceptionalPrice) {
-		divMassage.getElementsByTagName("ul")[0].innerHTML = "<li class=\"li-msgPrix\">Prix: "+categories[1][sub][1][time][1]+"€</li><li class=\"li-msgAcompte\">Acompte: "+categories[1][sub][1][time][2]+"€</li>"
+		divMassage.getElementsByTagName("ul")[0].innerHTML = "<li class=\"li-msgPrix hidden\">Prix: "+categories[1][sub][1][time][1]+"€</li><li class=\"li-msgAcompte hidden\">Acompte: "+categories[1][sub][1][time][2]+"€</li>"
 	}else{
-		divMassage.getElementsByTagName("ul")[0].innerHTML = "<li class=\"li-msgPrix\">Prix: "+categories[1][sub][1][time][3]+"€</li><li class=\"li-msgAcompte\">Acompte: "+categories[1][sub][1][time][4]+"€</li>"
+		divMassage.getElementsByTagName("ul")[0].innerHTML = "<li class=\"li-msgPrix hidden\">Prix: "+categories[1][sub][1][time][3]+"€</li><li class=\"li-msgAcompte hidden\">Acompte: "+categories[1][sub][1][time][4]+"€</li>"
 	}
 }
 
