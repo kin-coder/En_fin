@@ -205,9 +205,11 @@ ActiveRecord::Schema.define(version: 2020_04_14_082452) do
     t.bigint "client_id"
     t.bigint "department_id"
     t.bigint "country_id"
+    t.bigint "code_promo_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["code_promo_id"], name: "index_orders_on_code_promo_id"
     t.index ["country_id"], name: "index_orders_on_country_id"
     t.index ["department_id"], name: "index_orders_on_department_id"
   end
