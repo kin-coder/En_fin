@@ -43,6 +43,7 @@ class AdminsController < Application2Controller
         @prestataire.siren = candidate[:siren]
         @prestataire.tel = candidate[:telephone]
         @prestataire.adresse = candidate[:adresse]
+        @prestataire.adresse_complet = candidate[:adresse_complet]
         @prestataire.zip_code = candidate[:zip_code]
         @prestataire.ville = candidate[:ville]
         @prestataire.pays = candidate[:country]

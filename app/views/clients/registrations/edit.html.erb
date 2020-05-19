@@ -1,6 +1,6 @@
 
 <link href="/css/page-devise.css" rel="stylesheet">
-
+<link href="/css/deviseplus.css" rel="stylesheet">
 <!-- FORM AREA SECTION -->
 <section class="clearfix formArea">
   <div class="container">
@@ -9,7 +9,7 @@
       <div class="panel-heading patternbg"><center><span style="color:deeppink;">Editer mon compte</span></center></div>
       <div class="panel-body">
 
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, html: { onsubmit: "return validatePays()" }) do |f| %>
         <div class="switch-field">
           <%= f.radio_button :sexe, 'Femme',:required => true %>
           <label for="client_sexe_femme" class="radio-one">Madame</label> 
@@ -20,60 +20,65 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <i class="fa fa-user" aria-hidden="true"></i>
-                <%= f.text_field :last_name, autofocus: true, autocomplete: "Nom", class:"form-control", id:"fullname", placeholder:"Votre nom",:required => true %>
+                <%= f.text_field :last_name, autofocus: true, autocomplete: "Nom", class:"form-control form-controlDeviseSignUp", id:"fullname", placeholder:"Votre nom",:required => true %>
               </div>
 
               <div class="form-group">
                 <i class="fa fa-user-circle" aria-hidden="true"></i>
-                <%= f.text_field :first_name, autofocus: true, autocomplete: "Prénom", class:"form-control", id:"fullname", placeholder:"Votre prénom",:required => true %>
+                <%= f.text_field :first_name, autofocus: true, autocomplete: "Prénom", class:"form-control form-controlDeviseSignUp", id:"fullname", placeholder:"Votre prénom",:required => true %>
               </div>
               <div class="form-group">
-                <i class="fa fa-globe" aria-hidden="true"></i>
-                <%= f.text_field :country, autofocus: true, autocomplete: "Pays", class:"form-control", id:"fullname", placeholder:"Votre Pays",:required => true %>
+                <%= f.select :country, ['Votre pays', 'France', 'Belgique', 'Luxembourg', 'Suisse'], html: { onchange: "validatePays()" }, autofocus: true, autocomplete: "Pays", class:"form-control form-controlDeviseSignUp intrus", id:"fullname", placeholder:"Votre pays",:required => true%>
               </div>
               <div class="form-group">
-                <i class="fa fa-address-card-o" aria-hidden="true"></i>                <%= f.text_field :zip_code, autofocus: true, autocomplete: "zipcode", class:"form-control", id:"fullname", placeholder:"Code Postal",:required => true %>
+                <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                <%= f.text_field :zip_code, autofocus: true, autocomplete: "zipcode", class:"form-control form-controlDeviseSignUp", id:"fullname", placeholder:"Code Postal",:required => true %>
               </div>
 
 
               <div class="form-group">
                 <i class="fa fa-location-arrow" aria-hidden="true"></i>
-                <%= f.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control", id:"fullname", placeholder:"Votre adresse",:required => true %>
+                <%= f.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control form-controlDeviseSignUp", id:"fullname", placeholder:"Votre adresse",:required => true %>
               </div>
 
             </div>
 
             <div class="col-sm-6">
 
-
+              <div class="form-group">
+                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                <%= f.text_field :adresse_complet, autofocus: true, autocomplete: "Complement d'adresse", class:"form-control form-controlDeviseSignUp", id:"fullname", placeholder:"Votre complément d'adresse"%>
+              </div>
               <div class="form-group">
                 <i class="fa fa-phone" aria-hidden="true"></i>
-                <%= f.telephone_field :tel, autofocus: true, autocomplete: "Tel", class:"form-control", id:"fullname", placeholder:"Numéro tél",:required => true %>
+                <%= f.telephone_field :tel, autofocus: true, autocomplete: "Tel", class:"form-control form-controlDeviseSignUp", id:"fullname", placeholder:"N° de téléphone",:required => true %>
               </div>
               <div class="form-group">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"email",:required => true %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control form-controlDeviseSignUp", id:"fullname", placeholder:"Email",:required => true %>
               </div>
 
               <div class="form-group">
                 <i class="fa fa-key" aria-hidden="true"></i>
-                <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"fullname", placeholder:"Nouveau mot de pass (facultatif)" %>
+                <%= f.password_field :password, autocomplete: "new-password", class:"form-control form-controlDeviseSignUp", id:"fullname", placeholder:"Nouveau mot de passe (facultatif)" %>
               </div>
 
               <div class="form-group">
                 <i class="fa fa-undo fa-stack-2x"></i>
                 <i class="fa fa-key fa-stack-1x"></i>
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", id:"fullname", placeholder:"confirmer mot de pass" %>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control form-controlDeviseSignUp", id:"fullname", placeholder:"Confirmer mot de passe" %>
               </div>
 
               <div class="form-group">
                 <i class="fa fa-key" aria-hidden="true"></i>
-                <%= f.password_field :current_password, autocomplete: "current-password",:required => true, class:"form-control", id:"fullname", placeholder:"Ancien mot de pass",:required => true %>
+                <%= f.password_field :current_password, autocomplete: "current-password",:required => true, class:"form-control form-controlDeviseSignUp", id:"fullname", placeholder:"Ancien mot de passe",:required => true %>
               </div>
 
             </div>
             <div class="actions">
-              <center><%= f.submit "Envoyer", class:"btn btn-primary btn-block" %></center> 
+              <center>
+                <button class="btn btn-primary btn-block">Enregistrer</button>
+              </center>
             </div>
             <% end %>
             <div class="actions">
@@ -86,3 +91,22 @@
           </div>
         </div>
       </section>
+
+      <script>
+
+        function validatePays() {
+
+          var pays_selected = document.getElementById('client_country');
+          var invalid = pays_selected.value == "Votre pays";
+
+          if (invalid) {
+            alert('Veuillez choisir votre pays');
+            pays_selected.className = 'error';
+          }
+          else {
+            pays_selected.className = '';
+          }
+
+          return !invalid;
+        }
+      </script>

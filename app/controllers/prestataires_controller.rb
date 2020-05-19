@@ -21,11 +21,20 @@ class PrestatairesController < Application2Controller
 
   def create
     @prestataire = Prestataire.new(prestataire_params)
+    flash[:list_message_errors] = @prestataire.errors.full_messages
     if params[:service] == nil || params[:prestataire][:country_ids] == nil
+      if params[:service] == nil
+        flash[:list_message_errors].push("Services doit être rempli(e)")
+      end
+      if params[:prestataire][:country_ids] == nil
+        flash[:list_message_errors].push("Le(s) zone(s) où vous pouvez faire vos prestations doit être rempli(e)")
+      end
       redirect_back(fallback_location: root_path)
+      return
     else
       testValue = params[:prestataire][:country_ids].include?(Country.find_by(name:"France").id.to_s) && (params[:prestataire][:department_ids] == nil)
       if testValue
+        flash[:list_message_errors].push("Si vous choisisser France veuillez cocher au moins une de ces départements")
         redirect_back(fallback_location: root_path)
         return
       end
@@ -34,7 +43,8 @@ class PrestatairesController < Application2Controller
       @prestataire.department_ids = params[:prestataire][:department_ids]
 
       if @prestataire.save
-        redirect_to show_prestataires_path(@prestataire.id), notice: 'Le prestataire a été créé avec succès.'
+        flash[:admin_notice] = 'Le prestataire a été créé avec succès.'
+        redirect_to show_prestataires_path(@prestataire.id)
       else
         render :new
       end
@@ -48,13 +58,21 @@ class PrestatairesController < Application2Controller
   end
 
   def update
-    @prestataire.update(prestataire_params)   
+    @prestataire.update(prestataire_params)
+    flash[:list_message_errors] = @prestataire.errors.full_messages
     if params[:service]==nil || params[:prestataire][:country_ids]==nil
-      #|| params[:prestataire][:department_ids]==nil
+      if params[:service] == nil
+        flash[:list_message_errors].push("Services doit être rempli(e)")
+      end
+      if params[:prestataire][:country_ids] == nil
+        flash[:list_message_errors].push("Le(s) zone(s) où vous pouvez faire vos prestations doit être rempli(e)")
+      end
       redirect_back(fallback_location: root_path)
+      return
     else
       testValue = params[:prestataire][:country_ids].include?(Country.find_by(name:"France").id.to_s) && (params[:prestataire][:department_ids] == nil)
       if testValue
+        flash[:list_message_errors].push("Si vous choisisser France veuillez cocher au moins une de ces départements")
         redirect_back(fallback_location: root_path)
         return
       end
@@ -62,7 +80,8 @@ class PrestatairesController < Application2Controller
       @prestataire.department_ids = params[:prestataire][:department_ids]
       @prestataire.service_ids = params[:service][:service_ids]
       if @prestataire.save
-        redirect_to show_prestataires_path(@prestataire.id), notice: 'Le prestataire a été modifié avec succès.'
+        flash[:admin_notice] = 'Le prestataire a été modifié avec succès.'
+        redirect_to show_prestataires_path(@prestataire.id)
       else
         render :edit
       end
@@ -73,9 +92,11 @@ class PrestatairesController < Application2Controller
     o_services = OrderService.all.where(prestataire_id:@prestataire.id)
     if o_services.empty?
       @prestataire.destroy
-      redirect_to index_prestataires_path, notice: 'Le prestataire a été supprimer avec succès.'
+      flash[:admin_notice] = 'Le prestataire a été supprimer avec succès.'
+      redirect_to index_prestataires_path
     else
-      redirect_to index_prestataires_path, notice: 'Impossible de supprimer ce prestataire car il est attribué a une commande.'
+      flash[:admin_notice] = 'Impossible de supprimer ce prestataire car il est attribué a une commande.'
+      redirect_to index_prestataires_path
     end
   end
 
@@ -85,6 +106,6 @@ class PrestatairesController < Application2Controller
     end
 
     def prestataire_params
-      params.require(:prestataire).permit(:email,:sexe,:first_name,:last_name,:date_of_birth,:raison_sociale,:siren,:tel,:adresse,:zip_code,:ville,:pays)
+      params.require(:prestataire).permit(:email,:sexe,:first_name,:last_name,:date_of_birth,:raison_sociale,:siren,:tel,:adresse,:adresse_complet,:zip_code,:ville,:pays)
     end
 end

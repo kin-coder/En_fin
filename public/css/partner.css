@@ -2,35 +2,35 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 	.hida{
-position: absolute;
-top: 20px;
-left: 300px;
-}
-.multiSel{
-position: relative;
-top: -35px;
-left: 50px;
-}
-.departements{
-column-count: 3;
-display: inline-block;
-z-index: 100;
-}
-.dropdown dd ul {
-	background-color: #4F6877;
-	border:0;
-	color:#fff;
-	display:none;
-	right:0px;
-	padding: 2px 15px 2px 5px;
-	position:absolute;
-	top:2px;
-	width:300px;
-	list-style:none;
-	height: auto;
-	overflow: auto;
-	z-index: 100;
-}
+		position: absolute;
+		top: 20px;
+		left: 300px;
+	}
+	.multiSel{
+		position: relative;
+		top: -35px;
+		left: 50px;
+	}
+	.departements{
+		column-count: 3;
+		display: inline-block;
+		z-index: 100;
+	}
+	.dropdown dd ul {
+		background-color: #4F6877;
+		border:0;
+		color:#fff;
+		display:none;
+		right:0px;
+		padding: 2px 15px 2px 5px;
+		position:absolute;
+		top:2px;
+		width:300px;
+		list-style:none;
+		height: auto;
+		overflow: auto;
+		z-index: 100;
+	}
 	.textAccroche{
 		font-size: 17px;
 		letter-spacing: 2px;
@@ -64,6 +64,7 @@ z-index: 100;
 		font-family: Quicksand !important;
 		font-style: normal;
 		margin-left: 25px;
+		color: white !important;
 	}
 
 	.pageTitleArea {
@@ -308,10 +309,9 @@ z-index: 100;
 		margin: 30px 0 20px 12px;
 	}
 	.actions{
-		position: relative;
-		top: 10px;
+		
 		margin-bottom: 50px;
-		left: 3%;
+		
 	}
 	.actions .btn{
 		position: relative;
@@ -334,36 +334,36 @@ z-index: 100;
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
 	.hida{
-position: absolute;
-top: 20px;
-left: 320px;
-}
-.multiSel{
-position: relative;
-top: -35px;
-left: 130px;
-}
-.departements{
-column-count: 3;
-display: inline-block;
-}
-.dropdown dd ul {
-	background-color: #4F6877;
-	border:0;
-	color:#fff;
-	display:none;
-	right:0px;
-	padding: 2px 15px 2px 5px;
-	position:absolute;
-	top:2px;
-	width:450px;
-	list-style:none;
-	height: auto;
-	overflow: auto;
-	z-index: 100;
-}
+		position: absolute;
+		top: 20px;
+		left: 320px;
+	}
+	.multiSel{
+		position: relative;
+		top: -35px;
+		left: 130px;
+	}
+	.departements{
+		column-count: 3;
+		display: inline-block;
+	}
+	.dropdown dd ul {
+		background-color: #4F6877;
+		border:0;
+		color:#fff;
+		display:none;
+		right:0px;
+		padding: 2px 15px 2px 5px;
+		position:absolute;
+		top:2px;
+		width:450px;
+		list-style:none;
+		height: auto;
+		overflow: auto;
+		z-index: 100;
+	}
 	.form-control{
-width: 340px !important;
+		width: 340px !important;
 	}
 	.textAccroche{
 		font-size: 17px;
@@ -440,6 +440,7 @@ width: 340px !important;
 		font-family: Quicksand !important;
 		font-style: normal;
 		margin-left: 30px;
+		color: white !important;
 
 	}
 	.pageTitleArea {
@@ -699,41 +700,41 @@ width: 340px !important;
 	}
 	/*dropdown zone action*/
 	.hida{
-position: absolute;
-top: 20px;
-left: 530px;
-}
-.multiSel{
-position: relative;
-top: -33px;
-left: 30px;
-}
-.departements{
-column-count: 3;
-display: inline-block;
-}
-.dropdown dd ul {
-	background-color: #4F6877;
-	border:0;
-	color:#fff;
-	display:none;
-	right:0px;
-	padding: 2px 15px 2px 5px;
-	position:absolute;
-	top:2px;
-	width:auto;
-	list-style:none;
-	height: auto;
-	overflow: auto;
-	z-index: 100;
-}
+		position: absolute;
+		top: 20px;
+		left: 530px;
+	}
+	.multiSel{
+		position: relative;
+		top: -33px;
+		left: 30px;
+	}
+	.departements{
+		column-count: 3;
+		display: inline-block;
+	}
+	.dropdown dd ul {
+		background-color: #4F6877;
+		border:0;
+		color:#fff;
+		display:none;
+		right:0px;
+		padding: 2px 15px 2px 5px;
+		position:absolute;
+		top:2px;
+		width:auto;
+		list-style:none;
+		height: auto;
+		overflow: auto;
+		z-index: 100;
+	}
 
-.form-control {
-    width: 540px !important;
-}
-.form-controldate{
-    width: 500px !important;
-}
+	.form-control {
+		width: 540px !important;
+	}
+	.form-controldate{
+		width: 500px !important;
+	}
 	.textAccroche{
 		font-size: 17px;
 		letter-spacing: 2px;
@@ -794,6 +795,8 @@ display: inline-block;
 		font-family: Quicksand !important;
 		font-style: normal;
 		margin-left: 80px;
+		color: white !important;
+
 	}
 	.pageTitleArea {
 
@@ -1036,12 +1039,12 @@ display: inline-block;
 
 	/*CCM*/
 	#contact-submit-btn {
-		width: auto;
-		text-align: center;
-		border-radius: 50px;
-		padding: 10px;
-		position: relative;
-		left: 45%;
+		width: auto !important;
+		text-align: center !important;
+		border-radius: 50px !important;
+		padding: 10px !important;
+		position: relative !important;
+		left: 45% !important;
 	}
 	.p-part{
 		width: 100%;
@@ -1142,5 +1145,5 @@ display: inline-block;
 	background-color:#fff;
 }
 .departements label{
-font-size: 12px;
+	font-size: 12px;
 }

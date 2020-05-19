@@ -1,610 +1,605 @@
+    .questionMarkSpa{
+      z-index: 100;
+    }
+    #panierTable{
+      position: sticky; 
+      position: -webkit-sticky;
+      top: 0px;
+    }
+    .container{
+      background: white;
+    }
 
-.container{
-  background: white;
-}
+    /* ===================MODAL==================== */
+    <!-- media query -->
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+      .modalCommon .modal-content {
+        width: 35% !important;
+        height: auto;
+        position: absolute;
+        left: 33%;
+        top: 30px;
+      }
+      #text{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        /*  font-size: 50px;*/
+        transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+      }
+      .field{
+        position: absolute;
+        left: 240px;
+        width: 140px;
+        margin-top: -1.6px;
+        border-radius: 5px;
+        text-align: center;
+      }
+      .je-valide{
+        position: relative;
+        left: 40.8%;
+        font-size: 15px;
+        font-weight: bold;
+      }
 
-/* ===================MODAL==================== */
-<!-- media query -->
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  #text{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    /*  font-size: 50px;*/
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-  }
-  .field{
-    position: absolute;
-    left: 240px;
-    width: 140px;
-    margin-top: -1.6px;
-    border-radius: 5px;
-    text-align: center;
-  }
-  .je-valide{
-    position: relative;
-    left: 40.8%;
-    font-size: 15px;
-    font-weight: bold;
-  }
-
-}
-
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  #text{
-    position: absolute;
-    top: 33%;
-    left: 50%;
-    /*  font-size: 50px;*/
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    z-index: 100;
-  }
-  .titregeog{
-    font-size: 22px;
-  }
-  .field{
-    position: absolute;
-    left: 240px;
-    width: 140px;
-    margin-top: -1.6px;
-    border-radius: 5px;
-    text-align: center;
-  }
-  .je-valide{
-    position: relative;
-    left: 40.8%;
-    font-size: 15px;
-    font-weight: bold;
-  }
-
-}
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  #text{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    /*  font-size: 50px;*/
-
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-  }
-  .pays_dep{
-    position: relative;
-    left: -80px;
-  }
-  .field {
-
-    position: absolute;
-    left: 190px;
-    width: 140px;
-    margin-top: -1.6px;
-    border-radius: 5px;
-    text-align: center;
-
-  }
-  .titregeog{
-    font-size: 15px;
-    width: 400px;
-  }
-
-  .je-valide{
-    position: relative;
-    left: 65%;
-    font-size: 15px;
-    font-weight: bold;
-  }
-}
+    }
 
 
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+      .modalText {
+        text-align: center;
+        margin-top: -35px !important;
+        margin-left: 1px;
+      }
 
+      .modalCommon .modal-content {
+        width: 75% !important;
+        height: auto;
+        position: absolute;
+        left: 11%;
+        top: 30px;
+      }
+      #text{
+        position: absolute;
+        top: 33%;
+        left: 50%;
+        /*  font-size: 50px;*/
+        transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        z-index: 100;
+      }
+      .titregeog{
+        font-size: 22px;
+      }
+      .field{
+        position: absolute;
+        left: 240px;
+        width: 140px;
+        margin-top: -1.6px;
+        border-radius: 5px;
+        text-align: center;
+      }
+      .je-valide{
+        position: relative;
+        left: 40.8%;
+        font-size: 15px;
+        font-weight: bold;
+      }
 
+    }
 
-#overlay {
-  position: fixed;
-  display: none;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 2;
-  cursor: pointer;
-}
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+      .textExtras {
+        color: black;
+        letter-spacing: 1px;
+        text-align: center;
+        margin-bottom: 35px;
+        white-space: initial;
+        overflow: hidden;
 
+      }
+      td .police_spa{
+        white-space: initial;
+        overflow: hidden;
+      }
+      #text{
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        /*  font-size: 50px;*/
 
-/* ==================ACCORDEON================= */
+        transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+      }
+      .pays_dep{
+        position: relative;
+        left: -80px;
+      }
+      .field {
 
-.accordion {
-  font-size: 1rem;
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 5px;
-  background: white;
-  margin-bottom: 20px;
-}
+        position: absolute;
+        left: 190px;
+        width: 140px;
+        margin-top: -1.6px;
+        border-radius: 5px;
+        text-align: center;
 
-.accordion-header,
-.accordion-body {
-  background: white;
-}
-.titleAccordion{
-  margin-top: -10px;
-  height: 10px;
-}
+      }
+      .titregeog{
+        font-size: 15px;
+        width: 400px;
+      }
 
-
-.accordion__item {
-  border-bottom: 1px solid white;
-}
-
-.accordion__item .accordion__item {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.accordion-header:hover {
-  background: deeppink;
-  position: relative;
-  z-index: 5;
-}
+      .je-valide{
+        position: relative;
+        left: 65%;
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
 
 
 
-.accordion-body__contents {
-  padding: 1.5em 1.5em;
-  font-size: .85em;
-  border: 2px solid #eee;
-  border-radius: 20px;
-}
-
-.accordion__item.active:last-child .accordion-header {
-  border-radius: none;
-}
-
-.accordion:first-child > .accordion__item > .accordion-header {
-  border-bottom: 1px solid transparent;
-  border-radius: 20px;
-}
-
-.accordion__item>.accordion-header:after {
-  font-family: FontAwesome;
-  font-size: 1.2em;
-  float: right;
-  position: relative;
-  top: -2px;
-  transition: .3s all;
-  transform: rotate(0deg);
-  content: "\f103";
-}
-
-.accordion__item.active > .accordion-header:after {
-  transform: rotate(-180deg);
-}
-
-.accordion__item.active .accordion-header {
-  background: deeppink;
-}
-
-.accordion__item .accordion__item .accordion-header {
-  background: white;
-  color: #353535;
-}
-
-@media screen and (max-width: 1000px) {
-  body {
-    padding: 1em;
-  }
-  
-  .accordion {
-    width: 100%;
-  }
-}
 
 
-.allfaq{
-  padding-top: 100px;
-  margin-bottom: 100px;
-  position: relative;
-  left: -15px;
-}
+    #overlay {
+      position: fixed;
+      display: none;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 2;
+      cursor: pointer;
+    }
 
 
-/* ==================custom================= */
+    /* ==================ACCORDEON================= */
 
-<!-- media query -->
+    .accordion {
+      font-size: 1rem;
+      width: 100%;
+      margin: 0 auto;
+      border-radius: 5px;
+      background: white;
+      margin-bottom: 20px;
+    }
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  .set-zones{
-    background: deeppink;
-    opacity: 0.8;
-    padding: 50px;
-    border-radius: 8px;
-  }
-  .innerWrapper .table-responsive .table thead tr th:last-child {
-    border: none;
-    height: 100px;
-    font-size: x-large;
-  }
-  .accordion-header {
-    height: 10px;
-    padding: 1.5em 1.5em;
-    background: #ec5598;
-    color: white;
-    cursor: pointer;
-    font-size: x-large;
-    letter-spacing: .1em;
-    transition: all .3s;
-    text-transform: uppercase;
-    margin-top:20px;
-    font-family: Lato, "Open Sans";
-    font-weight: bold;
-  }
-  .accordion-body {
-    background: #fcfcfc;
-    color: #353535;
-    display: none;
+    .accordion-header,
+    .accordion-body {
+      background: white;
+    }
+    .titleAccordion{
+      margin-top: -10px;
+      height: 10px;
+    }
 
-  }
-  .p-resa-spa{
-    letter-spacing: 2px;
-    font-family: Lato, "Open Sans";
-    font-size: large;
-    font-weight: bold;
-  }
-  .titleSpa{
+
+    .accordion__item {
+      border-bottom: 1px solid white;
+    }
+
+    .accordion__item .accordion__item {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .accordion-header:hover {
+      background: deeppink;
+      position: relative;
+      z-index: 5;
+    }
+
+
+
+    .accordion-body__contents {
+      padding: 1.5em 1.5em;
+      font-size: .85em;
+      border: 2px solid #eee;
+      border-radius: 20px;
+    }
+
+    .accordion__item.active:last-child .accordion-header {
+      border-radius: none;
+    }
+
+    .accordion:first-child > .accordion__item > .accordion-header {
+      border-bottom: 1px solid transparent;
+      border-radius: 20px;
+    }
+
+    .accordion__item>.accordion-header:after {
+      font-family: FontAwesome;
+      font-size: 1.2em;
+      float: right;
+      position: relative;
+      top: -2px;
+      transition: .3s all;
+      transform: rotate(0deg);
+      content: "\f103";
+    }
+
+    .accordion__item.active > .accordion-header:after {
+      transform: rotate(-180deg);
+    }
+
+    .accordion__item.active .accordion-header {
+      background: deeppink;
+    }
+
+    .accordion__item .accordion__item .accordion-header {
+      background: white;
+      color: #353535;
+    }
+
+    @media screen and (max-width: 1000px) {
+      body {
+        padding: 1em;
+      }
+
+      .accordion {
+        width: 100%;
+      }
+    }
+
+
+    .allfaq{
+      padding-top: 100px;
+      margin-bottom: 100px;
+      position: relative;
+      left: -15px;
+    }
+
+
+    /* ==================custom================= */
+
+    <!-- media query -->
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+      .set-zones{
+        background: deeppink;
+        opacity: 0.8;
+        padding: 50px;
+        border-radius: 8px;
+      }
+      .innerWrapper .table-responsive .table thead tr th:last-child {
+        border: none;
+        height: 100px;
+        font-size: x-large;
+      }
+      .accordion-header {
+        height: 10px;
+        padding: 1.5em 1.5em;
+        background: #ec5598;
+        color: white;
+        cursor: pointer;
+        font-size: x-large;
+        letter-spacing: .1em;
+        transition: all .3s;
+        text-transform: uppercase;
+        margin-top:20px;
+        font-family: Lato, "Open Sans";
+        font-weight: bold;
+      }
+      .accordion-body {
+        background: #fcfcfc;
+        color: #353535;
+        display: none;
+
+      }
+      .p-resa-spa{
+        letter-spacing: 2px;
+        font-family: Lato, "Open Sans";
+        font-size: large;
+        font-weight: bold;
+      }
+      .titleSpa{
+        font-weight: 700;
+      }
+    }
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+      .offerContent {
+        width: 115px;
+        height: 115px;
+      }
+
+      .offerContent .offerTitle h4 {
+        margin: 0;
+        font-size: 14px;
+      }
+
+
+      .textExtras {
+
+        font-size: 17px;
+        color: 
+
+        black;
+        letter-spacing: 1px;
+        text-align: center;
+        margin-bottom: 35px;
+
+      }
+      .set-zones{
+        background: deeppink;
+        opacity: 0.8;
+        padding: 50px;
+        border-radius: 8px;
+        width: 500px;
+      }
+      .innerWrapper .table-responsive .table thead tr th:last-child {
+        border: none;
+        height: 100px;
+        font-size: x-large;
+      }
+      .accordion-header {
+        height: 10px;
+        padding: 1.5em 1.5em;
+        background: #ec5598;
+        color: white;
+        cursor: pointer;
+        font-size: x-large;
+        letter-spacing: .1em;
+        transition: all .3s;
+        text-transform: uppercase;
+        margin-top:20px;
+        font-family: Lato, "Open Sans";
+        font-weight: bold;
+      }
+      .accordion-body {
+        background: #fcfcfc;
+        color: #353535;
+        display: none;
+
+      }
+      .p-resa-spa{
+        letter-spacing: 2px;
+        font-family: Lato, "Open Sans";
+        font-size: large;
+        font-weight: bold;
+      }
+      .titleSpa{
+        font-weight: 700;
+      }
+    }
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+      .set-zones{
+        background: deeppink;
+        opacity: 0.8;
+        padding: 50px;
+        border-radius: 8px;
+        width: 350px;
+      }
+      .table-responsive {
+        margin-top: 20px;
+        border-radius: 20px;
+        position: relative;
+        left: -28px;
+        width: 128%;
+      }
+      .innerWrapper .table-responsive .table thead tr th:last-child {
+        border: none;
+        height: 100px;
+        font-size: small;
+      }
+      .accordion-header {
+        height: 10px;
+        width: 128.5%;
+        padding: 1.5em 1.5em;
+        background: #ec5598;
+        color: white;
+        cursor: pointer;
+        font-size: x-large;
+        letter-spacing: .1em;
+        transition: all .3s;
+        text-transform: uppercase;
+        margin-top:20px;
+        font-family: Lato, "Open Sans";
+        font-weight: bold;
+      }
+      .js-accordion-header{
+        position: relative;
+        left: -28px;
+      }
+      .titleAccordion {
+        margin-top: -10px;
+        height: 10px;
+        font-size: small;
+      }
+      .accordion-body {
+        background: #fcfcfc;
+        color: #353535;
+        display: none;
+        width: 128.5%;
+        position: relative;
+        left: -28px;
+      }
+      .p-resa-spa {
+        letter-spacing: 2px;
+        font-family: Lato, "Open Sans";
+        font-size: small;
+        font-weight: bold;
+      }
+      .titleSpa {
+        font-weight: 700;
+        font-size: 15px;
+        position: relative;
+        left: -90px;
+      }
+
+    }
+
+
+
+
+
+
+
+
+    .dateSelect .calendar-icone {
+      background-color: white;
+      border-color:#dedede;
+      border-radius: 8px;
+    }
+
+    .labelle{
+      position: relative;
+      left: 95px;
+      margin-bottom: 20px;
+      color:white;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+
+    .input-calendar{
+      position: relative;
+      display: table;
+      border-collapse: separate;
+      left: 180px;
+      width: 150px;
+      top: -51px;
+    }
+    .select-date{
+      margin-right: 4%;
+      height: 25px !important;
+    }
+
+
+    .image-produit{
+      width: 100px;
+      height: 100px;
+    }
+
+
+
+
+    .sm-9-spa{
+      margin-bottom: 15px;
+    }
+
+
+
+
+
+    #number-spa{
+      color: #ec5598;
+      padding: 5px;
+    }
+    #add-spa, #remove-spa, .remove-massage, .add-massage{
+      color: #ec5598;
+      font-size: x-large;
+    }
+    .interligne{
+      margin-top: 15px !important;
+      border-top: 2px solid #eee !important;
+    }
+
+    #spa-input{
+      letter-spacing: 2px;
+    }
+
+
+
+
+
+
+
+    /* hide input */
+    input.time-spa-list:empty {
+      margin-left: -999px;
+    }
+
+    /* style label */
+    input.time-spa-list:empty ~ label {
+      float: left;
+      line-height: 2.5em;
+      text-indent: 3.25em;
+      /*margin-top: 2em;*/
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      border-radius: 20px;
+    }
+
+    input.time-spa-list:empty ~ label:before {
+      position: absolute;
+      display: block;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      content: '';
+      width: 2.5em;
+      background: #D1D3D4;
+      border-radius: 20px;
+
+    }
+
+    /* toggle hover */
+    input.time-spa-list:hover:not(:checked) ~ label:before {
+      content:'\2714';
+      text-indent: .9em;
+      color: #C2C2C2;
+      border-radius: 20px;
+    }
+
+    input.time-spa-list:hover:not(:checked) ~ label {
+      color: #ec5598;
+    }
+
+    /* toggle on */
+    input.time-spa-list:checked ~ label:before {
+      content:'\2714';
+      text-indent: .9em;
+      color: #9CE2AE;
+      background-color: #ec5598;
+      border-radius: 20px;
+
+    }
+
+    input.time-spa-list:checked ~ label {
+      color: #777;
+    }
+
+    /* time-spa-list focus */
+    input.time-spa-list:focus ~ label:before {
+      box-shadow: 0 0 0 3px none;
+    }
+
+    .time-spa-list{
+     width: 30px;
+   }
+
+
+
+   .label-spa {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 0px;
     font-weight: 700;
+    position :relative;
   }
-}
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  .offerContent {
-    width: 115px;
-    height: 115px;
-}
-
-.offerContent .offerTitle h4 {
-    margin: 0;
-    font-size: 14px;
-}
 
 
-.textExtras {
 
-    font-size: 17px;
-    color: 
 
-    black;
-    letter-spacing: 1px;
-    text-align: center;
-    margin-bottom: 35px;
 
-}
-  .set-zones{
-    background: deeppink;
-    opacity: 0.8;
-    padding: 50px;
-    border-radius: 8px;
-    width: 500px;
-  }
-  .innerWrapper .table-responsive .table thead tr th:last-child {
-    border: none;
-    height: 100px;
-    font-size: x-large;
-  }
-  .accordion-header {
-    height: 10px;
-    padding: 1.5em 1.5em;
-    background: #ec5598;
-    color: white;
-    cursor: pointer;
-    font-size: x-large;
-    letter-spacing: .1em;
-    transition: all .3s;
-    text-transform: uppercase;
-    margin-top:20px;
-    font-family: Lato, "Open Sans";
-    font-weight: bold;
-  }
-  .accordion-body {
-    background: #fcfcfc;
-    color: #353535;
-    display: none;
 
-  }
-  .p-resa-spa{
+  .label-info-spa, .label-heure{
+    font-size: small;
     letter-spacing: 2px;
-    font-family: Lato, "Open Sans";
-    font-size: large;
-    font-weight: bold;
-  }
-  .titleSpa{
-    font-weight: 700;
-  }
-}
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  .set-zones{
-    background: deeppink;
-    opacity: 0.8;
-    padding: 50px;
-    border-radius: 8px;
-    width: 350px;
-  }
-  .table-responsive {
-    margin-top: 20px;
-    border-radius: 20px;
-    position: relative;
-    left: -28px;
-    width: 128%;
-  }
-  .innerWrapper .table-responsive .table thead tr th:last-child {
-    border: none;
-    height: 100px;
-    font-size: small;
-  }
-  .accordion-header {
-    height: 10px;
-    width: 128.5%;
-    padding: 1.5em 1.5em;
-    background: #ec5598;
-    color: white;
-    cursor: pointer;
-    font-size: x-large;
-    letter-spacing: .1em;
-    transition: all .3s;
-    text-transform: uppercase;
-    margin-top:20px;
-    font-family: Lato, "Open Sans";
-    font-weight: bold;
-  }
-  .js-accordion-header{
-    position: relative;
-    left: -28px;
-  }
-  .titleAccordion {
-    margin-top: -10px;
-    height: 10px;
-    font-size: small;
-  }
-  .accordion-body {
-    background: #fcfcfc;
-    color: #353535;
-    display: none;
-    width: 128.5%;
-    position: relative;
-    left: -28px;
-  }
-  .p-resa-spa {
-    letter-spacing: 2px;
-    font-family: Lato, "Open Sans";
-    font-size: small;
-    font-weight: bold;
-  }
-  .titleSpa {
-    font-weight: 700;
-    font-size: 15px;
-    position: relative;
-    left: -90px;
-  }
-
-}
-
-
-
-
-
-
-
-
-.dateSelect .calendar-icone {
-  background-color: white;
-  border-color:#dedede;
-  border-radius: 8px;
-}
-
-.labelle{
-  position: relative;
-  left: 95px;
-  margin-bottom: 20px;
-  color:white;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-
-.input-calendar{
-  position: relative;
-  display: table;
-  border-collapse: separate;
-  left: 180px;
-  width: 150px;
-  top: -51px;
-}
-.select-date{
-  margin-right: 4%;
-  height: 25px !important;
-}
-
-
-.image-produit{
-  width: 100px;
-  height: 100px;
-}
-
-
-
-
-.sm-9-spa{
-  margin-bottom: 15px;
-}
-
-
-
-
-
-#number-spa{
-  color: #ec5598;
-  padding: 5px;
-}
-#add-spa, #remove-spa, .remove-massage, .add-massage{
-  color: #ec5598;
-  font-size: x-large;
-}
-.interligne{
-  margin-top: 15px !important;
-  border-top: 2px solid #eee !important;
-}
-
-#spa-input{
-  letter-spacing: 2px;
-}
-
-
-
-
-
-
-
-/* hide input */
-input.time-spa-list:empty {
-  margin-left: -999px;
-}
-
-/* style label */
-input.time-spa-list:empty ~ label {
-  float: left;
-  line-height: 2.5em;
-  text-indent: 3.25em;
-  /*margin-top: 2em;*/
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  border-radius: 20px;
-}
-
-input.time-spa-list:empty ~ label:before {
-  position: absolute;
-  display: block;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  content: '';
-  width: 2.5em;
-  background: #D1D3D4;
-  border-radius: 20px;
-  
-}
-
-/* toggle hover */
-input.time-spa-list:hover:not(:checked) ~ label:before {
-  content:'\2714';
-  text-indent: .9em;
-  color: #C2C2C2;
-  border-radius: 20px;
-}
-
-input.time-spa-list:hover:not(:checked) ~ label {
-  color: #ec5598;
-}
-
-/* toggle on */
-input.time-spa-list:checked ~ label:before {
-  content:'\2714';
-  text-indent: .9em;
-  color: #9CE2AE;
-  background-color: #ec5598;
-  border-radius: 20px;
-
-}
-
-input.time-spa-list:checked ~ label {
-  color: #777;
-}
-
-/* time-spa-list focus */
-input.time-spa-list:focus ~ label:before {
-  box-shadow: 0 0 0 3px none;
-}
-
-.time-spa-list{
- width: 30px;
-}
-
-
-
-.label-spa {
-  display: inline-block;
-  max-width: 100%;
-  margin-bottom: 0px;
-  font-weight: 700;
-  position :relative;
-}
-
-
-
-
-
-/*CHECKBOX*/
-
-/*
-
-input[type="checkbox"]{
-  position: relative;
-  width: 60px;
-  height: 30px;
-  -webkit-appearance: none;
-  background: #D1D3D4;
-  outline: none;
-  border-radius: 100px;
-
-  transition: .5s;
-}
-
-input:checked[type="checkbox"]{
-  background: deeppink;
-}
-
-input[type="checkbox"]:before{
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 100px;
-  top: 5px;
-  left: 5px;
-  background: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,.2);
-  transition: .5s;
-}
-
-input:checked[type="checkbox"]:before{
-  left: 36px;
-}
-
-input[type="checkbox"]{
-
-  margin: 0px 0 0;
-  margin-top: 1px\9;
-  line-height: normal;
-}
-*/
-
-
-.label-info-spa, .label-heure{
-  font-size: small;
-  letter-spacing: 2px;
-  margin-right: 5px;
+    margin-right: 5px;
 /*position: absolute;
 left: 70px;*/
 margin-top: -18px;
@@ -616,6 +611,8 @@ margin-top: -18px;
   font-size: small;
   font-family: Lato, "Open Sans";   
   text-align: center;
+  border: solid 1px #666;
+  border-radius: 5px;
 }
 
 
@@ -625,16 +622,27 @@ margin-top: -18px;
   border-radius: 20px;
 }
 
+.questionMark{
+  position: relative;
+  left: 8%;
+  font-size: 17px;
+}
 
+
+
+
+.modal-titleSpa{
+  position: relative;
+  left: 0% !important;
+}
 
 .massage-su{
   position: relative;
-  left:245px;
   top: 10px;
 }
 .label-massage{
   position: relative;
-  left:-20px;
+  left:20px;
   font-weight: 700;
   font-size: small;
 }
@@ -737,7 +745,7 @@ margin-top: -18px;
   font-weight: 700;
   text-transform: none;
   letter-spacing: 2px;
-  margin-left: -95px;
+  margin-left: 0px;
   color: #666;
 
 }
@@ -1073,6 +1081,7 @@ margin-top: -18px;
   .col-sm2Duree{
     position: relative;
     left: -60px;
+    top: -1px;
   }
   .sm-6-massage{
     column-count: 1;
@@ -1096,7 +1105,7 @@ margin-top: -18px;
   }
   .btn-resa{
     position: relative;
-    left: 50%;
+    left: 33%;
     top: 20px;
     font-family: Quicksand, 'Open Sans', sans-serif !important;
     width: 30%;
@@ -1173,14 +1182,20 @@ margin-top: -18px;
   }
   .option-spa-list{
     position: absolute;
-    left: 100px;
+    left: -18px;
     top: 25px;
   }
   .label-option-spa{
     position: relative;
-    left: -10px;
+    left: 52px;
     font-size: small;
     top: -10px
+  }
+  .questionMarkSpa{
+    position: relative;
+    left: 36%;
+    top: -8px;
+    font-size: 17px;
   }
   .list-ambiance{
     margin-bottom: -10px;
@@ -1199,7 +1214,7 @@ margin-top: -18px;
     margin-bottom: 5px;
     position: relative;
     top: -15px;
-    left: 52px;
+    left: 20px;
   }
 
   /*panier*/
@@ -1434,19 +1449,24 @@ max-width: 100px;
   }  
   .option-spa-list{
     position: absolute;
-    left: 120px;
+    left: -10px;
     top: -5px;
   }
   .label-option-spa{
     position: relative;
-    left: -30px;
+    left: 0px;
     font-size: small;
     top: -10px
   }
   .list-ambiance{
     margin-bottom: 20px;
   }
-
+  .questionMarkSpa{
+    position: relative;
+    left: 1%;
+    top: -8px;
+    font-size: 17px;
+  }
   .selectElement {
     width: 150px;
     font-size: small;
@@ -1525,24 +1545,36 @@ max-width: 100px;
 
   /* Large devices (laptops/desktops, 992px and up) */
   @media only screen and (min-width: 992px) {
-
+    .modalCommon .modal-content {
+      width: 35% !important;
+      height: auto;
+      position: absolute;
+      left: 33%;
+      top: 30px;
+    }
+    .modalText {
+      text-align: justify;
+      margin-top: -35px !important;
+      margin-left: 15px;
+    }
     .offerContent {
-    width: 180px;
-    height: 180px;
-}
+      width: 180px;
+      height: 180px;
+    }
 
 
-.textExtras {
+    .textExtras {
 
-    font-size: 17px;
-    color: 
+      font-size: 17px;
+      color: 
 
-    black;
-    letter-spacing: 1px;
-    text-align: center;
-    margin-bottom: 35px;
+      black;
+      letter-spacing: 1px;
+      text-align: center;
+      margin-bottom: 35px;
+      margin-top: 35px;
 
-}
+    }
     .nbr-cadeau{
       margin-left: 15px;
       max-width: 100%;
@@ -1579,6 +1611,7 @@ max-width: 100px;
     .col-sm2Duree{
       position: relative;
       left: 0px;
+      top: -2px;
     }
     .sm-6-massage{
       column-count: 2;
@@ -1628,18 +1661,25 @@ max-width: 100px;
     }
     .option-spa-list{
       position: absolute;
-      left: 150px;
+      left: 30px;
       top: 0px;
     }
     .label-option-spa{
       position: relative;
-      left: -20px;
+      left: 40px;
       font-size: small;
       top: -10px
     }
     .list-ambiance{
       margin-bottom: 10px;
 
+    }
+
+    .questionMarkSpa{
+      position: relative;
+      left: 17%;
+      top: -8px;
+      font-size: 17px;
     }
     .selectElement{
       width: 150px;
@@ -1654,7 +1694,7 @@ max-width: 100px;
       margin-bottom: 26px;
       position: relative;
       top: -15px;
-      left: 52px;
+      left: 5px;
     }
 
     /*panier*/

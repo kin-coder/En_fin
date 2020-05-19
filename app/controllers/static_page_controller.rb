@@ -30,10 +30,13 @@ class StaticPageController < ApplicationController
     @candidate.email = params["email"]
     @candidate.telephone = params["tel"]
     @candidate.adresse = params["adresse"]
+    @candidate.adresse_complet = params["adresse_complet"]
     @candidate.zip_code = params["zip_code"]
     @candidate.ville = params["town"]
     @candidate.country = params["country"]
-    @candidate.services = params["service"].join('|')
+    if params["service"]
+      @candidate.services = params["service"].join('|')
+    end
 
     if params["countries"]
       if params["countries"].include?("France")
@@ -69,6 +72,9 @@ class StaticPageController < ApplicationController
   end
 
   def cgu
+  end
+
+   def galery
   end
   # telechargement du doc cgu en pdf
   def dataDowCgu

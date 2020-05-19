@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   # Lien pour les page static dans le static_page
   # page d'acceul
   root to:'static_page#index'
-
+  get '/galery', to:'static_page#galery', as: "galery"
   get '/contact', to:'static_page#contact', as: "contact"
   get '/mentions-legales', to:'static_page#legalnotice', as: "legalnotice"
   get '/conditions-generales', to:'static_page#cgu', as: "cgu"

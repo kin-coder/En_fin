@@ -232,15 +232,15 @@ let dataSpaoptions = JSON.parse(data.spaoptions)
 			typeSpa += "<div class=\"duree-spa\"><input class=\"time-spa-list\" type=\"radio\" id=\""+id+"h"+dataSpas[i][0]+"\" name=\"timeSpa["+id+"][]\" value=\""+ dataSpas[i][0] +"\" data-prices=\"["+dataSpas[i][1]+","+dataSpas[i][2]+"]\" data-acompte=\"["+dataSpas[i][3]+","+dataSpas[i][4]+"]\" data-index=\""+id+"\" data-array=\""+i+"\"><label for=\""+id+"h"+dataSpas[i][0]+"\" class=\"label-spa\">"+ dataSpas[i][0] +"h</label></div>"
 		}
 	}
-	typeSpa += "</div><div class='col-sm-3 ambianceresponsive'><h4><center class=\"titleSpa\">Ambiance</center></h4>"
+	typeSpa += "</div><div class='col-sm-4 ambianceresponsive'><h4><center class=\"titleSpa\">Ambiance</center></h4>"
 	for (var i = 0; i < dataSpaoptions.length ; i++) {
 		if (option.includes(i)) {
-			typeSpa += "<div class=\"list-ambiance\"><input class=\"option-spa-list\" type=\"checkbox\" checked name=\"optionSpa["+id+"][]\" value=\""+dataSpaoptions[i][1]+"\" id=\"opt"+dataSpaoptions[i][0]+""+id+"\" data-array=\""+i+"\" data-price=\""+dataSpaoptions[i][2]+"\" data-index=\""+id+"\" ><label for=\"opt"+dataSpaoptions[i][0]+""+id+"\" class=\"label-option-spa\">"+dataSpaoptions[i][1]+"</label></div>"
+			typeSpa += "<div class=\"list-ambiance\"><input class=\"option-spa-list\" type=\"checkbox\" checked name=\"optionSpa["+id+"][]\" value=\""+dataSpaoptions[i][1]+"\" id=\"opt"+dataSpaoptions[i][0]+""+id+"\" data-array=\""+i+"\" data-price=\""+dataSpaoptions[i][2]+"\" data-index=\""+id+"\" ><label for=\"opt"+dataSpaoptions[i][0]+""+id+"\" class=\"label-option-spa\">"+dataSpaoptions[i][1]+"</label><i class=\"fa fa-question-circle questionMarkSpa\" aria-hidden=\"true\" data-toggle=\"modal\" data-target=\"#"+dataSpaoptions[i][1]+"\"></i></div>"
 		}else{
 			if (typeof(option)!="string") {
-				typeSpa += "<div class=\"list-ambiance\"><input class=\"option-spa-list\" type=\"checkbox\" name=\"optionSpa["+id+"][]\" value=\""+dataSpaoptions[i][1]+"\" id=\"opt"+dataSpaoptions[i][0]+""+id+"\" data-array=\""+i+"\" data-price=\""+dataSpaoptions[i][2]+"\" data-index=\""+id+"\" ><label for=\"opt"+dataSpaoptions[i][0]+""+id+"\" class=\"label-option-spa\">"+dataSpaoptions[i][1]+"</label></div>"
+				typeSpa += "<div class=\"list-ambiance\"><input class=\"option-spa-list\" type=\"checkbox\" name=\"optionSpa["+id+"][]\" value=\""+dataSpaoptions[i][1]+"\" id=\"opt"+dataSpaoptions[i][0]+""+id+"\" data-array=\""+i+"\" data-price=\""+dataSpaoptions[i][2]+"\" data-index=\""+id+"\" ><label for=\"opt"+dataSpaoptions[i][0]+""+id+"\" class=\"label-option-spa\">"+dataSpaoptions[i][1]+"</label><i class=\"fa fa-question-circle questionMarkSpa\" aria-hidden=\"true\" data-toggle=\"modal\" data-target=\"#"+dataSpaoptions[i][1]+"\"></i></div>"
 			}else{
-				typeSpa += "<div class=\"list-ambiance\"><input class=\"option-spa-list\" type=\"checkbox\" name=\"optionSpa["+id+"][]\" value=\""+dataSpaoptions[i][1]+"\" id=\"opt"+dataSpaoptions[i][0]+""+id+"\" data-array=\""+i+"\" data-price=\""+dataSpaoptions[i][2]+"\" data-index=\""+id+"\" disabled ><label for=\"opt"+dataSpaoptions[i][0]+""+id+"\" class=\"label-option-spa\">"+dataSpaoptions[i][1]+"</label></div>"
+				typeSpa += "<div class=\"list-ambiance\"><input class=\"option-spa-list\" type=\"checkbox\" name=\"optionSpa["+id+"][]\" value=\""+dataSpaoptions[i][1]+"\" id=\"opt"+dataSpaoptions[i][0]+""+id+"\" data-array=\""+i+"\" data-price=\""+dataSpaoptions[i][2]+"\" data-index=\""+id+"\" disabled ><label for=\"opt"+dataSpaoptions[i][0]+""+id+"\" class=\"label-option-spa\">"+dataSpaoptions[i][1]+"</label><i class=\"fa fa-question-circle questionMarkSpa\" aria-hidden=\"true\" data-toggle=\"modal\" data-target=\"#"+dataSpaoptions[i][1]+"\"></i></div>"
 			}
 		}
 	}
@@ -253,9 +253,9 @@ let dataSpaoptions = JSON.parse(data.spaoptions)
 		}
 	}
 	if (info!="") {
-		typeSpa += "</div><div class=\"col-sm-6 fin-spa\"><h4><center class=\"titleSpa informationTitle\">Informations sur la location</center></h4><br><div class=\"infoSpa\"><label class=\"label-info-spa\" for=\"logement"+id+"\">Type de logement</label><select class=\"logement selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"logement"+id+"\" ><option value=\"Appartement\" "+ isPresent(info[0],"Appartement") +">Appartement</option><option value=\"Villa - Maison\" "+ isPresent(info[0],"Villa - Maison") +" >Villa - Maison</option></select></div><div class=\"infoSpa\"><label for=\"installation"+id+"\" class=\"label-info-spa\">Type d'installation</label><select class=\"installation selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"installation"+id+"\"><option value=\"Intérieur\" "+ isPresent(info[1],"Intérieur") +">Intérieur</option><option value=\"Extérieur\" "+ isPresent(info[1],"Extérieur") +">Extérieur</option></select></div><div class=\"infoSpa\"><label for=\"eau"+id+"\" class=\"label-info-spa\">Système d'eau</label><select class=\"typeSpa selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"eau"+id+"\" ><option value=\"Cumulus - Ballon d'eau (eau chaude limitée)\"  "+ isPresent(info[2],"Cumulus - Ballon d'eau (eau chaude limitée)") +">Cumulus - Ballon d\'eau (eau chaude limitée)</option><option value=\"Chaudière (eau chaude continue)\" "+ isPresent(info[2],"Chaudière (eau chaude continue)") +" >Chaudière (eau chaude continue)</option></select></div></div>"
+		typeSpa += "</div><div class=\"col-sm-5 fin-spa\"><h4><center class=\"titleSpa informationTitle\">Informations sur la location</center></h4><br><div class=\"infoSpa\"><label class=\"label-info-spa\" for=\"logement"+id+"\">Type de logement</label><select class=\"logement selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"logement"+id+"\" ><option value=\"Appartement\" "+ isPresent(info[0],"Appartement") +">Appartement</option><option value=\"Villa - Maison\" "+ isPresent(info[0],"Villa - Maison") +" >Villa - Maison</option></select></div><div class=\"infoSpa\"><label for=\"installation"+id+"\" class=\"label-info-spa\">Type d'installation</label><select class=\"installation selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"installation"+id+"\"><option value=\"Intérieur\" "+ isPresent(info[1],"Intérieur") +">Intérieur</option><option value=\"Extérieur\" "+ isPresent(info[1],"Extérieur") +">Extérieur</option></select></div><div class=\"infoSpa\"><label for=\"eau"+id+"\" class=\"label-info-spa\">Système d'eau</label><select class=\"typeSpa selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"eau"+id+"\" ><option value=\"Cumulus - Ballon d'eau (eau chaude limitée)\"  "+ isPresent(info[2],"Cumulus - Ballon d'eau (eau chaude limitée)") +">Cumulus - Ballon d\'eau (eau chaude limitée)</option><option value=\"Chaudière (eau chaude continue)\" "+ isPresent(info[2],"Chaudière (eau chaude continue)") +" >Chaudière (eau chaude continue)</option></select></div></div>"
 	}else{
-		typeSpa += "</div><div class=\"col-sm-6 fin-spa\"><h4><center class=\"titleSpa informationTitle\">Informations sur la location</center></h4><br><div class=\"infoSpa\"><label class=\"label-info-spa\" for=\"logement"+id+"\">Type de logement</label><select class=\"logement selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"logement"+id+"\" ><option value=\"Appartement\" selected=\"selected\">Appartement</option><option value=\"Villa - Maison\">Villa - Maison</option></select></div><div class=\"infoSpa\"><label for=\"installation"+id+"\" class=\"label-info-spa\">Type d'installation</label><select class=\"installation selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"installation"+id+"\"><option value=\"Intérieur\" selected=\"selected\">Intérieur</option><option value=\"Extérieur\">Extérieur</option></select></div><div class=\"infoSpa\"><label for=\"eau"+id+"\" class=\"label-info-spa\">Système d'eau</label><select class=\"typeSpa selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"eau"+id+"\" ><option value=\"Cumulus - Ballon d'eau (eau chaude limitée)\" selected=\"selected\">Cumulus - Ballon d\'eau (eau chaude limitée)</option><option value=\"Chaudière (eau chaude continue)\">Chaudière (eau chaude continue)</option></select></div></div>"
+		typeSpa += "</div><div class=\"col-sm-5 fin-spa\"><h4><center class=\"titleSpa informationTitle\">Informations sur la location</center></h4><br><div class=\"infoSpa\"><label class=\"label-info-spa\" for=\"logement"+id+"\">Type de logement</label><select class=\"logement selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"logement"+id+"\" ><option value=\"Appartement\" selected=\"selected\">Appartement</option><option value=\"Villa - Maison\">Villa - Maison</option></select></div><div class=\"infoSpa\"><label for=\"installation"+id+"\" class=\"label-info-spa\">Type d'installation</label><select class=\"installation selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"installation"+id+"\"><option value=\"Intérieur\" selected=\"selected\">Intérieur</option><option value=\"Extérieur\">Extérieur</option></select></div><div class=\"infoSpa\"><label for=\"eau"+id+"\" class=\"label-info-spa\">Système d'eau</label><select class=\"typeSpa selectElement\" data-index=\""+id+"\" name=\"typeSpa["+id+"][]\" id=\"eau"+id+"\" ><option value=\"Cumulus - Ballon d'eau (eau chaude limitée)\" selected=\"selected\">Cumulus - Ballon d\'eau (eau chaude limitée)</option><option value=\"Chaudière (eau chaude continue)\">Chaudière (eau chaude continue)</option></select></div></div>"
 	}
 	return typeSpa
 }
@@ -293,10 +293,10 @@ function valueToHtmlMassage(name,id,sub=null,time=null){
 			htmlSub += "<input type=\"text\" name=\"massageSu["+id+"][]\" value=\""+ name +"\" class=\"hidden\">"
 		}
 		if (sub != null && sub == i) {
-			htmlSub += "<input type=\"checkbox\" value=\""+ categories[1][i][0] +"\" checked id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"label-massage\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label>"
+			htmlSub += "<input type=\"checkbox\" value=\""+ categories[1][i][0] +"\" checked id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"label-massage\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label><i class=\"fa fa-question-circle questionMark\" aria-hidden=\"true\" data-toggle=\"modal\" data-target=\"#modal"+ i +""+ id +"\"></i>"
 			htmlTime += "<div class=\"times-massage\" data-info=\"["+ [id,i] +"]\" ><ul>"
 		}else{
-			htmlSub += "<input type=\"checkbox\" value=\""+ categories[1][i][0] +"\" id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"label-massage\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label>"
+			htmlSub += "<input type=\"checkbox\" value=\""+ categories[1][i][0] +"\" id=\"sub"+ i +""+ id +"\" class=\"massage-su\" name=\"massageSu["+id+"][]\" data-info=\"["+ [id,i] +"]\"><label class=\"label-massage\" for=\"sub"+ i +""+ id +"\"> "+ categories[1][i][0] +" </label><i class=\"fa fa-question-circle questionMark\" aria-hidden=\"true\" data-toggle=\"modal\" data-target=\"#modal"+ i +""+ id +"\"></i>"
 			htmlTime += "<div class=\"times-massage hidden\" data-info=\"["+ [id,i] +"]\" ><ul>"
 		}
 		htmlSub += "</div>"
@@ -608,7 +608,7 @@ let zone = JSON.parse(sessionStorage.getItem("zone"))
 			for (var j = spa.length - 1; j >= 0; j--) {
 				price[1] += dataOption[spa[j]][2]
 			}
-			spaPrice.innerHTML = "<li class=\"li-prix\">Prix : "+price[0]+"€ </li><li class=\"li-acompte\">Acompte : "+price[1]+"€</li>"
+			spaPrice.innerHTML = "<li class=\"li-prix hidden\">Prix : "+price[0]+"€ </li><li class=\"li-acompte hidden\">Acompte : "+price[1]+"€</li>"
 			break
 		}
 	}
@@ -675,6 +675,23 @@ function priceTotalForAllSpa(dataOption,dataForm){
 	let sessionSpa = JSON.parse(sessionStorage.getItem("massages"))
 	sessionSpa.push({id:id,cat:categories[0],sub:"",time:""})
 	sessionStorage.setItem("massages",JSON.stringify(sessionSpa))
+/* ************************************** MILA MODAL NGAMBA */
+	if (sessionSpa.length >= 1){
+		let homme = document.getElementById('addHomme')
+		let femme = document.getElementById('addFemme')
+		homme.addEventListener('click',showAlert);
+		femme.addEventListener('click',showAlert);
+
+	}
+	function showAlert(){
+				let homme = document.getElementById('addHomme')
+		let femme = document.getElementById('addFemme')
+		homme.setAttribute("data-target", "#pushMassage2");
+		homme.setAttribute("data-toggle", "modal");
+		femme.setAttribute("data-target", "#pushMassage2");
+		femme.setAttribute("data-toggle", "modal");
+	}
+/* ************************************** MILA MODAL NGAMBA */
 	// Modification dans le DOM
 	actualiseDomMassage(this.dataset.cat,id)
 }
@@ -769,9 +786,9 @@ function priceTotalForOneMassage(dataMassages,myData){
 	divMassage.getElementsByTagName("li")[0].innerHTML = categories[1][sub][0]
 	//  [30, 70, 30, 50, 20]
 	if (exceptionalPrice) {
-		divMassage.getElementsByTagName("ul")[0].innerHTML = "<li class=\"li-msgPrix\">Prix: "+categories[1][sub][1][time][1]+"€</li><li class=\"li-msgAcompte\">Acompte: "+categories[1][sub][1][time][2]+"€</li>"
+		divMassage.getElementsByTagName("ul")[0].innerHTML = "<li class=\"li-msgPrix hidden\">Prix: "+categories[1][sub][1][time][1]+"€</li><li class=\"li-msgAcompte hidden\">Acompte: "+categories[1][sub][1][time][2]+"€</li>"
 	}else{
-		divMassage.getElementsByTagName("ul")[0].innerHTML = "<li class=\"li-msgPrix\">Prix: "+categories[1][sub][1][time][3]+"€</li><li class=\"li-msgAcompte\">Acompte: "+categories[1][sub][1][time][4]+"€</li>"
+		divMassage.getElementsByTagName("ul")[0].innerHTML = "<li class=\"li-msgPrix hidden\">Prix: "+categories[1][sub][1][time][3]+"€</li><li class=\"li-msgAcompte hidden\">Acompte: "+categories[1][sub][1][time][4]+"€</li>"
 	}
 }
 

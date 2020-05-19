@@ -5,15 +5,14 @@
 position: relative;
 text-align: left;
 display: block;
-left:200px;
+left:150px;
 }
 
 .formMdpEdit{
 position: relative;
 top:-30px;
-left: 100px;
-max-width: 120px;
-
+left: 80px;
+width: 240px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -40,7 +39,7 @@ max-width: 120px;
 <h2>Changer votre mot de passe</h2>
 <br><br><br>
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render "clients/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
   <div class="field">

@@ -105,22 +105,22 @@
 
               <%if client_signed_in?%>
 
-                <li class=" dropdown singleDrop">
-                  <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>
-                  <ul class="dropdown-menu">
+              <li class=" dropdown singleDrop">
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>
+                <ul class="dropdown-menu">
                   <li><%= link_to "Mon profil", client_profil_path , class:"liDropDown" %></li> 
-                  <li><%= link_to "Se deconnecter", destroy_client_session_path, method:"delete"  , class:"liDropDown" %></li> 
-                  </ul>
-                </li>
+                  <li><%= link_to "Se déconnecter", destroy_client_session_path, method:"delete"  , class:"liDropDown" %></li> 
+                </ul>
+              </li>
 
               <% else %>
-                <li class=" dropdown singleDrop">
-                  <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to "Se connecter", new_client_session_path, class:"liDropDown" %></li> 
-                    <li><%= link_to "S'inscrire", new_client_registration_path, class:"liDropDown" %></li> 
-                  </ul>
-                </li>
+              <li class=" dropdown singleDrop">
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Se connecter", new_client_session_path, class:"liDropDown" %></li> 
+                  <li><%= link_to "S'inscrire", new_client_registration_path, class:"liDropDown" %></li> 
+                </ul>
+              </li>
               <% end %>
             </ul>
           </div>
@@ -176,7 +176,7 @@
               <div class="modal-body">
                 <div class="alert alert-danger" role="alert">
                   <% flash[:danger].each do |message| %>
-                    <li><%= message %></li>
+                  <li><%= message %></li>
                   <% end %>
                 </div>
               </div>
@@ -258,7 +258,7 @@
 
               <li><a href="<%=massage_path%>" data-method="GET">Massage à domicile</a></li>
 
-              <li><a href="<%=partner_path%>" data-method="GET">Pour les entreprises </a></li>
+              <li><a href="<%=reservation_path%>" data-method="GET">Réservation </a></li>
 
               <li><a href="/#zoneaction" data-method="GET">Nos zones d’action</a></li>
 
@@ -274,7 +274,7 @@
             <ul class="list-unstyle">
               <li><a href="<%=propos_path%>" data-method="GET">À propos de nous</a></li>
               <li><a href="/#avis" data-method="GET">Avis</a></li>
-              <li><a href="<%=partner_path%>" data-method="GET">Devenir partenaires</a></li>
+              <li><a href="<%=partner_path%>" data-method="GET">Devenir partenaire</a></li>
               <li><a href="<%=contact_path%>" data-method="GET">Nous contacter</a></li>
               <li><a href="<%=faq_path%>" data-method="GET">FAQ</a></li>
               <li><a href="<%=legalnotice_path%>" data-method="GET">Mentions légales </a>-<a href="<%=cgu_path%>" data-method="GET"> CGU</a></li>
@@ -290,13 +290,13 @@
           </div>
           <div class="footerGallery row">
             <div class="col-xs-4">
-              <a href=" https://www.facebook.com/cocooningspaev/" style="background-image: url(/img/home/facebook.png);"></a>
+              <a target="_blank" href=" https://www.facebook.com/cocooningspaev/" style="background-image: url(/img/home/facebook.png);"></a>
             </div>
             <div class="col-xs-4">
-              <a href="https://www.instagram.com/cocooningspaev/?hl=fr" style="background-image: url(/img/home/instagram.png);"></a>
+              <a target="_blank" href="https://www.instagram.com/cocooningspaev/?hl=fr" style="background-image: url(/img/home/instagram.png);"></a>
             </div>
             <div class="col-xs-4">
-              <a href="https://www.snapchat.com/add/cocooningspaev" style="background-image: url(/img/home/snapchat.png);"></a>
+              <a target="_blank" href="https://www.snapchat.com/add/cocooningspaev" style="background-image: url(/img/home/snapchat.png);"></a>
             </div>
 
           </div>
@@ -310,16 +310,18 @@
   <div class="clearfix copyRight">
     <div class="container">
       <div class="row">
-        <div class="col-sm-2 col-xs-12">
+        <div class="col-sm-1 col-xs-12">
 
         </div>
         <div class="col-sm-3 col-xs-12">
           <div class="copyRightText">
-            <div class="footerInfoTitle">     
-             <img src="/img/home/Mercanet.jpeg" alt="">
+            <div class="footerInfoTitle mercanet">     
+             <img src="/img/home/Mercanet.jpg" alt="">
            </div>
          </div>
        </div>
+       <div class="col-sm-1"></div>
+
        <div class="col-sm-3 col-xs-12">
         <div class="copyRightText">
           <div class="footerInfoTitles">
@@ -329,6 +331,7 @@
           </div>
         </div>
       </div>
+
       <div class="col-sm-3 col-xs-12">
         <div class="copyRightText">
           <div class="footerInfoTitles">
@@ -408,7 +411,7 @@
                   <div id="cart-inner-prestation">
                   </div>
                 </div>
-                <div>
+                <div class="hidden">
                   <h4>Produits</h4>
                   <div id="cart-inner-produit">
                   </div>
@@ -421,7 +424,7 @@
               <div class="col-sm-6 smright">
                 <div class="important">
                   <center><h4><i class="fa fa-exclamation-circle" aria-hidden="true"></i> IMPORTANT</h4></center>
-                  <p>Pour les prestations, seul l'accompte est à régler en ligne, le reste du montant est à regler au prestataire en main propre (chèque ou éspèce uniquement)</p>
+                  <p>Pour les prestations, seul l'accompte est à régler en ligne, le reste du montant est à régler au prestataire en main propre (CB ou éspèce uniquement)</p>
                 </div>
               </div>
             </div>
@@ -465,6 +468,7 @@
 <script data-turbolinks-track = "reload" src="/plugins/isotope/isotope-triger.min.js"></script>
 <script data-turbolinks-track = "reload" src="/plugins/smoothscroll/SmoothScroll.min.js"></script>
 <script data-turbolinks-track = "reload" src="/plugins/datepicker/bootstrap-datepicker.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/datepicker/bootstrap-datepicker.js"></script>
 <script data-turbolinks-track = "reload" src="/plugins/syotimer/jquery.syotimer.min.js"></script>
 <script data-turbolinks-track = "reload" src="/js/custom.js"></script>
 
