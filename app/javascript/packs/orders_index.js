@@ -1,6 +1,5 @@
 // [spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte]
 // [price.duration,price.exceptional_price,price.exceptional_acompte,price.ordinary_price,price.ordinary_acompte]
-
 scriptPrincipal()
 function scriptPrincipal(){
 	/*==========================================================================*/
@@ -60,7 +59,7 @@ function verifySession(){
 	let cadeau = sessionStorage.getItem("cadeau")
 	// prestations.pays = "" // prestations.departement = "" // prestations.date = "" // prestations.heurs = "" // prestations.praticient = ""	
 	let prestations = sessionStorage.getItem("prestations")
-
+	let jsonPresta = JSON.parse(prestations);
 	if ( (spa == null || spa == "") && (massages == null || massages == "") ){
 		initSession()
 		return
@@ -90,6 +89,9 @@ function verifySession(){
 	}
 	if (isHasSpaMassage) {
 		addDomIndex()
+		if (jsonPresta.code_promo) {
+			changePromoCode(jsonPresta);
+		}
 	}else{
 		initSession()
 	}
@@ -579,9 +581,8 @@ function htmlOptionSpaOrder(index,dataOption,dataForm,listOptions){
 function priceTotalForOneSpa(index,dataOption,dataForm){
 // [spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte]
 // [24, 180, 100, 50, 30]
-
-let exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
-let zone = JSON.parse(sessionStorage.getItem("zone"))
+	let exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
+	let zone = JSON.parse(sessionStorage.getItem("zone"))
 	zone = zone.date.split("/") // MM - DD - YYYY
 	let exceptionalPrice = false
 	for (var i = exceptionalDate.length - 1; i >= 0; i--) {
@@ -606,7 +607,7 @@ let zone = JSON.parse(sessionStorage.getItem("zone"))
 			}
 			let spa = sessionSpa[i].option
 			for (var j = spa.length - 1; j >= 0; j--) {
-				price[1] += dataOption[spa[j]][2]
+				price[0] += dataOption[spa[j]][2]
 			}
 			spaPrice.innerHTML = "<li class=\"li-prix hidden\">Prix : "+price[0]+"€ </li><li class=\"li-acompte hidden\">Acompte : "+price[1]+"€</li>"
 			break
@@ -615,8 +616,7 @@ let zone = JSON.parse(sessionStorage.getItem("zone"))
 }
 
 function priceTotalForAllSpa(dataOption,dataForm){
-
-	let exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+	let exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
 	let zone = JSON.parse(sessionStorage.getItem("zone"))
 	zone = zone.date.split("/") // MM - DD - YYYY
 	let exceptionalPrice = false
@@ -644,7 +644,7 @@ function priceTotalForAllSpa(dataOption,dataForm){
 			// some prix pour les options déco
 			tmp = sessionSpa[i].option
 			for (var j = tmp.length - 1; j >= 0; j--) {
-				prixSomme[1] += dataOption[tmp[j]][2]
+				prixSomme[0] += dataOption[tmp[j]][2]
 			}
 		}
 	}
@@ -750,7 +750,7 @@ function addMassageInOrder(){
 }
 
 function priceTotalForOneMassage(dataMassages,myData){
-	let exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+	let exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
 	let zone = JSON.parse(sessionStorage.getItem("zone"))
 	zone = zone.date.split("/") // MM - DD - YYYY
 	let exceptionalPrice = false
@@ -760,11 +760,11 @@ function priceTotalForOneMassage(dataMassages,myData){
 			break
 		}
 	}
+
 	let sub =""
 	let time =""
 	let cat =""
-	// 0: {id: 1, cat: "Homme", sub: 6, time: 1}
-	// 1: {id: 2, cat: "Femme", sub: 1, time: 0}
+
 	let sessionMassage = JSON.parse(sessionStorage.getItem("massages"))
 	for (var i = sessionMassage.length - 1; i >= 0; i--) {
 		if (sessionMassage[i].id == myData) {
@@ -793,7 +793,7 @@ function priceTotalForOneMassage(dataMassages,myData){
 }
 
 function priceTotalForAllMassage(dataMassages){
-	let exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+	let exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
 	let zone = JSON.parse(sessionStorage.getItem("zone"))
 	zone = zone.date.split("/") // MM - DD - YYYY
 	let exceptionalPrice = false
@@ -998,7 +998,7 @@ function numberAtOrderBtn(){
 	if (massages) {
 		for (var i = massages.length - 1; i >= 0; i--) {
 			if(typeof(massages[i].sub) != "string"){
-				number++
+				number++	
 			}
 		}
 	}
@@ -1010,11 +1010,47 @@ function numberAtOrderBtn(){
 	document.getElementById("number-cart-ok").innerHTML = number
 }
 
+document.getElementById("nex-submi-tag").addEventListener('click',submitFormulaire)
 
+function submitFormulaire(){
+	if(true){
+		document.getElementById("form-data").submit()
+	}else{
+		document.getElementById("loc-spa-fafana").classList.add("active")
+		document.getElementsByClassName("accordion-body js-accordion-body").style.display="block"
+	}
+}
 
+function changePromoCode(prestations) {
+	document.getElementById("alert-code").classList.remove("hidden");
+	document.getElementById("form-promo-code").classList.add("hidden");
+	document.getElementById("alert-code").innerHTML = "Votre code promo "+ prestations.code_promo[0] +" est validé avec succès." + " Vous avez gagné un reduction de " +prestations.code_promo[1]+ "€ pour chaque prix et acompte à payer!";
+	let dataForm = JSON.parse(document.getElementById('form-data').dataset.spas)
+	let dataMassages = JSON.parse(document.getElementById('form-data').dataset.massages)
+	for (var i = dataForm.length - 1; i >= 0; i--) {
+		dataForm[i][1] = dataForm[i][1] - prestations.code_promo[1]
+		dataForm[i][2] = dataForm[i][2] - prestations.code_promo[1]
+		dataForm[i][3] = dataForm[i][3] - prestations.code_promo[1]
+		dataForm[i][4] = dataForm[i][4] - prestations.code_promo[1]
+	}
+	document.getElementById('form-data').dataset.spas = JSON.stringify(dataForm)
+	for (var i = dataMassages.length - 1; i >= 0; i--) {
+		let current_massage = dataMassages[i][1]
+		for (var j = current_massage.length - 1; j >= 0; j--) {
+			let main = current_massage[j][1]
+			for (var k = main.length - 1; k >= 0; k--) {
+				main[k][1] = main[k][1] - prestations.code_promo[1]
+				main[k][2] = main[k][2] - prestations.code_promo[1]
+				main[k][3] = main[k][3] - prestations.code_promo[1]
+				main[k][4] = main[k][4] - prestations.code_promo[1]
+			}
+		}
+	}
+	document.getElementById('form-data').dataset.massages = JSON.stringify(dataMassages)
+}
+
+// document.getElementById('submi-tag').onCl
 // LIGNE 580 RA ILAINA ILAY ACCOMPTE
-	// spanPriceTotal.innerHTML = "prix: "+prixSomme[0]+"€ acompte: "+prixSomme[1]+"€"
-
-
+// spanPriceTotal.innerHTML = "prix: "+prixSomme[0]+"€ acompte: "+prixSomme[1]+"€"
 // LIGNE 712 RA ILAINA ILAY ACCOMPTE
-	// document.getElementById("massage-price-total").innerHTML = "prix: "+price+" € "+acompte+"€"
+// document.getElementById("massage-price-total").innerHTML = "prix: "+price+" € "+acompte+"€"

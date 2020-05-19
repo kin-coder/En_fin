@@ -130,21 +130,18 @@ class OrdersController < ApplicationController
       @error = "Veuillez choisir un pays" #erreur
       #redirect_back(fallback_location: root_path)
     end
-
     respond_to do |format|
       format.js
     end
-
   end
 
-  
   def code_promo
     parameters = params.permit(:code)
-    @code = parameters[:code]
     @test = false
-    if CodePromo.all.find_by(code:@code)
+    @code = CodePromo.all.find_by(code:parameters[:code])
+    if @code
       @test = true
-      session[:otherInfo]["code_promo"] = @code
+      session[:otherInfo]["code_promo"] = [@code.code,@code.reduction]
     else
       session[:otherInfo]["code_promo"] = ""
     end
@@ -198,7 +195,7 @@ class OrdersController < ApplicationController
     isError = false
 
     # gestion de l'heurs pour les prixs MM-DD 
-    exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+    exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
     current_date = session[:otherInfo]["date"].split("/")
 
     if timeSpas
@@ -345,6 +342,11 @@ class OrdersController < ApplicationController
       @order.department = Department.find_by(name:session[:otherInfo]["department"])
       @order.country = Country.find_by(name:session[:otherInfo]["pays"])
       @order.save
+
+      if session[:otherInfo]["code_promo"].length == 2
+        @order.code_promo = CodePromo.find_by_code(session[:otherInfo]["code_promo"][0])
+      end
+
       myPrestation = session[:myPrestation]
       unless myPrestation["spa"].empty?
         mailToOrderServiceSpa = OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: session[:otherInfo]["heureSpa"])

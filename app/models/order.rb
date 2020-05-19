@@ -2,6 +2,8 @@ class Order < ApplicationRecord
 	belongs_to :client      #un client 1 ---- N  commande
 	belongs_to :department, optional: true  #plusieur commande dans une region
 	belongs_to :country #plusieur commande dans un pays
+	# relation codePromo 1-N order
+	belongs_to :code_promo, optional: true
 	#relation Order N---N Service
 	has_many :order_services, dependent: :destroy
 	has_many :services, through: :order_services

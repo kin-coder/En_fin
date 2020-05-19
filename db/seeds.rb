@@ -155,7 +155,7 @@ end
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 	# Creation d'exemple de code promo
-["HULK","SPACADEAU","GRENOUILLE","PINOK","GANA"].each do |code|
+["REDUCSPAJJ"].each do |code|
 	puts "Code promoe -#{code}"
-	CodePromo.create(code:code)
+	CodePromo.create(code:code,reduction:10)
 end

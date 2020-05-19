@@ -29,7 +29,6 @@ Rails.application.configure do
     }
   else
     config.action_controller.perform_caching = false
-
     config.cache_store = :null_store
   end
 
@@ -66,15 +65,15 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
   # # config for mailer
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'spamandona.fr',
-    user_name:            'ctrlfaly@gmail.com',
-    password:             'tduoesxegsoxecoq',
-    authentication:       'plain',
-    enable_starttls_auto: true 
-  }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address:              'smtp.gmail.com',
+  #   port:                 587,
+  #   domain:               'spamandona.fr',
+  #   user_name:            'ctrlfaly@gmail.com',
+  #   password:             'tduoesxegsoxecoq',
+  #   authentication:       'plain',
+  #   enable_starttls_auto: true 
+  # }
 
 end
