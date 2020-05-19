@@ -17,13 +17,13 @@
 	  /* Large devices (laptops/desktops, 992px and up) */
 	  @media only screen and (min-width: 992px) {
 	  	.toolBarSelect{
-	  		position: absolute;
-	  		left: 858px;
+	  		position: absolute !important;
+	  		left: 858px !important;
 	  	}
 
 	  	.search-control{
-	  		position: relative;
-	  		left: 635px;
+	  		position: relative !important;
+	  		left: 635px !important;
 	  	}
 
 	  }
@@ -43,5 +43,17 @@
 	  	.list-inline > li {
 	  		margin-top: 10px;
 
+	  	}
+	  }
+	  /* Small devices (portrait tablets and large phones, 600px and up) */
+	  @media only screen and (min-width: 600px) {
+	  	.toolBarSelect{
+	  		position: absolute;
+	  		left: 300px;
+	  	}
+
+	  	.search-control{
+	  		position: relative;
+	  		left: 80px;
 	  	}
 	  }
