@@ -130,21 +130,18 @@ class OrdersController < ApplicationController
       @error = "Veuillez choisir un pays" #erreur
       #redirect_back(fallback_location: root_path)
     end
-
     respond_to do |format|
       format.js
     end
-
   end
 
-  
   def code_promo
     parameters = params.permit(:code)
-    @code = parameters[:code]
     @test = false
-    if CodePromo.all.find_by(code:@code)
+    @code = CodePromo.all.find_by(code:parameters[:code])
+    if @code
       @test = true
-      session[:otherInfo]["code_promo"] = @code
+      session[:otherInfo]["code_promo"] = [@code.code,@code.reduction]
     else
       session[:otherInfo]["code_promo"] = ""
     end

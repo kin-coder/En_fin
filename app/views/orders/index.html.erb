@@ -368,13 +368,9 @@
 											</div>
 
 											<div id="code-promo">
-												<h3 class="subTitlePanier promo_code_click">Code promo ?</h3>
-												<%= form_tag(code_promo_path, remote: true) do %>
-													<div id="alert-code" class="hidden alert alert-success" role="alert">
-														Votre code promo est validé avec succès
-													</div>
-													<label for="codeP"></label>
-													<input type="text" name="code" id="codeP", placeholder="Code promo">
+												<div id="alert-code" class="hidden alert alert-success" role="alert"></div>
+												<%= form_tag(code_promo_path, remote: true, id:"form-promo-code") do %>
+													<label for="codeP">Code promo ?</label><br><input type="text" name="code" id="codeP", placeholder="Code promo" required="required">
 													<%= submit_tag("valider") %>	
 												<% end %>
 											</div>
