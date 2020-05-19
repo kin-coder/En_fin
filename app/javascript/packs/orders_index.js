@@ -1011,7 +1011,12 @@ function numberAtOrderBtn(){
 document.getElementById("nex-submi-tag").addEventListener('click',submitFormulaire)
 
 function submitFormulaire(){
-	document.getElementById("form-data").submit()
+	if(true){
+		document.getElementById("form-data").submit()
+	}else{
+		document.getElementById("loc-spa-fafana").classList.add("active")
+		document.getElementsByClassName("accordion-body js-accordion-body").style.display="block"
+	}
 }
 
 // document.getElementById('submi-tag').onCl
