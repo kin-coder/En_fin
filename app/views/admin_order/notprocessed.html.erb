@@ -140,7 +140,7 @@
 								<th>Montant</th>
 								<th data-field="zip_code" data-filter-control="input">Code Postal</th>
 
-
+								<th>Type de service</th>
 								<th class="actionTableAdmin" data-field="note"> <center style="line-height: 35px;">Actions
 								</center>  
 							</th>
@@ -173,6 +173,14 @@
 							<td><%= order.client.first_name %> <%= order.client.last_name %></td>
 							<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
 							<td><%= order.client.zip_code %></td>
+
+							<td>
+								<% order.services.each do |service|%>
+								<li> <%= service.name %> </li>
+								<% end %>
+
+							</td>
+
 							<td><a href="<%= admin_order_show_path(order.id) %>" class="btn btn-default">Afficher</a></td>
 						</tr>
 						<% end %>
