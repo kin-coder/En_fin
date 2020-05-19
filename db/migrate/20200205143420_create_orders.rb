@@ -17,10 +17,11 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.boolean :is_validate, default:false #verifi si la commande est payer ou non
       #verifi si le commande est en cours traitée non traitée
       t.string :status_order, default:'en cours'
-      
+
       t.belongs_to :client, index:true
       t.belongs_to :department, index:true
       t.belongs_to :country, index:true
+      t.belongs_to :code_promo, index:true
 
       t.timestamps
     end

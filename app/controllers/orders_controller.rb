@@ -342,6 +342,11 @@ class OrdersController < ApplicationController
       @order.department = Department.find_by(name:session[:otherInfo]["department"])
       @order.country = Country.find_by(name:session[:otherInfo]["pays"])
       @order.save
+
+      if session[:otherInfo]["code_promo"].length == 2
+        @order.code_promo = CodePromo.find_by_code(session[:otherInfo]["code_promo"][0])
+      end
+
       myPrestation = session[:myPrestation]
       unless myPrestation["spa"].empty?
         mailToOrderServiceSpa = OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: session[:otherInfo]["heureSpa"])
