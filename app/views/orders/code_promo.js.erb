@@ -1,10 +1,33 @@
 if (<%=@test%> == true) {
 	document.getElementById("alert-code").classList.remove("hidden");
 	document.getElementById("form-promo-code").classList.add("hidden");
-	document.getElementById("alert-code").innerHTML = "Votre code promo "+ "<%= session[:otherInfo]['code_promo'][0] %> est validé avec succès." + " Vous avez gagné un reduction de " + parseInt(<%= session[:otherInfo]['code_promo'][1] %>)+ "€ pour chaque acompte à payer!";
+	document.getElementById("alert-code").innerHTML = "Votre code promo "+ "<%= session[:otherInfo]['code_promo'][0] %> est validé avec succès." + " Vous avez gagné un reduction de " + parseInt(<%= session[:otherInfo]['code_promo'][1] %>)+ "€ pour chaque prix et acompte à payer!";
 	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
 	prestations.code_promo = ["<%= session[:otherInfo]['code_promo'][0] %>",parseInt(<%= session[:otherInfo]['code_promo'][1] %>)]
 	sessionStorage.setItem("prestations",JSON.stringify(prestations))
+/* --------------------------------------------------------------------- */
+	let dataForm = JSON.parse(document.getElementById('form-data').dataset.spas)
+	let dataMassages = JSON.parse(document.getElementById('form-data').dataset.massages)
+	for (var i = dataForm.length - 1; i >= 0; i--) {
+		dataForm[i][1] = dataForm[i][1] - prestations.code_promo[1]
+		dataForm[i][2] = dataForm[i][2] - prestations.code_promo[1]
+		dataForm[i][3] = dataForm[i][3] - prestations.code_promo[1]
+		dataForm[i][4] = dataForm[i][4] - prestations.code_promo[1]
+	}
+	document.getElementById('form-data').dataset.spas = JSON.stringify(dataForm)
+	for (var i = dataMassages.length - 1; i >= 0; i--) {
+		let current_massage = dataMassages[i][1]
+		for (var j = current_massage.length - 1; j >= 0; j--) {
+			let main = current_massage[j][1]
+			for (var k = main.length - 1; k >= 0; k--) {
+				main[k][1] = main[k][1] - prestations.code_promo[1]
+				main[k][2] = main[k][2] - prestations.code_promo[1]
+				main[k][3] = main[k][3] - prestations.code_promo[1]
+				main[k][4] = main[k][4] - prestations.code_promo[1]
+			}
+		}
+	}
+	document.getElementById('form-data').dataset.massages = JSON.stringify(dataMassages)
 }else{
 	alert("Code promo non reconnu");
 }
@@ -12,7 +35,6 @@ if (<%=@test%> == true) {
 /*
 
 REDUCSPAJJ
-
 document.getElementById("alert-code").classList.add("hidden")
 
 Loc 24h : 100€ 
