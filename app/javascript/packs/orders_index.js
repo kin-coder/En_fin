@@ -1,6 +1,5 @@
 // [spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte]
 // [price.duration,price.exceptional_price,price.exceptional_acompte,price.ordinary_price,price.ordinary_acompte]
-
 scriptPrincipal()
 function scriptPrincipal(){
 	/*==========================================================================*/
@@ -580,7 +579,7 @@ function priceTotalForOneSpa(index,dataOption,dataForm){
 // [spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte]
 // [24, 180, 100, 50, 30]
 
-let exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+let exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
 let zone = JSON.parse(sessionStorage.getItem("zone"))
 	zone = zone.date.split("/") // MM - DD - YYYY
 	let exceptionalPrice = false
@@ -615,8 +614,7 @@ let zone = JSON.parse(sessionStorage.getItem("zone"))
 }
 
 function priceTotalForAllSpa(dataOption,dataForm){
-
-	let exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+	let exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
 	let zone = JSON.parse(sessionStorage.getItem("zone"))
 	zone = zone.date.split("/") // MM - DD - YYYY
 	let exceptionalPrice = false
@@ -750,7 +748,7 @@ function addMassageInOrder(){
 }
 
 function priceTotalForOneMassage(dataMassages,myData){
-	let exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+	let exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
 	let zone = JSON.parse(sessionStorage.getItem("zone"))
 	zone = zone.date.split("/") // MM - DD - YYYY
 	let exceptionalPrice = false
@@ -760,11 +758,11 @@ function priceTotalForOneMassage(dataMassages,myData){
 			break
 		}
 	}
+
 	let sub =""
 	let time =""
 	let cat =""
-	// 0: {id: 1, cat: "Homme", sub: 6, time: 1}
-	// 1: {id: 2, cat: "Femme", sub: 1, time: 0}
+
 	let sessionMassage = JSON.parse(sessionStorage.getItem("massages"))
 	for (var i = sessionMassage.length - 1; i >= 0; i--) {
 		if (sessionMassage[i].id == myData) {
@@ -793,7 +791,7 @@ function priceTotalForOneMassage(dataMassages,myData){
 }
 
 function priceTotalForAllMassage(dataMassages){
-	let exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+	let exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
 	let zone = JSON.parse(sessionStorage.getItem("zone"))
 	zone = zone.date.split("/") // MM - DD - YYYY
 	let exceptionalPrice = false
@@ -998,7 +996,7 @@ function numberAtOrderBtn(){
 	if (massages) {
 		for (var i = massages.length - 1; i >= 0; i--) {
 			if(typeof(massages[i].sub) != "string"){
-				number++
+				number++	
 			}
 		}
 	}
@@ -1010,11 +1008,14 @@ function numberAtOrderBtn(){
 	document.getElementById("number-cart-ok").innerHTML = number
 }
 
+document.getElementById("nex-submi-tag").addEventListener('click',submitFormulaire)
 
+function submitFormulaire(){
+	document.getElementById("form-data").submit()
+}
 
+// document.getElementById('submi-tag').onCl
 // LIGNE 580 RA ILAINA ILAY ACCOMPTE
 	// spanPriceTotal.innerHTML = "prix: "+prixSomme[0]+"€ acompte: "+prixSomme[1]+"€"
-
-
 // LIGNE 712 RA ILAINA ILAY ACCOMPTE
 	// document.getElementById("massage-price-total").innerHTML = "prix: "+price+" € "+acompte+"€"

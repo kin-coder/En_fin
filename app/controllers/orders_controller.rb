@@ -198,7 +198,7 @@ class OrdersController < ApplicationController
     isError = false
 
     # gestion de l'heurs pour les prixs MM-DD 
-    exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+    exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
     current_date = session[:otherInfo]["date"].split("/")
 
     if timeSpas
