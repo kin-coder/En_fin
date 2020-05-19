@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<link href="/css/echec.css" rel="stylesheet">
+	<link href="/admin/css/allcandidate.css" rel="stylesheet">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -91,18 +92,7 @@
   }
 </style>
 
-<style>
-	.toolBarSelect{
-		position: absolute;
-		left: 800px;
-	}
 
-	.search-control{
-		position: relative;
-		left: 575px;
-	}
-
-</style>
 </head>
 
 <body>
@@ -182,7 +172,7 @@
 								<td> <%= candidate.last_name %> </td>
 								<td> <%= candidate.date_of_birth %> </td>
 								<td> <%= candidate.services.gsub("|",", ") %> </td>
-								<td> <%= candidate.countries.gsub("|",", ") %><% if candidate.departments %> : <br>	<ul><li> <%= candidate.departments.gsub("|",", ") %></li></ul><% end %></td>
+								<td> <%= candidate.countries.gsub("|",", ") %> <br> <% if candidate.departments %> Départements: <br>	<ul><li> <%= candidate.departments.gsub("|",", ") %></li></ul><% end %></td>
 								<td> <%= candidate.raison_sociale %> </td>
 								<td style="max-width: 70px;word-wrap: break-word;"> <%= candidate.siren %> </td>
 								<td> <%= candidate.email %> </td>

@@ -8667,6 +8667,26 @@ input[type=number]::-webkit-inner-spin-button {
   background-size: cover;
 }
 
+
+
+  <!-- media query -->
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+.faBar{
+margin-left: 15px;
+}
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+#toolbar{
+display: block !important;
+}
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+
 .actionTableAdmin{
   width: 250px;
 }
@@ -8733,3 +8753,5 @@ input[type=number]::-webkit-inner-spin-button {
 .sidebar .nav-item .nav-link {
   width: 18rem !important;
 }
+  }
+

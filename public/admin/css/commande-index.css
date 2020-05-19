@@ -1,0 +1,59 @@
+	  <!-- media query -->
+
+
+	  /* Small devices (portrait tablets and large phones, 600px and up) */
+	  @media only screen and (min-width: 600px) {
+	  	.toolBarSelect{
+	  		position: absolute;
+	  		left: 300px;
+	  	}
+
+	  	.search-control{
+	  		position: relative;
+	  		left: 80px;
+	  	}
+	  }
+
+	  /* Large devices (laptops/desktops, 992px and up) */
+	  @media only screen and (min-width: 992px) {
+	  	.toolBarSelect{
+	  		position: absolute !important;
+	  		left: 858px !important;
+	  	}
+
+	  	.search-control{
+	  		position: relative !important;
+	  		left: 635px !important;
+	  	}
+
+	  }
+
+	  /* Extra small devices (phones, 600px and down) */
+	  @media only screen and (max-width: 600px) {
+
+
+	  	.search-control{
+	  		position: relative;
+	  		left: 0px;
+	  		top: 5px;
+	  	}
+	  	#toolbar{
+	  		max-width: 200px;
+	  	}
+	  	.list-inline > li {
+	  		margin-top: 10px;
+
+	  	}
+	  }
+	  /* Small devices (portrait tablets and large phones, 600px and up) */
+	  @media only screen and (min-width: 600px) {
+	  	.toolBarSelect{
+	  		position: absolute;
+	  		left: 300px;
+	  	}
+
+	  	.search-control{
+	  		position: relative;
+	  		left: 80px;
+	  	}
+	  }
