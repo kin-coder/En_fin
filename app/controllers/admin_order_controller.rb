@@ -21,6 +21,10 @@ class AdminOrderController < Application2Controller
   # affichage d'une commande
   def show
     @order = Order.find(params[:id])
+    @code_promo = 0
+    if @order.code_promo
+      @code_promo = @order.code_promo.reduction
+    end
     # list des prestataire invité
     @massage_prestataires = []
     @spa_prestataires = []

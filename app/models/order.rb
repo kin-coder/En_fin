@@ -25,7 +25,7 @@ class Order < ApplicationRecord
 	validates :delivery_adresse_complet, presence: true
 
 	def isExceptional?
-		exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+		exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
 		current_date = self.prestation_date.split("/")
 		isExeptional = false
 		if exceptionalDate.include?(current_date[0..1])
@@ -64,30 +64,35 @@ class Order < ApplicationRecord
   end
 
   def totalPrice
+  	code_promo = 0
+    if self.code_promo
+      code_promo = self.code_promo.reduction
+    end
+
   	acompte = 0.0
   	price = 0.0
 		self.order_services.each do |o_s|
 			if o_s.service.name == "Massage"
 				self.order_massages.each do |o_massage| 
 					if self.isExceptional?
-						price += o_massage.massage_su_price.exceptional_price 
-						acompte += o_massage.massage_su_price.exceptional_acompte 
+						price += o_massage.massage_su_price.exceptional_price - code_promo
+						acompte += o_massage.massage_su_price.exceptional_acompte - code_promo
 					else
-						price += o_massage.massage_su_price.ordinary_price 
-						acompte += o_massage.massage_su_price.ordinary_acompte 
+						price += o_massage.massage_su_price.ordinary_price - code_promo
+						acompte += o_massage.massage_su_price.ordinary_acompte - code_promo
 					end
 				end
 			elsif o_s.service.name == "Location spa"
 				self.order_spas.each do |o_spa|
 					if self.isExceptional?
-						price += o_spa.spa.exceptional_price 
-						acompte += o_spa.spa.exceptional_acompte 
+						price += o_spa.spa.exceptional_price - code_promo
+						acompte += o_spa.spa.exceptional_acompte - code_promo
 					else
-						price += o_spa.spa.ordinary_price 
-						acompte += o_spa.spa.ordinary_acompte 
+						price += o_spa.spa.ordinary_price - code_promo
+						acompte += o_spa.spa.ordinary_acompte - code_promo
 					end
 					unless o_spa.product.nil?
-						acompte += o_spa.product.price
+						price += o_spa.product.price
 					end
 				end 
 			end

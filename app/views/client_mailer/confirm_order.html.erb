@@ -756,15 +756,15 @@
 	<% @order.order_spas.each do |o_spa| %>
 		Location spa <%= o_spa.spa.duration %>h : 
 		<% if @order.isExceptional? %>
-			<%= o_spa.spa.exceptional_price %>€<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_spa.spa.exceptional_acompte %>€<br>
-			<% price += o_spa.spa.exceptional_price %>
-			<% acompte += o_spa.spa.exceptional_acompte %>
+			<%= o_spa.spa.exceptional_price - @code_promo %>€<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_spa.spa.exceptional_acompte - @code_promo %>€<br>
+			<% price += o_spa.spa.exceptional_price - @code_promo %>
+			<% acompte += o_spa.spa.exceptional_acompte - @code_promo %>
 		<% else %>
-			<%= o_spa.spa.ordinary_price %>€<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_spa.spa.ordinary_acompte %>€<br>
-			<% price += o_spa.spa.ordinary_price %>
-			<% acompte += o_spa.spa.ordinary_acompte %>
+			<%= o_spa.spa.ordinary_price - @code_promo %>€<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_spa.spa.ordinary_acompte - @code_promo %>€<br>
+			<% price += o_spa.spa.ordinary_price - @code_promo %>
+			<% acompte += o_spa.spa.ordinary_acompte - @code_promo %>
 		<% end %>
 		&nbsp;&nbsp;&nbsp;&nbsp;~ Ambiance:
 		<% if o_spa.product.nil? %>
@@ -781,7 +781,7 @@
 	<% end %>
 	<br>
 	<strong>Prix total :</strong> <%= price + acompte %>€ <br>
-	<strong>Remise code promo :</strong> 0€<br>
+	<strong>Remise code promo :</strong> <%= @code_promo %>€<br>
 	<strong>Acompte payé par CB&nbsp;:</strong> <%= acompte %>€<br>
 	<br>
 	<strong>Total restant à régler le jour de la prestation&nbsp;:&nbsp;<%= price %>€</strong> &nbsp;(hors frais de déplacement*)<br><br>
@@ -882,20 +882,20 @@
 	<strong><%= o_massage.massage_su.name %></strong> <%= o_massage.massage_su_price.duration %>mn :
 	<% if @order.isExceptional? %>
 		<%= o_massage.massage_su_price.exceptional_price %>€<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_massage.massage_su_price.exceptional_acompte %>€<br>
-		<% price += o_massage.massage_su_price.exceptional_price %>
-		<% acompte += o_massage.massage_su_price.exceptional_acompte %>
+	&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_massage.massage_su_price.exceptional_acompte - @code_promo %>€<br>
+		<% price += o_massage.massage_su_price.exceptional_price  - @code_promo %>
+		<% acompte += o_massage.massage_su_price.exceptional_acompte  - @code_promo %>
 	<% else %>
 		<%= o_massage.massage_su_price.ordinary_price %>€<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_massage.massage_su_price.ordinary_acompte %>€<br>
-		<% price += o_massage.massage_su_price.ordinary_price %>
-		<% acompte += o_massage.massage_su_price.ordinary_acompte %>
+	&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_massage.massage_su_price.ordinary_acompte - @code_promo %>€<br>
+		<% price += o_massage.massage_su_price.ordinary_price  - @code_promo %>
+		<% acompte += o_massage.massage_su_price.ordinary_acompte  - @code_promo %>
 	<% end %>
 <% end %>
 <br>
 <br>
 <strong>Prix total : <%= price + acompte %>€ </strong><br>
-<strong>Remise code promo : 0€</strong><br>
+<strong>Remise code promo : <%= @code_promo %>€</strong><br>
 <strong>Acompte payé par CB&nbsp;: <%= acompte %>€</strong><br>
 <br>
 <strong>Total restant à régler le jour de la prestation&nbsp;: <%= price %>€</strong> &nbsp;(hors frais de déplacement*)<br><br>
