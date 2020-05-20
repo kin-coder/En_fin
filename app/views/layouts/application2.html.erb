@@ -273,18 +273,15 @@
                                 <!-- Page level custom scripts -->
                                 <script src="/admin/js/demo/datatables-demo.js"></script>
 
+
+<!-- Afficher tous les notification possible -->
 <div class="container">
     <h2>Notification reto</h2>
-<% Notification.all.order('id DESC').each do |notification| %>
-    <% if notification.is_view %> 
-        <div class="alert alert-info">
-    <% else %>
-        <div class="alert alert-success">
+    <ul>
+    <% Notification.all.order('id DESC').each do |notification| %>
+         <li><%= link_to notification.messages, update_notifications_path(notification.id), method: :patch, 'data-view':notification.is_view %></li>
     <% end %>
-      <a href="<%= notification.url %>"><%= notification.messages %></a>
-    </div>
-<% end %>
-
+    </ul>
 </div>
 
 

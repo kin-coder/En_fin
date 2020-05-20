@@ -1,7 +1,7 @@
 class Notification < ApplicationRecord
-	def url
+	def order_id
 		if self.notif_type == 1
-				return "/admin/commande-numero/#{(JSON.parse(self.data)["id"])}"
+				return JSON.parse(self.data)["id"]
 		end
 	end
 	def messages
