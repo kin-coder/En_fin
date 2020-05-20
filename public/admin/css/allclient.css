@@ -1,0 +1,137 @@
+	  <!-- media query -->
+
+
+	  /* Small devices (portrait tablets and large phones, 600px and up) */
+	  @media only screen and (min-width: 600px) {
+	  	.toolBarSelect{
+	  		position: absolute;
+	  		left: 300px;
+	  	}
+
+	  	.search-control{
+	  		position: relative;
+	  		left: 80px;
+	  	}
+	  }
+
+	  	  @media only screen and (max-width: 600px) {
+	  	.secotionTitle .police_massage span{
+	  		font-size: 24px !important;
+	  	}
+	  	.bootstrap-table{
+	  		max-width: 305px;
+	  	}
+	  	.search-control{
+	  		position: relative;
+	  		left: 0px;
+	  		top: 5px;
+	  	}
+	  	#toolbar{
+	  		max-width: 200px;
+	  	}
+	  	.list-inline > li {
+	  		position: relative;
+	  		left: -350px !important;
+	  		top: -55px !important;
+	  	}
+	  	.innerWrapper .table-responsive {
+	  		overflow-x: scroll;
+	  		max-width: 300px !important;
+	  	}
+	  	.fixed-table-toolbar{
+	  		width: 300px !important;
+	  	}
+	  }
+
+	  /* Large devices (laptops/desktops, 992px and up) */
+	  @media only screen and (min-width: 992px) {
+	  	.toolBarSelect{
+	  		position: absolute !important;
+	  		left: 845px !important;
+	  	}
+
+	  	.search-control{
+	  		position: relative !important;
+	  		left: 620px !important;
+	  	}
+
+	  	.fixed-table-toolbar{
+	  		max-width: 1200px !important;
+	  	}
+
+	  	.list-inline > li {
+	  		position: relative;
+	  		left: 0px !important;
+	  		top: 0px !important;
+	  	}
+
+	  	.bootstrap-table{
+	  		max-width: 1200px !important;
+	  	}
+	  }
+	  .fixed-table-toolbar{
+	  	width: auto !important;
+	  }
+	  }
+
+	  /* Extra small devices (phones, 600px and down) */
+	  @media only screen and (max-width: 600px) {
+	  	.secotionTitle .police_massage span{
+	  		font-size: 24px !important;
+	  	}
+	  	.bootstrap-table{
+	  		max-width: 305px;
+	  	}
+	  	.search-control{
+	  		position: relative;
+	  		left: 0px;
+	  		top: 5px;
+	  	}
+	  	#toolbar{
+	  		max-width: 200px;
+	  	}
+	  	.list-inline > li {
+	  		position: relative;
+	  		left: -350px !important;
+	  		top: -55px !important;
+	  	}
+	  	.innerWrapper .table-responsive {
+	  		overflow-x: scroll;
+	  		max-width: 300px !important;
+	  	}
+	  	.fixed-table-toolbar{
+	  		width: 300px !important;
+	  	}
+	  }
+	  /* Small devices (portrait tablets and large phones, 600px and up) */
+	  @media only screen and (min-width: 600px) {
+	  	.toolBarSelect{
+	  		position: absolute;
+	  		left: 300px;
+	  	}
+
+	  	.search-control{
+	  		position: relative;
+	  		left: 80px;
+	  	}
+
+	  	.innerWrapper .table-responsive {
+	  		overflow-x: scroll;
+	  		width: auto !important;
+	  	}
+
+	  	.list-inline > li {
+	  		position: relative;
+	  		left: -200px;
+	  		top: -55px;
+	  	}
+
+	  	.bootstrap-table{
+	  		max-width: 600px;
+	  	}
+	  }
+	  .fixed-table-toolbar{
+	  	width: 600px;
+	  }
+	}
+
