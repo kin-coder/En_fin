@@ -23,107 +23,11 @@
 <link href="/css/static_page.css" rel="stylesheet">
 <link rel="stylesheet" href="carousel/carousel.css">
 <link href="/css/product.css" rel="stylesheet">
+  <link href="/admin/css/shoclient.css" rel="stylesheet">
 
 <!-- FAVICON -->
 <link href="img/favicon.png" rel="shortcut icon">
 
-<style>
-  <!-- media query -->
-  /* Extra small devices (phones, 600px and down) */
-  @media only screen and (max-width: 600px) {
-
-  }
-
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 600px) {
-.innerWrapper {
-    width: 85%;
-    display: block;
-}
-
-  }
-
-
-  .filters ul{
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    border-bottom: 2px solid #D9D9D9;
-    margin: 30px 15px;
-
-  }
-  .filters ul li{
-    display: inlnie-block;
-    text-align: center;
-    margin-right: 50px;
-    padding: 0 5px 8px 5px;
-    font-weight: 700;
-    font-size: 16px; 
-    cursor: pointer;
-    position: relative;
-    margin-bottom: -2px;
-    color: #777;
-    transition: 0.3s;
-    text-transform: uppercase;
-  }
-  .filters ul li:hover{
-    color: deeppink;
-  }
-  .filters ul li.is-checked{
-    border-bottom: 2px solid deeppink;
-    color: deeppink;
-  }
-  .filters ul li:last-child{
-    margin-right: 0;
-  }
-
-
-  @media (min-width: 992px) {
-    .paramsuser{
-      position: absolute;
-      left: 48%;
-    }
-    .profilUser li{
-      margin-bottom: 20px;
-    }
-    .UserInfos{
-      margin-left: 120px;
-    }
-    .innerWrapper {
-    width: 100% !important;
-    display: block;
-}
-  }
-  @media (max-width: 600px) {
-
-    .profilUser li{
-      font-size: 13px;
-    }
-
-    .pageTitle h1{
-      font-size: 40px;
-    } 
-.innerWrapper {
-    width: 150% !important;
-    display: block;
-    margin-left: -55px;
-}
-.modifsm3{
-  position: absolute;
-  left: -150px;
-  max-width: 100px;
-  }
-  .listesm3{
-  max-width: 100px;
-position: relative;
-left: 30px;
-  }
-
-  .profilUser{
-
-  }
-}
-</style>
 
 
 <div class="container">
@@ -143,7 +47,7 @@ left: 30px;
     <div class="col-md-12">
       <div class="rows grid data-isotope='{ "itemSelector": ".grid-item", "masonry": { "columnWidth": 200 }}'">
         <div class="col-md-12 grid-item moncompte" data-category="websites">
-         
+
           <div class="col-sm-12 isotopeSelector infos">
 
 
@@ -216,7 +120,7 @@ left: 30px;
               <div class="row">
                 <div class="col-xs-12">
                   <div class="innerWrapper">
-                    
+
                     <% unless @orders.empty? %>
                     <div class="table-responsive">
                       <table class="table">
@@ -301,7 +205,7 @@ left: 30px;
     <script>
 
 
-      
+
       document.getElementById("commande").addEventListener("click", function(){
 
         document.getElementById("classRemove").classList.remove("hidden");
