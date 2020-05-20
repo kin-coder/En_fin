@@ -27,18 +27,18 @@
 	  	}
 
 
-    .btnPresta{
-      position: relative;
-      top: 45px !important;
-      left: 35px !important;
-      z-index: 100 !important;
-    }
-    #AjoutNouveau{
-      position: absolute;
-      left: -24px !important;
-      font-size: 35px !important;
-      top: -2px !important;
-    }
+	  	.btnPresta{
+	  		position: relative;
+	  		top: 45px !important;
+	  		left: 35px !important;
+	  		z-index: 100 !important;
+	  	}
+	  	#AjoutNouveau{
+	  		position: absolute;
+	  		left: -24px !important;
+	  		font-size: 35px !important;
+	  		top: -2px !important;
+	  	}
 
 	  }
 
@@ -62,22 +62,22 @@
 	  		width: auto !important;
 	  	}
 
-	  	    .btnPresta{
-      position: relative;
-      top: 0px !important;
-      left: 30px !important;
-      z-index: 100 !important;
-    }
-    #AjoutNouveau{
-      position: absolute;
-      left: -24px !important;
-      font-size: 35px !important;
-      top: -2px !important;
-    }
+	  	.btnPresta{
+	  		position: relative;
+	  		top: 0px !important;
+	  		left: 30px !important;
+	  		z-index: 100 !important;
+	  	}
+	  	#AjoutNouveau{
+	  		position: absolute;
+	  		left: -24px !important;
+	  		font-size: 35px !important;
+	  		top: -2px !important;
+	  	}
 
-    .secotionTitle .police_massage span{
-font-size: 35px !important;
-    }
+	  	.secotionTitle .police_massage span{
+	  		font-size: 35px !important;
+	  	}
 	  }
 	  /* Small devices (portrait tablets and large phones, 600px and up) */
 	  @media only screen and (min-width: 600px) {
@@ -95,18 +95,18 @@ font-size: 35px !important;
 	  		overflow-x: scroll;
 	  		width: auto !important;
 	  	}
-	  	    .btnPresta{
-      position: relative;
-      top: 5px;
-      left: 70%;
-      z-index: 100;
-    }
-    #AjoutNouveau{
-      position: absolute;
-      left: -24px;
-      font-size: 35px;
-      top: -2px;
-    }
+	  	.btnPresta{
+	  		position: relative;
+	  		top: 5px;
+	  		left: 70%;
+	  		z-index: 100;
+	  	}
+	  	#AjoutNouveau{
+	  		position: absolute;
+	  		left: -24px;
+	  		font-size: 35px;
+	  		top: -2px;
+	  	}
 
 	  }
 

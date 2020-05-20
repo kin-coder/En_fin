@@ -4,9 +4,9 @@
 	}
 
 	@media only screen and (max-width: 600px) {
-#toolbar{
-min-width: 320px;
-}
+		#toolbar{
+			min-width: 320px;
+		}
 	}
 	/* Small devices (portrait tablets and large phones, 600px and up) */
 	@media only screen and (min-width: 600px) {
@@ -78,16 +78,16 @@ min-width: 320px;
 
 	@media only screen and (max-width: 600px) {
 
-	  	.secotionTitle .police_massage span{
-	  		font-size: 24px !important;
-	  	}
+		.secotionTitle .police_massage span{
+			font-size: 24px !important;
+		}
 	}
 
-		@media only screen and (max-width: 365px) {
-.export{
-max-width: 60px;
-}
-	  	.secotionTitle .police_massage span{
-	  		font-size: 24px !important;
-	  	}
+	@media only screen and (max-width: 365px) {
+		.export{
+			max-width: 60px;
+		}
+		.secotionTitle .police_massage span{
+			font-size: 24px !important;
+		}
 	}
