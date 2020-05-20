@@ -45,6 +45,29 @@
     top: 0px;
     left: 10px;
   }
+  @media (max-width: 600px) {
+    .actions {
+
+      margin-bottom: 50px;
+      margin-left: -150px;
+
+    }
+  }
+
+@media only screen and (min-width: 600px) and  (max-width: 990px){
+.formIpad{
+
+  width: 280px !important;
+  }
+
+  .actions {
+
+    margin-bottom: 50px;
+    margin-left: -150px;
+
+}
+
+
 </style>
 
 <!-- SECTION5 -->
@@ -121,12 +144,12 @@
 
 <div class="col-sm-6">
   <div class="form-group">
-    <%= form.text_field :last_name, autofocus: true, autocomplete: "Nom", class:"form-control", id:"fullname", placeholder:"Nom",:required => true %>
+    <%= form.text_field :last_name, autofocus: true, autocomplete: "Nom", class:"form-control formIpad", id:"fullname", placeholder:"Nom",:required => true %>
 
   </div>
 
   <div class="form-group">
-    <%= form.text_field :first_name, autofocus: true, autocomplete: "Prénom", class:"form-control", id:"fullname", placeholder:"Prénom",:required => true %>
+    <%= form.text_field :first_name, autofocus: true, autocomplete: "Prénom", class:"form-control formIpad", id:"fullname", placeholder:"Prénom",:required => true %>
 
   </div>
 
@@ -141,22 +164,22 @@
   </div>
 
   <div class="form-group">
-    <%= form.text_field :raison_sociale, autofocus: true, autocomplete: "RaisonSociale", class:"form-control", id:"fullname", placeholder:"Raison sociale" %>
+    <%= form.text_field :raison_sociale, autofocus: true, autocomplete: "RaisonSociale", class:"form-control formIpad", id:"fullname", placeholder:"Raison sociale" %>
 
   </div>
 
   <div class="form-group">
 
-    <%= form.text_field :siren, autofocus: true, autocomplete: "Siren", class:"form-control", id:"fullname", placeholder:"Siren" %>
+    <%= form.text_field :siren, autofocus: true, autocomplete: "Siren", class:"form-control formIpad", id:"fullname", placeholder:"Siren" %>
 
   </div>
 
   <div class="form-group">
-    <%= form.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"Email",:required => true %>
+    <%= form.email_field :email, autofocus: true, autocomplete: "email", class:"form-control formIpad", id:"fullname", placeholder:"Email",:required => true %>
   </div>
 
   <div class="form-group">
-    <%= form.telephone_field :tel, autofocus: true, autocomplete: "Tel", class:"form-control", id:"fullname", placeholder:"Numéro tél",:required => true %>
+    <%= form.telephone_field :tel, autofocus: true, autocomplete: "Tel", class:"form-control formIpad", id:"fullname", placeholder:"Numéro tél",:required => true %>
   </div>
 
 </div>
@@ -164,25 +187,25 @@
 <div class="col-sm-6">
 
   <div class="form-group">
-    <%= form.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control", id:"fullname", placeholder:"Adresse",:required => true %>
+    <%= form.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control formIpad", id:"fullname", placeholder:"Adresse",:required => true %>
 
   </div>
 
   <div class="form-group">
-    <%= form.text_field :adresse_complet, autofocus: true, autocomplete: "Complément adresse", class:"form-control", id:"fullname", placeholder:"Complément adresse" %>
+    <%= form.text_field :adresse_complet, autofocus: true, autocomplete: "Complément adresse", class:"form-control formIpad", id:"fullname", placeholder:"Complément adresse" %>
   </div>
 
   <div class="form-group">
-    <%= form.text_field :zip_code, autofocus: true, autocomplete: "zipcode", class:"form-control", id:"fullname", placeholder:"Code Postal",:required => true %>
+    <%= form.text_field :zip_code, autofocus: true, autocomplete: "zipcode", class:"form-control formIpad", id:"fullname", placeholder:"Code Postal",:required => true %>
   </div>
 
   <div class="form-group form-groupp">
-    <%= form.text_field :ville, autofocus: true, autocomplete: "ville", class:"form-control", id:"fullname", placeholder:"Ville",:required => true %>
+    <%= form.text_field :ville, autofocus: true, autocomplete: "ville", class:"form-control formIpad", id:"fullname", placeholder:"Ville",:required => true %>
 
   </div>
 
   <div class="form-group">
-    <%= form.text_field :pays, autofocus: true, autocomplete: "Pays", class:"form-control", id:"fullname", placeholder:"Pays",:required => true %>
+    <%= form.text_field :pays, autofocus: true, autocomplete: "Pays", class:"form-control formIpad", id:"fullname", placeholder:"Pays",:required => true %>
 
   </div>
 
@@ -340,10 +363,10 @@
 
 
 <script>
-$('#flash').modal('show');
+  $('#flash').modal('show');
 
-setTimeout(function() {
+  setTimeout(function() {
     $('#flash').modal('hide');
-}, 6000);
+  }, 6000);
 
 </script>
