@@ -1,7 +1,32 @@
   <!-- media query -->
   /* Extra small devices (phones, 600px and down) */
   @media only screen and (max-width: 600px) {
+.liPrix{
+      text-align: left;
+      margin-left: 15px;
+    }
 
+    .innerWrapper .table-responsive {
+      overflow-x: scroll;
+      width: 610px;
+    }
+    .button {
+      background-color: #EC5598; /* Green */
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    .button1 {padding: 10px 24px;}
+
+    .innerWrapper {
+      margin-left: -33px;
+    }
   }
 
   /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -153,10 +178,10 @@
     }
     
     table.responsive-table td:nth-child(1):before{
-      content: 'Number';
+      content: '';
     }
     table.responsive-table td:nth-child(2):before{
-      content: 'Name';
+      content: '';
     }
     table.responsive-table td:nth-child(1),
     table.responsive-table td:nth-child(2){
@@ -197,4 +222,48 @@
   .action a{
     color: white;
     font-weight: bold;
+  }
+
+
+
+    /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+.liPrix{
+      text-align: left;
+      margin-left: 15px;
+    }
+
+    .innerWrapper .table-responsive {
+      overflow-x: scroll;
+      width: 41%;
+    }
+    .button {
+      background-color: #EC5598; /* Green */
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    .button1 {padding: 10px 24px;}
+
+    .innerWrapper {
+      margin-left: -33px;
+    }
+
+   .entete-table{
+text-align: left !important;
+margin-left: 13%;
+padding-top: 20px;
+    }
+
+  .title-responsive{
+overflow: hidden;
+max-width: 300px;
+text-align: center;
+  }
   }
