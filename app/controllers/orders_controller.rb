@@ -378,6 +378,11 @@ class OrdersController < ApplicationController
 
   # 3 Affiche la recapitulatif de commande
   def summary
+    @code_promo = 0
+    if session[:otherInfo]["code_promo"].length == 2
+      @code_promo = session[:otherInfo]["code_promo"][1]
+    end
+
     @order = current_client.orders.order('id ASC').last
     @amount = (@totalAcompte*100).to_i
     # Génère un numéro de transaction aléatoire
@@ -476,6 +481,10 @@ class OrdersController < ApplicationController
 
   def validate_value_in_session
     exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+    @code_promo = 0
+    if session[:otherInfo]["code_promo"].length == 2
+      @code_promo = session[:otherInfo]["code_promo"][1]
+    end
     current_date = session[:otherInfo]["date"].split("/")
     isExeptional = false #[curent_Spa.ordinary_price,curent_Spa.ordinary_acompte]
     if exceptionalDate.include?(current_date[0..1])
@@ -491,11 +500,11 @@ class OrdersController < ApplicationController
           redirect_reservation
         else
           if isExeptional
-            @totalPrice += current_spa.exceptional_price
-            @totalAcompte += current_spa.exceptional_acompte
+            @totalPrice += current_spa.exceptional_price - @code_promo
+            @totalAcompte += current_spa.exceptional_acompte - @code_promo
           else
-            @totalPrice += current_spa.ordinary_price
-            @totalAcompte += current_spa.ordinary_acompte
+            @totalPrice += current_spa.ordinary_price - @code_promo
+            @totalAcompte += current_spa.ordinary_acompte - @code_promo
           end
         end
         if spa["option"]
@@ -503,7 +512,7 @@ class OrdersController < ApplicationController
           unless current_product
             redirect_reservation
           else
-            @totalAcompte += current_product.price
+            @totalPrice += current_product.price
           end
         end
       end
@@ -528,11 +537,11 @@ class OrdersController < ApplicationController
           redirect_reservation
         else
           if isExeptional
-            @totalPrice += current_prix.exceptional_price
-            @totalAcompte += current_prix.exceptional_acompte
+            @totalPrice += current_prix.exceptional_price - @code_promo
+            @totalAcompte += current_prix.exceptional_acompte - @code_promo
           else
-            @totalPrice += current_prix.ordinary_price
-            @totalAcompte += current_prix.ordinary_acompte
+            @totalPrice += current_prix.ordinary_price - @code_promo
+            @totalAcompte += current_prix.ordinary_acompte - @code_promo
           end
         end
       end
