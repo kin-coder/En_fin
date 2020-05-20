@@ -7,4 +7,14 @@ class Notification < ApplicationRecord
 	def messages
 		return JSON.parse(self.data)["text"]
 	end
+	def self.notSee
+		Notification.where(is_view:false).count
+	end
+	def self.lastIndex
+		if Notification.last
+			return Notification.last.id
+		else
+			return 0
+		end
+	end
 end

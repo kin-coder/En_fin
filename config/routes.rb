@@ -97,6 +97,6 @@ post '/admin/send-email', to:'static_page#save_message', as: "save_message"
   get "/accepter-une-commande/:os_id/:prestataire_id", to:"orders#acceptOrder", as:"accept_order_prestataires"
   get "/refuser-une-commande/:os_id/:prestataire_id", to:"orders#deniedOrder", as:"denied_order_prestataires"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-  get "/all_notifications", to:"notification#index", as:"all_notifications"
+  get "/all/:id/notifications", to:"notification#index", as:"all_notifications"
   patch "/admin/notification/:id", to:"notification#update", as:"update_notifications"
 end

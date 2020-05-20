@@ -48,7 +48,6 @@
 <!-- pack tag --> 
 <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-<%= javascript_pack_tag 'ajax_notification' %>
 
 </head>
 
@@ -274,13 +273,17 @@
 
 <!-- Afficher tous les notification possible -->
 <div class="container" id="all_notifications">
-    <h2>Notification reto</h2>
-    <ul>
-    <% Notification.all.order('id DESC').each do |notification| %>
-         <li><%= link_to notification.messages, update_notifications_path(notification.id), method: :patch, 'data-view':notification.is_view %></li>
-    <% end %>
-    </ul>
+    <div id="notification_list" data-notification="<%= Notification.lastIndex + 1 %>">
+        <h2>Notification reto <button class="btn-primary" id="number-hide"><%= Notification.notSee %></button></h2>
+        <ul id="ul_notification_list">
+        <% Notification.all.order('id DESC').each do |notification| %>
+             <li><%= link_to notification.messages, update_notifications_path(notification.id), method: :patch, 'data-view':notification.is_view %></li>
+        <% end %>
+        </ul>
+    </div>
 </div>
+
+<%= javascript_pack_tag 'ajax_notification' %>
 
 
 
