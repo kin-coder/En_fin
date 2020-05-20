@@ -1,8 +1,5 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <!-- authenticity token ilaina -->
     <%= csrf_meta_tags %>
@@ -273,6 +270,30 @@
                                 <!-- Page level custom scripts -->
                                 <script src="/admin/js/demo/datatables-demo.js"></script>
 
+<!-- ------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------ -->
+
+<!-- Afficher tous les notification possible -->
+<div class="container" id="all_notifications">
+    <div id="notification_list" data-notification="<%= Notification.lastIndex + 1 %>">
+        <h2>Notification reto <spam class="badge badge-primary" id="number-hide"><%= Notification.notSee %></spam></h2>
+        <div>
+            <%= link_to "Tout Marquer comme lue", update_all_notifications_path %>
+        </div>
+        <ul id="ul_notification_list">
+        <% Notification.all.order('id DESC').each do |notification| %>
+             <li><%= link_to notification.messages, update_notifications_path(notification.id), method: :patch, 'data-view':notification.is_view %></li>
+        <% end %>
+        </ul>
+    </div>
+</div>
+
+<%= javascript_pack_tag 'ajax_notification' %>
+
+<!-- ------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------ -->
 
                             </body>
 

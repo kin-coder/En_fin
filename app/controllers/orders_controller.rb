@@ -20,6 +20,9 @@ class OrdersController < ApplicationController
       current_order = @order_service.order
       if current_order.order_services.where(status_order:'en cours').empty? && current_order.order_services.where(status_order:'non traitée').empty?
         current_order.update(status_order:'traitée')
+        data_big = {"id":current_order.id,"text":"La commande n°#{current_order.id} a bien été traitée"}
+        # crée un notification
+        Notification.create(notif_type:1,data:data_big.to_json)
       end
       case @order_service.service.name
         when "Location spa"
