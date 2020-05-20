@@ -1,8 +1,5 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <!-- authenticity token ilaina -->
     <%= csrf_meta_tags %>
@@ -51,6 +48,7 @@
 <!-- pack tag --> 
 <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'ajax_notification' %>
 
 </head>
 
@@ -275,7 +273,7 @@
 
 
 <!-- Afficher tous les notification possible -->
-<div class="container">
+<div class="container" id="all_notifications">
     <h2>Notification reto</h2>
     <ul>
     <% Notification.all.order('id DESC').each do |notification| %>
