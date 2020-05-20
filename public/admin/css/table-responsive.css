@@ -1,109 +1,200 @@
-.liPrix{
-text-align: left;
-margin-left: 15px;
-}
+  <!-- media query -->
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
 
-.innerWrapper .table-responsive {
-    overflow-x: scroll;
-    width: 1100px;
-}
-.button {
-  background-color: #EC5598; /* Green */
-  border: none;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
+  }
 
-.button1 {padding: 10px 24px;}
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    #service{
+      max-width: 580px;
+      overflow: hidden;
+    }
+    .liPrix{
+      text-align: left;
+      margin-left: 15px;
+    }
 
-.page{
-  max-width: 60em;
-  margin: 0 auto;
-}
-table th,
-table td{
-  text-align: left;
-}
-table.layout{
-  width: 100%;
-  border-collapse: collapse;
-}
-table.display{
-  margin: 1em 0;
-}
-table.display th,
-table.display td{
-  border: 1px solid #B3BFAA;
-  padding: .5em 1em;
-}
+    .innerWrapper .table-responsive {
+      overflow-x: scroll;
+      width: 610px;
+    }
+    .button {
+      background-color: #EC5598; /* Green */
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
 
-table.display th{ background: #D5E0CC; }
-table.display td{ background: #fff; }
+    .button1 {padding: 10px 24px;}
 
-table.responsive-table{
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-}
+    .innerWrapper {
+      margin-left: -33px;
+    }
 
-@media (max-width: 30em){
+
+  .page{
+    max-width: 60em;
+    margin: 0 auto;
+  }
+  table th,
+  table td{
+    text-align: left;
+  }
+  table.layout{
+    width: 90%;
+    border-collapse: collapse;
+  }
+  table.display{
+    margin: 1em 0;
+  }
+  table.display th,
+  table.display td{
+    border: 1px solid #B3BFAA;
+    padding: .5em 1em;
+  }
+
+  table.display th{ background: #D5E0CC; }
+  table.display td{ background: #fff; }
+
+  table.responsive-table{
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  }
+
+
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    #service{
+      max-width: 1200px !important;
+      overflow: hidden;
+      text-align: center;
+    }
+
+        #service span{
+
+      text-align: center;
+    }
+    .liPrix{
+      text-align: left;
+      margin-left: 15px;
+    }
+
+    .innerWrapper .table-responsive {
+      overflow-x: scroll;
+      width: 1100px;
+    }
+    .button {
+      background-color: #EC5598; /* Green */
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .innerWrapper {
+      margin-left: 0px !important;
+    }
+    .button1 {padding: 10px 24px;}
+
+
+  .page{
+    max-width: 60em;
+    margin: 0 auto;
+  }
+  table th,
+  table td{
+    text-align: left;
+  }
+  table.layout{
+    width: 100%;
+    border-collapse: collapse;
+  }
+  table.display{
+    margin: 1em 0;
+  }
+  table.display th,
+  table.display td{
+    border: 1px solid #B3BFAA;
+    padding: .5em 1em;
+  }
+
+  table.display th{ background: #D5E0CC; }
+  table.display td{ background: #fff; }
+
+  table.responsive-table{
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  }
+
+
+
+  @media (max-width: 30em){
     table.responsive-table{
       box-shadow: none;  
     }
     table.responsive-table thead{
       display: none; 
     }
-  table.display th,
-  table.display td{
-    padding: .5em;
-  }
+    table.display th,
+    table.display td{
+      padding: .5em;
+    }
     
-  table.responsive-table td:nth-child(1):before{
-    content: 'Number';
-  }
-  table.responsive-table td:nth-child(2):before{
-    content: 'Name';
-  }
-  table.responsive-table td:nth-child(1),
-  table.responsive-table td:nth-child(2){
-    padding-left: 25%;
-  }
-  table.responsive-table td:nth-child(1):before,
-  table.responsive-table td:nth-child(2):before{
-    position: absolute;
-    left: .5em;
-    font-weight: bold;
-  }
-  
+    table.responsive-table td:nth-child(1):before{
+      content: 'Number';
+    }
+    table.responsive-table td:nth-child(2):before{
+      content: 'Name';
+    }
+    table.responsive-table td:nth-child(1),
+    table.responsive-table td:nth-child(2){
+      padding-left: 25%;
+    }
+    table.responsive-table td:nth-child(1):before,
+    table.responsive-table td:nth-child(2):before{
+      position: absolute;
+      left: .5em;
+      font-weight: bold;
+    }
+
     table.responsive-table tr,
     table.responsive-table td{
-        display: block;
+      display: block;
     }
     table.responsive-table tr{
-        position: relative;
-        margin-bottom: 1em;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+      position: relative;
+      margin-bottom: 1em;
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
     }
     table.responsive-table td{
-        border-top: none;
+      border-top: none;
     }
     table.responsive-table td.organisationnumber{
-        background: #D5E0CC;
-        border-top: 1px solid #B3BFAA;
+      background: #D5E0CC;
+      border-top: 1px solid #B3BFAA;
     }
     table.responsive-table td.actions{
-        position: absolute;
-        top: 0;
-        right: 0;
-        border: none;
-        background: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: none;
+      background: none;
     }
-}
+  }
 
-.action a{
-color: white;
-font-weight: bold;
-}
+  .action a{
+    color: white;
+    font-weight: bold;
+  }
