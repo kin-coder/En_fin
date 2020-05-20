@@ -10,13 +10,9 @@ class NotificationController < ApplicationController
   	@notification.update(is_view:true)
   	redirect_to admin_order_show_path(@notification.order_id)
   end
+
+  def update_all
+    Notification.all.update(is_view:true)
+    redirect_back(fallback_location: root_path)
+  end
 end
-
-
-=begin
-dota=
-{"id":current_order.id,"text":"La commande n°#{current_order.id} a bien été traitée"}
-
-Notification.create(notif_type:1,data:dota.to_json)
-
-=end

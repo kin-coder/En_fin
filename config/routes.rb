@@ -99,4 +99,5 @@ post '/admin/send-email', to:'static_page#save_message', as: "save_message"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   get "/all/:id/notifications", to:"notification#index", as:"all_notifications"
   patch "/admin/notification/:id", to:"notification#update", as:"update_notifications"
+  get "/admin/notification_all", to: "notification#update_all", as:"update_all_notifications"
 end
