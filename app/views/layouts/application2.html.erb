@@ -273,6 +273,22 @@
                                 <!-- Page level custom scripts -->
                                 <script src="/admin/js/demo/datatables-demo.js"></script>
 
+<div class="container">
+    <h2>Notification reto</h2>
+<% Notification.all.order('id DESC').each do |notification| %>
+    <% if notification.is_view %> 
+        <div class="alert alert-info">
+    <% else %>
+        <div class="alert alert-success">
+    <% end %>
+      <a href="<%= notification.url %>"><%= notification.messages %></a>
+    </div>
+<% end %>
+
+</div>
+
+
+
 
                             </body>
 
