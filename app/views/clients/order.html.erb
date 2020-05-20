@@ -45,11 +45,11 @@
 												</td>
 												<td style="text-align:left;">
 													<% if @order.isExceptional? %>
-													<li><%= o_massage.massage_su_price.exceptional_price %>€</li>
-													<li>~ acompte: <%= o_massage.massage_su_price.exceptional_acompte %>€</li>
+													<li><%= o_massage.massage_su_price.exceptional_price - @code_promo %>€</li>
+													<li>~ acompte: <%= o_massage.massage_su_price.exceptional_acompte - @code_promo %>€</li>
 													<% else %>
-													<li><%= o_massage.massage_su_price.ordinary_price %>€</li>
-													<li>~ acompte: <%= o_massage.massage_su_price.ordinary_acompte %>€</li>
+													<li><%= o_massage.massage_su_price.ordinary_price - @code_promo %>€</li>
+													<li>~ acompte: <%= o_massage.massage_su_price.ordinary_acompte - @code_promo %>€</li>
 													<% end %>
 												</td>
 											</tr>
@@ -68,9 +68,9 @@
 													<li>Système d'eau: <%= o_spa.syteme_eau %></li>
 													<li>Ambiance:
 														<% if o_spa.product.nil? %>
-														aucun selectionné
+														<strong>aucun selectionné</strong>
 														<% else %>
-														<%= o_spa.product.name %> à <%= o_spa.product.price %>€<br>
+														<strong><%= o_spa.product.name %> à <%= o_spa.product.price %>€</strong><br>
 														<% end %>
 													</li>
 													<li>
@@ -80,11 +80,11 @@
 												</td>
 												<td style="text-align:left;margin-left: 20px;">
 													<% if @order.isExceptional? %>
-													<li><%= o_spa.spa.exceptional_price %>€</li>
-													<li>~ acompte: <%= o_spa.spa.exceptional_acompte %>€</li>
+													<li><%= o_spa.spa.exceptional_price - @code_promo %>€</li>
+													<li>~ acompte: <%= o_spa.spa.exceptional_acompte - @code_promo %>€</li>
 													<% else %>
-													<li><%= o_spa.spa.ordinary_price %>€</li>
-													<li>~ acompte: <%= o_spa.spa.ordinary_acompte %>€</li>
+													<li><%= o_spa.spa.ordinary_price - @code_promo %>€</li>
+													<li>~ acompte: <%= o_spa.spa.ordinary_acompte - @code_promo %>€</li>
 													<% end %>
 												</td>
 											</tr>
