@@ -1,7 +1,7 @@
   <!-- media query -->
   /* Extra small devices (phones, 600px and down) */
   @media only screen and (max-width: 600px) {
-.liPrix{
+    .liPrix{
       text-align: left;
       margin-left: 15px;
     }
@@ -63,33 +63,33 @@
     }
 
 
-  .page{
-    max-width: 60em;
-    margin: 0 auto;
-  }
-  table th,
-  table td{
-    text-align: left;
-  }
-  table.layout{
-    width: 90%;
-    border-collapse: collapse;
-  }
-  table.display{
-    margin: 1em 0;
-  }
-  table.display th,
-  table.display td{
-    border: 1px solid #B3BFAA;
-    padding: .5em 1em;
-  }
+    .page{
+      max-width: 60em;
+      margin: 0 auto;
+    }
+    table th,
+    table td{
+      text-align: left;
+    }
+    table.layout{
+      width: 90%;
+      border-collapse: collapse;
+    }
+    table.display{
+      margin: 1em 0;
+    }
+    table.display th,
+    table.display td{
+      border: 1px solid #B3BFAA;
+      padding: .5em 1em;
+    }
 
-  table.display th{ background: #D5E0CC; }
-  table.display td{ background: #fff; }
+    table.display th{ background: #D5E0CC; }
+    table.display td{ background: #fff; }
 
-  table.responsive-table{
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-  }
+    table.responsive-table{
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    }
 
   }
 
@@ -103,7 +103,7 @@
       text-align: center;
     }
 
-        #service span{
+    #service span{
 
       text-align: center;
     }
@@ -133,33 +133,33 @@
     .button1 {padding: 10px 24px;}
 
 
-  .page{
-    max-width: 60em;
-    margin: 0 auto;
-  }
-  table th,
-  table td{
-    text-align: left;
-  }
-  table.layout{
-    width: 100%;
-    border-collapse: collapse;
-  }
-  table.display{
-    margin: 1em 0;
-  }
-  table.display th,
-  table.display td{
-    border: 1px solid #B3BFAA;
-    padding: .5em 1em;
-  }
+    .page{
+      max-width: 60em;
+      margin: 0 auto;
+    }
+    table th,
+    table td{
+      text-align: left;
+    }
+    table.layout{
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table.display{
+      margin: 1em 0;
+    }
+    table.display th,
+    table.display td{
+      border: 1px solid #B3BFAA;
+      padding: .5em 1em;
+    }
 
-  table.display th{ background: #D5E0CC; }
-  table.display td{ background: #fff; }
+    table.display th{ background: #D5E0CC; }
+    table.display td{ background: #fff; }
 
-  table.responsive-table{
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-  }
+    table.responsive-table{
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    }
 
   }
 
@@ -172,9 +172,9 @@
 
 
 
-    /* Extra small devices (phones, 600px and down) */
+  /* Extra small devices (phones, 600px and down) */
   @media only screen and (max-width: 600px) {
-.liPrix{
+    .liPrix{
       text-align: left;
       margin-left: 15px;
     }
@@ -201,47 +201,47 @@
       margin-left: -33px;
     }
 
-   .entete-table{
-text-align: left !important;
-margin-left: 13%;
-padding-top: 20px;
+    .entete-table{
+      text-align: left !important;
+      margin-left: 13%;
+      padding-top: 20px;
     }
 
-  .title-responsive{
-overflow: hidden;
-max-width: 300px;
-text-align: center;
-  }
+    .title-responsive{
+      overflow: hidden;
+      max-width: 300px;
+      text-align: center;
+    }
 
 
-  .page{
-    width: 298px;
-    margin: 0 auto;
-position: relative;
-left: -220px;
-overflow: scroll;
-  }
-  table th,
-  table td{
-    text-align: left;
-  }
-  table.layout{
-    width: 100%;
-    border-collapse: collapse;
-  }
-  table.display{
-    margin: 1em 0;
-  }
-  table.display th,
-  table.display td{
-    border: 1px solid #B3BFAA;
-    padding: .5em 1em;
-  }
+    .page{
+      width: 298px;
+      margin: 0 auto;
+      position: relative;
+      left: -220px;
+      overflow: scroll;
+    }
+    table th,
+    table td{
+      text-align: left;
+    }
+    table.layout{
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table.display{
+      margin: 1em 0;
+    }
+    table.display th,
+    table.display td{
+      border: 1px solid #B3BFAA;
+      padding: .5em 1em;
+    }
 
-  table.display th{ background: #D5E0CC; }
-  table.display td{ background: #fff; }
+    table.display th{ background: #D5E0CC; }
+    table.display td{ background: #fff; }
 
-  table.responsive-table{
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-  }
+    table.responsive-table{
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    }
   }
