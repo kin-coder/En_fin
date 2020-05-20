@@ -343,8 +343,11 @@ class OrdersController < ApplicationController
       @order.country = Country.find_by(name:session[:otherInfo]["pays"])
       @order.save
 
-      if session[:otherInfo]["code_promo"].length == 2
-        @order.code_promo = CodePromo.find_by_code(session[:otherInfo]["code_promo"][0])
+      code = session[:otherInfo]["code_promo"]
+      if code
+        if code.length == 2
+          @order.code_promo = CodePromo.find_by_code(session[:otherInfo]["code_promo"][0])
+        end
       end
 
       myPrestation = session[:myPrestation]
@@ -379,8 +382,11 @@ class OrdersController < ApplicationController
   # 3 Affiche la recapitulatif de commande
   def summary
     @code_promo = 0
-    if session[:otherInfo]["code_promo"].length == 2
-      @code_promo = session[:otherInfo]["code_promo"][1]
+    code = session[:otherInfo]["code_promo"]
+    if code
+      if code.length == 2
+        @code_promo = code[1]
+      end
     end
 
     @order = current_client.orders.order('id ASC').last
@@ -482,8 +488,11 @@ class OrdersController < ApplicationController
   def validate_value_in_session
     exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
     @code_promo = 0
-    if session[:otherInfo]["code_promo"].length == 2
-      @code_promo = session[:otherInfo]["code_promo"][1]
+    code = session[:otherInfo]["code_promo"]
+    if code
+      if code.length == 2
+        @code_promo = code[1]
+      end
     end
     current_date = session[:otherInfo]["date"].split("/")
     isExeptional = false #[curent_Spa.ordinary_price,curent_Spa.ordinary_acompte]
