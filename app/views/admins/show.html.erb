@@ -28,6 +28,21 @@
 <link href="img/favicon.png" rel="shortcut icon">
 
 <style>
+  <!-- media query -->
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+.innerWrapper {
+    width: 85%;
+    display: block;
+}
+
+  }
+
 
   .filters ul{
     display: flex;
@@ -74,6 +89,10 @@
     .UserInfos{
       margin-left: 120px;
     }
+    .innerWrapper {
+    width: 100% !important;
+    display: block;
+}
   }
   @media (max-width: 600px) {
 
@@ -84,8 +103,26 @@
     .pageTitle h1{
       font-size: 40px;
     } 
+.innerWrapper {
+    width: 150% !important;
+    display: block;
+    margin-left: -55px;
+}
+.modifsm3{
+  position: absolute;
+  left: -150px;
+  max-width: 100px;
+  }
+  .listesm3{
+  max-width: 100px;
+position: relative;
+left: 30px;
+  }
+
+  .profilUser{
 
   }
+}
 </style>
 
 
@@ -144,13 +181,13 @@
                     <br> 
                     <div class="row">
                       <div class="col-sm-3"></div>
-                      <div class="col-sm-3">
+                      <div class="col-sm-3 listesm3">
                         <ul class="list-inline fullRoundBtn">
                           <li class="li"><a href="<%= index_clients_path %>" class="btn btn-common btn-full-round btn-theme">Liste des clients</a></li>
                         </ul>
                       </div>
 
-                      <div class="col-sm-3">
+                      <div class="col-sm-3 modifsm3">
 
 
                         <ul class="list-inline fullRoundBtn">
