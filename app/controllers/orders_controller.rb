@@ -5,18 +5,13 @@ class OrdersController < ApplicationController
 
   def deniedOrder
   end
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  # 1/2 Selection des prestation
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   def zone
     @country = params[:country]
     @department = params[:department]
     @date = params[:date]
     @error = ""
-
     @services = []
-
     results = validate_country_department_date(@country,@department,@date)
     if results[0]
       @country = results[1]
@@ -33,57 +28,41 @@ class OrdersController < ApplicationController
     else
       @error = "Une errerur est survernue"
     end
-
     respond_to do |format|
       format.js
     end
-
   end
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   def code_promo
+    parameters = params.permit(:code)
+    @test = false
+    @code = CodePromo.all.find_by(code:parameters[:code])
+    @code_value = ["",""]
+    if @code
+      @code_value[0] = @code.code
+      @code_value[1] = @code.reduction
+      @test = true
+    end
+    respond_to do |format|
+       format.js
+    end
   end
-
-  # 1/2 Selection des prestation
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   def index
     @countries = Country.all
     @departments = Department.all
-    # @services = Service.all
-
     @massagesDuration = MassageDurationPrice.all
     @spas = Spa.all
     @spa_ambiances = SpaAmbiance.all
-
     @massageTypes = MassageType.all
-=begin
-    tp MassageDurationPrice.last.massageTypes("Homme")
-    tp MassageDurationPrice.find(3).massage_types.joins(:massage_massage_types).where(massage_massage_types:{massage_id:1})
-    mh = Massage.find_by_name("Homme")
-    mf = Massage.find_by_name("Femme")
-=end
   end
-
-  # 2/2 Sauvegarder dans une session les données
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   def saveSession
     puts "================"*4
     puts params.inspect
     puts "================"*4
-=begin
-"spas"=>{
-"0"=>{"time"=>["48"], "ambiance"=>["Anniversaire"], "type"=>["Applimitée)"]}, 
-"1"=>{"time"=>["24"], "ambiance"=>["Personnalisée"], "type"=>["Appaue)"]}
-} 
-
-"man"=>{
-"0"=>["Maaire||90"]}
-"woman"=>{
-"0"=>["Massage al||120"], 
-"1"=>["Massaprénatal||120"]
-}
-=end
-
   end
-  
-  # 2 Selection des adresse de livraison et facturation
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   def delivery
   end
 
@@ -275,20 +254,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  def code_promo
-    parameters = params.permit(:code)
-    @test = false
-    @code = CodePromo.all.find_by(code:parameters[:code])
-    if @code
-      @test = true
-      session[:otherInfo]["code_promo"] = [@code.code,@code.reduction]
-    else
-      session[:otherInfo]["code_promo"] = ""
-    end
-    respond_to do |format|
-       format.js
-    end
-  end
+
   # 1/2 Selection des prestation
   def index
     @countries = Country.all

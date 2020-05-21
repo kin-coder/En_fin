@@ -23,6 +23,14 @@ function main(){
 				return false;
 			}
 		});
+		if (zone.code != null) {
+			$("#inpcode").val(zone.code[0]);
+			$("#alert-code").removeClass("hidden");
+			$("#form-promo-code").addClass("hidden");
+			$("#alert-code").html("Votre code promo "+zone.code[0]+" est validé avec succès. Vous avez gagné un reduction de " +zone.code[1]+"€ pour chaque prix et acompte à payer!");
+		}
+	}else{
+		sessionStorage.setItem("zone","{}");
 	}
 }
 /* ------------------------------------------------------------------------------------ */
