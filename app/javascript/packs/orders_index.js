@@ -25,9 +25,9 @@ function main(){
 		});
 		if (zone.code != null) {
 			$("#inpcode").val(zone.code[0]);
+			$("#alert-code").html("Votre code promo "+zone.code[0]+" est validé avec succès. Vous avez gagné un reduction de " +zone.code[1]+"€ pour chaque prix et acompte à payer!");
 			$("#alert-code").removeClass("hidden");
 			$("#form-promo-code").addClass("hidden");
-			$("#alert-code").html("Votre code promo "+zone.code[0]+" est validé avec succès. Vous avez gagné un reduction de " +zone.code[1]+"€ pour chaque prix et acompte à payer!");
 		}
 	}else{
 		sessionStorage.setItem("zone","{}");
@@ -86,6 +86,8 @@ function refreachListCommandeSpa(){
 	let totalPrice = 0.0;
 	let totalAcompte = 0.0;
 	let session_spas = [];
+	let zone = JSON.parse(sessionStorage.getItem("zone"))
+	let price_promo = code_promo_price(zone)
 	$(".prestation-group-spa").each(function(index,element){
 		let $timeList = $(element).find(".input-time-spa:checked");
 		let a = {};
@@ -95,20 +97,20 @@ function refreachListCommandeSpa(){
 			let $ambianceList = $(element).find(".option-spa-list:checked");
 			let ambianceHtml = '';
 			if ($ambianceList.length > 0) {
-				price += parseFloat($ambianceList.data().price);
-				totalPrice += parseFloat($ambianceList.data().price);
+				price += parseInt($ambianceList.data().price);
+				totalPrice += parseInt($ambianceList.data().price);
 				ambianceHtml = "<li>ambiance: "+ $ambianceList.val() +"</li>";
 				a.ambiance = $ambianceList.val();
 			}
 			// [exceptional_price,exceptional_acompte,ordinary_price,ordinary_acompte]
 	    	if(isExeptionelPrice()){ // is exeptiona true
-	    		price += $timeList.data().price[0]+$timeList.data().price[1];
-				totalPrice += $timeList.data().price[0];
-	    		totalAcompte += $timeList.data().price[1];
+	    		price += $timeList.data().price[0]+$timeList.data().price[1]-(2*price_promo);
+				totalPrice += $timeList.data().price[0] - price_promo;
+	    		totalAcompte += $timeList.data().price[1] - price_promo;
 	    	}else{ // is exeptional false
-	    		price += $timeList.data().price[2]+$timeList.data().price[3];
-	    		totalPrice += $timeList.data().price[2];
-	    		totalAcompte += $timeList.data().price[3];
+	    		price += $timeList.data().price[2]+$timeList.data().price[3]-(2*price_promo);
+	    		totalPrice += $timeList.data().price[2] - price_promo;
+	    		totalAcompte += $timeList.data().price[3] - price_promo;
 	    	}
 			innerHTML += "<div>Spa <span>"+price+"€</span></div>"+
 					"<ul><li>pour: "+$timeList.val()+"h</li>"+ambianceHtml+"</ul>";
@@ -284,6 +286,8 @@ function refreachListCommande(arrayIndex = "") {
 	let innerHTML = "";
 	let totalAcompte = 0.0;
 	let totalPrice = 0.0;
+	let zone = JSON.parse(sessionStorage.getItem("zone"))
+	let price_promo = code_promo_price(zone)
 	$('.prestation-group').each(function(index,element){
 		$inputList= $(element).find("input:checked");
 		if ($inputList.length > 0) {
@@ -297,13 +301,13 @@ function refreachListCommande(arrayIndex = "") {
 				ul += '<li>'+ $(elm).data().title +'</li>';
 				// [exceptional_price,exceptional_acompte,ordinary_price,ordinary_acompte]
 		    	if(isExeptionelPrice()){ // is exeptiona true
-		    		price += $(elm).data().price[0]+$(elm).data().price[1];
-					totalPrice += $(elm).data().price[0];
-		    		totalAcompte += $(elm).data().price[1];
+		    		price += $(elm).data().price[0]+$(elm).data().price[1] - (2*price_promo);
+					totalPrice += $(elm).data().price[0] - price_promo;
+		    		totalAcompte += $(elm).data().price[1] - price_promo;
 		    	}else{ // is exeptional false
-		    		price += $(elm).data().price[2]+$(elm).data().price[3];
-		    		totalPrice += $(elm).data().price[2];
-		    		totalAcompte += $(elm).data().price[3];
+		    		price += $(elm).data().price[2]+$(elm).data().price[3] - (2*price_promo);
+		    		totalPrice += $(elm).data().price[2] - price_promo;
+		    		totalAcompte += $(elm).data().price[3] - price_promo;
 		    	}
 		    });
 		    ul += '</ul>';
@@ -391,6 +395,13 @@ function isExeptionelPrice(){
 	return exceptionalPrice
 }
 
+function code_promo_price(zone){
+	if (zone.code == null) {
+		return 0
+	}else{
+		return zone.code[1]
+	}
+}
 
 
 /*~~~~~~~~~~~~ gerer le modalt pour le choix du pays et date ~~~~~~~~~~~~~~~~~*/
@@ -415,8 +426,6 @@ $("#nex-submi-tag").click(function(){
 		// document.getElementsByClassName("accordion-body js-accordion-body").style.display="block"
 	}
 });
-
-
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ heurs pratitien ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 // mprix augmente: $("#inpdate")

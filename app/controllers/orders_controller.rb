@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
     parameters = params.permit(:code)
     @test = false
     @code = CodePromo.all.find_by(code:parameters[:code])
-    @code_value = ["",""]
+    @code_value = ["",0]
     if @code
       @code_value[0] = @code.code
       @code_value[1] = @code.reduction
