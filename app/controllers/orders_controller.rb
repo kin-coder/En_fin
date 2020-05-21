@@ -323,7 +323,12 @@ class OrdersController < ApplicationController
   end
 
   def saveDelivery
-    emptyIsInclude = params[:adresseL]=="" || params[:complAdresseL]=="" || params[:codePostaL]=="" || params[:villeL]=="" || params[:adresseF]=="" || params[:complAdresseF]=="" || params[:codePostaF]=="" || params[:villeF] =="" || params[:message]=="" || params[:countryL]=="" || params[:countryF]=="" || params[:countryL]==nil || params[:countryF]==nil
+    emptyIsInclude = params[:adresseL]=="" || params[:codePostaL]=="" || params[:villeL]=="" || params[:adresseF]=="" || params[:codePostaF]=="" || params[:villeF] =="" || params[:countryL]=="" || params[:countryF]=="" || params[:countryL]==nil || params[:countryF]==nil
+    
+    puts "======"*3
+    puts params.inspect
+    puts "======"*3
+
     if emptyIsInclude
       redirect_back(fallback_location: root_path)
     else
