@@ -42,6 +42,45 @@
         .sidebar .nav-item .nav-link span {
             margin-left: 5px;
         }
+
+        .navMobil{
+            height: 50px !important;
+            overflow-x: hidden;
+            background-color:#ffffff;
+            transition: height 0.3s ease;
+            margin-top: 0;
+        }
+        .dropMobil{
+max-width: 300px;
+
+position: absolute !important;
+
+top: 50px !important;
+
+left: 10px !important;
+
+border: solid
+gray 1px !important;
+
+box-shadow: 5px 5px 5px 0px
+#ec92de !important;
+        }
+        #ul_notification_list{
+position: relative;
+left: 10%;
+        }
+    }
+
+    .but {
+        width: 50px;
+    }
+    .but1 {
+        padding:2px;
+        margin-left: 5px;
+        border:
+        #c4bbbb 1px solid;
+        font-size: 10px;
+        max-height: 20px;
     }
 
 </style>
@@ -151,10 +190,54 @@
                                                 </div>
 
                                                 <!-- Topbar Navbar -->
-                                                <ul class="navbar-nav ml-auto">
+                                                <ul class="navbar-nav ml-auto navMobil">
+
+
+
+
+                                                    <!-- Nav Item - Alerts -->
+                                                    <li class="nav-item dropdown no-arrow mx-1" id="all_notifications">
+                                                        <div id="notification_list" data-notification="<%= Notification.lastIndex + 1 %>">
+
+                                                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="fas fa-bell fa-fw" id="leftFa"></i>
+                                                                <!-- Counter - Alerts -->
+                                                                <span class="badge badge-danger badge-counter" id="number-hide"><%= Notification.notSee %>+</span>
+                                                            </a>
+                                                            <!-- Dropdown - Alerts -->
+                                                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in dropMobil" aria-labelledby="alertsDropdown">
+                                                                <h6 class="dropdown-header">
+                                                                    <center>Notifications</center> 
+                                                                </h6>
+
+
+                                                                <div id="ul_notification_list">
+                                                                    <br>
+                                                                    <% Notification.all.order('id DESC').each do |notification| %>
+                                                                    <a href="<%=update_notifications_path(notification.id)%>" data-method='PATCH'> <span style="margin-right: 5px;color: black;"><%=notification.messages%> </span> <i title="Plus de détails" class="fas fa-eye but1 "></i>
+
+                                                                    </a>
+                                                                    <hr>
+
+
+                                                                    <% end %> 
+
+                                                                </div>
+                                                                <br>
+                                                                <center style='border: solid 1px #ec5598; width: 50%;margin-left:25%;'>
+                                                                    <%= link_to "Tout Marquer comme lue", update_all_notifications_path %>
+                                                                </center>
+
+
+                                                            </div>
+
+
+                                                        </div>
+                                                    </li>
+
                                                     <!-- Nav Item - User Information -->
-                                                    <li class="nav-item dropdown no-arrow">
-                                                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <li class="nav-item dropdown no-arrow" >
+                                                        <a class="nav-link dropdown-toggle " href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                             <% if admin_signed_in?%>
                                                             <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= current_admin.last_name %><%= current_admin.first_name %></span>
                                                             <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
@@ -162,7 +245,7 @@
                                                         </a>
 
                                                         <!-- Dropdown - User Information -->
-                                                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in dropMobil" aria-labelledby="userDropdown">
                                                             <a class="dropdown-item" href="#">
                                                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                                                 Profile
@@ -270,30 +353,17 @@
                                 <!-- Page level custom scripts -->
                                 <script src="/admin/js/demo/datatables-demo.js"></script>
 
-<!-- ------------------------------------------------------------------ -->
-<!-- ------------------------------------------------------------------ -->
-<!-- ------------------------------------------------------------------ -->
+                                <!-- ------------------------------------------------------------------ -->
+                                <!-- ------------------------------------------------------------------ -->
+                                <!-- ------------------------------------------------------------------ -->
 
-<!-- Afficher tous les notification possible -->
-<div class="container" id="all_notifications">
-    <div id="notification_list" data-notification="<%= Notification.lastIndex + 1 %>">
-        <h2>Notification reto <spam class="badge badge-primary" id="number-hide"><%= Notification.notSee %></spam></h2>
-        <div>
-            <%= link_to "Tout Marquer comme lue", update_all_notifications_path %>
-        </div>
-        <ul id="ul_notification_list">
-        <% Notification.all.order('id DESC').each do |notification| %>
-             <li><%= link_to notification.messages, update_notifications_path(notification.id), method: :patch, 'data-view':notification.is_view %></li>
-        <% end %>
-        </ul>
-    </div>
-</div>
 
-<%= javascript_pack_tag 'ajax_notification' %>
 
-<!-- ------------------------------------------------------------------ -->
-<!-- ------------------------------------------------------------------ -->
-<!-- ------------------------------------------------------------------ -->
+                                <%= javascript_pack_tag 'ajax_notification' %>
+
+                                <!-- ------------------------------------------------------------------ -->
+                                <!-- ------------------------------------------------------------------ -->
+                                <!-- ------------------------------------------------------------------ -->
 
                             </body>
 
