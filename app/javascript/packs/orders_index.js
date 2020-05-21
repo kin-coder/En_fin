@@ -101,7 +101,7 @@ function refreachListCommandeSpa(){
 				a.ambiance = $ambianceList.val();
 			}
 			// [exceptional_price,exceptional_acompte,ordinary_price,ordinary_acompte]
-	    	if(true){ // is exeptiona true
+	    	if(isExeptionelPrice()){ // is exeptiona true
 	    		price += $timeList.data().price[0]+$timeList.data().price[1];
 				totalPrice += $timeList.data().price[0];
 	    		totalAcompte += $timeList.data().price[1];
@@ -296,7 +296,7 @@ function refreachListCommande(arrayIndex = "") {
 		    $inputList.each(function(i,elm){
 				ul += '<li>'+ $(elm).data().title +'</li>';
 				// [exceptional_price,exceptional_acompte,ordinary_price,ordinary_acompte]
-		    	if(true){ // is exeptiona true
+		    	if(isExeptionelPrice()){ // is exeptiona true
 		    		price += $(elm).data().price[0]+$(elm).data().price[1];
 					totalPrice += $(elm).data().price[0];
 		    		totalAcompte += $(elm).data().price[1];
@@ -377,6 +377,21 @@ function hideMessageShow(value){
 		$("#warnning-message").removeClass("hidden");
 	}
 }
+
+function isExeptionelPrice(){
+	let exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
+	current_date = $("#inpdate").val().split("/") // MM - DD - YYYY
+	let exceptionalPrice = false
+	for (var i = exceptionalDate.length - 1; i >= 0; i--) {
+		if (exceptionalDate[i][0] == current_date[0] && exceptionalDate[i][1] == current_date[1]){
+			exceptionalPrice = true
+			break
+		}
+	}
+	return exceptionalPrice
+}
+
+
 
 /*~~~~~~~~~~~~ gerer le modalt pour le choix du pays et date ~~~~~~~~~~~~~~~~~*/
 $("#country-choice").click(function(){

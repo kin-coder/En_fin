@@ -26,7 +26,6 @@ function initialize(){
 			$("#inpdepartment").val(zone.department);
 			$("#inpdate").val(zone.date);
 			$("#inppays").val(zone.country);
-			$("#inpcode").val(zone.code[0]);
 		}else{
 			window.onload = choseZoneAndDate();
 		}
