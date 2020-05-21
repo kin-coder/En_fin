@@ -581,8 +581,8 @@ function htmlOptionSpaOrder(index,dataOption,dataForm,listOptions){
 function priceTotalForOneSpa(index,dataOption,dataForm){
 // [spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte]
 // [24, 180, 100, 50, 30]
-	let exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
-	let zone = JSON.parse(sessionStorage.getItem("zone"))
+let exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
+let zone = JSON.parse(sessionStorage.getItem("zone"))
 	zone = zone.date.split("/") // MM - DD - YYYY
 	let exceptionalPrice = false
 	for (var i = exceptionalDate.length - 1; i >= 0; i--) {
@@ -672,26 +672,52 @@ function priceTotalForAllSpa(dataOption,dataForm){
 			categories = dataMassages[1]
 		}
 	// Enregistrement dans la session
+	let numberHomme = document.getElementById("number-Homme").innerText;
+	let numberFemme = document.getElementById("number-Femme").innerText;
 	let sessionSpa = JSON.parse(sessionStorage.getItem("massages"))
 	sessionSpa.push({id:id,cat:categories[0],sub:"",time:""})
 	sessionStorage.setItem("massages",JSON.stringify(sessionSpa))
-/* ************************************** MILA MODAL NGAMBA */
+	/* ************************************** MILA MODAL NGAMBA */
 	if (sessionSpa.length >= 1){
 		let homme = document.getElementById('addHomme')
 		let femme = document.getElementById('addFemme')
 		homme.addEventListener('click',showAlert);
 		femme.addEventListener('click',showAlert);
+	}
+
+	if (sessionSpa){
+		let moinhomme = document.getElementById('moinHomme')
+		let moinfemme = document.getElementById('moinFemme')
+
+		moinhomme.addEventListener('click',deletAlert);
+		moinfemme.addEventListener('click',deletAlert);
+	}
+	function deletAlert(){
+		let homme = document.getElementById('addHomme')
+		let femme = document.getElementById('addFemme')
+
+		homme.removeAttribute("data-target");
+		homme.removeAttribute("data-toggle");
+		femme.removeAttribute("data-target");
+		femme.removeAttribute("data-toggle");
+		if(sessionSpa.length > 0 ){
+				sessionSpa.splice(-1,1);
+		}
+		console.log(sessionSpa.length)
 
 	}
+
 	function showAlert(){
-				let homme = document.getElementById('addHomme')
+		let homme = document.getElementById('addHomme')
 		let femme = document.getElementById('addFemme')
-		homme.setAttribute("data-target", "#pushMassage2");
-		homme.setAttribute("data-toggle", "modal");
-		femme.setAttribute("data-target", "#pushMassage2");
-		femme.setAttribute("data-toggle", "modal");
+		if (sessionSpa.length >= 1){
+			homme.setAttribute("data-target", "#pushMassage2");
+			homme.setAttribute("data-toggle", "modal");
+			femme.setAttribute("data-target", "#pushMassage2");
+			femme.setAttribute("data-toggle", "modal");
+		}
 	}
-/* ************************************** MILA MODAL NGAMBA */
+	/* ************************************** MILA MODAL NGAMBA */
 	// Modification dans le DOM
 	actualiseDomMassage(this.dataset.cat,id)
 }
