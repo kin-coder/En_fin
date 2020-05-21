@@ -583,7 +583,7 @@
 
 
 
-   .label-spa {
+   .label-time-spa {
     display: inline-block;
     max-width: 100%;
     margin-bottom: 0px;
@@ -1498,7 +1498,7 @@ max-width: 100px;
     position: relative;
     left: 0px !important;
   }
-  .spa-list-prestations{
+  .prestation-group-spa{
     max-height: 380px;
   }
 

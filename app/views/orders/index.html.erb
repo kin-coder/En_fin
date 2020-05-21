@@ -9,80 +9,75 @@
 <div class="container" id="container-principale">
 <!-- ----------------------------------------------------------------------------------------------------------------------- -->
 <!-- ======================================= MODAL SET ZONE ================================== -->
-<div id="overlay">
-	<div id="text">
-		<div class="set-zones">
-			<div class="alert alert-danger hidden" role="alert" id="errorInZone">
-			</div>
-			<h2 style="color:white;" class="titregeog">Je choisis ma zone géographique </h2>
+	<div id="overlay">
+		<div id="text">
+			<div class="set-zones">
+				<div class="alert alert-danger hidden" role="alert" id="errorInZone">
+				</div>
+				<h2 style="color:white;" class="titregeog">Je choisis ma zone géographique </h2>
 
-			<%= form_tag(zone_path, remote: true, class:"pays_dep") do %>
-			<div class="pays">
-				<label class="labelle" for="country-choice">Pays</label>
-				<select name="country" id="country-choice" class="field" required>
-					<option value="" checked>Pays</option>
-					<% @countries.collect do |d| %>
-					<option value="<%=d.name%>"><%=d.name%></option>
-					<% end %>
-				</select>
-			</div>
+				<%= form_tag(zone_path, remote: true, class:"pays_dep") do %>
+				<div class="pays">
+					<label class="labelle" for="country-choice">Pays</label>
+					<select name="country" id="country-choice" class="field" required>
+						<option value="" checked>Pays</option>
+						<% @countries.collect do |d| %>
+						<option value="<%=d.name%>"><%=d.name%></option>
+						<% end %>
+					</select>
+				</div>
 
-			<div id="list-department" class="hidden">
-				<label class="labelle" for="Departement">Departement</label>
-				<select name="department" id="Departement" class="field" required>
-					<option value="">Liste departement</option>
-					<% @departments.collect do |d| %>
-					<option value="<%= d.name %>"><%="#{d.code}-#{d.name}"%></option>
-					<% end %>
-				</select>
-			</div>
+				<div id="list-department" class="hidden">
+					<label class="labelle" for="Departement">Departement</label>
+					<select name="department" id="Departement" class="field" required>
+						<option value="">Liste departement</option>
+						<% @departments.collect do |d| %>
+						<option value="<%= d.name %>"><%="#{d.code}-#{d.name}"%></option>
+						<% end %>
+					</select>
+				</div>
 
-			<div class="dateSelect form-half form-left select-date">
-				<label class="labelle" for="Date">Date</label>
-				<div class="input-group date ed-datepicker filterDate input-calendar" data-provide="datepicker">
-					<input type="text" name="date" id="Date" placeholder="JJ/MM/AAAA" class="form-control" required>
-					<div class="input-group-addon calendar-icone">
-						<span class="fa fa-calendar"></span>
+				<div class="dateSelect form-half form-left select-date">
+					<label class="labelle" for="Date">Date</label>
+					<div class="input-group date ed-datepicker filterDate input-calendar" data-provide="datepicker">
+						<input type="text" name="date" id="Date" placeholder="JJ/MM/AAAA" class="form-control" required>
+						<div class="input-group-addon calendar-icone">
+							<span class="fa fa-calendar"></span>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div >
-				<%= submit_tag("Je valide", class:"je-valide")%>	
+				<div >
+					<%= submit_tag("Je valide", class:"je-valide")%>	
+				</div>
+				<% end %>
 			</div>
-			<% end %>
 		</div>
 	</div>
-</div>
 
 <!-- ================================MODAL MASSAGE +2============================================ -->
-<div id="pushMassage2" class="modal fade modalCommon" role="dialog" tabindex="-1">
-	<div class="modal-dialog">
-		<!-- MODAL CONTENT-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title modal-titleSpa" style="font-size:18px;">INFORMATION MASSAGE DUOS</h4>
-			</div>
-			<div class="modal-body">
-				<div id="appointment-alert" class="my-alert"></div>
-				<p class="text-p-index modalText" style="text-align: justify;">
-					“Attention : une réservation correspond à 1 praticien. En réservant pour plusieurs personnes, le même praticien pratiquera les massages à la suite. Si vous souhaitez réserver 2 massages simultanément, il vous faut faire 2 réservations séparées à la même heure.” <br>
-					<center><button type="button" class="onfirm-command btn btn-primary btn-resa-text text-btn btn-resa-text" data-dismiss="modal">fermer</button></center>
-				</p>
+	<div id="pushMassage2" class="modal fade modalCommon" role="dialog" tabindex="-1">
+		<div class="modal-dialog">
+			<!-- MODAL CONTENT-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title modal-titleSpa" style="font-size:18px;">INFORMATION MASSAGE DUOS</h4>
+				</div>
+				<div class="modal-body">
+					<div id="appointment-alert" class="my-alert"></div>
+					<p class="text-p-index modalText" style="text-align: justify;">
+						“Attention : une réservation correspond à 1 praticien. En réservant pour plusieurs personnes, le même praticien pratiquera les massages à la suite. Si vous souhaitez réserver 2 massages simultanément, il vous faut faire 2 réservations séparées à la même heure.” <br>
+						<center><button type="button" class="onfirm-command btn btn-primary btn-resa-text text-btn btn-resa-text" data-dismiss="modal">fermer</button></center>
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 <!-- ============================================================================================ -->
 
-
-
-
-
-
-<div class="container allfaq">
-	<div class="row">
+	<div class="container allfaq">
+		<div class="row">
 			<div class="col-sm-9">
 				<div class="innerWrapper">
 					<div class="table-responsive">
@@ -356,14 +351,12 @@
 											<p class="p-panier" id="warnning-message">Vous n'avez pas encore <br> sélectionné de prestation</p>
 
 											<div id="spa-order">
-												<h3 class="hidden subTitlePanierSpa">Location spa <span id="totalPriceSpa" data-price=""></span>€</h3>
 												<div class="presta-spa-list" data-price="[0,0]">
 				
 												</div>
 											</div>
 
 											<div id="massage-order">
-												<h3 class="hidden subTitlePanierMsg">Massage <span id="totalPriceMassage" data-price=""></span> €</h3>
 												<div class="presta-list" data-price="[0,0]">
 												
 												</div>
@@ -394,114 +387,156 @@
 			</div>
 		</div>
 	</div>
-</div>
 
+<!-- ------------------------------------ Show liste de tous les spas types ----------------------------------------- -->
 
+	<script type="text/html" id="for_location_spa">
+		<div class="prestation-group-spa">
+			<div class="row">
+				<div class="col-sm-3">
+					<fieldset>
+						<center class="titleSpa dureTitle"><legend><h4>Durée location</h4></legend></center>
+						<% @spas.each do |spa| %>
+							<div class="duree-spa">
+								<input type="checkbox" id="<%= spa.duration %>h" name="spas[1][time][]" value="<%= spa.duration %>" data-price="[<%= spa.exceptional_price %>,<%= spa.exceptional_acompte %>,<%= spa.ordinary_price %>,<%= spa.ordinary_acompte %>]" class="option-spa-list2 input-time-spa" data-category="time">
+								<label for="<%= spa.duration %>h" class="label-spa"><%= spa.duration %>h</label>
+							</div>
+						<% end %>
+					</fieldset>
+				</div>
 
-
-
-
-
-
-<script type="text/html" id="for_location_spa">
-	<div class="prestation-group-spa">
-		<div class="flexbox">
-			<div>
-				<fieldset>
-					<legend>Durée Location</legend>
-					<% @spas.each do |spa| %>
-						<div>
-							<label for="<%= spa.duration %>h" class="label-time-spa"><%= spa.duration %>h</label>
-							<input type="checkbox" id="<%= spa.duration %>h" name="spas[1][time][]" value="<%= spa.duration %>" data-price="[<%= spa.exceptional_price %>,<%= spa.exceptional_acompte %>,<%= spa.ordinary_price %>,<%= spa.ordinary_acompte %>]" class="input-time-spa" data-category="time">
+				<div class="col-sm-4 ambianceresponsive">
+					<fieldset>
+						<center class="titleSpa"><legend><h4>Ambiance</h4></legend></center>
+						<% @spa_ambiances.each do |spa_ambiance| %>
+							<div class="list-ambiance">
+								<input type="checkbox" name="spas[1][ambiance][]" value="<%= spa_ambiance.name %>" data-price="<%= spa_ambiance.price %>" id="a<%= spa_ambiance.id %>mbiance" class="option-spa-list" data-category="ambiance" disabled="disabled">
+								<label for="a<%= spa_ambiance.id %>mbiance" class="label-option-spa"><%= spa_ambiance.name %></label>
+							</div>
+						<% end %>
+					</fieldset>
+				</div>
+				<div class="col-sm-5 fin-spa">
+					<fieldset>
+						<center class="titleSpa informationTitle"><legend><h4>Informations sur la location</h4></legend></center>
+						<div class="infoSpa">
+							<label for="logement" class="label-info-spa">Type de logement</label>
+							<select name="spas[1][type][]" id="logement" class="selectElement">
+								<option value="Appartement" selected="selected">Appartement</option>
+								<option value="Villa - Maison">Villa - Maison</option>
+							</select>
 						</div>
-					<% end %>
-				</fieldset>
-			</div>
-
-			<div>
-				<fieldset>
-					<legend>Ambiance</legend>
-					<% @spa_ambiances.each do |spa_ambiance| %>
-						<div>
-							<input type="checkbox" name="spas[1][ambiance][]" value="<%= spa_ambiance.name %>" data-price="<%= spa_ambiance.price %>" id="a<%= spa_ambiance.id %>mbiance" class="input-ambiance-spa" data-category="ambiance" disabled="disabled">
-							<label for="a<%= spa_ambiance.id %>mbiance" class="label-ambiance-spa"><%= spa_ambiance.name %></label>
+						<div class="infoSpa">
+							<label for="installation" class="label-info-spa">Type d'installation</label>
+							<select name="spas[1][type][]" id="installation" class="selectElement">
+								<option value="Intérieur" selected="selected">Intérieur</option>
+								<option value="Extérieur">Extérieur</option>
+							</select>
 						</div>
-					<% end %>
-				</fieldset>
-			</div>
-			<div>
-				<fieldset>
-					<legend>Informations Sur La Location</legend>
-					<div>
-						<label for="logement" class="label-type-spa">Type de logement</label>
-						<select name="spas[1][type][]" id="logement" class="select-type-spa">
-							<option value="Appartement" selected="selected">Appartement</option>
-							<option value="Villa - Maison">Villa - Maison</option>
-						</select>
-					</div>
-					<div>
-						<label for="installation" class="label-type-spa">Type d'installation</label>
-						<select name="spas[1][type][]" id="installation" class="select-type-spa">
-							<option value="Intérieur" selected="selected">Intérieur</option>
-							<option value="Extérieur">Extérieur</option>
-						</select>
-					</div>
-					<div>
-						<label for="eau" class="label-type-spa">Système d'eau</label>
-						<select name="spas[1][type][]" id="eau" class="select-type-spa">
-							<option value="Cumulus - Ballon d'eau (eau chaude limitée)" selected="selected">Cumulus - Ballon d'eau (eau chaude limitée)</option>
-							<option value="Chaudière (eau chaude continue)">Chaudière (eau chaude continue)</option>
-						</select>
-					</div>
-				</fieldset>
+						<div class="infoSpa">
+							<label for="eau" class="label-info-spa">Système d'eau</label>
+							<select name="spas[1][type][]" id="eau" class="selectElement">
+								<option value="Cumulus - Ballon d'eau (eau chaude limitée)" selected="selected">Cumulus - Ballon d'eau (eau chaude limitée)</option>
+								<option value="Chaudière (eau chaude continue)">Chaudière (eau chaude continue)</option>
+							</select>
+						</div>
+					</fieldset>
+				</div>
 			</div>
 		</div>
-	</div>
-</script>
+	</script>
 
-<script type="text/html" id="for_massage_man">
-	<div class='prestation-group' data-category='for_massage_man' data-title="Homme">
-		<h2>Homme</h2>
-		<div class="flexbox">
-			<% @massagesDuration.each do |mduration| %>
-			<div>
-			<fieldset>
-				<legend><%= mduration.duration %> minutes</legend>
-				<% mduration.massageTypes("Homme").each do |massage_type| %>
-				<div>
-					<input type="checkbox" name="massages[homme_0][]" class="subcategory_massage_input" id="prestation<%= mduration.duration %>min_<%= massage_type.id %>" value="<%= massage_type.name %>||<%= mduration.duration %>" data-category="massage_man" data-subcategory="<%= massage_type.id %>man<%= mduration.duration %>" data-title="<%= massage_type.name %>" data-price="[<%= mduration.exceptional_price %>,<%= mduration.exceptional_acompte %>,<%= mduration.ordinary_price %>,<%= mduration.ordinary_acompte %>]">
-					<label for="prestation<%= mduration.duration %>min_<%= massage_type.id %>"><%= massage_type.name %></label>
+	<!-- ------------------------------------ Show liste de tous le massage hommme ----------------------------------------- -->
+
+	<script type="text/html" id="for_massage_man">
+		<div class='prestation-group' data-category='for_massage_man' data-title="Homme">
+			<div class="row">
+				<div class="col-sm-12 sm-9-spa">
+					<div class="innerWrapper">
+						<div class="table-responsive table-responsiveInfos">
+							<table class="table tableInfos">
+								<thead>
+									<tr class="tr">
+										<th id="tableHead">Homme</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<% @massagesDuration.each do |mduration| %>
+				<div class="col-sm-3">
+				<fieldset>
+					<legend><%= mduration.duration %> minutes</legend>
+					<% mduration.massageTypes("Homme").each do |massage_type| %>
+					<div>
+						<input type="checkbox" name="massages[homme_0][]" class="subcategory_massage_input" id="prestation<%= mduration.duration %>min_<%= massage_type.id %>" value="<%= massage_type.name %>||<%= mduration.duration %>" data-category="massage_man" data-subcategory="<%= massage_type.id %>man<%= mduration.duration %>" data-title="<%= massage_type.name %>" data-price="[<%= mduration.exceptional_price %>,<%= mduration.exceptional_acompte %>,<%= mduration.ordinary_price %>,<%= mduration.ordinary_acompte %>]">
+						<label for="prestation<%= mduration.duration %>min_<%= massage_type.id %>"><%= massage_type.name %></label><i class="fa fa-question-circle questionMark" aria-hidden="true" data-toggle="modal" data-target="#modal<%= massage_type.id %>"></i>
+					</div>
+					<% end %>
+				</fieldset>
 				</div>
 				<% end %>
-			</fieldset>
 			</div>
+		</div>
+	</script>
+	<!-- ------------------------------------ Show liste de tous le massage feme ----------------------------------------- -->
+	<script type="text/html" id="for_massage_woman">
+		<div class='prestation-group' data-category='for_massage_woman' data-title="Femme">
+			<div class="row">
+				<div class="col-sm-12 sm-9-spa">
+					<div class="innerWrapper">
+						<div class="table-responsive table-responsiveInfos">
+							<table class="table tableInfos">
+								<thead>
+									<tr class="tr">
+										<th id="tableHead">Femme</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+			<% @massagesDuration.each do |mduration| %>
+				<div class="col-sm-3">
+				<fieldset>
+					<legend><%= mduration.duration %> minutes</legend>
+					<% mduration.massageTypes("Femme").each do |massage_type| %>
+					<div>
+						<input type="checkbox" name="massages[femme_0][]" class="subcategory_massage_input" id="prestation<%= mduration.duration %>min_<%= massage_type.id %>" value="<%= massage_type.name %>||<%= mduration.duration %>" data-category="massage_woman" data-subcategory="<%= massage_type.id %>woman<%= mduration.duration %>" data-title="<%= massage_type.name %>" data-price="[<%= mduration.exceptional_price %>,<%= mduration.exceptional_acompte %>,<%= mduration.ordinary_price %>,<%= mduration.ordinary_acompte %>]">
+						<label for="prestation<%= mduration.duration %>min_<%= massage_type.id %>"><%= massage_type.name %></label><i class="fa fa-question-circle questionMark" aria-hidden="true" data-toggle="modal" data-target="#modal<%= massage_type.id %>"></i>
+					</div>
+					<% end %>
+				</fieldset>
+				</div>
 			<% end %>
+			</div>
+		</div>
+	</script>
+
+	<!-- ----------------------------------------------Information type de massage ------------------------------------------------- -->
+	<% @massageTypes.each do |massagetype| %>
+	<div id="modal<%= massagetype.id %>" class="modal fade modalCommon" role="dialog" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content contentMassage">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title modal-titleSpa"><%= massagetype.name %></h4>
+				</div>
+				<div class="modal-body">
+					<div id="appointment-alert" class="my-alert"></div>
+					<p class="text-p-index modalText"><%= massagetype.description %></p>
+				</div>
+			</div>
 		</div>
 	</div>
-</script>
-
-<script type="text/html" id="for_massage_woman">
-	<div class='prestation-group' data-category='for_massage_woman' data-title="Femme">
-		<h2>Femme</h2>
-		<div class="flexbox">
-		<% @massagesDuration.each do |mduration| %>
-		<div>
-		<fieldset>
-			<legend><%= mduration.duration %> minutes</legend>
-			<% mduration.massageTypes("Femme").each do |massage_type| %>
-			<div>
-				<input type="checkbox" name="massages[femme_0][]" class="subcategory_massage_input" id="prestation<%= mduration.duration %>min_<%= massage_type.id %>" value="<%= massage_type.name %>||<%= mduration.duration %>" data-category="massage_woman" data-subcategory="<%= massage_type.id %>woman<%= mduration.duration %>" data-title="<%= massage_type.name %>" data-price="[<%= mduration.exceptional_price %>,<%= mduration.exceptional_acompte %>,<%= mduration.ordinary_price %>,<%= mduration.ordinary_acompte %>]">
-				<label for="prestation<%= mduration.duration %>min_<%= massage_type.id %>"><%= massage_type.name %></label>
-			</div>
-			<% end %>
-		</fieldset>
-		</div>
-		<% end %>
-		</div>
-	</div>
-</script>
-
-
+	<% end %>
+</div>
 
 <%= javascript_pack_tag 'orders_index' %>
 <script data-turbolinks-track = "reload" src="/js/resa-js.js"></script>

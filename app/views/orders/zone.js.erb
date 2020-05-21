@@ -1,5 +1,4 @@
 mainLoad()
-
 function mainLoad(){
 	let errorForDataFormulaire = $("#errorForDataFormulaire")
 	if (errorForDataFormulaire.length > 0) {
@@ -18,7 +17,6 @@ function mainLoad(){
 		$("#errorInZone").removeClass("hidden");
 	}
 }
-
 function editSessionAndDomValue(){
 	sessionStorage.setItem("massages","[]")
 	sessionStorage.setItem("spas","[]")
@@ -35,6 +33,19 @@ function editSessionAndDomValue(){
 		$("#inpdepartment").val("");
 	<% end %>
 	sessionStorage.setItem("zone",JSON.stringify(zone));
+	<% unless @services.include?("Massage") %>
+		$("#massage-fafana").addClass("hidden")
+		sessionStorage.setItem("spa","[]")
+	<% else %>
+		$("#massage-fafana").removeClass("hidden")
+	<% end %>
+
+	<% unless @services.include?("Location spa") %>
+		$("#loc-spa-fafana").addClass("hidden")
+		sessionStorage.setItem("massages","[]")
+	<% else %>
+		$("#loc-spa-fafana").removeClass("hidden")
+	<% end %>
 	$("#inpdate").val("<%= @date %>")
 	$("#inppays").val("<%= @country.name %>")
 	let $valueCountry = $('#zode-and-date-selected');
@@ -43,16 +54,12 @@ function editSessionAndDomValue(){
 		$("#errorInZone").addClass("hidden");
 		$("#overlay").css("display","block")
 	});
-	
-	// Edition des elements !
-	resetValueInDom()
+	$("#number_man").html("0")
+	$("#number_woman").html("0")
+	$("#select-list-massage").html("")
+	$("#number-spa").html("0")
+	$("#select-list-spa").html("")
+	$("#warnning-message").removeClass("hidden")
+	$(".presta-list").html("")
+	$(".presta-spa-list").html("")
 }
-
-
-function resetValueInDom(){
-
-}
-
-
-
-

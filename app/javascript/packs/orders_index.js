@@ -26,7 +26,7 @@ $("#add-spa").click(function(){
 	let number = $(".prestation-group-spa").length;
 	let $prestationSpa = $($("#for_location_spa").html());
 	$prestationSpa = addGroupLocationSpaInDom(number,$prestationSpa);
-	$prestationSpa.find(".input-time-spa,.input-ambiance-spa").click(function(){
+	$prestationSpa.find(".input-time-spa,.option-spa-list").click(function(){
 		showListTimeAndAmbianceInBascket($(this));
 	});
 	$prestationSpa.find("select").click(function(){
@@ -42,20 +42,20 @@ function showListTimeAndAmbianceInBascket($input){
 	let $parentsGroup = $input.parents(".prestation-group-spa");
 	if ($input.data().category === "ambiance"){
 		if($input.prop("checked")){
-			$parentsGroup.find(".input-ambiance-spa").prop("checked",false);
+			$parentsGroup.find(".option-spa-list").prop("checked",false);
 			$input.prop("checked",true);
 		}else{
-			$parentsGroup.find(".input-ambiance-spa").prop("checked",false);
+			$parentsGroup.find(".option-spa-list").prop("checked",false);
 		}
 	}else{
 		if($input.prop("checked")){
 			$parentsGroup.find(".input-time-spa").prop("checked",false)	;
 			$input.prop("checked",true);
-			$parentsGroup.find(".input-ambiance-spa").prop("disabled",false);
+			$parentsGroup.find(".option-spa-list").prop("disabled",false);
 		}else{
 			$parentsGroup.find(".input-time-spa").prop("checked",false);
-			$parentsGroup.find(".input-ambiance-spa").prop("checked",false)	;
-			$parentsGroup.find(".input-ambiance-spa").prop("disabled",true);
+			$parentsGroup.find(".option-spa-list").prop("checked",false)	;
+			$parentsGroup.find(".option-spa-list").prop("disabled",true);
 		}
 	}
 	refreachListCommandeSpa();
@@ -72,7 +72,7 @@ function refreachListCommandeSpa(){
 		if($timeList.length > 0){
 			a.time = $timeList.val();
 			let price = 0.0;
-			let $ambianceList = $(element).find(".input-ambiance-spa:checked");
+			let $ambianceList = $(element).find(".option-spa-list:checked");
 			let ambianceHtml = '';
 			if ($ambianceList.length > 0) {
 				price += parseFloat($ambianceList.data().price);
@@ -121,7 +121,7 @@ function refreachListCommandeSpa(){
 }
 
 function addGroupLocationSpaInDom(number,$prestationSpa,time="",ambiance="",types=[]) {
-	$prestationSpa.find(".label-time-spa,.label-ambiance-spa").each(function(index,element){
+	$prestationSpa.find(".label-spa,.label-option-spa").each(function(index,element){
 		let label = $(element).attr("for");
 		$(element).attr("for",label+number);
 	});
@@ -133,7 +133,7 @@ function addGroupLocationSpaInDom(number,$prestationSpa,time="",ambiance="",type
 			$(element).prop("checked",true);
 		}
 	});
-	$prestationSpa.find(".input-ambiance-spa").each(function(index,element){
+	$prestationSpa.find(".option-spa-list").each(function(index,element){
 		let id = $(element).attr("id");
 		$(element).attr("id",id+number);
 		$(element).attr("name","spas["+number+"][ambiance][]");
@@ -144,11 +144,11 @@ function addGroupLocationSpaInDom(number,$prestationSpa,time="",ambiance="",type
 			$(element).prop("disabled",false);
 		}
 	});
-	$prestationSpa.find('.label-type-spa').each(function(index,element){
+	$prestationSpa.find('.label-info-spa').each(function(index,element){
 		let label = $(element).attr("for");
 		$(element).attr("for",label+number);
 	});
-	$prestationSpa.find(".select-type-spa").each(function(index,element){
+	$prestationSpa.find(".selectElement").each(function(index,element){
 		let id = $(element).attr("id");
 		$(element).attr("name","spas["+number+"][type][]");
 		$(element).attr("id",id+number);
@@ -166,7 +166,7 @@ function actualiseValueSpa(session_spas){
 		$("#select-list-spa").append($prestationSpa);
 	}
 	$("#number-spa").html($(".prestation-group-spa").length);
-	$("#select-list-spa").find(".input-time-spa,.input-ambiance-spa").click(function(){
+	$("#select-list-spa").find(".input-time-spa,.option-spa-list").click(function(){
 		showListTimeAndAmbianceInBascket($(this));
 	});
 	$("#select-list-spa").find("select").click(function(){
@@ -287,7 +287,7 @@ function refreachListCommande(arrayIndex = "") {
 		    	}
 		    });
 		    ul += '</ul>';
-		    innerHTML += '<div class="showOnClick" data-list="basket-group-'+ index +'">'+'<a>'+ $(element).data().title+'</a>'+' <span>'+ price + '€</span>'+ '</div>'+ ul;
+		    innerHTML += '<div class="showOnClick" data-list="basket-group-'+ index +'">'+'<h3 class="subTitlePanierMsg"><a>'+ $(element).data().title+'</a>'+' <span>'+ price + '€</span></h3>'+ '</div>'+ ul;
 	    }
 	});
 	$(".presta-list")[0].dataset.price = "["+totalPrice+","+totalAcompte+"]";
@@ -358,15 +358,6 @@ function hideMessageShow(value){
 	}
 }
 
-
-
-
-
-
-//$("#inpdate").val("<%= @date %>")
-
-
-
 /*~~~~~~~~~~~~ gerer le modalt pour le choix du pays et date ~~~~~~~~~~~~~~~~~*/
 $("#country-choice").click(function(){
 	var input_dptm = $("#Departement");
@@ -377,5 +368,15 @@ $("#country-choice").click(function(){
 	}else{
 		input_dptm.prop("disabled",true);
 		div_dptm.addClass("hidden");
+	}
+});
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Submit formulaire ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+$("#nex-submi-tag").click(function(){
+	if(true){
+		$("#form-data").submit()
+	}else{
+		// document.getElementById("loc-spa-fafana").classList.add("active")
+		// document.getElementsByClassName("accordion-body js-accordion-body").style.display="block"
 	}
 });

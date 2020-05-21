@@ -52,6 +52,8 @@ class OrdersController < ApplicationController
     @massagesDuration = MassageDurationPrice.all
     @spas = Spa.all
     @spa_ambiances = SpaAmbiance.all
+
+    @massageTypes = MassageType.all
 =begin
     tp MassageDurationPrice.last.massageTypes("Homme")
     tp MassageDurationPrice.find(3).massage_types.joins(:massage_massage_types).where(massage_massage_types:{massage_id:1})
