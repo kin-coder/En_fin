@@ -1,0 +1,13 @@
+
+@media only screen and (min-width: 992px) {
+	.section-index1{
+		margin-top: -30px !important;
+	}
+
+		.section-index2{
+		margin-top: 0px !important;
+	}
+			.section-index3{
+		margin-top: -15px !important;
+	}
+}
