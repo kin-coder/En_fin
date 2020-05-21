@@ -1,6 +1,6 @@
 main();
 function main(){
-	let session_massages = sessionStorage.getItem("massages")
+	let session_massages = sessionStorage.getItem("massages");
 	if ( session_massages == null) {
 		sessionStorage.setItem("massages","[]");
 	}else{
@@ -11,6 +11,26 @@ function main(){
 		sessionStorage.setItem("spas","[]");
 	}else{
 		actualiseValueSpa(JSON.parse(session_spas));
+	}
+	let zone = sessionStorage.getItem("zone");
+	if (zone != null) {
+		zone = JSON.parse(zone);
+		$("#heure-spa").val(zone.time_spa);
+		$("#heure-massage").val(zone.time_massage);
+		$(".praticien-list").each(function(index,element){
+			if ($(element).val() == zone.pratitien) {
+				$(element).prop("checked",true);
+				return false;
+			}
+		});
+		if (zone.code != null) {
+			$("#inpcode").val(zone.code[0]);
+			$("#alert-code").html("Votre code promo "+zone.code[0]+" est validé avec succès. Vous avez gagné un reduction de " +zone.code[1]+"€ pour chaque prix et acompte à payer!");
+			$("#alert-code").removeClass("hidden");
+			$("#form-promo-code").addClass("hidden");
+		}
+	}else{
+		sessionStorage.setItem("zone","{}");
 	}
 }
 /* ------------------------------------------------------------------------------------ */
@@ -26,7 +46,7 @@ $("#add-spa").click(function(){
 	let number = $(".prestation-group-spa").length;
 	let $prestationSpa = $($("#for_location_spa").html());
 	$prestationSpa = addGroupLocationSpaInDom(number,$prestationSpa);
-	$prestationSpa.find(".input-time-spa,.input-ambiance-spa").click(function(){
+	$prestationSpa.find(".input-time-spa,.option-spa-list").click(function(){
 		showListTimeAndAmbianceInBascket($(this));
 	});
 	$prestationSpa.find("select").click(function(){
@@ -42,20 +62,20 @@ function showListTimeAndAmbianceInBascket($input){
 	let $parentsGroup = $input.parents(".prestation-group-spa");
 	if ($input.data().category === "ambiance"){
 		if($input.prop("checked")){
-			$parentsGroup.find(".input-ambiance-spa").prop("checked",false);
+			$parentsGroup.find(".option-spa-list").prop("checked",false);
 			$input.prop("checked",true);
 		}else{
-			$parentsGroup.find(".input-ambiance-spa").prop("checked",false);
+			$parentsGroup.find(".option-spa-list").prop("checked",false);
 		}
 	}else{
 		if($input.prop("checked")){
 			$parentsGroup.find(".input-time-spa").prop("checked",false)	;
 			$input.prop("checked",true);
-			$parentsGroup.find(".input-ambiance-spa").prop("disabled",false);
+			$parentsGroup.find(".option-spa-list").prop("disabled",false);
 		}else{
 			$parentsGroup.find(".input-time-spa").prop("checked",false);
-			$parentsGroup.find(".input-ambiance-spa").prop("checked",false)	;
-			$parentsGroup.find(".input-ambiance-spa").prop("disabled",true);
+			$parentsGroup.find(".option-spa-list").prop("checked",false)	;
+			$parentsGroup.find(".option-spa-list").prop("disabled",true);
 		}
 	}
 	refreachListCommandeSpa();
@@ -66,29 +86,31 @@ function refreachListCommandeSpa(){
 	let totalPrice = 0.0;
 	let totalAcompte = 0.0;
 	let session_spas = [];
+	let zone = JSON.parse(sessionStorage.getItem("zone"))
+	let price_promo = code_promo_price(zone)
 	$(".prestation-group-spa").each(function(index,element){
 		let $timeList = $(element).find(".input-time-spa:checked");
 		let a = {};
 		if($timeList.length > 0){
 			a.time = $timeList.val();
 			let price = 0.0;
-			let $ambianceList = $(element).find(".input-ambiance-spa:checked");
+			let $ambianceList = $(element).find(".option-spa-list:checked");
 			let ambianceHtml = '';
 			if ($ambianceList.length > 0) {
-				price += parseFloat($ambianceList.data().price);
-				totalPrice += parseFloat($ambianceList.data().price);
+				price += parseInt($ambianceList.data().price);
+				totalPrice += parseInt($ambianceList.data().price);
 				ambianceHtml = "<li>ambiance: "+ $ambianceList.val() +"</li>";
 				a.ambiance = $ambianceList.val();
 			}
 			// [exceptional_price,exceptional_acompte,ordinary_price,ordinary_acompte]
-	    	if(true){ // is exeptiona true
-	    		price += $timeList.data().price[0]+$timeList.data().price[1];
-				totalPrice += $timeList.data().price[0];
-	    		totalAcompte += $timeList.data().price[1];
+	    	if(isExeptionelPrice()){ // is exeptiona true
+	    		price += $timeList.data().price[0]+$timeList.data().price[1]-(2*price_promo);
+				totalPrice += $timeList.data().price[0] - price_promo;
+	    		totalAcompte += $timeList.data().price[1] - price_promo;
 	    	}else{ // is exeptional false
-	    		price += $timeList.data().price[2]+$timeList.data().price[3];
-	    		totalPrice += $timeList.data().price[2];
-	    		totalAcompte += $timeList.data().price[3];
+	    		price += $timeList.data().price[2]+$timeList.data().price[3]-(2*price_promo);
+	    		totalPrice += $timeList.data().price[2] - price_promo;
+	    		totalAcompte += $timeList.data().price[3] - price_promo;
 	    	}
 			innerHTML += "<div>Spa <span>"+price+"€</span></div>"+
 					"<ul><li>pour: "+$timeList.val()+"h</li>"+ambianceHtml+"</ul>";
@@ -121,7 +143,7 @@ function refreachListCommandeSpa(){
 }
 
 function addGroupLocationSpaInDom(number,$prestationSpa,time="",ambiance="",types=[]) {
-	$prestationSpa.find(".label-time-spa,.label-ambiance-spa").each(function(index,element){
+	$prestationSpa.find(".label-spa,.label-option-spa").each(function(index,element){
 		let label = $(element).attr("for");
 		$(element).attr("for",label+number);
 	});
@@ -133,7 +155,7 @@ function addGroupLocationSpaInDom(number,$prestationSpa,time="",ambiance="",type
 			$(element).prop("checked",true);
 		}
 	});
-	$prestationSpa.find(".input-ambiance-spa").each(function(index,element){
+	$prestationSpa.find(".option-spa-list").each(function(index,element){
 		let id = $(element).attr("id");
 		$(element).attr("id",id+number);
 		$(element).attr("name","spas["+number+"][ambiance][]");
@@ -144,11 +166,11 @@ function addGroupLocationSpaInDom(number,$prestationSpa,time="",ambiance="",type
 			$(element).prop("disabled",false);
 		}
 	});
-	$prestationSpa.find('.label-type-spa').each(function(index,element){
+	$prestationSpa.find('.label-info-spa').each(function(index,element){
 		let label = $(element).attr("for");
 		$(element).attr("for",label+number);
 	});
-	$prestationSpa.find(".select-type-spa").each(function(index,element){
+	$prestationSpa.find(".selectElement").each(function(index,element){
 		let id = $(element).attr("id");
 		$(element).attr("name","spas["+number+"][type][]");
 		$(element).attr("id",id+number);
@@ -166,7 +188,7 @@ function actualiseValueSpa(session_spas){
 		$("#select-list-spa").append($prestationSpa);
 	}
 	$("#number-spa").html($(".prestation-group-spa").length);
-	$("#select-list-spa").find(".input-time-spa,.input-ambiance-spa").click(function(){
+	$("#select-list-spa").find(".input-time-spa,.option-spa-list").click(function(){
 		showListTimeAndAmbianceInBascket($(this));
 	});
 	$("#select-list-spa").find("select").click(function(){
@@ -264,6 +286,8 @@ function refreachListCommande(arrayIndex = "") {
 	let innerHTML = "";
 	let totalAcompte = 0.0;
 	let totalPrice = 0.0;
+	let zone = JSON.parse(sessionStorage.getItem("zone"))
+	let price_promo = code_promo_price(zone)
 	$('.prestation-group').each(function(index,element){
 		$inputList= $(element).find("input:checked");
 		if ($inputList.length > 0) {
@@ -276,18 +300,18 @@ function refreachListCommande(arrayIndex = "") {
 		    $inputList.each(function(i,elm){
 				ul += '<li>'+ $(elm).data().title +'</li>';
 				// [exceptional_price,exceptional_acompte,ordinary_price,ordinary_acompte]
-		    	if(true){ // is exeptiona true
-		    		price += $(elm).data().price[0]+$(elm).data().price[1];
-					totalPrice += $(elm).data().price[0];
-		    		totalAcompte += $(elm).data().price[1];
+		    	if(isExeptionelPrice()){ // is exeptiona true
+		    		price += $(elm).data().price[0]+$(elm).data().price[1] - (2*price_promo);
+					totalPrice += $(elm).data().price[0] - price_promo;
+		    		totalAcompte += $(elm).data().price[1] - price_promo;
 		    	}else{ // is exeptional false
-		    		price += $(elm).data().price[2]+$(elm).data().price[3];
-		    		totalPrice += $(elm).data().price[2];
-		    		totalAcompte += $(elm).data().price[3];
+		    		price += $(elm).data().price[2]+$(elm).data().price[3] - (2*price_promo);
+		    		totalPrice += $(elm).data().price[2] - price_promo;
+		    		totalAcompte += $(elm).data().price[3] - price_promo;
 		    	}
 		    });
 		    ul += '</ul>';
-		    innerHTML += '<div class="showOnClick" data-list="basket-group-'+ index +'">'+'<a>'+ $(element).data().title+'</a>'+' <span>'+ price + '€</span>'+ '</div>'+ ul;
+		    innerHTML += '<div class="showOnClick" data-list="basket-group-'+ index +'">'+'<h3 class="subTitlePanierMsg"><a>'+ $(element).data().title+'</a>'+' <span>'+ price + '€</span></h3>'+ '</div>'+ ul;
 	    }
 	});
 	$(".presta-list")[0].dataset.price = "["+totalPrice+","+totalAcompte+"]";
@@ -357,3 +381,67 @@ function hideMessageShow(value){
 		$("#warnning-message").removeClass("hidden");
 	}
 }
+
+function isExeptionelPrice(){
+	let exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
+	current_date = $("#inpdate").val().split("/") // MM - DD - YYYY
+	let exceptionalPrice = false
+	for (var i = exceptionalDate.length - 1; i >= 0; i--) {
+		if (exceptionalDate[i][0] == current_date[0] && exceptionalDate[i][1] == current_date[1]){
+			exceptionalPrice = true
+			break
+		}
+	}
+	return exceptionalPrice
+}
+
+function code_promo_price(zone){
+	if (zone.code == null) {
+		return 0
+	}else{
+		return zone.code[1]
+	}
+}
+
+
+/*~~~~~~~~~~~~ gerer le modalt pour le choix du pays et date ~~~~~~~~~~~~~~~~~*/
+$("#country-choice").click(function(){
+	var input_dptm = $("#Departement");
+	var div_dptm = $("#list-department");
+	if (this.value == "France") {
+		input_dptm.prop("disabled",false);
+		div_dptm.removeClass("hidden");
+	}else{
+		input_dptm.prop("disabled",true);
+		div_dptm.addClass("hidden");
+	}
+});
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Submit formulaire ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+$("#nex-submi-tag").click(function(){
+	if(true){
+		$("#form-data").submit()
+	}else{
+		// document.getElementById("loc-spa-fafana").classList.add("active")
+		// document.getElementsByClassName("accordion-body js-accordion-body").style.display="block"
+	}
+});
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ heurs pratitien ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+// mprix augmente: $("#inpdate")
+
+$("#heure-spa").click(function(){
+	let zone = JSON.parse(sessionStorage.getItem("zone"))
+	zone.time_spa = $(this).val()
+	sessionStorage.setItem("zone",JSON.stringify(zone));
+});
+$("#heure-massage").click(function(){
+	let zone = JSON.parse(sessionStorage.getItem("zone"))
+	zone.time_massage = $(this).val()
+	sessionStorage.setItem("zone",JSON.stringify(zone));
+});
+$(".praticien-list").click(function(){
+	let zone = JSON.parse(sessionStorage.getItem("zone"))
+	zone.pratitien = $(this).val()
+	sessionStorage.setItem("zone",JSON.stringify(zone));
+});
