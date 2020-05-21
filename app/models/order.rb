@@ -17,12 +17,12 @@ class Order < ApplicationRecord
 	validates :billing_ville, presence: true
 	validates :billing_code_postal, presence: true
 	validates :billing_adresse, presence: true
-	validates :billing_adresse_complet, presence: true
+
 	validates :delivery_pays, presence: true
 	validates :delivery_ville, presence: true
 	validates :delivery_code_postal, presence: true
 	validates :delivery_adresse, presence: true
-	validates :delivery_adresse_complet, presence: true
+
 
 	def isExceptional?
 		exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
