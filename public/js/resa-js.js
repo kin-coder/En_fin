@@ -1,9 +1,5 @@
 initialize()
-
-function on(){
-  document.getElementById("overlay").style.display = "block";
-}
-
+console.log("eto za eee!")
 function initialize(){
 	let zone = JSON.parse(sessionStorage.getItem("zone"))
 	if (zone != null && zone.country != undefined) {
@@ -27,6 +23,11 @@ function initialize(){
 			}else{
 				document.getElementById("loc-spa-fafana").classList.add("hidden")
 			}
+			console.log("eto za eee!")
+
+			$("#inpdepartment").val("Google");
+			$("#inpdate").val("Traduction")
+			$("#inppays").val("LJSD")
 
 		}else{
 			window.onload = on();
@@ -35,7 +36,12 @@ function initialize(){
 		window.onload = on();
 	}
 }
+
 function openZone(){
 	document.getElementById("errorInZone").classList.add("hidden")
 	document.getElementById("overlay").style.display = "block"
+}
+
+function on(){
+  document.getElementById("overlay").style.display = "block";
 }

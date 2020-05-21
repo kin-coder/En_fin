@@ -7,8 +7,7 @@
 <% end %>
 
 <div class="container" id="container-principale">
-<!-- ----------------------------------------------------------------------------------------------------------------------- -->
-<!-- ======================================= MODAL SET ZONE ================================== -->
+<!-- --------------------- MODAL SET ZONE ------------------------- -->
 	<div id="overlay">
 		<div id="text">
 			<div class="set-zones">
@@ -55,7 +54,7 @@
 		</div>
 	</div>
 
-<!-- ================================MODAL MASSAGE +2============================================ -->
+<!--  ---------------------------- MODAL MASSAGE --------------------------  -->
 	<div id="pushMassage2" class="modal fade modalCommon" role="dialog" tabindex="-1">
 		<div class="modal-dialog">
 			<!-- MODAL CONTENT-->
@@ -74,7 +73,7 @@
 			</div>
 		</div>
 	</div>
-<!-- ============================================================================================ -->
+<!-- ------------------------------------------------------------- -->
 
 	<div class="container allfaq">
 		<div class="row">
@@ -388,7 +387,7 @@
 		</div>
 	</div>
 
-<!-- ------------------------------------ Show liste de tous les spas types ----------------------------------------- -->
+<!-- -------------- Show liste de tous les spas types ----------------- -->
 
 	<script type="text/html" id="for_location_spa">
 		<div class="prestation-group-spa">
@@ -446,7 +445,7 @@
 		</div>
 	</script>
 
-	<!-- ------------------------------------ Show liste de tous le massage hommme ----------------------------------------- -->
+<!-- -------------- Show liste de tous le massage hommme -------------- -->
 
 	<script type="text/html" id="for_massage_man">
 		<div class='prestation-group' data-category='for_massage_man' data-title="Homme">
@@ -482,7 +481,7 @@
 			</div>
 		</div>
 	</script>
-	<!-- ------------------------------------ Show liste de tous le massage feme ----------------------------------------- -->
+<!-- ------------ Show liste de tous le massage feme --------------- -->
 	<script type="text/html" id="for_massage_woman">
 		<div class='prestation-group' data-category='for_massage_woman' data-title="Femme">
 			<div class="row">
@@ -519,7 +518,8 @@
 		</div>
 	</script>
 
-	<!-- ----------------------------------------------Information type de massage ------------------------------------------------- -->
+<!-- ------------------- Information type de massage ------------------ -->
+
 	<% @massageTypes.each do |massagetype| %>
 	<div id="modal<%= massagetype.id %>" class="modal fade modalCommon" role="dialog" tabindex="-1">
 		<div class="modal-dialog">
