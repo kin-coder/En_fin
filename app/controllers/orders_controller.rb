@@ -402,7 +402,7 @@ class OrdersController < ApplicationController
     # Génère un numéro de transaction aléatoire
     transactionReference = "simu" + rand(100000..999999).to_s
     #Construit l'URL de retour pour récupérer le résultat du paiement sur le site e-commerce du marchand
-    normalReturnUrl = "http://localhost:3000/reservation-prestation/paye-commande"
+    normalReturnUrl = "http://spamandona.herokuapp.com/reservation-prestation/paye-commande"
     # Contruit la requête des données à envoyer à Mercanet
     @data = "amount=#{@amount}|currencyCode=978|merchantId=002001000000001|normalReturnUrl=" + normalReturnUrl + "|transactionReference=" + transactionReference + "|keyVersion=1"
     # Encode en UTF-8 des données à envoyer à Mercanet
