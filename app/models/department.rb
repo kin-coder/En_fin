@@ -1,5 +1,6 @@
 class Department < ApplicationRecord
-	belongs_to :country #relation pays-departement
+	#relation pays-departement
+	belongs_to :country 
 	#une commande est dans un département
 	has_many :orders
 	#relation Prestataire N-N Depatement

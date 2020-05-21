@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MassageCaTest < ActiveSupport::TestCase
+class MassageTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

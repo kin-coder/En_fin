@@ -3,13 +3,13 @@
 one:
   duration: 1
   exceptional_price: 1.5
-  ordinary_price: 1.5
   exceptional_acompte: 1.5
+  ordinary_price: 1.5
   ordinary_acompte: 1.5
 
 two:
   duration: 1
   exceptional_price: 1.5
-  ordinary_price: 1.5
   exceptional_acompte: 1.5
+  ordinary_price: 1.5
   ordinary_acompte: 1.5

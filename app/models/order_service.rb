@@ -1,8 +1,10 @@
 class OrderService < ApplicationRecord
 	before_create :confirmation_token
-	# intermediare table Order N--N Servie
+	
+  # intermediare table Order N--N Servie
 	belongs_to :order
   belongs_to :service
+
   #relation 1-N entre la commande et le prestataire
   belongs_to :prestataire, optional: true
 
