@@ -1,6 +1,6 @@
 main();
 function main(){
-	let session_massages = sessionStorage.getItem("massages")
+	let session_massages = sessionStorage.getItem("massages");
 	if ( session_massages == null) {
 		sessionStorage.setItem("massages","[]");
 	}else{
@@ -11,6 +11,18 @@ function main(){
 		sessionStorage.setItem("spas","[]");
 	}else{
 		actualiseValueSpa(JSON.parse(session_spas));
+	}
+	let zone = sessionStorage.getItem("zone");
+	if (zone != null) {
+		zone = JSON.parse(zone);
+		$("#heure-spa").val(zone.time_spa);
+		$("#heure-massage").val(zone.time_massage);
+		$(".praticien-list").each(function(index,element){
+			if ($(element).val() == zone.pratitien) {
+				$(element).prop("checked",true);
+				return false;
+			}
+		});
 	}
 }
 /* ------------------------------------------------------------------------------------ */
@@ -379,4 +391,25 @@ $("#nex-submi-tag").click(function(){
 		// document.getElementById("loc-spa-fafana").classList.add("active")
 		// document.getElementsByClassName("accordion-body js-accordion-body").style.display="block"
 	}
+});
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ heurs pratitien ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+// mprix augmente: $("#inpdate")
+
+$("#heure-spa").click(function(){
+	let zone = JSON.parse(sessionStorage.getItem("zone"))
+	zone.time_spa = $(this).val()
+	sessionStorage.setItem("zone",JSON.stringify(zone));
+});
+$("#heure-massage").click(function(){
+	let zone = JSON.parse(sessionStorage.getItem("zone"))
+	zone.time_massage = $(this).val()
+	sessionStorage.setItem("zone",JSON.stringify(zone));
+});
+$(".praticien-list").click(function(){
+	let zone = JSON.parse(sessionStorage.getItem("zone"))
+	zone.pratitien = $(this).val()
+	sessionStorage.setItem("zone",JSON.stringify(zone));
 });
