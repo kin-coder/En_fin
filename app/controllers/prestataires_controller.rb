@@ -34,7 +34,7 @@ class PrestatairesController < Application2Controller
     else
       testValue = params[:prestataire][:country_ids].include?(Country.find_by(name:"France").id.to_s) && (params[:prestataire][:department_ids] == nil)
       if testValue
-        flash[:list_message_errors].push("Si vous choisisser France veuillez cocher au moins une de ces départements")
+        flash[:list_message_errors].push("Si vous choisissez France, veuillez cocher au moins une de ces départements")
         redirect_back(fallback_location: root_path)
         return
       end
@@ -62,7 +62,7 @@ class PrestatairesController < Application2Controller
     flash[:list_message_errors] = @prestataire.errors.full_messages
     if params[:service]==nil || params[:prestataire][:country_ids]==nil
       if params[:service] == nil
-        flash[:list_message_errors].push("Services doit être rempli(e)")
+        flash[:list_message_errors].push("Le champ service doit être rempli")
       end
       if params[:prestataire][:country_ids] == nil
         flash[:list_message_errors].push("Le(s) zone(s) où vous pouvez faire vos prestations doit être rempli(e)")
@@ -72,7 +72,7 @@ class PrestatairesController < Application2Controller
     else
       testValue = params[:prestataire][:country_ids].include?(Country.find_by(name:"France").id.to_s) && (params[:prestataire][:department_ids] == nil)
       if testValue
-        flash[:list_message_errors].push("Si vous choisisser France veuillez cocher au moins une de ces départements")
+        flash[:list_message_errors].push("Si vous choisissez France, veuillez cocher au moins une de ces départements")
         redirect_back(fallback_location: root_path)
         return
       end
@@ -92,7 +92,7 @@ class PrestatairesController < Application2Controller
     o_services = OrderService.all.where(prestataire_id:@prestataire.id)
     if o_services.empty?
       @prestataire.destroy
-      flash[:admin_notice] = 'Le prestataire a été supprimer avec succès.'
+      flash[:admin_notice] = 'Le prestataire a été supprimé avec succès.'
       redirect_to index_prestataires_path
     else
       flash[:admin_notice] = 'Impossible de supprimer ce prestataire car il est attribué a une commande.'

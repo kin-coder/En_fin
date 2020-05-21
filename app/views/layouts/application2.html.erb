@@ -89,6 +89,14 @@
         background-color:#e74a3b !important;
 
     }
+    .modal-header .close {
+
+        margin-top: -2px;
+        position: absolute;
+        right: 5px;
+        top: -10px;
+
+    }
 </style>
 <!-- pack tag --> 
 <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -101,8 +109,8 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-       <!-- Sidebar -->
-       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+     <!-- Sidebar -->
+     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
@@ -283,6 +291,7 @@
 
                                             <!-- Begin Page Content -->
                                             <div class="container-fluid">
+                                                
                                                 <% if flash[:admin_notice] %>
                                                 <div class="alert alert-success">
                                                     <%= flash[:admin_notice]  %>

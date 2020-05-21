@@ -672,8 +672,7 @@ function priceTotalForAllSpa(dataOption,dataForm){
 			categories = dataMassages[1]
 		}
 	// Enregistrement dans la session
-	let numberHomme = document.getElementById("number-Homme").innerText;
-	let numberFemme = document.getElementById("number-Femme").innerText;
+	
 	let sessionSpa = JSON.parse(sessionStorage.getItem("massages"))
 	sessionSpa.push({id:id,cat:categories[0],sub:"",time:""})
 	sessionStorage.setItem("massages",JSON.stringify(sessionSpa))
@@ -703,8 +702,6 @@ function priceTotalForAllSpa(dataOption,dataForm){
 		if(sessionSpa.length > 0 ){
 				sessionSpa.splice(-1,1);
 		}
-		console.log(sessionSpa.length)
-
 	}
 
 	function showAlert(){
