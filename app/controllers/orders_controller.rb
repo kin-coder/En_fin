@@ -8,8 +8,36 @@ class OrdersController < ApplicationController
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  # 1/2 Selection du zone de prestation
+  # 1/2 Selection des prestation
   def zone
+    @country = params[:country]
+    @department = params[:department]
+    @date = params[:date]
+    @error = ""
+
+    @services = []
+
+    results = validate_country_department_date(@country,@department,@date)
+    if results[0]
+      @country = results[1]
+      @department = results[2]
+      if results[2] === ""
+        @country.services.each do |s|
+           @services.push(s.name)
+        end
+      else
+        @department.services.each do |s|
+          @services.push(s.name)
+        end
+      end
+    else
+      @error = "Une errerur est survernue"
+    end
+
+    respond_to do |format|
+      format.js
+    end
+
   end
 
   def code_promo
@@ -17,6 +45,10 @@ class OrdersController < ApplicationController
 
   # 1/2 Selection des prestation
   def index
+    @countries = Country.all
+    @departments = Department.all
+    # @services = Service.all
+
     @massagesDuration = MassageDurationPrice.all
     @spas = Spa.all
     @spa_ambiances = SpaAmbiance.all
@@ -70,6 +102,32 @@ class OrdersController < ApplicationController
   def payederrors
   end
 
+  private
+
+  def validate_country_department_date(country,department,date)
+    services = []
+    country = Country.find_by(name:country)
+    if country
+      if country.name == "France"
+        department = Department.find_by(name:department)
+        unless department
+          return [false]
+        end
+      else
+        department = ""
+      end
+    else
+      return [false]
+    end
+    if date
+      unless @date[2] == "/" && @date[5] == "/" && @date.length == 10
+        return [false]
+      end
+    else
+      return [false]
+    end
+    return [true,country,department]
+  end
 end
 
 

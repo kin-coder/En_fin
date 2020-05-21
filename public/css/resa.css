@@ -504,7 +504,7 @@
       border-top: 2px solid #eee !important;
     }
 
-    #spa-input{
+    #select-list-spa{
       letter-spacing: 2px;
     }
 
@@ -778,7 +778,7 @@ margin-top: -18px;
 }
 
 
-#spa-price-total, #massage-price-total, #cadeau-price-total{
+#totalPriceSpa, #totalPriceMassage{
   color: black;
 }
 
@@ -1597,7 +1597,7 @@ max-width: 100px;
       text-align: left;
 
     }
-    #spa-order, #massage-order, #cadeau-order{
+    #spa-order, #massage-order{
       margin-bottom: 25px;
       max-width: 100%;
     }

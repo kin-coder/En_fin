@@ -1,82 +1,400 @@
-<div class="container">
-<style type="text/css">
-	.flexbox {
-		display: flex;
-		flex-wrap: wrap;
-	}
+<link href="/css/resa.css" rel="stylesheet">
 
-	p {
-		font-size: 30px;
-		text-align: left;
-	}
+<% if flash[:delete_js] %>
+<script type="text/javascript">
+	sessionStorage.clear();
+</script>
+<% end %>
 
-	.prestation-group-spa, .prestation-group{
-		margin-bottom: 40px; 
-	}
-</style>
-
-<br><br>
-
-<%= form_tag(save_session_path, id:"form-data") do %>
-<div class="row">
-	<div class="col-sm-9">
-
-		<div class="classManasarakaSpasyMassaFotsinyAfakaOvaina">
-			<div>
-				<p>Je souhaite reserver <i class="fa fa-minus-circle" id="remove-spa"></i><span id="number-spa">0</span><i class="fa fa-plus-circle" id="add-spa"></i> spa</p>
+<div class="container" id="container-principale">
+<!-- ----------------------------------------------------------------------------------------------------------------------- -->
+<!-- ======================================= MODAL SET ZONE ================================== -->
+<div id="overlay">
+	<div id="text">
+		<div class="set-zones">
+			<div class="alert alert-danger hidden" role="alert" id="errorInZone">
 			</div>
-			<br><br><br><br>
+			<h2 style="color:white;" class="titregeog">Je choisis ma zone géographique </h2>
 
-			<div id="select-list-spa" style="margin-bottom: 200px;">
-				<!-- les input type checkbox s'affiche ici a chaque clique -->
-				
+			<%= form_tag(zone_path, remote: true, class:"pays_dep") do %>
+			<div class="pays">
+				<label class="labelle" for="country-choice">Pays</label>
+				<select name="country" id="country-choice" class="field" required>
+					<option value="" checked>Pays</option>
+					<% @countries.collect do |d| %>
+					<option value="<%=d.name%>"><%=d.name%></option>
+					<% end %>
+				</select>
 			</div>
-		</div>
 
-		<div class="classManasarakaSpasyMassaFotsinyAfakaOvaina">
-			<div>
-				<p>Je souhaite reserver pour : </p>
-				<div>
-					<p>Homme <i class="fa fa-minus-circle remove-massage" data-category="for_massage_man"></i> <span id="number_man">0</span> <i class="fa fa-plus-circle add-massage" data-category="for_massage_man"></i></p>
+			<div id="list-department" class="hidden">
+				<label class="labelle" for="Departement">Departement</label>
+				<select name="department" id="Departement" class="field" required>
+					<option value="">Liste departement</option>
+					<% @departments.collect do |d| %>
+					<option value="<%= d.name %>"><%="#{d.code}-#{d.name}"%></option>
+					<% end %>
+				</select>
+			</div>
+
+			<div class="dateSelect form-half form-left select-date">
+				<label class="labelle" for="Date">Date</label>
+				<div class="input-group date ed-datepicker filterDate input-calendar" data-provide="datepicker">
+					<input type="text" name="date" id="Date" placeholder="JJ/MM/AAAA" class="form-control" required>
+					<div class="input-group-addon calendar-icone">
+						<span class="fa fa-calendar"></span>
+					</div>
 				</div>
-				<div>
-					<p class="p-resa-spa">Femme <i class="fa fa-minus-circle remove-massage" data-category="for_massage_woman"></i> <span id="number_woman">0</span> <i class="fa fa-plus-circle add-massage" data-category="for_massage_woman"></i></p>
-				</div>
 			</div>
-			<div id="select-list-massage" style="margin-bottom: 200px;">
-				<!-- les input type checkbox s'affiche ici a chaque clique -->
-			</div>
-		</div>
 
-	</div>
-	<div class="col-sm-3">
-		<div>
-			<h1>Harona</h1>
-			<p id="warnning-message"><small>Vous n'avez pas encore sélectionné de prestation</small></p>
-			<h3 class="hidden" id="totalPriceSpa">LOCATION SPA : <span ></span>€</h3>
-			<div class="presta-spa-list" data-price="[0,0]">
-				
+			<div >
+				<%= submit_tag("Je valide", class:"je-valide")%>	
 			</div>
-			<hr>
-			<h3 class="hidden" id="totalPriceMassage">MASSAGE : <span></span> €</h3>
-			<div class="presta-list" data-price="[0,0]">
-				
-			</div>
-			<hr>
-			<div>
-				<ul>
-					<li>Prix total <span id="totalPricePrestation">0.0</span>€</li>
-					<li>Acompte total <span id="totalAcomptePrestation">0.0</span>€</li>
-				</ul>
-			</div>
+			<% end %>
 		</div>
 	</div>
 </div>
 
-<%= submit_tag("Je valide", class:"je-valide")%>
+<!-- ================================MODAL MASSAGE +2============================================ -->
+<div id="pushMassage2" class="modal fade modalCommon" role="dialog" tabindex="-1">
+	<div class="modal-dialog">
+		<!-- MODAL CONTENT-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title modal-titleSpa" style="font-size:18px;">INFORMATION MASSAGE DUOS</h4>
+			</div>
+			<div class="modal-body">
+				<div id="appointment-alert" class="my-alert"></div>
+				<p class="text-p-index modalText" style="text-align: justify;">
+					“Attention : une réservation correspond à 1 praticien. En réservant pour plusieurs personnes, le même praticien pratiquera les massages à la suite. Si vous souhaitez réserver 2 massages simultanément, il vous faut faire 2 réservations séparées à la même heure.” <br>
+					<center><button type="button" class="onfirm-command btn btn-primary btn-resa-text text-btn btn-resa-text" data-dismiss="modal">fermer</button></center>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ============================================================================================ -->
 
-<% end %>
 
+
+
+
+
+<div class="container allfaq">
+	<div class="row">
+			<div class="col-sm-9">
+				<div class="innerWrapper">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th id="tableHead" class="accordion-header" ><center >MA ZONE GÉOGRAPHIQUE</center></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div id="zode-and-date-selected">
+
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<%= form_tag(save_session_path, id:"form-data") do %>
+				<div id="prestation-list">
+					<div class="accordion js-accordion">
+						<div id="loc-spa-fafana" class="accordion__item js-accordion-item">
+							<div class="accordion-header js-accordion-header patternbg">
+								<center class="titleAccordion">LOCATION SPA</center>
+							</div> 
+							<div class="accordion-body js-accordion-body">
+								<div class="accordion-body__contents">
+									<div class="spa">
+										<div class="spa-click">
+											<p class="p-resa-spa">Je souhaite réserver <i class="fa fa-minus-circle" id="remove-spa"></i><span id="number-spa"> 0 </span><i class="fa fa-plus-circle" id="add-spa"></i> spa</p>
+										</div>
+										<hr class="interligne">
+										<div class="row">
+											<div id="select-list-spa">
+												<!-- les input type checkbox s'affiche ici a chaque clique -->
+												
+											</div>
+										</div>
+										<hr class="interligne">
+										<!-- HEURE DE RESERVATION -->
+										<center>
+											<label class="label-heure" for="heure-spa">Choix de l'heure</label>
+											<select name="heureSpa" id="heure-spa" class="select-dro">
+												<option value="">Heure</option>
+												<option value="08:00">08:00</option>
+												<option value="08:30">08:30</option>
+												<option value="09:00">09:00</option>
+												<option value="09:30">09:30</option>
+												<option value="10:00">10:00</option>
+												<option value="10:30">10:30</option>
+												<option value="11:00">11:00</option>
+												<option value="11:30">11:30</option>
+												<option value="12:00">12:00</option>
+												<option value="12:30">12:30</option>
+												<option value="13:00">13:00</option>
+												<option value="13:30">13:30</option>
+												<option value="14:00">14:00</option>
+												<option value="14:30">14:30</option>
+												<option value="15:00">15:00</option>
+												<option value="15:30">15:30</option>
+												<option value="16:00">16:00</option>
+												<option value="16:30">16:30</option>
+												<option value="17:00">17:00</option>
+												<option value="17:30">17:30</option>
+												<option value="18:00">18:00</option>
+												<option value="18:30">18:30</option>
+												<option value="19:00">19:00</option>
+												<option value="19:30">19:30</option>
+												<option value="20:00">20:00</option>
+												<option value="20:30">20:30</option>
+												<option value="21:00">21:00</option>
+												<option value="21:30">21:30</option>
+												<option value="22:00">22:00</option>
+											</select>
+										</center>
+									</div>
+								</div>
+							</div><!-- end of accordion body -->
+						</div><!-- end of accordion item -->
+
+						<div id="massage-fafana" class="accordion__item js-accordion-item">
+							<div class="accordion-header js-accordion-header patternbg"><center class="titleAccordion">MASSAGE À DOMICILE</center>
+							</div> 
+							<div class="accordion-body js-accordion-body">
+								<div class="accordion-body__contents">
+									<div class="massage">
+										<div id="select-prestation">
+											<p class="p-resa-spa">Je souhaite réserver pour :</p>
+											<div>
+												<p class="p-resa-spa">Homme<i class="fa fa-minus-circle remove-massage" data-category="for_massage_man"></i> <span id="number_man">0</span> <i class="fa fa-plus-circle add-massage" data-category="for_massage_man"></i></p>
+											</div>
+											<div>
+												<p class="p-resa-spa">Femme<i class="fa fa-minus-circle remove-massage" data-category="for_massage_woman"></i> <span id="number_woman">0</span> <i class="fa fa-plus-circle add-massage" data-category="for_massage_woman"></i></p>
+											</div>
+										</div>
+										
+										<div id="select-list-massage">
+
+										</div>
+
+										<center class="praticien">
+											<div class="row">
+												<div class="col-sm-12 sm-9-spa">
+													<div class="innerWrapper">
+														<div class="table-responsive table-responsiveInfos">
+															<table class="table tableInfos">
+																<thead>
+																	<tr class="tr">
+																		<th id="tableHead">Infos complémentaires</th>
+																	</tr>
+																</thead>
+															</table>
+														</div>
+													</div>
+												</div>
+											</div>
+											<h4><span class="titlePraticien">Votre praticien</span></h4>
+											<div class="praticiens">
+												<input type="radio" id="man" name="praticien" value="Masculin" class="praticien-list">
+												<label for="man"><i id="praticienman-label" class="fa fa-male" aria-hidden="true"></i></label>
+											</div>
+											<div class="praticiens">
+												<input type="radio" id="woman" name="praticien" value="Féminin" class="praticien-list">
+												<label for="woman"><i id="praticien-label" class="fa fa-female" aria-hidden="true"></i></label>
+											</div>
+											<div class="praticiens pratText">
+												<input type="radio" id="other" name="praticien" value="all" class="praticien-list" >
+												<label for="other"> <span class="label-no-fa">Peu importe</span></label>
+											</div>
+										</center>
+										<hr class="interligne">
+										<!-- HEURE DE RESERVATION -->
+										<center>
+											<label class="label-heure" for="heure-massage">Choix de l'heure</label>
+											<select name="heureMassage" id="heure-massage" class="select-dro">
+												<option value="">Heure</option>
+												<option value="08:00">08:00</option>
+												<option value="08:30">08:30</option>
+												<option value="09:00">09:00</option>
+												<option value="09:30">09:30</option>
+												<option value="10:00">10:00</option>
+												<option value="10:30">10:30</option>
+												<option value="11:00">11:00</option>
+												<option value="11:30">11:30</option>
+												<option value="12:00">12:00</option>
+												<option value="12:30">12:30</option>
+												<option value="13:00">13:00</option>
+												<option value="13:30">13:30</option>
+												<option value="14:00">14:00</option>
+												<option value="14:30">14:30</option>
+												<option value="15:00">15:00</option>
+												<option value="15:30">15:30</option>
+												<option value="16:00">16:00</option>
+												<option value="16:30">16:30</option>
+												<option value="17:00">17:00</option>
+												<option value="17:30">17:30</option>
+												<option value="18:00">18:00</option>
+												<option value="18:30">18:30</option>
+												<option value="19:00">19:00</option>
+												<option value="19:30">19:30</option>
+												<option value="20:00">20:00</option>
+												<option value="20:30">20:30</option>
+												<option value="21:00">21:00</option>
+												<option value="21:30">21:30</option>
+												<option value="22:00">22:00</option>
+											</select>
+										</center>
+									</div>
+								</div>
+							</div><!-- end of accordion body -->
+						</div><!-- end of accordion item -->
+					</div>
+
+
+					<div class="row">
+						<div class="col-sm-12 sm-9-spa">
+							<div class="innerWrapper">
+								<div class="table-responsive">
+									<table class="table">
+										<thead>
+											<tr>
+												<th id="tableHead" class="accordion-header" ><center >Les extras pour votre location spa</center></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													<center ><h3 class="police_spa">Proposés directement par nos professionnels lors de votre mise en relation</h3></center >
+													<div class="row spa-suppl">
+														<div class="col-sm-3">
+															<div class="offerContent">
+																<img src="img/home/fontainechocolat.jpg" alt="Image Offer">
+																<div class="offerMasking">
+																	<div class="offerTitle"><h4>Fontaine  <br>chocolat</h4></div>
+																</div>
+																<!-- <div class="offerPrice"><h5>€20</h5></div> -->
+															</div>
+														</div>
+														<div class="col-sm-3">
+															<div class="offerContent">
+																<img src="img/home/tablemassage.jpg" alt="Image Offer">
+																<div class="offerMasking">
+																	<div class="offerTitle"><h4 style="text-transform: none;">Table de <br>Massage (Avec huile)</h4></div>
+																</div>
+																<!-- <div class="offerPrice"><h5>€20</h5></div> -->
+															</div>
+														</div>
+														<div class="col-sm-3">
+															<div class="offerContent">
+																<img src="img/home/plateau.jpg" alt="Image Offer">
+																<div class="offerMasking">
+																	<div class="offerTitle"><h4 style="text-transform: none;">Plateau de <br>Fruits Frais</h4></div>
+																</div>
+																<!-- <div class="offerPrice"><h5>€20</h5></div> -->
+															</div>
+														</div>
+
+														<div class="col-sm-3">
+															<div class="offerContent">
+																<img src="img/home/petitfour.jpg" alt="Image Offer">
+																<div class="offerMasking">
+																	<div class="offerTitle">
+																		<h4>Petits Fours<br>salés/sucrés</h4>
+																	</div>
+																</div>
+																<!-- <div class="offerPrice"><h5>€20</h5></div> -->
+															</div>
+														</div>
+														<div class="col-sm-12 textExtras">
+															Et bien d’autres encore (enceinte bluetooth, eau parfumée, boissons (soft et alcool), etc…)
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>     
+						</div>
+					</div>
+					<input type="text" name="date" id="inpdate" class="hidden">
+					<input type="text" name="pays" id="inppays" class="hidden">
+					<input type="text" name="department" id="inpdepartment" class="hidden">
+					<%= submit_tag("Suivant",class:"hidden") %>
+				</div>
+				<% end %>
+			</div>
+
+
+			<!-- PANIER DYNAMIQUE -->
+			<div class="col-sm-3 sm-3-spa" id="panierTable">
+				<div class="innerWrapper">
+					<div class="table-responsive " >
+						<table class="table">
+							<thead>
+								<tr>
+									<th id="tableHead">
+										<center>VOTRE PANIER</center>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div id="card">
+											<h4 class="panierTitle"> Votre commande <i class="fa fa-shopping-basket" aria-hidden="true" id="fa"></i></h4>
+											<p class="p-panier" id="warnning-message">Vous n'avez pas encore <br> sélectionné de prestation</p>
+
+											<div id="spa-order">
+												<h3 class="hidden subTitlePanierSpa">Location spa <span id="totalPriceSpa" data-price=""></span>€</h3>
+												<div class="presta-spa-list" data-price="[0,0]">
+				
+												</div>
+											</div>
+
+											<div id="massage-order">
+												<h3 class="hidden subTitlePanierMsg">Massage <span id="totalPriceMassage" data-price=""></span> €</h3>
+												<div class="presta-list" data-price="[0,0]">
+												
+												</div>
+											</div>
+											
+											<div id="code-promo">
+												<div id="alert-code" class="hidden alert alert-success" role="alert"></div>
+												<%= form_tag(code_promo_path, remote: true, id:"form-promo-code") do %>
+													<label for="codeP">Code promo ?</label><br><input type="text" name="code" id="codeP", placeholder="Code promo" required="required">
+													<%= submit_tag("valider") %>	
+												<% end %>
+											</div>
+
+											<div class="prixTotals">
+												<p class="p-prixTotal">PRIX TOTAL : <strong id="totalPricePrestation">0</strong> €</p>
+												<p class="p-prixTotal">ACOMPTE TOTAL : <strong id="totalAcomptePrestation">0</strong> €</p>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="btn-resa">
+						<span class="confirm-command btn btn-primary btn-resa-text text-btn btn-resa-text" id="nex-submi-tag">Suivant</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 
@@ -183,6 +501,7 @@
 	</div>
 </script>
 
-</div>
+
 
 <%= javascript_pack_tag 'orders_index' %>
+<script data-turbolinks-track = "reload" src="/js/resa-js.js"></script>

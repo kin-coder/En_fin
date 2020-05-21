@@ -357,3 +357,25 @@ function hideMessageShow(value){
 		$("#warnning-message").removeClass("hidden");
 	}
 }
+
+
+
+
+
+
+//$("#inpdate").val("<%= @date %>")
+
+
+
+/*~~~~~~~~~~~~ gerer le modalt pour le choix du pays et date ~~~~~~~~~~~~~~~~~*/
+$("#country-choice").click(function(){
+	var input_dptm = $("#Departement");
+	var div_dptm = $("#list-department");
+	if (this.value == "France") {
+		input_dptm.prop("disabled",false);
+		div_dptm.removeClass("hidden");
+	}else{
+		input_dptm.prop("disabled",true);
+		div_dptm.addClass("hidden");
+	}
+});
