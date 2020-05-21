@@ -2,7 +2,9 @@
       z-index: 100;
     }
     #panierTable{
-position: sticky !important;
+      position: sticky; 
+      position: -webkit-sticky;
+      top: 0px;
     }
     .container{
       background: white;
@@ -12,6 +14,13 @@ position: sticky !important;
     <!-- media query -->
     /* Large devices (laptops/desktops, 992px and up) */
     @media only screen and (min-width: 992px) {
+      .modalCommon .modal-content {
+        width: 35% !important;
+        height: auto;
+        position: absolute;
+        left: 33%;
+        top: 30px;
+      }
       #text{
         position: absolute;
         top: 50%;
@@ -41,18 +50,18 @@ position: sticky !important;
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media only screen and (min-width: 600px) {
       .modalText {
-    text-align: center;
-    margin-top: -35px !important;
-    margin-left: 1px;
-}
+        text-align: center;
+        margin-top: -35px !important;
+        margin-left: 1px;
+      }
 
-.modalCommon .modal-content {
-    width: 35% !important;
-    height: auto;
-    position: absolute;
-    left: 33%;
-    top: 100px;
-}
+      .modalCommon .modal-content {
+        width: 75% !important;
+        height: auto;
+        position: absolute;
+        left: 11%;
+        top: 30px;
+      }
       #text{
         position: absolute;
         top: 33%;
@@ -84,6 +93,19 @@ position: sticky !important;
 
     /* Extra small devices (phones, 600px and down) */
     @media only screen and (max-width: 600px) {
+      .textExtras {
+        color: black;
+        letter-spacing: 1px;
+        text-align: center;
+        margin-bottom: 35px;
+        white-space: initial;
+        overflow: hidden;
+
+      }
+      td .police_spa{
+        white-space: initial;
+        overflow: hidden;
+      }
       #text{
         position: absolute;
         top: 40%;
@@ -574,10 +596,10 @@ position: sticky !important;
 
 
 
-.label-info-spa, .label-heure{
-  font-size: small;
-  letter-spacing: 2px;
-  margin-right: 5px;
+  .label-info-spa, .label-heure{
+    font-size: small;
+    letter-spacing: 2px;
+    margin-right: 5px;
 /*position: absolute;
 left: 70px;*/
 margin-top: -18px;
@@ -589,6 +611,8 @@ margin-top: -18px;
   font-size: small;
   font-family: Lato, "Open Sans";   
   text-align: center;
+  border: solid 1px #666;
+  border-radius: 5px;
 }
 
 
@@ -721,7 +745,7 @@ margin-top: -18px;
   font-weight: 700;
   text-transform: none;
   letter-spacing: 2px;
-  margin-left: -95px;
+  margin-left: 0px;
   color: #666;
 
 }
@@ -1057,6 +1081,7 @@ margin-top: -18px;
   .col-sm2Duree{
     position: relative;
     left: -60px;
+    top: -1px;
   }
   .sm-6-massage{
     column-count: 1;
@@ -1080,7 +1105,7 @@ margin-top: -18px;
   }
   .btn-resa{
     position: relative;
-    left: 50%;
+    left: 33%;
     top: 20px;
     font-family: Quicksand, 'Open Sans', sans-serif !important;
     width: 30%;
@@ -1520,11 +1545,18 @@ max-width: 100px;
 
   /* Large devices (laptops/desktops, 992px and up) */
   @media only screen and (min-width: 992px) {
-      .modalText {
-    text-align: center;
-    margin-top: -35px !important;
-    margin-left: 15px;
-}
+    .modalCommon .modal-content {
+      width: 35% !important;
+      height: auto;
+      position: absolute;
+      left: 33%;
+      top: 30px;
+    }
+    .modalText {
+      text-align: justify;
+      margin-top: -35px !important;
+      margin-left: 15px;
+    }
     .offerContent {
       width: 180px;
       height: 180px;
@@ -1540,6 +1572,7 @@ max-width: 100px;
       letter-spacing: 1px;
       text-align: center;
       margin-bottom: 35px;
+      margin-top: 35px;
 
     }
     .nbr-cadeau{
@@ -1578,6 +1611,7 @@ max-width: 100px;
     .col-sm2Duree{
       position: relative;
       left: 0px;
+      top: -2px;
     }
     .sm-6-massage{
       column-count: 2;

@@ -1,8 +1,5 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <!-- authenticity token ilaina -->
     <%= csrf_meta_tags %>
@@ -31,10 +28,26 @@
     <!-- Custom styles for this page -->
     <link href="/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+    <style>
+      @media only screen and (max-width: 600px) {
+        .faBar{
+            margin-left: 15px;
+            display: none;
+        }
+        .navbar-nav{
+            height: 0px !important;
+            margin-top: 0px !important;
+            width: 80px;
+        }
+        .sidebar .nav-item .nav-link span {
+            margin-left: 5px;
+        }
+    }
 
-    <!-- pack tag --> 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</style>
+<!-- pack tag --> 
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 </head>
 
@@ -43,8 +56,8 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-       <!-- Sidebar -->
-       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+     <!-- Sidebar -->
+     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
@@ -129,7 +142,7 @@
 
                                                 <!-- Sidebar Toggle (Topbar) -->
                                                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                                                    <i class="fa fa-bars"></i>
+                                                    <i class="fa fa-bars faBar"></i>
                                                 </button>
 
                                                 <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -181,11 +194,11 @@
 
                                             <!-- Begin Page Content -->
                                             <div class="container-fluid">
-<% if flash[:admin_notice] %>
-<div class="alert alert-success">
-    <%= flash[:admin_notice]  %>
-</div>
-<% end %>
+                                                <% if flash[:admin_notice] %>
+                                                <div class="alert alert-success">
+                                                    <%= flash[:admin_notice]  %>
+                                                </div>
+                                                <% end %>
                                                 
                                                 
 
@@ -257,6 +270,30 @@
                                 <!-- Page level custom scripts -->
                                 <script src="/admin/js/demo/datatables-demo.js"></script>
 
+<!-- ------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------ -->
+
+<!-- Afficher tous les notification possible -->
+<div class="container" id="all_notifications">
+    <div id="notification_list" data-notification="<%= Notification.lastIndex + 1 %>">
+        <h2>Notification reto <spam class="badge badge-primary" id="number-hide"><%= Notification.notSee %></spam></h2>
+        <div>
+            <%= link_to "Tout Marquer comme lue", update_all_notifications_path %>
+        </div>
+        <ul id="ul_notification_list">
+        <% Notification.all.order('id DESC').each do |notification| %>
+             <li><%= link_to notification.messages, update_notifications_path(notification.id), method: :patch, 'data-view':notification.is_view %></li>
+        <% end %>
+        </ul>
+    </div>
+</div>
+
+<%= javascript_pack_tag 'ajax_notification' %>
+
+<!-- ------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------ -->
 
                             </body>
 

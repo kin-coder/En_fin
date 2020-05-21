@@ -7,6 +7,9 @@ class Order < ApplicationRecord
 
 	#plusieur commande dans un pays
 	belongs_to :country
+  
+  # relation codePromo 1-N order
+	belongs_to :code_promo, optional: true
 
 	# relation N - N entre Order et Service
 	has_many :order_services, dependent: :destroy
@@ -26,10 +29,9 @@ class Order < ApplicationRecord
 	validates :billing_ville, presence: true
 	validates :billing_code_postal, presence: true
 	validates :billing_adresse, presence: true
-	validates :billing_adresse_complet, presence: true
+
 	validates :delivery_pays, presence: true
 	validates :delivery_ville, presence: true
 	validates :delivery_code_postal, presence: true
 	validates :delivery_adresse, presence: true
-	validates :delivery_adresse_complet, presence: true
 end

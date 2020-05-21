@@ -1,23 +1,28 @@
 <!-- media query -->
 /* Extra small devices (phones, 600px and down) */
 /* Large devices (laptops/desktops, 992px and up) */
+
+  .error {border: 1px red solid;}
+
 @media only screen and (min-width: 992px) {
+
+
     .btn-mdp{
-width: auto !important;
-padding: 10px;
-font-size: 12px;
-margin-bottom: 20px;
-}
+        width: auto !important;
+        padding: 10px;
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
     .mdp-oublie{
-padding-top:100px;
-padding-bottom:100px;
-width: 700px;
-background: #554e502e;
-}
-.mailmdp{
-width:500px;
-margin: 20px;
-}
+        padding-top:100px;
+        padding-bottom:100px;
+        width: 700px;
+        background: #554e502e;
+    }
+    .mailmdp{
+        width:500px;
+        margin: 20px;
+    }
     .formPart .panel-body {
         padding: 20px !important;
         border: 1px solid 
@@ -54,21 +59,21 @@ margin: 20px;
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     .btn-mdp{
-width: auto !important;
-padding: 10px;
-font-size: 12px;
-margin-bottom: 20px;
-}
-.mdp-oublie{
-padding-top:100px;
-padding-bottom:100px;
-width: 700px;
-background: #554e502e;
-}
-.mailmdp{
-width:500px;
-margin: 20px;
-}
+        width: auto !important;
+        padding: 10px;
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+    .mdp-oublie{
+        padding-top:100px;
+        padding-bottom:100px;
+        width: 700px;
+        background: #554e502e;
+    }
+    .mailmdp{
+        width:500px;
+        margin: 20px;
+    }
     /*RADIO BUTTON*/
     .switch-field label {
         background-color: #e4e4e4;
@@ -129,7 +134,7 @@ margin: 20px;
 
 
 
-	.btn-block {
+    .btn-block {
         display: block;
         width: 240px !important;
         border-radius: 100px;
@@ -147,14 +152,28 @@ margin: 20px;
         border-radius: 8px;
         width: 100% !important;
     }
-
+    .form-controlDevise{
+        min-width: 399px !important;
+    }
+    .form-controlDeviseSignUp{
+        min-width: 310px !important;
+    }
+    .panel-title{
+        text-align: center;
+    }
+    #contac-submit-btn{
+        margin-bottom: 30px;
+    }
     .inscript {
         margin-left: 0px;
     }
     .panel-login, .panel-body-login {
         width: 400px !important;
     }
-
+    .btn-new-compte{
+        position: relative;
+        left: 25px;
+    }
     .a-descendre {
         margin-top: 10px;
         position: relative;
@@ -180,20 +199,20 @@ margin: 20px;
 }
 @media only screen and (max-width: 600px) {
     .btn-mdp{
-width: 235 !important;
-padding: 10px;
-font-size: 12px;
-margin-bottom: 20px;
-}
+        width: 235 !important;
+        padding: 10px;
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
     .mdp-oublie{
-padding-top:100px;
-padding-bottom:100px;
-background: #554e502e;
-}
-.mailmdp{
+        padding-top:100px;
+        padding-bottom:100px;
+        background: #554e502e;
+    }
+    .mailmdp{
 
-margin: 20px;
-}
+        margin: 20px;
+    }
     /*RADIO BUTTON*/
     .switch-field label {
         background-color: #e4e4e4;
@@ -252,11 +271,11 @@ margin: 20px;
         margin-top: 25px;
     }
     .switch-field {
-    display: inline-block;
-    position: relative;
-    left: 30%;
-    margin-bottom: 15px;
-}
+        display: inline-block;
+        position: relative;
+        left: 30%;
+        margin-bottom: 15px;
+    }
 
 }
 
@@ -264,6 +283,10 @@ margin: 20px;
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+    .btn-new-compte{
+        position: initial;
+        left: 25px;
+    }
     .switch-field{
         display: inline-block;
         position: relative;
@@ -319,7 +342,10 @@ margin: 20px;
     .inscript {
         margin-left: 100px;
     }
-
+    .contac-submit-btn{
+        position: relative;
+        left: 10px !important;
+    }
 
 
     /*RADIO BUTTON*/
@@ -396,12 +422,8 @@ margin: 20px;
 }
 
 
-
-
-
-
 .mdp-oublie h2{
-color:#ec5598;
-font-family: Quicksand;
-margin-bottom: -20px;
+    color:#ec5598;
+    font-family: Quicksand;
+    margin-bottom: -20px;
 }

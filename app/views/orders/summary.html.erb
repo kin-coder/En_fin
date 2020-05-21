@@ -1,9 +1,9 @@
 <link href="/css/summary.css" rel="stylesheet">
 <div class="container" style="background: white;">
 	<style>
-i{
-margin-left: 10px;
-}
+		.i{
+			margin-left: 10px;
+		}
 	</style>
 
 	<div class="secotionTitle">
@@ -38,8 +38,8 @@ margin-left: 10px;
 												<i>Option :</i> <%= spa["option"][0][0] %> à <%= spa["option"][0][1] %> € <br>
 												<% end %>
 
-												<i>Prix : </i><%= spa["price"][0] %> €<br>
-												<i>Acompte :</i><%= spa["price"][1] %> €<br>
+												<i>Prix : </i><%= spa["price"][0] - @code_promo %> €<br>
+												<i>Acompte :</i><%= spa["price"][1] - @code_promo %> €<br>
 												<div>
 													<i>Date et heure de livraison : </i>le <%= session[:otherInfo]["date"] %> à <%= session[:otherInfo]["heureSpa"] %>
 												</div>
@@ -72,10 +72,10 @@ margin-left: 10px;
 											<div class="reservationSpa">
 												<strong style="font-family: Quicksand; text-transform: uppercase;color: black;">Massage pour <%= massage["ca"] %></strong>	<br>
 												<i>Type de massage : </i> <%= massage["su"] %><br>
-												<i>Prix : </i><%= massage["price"][1] %> €<br>
-												<i>Acompte : </i> <%= massage["price"][2] %> €
+												<i>Prix : </i><%= massage["price"][1] - @code_promo %> €<br>
+												<i>Acompte : </i> <%= massage["price"][2] - @code_promo %> €
 											</div>
-															<hr style="">
+											<hr style="">
 
 											<% end %>
 										</td>
@@ -90,7 +90,7 @@ margin-left: 10px;
 							<table class="table">
 								<thead>
 									<tr>
-										<th>INFOS COMPLEMENTAIRES</th>
+										<th>INFOS COMPLÉMENTAIRES</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -99,10 +99,12 @@ margin-left: 10px;
 											<div class="reservationSpa">
 												Pays : <%= @order.country.name %> <br>
 												<% unless @order.department.nil? %>
-												Departement : <%= @order.department.name %><br>
+												Département : <%= @order.department.name %><br>
 												<% end %>
-												Adresse de facturation: <%= @order.billing_adresse %><br>
-												Adresse de livraison: <%= @order.delivery_adresse %><br>
+												Adresse de facturation : <%= @order.billing_adresse %><br>
+												Complément d'adresse de facturation : <%= @order.billing_adresse_complet %><br>
+												Adresse de livraison : <%= @order.delivery_adresse %><br>
+												Complément d'adresse de livraison : <%= @order.delivery_adresse_complet %><br>
 											</div>
 										</td>
 									</tr>
@@ -117,21 +119,20 @@ margin-left: 10px;
 
 		<div class="col-sm-4">
 			<div class="alert alert-success">
-				Prix Total: <strong><%= @totalAcompte + @totalPrice %> € </strong><br>
-				Montant à régler sur place(CB ou éspèces uniquement) : <strong><%= @totalPrice %> €</strong><br>
-				<span>Acompte à régler en ligne: <strong><%= @totalAcompte %> €</strong></span>
+				Prix Total : <strong><%= @totalAcompte + @totalPrice %> € </strong><br>
+								<span>Acompte à régler en ligne : <strong><%= @totalAcompte %> €</strong></span> <br>
+				Montant à régler sur place (CB ou éspèces uniquement) : <strong><%= @totalPrice %> €</strong><br>
 				<form method="post" action="https://payment-webinit.simu.mercanet.bnpparibas.net/paymentInit">
 					<input type="hidden" name="Data" value="<%=@data%>">
 					<input type="hidden" name="InterfaceVersion" value="HP_2.20">
 					<input type="hidden" name="Seal" value="<%=@seal%>"> <br>
-					<center><input type="submit" value="Payer via CB" class="confirm-command btn btn-primary btn-resa-text text-btn btn-resa-text"></center><br>
+					<center><input type="submit" value="Payer mon acompte" class="confirm-command btn btn-primary btn-resa-text text-btn btn-resa-text"></center><br>
 				</form>
 			</div>
 			<center class="infoImportant">
-				<h4><i class="fa fa-exclamation-circle" aria-hidden="true"></i> IMPORTANT</h4>
-				<p class="p-important">Ce devis ne tient pas compte des éventuels frais de déplacement (pour les services spa/massage) qui pourrait vous etre facturés selon votre ville. Pour plus d'information veuillez nous contacter.</p>
-				<hr class="interligne">
-				<p class="p-important">Les acomptes ne s'appliquent qu'aux services(Spa/massages). Pour les produits, le montant est réglé dans sa totalité en ligne.</p>
+				<h4><i class="fa fa-exclamation-circle i" aria-hidden="true"></i> IMPORTANT</h4>
+				<p class="p-important">Ce devis ne tient pas compte des éventuels frais de déplacement (pour les services spa/massage) qui pourraient vous être facturés selon votre ville. Pour plus d'informations veuillez nous contacter.</p>
+				
 			</center>
 
 		</div>

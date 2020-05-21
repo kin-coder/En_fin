@@ -1,15 +1,38 @@
+
+
+
+
 <% if resource.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: resource.class.model_name.human.downcase)
-       %>
-    </h2>
-    <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+
+
+
+<div class="modal fade" id="flash">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-titl">Cocooning spa</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-warning" role="alert">
+          <div id="error_explanation">
+            <h3 style="text-transform: uppercase;font-family: Quicksand;text-align: center;">
+              <%= I18n.t("errors.messages.not_saved",
+               count: resource.errors.count,
+               resource: resource.class.model_name.human.downcase)
+               %>
+             </h3>
+             <ul>
+              <% resource.errors.full_messages.each do |message| %>
+              <li style="text-align: center; text-transform: uppercase;font-family: Quicksand;"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>               
+        </div>
+
+      </div>
+    </div>
   </div>
+</div>
+
 <% end %>

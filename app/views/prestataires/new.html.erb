@@ -32,19 +32,42 @@
 <link href="/css/page-devise.css" rel="stylesheet">
 <style>
 
-#dropZone {
-  width: 100px !important;
-  height: 50px;
-  padding-left: 500px;
-  padding-right: 50px;
-  padding-top: 20px;
+  #dropZone {
+    width: 100px !important;
+    height: 50px;
+    padding-left: 500px;
+    padding-right: 50px;
+    padding-top: 20px;
+  }
+
+  .hida {
+    position: absolute;
+    top: 0px;
+    left: 10px;
+  }
+  @media (max-width: 600px) {
+    .actions {
+
+      margin-bottom: 50px;
+      margin-left: -150px;
+
+    }
+  }
+
+@media only screen and (min-width: 600px) and  (max-width: 990px){
+.formIpad{
+
+  width: 280px !important;
+  }
+
+  .actions {
+
+    margin-bottom: 50px;
+    margin-left: -150px;
+
 }
 
-.hida {
-  position: absolute;
-  top: 0px;
-  left: 10px;
-}
+
 </style>
 
 <!-- SECTION5 -->
@@ -54,22 +77,56 @@
 
 <%= form_for(@prestataire, url: new_prestataires_path) do |form| %>
 <% if @prestataire.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@prestataire.errors.count, "error") %> prohibited this prestataire from being saved:</h2>
-  <ul>
-    <% @prestataire.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
+
+<div class="modal fade" id="flash">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-titl">Cocooning spa</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-warning" role="alert">
+          <div id="error_explanation">
+            <h3 style="text-transform: uppercase;font-family: Quicksand;text-align: center;">
+              <%= pluralize(@prestataire.errors.count, "error") %> a empêchée(s) ce prestataire d'être sauvegardé:
+            </h3>
+            <ul>
+              <% @prestataire.errors.full_messages.each do |message| %>
+              <li style="text-align: center; text-transform: uppercase;font-family: Quicksand;"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>               
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
+
 <% end %>
 
 <% if flash[:list_message_errors] %>
-  <div class="alert alert-danger">
-    <% flash[:list_message_errors].each do |message| %>
-      <li><%= message %></li>
-    <% end %>
+
+<div class="modal fade" id="flash">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-titl">Cocooning spa</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-warning" role="alert">
+          <% flash[:list_message_errors].each do |message| %>
+          <li style="text-align: center; text-transform: uppercase;font-family: Quicksand;"><%= message %></li>  
+          <% end %>
+        </div>
+
+      </div>
+    </div>
   </div>
+</div>
+
 <% end %>
 
 <div class="row">
@@ -87,12 +144,12 @@
 
 <div class="col-sm-6">
   <div class="form-group">
-    <%= form.text_field :last_name, autofocus: true, autocomplete: "Nom", class:"form-control", id:"fullname", placeholder:"Nom",:required => true %>
+    <%= form.text_field :last_name, autofocus: true, autocomplete: "Nom", class:"form-control formIpad", id:"fullname", placeholder:"Nom",:required => true %>
 
   </div>
 
   <div class="form-group">
-    <%= form.text_field :first_name, autofocus: true, autocomplete: "Prénom", class:"form-control", id:"fullname", placeholder:"Prénom",:required => true %>
+    <%= form.text_field :first_name, autofocus: true, autocomplete: "Prénom", class:"form-control formIpad", id:"fullname", placeholder:"Prénom",:required => true %>
 
   </div>
 
@@ -107,22 +164,22 @@
   </div>
 
   <div class="form-group">
-    <%= form.text_field :raison_sociale, autofocus: true, autocomplete: "RaisonSociale", class:"form-control", id:"fullname", placeholder:"Raison sociale" %>
+    <%= form.text_field :raison_sociale, autofocus: true, autocomplete: "RaisonSociale", class:"form-control formIpad", id:"fullname", placeholder:"Raison sociale" %>
 
   </div>
 
   <div class="form-group">
 
-    <%= form.text_field :siren, autofocus: true, autocomplete: "Siren", class:"form-control", id:"fullname", placeholder:"Siren" %>
+    <%= form.text_field :siren, autofocus: true, autocomplete: "Siren", class:"form-control formIpad", id:"fullname", placeholder:"Siren" %>
 
   </div>
 
   <div class="form-group">
-    <%= form.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"fullname", placeholder:"Email",:required => true %>
+    <%= form.email_field :email, autofocus: true, autocomplete: "email", class:"form-control formIpad", id:"fullname", placeholder:"Email",:required => true %>
   </div>
 
   <div class="form-group">
-    <%= form.telephone_field :tel, autofocus: true, autocomplete: "Tel", class:"form-control", id:"fullname", placeholder:"Numéro tél",:required => true %>
+    <%= form.telephone_field :tel, autofocus: true, autocomplete: "Tel", class:"form-control formIpad", id:"fullname", placeholder:"Numéro tél",:required => true %>
   </div>
 
 </div>
@@ -130,25 +187,25 @@
 <div class="col-sm-6">
 
   <div class="form-group">
-    <%= form.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control", id:"fullname", placeholder:"Adresse",:required => true %>
+    <%= form.text_field :adresse, autofocus: true, autocomplete: "Adresse", class:"form-control formIpad", id:"fullname", placeholder:"Adresse",:required => true %>
 
   </div>
 
   <div class="form-group">
-    <%= form.text_field :adresse_complet, autofocus: true, autocomplete: "Complément adresse", class:"form-control", id:"fullname", placeholder:"Complément adresse" %>
+    <%= form.text_field :adresse_complet, autofocus: true, autocomplete: "Complément adresse", class:"form-control formIpad", id:"fullname", placeholder:"Complément adresse" %>
   </div>
 
   <div class="form-group">
-    <%= form.text_field :zip_code, autofocus: true, autocomplete: "zipcode", class:"form-control", id:"fullname", placeholder:"Code Postal",:required => true %>
+    <%= form.text_field :zip_code, autofocus: true, autocomplete: "zipcode", class:"form-control formIpad", id:"fullname", placeholder:"Code Postal",:required => true %>
   </div>
 
   <div class="form-group form-groupp">
-    <%= form.text_field :ville, autofocus: true, autocomplete: "ville", class:"form-control", id:"fullname", placeholder:"Ville",:required => true %>
+    <%= form.text_field :ville, autofocus: true, autocomplete: "ville", class:"form-control formIpad", id:"fullname", placeholder:"Ville",:required => true %>
 
   </div>
 
   <div class="form-group">
-    <%= form.text_field :pays, autofocus: true, autocomplete: "Pays", class:"form-control", id:"fullname", placeholder:"Pays",:required => true %>
+    <%= form.text_field :pays, autofocus: true, autocomplete: "Pays", class:"form-control formIpad", id:"fullname", placeholder:"Pays",:required => true %>
 
   </div>
 
@@ -209,93 +266,107 @@
   <div class="actions">
     <center><%= form.submit "Valider", class:"btn btn-primary btn-block" %></center> </br>
     <center><%= link_to 'Retour', index_prestataires_path, class:"btn btn-primary btn-block" %>
-</center>
+    </center>
   </div>
 </div>
 <% end %>
-    <!-- JAVASCRIPTS -->
-    <script data-turbolinks-track = "reload" src="/plugins/jquery/jquery.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/owl-carousel/owl.carousel.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/isotope/isotope.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/fancybox/jquery.fancybox.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/isotope/isotope-triger.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/smoothscroll/SmoothScroll.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/datepicker/bootstrap-datepicker.min.js"></script>
-    <script data-turbolinks-track = "reload" src="/plugins/syotimer/jquery.syotimer.min.js"></script>
-    
+<!-- JAVASCRIPTS -->
+<script data-turbolinks-track = "reload" src="/plugins/jquery/jquery.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/isotope/isotope.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/fancybox/jquery.fancybox.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/isotope/isotope-triger.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/smoothscroll/SmoothScroll.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/datepicker/bootstrap-datepicker.min.js"></script>
+<script data-turbolinks-track = "reload" src="/plugins/datepicker/bootstrap-datepicker.js"></script>
+
+<script data-turbolinks-track = "reload" src="/plugins/syotimer/jquery.syotimer.min.js"></script>
+
 
 <script>
 
-main();
+  main();
 
-function main(){
-  let countries = document.querySelectorAll('.js-country');
+  function main(){
+    let countries = document.querySelectorAll('.js-country');
 
-  countries.forEach(country => {
-    country.addEventListener('change',showDepartementIfFrance);
-    if(country.dataset.cname == "France" && country.checked == true){
+    countries.forEach(country => {
+      country.addEventListener('change',showDepartementIfFrance);
+      if(country.dataset.cname == "France" && country.checked == true){
+        document.getElementById("js-department-list").classList.remove("hidden")
+      }
+    }); 
+  }
+
+  function showDepartementIfFrance() {
+    let departments = document.querySelectorAll('.js-department');
+    if(this.checked == true && this.dataset.cname == "France"){
       document.getElementById("js-department-list").classList.remove("hidden")
     }
-  }); 
-}
-
-function showDepartementIfFrance() {
-  let departments = document.querySelectorAll('.js-department');
-  if(this.checked == true && this.dataset.cname == "France"){
-    document.getElementById("js-department-list").classList.remove("hidden")
+    if(this.checked == false && this.dataset.cname == "France"){
+      document.getElementById("js-department-list").classList.remove("hidden")
+      document.getElementById("js-department-list").classList.add("hidden")
+      departments.forEach(department => {
+        department.checked = false
+      })
+    }
   }
-  if(this.checked == false && this.dataset.cname == "France"){
-    document.getElementById("js-department-list").classList.remove("hidden")
-    document.getElementById("js-department-list").classList.add("hidden")
-    departments.forEach(department => {
-      department.checked = false
-    })
-  }
-}
 
 
 </script>
 
 <script>
 
-$(".dropdown dt i").on('click', function () {
-          $(".dropdown dd ul").slideToggle('fast');
-      });
+  $(".dropdown dt i").on('click', function () {
+    $(".dropdown dd ul").slideToggle('fast');
+  });
 
-      $(".dropdown dd ul li a").on('click', function () {
-          $(".dropdown dd ul").hide();
-      });
+  $(".dropdown dd ul li a").on('click', function () {
+    $(".dropdown dd ul").hide();
+  });
 
-      function getSelectedValue(id) {
-           return $("#" + id).find("dt a span.value").html();
-      }
+  function getSelectedValue(id) {
+   return $("#" + id).find("dt a span.value").html();
+ }
 
-      $(document).bind('click', function (e) {
-          var $clicked = $(e.target);
-          if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
-      });
+ $(document).bind('click', function (e) {
+  var $clicked = $(e.target);
+  if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+});
 
 
-      $('.mutliSelect input[type="checkbox"]').on('click', function () {
-        
-          var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
-              title = $(this).val() + ",";
-        
-          if ($(this).is(':checked')) {
-              var html = '<span title="' + title + '" class="hidden">' + title + '</span>';
-              $('.multiSel').append(html);
-              /*$(".hida").hide();*/ 
-          } 
-          else {
-              $('span[title="' + title + '"]').remove();
-              var ret = $(".hida");
-              $('.dropdown dt i').append(ret);
-              
-          }
-      });
+ $('.mutliSelect input[type="checkbox"]').on('click', function () {
 
+  var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+  title = $(this).val() + ",";
+
+  if ($(this).is(':checked')) {
+    var html = '<span title="' + title + '" class="hidden">' + title + '</span>';
+    $('.multiSel').append(html);
+    /*$(".hida").hide();*/ 
+  } 
+  else {
+    $('span[title="' + title + '"]').remove();
+    var ret = $(".hida");
+    $('.dropdown dt i').append(ret);
+
+  }
+});
+
+
+</script>
+
+
+
+
+<script>
+  $('#flash').modal('show');
+
+  setTimeout(function() {
+    $('#flash').modal('hide');
+  }, 6000);
 
 </script>

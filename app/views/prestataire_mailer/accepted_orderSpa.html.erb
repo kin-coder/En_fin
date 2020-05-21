@@ -486,9 +486,7 @@
 			/*@editable*/line-height:150% !important;
 		}
 
-}</style>
-                    <script>var w=window;if(w.performance||w.mozPerformance||w.msPerformance||w.webkitPerformance){var d=document;AKSB=w.AKSB||{},AKSB.q=AKSB.q||[],AKSB.mark=AKSB.mark||function(e,_){AKSB.q.push(["mark",e,_||(new Date).getTime()])},AKSB.measure=AKSB.measure||function(e,_,t){AKSB.q.push(["measure",e,_,t||(new Date).getTime()])},AKSB.done=AKSB.done||function(e){AKSB.q.push(["done",e])},AKSB.mark("firstbyte",(new Date).getTime()),AKSB.prof={custid:"405192",ustr:"",originlat:"0",clientrtt:"6",ghostip:"92.123.100.29",ipv6:false,pct:"10",clientip:"90.116.103.142",requestid:"3aa9c199",region:"31260",protocol:"h2",blver:14,akM:"x",akN:"ae",akTT:"O",akTX:"1",akTI:"3aa9c199",ai:"386313",ra:"false",pmgn:"",pmgi:"",pmp:"",qc:""},function(e){var _=d.createElement("script");_.async="async",_.src=e;var t=d.getElementsByTagName("script"),t=t[t.length-1];t.parentNode.insertBefore(_,t)}(("https:"===d.location.protocol?"https:":"http:")+"//ds-aksb-a.akamaihd.net/aksb.min.js")}</script>
-                    </head>
+}</style></head>
     <body>
         <!--*|IF:MC_PREVIEW_TEXT|*-->
         <!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">*|MC_PREVIEW_TEXT|*</span><!--<![endif]-->
@@ -657,9 +655,8 @@
 <div style="text-align: center;">
 <div style="text-align: left;"><span style="color:#000000"><span style="font-size:13px"><strong>Date :<%= @date %> <br>
 <br>
-Heure (modifiable avec le client) :&nbsp;<%= @oService.service_time %><br>
+Heure (modifiable avec le client) :&nbsp; <%= @oService.service_time %><br>
 <br>
-
 Prénom : <%= @order.client.first_name %> <br><br>
 
 Nom : <%= @order.client.last_name %> <br><br>
@@ -668,11 +665,12 @@ Téléphone :	<%= @order.client.tel %> <br><br>
 
 Email : <%= @order.client.email %> <br><br>
 
-Adresse de livraison :  <br>
-&nbsp;&nbsp;&nbsp;- Pays: <%= @order.delivery_pays %> <br>
-&nbsp;&nbsp;&nbsp;- Ville: <%= @order.delivery_ville %> <br>
-&nbsp;&nbsp;&nbsp;- Adresse: <%= @order.delivery_adresse %> <br><br>
+Adresse de livraison : <br>
+&nbsp;&nbsp;&nbsp;-Pays: <%= @order.delivery_pays %> <br>
+&nbsp;&nbsp;&nbsp;-Ville: <%= @order.delivery_ville %> <br>
+&nbsp;&nbsp;&nbsp;-Adresse: <%= @order.delivery_adresse %> <br>
 
+Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe" : @order.praticien %>"</span><br><br>
 <strong>Message perso du client : "<%= @order.message %>"</strong></span></span></div>
 </div>
 </div>
@@ -754,11 +752,11 @@ Adresse de livraison :  <br>
 <div style="text-align: center;">
 <div style="text-align: left;">
 <div style="text-align: left;">
+	<span style="color:#000000">
 <% price = 0.0 %>
 <% acompte = 0.0 %>
+
 <% @order.order_spas.each do |o_spa| %>
-<span style="font-size:13px">
-	<span style="color:#000000">
 	Location spa <%= o_spa.spa.duration %>h :
 	<% if @order.isExceptional? %>
 		<%= o_spa.spa.exceptional_price %>€<br>
@@ -784,24 +782,24 @@ Adresse de livraison :  <br>
 		<li><strong>Type d'installation :</strong> <%= o_spa.installation %></li>
 		<li><strong>Système d'eau :</strong> <%= o_spa.syteme_eau %></li>
 	</ul>
-		</span>
-	</span>
 <% end %>
-</div>
-<span style="font-size:13px">
-<span style="color:#000000">
+
+<br>
+<br>
 <strong>Prix total : <%= price + acompte %>€ </strong><br>
 <strong>Remise code promo : 0€</strong><br>
 <strong>Acompte versé par le client (commission CCSPA) : <%= acompte %>€</strong><br>
 <br>
-<strong>Total restant pour vous :&nbsp;<%= price %>€</strong><br>
+<strong>Total restant pour vous : <%= price %>€</strong><br>
 (à récupérer directement auprès du client et hors frais de déplacement*)<br>
 <br>
-<em>* Les frais de déplacement ne sont pas compris, ils seront à préciser et à récupérer&nbsp;auprès du client directement</em></span></span></div>
+<em>* Les frais de déplacement ne sont pas compris, ils seront à préciser et à récupérer&nbsp;auprès du client directement</em></span>
 </div>
 </div>
 </div>
-									</td>
+</div>
+
+                                    </td>
                                 </tr>
                             </tbody></table>
                         </td>
