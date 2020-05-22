@@ -421,7 +421,6 @@ function code_promo_price(zone){
 	}
 }
 
-
 /*~~~~~~~~~~~~ gerer le modalt pour le choix du pays et date ~~~~~~~~~~~~~~~~~*/
 $("#country-choice").click(function(){
 	var input_dptm = $("#Departement");
@@ -445,9 +444,6 @@ $("#nex-submi-tag").click(function(){
 	}
 });
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ heurs pratitien ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-// mprix augmente: $("#inpdate")
-
 $("#heure-spa").click(function(){
 	let zone = JSON.parse(sessionStorage.getItem("zone"))
 	zone.time_spa = $(this).val()
