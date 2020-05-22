@@ -1105,10 +1105,11 @@ margin-top: -18px;
   }
   .btn-resa{
     position: relative;
-    left: 33%;
+    left: 25%;
     top: 20px;
     font-family: Quicksand, 'Open Sans', sans-serif !important;
     width: 30%;
+    z-index: 1000;
   }
 
   .pays-selected{
@@ -1736,8 +1737,18 @@ max-width: 100px;
         text-align: left;
       }
 
-
+      .btn-resa{
+        position: relative;
+        left: 33% !important;
+        top: 20px;
+        font-family: Quicksand, 'Open Sans', sans-serif !important;
+        width: 30%;
+        z-index: 1000;
+      }
 
     }
 
-
+    .alert-success {
+      overflow: hidden;
+      white-space: initial;
+    }

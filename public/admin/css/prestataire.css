@@ -39,6 +39,9 @@
 	  		font-size: 35px !important;
 	  		top: -2px !important;
 	  	}
+	  	.alertIpad{
+	  		max-width: 1200px !important;
+	  	}
 
 	  }
 
@@ -98,7 +101,7 @@
 	  	.btnPresta{
 	  		position: relative;
 	  		top: 5px;
-	  		left: 70%;
+	  		
 	  		z-index: 100;
 	  	}
 	  	#AjoutNouveau{
@@ -107,6 +110,8 @@
 	  		font-size: 35px;
 	  		top: -2px;
 	  	}
-
+	  	.alertIpad{
+	  		max-width: 570px;
+	  	}
 	  }
 

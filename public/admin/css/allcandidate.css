@@ -29,7 +29,9 @@
 	  	.fixed-table-toolbar{
 	  		max-width: 1200px !important;
 	  	}
-
+	  	.alertIpad{
+	  		max-width: 1200px !important;
+	  	}
 	  }
 
 	  /* Extra small devices (phones, 600px and down) */
@@ -67,5 +69,9 @@
 	  	.innerWrapper .table-responsive {
 	  		overflow-x: scroll;
 	  		width: auto !important;
+	  	}
+
+	  		  	.alertIpad{
+	  		max-width: 570px;
 	  	}
 	  }

@@ -136,7 +136,7 @@ class OrdersController < ApplicationController
       current_order = @order_service.order
       if current_order.order_services.where(status_order:'en cours').empty? && current_order.order_services.where(status_order:'non traitée').empty?
         current_order.update(status_order:'traitée')
-        data_big = {"id":current_order.id,"text":"La commande n°#{current_order.id} a bien été traitée"}
+        data_big = {"id":current_order.id,"text":"La commande n°#{current_order.id} a été bien traitée"}
         # crée un notification
         Notification.create(notif_type:1,data:data_big.to_json)
       end
@@ -505,7 +505,7 @@ class OrdersController < ApplicationController
     # Génère un numéro de transaction aléatoire
     transactionReference = "simu" + rand(100000..999999).to_s
     #Construit l'URL de retour pour récupérer le résultat du paiement sur le site e-commerce du marchand
-    normalReturnUrl = "http://localhost:3000/reservation-prestation/paye-commande"
+    normalReturnUrl = "http://spamandona.herokuapp.com/reservation-prestation/paye-commande"
     # Contruit la requête des données à envoyer à Mercanet
     @data = "amount=#{@amount}|currencyCode=978|merchantId=002001000000001|normalReturnUrl=" + normalReturnUrl + "|transactionReference=" + transactionReference + "|keyVersion=1"
     # Encode en UTF-8 des données à envoyer à Mercanet

@@ -76,9 +76,6 @@ class AdminOrderController < Application2Controller
     end
     if @order.order_services.where(status_order:'en cours').empty? && @order.order_services.where(status_order:'non traitée').empty?
       @order.update(status_order:'traitée')
-      data_big = {"id":@order.id,"text":"La commande n°#{@order.id} a bien été traitée"}
-      # crée un notification
-      Notification.create(notif_type:1,data:data_big.to_json)
     end
     flash[:sucess] = "Le nouveau prestataire a été afecter à la commande"
     redirect_to admin_order_show_path(@order.id)

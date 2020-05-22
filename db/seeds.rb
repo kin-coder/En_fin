@@ -1,3 +1,4 @@
+
 increment = 0
 
 Admin.create(email:'myadmin@gmail.com',password:'myadmin@gmail.com',first_name: "Vincent",last_name: "lae")
@@ -133,27 +134,5 @@ end
 	puts "Code promoe -#{code}"
 	CodePromo.create(code:code,reduction:10)
 end
-
-
-
-
-
-=begin
-	▶ rails g model Massage name:string
-	▶ rails g model MassageType name:string description:text
-	▶ rails g model MassageMassageType
-	▶ rails g model MassageDurationPrice duration:integer exceptional_price:float exceptional_acompte:float ordinary_price:float ordinary_acompte:float
-	▶ rails g model MassageTypeMDurationPrice
-	▶ rails g model SpaAmbiance name:string description:text price:float
-	▶ rails g model SpaSpaAmbiance
-Order.create(prestation_date: "dfsf", billing_pays: "dfsf", billing_ville: "dfsf", billing_code_postal: "dfsf", billing_adresse: "dfsf", billing_adresse_complet: "dfsf", delivery_pays: "dfsf", delivery_ville: "dfsf", delivery_code_postal: "dfsf", delivery_adresse: "dfsf", delivery_adresse_complet: "dfsf", praticien: "dfsf", message: "dfsf", is_validate: false, is_spa: false, is_massage: false, status_order: "en cours", client_id: Client.first.id, country_id: Country.first.id)
-
-tp Order.first.order_massages.first.massage_types = MassageType.find([1,2,3])
-
-
-Order.first.massages
-
-
-=end
 
 
