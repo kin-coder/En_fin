@@ -51,7 +51,7 @@ $("#add-spa").click(function(){
 	});
 	$prestationSpa.find("select").click(function(){
 		if($prestationSpa.find(".input-time-spa:checked").length > 0){
-			refreachListCommandeSpa();
+			refreachListCommandeSpa($prestationSpa);
 		}
 	});
 	$("#select-list-spa").append($prestationSpa);
@@ -78,10 +78,10 @@ function showListTimeAndAmbianceInBascket($input){
 			$parentsGroup.find(".option-spa-list").prop("disabled",true);
 		}
 	}
-	refreachListCommandeSpa();
+	refreachListCommandeSpa($parentsGroup);
 }
 
-function refreachListCommandeSpa(){
+function refreachListCommandeSpa($parentNode = -1){
 	let innerHTML = "";
 	let totalPrice = 0.0;
 	let totalAcompte = 0.0;
@@ -96,11 +96,11 @@ function refreachListCommandeSpa(){
 			a.time = $timeList.val();
 			let price = 0.0;
 			let $ambianceList = $(element).find(".option-spa-list:checked");
-			let ambianceHtml = '';
+			let ambianceHtml = '<li>Ambiance : aucun </li>';
 			if ($ambianceList.length > 0) {
 				price += parseInt($ambianceList.data().price);
 				totalPrice += parseInt($ambianceList.data().price);
-				ambianceHtml = "<li>ambiance: "+ $ambianceList.val() +"</li>";
+				ambianceHtml = "<li>Ambiance : "+ $ambianceList.val() +"</li>";
 				a.ambiance = $ambianceList.val();
 			}
 			// [exceptional_price,exceptional_acompte,ordinary_price,ordinary_acompte]
@@ -113,8 +113,16 @@ function refreachListCommandeSpa(){
 	    		totalPrice += $timeList.data().price[2] - price_promo;
 	    		totalAcompte += $timeList.data().price[3] - price_promo;
 	    	}
-			innerHTML += "<div>Spa <span>"+price+"€</span></div>"+
-					"<ul><li>pour: "+$timeList.val()+"h</li>"+ambianceHtml+"</ul>";
+
+			let ulDom = "<ul id='basket-group-"+index+"-spa' class='hidden'>"
+
+			if (element == $parentNode[0]) {
+				ulDom = "<ul id='basket-group-"+index+"-spa'>"
+			}
+
+			innerHTML += "<div class='basket-group-spa' data-list='"+ index +"'><h3 class='subTitlePanierMsg'><a>LOCATION SPA</a><span> "+price+"€</span></h3></div>" +
+					ulDom + "<li>Pour : "+$timeList.val()+"h</li>"+ambianceHtml+"</ul>";
+
 			let type = [];
 			$(element).find("select").each(function(kndex,glement){
 				type.push($(glement).val());
@@ -124,6 +132,7 @@ function refreachListCommandeSpa(){
 			session_spas.push(a);
 		}
 	});
+
 	sessionStorage.setItem("spas",JSON.stringify(session_spas));
 
 	zone.nbr_spa = count_spa;
@@ -142,6 +151,16 @@ function refreachListCommandeSpa(){
 		$("#totalPriceSpa").addClass("hidden");
 		$(".presta-spa-list").html(innerHTML);
 	}
+
+	$(".basket-group-spa").click(function() {
+		let $this = $("#basket-group-"+$(this).data().list+"-spa");
+		if ($this.hasClass("hidden")){
+			$this.removeClass("hidden");
+		}else{
+			$this.addClass("hidden");
+		}
+	});
+
 	let massagePrice = JSON.parse($(".presta-list")[0].dataset.price);
 	if (massagePrice.length === 2) {
 		totalPrice += massagePrice[0];
@@ -172,8 +191,10 @@ function addGroupLocationSpaInDom(number,$prestationSpa,time="",ambiance="",type
 		if($(element).val() === ambiance){
 			$(element).prop("checked",true);
 		}
-		if (ambiance.length  > 0) {
+		if (time === "") {
 			$(element).prop("disabled",false);
+		}else{
+			console.log("fmldskfjqsdfpoaji azpdfoi")
 		}
 	});
 	$prestationSpa.find('.label-info-spa').each(function(index,element){
@@ -202,8 +223,9 @@ function actualiseValueSpa(session_spas){
 		showListTimeAndAmbianceInBascket($(this));
 	});
 	$("#select-list-spa").find("select").click(function(){
-		if($prestationSpa.find(".input-time-spa:checked").length > 0){
-			refreachListCommandeSpa();
+		let $parentNode = $(this).parents(".prestation-group-spa");
+		if($parentNode.find(".input-time-spa:checked").length > 0){
+			refreachListCommandeSpa($parentNode);
 		}
 	});
 	refreachListCommandeSpa();
