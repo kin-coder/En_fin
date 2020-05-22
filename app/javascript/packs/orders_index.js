@@ -115,7 +115,7 @@ function refreachListCommandeSpa($parentNode = -1){
 	    	}
 
 			let ulDom = "<ul id='basket-group-"+index+"-spa' class='hidden'>"
-			
+
 			if (element == $parentNode[0]) {
 				ulDom = "<ul id='basket-group-"+index+"-spa'>"
 			}
@@ -191,8 +191,10 @@ function addGroupLocationSpaInDom(number,$prestationSpa,time="",ambiance="",type
 		if($(element).val() === ambiance){
 			$(element).prop("checked",true);
 		}
-		if (ambiance.length  > 0) {
+		if (time === "") {
 			$(element).prop("disabled",false);
+		}else{
+			console.log("fmldskfjqsdfpoaji azpdfoi")
 		}
 	});
 	$prestationSpa.find('.label-info-spa').each(function(index,element){
