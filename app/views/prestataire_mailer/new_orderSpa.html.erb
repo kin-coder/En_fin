@@ -746,22 +746,22 @@
 <% @order.order_spas.each do |o_spa| %>
 	Location spa <%= o_spa.spa.duration %>h : 
 	<% if @order.isExceptional? %>
-		<%= o_spa.spa.exceptional_price %>€<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;acompte: <%= o_spa.spa.exceptional_acompte %>€<br>
-		<% price += o_spa.spa.exceptional_price %>
-		<% acompte += o_spa.spa.exceptional_acompte %>
+		<%= o_spa.spa.exceptional_price - @code_promo %>€<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;acompte: <%= o_spa.spa.exceptional_acompte - @code_promo %>€<br>
+		<% price += o_spa.spa.exceptional_price - @code_promo %>
+		<% acompte += o_spa.spa.exceptional_acompte - @code_promo %>
 	<% else %>
-		<%= o_spa.spa.ordinary_price %>€<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;acompte: <%= o_spa.spa.ordinary_acompte %>€<br>
-		<% price += o_spa.spa.ordinary_price %>
-		<% acompte += o_spa.spa.ordinary_acompte %>
+		<%= o_spa.spa.ordinary_price - @code_promo %>€<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;acompte: <%= o_spa.spa.ordinary_acompte - @code_promo %>€<br>
+		<% price += o_spa.spa.ordinary_price - @code_promo %>
+		<% acompte += o_spa.spa.ordinary_acompte - @code_promo %>
 	<% end %>
 	Ambiance:
 	<% if o_spa.product.nil? %>
 		aucun selectionné <br>
 	<% else %>
 		<%= o_spa.product.name %> <%= o_spa.product.price %>€<br>
-		<% acompte += o_spa.product.price %>
+		<% price += o_spa.product.price %>
 	<% end %>
 	<ul>
 		<li><strong>Type de logement :</strong> <%= o_spa.logement %></li>
@@ -772,7 +772,7 @@
 <br>
 
 <strong>Prix total : <%= price + acompte %>€ </strong><br>
-<strong>Remise code promo : 0€</strong><br>
+<strong>Remise code promo : <%= @code_promo %>€</strong><br>
 <strong>Acompte versé par le client (commission CCSPA) : <%= acompte %>€</strong><br>
 <br>
 <strong>Total restant pour vous :&nbsp;<%= price %>€</strong><br>

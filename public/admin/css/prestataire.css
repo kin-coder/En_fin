@@ -1,0 +1,117 @@
+	  <!-- media query -->
+
+
+	  /* Small devices (portrait tablets and large phones, 600px and up) */
+	  @media only screen and (min-width: 600px) {
+	  	.toolBarSelect{
+	  		position: absolute;
+	  		left: 300px;
+	  	}
+
+	  	.search-control{
+	  		position: relative;
+	  		left: 80px;
+	  	}
+	  }
+
+	  /* Large devices (laptops/desktops, 992px and up) */
+	  @media only screen and (min-width: 992px) {
+	  	.toolBarSelect{
+	  		position: absolute !important;
+	  		left: 845px !important;
+	  	}
+
+	  	.search-control{
+	  		position: relative !important;
+	  		left: 622px !important;
+	  	}
+
+
+	  	.btnPresta{
+	  		position: relative;
+	  		top: 45px !important;
+	  		left: 35px !important;
+	  		z-index: 100 !important;
+	  	}
+	  	#AjoutNouveau{
+	  		position: absolute;
+	  		left: -24px !important;
+	  		font-size: 35px !important;
+	  		top: -2px !important;
+	  	}
+	  	.alertIpad{
+	  		max-width: 1200px !important;
+	  	}
+
+	  }
+
+	  /* Extra small devices (phones, 600px and down) */
+	  @media only screen and (max-width: 600px) {
+
+
+	  	.search-control{
+	  		position: relative;
+	  		left: 0px;
+	  		top: 5px;
+	  	}
+	  	#toolbar{
+	  		max-width: 200px;
+	  	}
+	  	.list-inline > li {
+	  		margin-top: 10px;
+	  	}
+	  	.innerWrapper .table-responsive {
+	  		overflow-x: scroll;
+	  		width: auto !important;
+	  	}
+
+	  	.btnPresta{
+	  		position: relative;
+	  		top: 0px !important;
+	  		left: 30px !important;
+	  		z-index: 100 !important;
+	  	}
+	  	#AjoutNouveau{
+	  		position: absolute;
+	  		left: -24px !important;
+	  		font-size: 35px !important;
+	  		top: -2px !important;
+	  	}
+
+	  	.secotionTitle .police_massage span{
+	  		font-size: 35px !important;
+	  	}
+	  }
+	  /* Small devices (portrait tablets and large phones, 600px and up) */
+	  @media only screen and (min-width: 600px) {
+	  	.toolBarSelect{
+	  		position: absolute;
+	  		left: 300px;
+	  	}
+
+	  	.search-control{
+	  		position: relative;
+	  		left: 80px;
+	  	}
+
+	  	.innerWrapper .table-responsive {
+	  		overflow-x: scroll;
+	  		width: auto !important;
+	  	}
+	  	.btnPresta{
+	  		position: relative;
+	  		top: 5px;
+	  		
+	  		z-index: 100;
+	  	}
+	  	#AjoutNouveau{
+	  		position: absolute;
+	  		left: -24px;
+	  		font-size: 35px;
+	  		top: -2px;
+	  	}
+	  	.alertIpad{
+	  		max-width: 570px;
+	  	}
+	  }
+

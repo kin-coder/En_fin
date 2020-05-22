@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'notification/index'
+  get 'notification/show'
   # Lien pour l'authentification du client, Logign, ...
   devise_for :clients, path: 'clients'
   # page pour le profil du client
@@ -46,10 +48,8 @@ Rails.application.routes.draw do
   get "/admin/commande-numero/:id", to:'admin_order#show', as:"admin_order_show"
   #lien pour la modification de commande
   get "/admin/commande-numero/:id/edit", to:'admin_order#edit', as:"admin_order_edit"
-  
   patch "/admin/:name/:order_id/modifier-prestataire/:id", to:"admin_order#afect_prestataire", as:"afect_prestataire_to_order"
   delete "/admin/:name/:order_id/retirer-prestataire/:id", to:"admin_order#delete_prestataire", as:"delete_prestataire_to_order"
-
 #STATIC_PAGE_CONTROLLERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour les page static dans le static_page
   # page d'acceul
@@ -96,4 +96,8 @@ post '/admin/send-email', to:'static_page#save_message', as: "save_message"
   # call back après accepte ou réfus d'une commande
   get "/accepter-une-commande/:os_id/:prestataire_id", to:"orders#acceptOrder", as:"accept_order_prestataires"
   get "/refuser-une-commande/:os_id/:prestataire_id", to:"orders#deniedOrder", as:"denied_order_prestataires"
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+  get "/all/:id/notifications", to:"notification#index", as:"all_notifications"
+  patch "/admin/notification/:id", to:"notification#update", as:"update_notifications"
+  get "/admin/notification_all", to: "notification#update_all", as:"update_all_notifications"
 end

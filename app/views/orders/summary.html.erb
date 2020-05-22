@@ -38,8 +38,8 @@
 												<i>Option :</i> <%= spa["option"][0][0] %> à <%= spa["option"][0][1] %> € <br>
 												<% end %>
 
-												<i>Prix : </i><%= spa["price"][0] %> €<br>
-												<i>Acompte :</i><%= spa["price"][1] %> €<br>
+												<i>Prix : </i><%= spa["price"][0] - @code_promo %> €<br>
+												<i>Acompte :</i><%= spa["price"][1] - @code_promo %> €<br>
 												<div>
 													<i>Date et heure de livraison : </i>le <%= session[:otherInfo]["date"] %> à <%= session[:otherInfo]["heureSpa"] %>
 												</div>
@@ -72,8 +72,8 @@
 											<div class="reservationSpa">
 												<strong style="font-family: Quicksand; text-transform: uppercase;color: black;">Massage pour <%= massage["ca"] %></strong>	<br>
 												<i>Type de massage : </i> <%= massage["su"] %><br>
-												<i>Prix : </i><%= massage["price"][1] %> €<br>
-												<i>Acompte : </i> <%= massage["price"][2] %> €
+												<i>Prix : </i><%= massage["price"][1] - @code_promo %> €<br>
+												<i>Acompte : </i> <%= massage["price"][2] - @code_promo %> €
 											</div>
 											<hr style="">
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_082452) do
+ActiveRecord::Schema.define(version: 2020_05_20_075640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_082452) do
 
   create_table "code_promos", force: :cascade do |t|
     t.string "code"
+    t.float "reduction"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -105,31 +106,47 @@ ActiveRecord::Schema.define(version: 2020_04_14_082452) do
     t.index ["country_id"], name: "index_departments_on_country_id"
   end
 
-  create_table "massage_cas", force: :cascade do |t|
-    t.string "name"
-    t.bigint "service_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["service_id"], name: "index_massage_cas_on_service_id"
-  end
-
-  create_table "massage_su_prices", force: :cascade do |t|
+  create_table "massage_duration_prices", force: :cascade do |t|
     t.integer "duration"
     t.float "exceptional_price"
-    t.float "ordinary_price"
     t.float "exceptional_acompte"
+    t.float "ordinary_price"
     t.float "ordinary_acompte"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "massage_sus", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.bigint "massage_ca_id"
+  create_table "massage_massage_types", force: :cascade do |t|
+    t.bigint "massage_id"
+    t.bigint "massage_type_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["massage_ca_id"], name: "index_massage_sus_on_massage_ca_id"
+    t.index ["massage_id"], name: "index_massage_massage_types_on_massage_id"
+    t.index ["massage_type_id"], name: "index_massage_massage_types_on_massage_type_id"
+  end
+
+  create_table "massage_tmd_prices", force: :cascade do |t|
+    t.bigint "massage_type_id"
+    t.bigint "massage_duration_price_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["massage_duration_price_id"], name: "index_massage_tmd_prices_on_massage_duration_price_id"
+    t.index ["massage_type_id"], name: "index_massage_tmd_prices_on_massage_type_id"
+  end
+
+  create_table "massage_types", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "massages", force: :cascade do |t|
+    t.string "name"
+    t.bigint "service_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["service_id"], name: "index_massages_on_service_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -144,16 +161,31 @@ ActiveRecord::Schema.define(version: 2020_04_14_082452) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "order_massages", force: :cascade do |t|
-    t.bigint "order_id"
-    t.bigint "massage_ca_id"
-    t.bigint "massage_su_id"
-    t.bigint "massage_su_price_id"
+  create_table "notifications", force: :cascade do |t|
+    t.integer "notif_type"
+    t.string "data"
+    t.boolean "is_view", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["massage_ca_id"], name: "index_order_massages_on_massage_ca_id"
-    t.index ["massage_su_id"], name: "index_order_massages_on_massage_su_id"
-    t.index ["massage_su_price_id"], name: "index_order_massages_on_massage_su_price_id"
+  end
+
+  create_table "order_massage_types", force: :cascade do |t|
+    t.bigint "order_massage_id"
+    t.bigint "massage_type_id"
+    t.bigint "massage_duration_price_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["massage_duration_price_id"], name: "index_order_massage_types_on_massage_duration_price_id"
+    t.index ["massage_type_id"], name: "index_order_massage_types_on_massage_type_id"
+    t.index ["order_massage_id"], name: "index_order_massage_types_on_order_massage_id"
+  end
+
+  create_table "order_massages", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "massage_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["massage_id"], name: "index_order_massages_on_massage_id"
     t.index ["order_id"], name: "index_order_massages_on_order_id"
   end
 
@@ -177,11 +209,11 @@ ActiveRecord::Schema.define(version: 2020_04_14_082452) do
     t.string "syteme_eau"
     t.bigint "order_id"
     t.bigint "spa_id"
-    t.bigint "product_id"
+    t.bigint "spa_ambiance_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_spas_on_order_id"
-    t.index ["product_id"], name: "index_order_spas_on_product_id"
+    t.index ["spa_ambiance_id"], name: "index_order_spas_on_spa_ambiance_id"
     t.index ["spa_id"], name: "index_order_spas_on_spa_id"
   end
 
@@ -200,24 +232,19 @@ ActiveRecord::Schema.define(version: 2020_04_14_082452) do
     t.string "praticien"
     t.text "message"
     t.boolean "is_validate", default: false
+    t.boolean "is_spa", default: false
+    t.boolean "is_massage", default: false
     t.string "status_order", default: "en cours"
     t.bigint "client_id"
     t.bigint "department_id"
     t.bigint "country_id"
+    t.bigint "code_promo_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["code_promo_id"], name: "index_orders_on_code_promo_id"
     t.index ["country_id"], name: "index_orders_on_country_id"
     t.index ["department_id"], name: "index_orders_on_department_id"
-  end
-
-  create_table "other_su_prices", force: :cascade do |t|
-    t.bigint "massage_su_id"
-    t.bigint "massage_su_price_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["massage_su_id"], name: "index_other_su_prices_on_massage_su_id"
-    t.index ["massage_su_price_id"], name: "index_other_su_prices_on_massage_su_price_id"
   end
 
   create_table "prestataire_countries", force: :cascade do |t|
@@ -280,7 +307,6 @@ ActiveRecord::Schema.define(version: 2020_04_14_082452) do
     t.string "name"
     t.text "description"
     t.float "price"
-    t.boolean "is_option_spa", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -307,6 +333,23 @@ ActiveRecord::Schema.define(version: 2020_04_14_082452) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "spa_ambiances", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.float "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "spa_spa_ambiances", force: :cascade do |t|
+    t.bigint "spa_id"
+    t.bigint "spa_ambiance_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["spa_ambiance_id"], name: "index_spa_spa_ambiances_on_spa_ambiance_id"
+    t.index ["spa_id"], name: "index_spa_spa_ambiances_on_spa_id"
   end
 
   create_table "spas", force: :cascade do |t|

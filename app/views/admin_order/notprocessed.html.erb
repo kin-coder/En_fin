@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<link href="/css/echec.css" rel="stylesheet">
+	<link href="/admin/css/commande-index.css" rel="stylesheet">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -70,18 +71,6 @@
 
 </style>
 
-<style>
-	.toolBarSelect{
-		position: absolute;
-		left: 858px;
-	}
-
-	.search-control{
-		position: relative;
-		left: 635px;
-	}
-
-</style>
 </head>
 
 <body>
@@ -140,7 +129,7 @@
 								<th>Montant</th>
 								<th data-field="zip_code" data-filter-control="input">Code Postal</th>
 
-
+								<th>Type de service</th>
 								<th class="actionTableAdmin" data-field="note"> <center style="line-height: 35px;">Actions
 								</center>  
 							</th>
@@ -173,6 +162,14 @@
 							<td><%= order.client.first_name %> <%= order.client.last_name %></td>
 							<td><%= prixAcompte[0]+prixAcompte[1] %> €</td>
 							<td><%= order.client.zip_code %></td>
+
+							<td>
+								<% order.services.each do |service|%>
+								<li> <%= service.name %> </li>
+								<% end %>
+
+							</td>
+
 							<td><a href="<%= admin_order_show_path(order.id) %>" class="btn btn-default">Afficher</a></td>
 						</tr>
 						<% end %>
@@ -187,7 +184,7 @@
 	<div class="confirmation">
 		<div class="container">
 
-			<div class="alert alert-info alert-common alert-dismissible" role="alert">
+			<div class="alert alert-info alert-common alert-dismissible alertIpad" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true"></span>
 				</button>

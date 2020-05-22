@@ -504,7 +504,7 @@
       border-top: 2px solid #eee !important;
     }
 
-    #spa-input{
+    #select-list-spa{
       letter-spacing: 2px;
     }
 
@@ -583,7 +583,7 @@
 
 
 
-   .label-spa {
+   .label-time-spa {
     display: inline-block;
     max-width: 100%;
     margin-bottom: 0px;
@@ -778,7 +778,7 @@ margin-top: -18px;
 }
 
 
-#spa-price-total, #massage-price-total, #cadeau-price-total{
+#totalPriceSpa, #totalPriceMassage{
   color: black;
 }
 
@@ -1105,10 +1105,11 @@ margin-top: -18px;
   }
   .btn-resa{
     position: relative;
-    left: 33%;
+    left: 25%;
     top: 20px;
     font-family: Quicksand, 'Open Sans', sans-serif !important;
     width: 30%;
+    z-index: 1000;
   }
 
   .pays-selected{
@@ -1498,7 +1499,7 @@ max-width: 100px;
     position: relative;
     left: 0px !important;
   }
-  .spa-list-prestations{
+  .prestation-group-spa{
     max-height: 380px;
   }
 
@@ -1597,7 +1598,7 @@ max-width: 100px;
       text-align: left;
 
     }
-    #spa-order, #massage-order, #cadeau-order{
+    #spa-order, #massage-order{
       margin-bottom: 25px;
       max-width: 100%;
     }
@@ -1736,8 +1737,18 @@ max-width: 100px;
         text-align: left;
       }
 
-
+      .btn-resa{
+        position: relative;
+        left: 33% !important;
+        top: 20px;
+        font-family: Quicksand, 'Open Sans', sans-serif !important;
+        width: 30%;
+        z-index: 1000;
+      }
 
     }
 
-
+    .alert-success {
+      overflow: hidden;
+      white-space: initial;
+    }

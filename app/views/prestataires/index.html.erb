@@ -5,7 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link href="/css/echec.css" rel="stylesheet">
+  <link href="/css/echec.css" rel="stylesheet">
+  <link href="/admin/css/prestataire.css" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -23,31 +24,6 @@
   <!-- Custom scripts for load all pages-->
   <script src="/admin/js/reload-page.js"></script>
 
-  <style>
-    .toolBarSelect{
-      position: absolute;
-      left: 845px;
-    }
-
-    .search-control{
-      position: relative;
-      left: 622px;
-    }
-
-    .btnPresta{
-      position: relative;
-      top: 45px;
-      left: 35px;
-      z-index: 100;
-    }
-    #AjoutNouveau{
-      position: absolute;
-      left: -24px;
-      font-size: 35px;
-      top: -2px;
-    }
-  </style>
-
 </head>
 
 <body>
@@ -57,7 +33,7 @@
     <div class="secotionTitle">
       <h2 id="service" class="poli1 police_massage"><span>PRESTATAIRES</span></h2>
     </div>
-<% unless  @prestataires.empty? %>
+    <% unless  @prestataires.empty? %>
     <div>
       <a href="<%= new_prestataires_path %>" class="btn btn-default btnPresta"> <i class="fas fa-plus-circle" id="AjoutNouveau"></i> Ajout prestataire </a>
     </div>
@@ -72,100 +48,113 @@
       </div>
     </div>
 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="innerWrapper">
-      <div class="table-responsive">
-        <table id="table" 
-        data-toggle="table"
-        data-filter-control="true" 
-        data-show-export="true"
-        data-click-to-select="true"
-        data-toolbar="#toolbar"
-        class="table-responsive"
-        style="">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="innerWrapper">
+          <div class="table-responsive">
+            <table id="table" 
+            data-toggle="table"
+            data-filter-control="true" 
+            data-show-export="true"
+            data-click-to-select="true"
+            data-toolbar="#toolbar"
+            class="table-responsive"
+            style="">
 
 
-        <thead>
+            <thead>
 
-          <tr>
-            <th data-field="state" data-checkbox="true"></th>
-            <th data-field="nom" data-filter-control="input" data-sortable="true">Nom</th>
-            <th data-field="prenom" data-filter-control="input" data-sortable="true">Prénom</th>
-            <th data-field="sexe" data-filter-control="select" data-sortable="true">Sexe</th>
-            <th data-field="email" class="hidden">Email</th>
-            <th>Tel</th>
-            <th data-field="zip_code" data-filter-control="input">Code Postal</th>
-            <th data-field="activite" data-filter-control="input" data-sortable="true">Activité</th>
-            <th data-field="zone" data-filter-control="input" data-sortable="true" style="max-width: 20px;">Zone d'activité</th>
-            <th class="actionTableAdmin" data-field="note"> <center style="line-height: 35px;">Actions <br>     <%= link_to '<i class="fas fa-plus" title="Ajouter"></i>'.html_safe,  new_prestataires_path, title:"Ajouter", class:"btn btn-default"%>
-            </center>  
-          </th>
-        </tr>
-      </thead>
-
-
-      <tbody id="myTable">
-        <% @prestataires.each do |prestataire| %>
-        <tr>
-          <td class="bs-checkbox "><input data-index="<%= prestataire.id %>" name="btSelectItem" type="checkbox"></td>
-          <td><%= prestataire.last_name %></td>
-          <td><%= prestataire.first_name %></td>
-          <td><%= prestataire.sexe %></td>
-          <td class="hidden"><%= prestataire.email %></td>
-          <td><%= prestataire.tel %></td>
-          <td><%= prestataire.zip_code %></td>
-          <td><% prestataire.services.each do |service| %>
-            <%= service.name %> <br>
-            <% end %>
-
-          </td>
-
-          <td>
-
-            <% prestataire.countries.each do |serviceZone| %>
-            <%= serviceZone.name %><br>
-            <% end %>
-
-          </td>
-          <td>
-            <a href="<%=show_prestataires_path(prestataire.id)%>" class="btn btn-default" title="Afficher"><i class="far fa-eye" data-method="GET"></i></a> 
-            <a href="<%=edit_prestataires_path(prestataire.id)%>" class="btn btn-default" title="Editer"><i class="fas fa-user-edit"></i></a> 
-            <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_prestataires_path(prestataire.id), method: :delete, data: { confirm: 'Etes vous sur?' }, title:"Supprimer",class:"btn btn-default" %></td>
-
-          </tr>
-
-          <% end %>
+              <tr>
+                <th data-field="state" data-checkbox="true"></th>
+                <th data-field="nom" data-filter-control="input" data-sortable="true">Nom</th>
+                <th data-field="prenom" data-filter-control="input" data-sortable="true">Prénom</th>
+                <th data-field="sexe" data-filter-control="select" data-sortable="true">Sexe</th>
+                <th data-field="email" class="">Email</th>
+                <th>Tel</th>
+                <th data-field="zip_code" data-filter-control="input">Code Postal</th>
+                <th data-field="activite" data-filter-control="input" data-sortable="true">Activité</th>
+                <th data-field="zone" data-filter-control="input" data-sortable="true" style="max-width: 20px;">Zone d'activité</th>
+                <th class="actionTableAdmin" data-field="note"> <center style="line-height: 35px;">Actions <br>     <%= link_to '<i class="fas fa-plus" title="Ajouter"></i>'.html_safe,  new_prestataires_path, title:"Ajouter", class:"btn btn-default"%>
+                </center>  
+              </th>
+            </tr>
+          </thead>
 
 
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+          <tbody id="myTable">
+            <% @prestataires.each do |prestataire| %>
+            <tr>
+              <td class="bs-checkbox "><input data-index="<%= prestataire.id %>" name="btSelectItem" type="checkbox"></td>
+              <td><%= prestataire.last_name %></td>
+              <td><%= prestataire.first_name %></td>
+              <td><%= prestataire.sexe %></td>
+              <td class=""><%= prestataire.email %></td>
+              <td><%= prestataire.tel %></td>
+              <td><%= prestataire.zip_code %></td>
+              <td><% prestataire.services.each do |service| %>
+                <%= service.name %> <br>
+                <% end %>
 
-<% else %>
-  <div class="confirmation">
-    <div class="container">
+              </td>
 
-      <div class="alert alert-info alert-common alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true"></span>
-        </button>
-        <center><i class="fa fa-info-circle" aria-hidden="true"></i>
-          <span>Aucun prestataire enregistré pour l'instant</span></center>
+              <td>
+
+                <% prestataire.countries.each do |serviceZone| %>
+                <% if  serviceZone.name == "France" %>
+
+                <li> <%= serviceZone.name %> : </li>
+                <% prestataire.departments.each do |departement| %>
+                <%= departement.name %>,
+                <% end %>
+                <% else %>
+                
+                <li><%= serviceZone.name %></li> 
+
+
+                <% end %>
+
+
+                <% end %>
+
+              </td>
+              <td>
+                <a href="<%=show_prestataires_path(prestataire.id)%>" class="btn btn-default" title="Afficher"><i class="far fa-eye" data-method="GET"></i></a> 
+                <a href="<%=edit_prestataires_path(prestataire.id)%>" class="btn btn-default" title="Editer"><i class="fas fa-user-edit"></i></a> 
+                <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_prestataires_path(prestataire.id), method: :delete, data: { confirm: 'Etes vous sur?' }, title:"Supprimer",class:"btn btn-default" %></td>
+
+              </tr>
+
+              <% end %>
+
+
+            </tbody>
+          </table>
         </div>
-
       </div>
     </div>
-    
-   <center><div>
-      <a href="<%= new_prestataires_path %>" class="btn btn-default btnPresta"> <i class="fas fa-plus-circle" id="AjoutNouveau"></i> Ajout prestataire </a>
 
-    </div></center>
-    <% end %>
-</section>
-<script>
+    <% else %>
+    <div class="confirmation">
+      <div class="container">
+
+        <div class="alert alert-info alert-common alert-dismissible alertIpad" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
+          <center><i class="fa fa-info-circle" aria-hidden="true"></i>
+            <span>Aucun prestataire enregistré pour l'instant</span></center>
+          </div>
+
+        </div>
+      </div>
+
+      <center><div>
+        <a href="<%= new_prestataires_path %>" class="btn btn-default btnPresta"> <i class="fas fa-plus-circle" id="AjoutNouveau"></i> Ajout prestataire </a>
+
+      </div></center>
+      <% end %>
+    </section>
+    <script>
 //exporte les données sélectionnées
 var $table = $('#table');
 

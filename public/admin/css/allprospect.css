@@ -1,0 +1,93 @@
+	  <!-- media query -->
+
+
+	}
+
+	@media only screen and (max-width: 600px) {
+		#toolbar{
+			min-width: 320px;
+		}
+	}
+	/* Small devices (portrait tablets and large phones, 600px and up) */
+	@media only screen and (min-width: 600px) {
+		.toolBarSelect{
+			position: absolute;
+			left: 300px;
+		}
+
+		.search-control{
+			position: relative;
+			left: 80px;
+		}
+
+
+
+	}	
+
+	/* Large devices (laptops/desktops, 992px and up) */
+	@media only screen and (min-width: 992px) {
+
+		.toolBarSelect{
+			position: absolute;
+			left: 845px;
+		}
+
+		.search-control{
+			position: relative;
+			left: 620px;
+		}
+		.btnPresta{
+			position: relative;
+			top: 45px;
+			left: 5px;
+			z-index: 100;
+		}
+		#AjoutNouveau{
+			position: absolute;
+			left: -24px;
+			font-size: 35px;
+			top: -2px;
+		}
+
+		.squareBtn, .fullRoundBtn, .roundBtn {
+
+			margin: 0 0 30px 0;
+			margin-left: 0px;
+
+			position: absolute;
+			left: 430px;
+			top: 11px;
+			z-index: 100;
+
+		}
+
+		.table-responsive {
+			display: table;
+			width: 100%;
+			overflow-x: auto;
+			-webkit-overflow-scrolling: touch;
+		}
+
+
+		.TableAll{
+			min-width: 1180px !important;
+		}
+
+	}
+
+
+	@media only screen and (max-width: 600px) {
+
+		.secotionTitle .police_massage span{
+			font-size: 24px !important;
+		}
+	}
+
+	@media only screen and (max-width: 365px) {
+		.export{
+			max-width: 60px;
+		}
+		.secotionTitle .police_massage span{
+			font-size: 24px !important;
+		}
+	}

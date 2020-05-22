@@ -1,4 +1,120 @@
 class OrdersController < ApplicationController
+# ~~~~~~~Accepter une commande par emails~~~~~~~~~~~
+  def acceptOrder
+  end
+
+  def deniedOrder
+  end
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  def zone
+    @country = params[:country]
+    @department = params[:department]
+    @date = params[:date]
+    @error = ""
+    @services = []
+    results = validate_country_department_date(@country,@department,@date)
+    if results[0]
+      @country = results[1]
+      @department = results[2]
+      if results[2] === ""
+        @country.services.each do |s|
+           @services.push(s.name)
+        end
+      else
+        @department.services.each do |s|
+          @services.push(s.name)
+        end
+      end
+    else
+      @error = "Une errerur est survernue"
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  def code_promo
+    parameters = params.permit(:code)
+    @test = false
+    @code = CodePromo.all.find_by(code:parameters[:code])
+    @code_value = ["",0]
+    if @code
+      @code_value[0] = @code.code
+      @code_value[1] = @code.reduction
+      @test = true
+    end
+    respond_to do |format|
+       format.js
+    end
+  end
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  def index
+    @countries = Country.all
+    @departments = Department.all
+    @massagesDuration = MassageDurationPrice.all
+    @spas = Spa.all
+    @spa_ambiances = SpaAmbiance.all
+    @massageTypes = MassageType.all
+  end
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  def saveSession
+    puts "================"*4
+    puts params.inspect
+    puts "================"*4
+  end
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  def delivery
+  end
+
+  def saveDelivery
+  end
+
+  # 3 Affiche la recapitulatif de commande
+  def summary
+  end
+
+  # 4 Le Payement
+  def payment
+  end
+
+  def payedsuccess
+  end
+
+  def payederrors
+  end
+
+  private
+
+  def validate_country_department_date(country,department,date)
+    services = []
+    country = Country.find_by(name:country)
+    if country
+      if country.name == "France"
+        department = Department.find_by(name:department)
+        unless department
+          return [false]
+        end
+      else
+        department = ""
+      end
+    else
+      return [false]
+    end
+    if date
+      unless @date[2] == "/" && @date[5] == "/" && @date.length == 10
+        return [false]
+      end
+    else
+      return [false]
+    end
+    return [true,country,department]
+  end
+end
+
+
+=begin
+
+class OrdersController < ApplicationController
   protect_from_forgery except: :payment
   before_action :validate_session, only: [:delivery,:saveDelivery,:summary,:payment]
   before_action :validate_value_in_session, only: [:summary,:payment]
@@ -20,6 +136,9 @@ class OrdersController < ApplicationController
       current_order = @order_service.order
       if current_order.order_services.where(status_order:'en cours').empty? && current_order.order_services.where(status_order:'non traitée').empty?
         current_order.update(status_order:'traitée')
+        data_big = {"id":current_order.id,"text":"La commande n°#{current_order.id} a été bien traitée"}
+        # crée un notification
+        Notification.create(notif_type:1,data:data_big.to_json)
       end
       case @order_service.service.name
         when "Location spa"
@@ -130,28 +249,12 @@ class OrdersController < ApplicationController
       @error = "Veuillez choisir un pays" #erreur
       #redirect_back(fallback_location: root_path)
     end
-
     respond_to do |format|
       format.js
     end
-
   end
 
-  
-  def code_promo
-    parameters = params.permit(:code)
-    @code = parameters[:code]
-    @test = false
-    if CodePromo.all.find_by(code:@code)
-      @test = true
-      session[:otherInfo]["code_promo"] = @code
-    else
-      session[:otherInfo]["code_promo"] = ""
-    end
-    respond_to do |format|
-       format.js
-    end
-  end
+
   # 1/2 Selection des prestation
   def index
     @countries = Country.all
@@ -198,7 +301,7 @@ class OrdersController < ApplicationController
     isError = false
 
     # gestion de l'heurs pour les prixs MM-DD 
-    exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+    exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
     current_date = session[:otherInfo]["date"].split("/")
 
     if timeSpas
@@ -323,7 +426,12 @@ class OrdersController < ApplicationController
   end
 
   def saveDelivery
-    emptyIsInclude = params[:adresseL]=="" || params[:complAdresseL]=="" || params[:codePostaL]=="" || params[:villeL]=="" || params[:adresseF]=="" || params[:complAdresseF]=="" || params[:codePostaF]=="" || params[:villeF] =="" || params[:message]=="" || params[:countryL]=="" || params[:countryF]=="" || params[:countryL]==nil || params[:countryF]==nil
+    emptyIsInclude = params[:adresseL]=="" || params[:codePostaL]=="" || params[:villeL]=="" || params[:adresseF]=="" || params[:codePostaF]=="" || params[:villeF] =="" || params[:countryL]=="" || params[:countryF]=="" || params[:countryL]==nil || params[:countryF]==nil
+    
+    puts "======"*3
+    puts params.inspect
+    puts "======"*3
+
     if emptyIsInclude
       redirect_back(fallback_location: root_path)
     else
@@ -345,6 +453,14 @@ class OrdersController < ApplicationController
       @order.department = Department.find_by(name:session[:otherInfo]["department"])
       @order.country = Country.find_by(name:session[:otherInfo]["pays"])
       @order.save
+
+      code = session[:otherInfo]["code_promo"]
+      if code
+        if code.length == 2
+          @order.code_promo = CodePromo.find_by_code(session[:otherInfo]["code_promo"][0])
+        end
+      end
+
       myPrestation = session[:myPrestation]
       unless myPrestation["spa"].empty?
         mailToOrderServiceSpa = OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: session[:otherInfo]["heureSpa"])
@@ -376,12 +492,20 @@ class OrdersController < ApplicationController
 
   # 3 Affiche la recapitulatif de commande
   def summary
+    @code_promo = 0
+    code = session[:otherInfo]["code_promo"]
+    if code
+      if code.length == 2
+        @code_promo = code[1]
+      end
+    end
+
     @order = current_client.orders.order('id ASC').last
     @amount = (@totalAcompte*100).to_i
     # Génère un numéro de transaction aléatoire
     transactionReference = "simu" + rand(100000..999999).to_s
     #Construit l'URL de retour pour récupérer le résultat du paiement sur le site e-commerce du marchand
-    normalReturnUrl = "http://localhost:3000/reservation-prestation/paye-commande"
+    normalReturnUrl = "http://spamandona.herokuapp.com/reservation-prestation/paye-commande"
     # Contruit la requête des données à envoyer à Mercanet
     @data = "amount=#{@amount}|currencyCode=978|merchantId=002001000000001|normalReturnUrl=" + normalReturnUrl + "|transactionReference=" + transactionReference + "|keyVersion=1"
     # Encode en UTF-8 des données à envoyer à Mercanet
@@ -474,6 +598,13 @@ class OrdersController < ApplicationController
 
   def validate_value_in_session
     exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+    @code_promo = 0
+    code = session[:otherInfo]["code_promo"]
+    if code
+      if code.length == 2
+        @code_promo = code[1]
+      end
+    end
     current_date = session[:otherInfo]["date"].split("/")
     isExeptional = false #[curent_Spa.ordinary_price,curent_Spa.ordinary_acompte]
     if exceptionalDate.include?(current_date[0..1])
@@ -489,11 +620,11 @@ class OrdersController < ApplicationController
           redirect_reservation
         else
           if isExeptional
-            @totalPrice += current_spa.exceptional_price
-            @totalAcompte += current_spa.exceptional_acompte
+            @totalPrice += current_spa.exceptional_price - @code_promo
+            @totalAcompte += current_spa.exceptional_acompte - @code_promo
           else
-            @totalPrice += current_spa.ordinary_price
-            @totalAcompte += current_spa.ordinary_acompte
+            @totalPrice += current_spa.ordinary_price - @code_promo
+            @totalAcompte += current_spa.ordinary_acompte - @code_promo
           end
         end
         if spa["option"]
@@ -501,7 +632,7 @@ class OrdersController < ApplicationController
           unless current_product
             redirect_reservation
           else
-            @totalAcompte += current_product.price
+            @totalPrice += current_product.price
           end
         end
       end
@@ -526,11 +657,11 @@ class OrdersController < ApplicationController
           redirect_reservation
         else
           if isExeptional
-            @totalPrice += current_prix.exceptional_price
-            @totalAcompte += current_prix.exceptional_acompte
+            @totalPrice += current_prix.exceptional_price - @code_promo
+            @totalAcompte += current_prix.exceptional_acompte - @code_promo
           else
-            @totalPrice += current_prix.ordinary_price
-            @totalAcompte += current_prix.ordinary_acompte
+            @totalPrice += current_prix.ordinary_price - @code_promo
+            @totalAcompte += current_prix.ordinary_acompte - @code_promo
           end
         end
       end
@@ -543,3 +674,4 @@ class OrdersController < ApplicationController
     end
   end
 end
+=end

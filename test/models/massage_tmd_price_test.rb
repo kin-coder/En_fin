@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MassageSuPriceTest < ActiveSupport::TestCase
+class MassageTmdPriceTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
