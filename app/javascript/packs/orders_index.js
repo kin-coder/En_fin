@@ -88,6 +88,7 @@ function refreachListCommandeSpa(){
 	let session_spas = [];
 	let zone = JSON.parse(sessionStorage.getItem("zone"))
 	let price_promo = code_promo_price(zone)
+	let count_spa = 0
 	$(".prestation-group-spa").each(function(index,element){
 		let $timeList = $(element).find(".input-time-spa:checked");
 		let a = {};
@@ -119,10 +120,19 @@ function refreachListCommandeSpa(){
 				type.push($(glement).val());
 			});
 			a.type = type;
+			count_spa += 1
 			session_spas.push(a);
 		}
 	});
 	sessionStorage.setItem("spas",JSON.stringify(session_spas));
+
+	zone.nbr_spa = count_spa;
+	zone.price_spa = totalPrice + totalAcompte;
+	
+	$("#number-cart-ok").html(zone.nbr_spa + zone.nbr_massage)
+
+	sessionStorage.setItem("zone",JSON.stringify(zone));
+
 	$(".presta-spa-list")[0].dataset.price = "["+totalPrice+","+totalAcompte+"]";
 	if (innerHTML.length > 0){
 		$(".presta-spa-list").html(innerHTML);
@@ -288,6 +298,7 @@ function refreachListCommande(arrayIndex = "") {
 	let totalPrice = 0.0;
 	let zone = JSON.parse(sessionStorage.getItem("zone"))
 	let price_promo = code_promo_price(zone)
+	let count_massage = 0
 	$('.prestation-group').each(function(index,element){
 		$inputList= $(element).find("input:checked");
 		if ($inputList.length > 0) {
@@ -312,8 +323,15 @@ function refreachListCommande(arrayIndex = "") {
 		    });
 		    ul += '</ul>';
 		    innerHTML += '<div class="showOnClick" data-list="basket-group-'+ index +'">'+'<h3 class="subTitlePanierMsg"><a>'+ $(element).data().title+'</a>'+' <span>'+ price + '€</span></h3>'+ '</div>'+ ul;
+	    	count_massage += 1
 	    }
 	});
+	zone.nbr_massage = count_massage;
+	zone.price_massage = totalPrice + totalAcompte;
+	
+	$("#number-cart-ok").html(zone.nbr_spa + zone.nbr_massage)
+
+	sessionStorage.setItem("zone",JSON.stringify(zone));
 	$(".presta-list")[0].dataset.price = "["+totalPrice+","+totalAcompte+"]";
 	let spaPrice = JSON.parse($(".presta-spa-list")[0].dataset.price);
 	if (spaPrice.length === 2) {

@@ -25,6 +25,10 @@ function editSessionAndDomValue(){
 	zone.country = "<%= @country.name %>"
 	zone.date = "<%= @date %>"
 	zone.services = ["<%= @services[0] %>","<%= @services[1] %>"]
+	zone.nbr_spa = 0
+	zone.price_spa = 0
+	zone.nbr_massage = 0
+	zone.price_massage = 0
 	let nameDepart = ""
 	<% if @department != "" %>
 		$("#inpdepartment").val("<%= @department.name %>");
