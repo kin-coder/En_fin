@@ -51,7 +51,7 @@ $("#add-spa").click(function(){
 	});
 	$prestationSpa.find("select").click(function(){
 		if($prestationSpa.find(".input-time-spa:checked").length > 0){
-			refreachListCommandeSpa();
+			refreachListCommandeSpa($prestationSpa);
 		}
 	});
 	$("#select-list-spa").append($prestationSpa);
@@ -78,7 +78,7 @@ function showListTimeAndAmbianceInBascket($input){
 			$parentsGroup.find(".option-spa-list").prop("disabled",true);
 		}
 	}
-	refreachListCommandeSpa();
+	refreachListCommandeSpa($parentsGroup);
 }
 
 function refreachListCommandeSpa($parentNode = -1){
@@ -113,8 +113,16 @@ function refreachListCommandeSpa($parentNode = -1){
 	    		totalPrice += $timeList.data().price[2] - price_promo;
 	    		totalAcompte += $timeList.data().price[3] - price_promo;
 	    	}
-			innerHTML += "<div class='basket-group-spa' data-list='"+ index +"'><h3 class='subTitlePanierMsg'><a>LOCATION SPA</a><span> "+price+"€</span></h3></div>"+
-					"<ul id='basket-group-"+index+"-spa'><li>Pour : "+$timeList.val()+"h</li>"+ambianceHtml+"</ul>";
+
+			let ulDom = "<ul id='basket-group-"+index+"-spa' class='hidden'>"
+			
+			if (element == $parentNode[0]) {
+				ulDom = "<ul id='basket-group-"+index+"-spa'>"
+			}
+
+			innerHTML += "<div class='basket-group-spa' data-list='"+ index +"'><h3 class='subTitlePanierMsg'><a>LOCATION SPA</a><span> "+price+"€</span></h3></div>" +
+					ulDom + "<li>Pour : "+$timeList.val()+"h</li>"+ambianceHtml+"</ul>";
+
 			let type = [];
 			$(element).find("select").each(function(kndex,glement){
 				type.push($(glement).val());
@@ -213,8 +221,9 @@ function actualiseValueSpa(session_spas){
 		showListTimeAndAmbianceInBascket($(this));
 	});
 	$("#select-list-spa").find("select").click(function(){
-		if($prestationSpa.find(".input-time-spa:checked").length > 0){
-			refreachListCommandeSpa();
+		let $parentNode = $(this).parents(".prestation-group-spa");
+		if($parentNode.find(".input-time-spa:checked").length > 0){
+			refreachListCommandeSpa($parentNode);
 		}
 	});
 	refreachListCommandeSpa();
