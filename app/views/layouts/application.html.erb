@@ -402,18 +402,12 @@
         <!-- end modal header-->
         <!-- modal body -->
         <div class="modal-body">
-
-          <div id="cart-inner-ok" class="hidden">
+          <div id="cart-inner-ok">
             <div class="row">
               <div class="col-sm-6 smleft">
                 <div class="prest">
                   <h4>Prestations</h4>
                   <div id="cart-inner-prestation">
-                  </div>
-                </div>
-                <div class="hidden">
-                  <h4>Produits</h4>
-                  <div id="cart-inner-produit">
                   </div>
                 </div>
                 <div>
@@ -428,13 +422,7 @@
                 </div>
               </div>
             </div>
-            
-
           </div>
-
-
-
-          
         </div>
         <!-- end modal body -->
         <!-- modal footer-->
@@ -473,16 +461,10 @@
 <script data-turbolinks-track = "reload" src="/js/custom.js"></script>
 
 <script>
-  	//paste this code under head tag or in a seperate js file.
-  	// Wait for window load
-  	$(window).load(function() {
-  		// Animate loader off screen
-  		$(".se-pre-con").fadeOut("slow");;
-  	});
-  </script>
-  <%= javascript_pack_tag 'buttons-prestation.js' %>
-
+	$(window).load(function() {
+		$(".se-pre-con").fadeOut("slow");;
+	});
+</script>
+<%= javascript_pack_tag 'buttons-prestation.js' %>
 </body>
-
 </html>
-
