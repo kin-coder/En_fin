@@ -7,11 +7,11 @@
 <% end %>
 
 <div class="container" id="container-principale">
+<!-- --------------------- MODAL SET ZONE ------------------------- -->
 	<div id="overlay">
 		<div id="text">
 			<div class="set-zones">
 				<div class="alert alert-danger hidden" role="alert" id="errorInZone">
-					
 				</div>
 				<h2 style="color:white;" class="titregeog">Je choisis ma zone géographique </h2>
 
@@ -37,7 +37,6 @@
 				</div>
 
 				<div class="dateSelect form-half form-left select-date">
-					
 					<label class="labelle" for="Date">Date</label>
 					<div class="input-group date ed-datepicker filterDate input-calendar" data-provide="datepicker">
 						<input type="text" name="date" id="Date" placeholder="JJ/MM/AAAA" class="form-control" required>
@@ -46,6 +45,7 @@
 						</div>
 					</div>
 				</div>
+
 				<div >
 					<%= submit_tag("Je valide", class:"je-valide")%>	
 				</div>
@@ -54,10 +54,8 @@
 		</div>
 	</div>
 
-<!-- ============================================================================ -->
-<!-- ATAO MODAL AM'LE + DE PRESTATION NA MASSAGE ITO -->
-
-	<div id="pushMassage2" class="modal fade modalCommon addId" role="dialog" tabindex="-1">
+<!--  ---------------------------- MODAL MASSAGE --------------------------  -->
+	<div id="pushMassage2" class="modal fade modalCommon" role="dialog" tabindex="-1">
 		<div class="modal-dialog">
 			<!-- MODAL CONTENT-->
 			<div class="modal-content">
@@ -75,17 +73,9 @@
 			</div>
 		</div>
 	</div>
-
-<!-- ============================================================================ -->
-<!-- ========================== CONTENU ACCORDEONS ================= -->
+<!-- ------------------------------------------------------------- -->
 
 	<div class="container allfaq">
-		<% if flash[:notice] %>
-		<div class="alert alert-danger" role="alert" id="errorForDataFormulaire">
-			<%= flash[:notice] %>
-		</div>
-		<% end %>
-
 		<div class="row">
 			<div class="col-sm-9">
 				<div class="innerWrapper">
@@ -108,9 +98,8 @@
 						</table>
 					</div>
 				</div>
-				<!-- session js -->
-				<%= form_tag(save_session_path,id:"form-data",'data-id':"#{@idMassage}",'data-spas':"#{@spas}",'data-spaoptions':"#{@spaoptions}",'data-massages':"#{@massages}") do %>
-				<!-- session js fin -->
+
+				<%= form_tag(save_session_path, id:"form-data") do %>
 				<div id="prestation-list">
 					<div class="accordion js-accordion">
 						<div id="loc-spa-fafana" class="accordion__item js-accordion-item">
@@ -125,8 +114,9 @@
 										</div>
 										<hr class="interligne">
 										<div class="row">
-											<div id="spa-input">
-
+											<div id="select-list-spa">
+												<!-- les input type checkbox s'affiche ici a chaque clique -->
+												
 											</div>
 										</div>
 										<hr class="interligne">
@@ -180,15 +170,17 @@
 										<div id="select-prestation">
 											<p class="p-resa-spa">Je souhaite réserver pour :</p>
 											<div>
-												<p class="p-resa-spa">Homme<i id="moinHomme" class="fa fa-minus-circle remove-massage" data-cat="Homme"></i><span id="number-Homme"> 0 </span><i class="fa fa-plus-circle add-massage" data-cat="Homme" id="addHomme"></i></p>
+												<p class="p-resa-spa">Homme<i class="fa fa-minus-circle remove-massage" data-category="for_massage_man"></i> <span id="number_man">0</span> <i class="fa fa-plus-circle add-massage" data-category="for_massage_man"></i></p>
 											</div>
 											<div>
-												<p class="p-resa-spa">Femme<i id="moinFemme"class="fa fa-minus-circle remove-massage" data-cat="Femme"></i><span id="number-Femme"> 0 </span><i class="fa fa-plus-circle add-massage" data-cat="Femme" id="addFemme"></i></p>
+												<p class="p-resa-spa">Femme<i class="fa fa-minus-circle remove-massage" data-category="for_massage_woman"></i> <span id="number_woman">0</span> <i class="fa fa-plus-circle add-massage" data-category="for_massage_woman"></i></p>
 											</div>
 										</div>
-										<div id="massage-input">
+										
+										<div id="select-list-massage">
 
 										</div>
+
 										<center class="praticien">
 											<div class="row">
 												<div class="col-sm-12 sm-9-spa">
@@ -326,15 +318,19 @@
 										</tbody>
 									</table>
 								</div>
-								<input type="text" name="cadeau" id="cadeau-id" class="hidden">
 							</div>     
 						</div>
 					</div>
+					<input type="text" value="" name="date" id="inpdate" class="hidden">
+					<input type="text" value="" name="pays" id="inppays" class="hidden">
+					<input type="text" value="" name="department" id="inpdepartment" class="hidden">
+					<input type="text" value="" name="code_promo" id="inpcode" class="hidden">
 					<%= submit_tag("Suivant",class:"hidden") %>
 				</div>
 				<% end %>
 			</div>
-			
+
+
 			<!-- PANIER DYNAMIQUE -->
 			<div class="col-sm-3 sm-3-spa" id="panierTable">
 				<div class="innerWrapper">
@@ -352,21 +348,20 @@
 									<td>
 										<div id="card">
 											<h4 class="panierTitle"> Votre commande <i class="fa fa-shopping-basket" aria-hidden="true" id="fa"></i></h4>
-											<p class="p-panier" id="empty-order">Vous n'avez pas encore <br> sélectionné de prestation</p>
+											<p class="p-panier" id="warnning-message">Vous n'avez pas encore <br> sélectionné de prestation</p>
 
-											<div id="spa-order" class="hidden">
-												<h3 class="subTitlePanierSpa">Location spa <span id="spa-price-total" data-price=""></span></h3>
+											<div id="spa-order">
+												<div class="presta-spa-list" data-price="[0,0]">
+				
+												</div>
 											</div>
 
-											<div id="massage-order" class="hidden">
-												<h3 class="subTitlePanierMsg">Massage <span id="massage-price-total" data-price=""></span></h3>
+											<div id="massage-order">
+												<div class="presta-list" data-price="[0,0]">
+												
+												</div>
 											</div>
-
-											<div id="cadeau-order" class="hidden">
-												<h3 class="subTitleCadeau">Vos cadeaux :  <span id="cadeau-price-total"></span> €</h3>
-												<div class="cadeaux"></div>
-											</div>
-
+											
 											<div id="code-promo">
 												<div id="alert-code" class="hidden alert alert-success" role="alert"></div>
 												<%= form_tag(code_promo_path, remote: true, id:"form-promo-code") do %>
@@ -376,8 +371,8 @@
 											</div>
 
 											<div class="prixTotals">
-												<p class="p-prixTotal">PRIX TOTAL : <strong id="total-price">0,00</strong> €</p>
-												<p class="p-prixTotal">ACOMPTE TOTAL : <strong id="total-acompte">0,00</strong> €</p>
+												<p class="p-prixTotal">PRIX TOTAL : <strong id="totalPricePrestation">0</strong> €</p>
+												<p class="p-prixTotal">ACOMPTE TOTAL : <strong id="totalAcomptePrestation">0</strong> €</p>
 											</div>
 										</div>
 									</td>
@@ -392,217 +387,157 @@
 			</div>
 		</div>
 	</div>
+
+<!-- -------------- Show liste de tous les spas types ----------------- -->
+
+	<script type="text/html" id="for_location_spa">
+		<div class="prestation-group-spa">
+			<div class="row">
+				<div class="col-sm-3">
+					<fieldset>
+						<center class="titleSpa dureTitle"><legend><h4>Durée location</h4></legend></center>
+						<% @spas.each do |spa| %>
+							<div class="duree-spa">
+								<input type="checkbox" id="<%= spa.duration %>h" name="spas[1][time][]" value="<%= spa.duration %>" data-price="[<%= spa.exceptional_price %>,<%= spa.exceptional_acompte %>,<%= spa.ordinary_price %>,<%= spa.ordinary_acompte %>]" class="option-spa-list2 input-time-spa" data-category="time">
+								<label for="<%= spa.duration %>h" class="label-spa"><%= spa.duration %>h</label>
+							</div>
+						<% end %>
+					</fieldset>
+				</div>
+
+				<div class="col-sm-4 ambianceresponsive">
+					<fieldset>
+						<center class="titleSpa"><legend><h4>Ambiance</h4></legend></center>
+						<% @spa_ambiances.each do |spa_ambiance| %>
+							<div class="list-ambiance">
+								<input type="checkbox" name="spas[1][ambiance][]" value="<%= spa_ambiance.name %>" data-price="<%= spa_ambiance.price %>" id="a<%= spa_ambiance.id %>mbiance" class="option-spa-list" data-category="ambiance" disabled="disabled">
+								<label for="a<%= spa_ambiance.id %>mbiance" class="label-option-spa"><%= spa_ambiance.name %></label>
+							</div>
+						<% end %>
+					</fieldset>
+				</div>
+				<div class="col-sm-5 fin-spa">
+					<fieldset>
+						<center class="titleSpa informationTitle"><legend><h4>Informations sur la location</h4></legend></center>
+						<div class="infoSpa">
+							<label for="logement" class="label-info-spa">Type de logement</label>
+							<select name="spas[1][type][]" id="logement" class="selectElement">
+								<option value="Appartement" selected="selected">Appartement</option>
+								<option value="Villa - Maison">Villa - Maison</option>
+							</select>
+						</div>
+						<div class="infoSpa">
+							<label for="installation" class="label-info-spa">Type d'installation</label>
+							<select name="spas[1][type][]" id="installation" class="selectElement">
+								<option value="Intérieur" selected="selected">Intérieur</option>
+								<option value="Extérieur">Extérieur</option>
+							</select>
+						</div>
+						<div class="infoSpa">
+							<label for="eau" class="label-info-spa">Système d'eau</label>
+							<select name="spas[1][type][]" id="eau" class="selectElement">
+								<option value="Cumulus - Ballon d'eau (eau chaude limitée)" selected="selected">Cumulus - Ballon d'eau (eau chaude limitée)</option>
+								<option value="Chaudière (eau chaude continue)">Chaudière (eau chaude continue)</option>
+							</select>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+	</script>
+
+<!-- -------------- Show liste de tous le massage hommme -------------- -->
+
+	<script type="text/html" id="for_massage_man">
+		<div class='prestation-group' data-category='for_massage_man' data-title="Homme">
+			<div class="row">
+				<div class="col-sm-12 sm-9-spa">
+					<div class="innerWrapper">
+						<div class="table-responsive table-responsiveInfos">
+							<table class="table tableInfos">
+								<thead>
+									<tr class="tr">
+										<th id="tableHead">Homme</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<% @massagesDuration.each do |mduration| %>
+				<div class="col-sm-3">
+				<fieldset>
+					<legend><%= mduration.duration %> minutes</legend>
+					<% mduration.massageTypes("Homme").each do |massage_type| %>
+					<div>
+						<input type="checkbox" name="massages[homme_0][]" class="subcategory_massage_input" id="prestation<%= mduration.duration %>min_<%= massage_type.id %>" value="<%= massage_type.name %>||<%= mduration.duration %>" data-category="massage_man" data-subcategory="<%= massage_type.id %>man<%= mduration.duration %>" data-title="<%= massage_type.name %>" data-price="[<%= mduration.exceptional_price %>,<%= mduration.exceptional_acompte %>,<%= mduration.ordinary_price %>,<%= mduration.ordinary_acompte %>]">
+						<label for="prestation<%= mduration.duration %>min_<%= massage_type.id %>"><%= massage_type.name %></label><i class="fa fa-question-circle questionMark" aria-hidden="true" data-toggle="modal" data-target="#modal<%= massage_type.id %>"></i>
+					</div>
+					<% end %>
+				</fieldset>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</script>
+<!-- ------------ Show liste de tous le massage feme --------------- -->
+	<script type="text/html" id="for_massage_woman">
+		<div class='prestation-group' data-category='for_massage_woman' data-title="Femme">
+			<div class="row">
+				<div class="col-sm-12 sm-9-spa">
+					<div class="innerWrapper">
+						<div class="table-responsive table-responsiveInfos">
+							<table class="table tableInfos">
+								<thead>
+									<tr class="tr">
+										<th id="tableHead">Femme</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+			<% @massagesDuration.each do |mduration| %>
+				<div class="col-sm-3">
+				<fieldset>
+					<legend><%= mduration.duration %> minutes</legend>
+					<% mduration.massageTypes("Femme").each do |massage_type| %>
+					<div>
+						<input type="checkbox" name="massages[femme_0][]" class="subcategory_massage_input" id="prestation<%= mduration.duration %>min_<%= massage_type.id %>" value="<%= massage_type.name %>||<%= mduration.duration %>" data-category="massage_woman" data-subcategory="<%= massage_type.id %>woman<%= mduration.duration %>" data-title="<%= massage_type.name %>" data-price="[<%= mduration.exceptional_price %>,<%= mduration.exceptional_acompte %>,<%= mduration.ordinary_price %>,<%= mduration.ordinary_acompte %>]">
+						<label for="prestation<%= mduration.duration %>min_<%= massage_type.id %>"><%= massage_type.name %></label><i class="fa fa-question-circle questionMark" aria-hidden="true" data-toggle="modal" data-target="#modal<%= massage_type.id %>"></i>
+					</div>
+					<% end %>
+				</fieldset>
+				</div>
+			<% end %>
+			</div>
+		</div>
+	</script>
+
+<!-- ------------------- Information type de massage ------------------ -->
+
+	<% @massageTypes.each do |massagetype| %>
+	<div id="modal<%= massagetype.id %>" class="modal fade modalCommon" role="dialog" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content contentMassage">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title modal-titleSpa"><%= massagetype.name %></h4>
+				</div>
+				<div class="modal-body">
+					<div id="appointment-alert" class="my-alert"></div>
+					<p class="text-p-index modalText"><%= massagetype.description %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% end %>
 </div>
 
 <%= javascript_pack_tag 'orders_index' %>
-
 <script data-turbolinks-track = "reload" src="/js/resa-js.js"></script>
-
-<!-- decoration MODAL -->
-<div id="Romantique" class="modal fade modalCommon" role="dialog" tabindex="-1">
-	<div class="modal-dialog">
-		<!-- MODAL CONTENT-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title modal-titleSpa ">Décoration romantique</h4>
-			</div>
-			<div class="modal-body">
-				<div id="appointment-alert" class="my-alert"></div>
-				<p class="text-p-index modalText">La décoration romantique est composée de ballons, pétales de roses, bougies, lumière tamisée & spot lumineux dans le spa.</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- anniversaire MODAL -->
-<div id="Anniversaire" class="modal fade modalCommon" role="dialog" tabindex="-1">
-	<div class="modal-dialog">
-		<!-- MODAL CONTENT-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title modal-titleSpa">Décoration anniversaire</h4>
-			</div>
-			<div class="modal-body">
-				<div id="appointment-alert" class="my-alert"></div>
-				<p class="text-p-index modalText">La décoration anniversaire est composée de ballons, confettis, accessoires anniversaire & spot lumineux dans le spa.</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- fontaine MODAL -->
-<div id="Personnalisée" class="modal fade modalCommon" role="dialog" tabindex="-1">
-	<div class="modal-dialog">
-		<!-- MODAL CONTENT-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title modal-titleSpa">Event/Fête</h4>
-			</div>
-			<div class="modal-body">
-				<div id="appointment-alert" class="my-alert"></div>
-				<p class="text-p-index modalText">Exemples : décoration personnalisée pour nouvel an, noël, fête des pères/mères, EVJF, Girly, Zen, etc…</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-<!-- Modal massage -->
-<!-- classique decouverte -->
-<% for n in 1..9 %>
-<div id="modal0<%= n %>" class="modal fade modalCommon" role="dialog" tabindex="-1">
-	<div class="modal-dialog">
-		<!-- MODAL CONTENT-->
-		<div class="modal-content contentMassage">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title modal-titleSpa">Massage Classique / découverte</h4>
-			</div>
-			<div class="modal-body">
-				<div id="appointment-alert" class="my-alert"></div>
-				<p class="text-p-index modalText">Le massage classique est un traitement qui agit sur chaque partie du corps les unes après les autres. Il se pratique par pétrissage, lissage, vibration ou par des mouvements plus petits et plus subtils sur les points de tension. Il s’agit d’un massage global relaxant qui en plus de soulager les tensions musculaires superficielles et profondes, possède de multiples actions thérapeutiques. Il permet de renforcer le système immunitaire, d’améliorer les fonctions digestives, de stimuler la vitalité des tissus, favoriser une bonne circulation sanguine et d’apaiser les tensions nerveuses. Le massage classique est recommandé pour les insomnies, les angoisses, le stress, la nervosité, la constipation, les migraines.</p>
-			</div>
-		</div>
-	</div>
-</div>
-<% end %>
-
-<!-- massage anti-stress -->
-<% for n in 1..9 %>
-<div id="modal1<%= n %>" class="modal fade modalCommon" role="dialog" tabindex="-1">
-	<div class="modal-dialog">
-		<!-- MODAL CONTENT-->
-		<div class="modal-content contentMassage">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title modal-titleSpa">Massage Anti-stress / Relaxant</h4>
-			</div>
-			<div class="modal-body">
-				<div id="appointment-alert" class="my-alert"></div>
-				<p class="text-p-index modalText">Le massage anti-stress est source de détente, en enlevant les nœuds musculaires et en optimisant la circulation sanguine et lymphatique. Il élimine stress et anxiété. Il élimine ainsi les toxines à l’origine des dépressions. Une fois les tensions dissipées, l’organisme se relaxe, les muscles et articulations retrouvent leur souplesse. Cette action se répercute directement sur le cerveau puisque l’évacuation des toxines optimise son oxygénation.
-				Son application régulière permet de réguler la tension artérielle, d’apaiser certains troubles liés aux maladies cardio-vasculaires, de soulager les problèmes respiratoires graves comme l’asthme, de mettre un terme à l’insomnie.</p>
-			</div>
-		</div>
-	</div>
-</div>
-<%end%>
-
-<!--Massage Sportif  -->
-<% for n in 1..9 %>
-<div id="modal2<%= n %>" class="modal fade modalCommon" role="dialog" tabindex="-1">
-	<div class="modal-dialog">
-		<!-- MODAL CONTENT-->
-		<div class="modal-content contentMassage">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title modal-titleSpa">Massage Sportif </h4>
-			</div>
-			<div class="modal-body">
-				<div id="appointment-alert" class="my-alert"></div>
-				<p class="text-p-index modalText">Par le massage de préparation, le masseur contribue à la mise en forme du sportif. Il lui permet d’affronter la compétition, d’éviter les blessures et de diminuer le trac. Par le massage de récupération, le masseur aide à une récupération plus rapide par le drainage des toxines, par une diminution de la fatigue.
-				Préserver son énergie et éviter les « coups de pompe » est un élément de la vie professionnelle d’aujourd’hui. Retrouver rapidement ses capacités physiques et sa vigilance après un effort est essentiel.</p>
-			</div>
-		</div>
-	</div>
-</div>
-<%end%>
-
-<!-- Réflexologie plantaire -->
-<% for n in 1..9 %>
-<div id="modal3<%= n %>" class="modal fade modalCommon" role="dialog" tabindex="-1">
-	<div class="modal-dialog">
-		<!-- MODAL CONTENT-->
-		<div class="modal-content contentMassage">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title modal-titleSpa">Réflexologie plantaire</h4>
-			</div>
-			<div class="modal-body">
-				<div id="appointment-alert" class="my-alert"></div>
-				<p class="text-p-index modalText">La réflexologie plantaire est une thérapie manuelle fondée sur l’existence au niveau des pieds de zones réflexes représentant chaque organe du corps. Lorsque ces zones sont activées par simple pression, l’état de l’organe est amélioré ou redynamisé.
-				Nos pieds recueillant environ 7200 terminaisons nerveuses, il est possible, par simple pression des doigts à des endroits précis de la plante et du dos du pied, d’agir à distance sur certaines régions de l’organisme.</p>
-			</div>
-		</div>
-	</div>
-</div>
-<%end%>
-
-<!-- Massage Pieds & Mains  -->
-<% for n in 1..9 %>
-<div id="modal4<%= n %>" class="modal fade modalCommon" role="dialog" tabindex="-1">
-	<div class="modal-dialog">
-		<!-- MODAL CONTENT-->
-		<div class="modal-content contentMassage">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title modal-titleSpa">Massage Pieds & Mains </h4>
-			</div>
-			<div class="modal-body">
-				<div id="appointment-alert" class="my-alert"></div>
-				<p class="text-p-index modalText">Les pieds supportent le poids de notre corps et sont sujets à de nombreuses agressions extérieures comme le sol dur ou des chaussures inconfortables. Ils sont composés d’une multitude de terminaisons nerveuses qui influent sur l’ensemble de notre organisme. Les mains font parties des endroits les plus sensibles de notre corps. Elles renferment de nombreuses terminaisons nerveuses qui sont en communication constante avec notre cerveau. Sollicitées en permanence, elles sont les premières victimes de nos stress et fatigues. Le massage des mains et des pieds contribue à l’élimination du stress, à la décontraction et aide à diminuer les émotions négatives. Il vous procurera une énorme sensation de bien-être et de détente.</p>
-			</div>
-		</div>
-	</div>
-</div>
-<%end%>
-
-<!-- Massage du Dos-->
-<% for n in 1..9 %>
-<div id="modal5<%= n %>" class="modal fade modalCommon" role="dialog" tabindex="-1">
-	<div class="modal-dialog">
-		<!-- MODAL CONTENT-->
-		<div class="modal-content contentMassage">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title modal-titleSpa">Massage du Dos </h4>
-			</div>
-			<div class="modal-body">
-				<div id="appointment-alert" class="my-alert"></div>
-				<p class="text-p-index modalText">Le massage du dos est source de relaxation et de détente après une journée éprouvante ou juste pour se faire plaisir une fois de temps en temps. Ses bienfaits sont innombrables, il permet notamment de tonifier, de relaxer et de stimuler le dos qui est une des zones du corps les plus sujettes aux tensions. En effet, de très nombreux et puissants muscles sont sollicités dans cette région et il est possible de les soulager en les massant. Le dos souffre de notre rythme de vie et de nos mauvaises postures, le dos est un peu l’endroit où tout notre stress et notre fatigue sont stockés. Ce massage permet d’évacuer le stress, de reposer votre dos et donc d’apporter une énergie nouvelle.</p>
-			</div>
-		</div>
-	</div>
-</div>
-<%end%>
-
-<!-- Massage Crâne, nuque & épaules-->
-<% for n in 1..9 %>
-<div id="modal6<%= n %>" class="modal fade modalCommon" role="dialog" tabindex="-1">
-	<div class="modal-dialog">
-		<!-- MODAL CONTENT-->
-		<div class="modal-content contentMassage">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title modal-titleSpa">Massage Crâne, nuque & épaules</h4>
-			</div>
-			<div class="modal-body">
-				<div id="appointment-alert" class="my-alert"></div>
-				<p class="text-p-index modalText">Ce massage sollicite particulièrement les zones soumises au stress de la vie quotidienne en stimulant les zones réflexes et énergétiques. Il dénoue et agit sur vos tensions accumulées au niveau des épaules, de la nuque et du cuir chevelu. Ce massage vous procure un bien-être physique et psychique. Vous vous sentirez complètement détendu(e). Le massage Crâne, Nuque & Épaules est spécialement recommandé si vous passez du temps devant l’ordinateur ou en voiture, car il rétablira les maux créés sur une région qui supporte le poids de votre tête ou une position pas toujours la mieux adaptée.</p>
-			</div>
-		</div>
-	</div>
-</div>
-<%end%>
-
-
-<!-- Massage prénatal-->
-<% for n in 1..9 %>
-<div id="modal7<%= n %>" class="modal fade modalCommon" role="dialog" tabindex="-1">
-	<div class="modal-dialog">
-		<!-- MODAL CONTENT-->
-		<div class="modal-content contentMassage">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title modal-titleSpa">Massage prénatal</h4>
-			</div>
-			<div class="modal-body">
-				<div id="appointment-alert" class="my-alert"></div>
-				<p class="text-p-index modalText">Les massages peuvent faire énormément de bien aux femmes enceintes et soulager les ventres douloureux. Ce qui est bon pour la maman est en général bon pour le foetus ! Les massages permettent à la maman de se détendre et de se sentir mieux.</p>
-			</div>
-		</div>
-	</div>
-</div>
-<%end%>

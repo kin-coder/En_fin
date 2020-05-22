@@ -1,10 +1,9 @@
-class CreateProducts < ActiveRecord::Migration[6.0]
+class CreateSpaAmbiances < ActiveRecord::Migration[6.0]
   def change
-    create_table :products do |t|
+    create_table :spa_ambiances do |t|
       t.string :name
       t.text :description
       t.float :price
-      
       t.timestamps
     end
   end
