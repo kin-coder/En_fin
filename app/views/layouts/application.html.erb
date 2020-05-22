@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <!-- SITE TITTLE -->
   <meta  name="turbolinks-visit-control"  content="reload">
   <meta charset="utf-8">
@@ -126,23 +125,14 @@
             </ul>
           </div>
 
-
-
-
           <!-- Cart button -->
           <div class="cart_btn">
             <a id="cart-btn-ok"><i class="fa fa-shopping-basket" aria-hidden="true" data-toggle="modal" data-target="#myModal"></i><span id="number-cart-ok" class="badge">0</span></a>
           </div>
-
         </div>
       </nav>
     </header>
     <div class="patternbg">
-
-
-
-
-
 
       <!-- Flash pour l'envoye de message-->
       <center>
@@ -343,7 +333,6 @@
         </div>
       </div>
 
-
     </div>
   </div>
 </div>
@@ -403,18 +392,12 @@
         <!-- end modal header-->
         <!-- modal body -->
         <div class="modal-body">
-
-          <div id="cart-inner-ok" class="hidden">
+          <div id="cart-inner-ok">
             <div class="row">
               <div class="col-sm-6 smleft">
                 <div class="prest">
                   <h4>Prestations</h4>
                   <div id="cart-inner-prestation">
-                  </div>
-                </div>
-                <div class="hidden">
-                  <h4>Produits</h4>
-                  <div id="cart-inner-produit">
                   </div>
                 </div>
                 <div>
@@ -429,13 +412,7 @@
                 </div>
               </div>
             </div>
-            
-
           </div>
-
-
-
-          
         </div>
         <!-- end modal body -->
         <!-- modal footer-->
@@ -459,6 +436,9 @@
 </div>
 <!-- end modal -->
 <!-- JAVASCRIPTS -->
+
+<%= javascript_pack_tag 'buttons-prestation.js' %>
+
 <script data-turbolinks-track = "reload" src="/plugins/jquery/jquery.min.js"></script>
 <script data-turbolinks-track = "reload" src="/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script data-turbolinks-track = "reload" src="/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -474,16 +454,9 @@
 <script data-turbolinks-track = "reload" src="/js/custom.js"></script>
 
 <script>
-  	//paste this code under head tag or in a seperate js file.
-  	// Wait for window load
-  	$(window).load(function() {
-  		// Animate loader off screen
-  		$(".se-pre-con").fadeOut("slow");;
-  	});
-  </script>
-  <%= javascript_pack_tag 'buttons-prestation.js' %>
-
+	$(window).load(function() {
+		$(".se-pre-con").fadeOut("slow");;
+	});
+</script>
 </body>
-
 </html>
-
