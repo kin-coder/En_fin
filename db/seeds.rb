@@ -66,7 +66,7 @@ Nos pieds recueillant environ 7200 terminaisons nerveuses, il est possible, par 
 special = ["Massage prénatal","Les massages peuvent faire énormément de bien aux femmes enceintes et soulager les ventres douloureux. Ce qui est bon pour la maman est en général bon pour le foetus ! Les massages permettent à la maman de se détendre et de se sentir mieux."]
 	# ~~~~~~~~~~~~~~~~ enregistrement des prix ~~~~~~~~~~~~~~~~~ #
 #<MassageSuPrice id: nil, duration: nil, exceptional_price: nil, ordinary_price: nil, exceptional_acompte: nil, ordinary_acompte: nil, created_at: nil, updated_at: nil>
-MassageSuPrice.create(duration: 30, exceptional_price: 70, ordinary_price: 50, exceptional_acompte: 30, ordinary_acompte: 20)
+MassageSuPrice.create(duration: 30, exceptional_price: 70, ordinary_price: 50, exceptional_acompte: 30, ordinary_acompte: 15)
 MassageSuPrice.create(duration: 60, exceptional_price: 90, ordinary_price: 70, exceptional_acompte: 30, ordinary_acompte: 20)
 MassageSuPrice.create(duration: 90, exceptional_price: 110, ordinary_price: 90, exceptional_acompte: 30, ordinary_acompte: 20)
 MassageSuPrice.create(duration: 120, exceptional_price: 130, ordinary_price: 110, exceptional_acompte: 30, ordinary_acompte: 20)
