@@ -1,14 +1,14 @@
-// main()
+main()
 
-// function main(){
-// 	let zone = sessionStorage.getItem("zone")
-// 	if (zone == null) {
-// 		$("#number-cart-ok").html(0)
-// 	}else{
-// 		zone = JSON.parse(sessionStorage.getItem("zone"));
-// 		$("#number-cart-ok").html(zone.nbr_spa + zone.nbr_massage)
-// 	}
-// }
+function main(){
+	let zone = sessionStorage.getItem("zone");
+	if (zone == null) {
+		$("#number-cart-ok").html(0);
+	}else{
+		zone = JSON.parse(sessionStorage.getItem("zone"));
+		$("#number-cart-ok").html(zone.nbr_spa + zone.nbr_massage);
+	}
+}
 
 $("#cart-btn-ok").click(function(){
 	let zone = sessionStorage.getItem("zone")
