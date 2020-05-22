@@ -23,7 +23,7 @@ Service.destroy_all
 ServiceCountry.destroy_all
 ServiceDepartment.destroy_all
 Spa.destroy_all
-
+Notification.destroy_all
 increment = 0
 Admin.create(email:'myadmin@gmail.com',password:'myadmin@gmail.com',first_name: "Vincent",last_name: "lae")
 
