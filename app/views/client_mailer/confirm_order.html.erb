@@ -755,14 +755,19 @@
 	<% acompte = 0.0 %>
 	<% @order.order_spas.each do |o_spa| %>
 		Location spa <%= o_spa.spa.duration %>h : 
+		<% ambiance_price = 0 %>
+		<% unless o_spa.product.nil? %>
+			<% ambiance_price = o_spa.product.price.to_i %>
+		<% end %>
+
 		<% if @order.isExceptional? %>
-			<%= o_spa.spa.exceptional_price %>€<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_spa.spa.exceptional_acompte %>€<br>
+			<%= o_spa.spa.exceptional_price.to_i + ambiance_price %>€<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_spa.spa.exceptional_acompte.to_i %>€<br>
 			<% price += o_spa.spa.exceptional_price %>
 			<% acompte += o_spa.spa.exceptional_acompte %>
 		<% else %>
-			<%= o_spa.spa.ordinary_price %>€<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_spa.spa.ordinary_acompte %>€<br>
+			<%= o_spa.spa.ordinary_price.to_i + ambiance_price %>€<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_spa.spa.ordinary_acompte.to_i %>€<br>
 			<% price += o_spa.spa.ordinary_price %>
 			<% acompte += o_spa.spa.ordinary_acompte %>
 		<% end %>
@@ -770,8 +775,8 @@
 		<% if o_spa.product.nil? %>
 			aucun selectionné <br>
 		<% else %>
-			<%= o_spa.product.name %> à <%= o_spa.product.price %>€<br>
-			<% acompte += o_spa.product.price %>
+			<%= o_spa.product.name %><br>
+			<% price += o_spa.product.price %>
 		<% end %>
 		<ul>
 			<li><strong>Type de logement :</strong> <%= o_spa.logement %></li>
@@ -780,11 +785,11 @@
 		</ul>
 	<% end %>
 	<br>
-	<strong>Prix total :</strong> <%= price - @code_promo %>€ <br>
-	<strong>Remise code promo :</strong> <%= @code_promo %>€<br>
-	<strong>Acompte payé par CB&nbsp;:</strong> <%= acompte - @code_promo %>€<br>
+	<strong>Prix total :</strong> <%= price.to_i - @code_promo.to_i %>€ <br>
+	<strong>Remise code promo :</strong> <%= @code_promo.to_i %>€<br>
+	<strong>Acompte payé par CB&nbsp;:</strong> <%= acompte.to_i - @code_promo.to_i %>€<br>
 	<br>
-	<strong>Total restant à régler le jour de la prestation&nbsp;:&nbsp;<%= (price-acompte)-2*@code_promo %>€</strong> &nbsp;(hors frais de déplacement*)<br><br>
+	<strong>Total restant à régler le jour de la prestation&nbsp;:&nbsp;<%= (price.to_i - acompte.to_i)-2*@code_promo.to_i %>€</strong> &nbsp;(hors frais de déplacement*)<br><br>
 	<em>* Les frais de déplacement ne sont pas compris, ils vous seront précisés par votre professionnel</em></span></span><br>
 &nbsp;</div>
 <div style="text-align: center;"><span style="font-size:13px"><span style="color:#696969"><em><u><strong>Un chèque de caution peut vous être demandé par le professionnel. Si c'est le cas, celui-ci vous en avertira</strong></u></em></span></span></div>
