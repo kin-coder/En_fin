@@ -1004,8 +1004,19 @@ function bigTotalPrice(){
 	if (prestations.code_promo) {
 		code_promo = prestations.code_promo[1]
 	}
-	document.getElementById("total-price").innerHTML = (spa[0]+massage[0])-code_promo
-	document.getElementById("total-acompte").innerHTML =  (spa[1]+massage[1])-code_promo
+
+	let somePrice = spa[0] + massage[0]
+	let someAcompte = spa[1] + massage[1]
+
+	if(somePrice > 0){
+		somePrice -= code_promo
+	}
+	if(someAcompte > 0){
+		someAcompte -= code_promo
+	}
+
+	document.getElementById("total-price").innerHTML = somePrice
+	document.getElementById("total-acompte").innerHTML =  someAcompte
 }
 // pour l'enregistrement des donné dans le panier du boutons
 function numberAtOrderBtn(){
@@ -1050,8 +1061,6 @@ function changePromoCode(prestations) {
 	document.getElementById("alert-code").classList.remove("hidden");
 	document.getElementById("form-promo-code").classList.add("hidden");
 	document.getElementById("alert-code").innerHTML = "Votre code promo "+ prestations.code_promo[0] +" est validé avec succès." + " Vous avez gagné un reduction de " +prestations.code_promo[1]+ "€ pour chaque prix et acompte à payer!";
-
-
 }
 
 // document.getElementById('submi-tag').onCl
