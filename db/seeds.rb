@@ -66,10 +66,10 @@ Nos pieds recueillant environ 7200 terminaisons nerveuses, il est possible, par 
 special = ["Massage prénatal","Les massages peuvent faire énormément de bien aux femmes enceintes et soulager les ventres douloureux. Ce qui est bon pour la maman est en général bon pour le foetus ! Les massages permettent à la maman de se détendre et de se sentir mieux."]
 	# ~~~~~~~~~~~~~~~~ enregistrement des prix ~~~~~~~~~~~~~~~~~ #
 #<MassageSuPrice id: nil, duration: nil, exceptional_price: nil, ordinary_price: nil, exceptional_acompte: nil, ordinary_acompte: nil, created_at: nil, updated_at: nil>
-MassageSuPrice.create(duration: 30, exceptional_price: 40, ordinary_price: 35, exceptional_acompte: 30, ordinary_acompte: 15)
-MassageSuPrice.create(duration: 60, exceptional_price: 60, ordinary_price: 50, exceptional_acompte: 30, ordinary_acompte: 20)
-MassageSuPrice.create(duration: 90, exceptional_price: 80, ordinary_price: 70, exceptional_acompte: 30, ordinary_acompte: 20)
-MassageSuPrice.create(duration: 120, exceptional_price: 100, ordinary_price: 90, exceptional_acompte: 30, ordinary_acompte: 20)
+MassageSuPrice.create(duration: 30, exceptional_price: 70, ordinary_price: 50, exceptional_acompte: 30, ordinary_acompte: 15)
+MassageSuPrice.create(duration: 60, exceptional_price: 90, ordinary_price: 70, exceptional_acompte: 30, ordinary_acompte: 20)
+MassageSuPrice.create(duration: 90, exceptional_price: 110, ordinary_price: 90, exceptional_acompte: 30, ordinary_acompte: 20)
+MassageSuPrice.create(duration: 120, exceptional_price: 130, ordinary_price: 110, exceptional_acompte: 30, ordinary_acompte: 20)
 
 puts increment+=1
 
@@ -98,9 +98,9 @@ end
 sufemme = MassageSu.create(name:special[0], description:special[1], massage_ca:ca2)
 addprice(8,sufemme)
 # ========================= CREE LES SERVICE SPA ========================= #
-Spa.create(duration: 24, exceptional_price: 130, ordinary_price: 70, exceptional_acompte: 50, ordinary_acompte: 30, service: s2)
-Spa.create(duration: 48, exceptional_price: 165, ordinary_price: 105, exceptional_acompte: 65, ordinary_acompte: 45, service: s2)
-Spa.create(duration: 72, exceptional_price: 205, ordinary_price: 140, exceptional_acompte: 75, ordinary_acompte: 60, service: s2)
+Spa.create(duration: 24, exceptional_price: 180, ordinary_price: 100, exceptional_acompte: 50, ordinary_acompte: 30, service: s2)
+Spa.create(duration: 48, exceptional_price: 230, ordinary_price: 150, exceptional_acompte: 65, ordinary_acompte: 45, service: s2)
+Spa.create(duration: 72, exceptional_price: 280, ordinary_price: 200, exceptional_acompte: 75, ordinary_acompte: 60, service: s2)
 	# ~~~~~~~~~ idée option pour spa
 r = Product.create(name:"Romantique", description: "Ballons, pétales de roses, bougies & spot lumineux", price: 20, is_option_spa: true)
 a = Product.create(name:"Anniversaire", description: "Ballons, confettis, accessoires anniversaire & spot lumineux", price: 20, is_option_spa: true)
