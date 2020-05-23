@@ -75,21 +75,21 @@ class Order < ApplicationRecord
 			if o_s.service.name == "Massage"
 				self.order_massages.each do |o_massage| 
 					if self.isExceptional?
-						price += o_massage.massage_su_price.exceptional_price - code_promo
-						acompte += o_massage.massage_su_price.exceptional_acompte - code_promo
+						price += o_massage.massage_su_price.exceptional_price
+						acompte += o_massage.massage_su_price.exceptional_acompte
 					else
-						price += o_massage.massage_su_price.ordinary_price - code_promo
-						acompte += o_massage.massage_su_price.ordinary_acompte - code_promo
+						price += o_massage.massage_su_price.ordinary_price
+						acompte += o_massage.massage_su_price.ordinary_acompte
 					end
 				end
 			elsif o_s.service.name == "Location spa"
 				self.order_spas.each do |o_spa|
 					if self.isExceptional?
-						price += o_spa.spa.exceptional_price - code_promo
-						acompte += o_spa.spa.exceptional_acompte - code_promo
+						price += o_spa.spa.exceptional_price
+						acompte += o_spa.spa.exceptional_acompte 
 					else
-						price += o_spa.spa.ordinary_price - code_promo
-						acompte += o_spa.spa.ordinary_acompte - code_promo
+						price += o_spa.spa.ordinary_price
+						acompte += o_spa.spa.ordinary_acompte
 					end
 					unless o_spa.product.nil?
 						price += o_spa.product.price
@@ -97,6 +97,6 @@ class Order < ApplicationRecord
 				end 
 			end
 		end
-		return [price,acompte]
+		return [price-code_promo,acompte-code_promo]
   end
 end
