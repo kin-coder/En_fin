@@ -653,7 +653,7 @@ function priceTotalForAllSpa(dataOption,dataForm){
 	prestations.priceSpa = prixSomme[0]
 	sessionStorage.setItem("prestations",JSON.stringify(prestations))
 
-	spanPriceTotal.innerHTML = " : "+prixSomme[0]+" € "
+	spanPriceTotal.innerHTML = " : "+(prixSomme[0]+prixSomme[1])+" € "
 	spanPriceTotal.dataset.price = "["+[prixSomme[0],prixSomme[1]]+"]"
 	// Grand prix total
 	bigTotalPrice()
