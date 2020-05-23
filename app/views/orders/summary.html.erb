@@ -35,11 +35,13 @@
 												</ul>
 
 												<% if spa["option"] %>
-												<i>Option :</i> <%= spa["option"][0][0] %> à <%= spa["option"][0][1] %> € <br>
+													<i>Option :</i> <%= spa["option"][0][0] %><br>
+													<i>Prix : </i><%= spa["price"][0].to_i + spa["option"][0][1].to_i %>€<br>
+												<% else %>
+													<i>Prix : </i><%= spa["price"][0].to_i %>€<br>
 												<% end %>
 
-												<i>Prix : </i><%= spa["price"][0] - @code_promo %> €<br>
-												<i>Acompte :</i><%= spa["price"][1] - @code_promo %> €<br>
+												<i>Acompte :</i><%= spa["price"][1].to_i %>€<br>
 												<div>
 													<i>Date et heure de livraison : </i>le <%= session[:otherInfo]["date"] %> à <%= session[:otherInfo]["heureSpa"] %>
 												</div>
@@ -72,8 +74,8 @@
 											<div class="reservationSpa">
 												<strong style="font-family: Quicksand; text-transform: uppercase;color: black;">Massage pour <%= massage["ca"] %></strong>	<br>
 												<i>Type de massage : </i> <%= massage["su"] %><br>
-												<i>Prix : </i><%= massage["price"][1] - @code_promo %> €<br>
-												<i>Acompte : </i> <%= massage["price"][2] - @code_promo %> €
+												<i>Prix : </i><%= massage["price"][1].to_i %>€<br>
+												<i>Acompte : </i> <%= massage["price"][2].to_i %>€
 											</div>
 											<hr style="">
 
@@ -119,9 +121,12 @@
 
 		<div class="col-sm-4">
 			<div class="alert alert-success">
-				Prix Total : <strong><%= @totalAcompte + @totalPrice %> € </strong><br>
-								<span>Acompte à régler en ligne : <strong><%= @totalAcompte %> €</strong></span> <br>
-				Montant à régler sur place (CB ou éspèces uniquement) : <strong><%= @totalPrice %> €</strong><br>
+				Prix Total : <strong><%= @totalPrice %>€</strong><br>
+				<% unless @code_promo == 0 %>
+					<strong>Code promo</strong> : reduction de <b><%= @code_promo.to_i %>€</b> sur l'acompte
+				<% end %>
+				<span>Acompte à régler en ligne : <strong><%= @totalAcompte %>€</strong></span><br>
+				Montant à régler sur place (CB ou éspèces uniquement) : <strong><%= @totalPrice - @totalAcompte %>€</strong><br>
 				<form method="post" action="https://payment-webinit.simu.mercanet.bnpparibas.net/paymentInit">
 					<input type="hidden" name="Data" value="<%=@data%>">
 					<input type="hidden" name="InterfaceVersion" value="HP_2.20">
