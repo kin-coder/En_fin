@@ -753,19 +753,25 @@ Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe
 <div style="text-align: left;">
 <div style="text-align: left;">
 	<span style="color:#000000">
+
 <% price = 0.0 %>
 <% acompte = 0.0 %>
 
 <% @order.order_spas.each do |o_spa| %>
 	Location spa <%= o_spa.spa.duration %>h :
+	<% ambiance_price = 0 %>
+	<% unless o_spa.product.nil? %>
+		<% ambiance_price = o_spa.product.price.to_i %>
+	<% end %>
+
 	<% if @order.isExceptional? %>
-		<%= o_spa.spa.exceptional_price %>€<br>
-		acompte: <%= o_spa.spa.exceptional_acompte %>€<br>
+		<%= o_spa.spa.exceptional_price.to_i + ambiance_price %>€<br>
+		acompte: <%= o_spa.spa.exceptional_acompte.to_i %>€<br>
 		<% price += o_spa.spa.exceptional_price %>
 		<% acompte += o_spa.spa.exceptional_acompte %>
 	<% else %>
-		<%= o_spa.spa.ordinary_price %>€<br>
-		acompte: <%= o_spa.spa.ordinary_acompte %>€<br>
+		<%= o_spa.spa.ordinary_price.to_i + ambiance_price %>€<br>
+		acompte: <%= o_spa.spa.ordinary_acompte.to_i %>€<br>
 		<% price += o_spa.spa.ordinary_price %>
 		<% acompte += o_spa.spa.ordinary_acompte %>
 	<% end %>
@@ -774,8 +780,8 @@ Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe
 	<% if o_spa.product.nil? %>
 		aucun selectionné <br>
 	<% else %>
-		<%= o_spa.product.name %> <%= o_spa.product.price %>€<br>
-		<% acompte += o_spa.product.price %>
+		<%= o_spa.product.name %><br>
+		<% price += o_spa.product.price %>
 	<% end %>
 	<ul>
 		<li><strong>Type de logement :</strong> <%= o_spa.logement %></li>
@@ -786,14 +792,16 @@ Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe
 
 <br>
 <br>
-<strong>Prix total : <%= price + acompte %>€ </strong><br>
-<strong>Remise code promo : 0€</strong><br>
-<strong>Acompte versé par le client (commission CCSPA) : <%= acompte %>€</strong><br>
+<strong>Prix total : <%= price.to_i - @code_promo.to_i %>€</strong><br>
+<strong>Remise code promo : <%= @code_promo.to_i %>€</strong><br>
+<strong>Acompte versé par le client (commission CCSPA) : <%= acompte.to_i - @code_promo.to_i %>€</strong><br>
 <br>
-<strong>Total restant pour vous : <%= price %>€</strong><br>
+<strong>Total restant pour vous : <%= (price.to_i-acompte.to_i)-(2*@code_promo.to_i) %>€</strong><br>
 (à récupérer directement auprès du client et hors frais de déplacement*)<br>
 <br>
-<em>* Les frais de déplacement ne sont pas compris, ils seront à préciser et à récupérer&nbsp;auprès du client directement</em></span>
+<em>* Les frais de déplacement ne sont pas compris, ils seront à préciser et à récupérer&nbsp;auprès du client directement</em>
+
+</span>
 </div>
 </div>
 </div>
