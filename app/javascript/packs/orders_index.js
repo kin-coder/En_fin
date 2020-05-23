@@ -1060,7 +1060,7 @@ function submitFormulaire(){
 function changePromoCode(prestations) {
 	document.getElementById("alert-code").classList.remove("hidden");
 	document.getElementById("form-promo-code").classList.add("hidden");
-	document.getElementById("alert-code").innerHTML = "Votre code promo "+ prestations.code_promo[0] +" est validé avec succès." + " Vous avez gagné un reduction de " +prestations.code_promo[1]+ "€ pour chaque prix et acompte à payer!";
+	document.getElementById("alert-code").innerHTML = "Votre code promo "+ prestations.code_promo[0] +" est validé avec succès." + " Vous avez gagné un reduction de " +prestations.code_promo[1]+ "€ pour l'acompte total à payer!";
 }
 
 // document.getElementById('submi-tag').onCl

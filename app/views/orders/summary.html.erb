@@ -121,10 +121,10 @@
 
 		<div class="col-sm-4">
 			<div class="alert alert-success">
-				Prix Total : <strong><%= @totalPrice %>€</strong><br>
 				<% unless @code_promo == 0 %>
-					<strong>Code promo</strong> : reduction de <b><%= @code_promo.to_i %>€</b> sur l'acompte
+					Code promo : reduction de <b><%= @code_promo.to_i %>€</b> sur l'acompte <br>
 				<% end %>
+				Prix Total : <strong><%= @totalPrice %>€</strong><br>
 				<span>Acompte à régler en ligne : <strong><%= @totalAcompte %>€</strong></span><br>
 				Montant à régler sur place (CB ou éspèces uniquement) : <strong><%= @totalPrice - @totalAcompte %>€</strong><br>
 				<form method="post" action="https://payment-webinit.simu.mercanet.bnpparibas.net/paymentInit">
