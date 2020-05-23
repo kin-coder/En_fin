@@ -23,7 +23,7 @@
 
 					<div class="inline-form">
 						<%= label_tag 'villeL', 'Ville', class: 'small_label' %>
-						<%= text_field_tag 'villeL', nil, class: "input", required:true %>
+						<%= text_field_tag 'villeL', @client.town, class: "input", required:true %>
 					</div>
 
 					<div class="inline-formPays">
@@ -57,7 +57,7 @@
 
 				<div class="inline-form">
 					<%= label_tag 'villeF', 'Ville', class: 'small_label' %>
-					<%= text_field_tag 'villeF', nil, class: "input", required:true %>
+					<%= text_field_tag 'villeF', @client.town, class: "input", required:true %>
 				</div>
 
 				<div class="inline-form">
