@@ -147,7 +147,7 @@
                               <% end %>
                             </td>
                             <% prix = order.totalPrice %>
-                            <td><%= prix[0]+prix[1] %> €</td>
+                            <td><%= prix[0] %> €</td>
                             <td><a href="<%=admin_order_show_path(order.id)%>" class="btn btn-default" DATA-Method="GET">Afficher</a></td>
                           </tr>
                           <% end %>
