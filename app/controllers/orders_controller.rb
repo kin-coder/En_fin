@@ -148,6 +148,10 @@ class OrdersController < ApplicationController
     else
       session[:otherInfo]["code_promo"] = ""
     end
+    puts "========="
+    puts session[:otherInfo]["code_promo"]
+    puts "========="
+
     respond_to do |format|
        format.js
     end
@@ -349,14 +353,17 @@ class OrdersController < ApplicationController
       @order.client = current_client
       @order.department = Department.find_by(name:session[:otherInfo]["department"])
       @order.country = Country.find_by(name:session[:otherInfo]["pays"])
-      @order.save
-
       code = session[:otherInfo]["code_promo"]
+      puts "==========="*4
+      puts session[:otherInfo]["code_promo"]
+      puts code
+      puts "==========="*4
       if code
         if code.length == 2
           @order.code_promo = CodePromo.find_by_code(session[:otherInfo]["code_promo"][0])
         end
       end
+      @order.save
 
       myPrestation = session[:myPrestation]
       unless myPrestation["spa"].empty?
@@ -402,7 +409,7 @@ class OrdersController < ApplicationController
     # Génère un numéro de transaction aléatoire
     transactionReference = "simu" + rand(100000..999999).to_s
     #Construit l'URL de retour pour récupérer le résultat du paiement sur le site e-commerce du marchand
-    normalReturnUrl = "http://spamandona.herokuapp.com/reservation-prestation/paye-commande"
+    normalReturnUrl = "http://localhost:3000/reservation-prestation/paye-commande"
     # Contruit la requête des données à envoyer à Mercanet
     @data = "amount=#{@amount}|currencyCode=978|merchantId=002001000000001|normalReturnUrl=" + normalReturnUrl + "|transactionReference=" + transactionReference + "|keyVersion=1"
     # Encode en UTF-8 des données à envoyer à Mercanet
@@ -496,19 +503,25 @@ class OrdersController < ApplicationController
   def validate_value_in_session
     exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
     @code_promo = 0
+    
     code = session[:otherInfo]["code_promo"]
+    
     if code
       if code.length == 2
         @code_promo = code[1]
       end
     end
+
     current_date = session[:otherInfo]["date"].split("/")
     isExeptional = false #[curent_Spa.ordinary_price,curent_Spa.ordinary_acompte]
+    
     if exceptionalDate.include?(current_date[0..1])
       isExeptional = true #[curent_Spa.exceptional_price,curent_Spa.exceptional_acompte]
     end
+    
     @totalPrice = 0
     @totalAcompte = 0
+    
     myPrestation = session[:myPrestation]
     unless myPrestation["spa"].empty?
       myPrestation["spa"].each do |spa|
@@ -517,11 +530,11 @@ class OrdersController < ApplicationController
           redirect_reservation
         else
           if isExeptional
-            @totalPrice += current_spa.exceptional_price - @code_promo
-            @totalAcompte += current_spa.exceptional_acompte - @code_promo
+            @totalPrice += current_spa.exceptional_price
+            @totalAcompte += current_spa.exceptional_acompte
           else
-            @totalPrice += current_spa.ordinary_price - @code_promo
-            @totalAcompte += current_spa.ordinary_acompte - @code_promo
+            @totalPrice += current_spa.ordinary_price
+            @totalAcompte += current_spa.ordinary_acompte
           end
         end
         if spa["option"]
@@ -537,6 +550,7 @@ class OrdersController < ApplicationController
         redirect_reservation
       end
     end
+
     unless myPrestation["massage"].empty?
       myPrestation["massage"].each do |massage|
         current_ca = MassageCa.find_by(name:massage["ca"])
@@ -554,11 +568,11 @@ class OrdersController < ApplicationController
           redirect_reservation
         else
           if isExeptional
-            @totalPrice += current_prix.exceptional_price - @code_promo
-            @totalAcompte += current_prix.exceptional_acompte - @code_promo
+            @totalPrice += current_prix.exceptional_price
+            @totalAcompte += current_prix.exceptional_acompte
           else
-            @totalPrice += current_prix.ordinary_price - @code_promo
-            @totalAcompte += current_prix.ordinary_acompte - @code_promo
+            @totalPrice += current_prix.ordinary_price
+            @totalAcompte += current_prix.ordinary_acompte
           end
         end
       end
@@ -569,5 +583,9 @@ class OrdersController < ApplicationController
         redirect_reservation
       end
     end
+    @totalPrice -= @code_promo
+    @totalAcompte -= @code_promo
+    @totalPrice = @totalPrice.to_i
+    @totalAcompte = @totalAcompte.to_i
   end
 end

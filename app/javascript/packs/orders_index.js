@@ -983,10 +983,7 @@ function priceForAllCadeau(){
 function bigTotalPrice(){
 	let spa = document.getElementById("spa-price-total").dataset.price
 	let massage = document.getElementById("massage-price-total").dataset.price
-	let cadeau = document.getElementById("cadeau-price-total").innerHTML
-	if (cadeau == "") {
-		cadeau = 0.00
-	}
+
 	if ((spa == "" || spa == "[0,0]") && (massage == "" || massage == "[0,0]")) {
 		document.getElementById("empty-order").classList.remove("hidden")
 	}else{
@@ -1002,8 +999,24 @@ function bigTotalPrice(){
 	}else{
 		massage = [0,0]
 	}
-	document.getElementById("total-price").innerHTML = spa[0]+massage[0]
-	document.getElementById("total-acompte").innerHTML =  spa[1]+massage[1]+parseFloat(cadeau)
+	let code_promo = 0
+	let prestations = JSON.parse(sessionStorage.getItem("prestations"));
+	if (prestations.code_promo) {
+		code_promo = prestations.code_promo[1]
+	}
+
+	let somePrice = spa[0] + massage[0]
+	let someAcompte = spa[1] + massage[1]
+
+	if(somePrice > 0){
+		somePrice -= code_promo
+	}
+	if(someAcompte > 0){
+		someAcompte -= code_promo
+	}
+
+	document.getElementById("total-price").innerHTML = somePrice
+	document.getElementById("total-acompte").innerHTML =  someAcompte
 }
 // pour l'enregistrement des donné dans le panier du boutons
 function numberAtOrderBtn(){
@@ -1047,29 +1060,7 @@ function submitFormulaire(){
 function changePromoCode(prestations) {
 	document.getElementById("alert-code").classList.remove("hidden");
 	document.getElementById("form-promo-code").classList.add("hidden");
-	document.getElementById("alert-code").innerHTML = "Votre code promo "+ prestations.code_promo[0] +" est validé avec succès." + " Vous avez gagné un reduction de " +prestations.code_promo[1]+ "€ pour chaque prix et acompte à payer!";
-	let dataForm = JSON.parse(document.getElementById('form-data').dataset.spas)
-	let dataMassages = JSON.parse(document.getElementById('form-data').dataset.massages)
-	for (var i = dataForm.length - 1; i >= 0; i--) {
-		dataForm[i][1] = dataForm[i][1] - prestations.code_promo[1]
-		dataForm[i][2] = dataForm[i][2] - prestations.code_promo[1]
-		dataForm[i][3] = dataForm[i][3] - prestations.code_promo[1]
-		dataForm[i][4] = dataForm[i][4] - prestations.code_promo[1]
-	}
-	document.getElementById('form-data').dataset.spas = JSON.stringify(dataForm)
-	for (var i = dataMassages.length - 1; i >= 0; i--) {
-		let current_massage = dataMassages[i][1]
-		for (var j = current_massage.length - 1; j >= 0; j--) {
-			let main = current_massage[j][1]
-			for (var k = main.length - 1; k >= 0; k--) {
-				main[k][1] = main[k][1] - prestations.code_promo[1]
-				main[k][2] = main[k][2] - prestations.code_promo[1]
-				main[k][3] = main[k][3] - prestations.code_promo[1]
-				main[k][4] = main[k][4] - prestations.code_promo[1]
-			}
-		}
-	}
-	document.getElementById('form-data').dataset.massages = JSON.stringify(dataMassages)
+	document.getElementById("alert-code").innerHTML = "Votre code promo "+ prestations.code_promo[0] +" est validé avec succès." + " Vous avez gagné un reduction de " +prestations.code_promo[1]+ "€ pour l'acompte total à payer!";
 }
 
 // document.getElementById('submi-tag').onCl
@@ -1077,3 +1068,9 @@ function changePromoCode(prestations) {
 // spanPriceTotal.innerHTML = "prix: "+prixSomme[0]+"€ acompte: "+prixSomme[1]+"€"
 // LIGNE 712 RA ILAINA ILAY ACCOMPTE
 // document.getElementById("massage-price-total").innerHTML = "prix: "+price+" € "+acompte+"€"
+
+/*
+
+
+
+*/

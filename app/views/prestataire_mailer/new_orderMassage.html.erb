@@ -749,30 +749,29 @@
 		<%= o_massage.massage_ca.name %><br>
 		<%= o_massage.massage_su.name %> <%= o_massage.massage_su_price.duration %>mn :
 		<% if @order.isExceptional? %>
-			<%= o_massage.massage_su_price.exceptional_price - @code_promo %>€<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;acompte: <%= o_massage.massage_su_price.exceptional_acompte - @code_promo %>€<br>
-			<% price += o_massage.massage_su_price.exceptional_price - @code_promo %>
-			<% acompte += o_massage.massage_su_price.exceptional_acompte - @code_promo %>
+			<%= o_massage.massage_su_price.exceptional_price.to_i %>€<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;acompte: <%= o_massage.massage_su_price.exceptional_acompte.to_i %>€<br>
+			<% price += o_massage.massage_su_price.exceptional_price %>
+			<% acompte += o_massage.massage_su_price.exceptional_acompte %>
 		<% else %>
-			<%= o_massage.massage_su_price.ordinary_price - @code_promo %>€<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;acompte: <%= o_massage.massage_su_price.ordinary_acompte - @code_promo %>€<br>
-			<% price += o_massage.massage_su_price.ordinary_price - @code_promo %>
-			<% acompte += o_massage.massage_su_price.ordinary_acompte - @code_promo %>
+			<%= o_massage.massage_su_price.ordinary_price.to_i %>€<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;acompte: <%= o_massage.massage_su_price.ordinary_acompte.to_i %>€<br>
+			<% price += o_massage.massage_su_price.ordinary_price %>
+			<% acompte += o_massage.massage_su_price.ordinary_acompte %>
 		<% end %>
 	<% end %>
 <br>
 <br>
-<strong>Prix total : <%= price + acompte %>€ </strong><br>
-<strong>Remise code promo : <%= @code_promo %>€</strong><br>
-<strong>Acompte versé par le client (commission CCSPA) : <%= acompte %>€</strong><br>
+<strong>Prix total : <%= price.to_i - @code_promo.to_i %>€ </strong><br>
+<strong>Remise code promo : <%= @code_promo.to_i %>€</strong><br>
+<strong>Acompte versé par le client (commission CCSPA) : <%= acompte.to_i - @code_promo.to_i %>€</strong><br>
 <br>
-<strong>Total restant pour vous : <%= price %>€</strong><br>
+<strong>Total restant pour vous : <%= price.to_i - acompte.to_i %>€</strong><br>
 (à récupérer directement auprès du client et hors frais de déplacement*)<br>
 <br>
 <em>* Les frais de déplacement ne sont pas compris, ils seront à préciser et à récupérer&nbsp;auprès du client directement</em></span></span></div>
 </div>
 </div>
-
                                     </td>
                                 </tr>
                             </tbody></table>

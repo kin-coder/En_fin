@@ -8,6 +8,7 @@ class AddIndexToClients < ActiveRecord::Migration[6.0]
 		add_column :clients, :sexe, :string
 		add_column :clients, :country, :string
 		add_column :clients, :zip_code, :string
+		add_column :clients, :town, :string
 		add_column :clients, :is_client, :boolean, default:false
 	end
 end

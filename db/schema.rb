@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_075640) do
     t.string "sexe"
     t.string "country"
     t.string "zip_code"
+    t.string "town"
     t.boolean "is_client", default: false
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true

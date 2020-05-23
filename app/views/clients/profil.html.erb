@@ -131,6 +131,7 @@
 												<li><strong>Téléphone : </strong><span class="paramsuser"><%= @client.tel %></span></li>
 												<li><strong>Sexe : </strong><span class="paramsuser"><%= @client.sexe %></span></li>
 												<li><strong>Pays : </strong><span class="paramsuser"><%= @client.country %></span></li>
+												<li><strong>Ville : </strong><span class="paramsuser"><%= @client.town %></span></li>
 											</ul>
 										</div>
 									</div>
@@ -189,7 +190,7 @@
 																	<% prixAcompte = order.totalPrice %>
 																	<tr>
 																		<td><%= order.prestation_date %></td>
-																		<td><%= prixAcompte[0] + prixAcompte[1] %> €</td>
+																		<td><%= prixAcompte[0] %> €</td>
 																		<td>
 																			<ul>
 																				<% order.order_services.each do |o_s| %>
