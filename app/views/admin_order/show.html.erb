@@ -63,11 +63,11 @@
 													</td>
 													<td>
 														<% if @order.isExceptional? %>
-														<li class="liPrix"><%= o_massage.massage_su_price.exceptional_price - @code_promo %>€</li>
-														<li class="liPrix">~ acompte: <%= o_massage.massage_su_price.exceptional_acompte - @code_promo %>€</li>
+														<li class="liPrix"><%= o_massage.massage_su_price.exceptional_price %>€</li>
+														<li class="liPrix">~ acompte: <%= o_massage.massage_su_price.exceptional_acompte %>€</li>
 														<% else %>
-														<li class="liPrix"><%= o_massage.massage_su_price.ordinary_price - @code_promo %>€</li>
-														<li class="liPrix">~ acompte: <%= o_massage.massage_su_price.ordinary_acompte - @code_promo %>€</li>
+														<li class="liPrix"><%= o_massage.massage_su_price.ordinary_price %>€</li>
+														<li class="liPrix">~ acompte: <%= o_massage.massage_su_price.ordinary_acompte %>€</li>
 														<% end %>
 													</td>
 												</tr>
@@ -85,7 +85,7 @@
 															<% if o_spa.product.nil? %>
 															Aucun produit selectionné
 															<% else %>
-															<%= o_spa.product.name %> à <%= o_spa.product.price %>€<br>
+															<%= o_spa.product.name %><br>
 															<% end %>
 														</li>
 
@@ -105,12 +105,16 @@
 															</li>
 														</td>
 														<td>
+															<% ambiance_price = 0 %>
+															<% unless o_spa.product.nil? %>
+																 <% ambiance_price = o_spa.product.price %>
+															<% end %>
 															<% if @order.isExceptional? %>
-															<li class="liPrix"><%= o_spa.spa.exceptional_price - @code_promo%>€</li>
-															<li class="liPrix">~ acompte: <%= o_spa.spa.exceptional_acompte - @code_promo %>€</li>
+															<li class="liPrix"><%= o_spa.spa.exceptional_price + ambiance_price %>€</li>
+															<li class="liPrix">~ acompte: <%= o_spa.spa.exceptional_acompte %>€</li>
 															<% else %>
-															<li class="liPrix"><%= o_spa.spa.ordinary_price - @code_promo %>€</li>
-															<li class="liPrix">~ acompte: <%= o_spa.spa.ordinary_acompte - @code_promo %>€</li>
+															<li class="liPrix"><%= o_spa.spa.ordinary_price + ambiance_price %>€</li>
+															<li class="liPrix">~ acompte: <%= o_spa.spa.ordinary_acompte %>€</li>
 															<% end %>
 														</td>
 													</tr>
