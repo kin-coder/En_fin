@@ -34,9 +34,16 @@
                 <i class="fa fa-user-circle" aria-hidden="true"></i>
                 <%= f.text_field :first_name, autofocus: true, autocomplete: "Prénom", class:"form-control form-controlDeviseSignUp", id:"fullname", placeholder:"Votre prénom",:required => true %>
               </div>
+
               <div class="form-group">
                 <%= f.select :country, ['Votre pays', 'France', 'Belgique', 'Luxembourg', 'Suisse'], html: { onchange: "validatePays()" }, autofocus: true, autocomplete: "Pays", class:"form-control form-controlDeviseSignUp intrus", id:"fullname", placeholder:"Votre pays",:required => true%>
               </div>
+
+              <div class="form-group">
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <%= f.text_field :town, autofocus: true, autocomplete: "Ville", class:"form-control form-controlDeviseSignUp", id:"town", placeholder:"Ville",:required => true %>
+              </div>
+
               <div class="form-group">
                 <i class="fa fa-address-card-o" aria-hidden="true"></i>                <%= f.text_field :zip_code, autofocus: true, autocomplete: "zipcode", class:"form-control form-controlDeviseSignUp", id:"fullname", placeholder:"Code Postal",:required => true %>
               </div>

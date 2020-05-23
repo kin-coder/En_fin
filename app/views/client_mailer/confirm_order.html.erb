@@ -903,7 +903,7 @@
 <strong>Remise code promo : <%= @code_promo %>€</strong><br>
 <strong>Acompte payé par CB&nbsp;: <%= acompte - @code_promo %>€</strong><br>
 <br>
-<strong>Total restant à régler le jour de la prestation&nbsp;: <%= (price-acompte)-2*@code_promo %>€</strong> &nbsp;(hors frais de déplacement*)<br><br>
+<strong>Total restant à régler le jour de la prestation&nbsp;: <%= price.to_i - acompte.to_i %>€</strong> &nbsp;(hors frais de déplacement*)<br><br>
 
 <em>* Les frais de déplacement ne sont pas compris, ils vous seront précisés par votre professionnel</em></span></span></div>
 
