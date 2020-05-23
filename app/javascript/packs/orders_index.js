@@ -1,3 +1,5 @@
+
+
 // [spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte]
 // [price.duration,price.exceptional_price,price.exceptional_acompte,price.ordinary_price,price.ordinary_acompte]
 scriptPrincipal()
@@ -653,7 +655,7 @@ function priceTotalForAllSpa(dataOption,dataForm){
 	prestations.priceSpa = prixSomme[0]
 	sessionStorage.setItem("prestations",JSON.stringify(prestations))
 
-	spanPriceTotal.innerHTML = " : "+(prixSomme[0]+prixSomme[1])+" € "
+	spanPriceTotal.innerHTML = " : "+prixSomme[0]+" € "
 	spanPriceTotal.dataset.price = "["+[prixSomme[0],prixSomme[1]]+"]"
 	// Grand prix total
 	bigTotalPrice()
@@ -849,12 +851,13 @@ function priceTotalForAllMassage(dataMassages){
 		}
 	}
 
+	document.getElementById("massage-price-total").innerHTML = " : "+price+"€"+acompte+"€"
 	document.getElementById("massage-price-total").dataset.price = "["+[price,acompte]+"]"
 
 	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
 	prestations.priceMassage = price
 	sessionStorage.setItem("prestations",JSON.stringify(prestations))	
-	document.getElementById("massage-price-total").innerHTML = " : "+(price+acompte)+" € "
+	document.getElementById("massage-price-total").innerHTML = " : "+price+" € "
 
 	if (price == 0 && acompte == 0) {
 		document.getElementById("massage-order").classList.add('hidden')
@@ -982,7 +985,10 @@ function priceForAllCadeau(){
 function bigTotalPrice(){
 	let spa = document.getElementById("spa-price-total").dataset.price
 	let massage = document.getElementById("massage-price-total").dataset.price
-
+	let cadeau = document.getElementById("cadeau-price-total").innerHTML
+	if (cadeau == "") {
+		cadeau = 0.00
+	}
 	if ((spa == "" || spa == "[0,0]") && (massage == "" || massage == "[0,0]")) {
 		document.getElementById("empty-order").classList.remove("hidden")
 	}else{
@@ -999,7 +1005,7 @@ function bigTotalPrice(){
 		massage = [0,0]
 	}
 	document.getElementById("total-price").innerHTML = spa[0]+massage[0]
-	document.getElementById("total-acompte").innerHTML =  spa[1]+massage[1]
+	document.getElementById("total-acompte").innerHTML =  spa[1]+massage[1]+parseFloat(cadeau)
 }
 // pour l'enregistrement des donné dans le panier du boutons
 function numberAtOrderBtn(){
