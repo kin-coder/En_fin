@@ -752,12 +752,12 @@
 
 	<% if @order.isExceptional? %>
 		<%= o_spa.spa.exceptional_price.to_i + ambiance_price %>€<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;acompte: <%= o_spa.spa.exceptional_acompte %>€<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;acompte: <%= o_spa.spa.exceptional_acompte.to_i %>€<br>
 		<% price += o_spa.spa.exceptional_price %>
 		<% acompte += o_spa.spa.exceptional_acompte %>
 	<% else %>
 		<%= o_spa.spa.ordinary_price.to_i + ambiance_price %>€<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;acompte: <%= o_spa.spa.ordinary_acompte %>€<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;acompte: <%= o_spa.spa.ordinary_acompte.to_i %>€<br>
 		<% price += o_spa.spa.ordinary_price %>
 		<% acompte += o_spa.spa.ordinary_acompte %>
 	<% end %>
