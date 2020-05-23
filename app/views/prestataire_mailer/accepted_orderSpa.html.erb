@@ -796,7 +796,7 @@ Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe
 <strong>Remise code promo : <%= @code_promo.to_i %>€</strong><br>
 <strong>Acompte versé par le client (commission CCSPA) : <%= acompte.to_i - @code_promo.to_i %>€</strong><br>
 <br>
-<strong>Total restant pour vous : <%= (price.to_i-acompte.to_i)-(2*@code_promo.to_i) %>€</strong><br>
+<strong>Total restant pour vous : <%= price.to_i - acompte.to_i %>€</strong><br>
 (à récupérer directement auprès du client et hors frais de déplacement*)<br>
 <br>
 <em>* Les frais de déplacement ne sont pas compris, ils seront à préciser et à récupérer&nbsp;auprès du client directement</em>

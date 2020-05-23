@@ -148,6 +148,10 @@ class OrdersController < ApplicationController
     else
       session[:otherInfo]["code_promo"] = ""
     end
+    puts "========="
+    puts session[:otherInfo]["code_promo"]
+    puts "========="
+
     respond_to do |format|
        format.js
     end
@@ -349,14 +353,17 @@ class OrdersController < ApplicationController
       @order.client = current_client
       @order.department = Department.find_by(name:session[:otherInfo]["department"])
       @order.country = Country.find_by(name:session[:otherInfo]["pays"])
-      @order.save
-
       code = session[:otherInfo]["code_promo"]
+      puts "==========="*4
+      puts session[:otherInfo]["code_promo"]
+      puts code
+      puts "==========="*4
       if code
         if code.length == 2
           @order.code_promo = CodePromo.find_by_code(session[:otherInfo]["code_promo"][0])
         end
       end
+      @order.save
 
       myPrestation = session[:myPrestation]
       unless myPrestation["spa"].empty?
