@@ -5,7 +5,9 @@ class ClientMailer < ApplicationMailer
     @order = Order.find(order_id)
     @date = @order.prestation_date
     @heurs = ["",""]
+    @number_service = 0
     @order.order_services.each do |o_s|
+      @number_service += 1
     	if o_s.service.name == "Location spa"
     		@heurs[0] = o_s.service_time
     	elsif o_s.service.name == "Massage"
