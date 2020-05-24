@@ -690,8 +690,14 @@
 </table>
 
 <!-- MANOMBOKA SPA MANOMBOKA SPA MANOMBOKA SPA MANOMBOKA SPA  -->
-<% price = 0 %>
-<% acompte = 0 %>
+
+
+<% priceSpa = 0 %>
+<% acompteSpa = 0 %>
+
+<% priceMassage = 0 %>
+<% acompteMassage = 0 %>
+
 
 <% unless @order.order_spas.empty? %>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnBoxedTextBlock" style="min-width:100%;">
@@ -763,20 +769,20 @@
 		<% if @order.isExceptional? %>
 			<%= o_spa.spa.exceptional_price.to_i + ambiance_price %>€<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_spa.spa.exceptional_acompte.to_i %>€<br>
-			<% price += o_spa.spa.exceptional_price %>
-			<% acompte += o_spa.spa.exceptional_acompte %>
+			<% priceSpa += o_spa.spa.exceptional_price %>
+			<% acompteSpa += o_spa.spa.exceptional_acompte %>
 		<% else %>
 			<%= o_spa.spa.ordinary_price.to_i + ambiance_price %>€<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_spa.spa.ordinary_acompte.to_i %>€<br>
-			<% price += o_spa.spa.ordinary_price %>
-			<% acompte += o_spa.spa.ordinary_acompte %>
+			<% priceSpa += o_spa.spa.ordinary_price %>
+			<% acompteSpa += o_spa.spa.ordinary_acompte %>
 		<% end %>
 		&nbsp;&nbsp;&nbsp;&nbsp;~ Ambiance:
 		<% if o_spa.product.nil? %>
 			aucun selectionné <br>
 		<% else %>
 			<%= o_spa.product.name %><br>
-			<% price += o_spa.product.price %>
+			<% priceSpa += o_spa.product.price %>
 		<% end %>
 		<ul>
 			<li><strong>Type de logement :</strong> <%= o_spa.logement %></li>
@@ -784,8 +790,22 @@
 			<li><strong>Système d'eau :</strong> <%= o_spa.syteme_eau %></li>
 		</ul>
 	<% end %>
-</div>
+
+<% if @number_service == 1 %>
+	<br>
+	<strong>Prix total :</strong> <%= priceSpa.to_i - @code_promo.to_i %>€ <br>
+	<strong>Remise code promo :</strong> <%= @code_promo.to_i %>€<br>
+	<strong>Acompte payé par CB&nbsp;:</strong> <%= acompteSpa.to_i - @code_promo.to_i %>€<br>
+	<br>
+	<strong>Total restant à régler le jour de la prestation&nbsp;:&nbsp;<%= priceSpa.to_i - acompteSpa.to_i %>€</strong> &nbsp;(hors frais de déplacement*)<br><br>
+	<em>* Les frais de déplacement ne sont pas compris, ils vous seront précisés par votre professionnel</em>
+<% end %>
+
+</span>
+</span><br>
+&nbsp;</div>
 <div style="text-align: center;"><span style="font-size:13px"><span style="color:#696969"><em><u><strong>Un chèque de caution peut vous être demandé par le professionnel. Si c'est le cas, celui-ci vous en avertira</strong></u></em></span></span></div>
+
                                     </td>
                                 </tr>
                             </tbody></table>
@@ -872,26 +892,36 @@
 <strong>Heure (modifiable avec le client):</strong> <%= @heurs[1] %><br>
 <br>
 <strong>Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe" : @order.praticien %>"</span> <br>
+
 <% @order.order_massages.each do |o_massage| %>
 	<strong><%= o_massage.massage_ca.name %></strong><br>
 	<strong><%= o_massage.massage_su.name %></strong> <%= o_massage.massage_su_price.duration %>mn :
 	<% if @order.isExceptional? %>
 		<%= o_massage.massage_su_price.exceptional_price %>€<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_massage.massage_su_price.exceptional_acompte %>€<br>
-		<% price += o_massage.massage_su_price.exceptional_price %>
-		<% acompte += o_massage.massage_su_price.exceptional_acompte %>
+		<% priceMassage += o_massage.massage_su_price.exceptional_price %>
+		<% acompteMassage += o_massage.massage_su_price.exceptional_acompte %>
 	<% else %>
 		<%= o_massage.massage_su_price.ordinary_price %>€<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_massage.massage_su_price.ordinary_acompte %>€<br>
-		<% price += o_massage.massage_su_price.ordinary_price %>
-		<% acompte += o_massage.massage_su_price.ordinary_acompte %>
+		<% priceMassage += o_massage.massage_su_price.ordinary_price %>
+		<% acompteMassage += o_massage.massage_su_price.ordinary_acompte %>
 	<% end %>
 <% end %>
-<br>
-<br>
-</span>
-</span>
-</div>
+
+<% if @number_service == 1 %>
+	<br>
+	<br>
+	<strong>Prix total : <%= priceMassage - @code_promo %>€ </strong><br>
+	<strong>Remise code promo : <%= @code_promo %>€</strong><br>
+	<strong>Acompte payé par CB&nbsp;: <%= acompteMassage - @code_promo %>€</strong><br>
+	<br>
+	<strong>Total restant à régler le jour de la prestation&nbsp;: <%= priceMassage.to_i - acompteMassage.to_i %>€</strong> &nbsp;(hors frais de déplacement*)<br><br>
+
+	<em>* Les frais de déplacement ne sont pas compris, ils vous seront précisés par votre professionnel</em>
+<% end %>
+
+</span></span></div>
 
                                     </td>
                                 </tr>
@@ -913,6 +943,110 @@
 </table>
 
 <% end %> <!-- Tapitra eto ny massage -->
+
+
+
+<!-- ############################################################################################# -->
+
+<% if @number_service != 1 %>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnBoxedTextBlock" style="min-width:100%;">
+    <!--[if gte mso 9]>
+	<table align="center" border="0" cellspacing="0" cellpadding="0" width="100%">
+	<![endif]-->
+	<tbody class="mcnBoxedTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnBoxedTextBlockInner">
+                
+				<!--[if gte mso 9]>
+				<td align="center" valign="top" ">
+				<![endif]-->
+                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnBoxedTextContentContainer">
+                    <tbody><tr>
+                        
+                        <td style="padding-top:9px; padding-left:18px; padding-bottom:9px; padding-right:18px;">
+                        
+                            <table border="0" cellspacing="0" class="mcnTextContentContainer" width="100%" style="min-width: 100% !important;background-color: #F0339A;">
+                                <tbody><tr>
+                                    <td valign="top" class="mcnTextContent" style="padding: 18px;color: #F2F2F2;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: center;">
+                                        <strong>TOTAL DE VOTRE COMMANDE</strong>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if gte mso 9]>
+				</td>
+				<![endif]-->
+                
+				<!--[if gte mso 9]>
+                </tr>
+                </table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnBoxedTextBlock" style="min-width:100%;">
+    <!--[if gte mso 9]>
+	<table align="center" border="0" cellspacing="0" cellpadding="0" width="100%">
+	<![endif]-->
+	<tbody class="mcnBoxedTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnBoxedTextBlockInner">
+                
+				<!--[if gte mso 9]>
+				<td align="center" valign="top" ">
+				<![endif]-->
+                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnBoxedTextContentContainer">
+                    <tbody><tr>
+                        
+                        <td style="padding-top:9px; padding-left:18px; padding-bottom:9px; padding-right:18px;">
+                        
+                            <table border="0" cellspacing="0" class="mcnTextContentContainer" width="100%" style="min-width: 100% !important;border: 1px solid #505050;">
+                                <tbody><tr>
+                                    <td valign="top" class="mcnTextContent" style="padding: 18px;color: #F2F2F2;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: center;">
+										<div style="text-align: left;"><span style="font-size:13px"><span style="color:#000000">
+										<br>
+										<strong>Prix total :</strong> <%= (priceSpa.to_i+priceMassage.to_i)-@code_promo.to_i %>€ <br>
+										<strong>Remise code promo :</strong> <%= @code_promo.to_i %>€<br>
+										<strong>Acompte payé par CB&nbsp;:</strong> <%= (acompteSpa.to_i+acompteMassage.to_i)-@code_promo.to_i %>€<br>
+										<br>
+
+										<strong>Total restant à régler le jour de la prestation&nbsp;:&nbsp; <%= (priceSpa.to_i+priceMassage.to_i) - (acompteSpa.to_i+acompteMassage.to_i) %></strong>
+										<ul>
+											<li><strong>Pour la location spa : </strong><%= priceSpa.to_i - acompteSpa.to_i %>€ (hors frais de déplacement*)</li>
+											<li><strong>Pour le Massage à domicile : </strong><%= priceMassage.to_i - acompteMassage.to_i %>€ (hors frais de déplacement*)</li>
+										</ul>
+
+										<em>* Les frais de déplacement ne sont pas compris, ils vous seront précisés par votre professionnel</em>
+										</span>
+										</span>
+										<br>
+										</div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if gte mso 9]>
+				</td>
+				<![endif]-->
+                
+				<!--[if gte mso 9]>
+                </tr>
+                </table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table>
+<% end %>
+
+
+<!-- ############################################################################################# -->
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnDividerBlock" style="min-width:100%;">
     <tbody class="mcnDividerBlockOuter">
