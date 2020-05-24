@@ -43,40 +43,38 @@ function numberOrder(){
 			htmlCadeau += "<li>"+cadeau[i][2]+" : "+ Number(cadeau[i][3])*Number(cadeau[i][1]) +"€</li>"
 		}
 	}
+	let code_promo = 0
+	let product=document.getElementById("cart-inner-produit")
+	if (htmlCadeau != "<ul class=\"ul-btn\">") {
+		product.innerHTML = htmlCadeau+"</ul>"
+		if (prestations.code_promo) {
+			code_promo = prestations.code_promo[1]
+			document.getElementById("promo-code").innerHTML = "Réduction de "+code_promo+"€ sur le total de l'acompte à payer"
+		}else{
+			document.getElementById("promo-code").innerHTML = "<ul class=\"ul-btn\">Vous n'avez pas inseré un code promo</ul>"
+		}
 
-let product=document.getElementById("cart-inner-produit")
-if (htmlCadeau != "<ul class=\"ul-btn\">") {
-	
-	product.innerHTML = htmlCadeau+"</ul>"
-	if (prestations.codePromo) {
-		document.getElementById("promo-code").innerHTML = prestations.codePromo
+		if (typeof(totalPrice)!= "number") {
+			document.getElementById("price-modal-cart").innerHTML = 0+"€"
+		}else{
+			document.getElementById("price-modal-cart").innerHTML = (totalPrice-code_promo)+"€"
+		}
+		document.getElementById("number-cart-ok").innerHTML = number
 	}else{
-		document.getElementById("promo-code").innerHTML = "<ul class=\"ul-btn\">Vous n'avez pas inseré un code promo</ul>"
+		product.innerHTML = "<ul class=\"ul-btn\">Vous n'avez pas commandé des produits</ul>"
+		if (prestations.codePromo) {
+			code_promo = prestations.code_promo[1]
+			document.getElementById("promo-code").innerHTML = "Réduction de "+code_promo+"€ sur le total de l'acompte à payer"
+		}else{
+			document.getElementById("promo-code").innerHTML = "<ul class=\"ul-btn\">Vous n'avez pas inseré un code promo</ul>"
+		}
+		if (typeof(totalPrice)!= "number") {
+			document.getElementById("price-modal-cart").innerHTML = 0+"€"
+		}else{
+			document.getElementById("price-modal-cart").innerHTML = (totalPrice-code_promo)+"€"
+		}
+		document.getElementById("number-cart-ok").innerHTML = number
 	}
-	if (typeof(totalPrice)!= "number") {
-		document.getElementById("price-modal-cart").innerHTML = 0+"€"
-	}else{
-		document.getElementById("price-modal-cart").innerHTML = totalPrice+"€"
-	}
-	document.getElementById("number-cart-ok").innerHTML = number
-
-} 
-
-else {
-	product.innerHTML = "<ul class=\"ul-btn\">Vous n'avez pas commandé des produits</ul>"
-	if (prestations.codePromo) {
-		document.getElementById("promo-code").innerHTML = prestations.codePromo
-	}else{
-		document.getElementById("promo-code").innerHTML = "<ul class=\"ul-btn\">Vous n'avez pas inseré un code promo</ul>"
-	}
-	if (typeof(totalPrice)!= "number") {
-		document.getElementById("price-modal-cart").innerHTML = 0+"€"
-	}else{
-		document.getElementById("price-modal-cart").innerHTML = totalPrice+"€"
-	}
-	document.getElementById("number-cart-ok").innerHTML = number
-
-}
 
 }
 

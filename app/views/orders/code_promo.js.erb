@@ -5,6 +5,14 @@ if (<%=@test%> == true) {
 	let prestations = JSON.parse(sessionStorage.getItem("prestations"))
 	prestations.code_promo = ["<%= session[:otherInfo]['code_promo'][0] %>",parseInt(<%= session[:otherInfo]['code_promo'][1] %>)]
 	sessionStorage.setItem("prestations",JSON.stringify(prestations))
+	let priceTotal = document.getElementById("total-price")
+	let acompteTotal = document.getElementById("total-acompte")
+	if(parseInt(priceTotal.innerHTML) > 0 ){
+		priceTotal.innerHTML = parseInt(priceTotal.innerHTML) -	prestations.code_promo[1]
+	}
+	if(parseInt(acompteTotal.innerHTML) > 0 ){
+		acompteTotal.innerHTML = parseInt(acompteTotal.innerHTML) -	prestations.code_promo[1]
+	}
 }else{
 	alert("Code promo non reconnu");
 }
