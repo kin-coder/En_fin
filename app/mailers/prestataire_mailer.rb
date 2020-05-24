@@ -11,10 +11,6 @@ class PrestataireMailer < ApplicationMailer
     @oService = OrderService.find(order_service)
     @order = @oService.order
     @date = @order.prestation_date
-    @code_promo = 0
-    if @order.code_promo
-      @code_promo = @order.code_promo.reduction
-    end
     mail(to: @prestataire.email, subject: 'Une nouvelle commande Cocooning Spa !')
   end
 
@@ -23,10 +19,6 @@ class PrestataireMailer < ApplicationMailer
     @oService = OrderService.find(order_service)
     @order = @oService.order
     @date = @order.prestation_date
-    @code_promo = 0
-    if @order.code_promo
-      @code_promo = @order.code_promo.reduction
-    end
     mail(to: @prestataire.email, subject: 'Une nouvelle commande Cocooning Spa !')
   end
 
@@ -36,10 +28,6 @@ class PrestataireMailer < ApplicationMailer
     @order = @oService.order
     @date = @order.prestation_date.split("/")
     @date = "#{@date[1]}/#{@date[0]}/#{@date[2]}"
-    @code_promo = 0
-    if @order.code_promo
-      @code_promo = @order.code_promo.reduction
-    end
     mail(to: @prestataire.email, subject: 'Votre commande Cocooning Spa acceptée !')
   end
 
@@ -49,10 +37,6 @@ class PrestataireMailer < ApplicationMailer
     @order = @oService.order
     @date = @order.prestation_date.split("/")
     @date = "#{@date[1]}/#{@date[0]}/#{@date[2]}"
-    @code_promo = 0
-    if @order.code_promo
-      @code_promo = @order.code_promo.reduction
-    end
     mail(to: @prestataire.email, subject: 'Votre commande Cocooning Spa acceptée !')
   end
 
@@ -66,5 +50,4 @@ class PrestataireMailer < ApplicationMailer
     @order_id = order_id
     mail(to: @prestataire.email, subject: "Prise en charge annulée!")
   end
-
 end
