@@ -690,6 +690,8 @@
 </table>
 
 <!-- MANOMBOKA SPA MANOMBOKA SPA MANOMBOKA SPA MANOMBOKA SPA  -->
+<% price = 0 %>
+<% acompte = 0 %>
 
 <% unless @order.order_spas.empty? %>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnBoxedTextBlock" style="min-width:100%;">
@@ -751,8 +753,6 @@
                                         <div style="text-align: left;"><span style="font-size:13px"><span style="color:#000000">
 <strong>Date :</strong> <%= @date %><br>
 <strong>Heure :</strong> <%= @heurs[0] %><br>
-	<% price = 0.0 %>
-	<% acompte = 0.0 %>
 	<% @order.order_spas.each do |o_spa| %>
 		Location spa <%= o_spa.spa.duration %>h : 
 		<% ambiance_price = 0 %>
@@ -784,16 +784,8 @@
 			<li><strong>Système d'eau :</strong> <%= o_spa.syteme_eau %></li>
 		</ul>
 	<% end %>
-	<br>
-	<strong>Prix total :</strong> <%= price.to_i - @code_promo.to_i %>€ <br>
-	<strong>Remise code promo :</strong> <%= @code_promo.to_i %>€<br>
-	<strong>Acompte payé par CB&nbsp;:</strong> <%= acompte.to_i - @code_promo.to_i %>€<br>
-	<br>
-	<strong>Total restant à régler le jour de la prestation&nbsp;:&nbsp;<%= price.to_i - acompte.to_i %>€</strong> &nbsp;(hors frais de déplacement*)<br><br>
-	<em>* Les frais de déplacement ne sont pas compris, ils vous seront précisés par votre professionnel</em></span></span><br>
-&nbsp;</div>
+</div>
 <div style="text-align: center;"><span style="font-size:13px"><span style="color:#696969"><em><u><strong>Un chèque de caution peut vous être demandé par le professionnel. Si c'est le cas, celui-ci vous en avertira</strong></u></em></span></span></div>
-
                                     </td>
                                 </tr>
                             </tbody></table>
@@ -880,8 +872,6 @@
 <strong>Heure (modifiable avec le client):</strong> <%= @heurs[1] %><br>
 <br>
 <strong>Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe" : @order.praticien %>"</span> <br>
-<% price = 0.0 %>
-<% acompte = 0.0 %>
 <% @order.order_massages.each do |o_massage| %>
 	<strong><%= o_massage.massage_ca.name %></strong><br>
 	<strong><%= o_massage.massage_su.name %></strong> <%= o_massage.massage_su_price.duration %>mn :
@@ -899,13 +889,9 @@
 <% end %>
 <br>
 <br>
-<strong>Prix total : <%= price - @code_promo %>€ </strong><br>
-<strong>Remise code promo : <%= @code_promo %>€</strong><br>
-<strong>Acompte payé par CB&nbsp;: <%= acompte - @code_promo %>€</strong><br>
-<br>
-<strong>Total restant à régler le jour de la prestation&nbsp;: <%= price.to_i - acompte.to_i %>€</strong> &nbsp;(hors frais de déplacement*)<br><br>
-
-<em>* Les frais de déplacement ne sont pas compris, ils vous seront précisés par votre professionnel</em></span></span></div>
+</span>
+</span>
+</div>
 
                                     </td>
                                 </tr>
