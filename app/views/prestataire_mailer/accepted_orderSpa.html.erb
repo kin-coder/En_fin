@@ -657,20 +657,20 @@
 <br>
 Heure (modifiable avec le client) :&nbsp; <%= @oService.service_time %><br>
 <br>
-Prénom : <%= @order.client.first_name %> <br><br>
+Prénom : <%= @order.client.first_name %> <br>
 
-Nom : <%= @order.client.last_name %> <br><br>
+Nom : <%= @order.client.last_name %> <br>
 
-Téléphone :	<%= @order.client.tel %> <br><br>
+Téléphone :	<%= @order.client.tel %> <br>
 
-Email : <%= @order.client.email %> <br><br>
+Email : <%= @order.client.email %> <br>
 
 Adresse de livraison : <br>
 &nbsp;&nbsp;&nbsp;-Pays: <%= @order.delivery_pays %> <br>
 &nbsp;&nbsp;&nbsp;-Ville: <%= @order.delivery_ville %> <br>
 &nbsp;&nbsp;&nbsp;-Adresse: <%= @order.delivery_adresse %> <br>
 
-Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe" : @order.praticien %>"</span><br><br>
+Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe" : @order.praticien %>"</span><br>
 <strong>Message perso du client : "<%= @order.message %>"</strong></span></span></div>
 </div>
 </div>
@@ -789,8 +789,6 @@ Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe
 		<li><strong>Système d'eau :</strong> <%= o_spa.syteme_eau %></li>
 	</ul>
 <% end %>
-
-<br>
 <br>
 <strong>Prix total : <%= price.to_i %>€</strong><br>
 <strong>Acompte versé par le client (commission CCSPA) : <%= acompte.to_i %>€</strong><br>
