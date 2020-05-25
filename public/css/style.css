@@ -117,6 +117,10 @@
     padding-top: 5px;
     }}
     @media only screen and (max-width: 600px) {
+        .text-index-ok {
+
+    margin-left: -6.5% !important;
+}
 
       #flechindex{
         position: absolute;
@@ -5001,12 +5005,14 @@ footer {
 @media (min-width: 320px) {
   .footerGallery {
     padding-left: 0;
+    margin-left: 6%;
   }
 }
 
 @media (min-width: 768px) {
   .footerGallery {
     padding-left: 15px;
+    margin-left: -20%;
   }
 }
 
@@ -7716,6 +7722,7 @@ input[type=number]::-webkit-inner-spin-button {
   box-shadow: 5px 10px 18px #888888;
   width: 150px;
 }
+
 .mercanet img{
   height: 200px !important;
   border: 1px solid;
@@ -7726,7 +7733,9 @@ input[type=number]::-webkit-inner-spin-button {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-
+  .mercanet .image{
+    margin-left: -20%;
+  }
   .secotionTitle h2 span {
 
     display: block;
@@ -8425,6 +8434,14 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 @media only screen and (min-width: 992px) {
+
+  .footerGallery {
+    padding-left: 15px;
+    margin-left: -10% !important;
+  }
+  .mercanet .image{
+    margin-left: 0% !important;
+  }
   .carousel-inner {
 
     position: relative;
@@ -8669,78 +8686,80 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 
-  <!-- media query -->
-  /* Extra small devices (phones, 600px and down) */
-  @media only screen and (max-width: 600px) {
-.faBar{
-margin-left: 15px;
+<!-- media query -->
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+
+  .faBar{
+    margin-left: 15px;
+  }
 }
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  #toolbar{
+    display: block !important;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+  .actionTableAdmin{
+    width: 250px;
   }
 
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 600px) {
-#toolbar{
-display: block !important;
-}
+  .filter-control{
+    position: relative;
+
+    left: -10px;
   }
 
-  /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 992px) {
 
-.actionTableAdmin{
-  width: 250px;
-}
+  .secotionTitleEditPresta {
+    padding: 0px 0 30px 0 !important;
+  }
 
-.filter-control{
-  position: relative;
+  .sidebar .nav-item .nav-link span {
+    font-size: 1.4rem;
+    display: inline;
+  }
 
-  left: -10px;
-}
+  .sidebar {
+    width: 18rem !important;
+  }
 
+  #leftFa{
+    width: 30px;
+    font-size: 20px;
+  }
 
-.secotionTitleEditPresta {
-  padding: 0px 0 30px 0 !important;
-}
+  .shadow {
+    box-shadow: 0 .15rem 1.75rem 0 
+    rgb(236, 85, 152) !important;
+  }
 
-.sidebar .nav-item .nav-link span {
-  font-size: 1.4rem;
-  display: inline;
-}
+  .badge-counter {
+    color: #fff !important;
+    background-color:#e74a3b !important;
+  }
 
-.sidebar {
-  width: 18rem !important;
-}
+  .navbarTopLeft{
+    font-family: "Quicksand";
+    font-weight: bold;
+  }
 
-#leftFa{
-  width: 30px;
-  font-size: 20px;
-}
+  .sidebar #sidebarToggle {
 
-.shadow {
-  box-shadow: 0 .15rem 1.75rem 0 
-  rgb(236, 85, 152) !important;
-}
-
-.badge-counter {
-  color: #fff !important;
-  background-color:#e74a3b !important;
-}
-
-.navbarTopLeft{
-  font-family: "Quicksand";
-  font-weight: bold;
-}
-
-.sidebar #sidebarToggle {
-
-  width: 2.5rem;
-  height: 2.5rem;
-  text-align: center;
-  margin-bottom: 1rem;
-  cursor: pointer;
-  position: relative;
-  left: 150px;
-  top: -370px;
+    width: 2.5rem;
+    height: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    position: relative;
+    left: 150px;
+    top: -370px;
 /*reduire slideLeft
 */    display: none;
 
@@ -8753,5 +8772,5 @@ display: block !important;
 .sidebar .nav-item .nav-link {
   width: 18rem !important;
 }
-  }
+}
 
