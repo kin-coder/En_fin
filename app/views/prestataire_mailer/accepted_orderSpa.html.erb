@@ -653,24 +653,21 @@
                                     <td valign="top" class="mcnTextContent" style="padding: 18px;color: #F2F2F2;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: center;">
                                         <div style="text-align: center;">
 <div style="text-align: center;">
-<div style="text-align: left;"><span style="color:#000000"><span style="font-size:13px"><strong>Date :<%= @date %> <br>
-<br>
-Heure (modifiable avec le client) :&nbsp; <%= @oService.service_time %><br>
-<br>
-Prénom : <%= @order.client.first_name %> <br>
-
-Nom : <%= @order.client.last_name %> <br>
-
-Téléphone :	<%= @order.client.tel %> <br>
-
-Email : <%= @order.client.email %> <br>
-
-Adresse de livraison : <br>
+<div style="text-align: left;"><span style="color:#000000"><span style="font-size:13px">
+<b>Date :</b> <%= @date %> <br>
+<b>Heure (modifiable avec le client) : </b>&nbsp; <%= @oService.service_time %><br>
+<b>Prénom :</b> <%= @order.client.first_name %> <br>
+<b>Nom :</b> <%= @order.client.last_name %> <br>
+<b>Téléphone :</b>	<%= @order.client.tel %> <br>
+<b>Email :</b> <%= @order.client.email %> <br>
+<b>Adresse de livraison :</b><br>
 &nbsp;&nbsp;&nbsp;-Pays: <%= @order.delivery_pays %> <br>
 &nbsp;&nbsp;&nbsp;-Ville: <%= @order.delivery_ville %> <br>
-&nbsp;&nbsp;&nbsp;-Adresse: <%= @order.delivery_adresse %> <br>
-
-Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe" : @order.praticien %>"</span><br>
+&nbsp;&nbsp;&nbsp;- Code postal: <%= @order.delivery_code_postal %> <br>
+&nbsp;&nbsp;&nbsp;- Adresse: <%= @order.delivery_adresse %> <br>
+<% unless @order.delivery_adresse_complet.nil? %>
+&nbsp;&nbsp;&nbsp;- Complément d'adresse: <%= @order.delivery_adresse_complet %> <br>
+<% end %>
 <strong>Message perso du client : "<%= @order.message %>"</strong></span></span></div>
 </div>
 </div>
@@ -789,7 +786,6 @@ Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe
 		<li><strong>Système d'eau :</strong> <%= o_spa.syteme_eau %></li>
 	</ul>
 <% end %>
-<br>
 <strong>Prix total : <%= price.to_i %>€</strong><br>
 <strong>Acompte versé par le client (commission CCSPA) : <%= acompte.to_i %>€</strong><br>
 <br>
