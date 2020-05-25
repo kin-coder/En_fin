@@ -658,8 +658,12 @@
 <strong>Adresse de livraison :</strong> <br>
 &nbsp;&nbsp;&nbsp;-Pays: <%= @order.delivery_pays %> <br>
 &nbsp;&nbsp;&nbsp;-Ville: <%= @order.delivery_ville %> <br>
-&nbsp;&nbsp;&nbsp;-Adresse: <%= @order.delivery_adresse %> <br>
-<strong>Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peut importe" : @order.praticien %>"</span></div>
+&nbsp;&nbsp;&nbsp;- Code postal: <%= @order.delivery_code_postal %> <br>
+&nbsp;&nbsp;&nbsp;- Adresse: <%= @order.delivery_adresse %> <br>
+<% unless @order.delivery_adresse_complet.nil? %>
+&nbsp;&nbsp;&nbsp;- Complément d'adresse: <%= @order.delivery_adresse_complet %> <br>
+<% end %>
+<strong>Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peu importe" : @order.praticien %>"</span></div>
 </div>
 </div>
 

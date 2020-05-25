@@ -655,10 +655,14 @@
 <div style="text-align: center;">
 <div style="text-align: left;"><span style="color:#000000"><span style="font-size:13px"><strong>Date : <%= @date %></strong><br>
 <strong>Heure (modifiable avec le client) :</strong> <%= @oService.service_time %><br>
-<strong>Adresse de livraison :</strong> <br>
-&nbsp;&nbsp;&nbsp;-Pays: <%= @order.delivery_pays %> <br>
-&nbsp;&nbsp;&nbsp;-Ville: <%= @order.delivery_ville %> <br>
-&nbsp;&nbsp;&nbsp;-Adresse: <%= @order.delivery_adresse %> <br>
+<strong>Adresse de livraison:</strong> <br>
+&nbsp;&nbsp;&nbsp;- Pays: <%= @order.delivery_pays %> <br>
+&nbsp;&nbsp;&nbsp;- Ville: <%= @order.delivery_ville %> <br>
+&nbsp;&nbsp;&nbsp;- Code postal: <%= @order.delivery_code_postal %> <br>
+&nbsp;&nbsp;&nbsp;- Adresse: <%= @order.delivery_adresse %> <br>
+<% unless @order.delivery_adresse_complet.nil? %>
+&nbsp;&nbsp;&nbsp;- Complément d'adresse: <%= @order.delivery_adresse_complet %> <br>
+<% end %>
 </span></span></div>
 </div>
 </div>
@@ -738,7 +742,6 @@
                                         <div style="text-align: center;">
 <div style="text-align: center;">
 <div style="text-align: left;"><span style="font-size:13px"><span style="color:#000000">
-<br>
 <% price = 0.0 %>
 <% acompte = 0.0 %>
 <% @order.order_spas.each do |o_spa| %>
@@ -772,14 +775,10 @@
 		<li><strong>Système d'eau :</strong> <%= o_spa.syteme_eau %></li>
 	</ul>
 <% end %>
-<br>
-
 <strong>Prix total : <%= price.to_i %>€ </strong><br>
 <strong>Acompte versé par le client (commission CCSPA) : <%= acompte.to_i %>€</strong><br>
-<br>
 <strong>Total restant pour vous :&nbsp;<%= price.to_i - acompte.to_i %>€</strong><br>
 (à récupérer directement auprès du client et hors frais de déplacement*)<br>
-
 <em>* Les frais de déplacement ne sont pas compris, ils seront à préciser et à récupérer&nbsp;auprès du client directement</em></span></span></div>
 </div>
 </div>
