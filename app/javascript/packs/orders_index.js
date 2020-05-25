@@ -105,13 +105,13 @@ function refreachListCommandeSpa($parentNode = -1){
 			}
 			// [exceptional_price,exceptional_acompte,ordinary_price,ordinary_acompte]
 	    	if(isExeptionelPrice()){ // is exeptiona true
-	    		price += $timeList.data().price[0]+$timeList.data().price[1]-(2*price_promo);
-				totalPrice += $timeList.data().price[0] - price_promo;
-	    		totalAcompte += $timeList.data().price[1] - price_promo;
+	    		price += $timeList.data().price[0];
+				totalPrice += $timeList.data().price[0];
+	    		totalAcompte += $timeList.data().price[1];
 	    	}else{ // is exeptional false
-	    		price += $timeList.data().price[2]+$timeList.data().price[3]-(2*price_promo);
-	    		totalPrice += $timeList.data().price[2] - price_promo;
-	    		totalAcompte += $timeList.data().price[3] - price_promo;
+	    		price += $timeList.data().price[2];
+	    		totalPrice += $timeList.data().price[2];
+	    		totalAcompte += $timeList.data().price[3];
 	    	}
 
 			let ulDom = "<ul id='basket-group-"+index+"-spa' class='hidden'>"
@@ -136,7 +136,7 @@ function refreachListCommandeSpa($parentNode = -1){
 	sessionStorage.setItem("spas",JSON.stringify(session_spas));
 
 	zone.nbr_spa = count_spa;
-	zone.price_spa = totalPrice + totalAcompte;
+	zone.price_spa = totalPrice;
 	
 	$("#number-cart-ok").html(zone.nbr_spa + zone.nbr_massage)
 
@@ -146,7 +146,7 @@ function refreachListCommandeSpa($parentNode = -1){
 	if (innerHTML.length > 0){
 		$(".presta-spa-list").html(innerHTML);
 		$("#totalPriceSpa").removeClass("hidden");
-		$("#totalPriceSpa").html("LOCATION SPA : <span>"+(totalPrice+totalAcompte)+"</span>€");
+		$("#totalPriceSpa").html("LOCATION SPA : <span>"+totalPrice+"</span>€");
 	}else{
 		$("#totalPriceSpa").addClass("hidden");
 		$(".presta-spa-list").html(innerHTML);
@@ -334,13 +334,13 @@ function refreachListCommande(arrayIndex = "") {
 				ul += '<li>'+ $(elm).data().title +'</li>';
 				// [exceptional_price,exceptional_acompte,ordinary_price,ordinary_acompte]
 		    	if(isExeptionelPrice()){ // is exeptiona true
-		    		price += $(elm).data().price[0]+$(elm).data().price[1] - (2*price_promo);
-					totalPrice += $(elm).data().price[0] - price_promo;
-		    		totalAcompte += $(elm).data().price[1] - price_promo;
+		    		price += $(elm).data().price[0];
+					totalPrice += $(elm).data().price[0];
+		    		totalAcompte += $(elm).data().price[1];
 		    	}else{ // is exeptional false
-		    		price += $(elm).data().price[2]+$(elm).data().price[3] - (2*price_promo);
-		    		totalPrice += $(elm).data().price[2] - price_promo;
-		    		totalAcompte += $(elm).data().price[3] - price_promo;
+		    		price += $(elm).data().price[2];
+		    		totalPrice += $(elm).data().price[2];
+		    		totalAcompte += $(elm).data().price[3];
 		    	}
 		    });
 		    ul += '</ul>';
@@ -349,7 +349,7 @@ function refreachListCommande(arrayIndex = "") {
 	    }
 	});
 	zone.nbr_massage = count_massage;
-	zone.price_massage = totalPrice + totalAcompte;
+	zone.price_massage = totalPrice;
 	
 	$("#number-cart-ok").html(zone.nbr_spa + zone.nbr_massage)
 
