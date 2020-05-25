@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_client!, only: [:delivery,:saveDelivery,:summary,:payment]
 # ~~~~~~~Accepter une commande par emails~~~~~~~~~~~
   def acceptOrder
   end
@@ -58,12 +59,128 @@ class OrdersController < ApplicationController
   end
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   def saveSession
-    puts "================"*4
-    puts params.inspect
-    puts "================"*4
+    error = ""
+    messageErrore = []
+    date = params[:date]
+    pays = params[:pays]
+    department = params[:department]
+    code_promo = params[:code_promo]
+    pays = Country.find_by_name(params[:pays])
+    if pays.nil? || params[:date].length != 10
+      error = "Une erreur c'est prouduit lors de la verification des données"
+    else
+      if pays.name == "France"
+        department = Department.find_by_name(params[:department])
+        if department.nil?
+          error = "Une erreur c'est prouduit lors de la verification des données"
+        else
+          department = department.name
+        end
+      end
+    end
+    prestations_spas = {}
+    heure_spa = params[:heureSpa]
+    unless params[:spas].nil?
+      if heure_spa.length == 0
+        messageErrore.push("Velliez indiquer l'heur de votre réservation de spa")
+      end
+      params[:spas].each do |index,spa|
+        unless spa["type"].nil? || spa["time"].nil?
+          prestations_spas[index] = {}
+          unless spa["ambiance"].nil?
+            ambiance_spa = SpaAmbiance.find_by_name(spa["ambiance"])
+            if ambiance_spa.nil?
+              error = "Une erreur c'est prouduit lors de la verification des données"
+            else
+              prestations_spas[index]["a"] = ambiance_spa.id
+            end
+          end
+          time_spa = Spa.find_by_duration(spa["time"])
+          if time_spa.nil?
+            error = "Une erreur c'est prouduit lors de la verification des données"
+          else
+            prestations_spas[index]["t"] = time_spa.id
+          end
+          prestations_spas[index]["type"] = spa["type"]
+        end
+      end
+    end
+    heure_massage = params[:heureMassage]
+    praticien = params[:praticien]
+    prestations_massage_man = {}
+    prestations_massage_woman = {}
+    unless params[:man].nil? && params[:woman].nil?
+      if heure_massage.nil? || heure_massage.length == 0
+        messageErrore.push("Velliez indiquer l'heur de votre réservation de massage")
+      end
+      if praticien.nil? || praticien.length == 0
+        messageErrore.push("Velliez indiquer quelle praticien pour votre massages")
+      end
+    end
+    unless params[:man].nil?
+      params[:man].each do |index,massages|
+        prestations_massage_man[index] = []
+        massages.each do |massage_type|
+          massageType = massage_type.split("||")
+          duration = MassageDurationPrice.find_by_duration(massageType[1])
+          unless duration.nil?
+            tmp_massage = duration.massage_types.find_by_name(massageType[0])
+            if tmp_massage.nil?
+              error = "Une erreur c'est prouduit lors de la verification des données"
+            else
+              prestations_massage_man[index].push([duration.id,tmp_massage.id])
+            end
+          else
+            error = "Une erreur c'est prouduit lors de la verification des données"
+          end
+        end
+      end
+    end
+    unless params[:woman].nil?
+      params[:woman].each do |index,massages|
+        prestations_massage_woman[index] = []
+        massages.each do |massage_type|
+          massageType = massage_type.split("||")
+          duration = MassageDurationPrice.find_by_duration(massageType[1])
+          unless duration.nil?
+            tmp_massage = duration.massage_types.find_by_name(massageType[0])
+            if tmp_massage.nil?
+              error = "Une erreur c'est prouduit lors de la verification des données"
+            else
+              prestations_massage_woman[index].push([duration.id,tmp_massage.id])
+            end
+          else
+            error = "Une erreur c'est prouduit lors de la verification des données"
+          end
+        end
+      end
+    end
+    if messageErrore.length != 0 || error.length != 0
+      if messageErrore.length != 0
+        flash[:danger] = messageErrore
+      end
+      if error.length != 0
+        flash[:danger] = messageErrore.push(error)
+      end
+      redirect_back(fallback_location: root_path)
+    else
+      if prestations_spas == {} && prestations_massage_man == {} && prestations_massage_woman == {}
+        flash[:danger] = messageErrore.push(" Veillez selectioner au moin une presatations! ")
+        redirect_back(fallback_location: root_path)
+      else
+        session[:spas] = prestations_spas
+        session[:man] = prestations_massage_man
+        session[:woman] = prestations_massage_woman        
+        session[:info] = {date: date, pays: pays.name, department: department, code_promo: code_promo, heure_spa: heure_spa, heure_massage: heure_massage, praticien: praticien}
+        redirect_to delivery_path
+      end
+    end
   end
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   def delivery
+    @client = current_client
+    @countries = Country.all
   end
 
   def saveDelivery

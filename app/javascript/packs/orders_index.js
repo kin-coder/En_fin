@@ -56,6 +56,7 @@ $("#add-spa").click(function(){
 	});
 	$("#select-list-spa").append($prestationSpa);
 	$("#number-spa").html($(".prestation-group-spa").length);
+	scrollTo($prestationSpa);
 });
 
 function showListTimeAndAmbianceInBascket($input){
@@ -275,6 +276,7 @@ $(".add-massage").click(function() {
 	sessionStorage.setItem("massages",JSON.stringify(session_massages));
 	$("#select-list-massage").append($prestationGroups);
 	numberOfPrestationMassage(category);
+	scrollTo($prestationGroups);
 });
 
 /*-----------------------------ACTUALISE DOM MASSAGE ----------------------------- */
@@ -497,3 +499,9 @@ $(".praticien-list").click(function(){
 	zone.pratitien = $(this).val()
 	sessionStorage.setItem("zone",JSON.stringify(zone));
 });
+
+function scrollTo(target){
+    if( target.length ) {
+        $("html, body").stop().animate( { scrollTop: target.offset().top }, 1000);
+    }
+}
