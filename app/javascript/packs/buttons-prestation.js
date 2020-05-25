@@ -19,6 +19,7 @@ $("#cart-btn-ok").click(function(){
 		$("#number-cart-ok").html(0)
 	}else{
 		zone = JSON.parse(zone);
+		let totalPrice = zone.price_spa + zone.price_massage
 		$("#number-cart-ok").html(zone.nbr_spa + zone.nbr_massage);
 		if (  (zone.nbr_spa == 0 && zone.nbr_massage == 0) ) {
 			prestationDom = "Vous n'avez pas encore reserver une prestation";
@@ -36,8 +37,10 @@ $("#cart-btn-ok").click(function(){
 			$("#promo-code").html("Vous n'avez pas inseré un code promo");
 		}else{
 			$("#promo-code").html("Votre code promo "+ zone.code[0] +" est valide.");
+			totalPrice -= zone.code[1]
 		}
-		$("#price-modal-cart").html(zone.price_spa + zone.price_massage)
+
+		$("#price-modal-cart").html(totalPrice)
 	}
 	$("#cart-inner-prestation").html(prestationDom+"</ul>");
 });

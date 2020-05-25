@@ -166,6 +166,14 @@ function refreachListCommandeSpa($parentNode = -1){
 		totalPrice += massagePrice[0];
 		totalAcompte += massagePrice[1];
 	}
+
+	if (totalPrice > 0) {
+ 		totalPrice -= price_promo
+	}
+	if (totalAcompte > 0) {
+ 		totalAcompte -= price_promo
+	}
+
 	$("#totalPricePrestation").html(totalPrice);
 	$("#totalAcomptePrestation").html(totalAcompte);
 	hideMessageShow(totalPrice);
@@ -360,6 +368,14 @@ function refreachListCommande(arrayIndex = "") {
 		totalPrice += spaPrice[0];
 		totalAcompte += spaPrice[1];
 	}
+
+	if (totalPrice > 0) {
+ 		totalPrice -= price_promo
+	}
+	if (totalAcompte > 0) {
+ 		totalAcompte -= price_promo
+	}
+
 	$("#totalPricePrestation").html(totalPrice);
 	$("#totalAcomptePrestation").html(totalAcompte);
 	hideMessageShow(totalPrice);
