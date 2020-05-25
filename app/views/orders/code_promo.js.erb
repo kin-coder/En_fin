@@ -6,30 +6,14 @@ if (<%= @test %> == true) {
 	zone.code = ["<%= @code_value[0] %>",parseInt(<%= @code_value[1] %>)];
 	sessionStorage.setItem("zone",JSON.stringify(zone));
 	$("#inpcode").val("<%= @code_value[0] %>");
+	let a = parseInt($("#totalPricePrestation").html());
+	let b = parseInt($("#totalAcomptePrestation").html());
+	if(a > 0){
+		$("#totalPricePrestation").html(a-zone.code[1]);
+	}
+	if(b > 0){
+		$("#totalAcomptePrestation").html(b-zone.code[1]);
+	}
 }else{
 	alert("Code promo non reconnu");
 }
-
-/*
-
-REDUCSPAJJ
-document.getElementById("alert-code").classList.add("hidden")
-
-Loc 24h : 100€ 
-Acompte de 30€ 
-
-Avec code promo : 90€ 
-Acompte de 20€ 
-
-
-Exemple pour un massage : 
-
-Massage 30min : 50€ 
-Acompte : 15€ 
-
-Avec code promo : 40€ 
-Acompte de 5€
-
-Activer le code promo suivant : REDUCSPAJJ (-10€ sur le paiement de l’acompte, quelque soit la prestation, la durée etc...)
-
-*/

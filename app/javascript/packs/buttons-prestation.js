@@ -3,7 +3,7 @@ main()
 function main(){
 	let zone = sessionStorage.getItem("zone");
 	if (zone == null) {
-		$("#number-cart-ok").html(0);
+		$("#number-cart-ok").html("0");
 	}else{
 		zone = JSON.parse(sessionStorage.getItem("zone"));
 		$("#number-cart-ok").html(zone.nbr_spa + zone.nbr_massage);
@@ -14,14 +14,15 @@ $("#cart-btn-ok").click(function(){
 	let zone = sessionStorage.getItem("zone")
 	let prestationDom = "<ul class=\"ul-btn\">";
 	if (zone === null) {
-		prestationDom = "Vous n'avez pas encore reserver une prestation";
-		$("#promo-code").html("Vous n'avez pas inseré un code promo");
-		$("#number-cart-ok").html(0)
+		prestationDom = "Vous n'avez pas encore reserver une prestation.";
+		$("#promo-code").html("Vous n'avez pas inseré un code promo.");
+		$("#number-cart-ok").html("0")
 	}else{
 		zone = JSON.parse(zone);
+		let totalPrice = zone.price_spa + zone.price_massage
 		$("#number-cart-ok").html(zone.nbr_spa + zone.nbr_massage);
-		if (  (zone.nbr_spa == 0 && zone.nbr_massage == 0) ) {
-			prestationDom = "Vous n'avez pas encore reserver une prestation";
+		if (zone.nbr_spa == 0 && zone.nbr_massage == 0) {
+			prestationDom = "Vous n'avez pas encore reserver une prestation.";
 			$("#number-cart-ok").html(0)
 		}else{
 			if (zone.nbr_spa > 0) {
@@ -33,11 +34,13 @@ $("#cart-btn-ok").click(function(){
 			$("#number-cart-ok").html(zone.nbr_spa + zone.nbr_massage)
 		}
 		if(zone.code == null){
-			$("#promo-code").html("Vous n'avez pas inseré un code promo");
+			$("#promo-code").html("Vous n'avez pas inseré de code promo.");
 		}else{
-			$("#promo-code").html("Votre code promo "+ zone.code[0] +" est valide.");
+			$("#promo-code").html("Votre code promo "+ zone.code[0] +" est valide. Reduction de -10€ sur l'acompte total.");
+			totalPrice -= zone.code[1]
 		}
-		$("#price-modal-cart").html(zone.price_spa + zone.price_massage)
+
+		$("#price-modal-cart").html(totalPrice)
 	}
 	$("#cart-inner-prestation").html(prestationDom+"</ul>");
 });
