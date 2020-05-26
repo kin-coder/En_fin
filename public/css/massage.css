@@ -330,6 +330,18 @@
 
 @media only screen and (max-width: 600px) {
 
+	.engagement-spa, .ccm-spa{
+margin-bottom: 30px;
+	}
+	.textccm b .textas {
+		font-size: small;
+		font-family: open sans;
+		position: relative;
+		top: -5px;
+	}
+	.ccmspamassageok{
+		padding-top: 50px ;
+	}
 	.textMassages {
 		color: black;
 		position: relative;
