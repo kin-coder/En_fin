@@ -1,6 +1,12 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+	#ok{
+padding: 0px;
+	}
+	.pluspartner{
+margin-bottom: 40px;
+	}
 	.bnt{
 margin-left: 0px !important;
 	}
