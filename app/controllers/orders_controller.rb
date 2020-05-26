@@ -1,12 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_client!, only: [:delivery,:saveDelivery,:summary,:payment]
+  before_action :authenticate_client!, only: [:delivery,:saveDelivery,:summary,:payment,:payedsuccess,:payederrors]
   protect_from_forgery except: :payment
-# ~~~~~~~Accepter une commande par emails~~~~~~~~~~~
-  def acceptOrder
-  end
-
-  def deniedOrder
-  end
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   def zone
     @country = params[:country]
@@ -51,6 +45,11 @@ class OrdersController < ApplicationController
   end
 # 1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   def index
+    session.delete(:spas)
+    session.delete(:man)
+    session.delete(:woman)
+    session.delete(:info)
+    session.delete(:order)
     @countries = Country.all
     @departments = Department.all
     @massagesDuration = MassageDurationPrice.all
@@ -178,7 +177,6 @@ class OrdersController < ApplicationController
     end
   end
 # 3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
   def delivery
     @client = current_client
     @countries = Country.all
@@ -294,8 +292,6 @@ class OrdersController < ApplicationController
     @seal = Digest::SHA256.hexdigest dataToSend + secretKey    # MILA JERANA !!
   end
 
-
-  # 4 Le Payement
   def payment
     data = params['Data'].split('|')
     if data.include?("responseCode=00")
@@ -343,22 +339,20 @@ class OrdersController < ApplicationController
   end
 
   def payedsuccess
+    session.delete(:spas)
+    session.delete(:man)
+    session.delete(:woman)
+    session.delete(:info)
+    session.delete(:order)
   end
 
   def payederrors
+    session.delete(:spas)
+    session.delete(:man)
+    session.delete(:woman)
+    session.delete(:info)
+    session.delete(:order)
   end
-
-
-end
-
-
-=begin
-
-class OrdersController < ApplicationController
-  
-  before_action :validate_session, only: [:delivery,:saveDelivery,:summary,:payment]
-  before_action :validate_value_in_session, only: [:summary,:payment]
-  before_action :authenticate_client!, only: [:delivery,:saveDelivery,:summary,:payment]
 
 # ~~~~~~~Accepter une commande par emails~~~~~~~~~~~
   def acceptOrder
@@ -422,189 +416,30 @@ class OrdersController < ApplicationController
     end
   end
 
-
-
-  # 3 Affiche la recapitulatif de commande
-  def summary
-    @code_promo = 0
-    code = session[:otherInfo]["code_promo"]
-    if code
-      if code.length == 2
-        @code_promo = code[1]
-      end
-    end
-    @order = current_client.orders.order('id ASC').last
-    @amount = (@totalAcompte*100).to_i
-    # Génère un numéro de transaction aléatoire
-    transactionReference = "simu" + rand(100000..999999).to_s
-    #Construit l'URL de retour pour récupérer le résultat du paiement sur le site e-commerce du marchand
-    normalReturnUrl = "http://spamandona.herokuapp.com/reservation-prestation/paye-commande"
-    # Contruit la requête des données à envoyer à Mercanet
-    @data = "amount=#{@amount}|currencyCode=978|merchantId=002001000000001|normalReturnUrl=" + normalReturnUrl + "|transactionReference=" + transactionReference + "|keyVersion=1"
-    # Encode en UTF-8 des données à envoyer à Mercanet
-    dataToSend = (@data).encode('utf-8')
-    # Clé secrète correspondant au merchandId de simulation
-    secretKey = "002001000000001_KEY1"
-    # Calcul du certificat par un cryptage SHA256 des données envoyées suffixé par la clé secrète
-    @seal = Digest::SHA256.hexdigest dataToSend + secretKey    # MILA JERANA !!
-  end
-
-  # 4 Le Payement
-  def payment
-    data = params['Data'].split('|')
-    if data.include?("responseCode=00")
-      # =============================== Enregistrement des commandes si payer Mila amboarina ny mailer
-      @order = current_client.orders.order('id ASC').last
-      @order.update(is_validate:true)
-      current_client.update(is_client:true)
-      @order.services.each do |service|
-        case service.name
-          when "Location spa"
-            mailToOrderServiceSpa = @order.order_services.find_by(service_id:service.id)
-            #====== Send email to prestataire location spa =====
-            @prestataires = []
-            if @order.department.nil?
-              @prestataires = Prestataire.joins(:services).where(services:{name:service.name}).joins(:countries).where(countries:{name:@order.country.name})
-            else
-              @prestataires = Prestataire.joins(:services).where(services:{name:service.name}).joins(:departments).where(departments:{name:@order.department.name})
-            end
-            @prestataires.each do |prestataire|
-              PrestataireMailer.new_orderSpa(mailToOrderServiceSpa.id,prestataire.id).deliver_now
-            end
-          when "Massage"
-            mailToOrderServiceMassage = @order.order_services.find_by(service_id:service.id)
-            #====== Send email to prestataire massage =====
-            @prestataires = []
-            if @order.department.nil?
-              @prestataires = Prestataire.joins(:services).where(services:{name:service.name}).joins(:countries).where(countries:{name:@order.country.name})
-            else
-              @prestataires = Prestataire.joins(:services).where(services:{name:service.name}).joins(:departments).where(departments:{name:@order.department.name})
-            end
-            @prestataires.each do |prestataire|
-              if prestataire.sexe == @order.praticien || @order.praticien == "all"
-                PrestataireMailer.new_orderMassage(mailToOrderServiceMassage.id,prestataire.id).deliver_now
-              end
-            end
-          else
-        end
-      end
-      ClientMailer.confirm_order(@order.id,current_client.id).deliver_now
-      redirect_to payedsuccess_path
-      # =====================================================================
-    else
-      redirect_to payederrors_path
-    end
-  end
-
-  def payedsuccess
-    session.delete(:otherInfo)
-    session.delete(:myPrestation)
-  end
-
-  def payederrors
-    session.delete(:otherInfo)
-    session.delete(:myPrestation)
-  end
-
   private
 
-  def redirect_reservation(test=true)
-    if test
-      flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
-    end
-    flash[:delete_js] = true
-    session.delete(:otherInfo)
-    session.delete(:myPrestation)
-    redirect_to reservation_path
-  end
-
-  def validate_session
-    if session[:myPrestation] == nil || session[:otherInfo] == nil
-      redirect_reservation(false)
-    end
-    if session[:otherInfo] != nil
-      unless session[:otherInfo]["date"]
-        redirect_reservation(false)
-      end      
-    end
-  end
-
-  def validate_value_in_session
-    exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
-    @code_promo = 0
-    code = session[:otherInfo]["code_promo"]
-    if code
-      if code.length == 2
-        @code_promo = code[1]
-      end
-    end
-    current_date = session[:otherInfo]["date"].split("/")
-    isExeptional = false #[curent_Spa.ordinary_price,curent_Spa.ordinary_acompte]
-    if exceptionalDate.include?(current_date[0..1])
-      isExeptional = true #[curent_Spa.exceptional_price,curent_Spa.exceptional_acompte]
-    end
-    @totalPrice = 0
-    @totalAcompte = 0
-    myPrestation = session[:myPrestation]
-    unless myPrestation["spa"].empty?
-      myPrestation["spa"].each do |spa|
-        current_spa = Spa.find_by(duration:spa["time"])
-        unless current_spa
-          redirect_reservation
-        else
-          if isExeptional
-            @totalPrice += current_spa.exceptional_price - @code_promo
-            @totalAcompte += current_spa.exceptional_acompte - @code_promo
-          else
-            @totalPrice += current_spa.ordinary_price - @code_promo
-            @totalAcompte += current_spa.ordinary_acompte - @code_promo
-          end
+  def validate_country_department_date(country,department,date)
+    services = []
+    country = Country.find_by(name:country)
+    if country
+      if country.name == "France"
+        department = Department.find_by(name:department)
+        unless department
+          return [false]
         end
-        if spa["option"]
-          current_product = Product.find_by(name:spa["option"][0])
-          unless current_product
-            redirect_reservation
-          else
-            @totalPrice += current_product.price
-          end
-        end
+      else
+        department = ""
       end
-      unless session[:otherInfo]["heureSpa"]
-        redirect_reservation
-      end
+    else
+      return [false]
     end
-    unless myPrestation["massage"].empty?
-      myPrestation["massage"].each do |massage|
-        current_ca = MassageCa.find_by(name:massage["ca"])
-        if current_ca
-          current_su = current_ca.massage_sus.find_by(name:massage["su"])
-          unless current_su
-            redirect_reservation
-          end
-        else
-          redirect_reservation
-        end
-        # pour le prix
-        current_prix = MassageSuPrice.find(massage["price"][0].to_i)
-        unless current_prix
-          redirect_reservation
-        else
-          if isExeptional
-            @totalPrice += current_prix.exceptional_price - @code_promo
-            @totalAcompte += current_prix.exceptional_acompte - @code_promo
-          else
-            @totalPrice += current_prix.ordinary_price - @code_promo
-            @totalAcompte += current_prix.ordinary_acompte - @code_promo
-          end
-        end
+    if date
+      unless @date[2] == "/" && @date[5] == "/" && @date.length == 10
+        return [false]
       end
-      unless session[:otherInfo]["praticien"]
-        redirect_reservation
-      end
-      unless session[:otherInfo]["heureMassage"]
-        redirect_reservation
-      end
+    else
+      return [false]
     end
+    return [true,country,department]
   end
 end
-=end

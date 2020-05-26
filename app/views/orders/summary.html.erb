@@ -93,7 +93,7 @@
 																<% acompte_massage = o_type.massage_duration_price.ordinary_acompte.to_i %>
 															<% end %>
 
-															<dd><%= o_type.massage_type.name %>
+															<dd><%= o_type.massage_type.name %> <%= o_type.massage_duration_price.duration %>mn
 																<li><i>Prix : </i><%= price_massage %>€</li>
 																<li><i>Acompte : </i> <%= acompte_massage %>€</li>
 															</dd>

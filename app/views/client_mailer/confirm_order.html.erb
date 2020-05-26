@@ -915,8 +915,6 @@
 <% end %>
 </ul>
 <% if @number_service == 1 %>
-	<br>
-	<br>
 	<strong>Prix total : <%= priceMassage.to_i - @code_promo.to_i %>€ </strong><br>
 	<strong>Remise code promo : <%= @code_promo.to_i %>€</strong><br>
 	<strong>Acompte payé par CB&nbsp;: <%= acompteMassage.to_i - @code_promo.to_i %>€</strong><br>
