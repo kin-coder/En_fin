@@ -8264,7 +8264,7 @@ input[type=number]::-webkit-inner-spin-button {
   .engagements{
     text-align: center;
     position: relative;
-    left: -15px;
+    left: -1px;
   }
 
   .sectionSpa{
