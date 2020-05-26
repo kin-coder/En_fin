@@ -14,6 +14,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.string :delivery_code_postal
       t.string :delivery_adresse
       t.string :delivery_adresse_complet
+      t.string :code_promo
 
       t.string :praticien
       t.text :message

@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
        format.js
     end
   end
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   def index
     @countries = Country.all
     @departments = Department.all
@@ -57,7 +57,7 @@ class OrdersController < ApplicationController
     @spa_ambiances = SpaAmbiance.all
     @massageTypes = MassageType.all
   end
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   def saveSession
     error = ""
     messageErrore = []
@@ -176,14 +176,101 @@ class OrdersController < ApplicationController
       end
     end
   end
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   def delivery
     @client = current_client
     @countries = Country.all
   end
-
+# 4 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   def saveDelivery
+    prestations_spas = session[:spas]
+    prestations_massage_man = session[:man]
+    prestations_massage_woman = session[:woman]
+    prestations_info = session[:info]
+    emptyIsInclude = params[:adresseL]=="" || params[:codePostaL]=="" || params[:villeL]=="" || params[:adresseF]=="" || params[:codePostaF]=="" || params[:villeF] =="" || params[:countryL]=="" || params[:countryF]=="" || params[:countryL]==nil || params[:countryF]==nil
+    if emptyIsInclude
+      redirect_back(fallback_location: root_path)
+    end
+    @order = Order.new
+    @order.prestation_date = prestations_info["date"]
+    @order.billing_pays = params[:countryF]
+    @order.billing_ville = params[:villeF]
+    @order.billing_code_postal = params[:codePostaF]
+    @order.billing_adresse = params[:adresseF]
+    @order.billing_adresse_complet = params[:complAdresseF]
+    @order.delivery_pays = params[:countryL]
+    @order.delivery_ville = params[:villeL]
+    @order.delivery_code_postal = params[:codePostaL]
+    @order.delivery_adresse = params[:adresseL]
+    @order.delivery_adresse_complet = params[:complAdresseL]
+    @order.message = params[:message]
+    @order.client = current_client
+    @order.department = Department.find_by(name:prestations_info["department"])
+    @order.country = Country.find_by(name:prestations_info["pays"])
+    code_promo = CodePromo.find_by_code(prestations_info["code_promo"])
+    unless code_promo.nil?
+      @order.code_promo = code_promo.reduction+"-|-"+code_promo.code.to_s
+    end
+    @order.save
+
+
+    unless prestations_spas == {}
+      OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: prestations_info["heure_spa"])
+      @order.unpdate(is_spa:true)
+      prestations_spas.each do |index,spa|
+        current_spa = Spa.find(spa["t"])
+        current_ambiance = SpaAmbiance.find_by_name(spa["a"])
+        OrderSpa.create(order: @order, spa: current_spa, spa_ambiance: current_ambiance, logement: spa["type"][0], installation: spa["type"][1], syteme_eau: spa["type"][2])
+      end
+    end
+
+
+    if prestations_massage_man != {} || prestations_massage_woman != {}
+      OrderService.create(order: @order, service: Service.find_by(name:"Massage"), service_time: prestations_info["heure_massage"])
+      @order.update(is_massage:true)
+      @order.update(praticien:prestations_info["praticien"])
+    end
+
+    unless prestations_massage_man == {}
+
+    end
+
+    unless prestations_massage_woman == {}
+
+    end
+
+
+
+
+
+
+
+
+
+
+      # unless myPrestation["massage"].empty?
+      #   mailToOrderServiceMassage = OrderService.create(order: @order, service: Service.find_by(name:"Massage"), service_time: session[:otherInfo]["heureMassage"])
+
+
+      #   myPrestation["massage"].each do |massage|
+      #     current_ca = MassageCa.find_by(name:massage["ca"])      
+      #     current_su = current_ca.massage_sus.find_by(name:massage["su"])
+      #     current_prix = MassageSuPrice.find(massage["price"][0].to_i)
+      #     OrderMassage.create(order: @order, massage_ca:current_ca, massage_su: current_su, massage_su_price: current_prix)
+      #   end
+      #   @order.praticien = session[:otherInfo]["praticien"]
+      #   @order.save
+      # end
+
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ééé
+
+
+
+
+
   end
 
   # 3 Affiche la recapitulatif de commande
@@ -299,248 +386,6 @@ class OrdersController < ApplicationController
     end
   end
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  # 1/2 Selection des prestation
-  def zone
-    @country = params[:country]
-    @department = params[:department]
-    @date = params[:date]
-    if @date
-      unless @date[2] == "/" && @date[5] == "/" && @date.length == 10
-        redirect_to reservation_path
-        return
-      end
-    else
-      redirect_to reservation_path
-    end
-
-    @country = Country.find_by(name:@country)
-    unless @country
-      redirect_to reservation_path
-    end
-
-    if @department
-      @department = Department.find_by(name:@department)
-      unless @department
-        redirect_to reservation_path   
-      end
-    else
-      @department = nil
-    end
-    @services = []
-    @error = ""
-    if @country
-      if @country.name == "France"
-        if @department != nil
-          @country = @country.name
-          @department.services.each do |s|
-            @services.push(s.name)
-          end
-          @department = @department.name
-          unless session[:otherInfo]
-            session[:otherInfo]={}
-          end
-          session[:otherInfo]["pays"] = @country
-          session[:otherInfo]["department"] = @department
-          session[:otherInfo]["date"] = @date
-        else
-          @error = "Veuillez choisir un département" #erreur
-          #redirect_back(fallback_location: root_path)
-        end
-      else
-        @country.services.each do |s|
-            @services.push(s.name)
-        end
-        @country = @country.name
-        @department = ""
-
-        unless session[:otherInfo]
-          session[:otherInfo]={}
-        end
-        session[:otherInfo]["pays"] = @country
-        session[:otherInfo]["department"] = @department
-        session[:otherInfo]["date"] = @date
-      end
-    else
-      @error = "Veuillez choisir un pays" #erreur
-      #redirect_back(fallback_location: root_path)
-    end
-    respond_to do |format|
-      format.js
-    end
-  end
-
-
-  # 1/2 Selection des prestation
-  def index
-    @countries = Country.all
-    @departments = Department.all
-    @services = Service.all
-    # service location spa
-    @spas = []
-    tmpspa = Spa.all
-    tmpspa.each do |spa|
-      @spas.push([spa.duration,spa.exceptional_price,spa.ordinary_price,spa.exceptional_acompte,spa.ordinary_acompte])
-    end
-    # options pour location spa
-    @spaoptions = []
-    tmpoption = Product.where(is_option_spa:true)
-    tmpoption[0..2].each do |option|
-      @spaoptions.push([option.id,option.name,option.price])
-    end
-    # service massage
-    @massages = []
-    #.massage_sus liste sub sub[0].massage_su_prices //differen heurse
-    caMassages = MassageCa.all
-    # sou massage_ca Name || massage_su Name ||
-    caMassages.each do |ca|
-      isCa = [ca.name,[]]
-      ca.massage_sus.each do |su|
-        isSu = [su.name,[]]
-        su.massage_su_prices.each do |price|
-          isSu[1].push([price.duration,price.exceptional_price,price.exceptional_acompte,price.ordinary_price,price.ordinary_acompte])
-        end
-        isCa[1].push(isSu)
-      end
-      @massages.push(isCa)
-    end
-    @cadeaus = Product.where(is_option_spa:false)
-    # ========================================== #
-  end
-
-  # 2/2 Sauvegarder dans une session les données
-  def saveSession
-    # orderSpa = [{time:48,type:["a","b"],price:180,option:[["a",12],["c",45]]},{time:48,type:["a","b"],price:180,option:[["a",12],["c",45]]}]
-    # orderMassage =  [{ca:"Homme",su:"prénatal",price:[30,120]}]
-    timeSpas = params[:timeSpa]
-    orderSpa = []
-    isError = false
-
-    # gestion de l'heurs pour les prixs MM-DD 
-    exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
-    current_date = session[:otherInfo]["date"].split("/")
-
-    if timeSpas
-      timeSpas.each do |k,v|
-        tmp = {}
-        curent_Spa = Spa.find_by(duration:v[0].to_i)
-        if curent_Spa
-          tmp["time"] = v[0].to_i
-          if exceptionalDate.include?(current_date[0..1])
-            tmp["price"] = [curent_Spa.exceptional_price,curent_Spa.exceptional_acompte]
-          else
-            tmp["price"] = [curent_Spa.ordinary_price,curent_Spa.ordinary_acompte]
-          end
-        else
-          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
-          isError = true
-        end
-        tmp["type"] = params[:typeSpa][k]
-
-        if params[:optionSpa]
-          options = params[:optionSpa][k]
-          tmpOption = []
-          if options
-            options.each do |option|
-              product = Product.find_by(name:option)
-              if product
-                tmpOption.push([option,product.price])
-              else
-                flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
-                isError = true
-              end
-            end
-            tmp["option"] = tmpOption
-          end
-        end
-        if isError
-          redirect_back(fallback_location: root_path)
-          return
-        end
-        orderSpa.push(tmp)
-      end
-      if params[:heureSpa] == ""
-        flash[:notice] = "Velliez indiquer l'heur de votre réservation de spa"
-        redirect_back(fallback_location: root_path)
-        return
-      end
-    end
-
-    orderMassage = []
-    massageSus = params[:massageSu]
-    if massageSus
-      massageSus.each do |k,v|
-        tmp = {}
-        mCa = MassageCa.find_by(name:v[0])
-        if mCa
-          tmp["ca"] = v[0]
-          mSu = mCa.massage_sus.find_by(name:v[1])
-          if mSu
-            tmp["su"] = v[1]
-          else
-            flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
-            isError = true
-          end
-        else
-          flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
-          isError = true
-        end
-
-        if params[:massageSuPrice] && params[:massageSuPrice][k]
-          price = MassageSuPrice.find_by(duration:params[:massageSuPrice][k][0].to_i)
-          if price
-            if exceptionalDate.include?(current_date[0..1])
-              tmp["price"] = [price.id,price.exceptional_price,price.exceptional_acompte]
-            else
-              tmp["price"] = [price.id,price.ordinary_price,price.ordinary_acompte]
-            end
-          else
-            flash[:notice] = "Une erreur c'est prouduit lors de la verification des données"
-            isError = true
-          end
-        else
-          flash[:notice] = "Remplisser bien les champs avant de valider"
-          isError = true
-        end
-
-        if isError
-          redirect_back(fallback_location: root_path)
-          return
-        end
-        orderMassage.push(tmp)
-      end
-      if params[:heureMassage] == ""
-        flash[:notice] = "Velliez indiquer l'heur de votre réservation de massage"
-        redirect_back(fallback_location: root_path)
-        return
-      end
-
-      unless params[:praticien]
-        flash[:notice] = "Velliez indiquer quelle praticien pour votre massages"
-        redirect_back(fallback_location: root_path)
-        return
-      end
-    end
-
-    if orderSpa.empty? && orderMassage.empty?
-      flash[:notice] = "Veuillez selectioner au moin une prestation"
-      redirect_back(fallback_location: root_path)
-      return
-    end
-
-    session[:myPrestation] = {spa:orderSpa, massage:orderMassage}
-    session[:otherInfo]["heureSpa"] = params[:heureSpa]
-    session[:otherInfo]["praticien"] = params[:praticien]
-    session[:otherInfo]["heureMassage"] = params[:heureMassage]
-    redirect_to delivery_path
-  end
-
-  # 2 Selection des adresse de livraison et facturation
-  def delivery
-    @client = current_client
-    @countries = Country.all
-  end
 
   def saveDelivery
     emptyIsInclude = params[:adresseL]=="" || params[:codePostaL]=="" || params[:villeL]=="" || params[:adresseF]=="" || params[:codePostaF]=="" || params[:villeF] =="" || params[:countryL]=="" || params[:countryF]=="" || params[:countryL]==nil || params[:countryF]==nil
@@ -616,7 +461,6 @@ class OrdersController < ApplicationController
         @code_promo = code[1]
       end
     end
-
     @order = current_client.orders.order('id ASC').last
     @amount = (@totalAcompte*100).to_i
     # Génère un numéro de transaction aléatoire
