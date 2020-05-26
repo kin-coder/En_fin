@@ -35,10 +35,10 @@
 												</ul>
 
 												<% if spa["option"] %>
-													<i>Option :</i> <%= spa["option"][0][0] %><br>
-													<i>Prix : </i><%= spa["price"][0].to_i + spa["option"][0][1].to_i %>€<br>
+												<i>Ambiance :</i> <%= spa["option"][0][0] %><br>
+												<i>Prix du spa : </i><%= spa["price"][0].to_i + spa["option"][0][1].to_i %>€<br>
 												<% else %>
-													<i>Prix : </i><%= spa["price"][0].to_i %>€<br>
+												<i>Prix du spa : </i><%= spa["price"][0].to_i %>€<br>
 												<% end %>
 
 												<i>Acompte : </i><%= spa["price"][1].to_i %>€<br>
@@ -74,6 +74,7 @@
 											<div class="reservationSpa">
 												<strong style="font-family: Quicksand; text-transform: uppercase;color: black;">Massage pour <%= massage["ca"] %></strong>	<br>
 												<i>Type de massage : </i> <%= massage["su"] %><br>
+												<i>Type de praticien : </i><%= session[:otherInfo]["praticien"]%><br>
 												<i>Prix : </i><%= massage["price"][1].to_i %>€<br>
 												<i>Acompte : </i> <%= massage["price"][2].to_i %>€
 											</div>
@@ -103,10 +104,21 @@
 												<% unless @order.department.nil? %>
 												Département : <%= @order.department.name %><br>
 												<% end %>
-												Adresse de facturation : <%= @order.billing_adresse %><br>
-												Complément d'adresse de facturation : <%= @order.billing_adresse_complet %><br>
-												Adresse de livraison : <%= @order.delivery_adresse %><br>
-												Complément d'adresse de livraison : <%= @order.delivery_adresse_complet %><br>
+												Adresse de facturation : 
+												<li class='adresses'>Pays : <%= @order.billing_pays %></li> 
+												<li class='adresses'>Ville : <%= @order.billing_ville %></li>
+												<li class='adresses'>Adresse : <%= @order.billing_adresse %></li>
+												<li class='adresses'>Complément d'adresse : <%= @order.billing_adresse_complet %></li>
+												<li class='adresses'>Code postal :  <%= @order.billing_adresse_complet %></li>
+
+
+												Adresse de livraison : 
+												<li class='adresses'>Pays : <%= @order.delivery_pays %></li> 
+												<li class='adresses'>Ville : <%= @order.delivery_ville %></li>
+												<li class='adresses'>Adresse : <%= @order.delivery_adresse %></li>
+												<li class='adresses'>Complément d'adresse : <%= @order.delivery_adresse_complet %></li>
+												<li class='adresses'>Code postal :  <%= @order.delivery_adresse_complet %></li>
+
 											</div>
 										</td>
 									</tr>
@@ -122,7 +134,7 @@
 		<div class="col-sm-4">
 			<div class="alert alert-success">
 				<% unless @code_promo == 0 %>
-					Code promo : reduction de <b><%= @code_promo.to_i %>€</b> sur l'acompte.<br>
+				Code promo : reduction de <b><%= @code_promo.to_i %>€</b> sur l'acompte.<br>
 				<% end %>
 				Prix Total : <strong><%= @totalPrice %>€</strong><br>
 				<span>Acompte à régler en ligne : <strong><%= @totalAcompte %>€</strong></span><br>
