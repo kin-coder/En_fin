@@ -25,7 +25,7 @@ function main(){
 		});
 		if (zone.code != null) {
 			$("#inpcode").val(zone.code[0]);
-			$("#alert-code").html("Votre code promo "+zone.code[0]+" est validé avec succès. Vous avez gagné un reduction de " +zone.code[1]+"€ pour chaque prix et acompte à payer!");
+			$("#alert-code").html("Votre code promo "+zone.code[0]+" est validé avec succès. Vous avez gagné un reduction de "+zone.code[1]+"€ pour l'acompte total à payer");
 			$("#alert-code").removeClass("hidden");
 			$("#form-promo-code").addClass("hidden");
 		}

@@ -36,7 +36,7 @@ $("#cart-btn-ok").click(function(){
 		if(zone.code == null){
 			$("#promo-code").html("Vous n'avez pas inseré de code promo.");
 		}else{
-			$("#promo-code").html("Votre code promo "+ zone.code[0] +" est valide. Reduction de -10€ sur l'acompte total.");
+			$("#promo-code").html("Votre code promo "+zone.code[0]+" est validé avec succès. Vous avez gagné un reduction de "+zone.code[1]+"€ pour l'acompte total à payer");
 			totalPrice -= zone.code[1]
 		}
 
