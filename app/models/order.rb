@@ -31,4 +31,53 @@ class Order < ApplicationRecord
 	validates :delivery_ville, presence: true
 	validates :delivery_code_postal, presence: true
 	validates :delivery_adresse, presence: true
+
+	def isExceptional?
+		exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
+		current_date = self.prestation_date.split("/")
+		isExeptional = false
+		if exceptionalDate.include?(current_date[0..1])
+      isExeptional = true
+    end
+    return isExeptional
+	end
+
+
+  def totalPrice
+  	code_promo = 0
+  	acompteTotal = 0
+		priceTotal = 0
+    if self.code_promo
+      code_promo = self.code_promo.split("-|-")[1].to_f
+    end
+    if self.is_spa
+    	self.order_spas.each do |o_spa|
+    		if self.isExceptional?
+    			priceTotal += o_spa.spa.exceptional_price
+					acompteTotal += o_spa.spa.exceptional_acompte
+    		else
+    			priceTotal += o_spa.spa.ordinary_price
+					acompteTotal += o_spa.spa.ordinary_acompte
+    		end
+    	end
+    end
+    if self.is_massage
+    	self.order_massages.each do |o_massage|
+				o_massage.order_massage_types.each do |o_type|
+					if self.isExceptional?
+	    			priceTotal += o_type.massage_duration_price.exceptional_price
+						acompteTotal += o_type.massage_duration_price.exceptional_acompte
+	    		else
+	    			priceTotal += o_type.massage_duration_price.ordinary_price
+						acompteTotal += o_type.massage_duration_price.ordinary_acompte
+	    		end
+				end
+    	end
+    end
+		return [priceTotal-code_promo,acompteTotal-code_promo]
+  end
 end
+
+
+
+
