@@ -71,7 +71,7 @@ class AdminsController < Application2Controller
 
     def cancelCandidat
         Candidate.find(params[:id].to_i).destroy
-        redirect_to allcandidate_path, notice: 'Le (la) candidate a été supprimer avec succès.'
+        redirect_to allcandidate_path, notice: 'Le (la) candidate a été supprimé(e) avec succès.'
     end
 
 # ============================# ============================# ============================

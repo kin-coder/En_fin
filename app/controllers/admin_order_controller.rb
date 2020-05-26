@@ -77,7 +77,7 @@ class AdminOrderController < Application2Controller
     if @order.order_services.where(status_order:'en cours').empty? && @order.order_services.where(status_order:'non traitée').empty?
       @order.update(status_order:'traitée')
     end
-    flash[:sucess] = "Le nouveau prestataire a été afecter à la commande"
+    flash[:sucess] = "Le nouveau prestataire a été affecté à la commande"
     redirect_to admin_order_show_path(@order.id)
   end
 
@@ -94,7 +94,7 @@ class AdminOrderController < Application2Controller
     else
     end
     PrestataireMailer.delete_prestataire_for_order(@prestataire.id,@order.id).deliver_now
-    flash[:sucess] = "Le prestataire a bien été retirer de la commande"
+    flash[:sucess] = "Le prestataire a été bien retiré de la commande"
     redirect_to admin_order_show_path(@order.id)
   end
 end
