@@ -24,7 +24,7 @@ class PrestatairesController < Application2Controller
     flash[:list_message_errors] = @prestataire.errors.full_messages
     if params[:service] == nil || params[:prestataire][:country_ids] == nil
       if params[:service] == nil
-        flash[:list_message_errors].push("Services doit être rempli(e)")
+        flash[:list_message_errors].push("Le champ serice doit être rempli")
       end
       if params[:prestataire][:country_ids] == nil
         flash[:list_message_errors].push("Le(s) zone(s) où vous pouvez faire vos prestations doit être rempli(e)")
