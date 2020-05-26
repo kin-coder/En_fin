@@ -30,7 +30,6 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.belongs_to :client, index:true
       t.belongs_to :department, index:true
       t.belongs_to :country, index:true
-      t.belongs_to :code_promo, index:true
 
       t.timestamps
     end

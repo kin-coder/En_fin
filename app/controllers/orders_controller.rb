@@ -191,6 +191,7 @@ class OrdersController < ApplicationController
     emptyIsInclude = params[:adresseL]=="" || params[:codePostaL]=="" || params[:villeL]=="" || params[:adresseF]=="" || params[:codePostaF]=="" || params[:villeF] =="" || params[:countryL]=="" || params[:countryF]=="" || params[:countryL]==nil || params[:countryF]==nil
     if emptyIsInclude
       redirect_back(fallback_location: root_path)
+      return
     end
     @order = Order.new
     @order.prestation_date = prestations_info["date"]
@@ -210,72 +211,93 @@ class OrdersController < ApplicationController
     @order.country = Country.find_by(name:prestations_info["pays"])
     code_promo = CodePromo.find_by_code(prestations_info["code_promo"])
     unless code_promo.nil?
-      @order.code_promo = code_promo.reduction+"-|-"+code_promo.code.to_s
+      @order.code_promo = "#{code_promo.code}-|-#{code_promo.reduction}"
     end
     @order.save
-
-
     unless prestations_spas == {}
       OrderService.create(order: @order, service: Service.find_by(name:"Location spa"), service_time: prestations_info["heure_spa"])
-      @order.unpdate(is_spa:true)
+      @order.update(is_spa:true)
       prestations_spas.each do |index,spa|
         current_spa = Spa.find(spa["t"])
-        current_ambiance = SpaAmbiance.find_by_name(spa["a"])
+        current_ambiance = nil
+        unless spa["a"].nil?
+          current_ambiance = SpaAmbiance.find(spa["a"])
+        end
         OrderSpa.create(order: @order, spa: current_spa, spa_ambiance: current_ambiance, logement: spa["type"][0], installation: spa["type"][1], syteme_eau: spa["type"][2])
       end
     end
-
-
     if prestations_massage_man != {} || prestations_massage_woman != {}
       OrderService.create(order: @order, service: Service.find_by(name:"Massage"), service_time: prestations_info["heure_massage"])
       @order.update(is_massage:true)
       @order.update(praticien:prestations_info["praticien"])
     end
-
     unless prestations_massage_man == {}
-
+      massage_man = Massage.find_by_name("Homme")
+      prestations_massage_man.each do |index,massages|
+        order_massage = OrderMassage.create(order:@order, massage: massage_man)
+        massages.each do |massage_type|
+          current_type = MassageType.find(massage_type[1])
+          current_price = MassageDurationPrice.find(massage_type[0])
+          OrderMassageType.create(order_massage: order_massage, massage_type: current_type, massage_duration_price: current_price)
+        end
+      end
     end
-
     unless prestations_massage_woman == {}
-
+      massage_woman = Massage.find_by_name("Femme")
+      prestations_massage_woman.each do |index,massages|
+        order_massage = OrderMassage.create(order:@order, massage: massage_woman)
+        massages.each do |massage_type|
+          current_type = MassageType.find(massage_type[1])
+          current_price = MassageDurationPrice.find(massage_type[0])
+          OrderMassageType.create(order_massage: order_massage, massage_type: current_type, massage_duration_price: current_price)
+        end
+      end
     end
-
-
-
-
-
-
-
-
-
-
-      # unless myPrestation["massage"].empty?
-      #   mailToOrderServiceMassage = OrderService.create(order: @order, service: Service.find_by(name:"Massage"), service_time: session[:otherInfo]["heureMassage"])
-
-
-      #   myPrestation["massage"].each do |massage|
-      #     current_ca = MassageCa.find_by(name:massage["ca"])      
-      #     current_su = current_ca.massage_sus.find_by(name:massage["su"])
-      #     current_prix = MassageSuPrice.find(massage["price"][0].to_i)
-      #     OrderMassage.create(order: @order, massage_ca:current_ca, massage_su: current_su, massage_su_price: current_prix)
-      #   end
-      #   @order.praticien = session[:otherInfo]["praticien"]
-      #   @order.save
-      # end
-
-
+    session[:order] = @order.id
+    redirect_to summary_path
+  end
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ééé
-
-
-
-
-
-  end
-
   # 3 Affiche la recapitulatif de commande
   def summary
+    @order = Order.find(session[:order])
+    session.delete(:order)
+
+    unless @order.nil?
+      unless @order.client == current_client && @order.is_validate == false
+        error = "Une erreur c'est prouduit lors de la verification des données"
+      end
+    else
+      error = "Une erreur c'est prouduit lors de la verification des données"
+    end
+
+    
+
+
+
+
+
+
+    @totalAcompte = 5
+    @amount = (@totalAcompte*100).to_i
+    # Génère un numéro de transaction aléatoire
+    transactionReference = "simu" + rand(100000..999999).to_s
+    #Construit l'URL de retour pour récupérer le résultat du paiement sur le site e-commerce du marchand
+    normalReturnUrl = "http://localhost:3000/reservation-prestation/paye-commande"
+    # Contruit la requête des données à envoyer à Mercanet
+    @data = "amount=#{@amount}|currencyCode=978|merchantId=002001000000001|normalReturnUrl=" + normalReturnUrl + "|transactionReference=" + transactionReference + "|keyVersion=1"
+    # Encode en UTF-8 des données à envoyer à Mercanet
+    dataToSend = (@data).encode('utf-8')
+    # Clé secrète correspondant au merchandId de simulation
+    secretKey = "002001000000001_KEY1"
+    # Calcul du certificat par un cryptage SHA256 des données envoyées suffixé par la clé secrète
+    @seal = Digest::SHA256.hexdigest dataToSend + secretKey    # MILA JERANA !!
   end
+
+
+
+
+
 
   # 4 Le Payement
   def payment
@@ -385,6 +407,7 @@ class OrdersController < ApplicationController
       end
     end
   end
+
 
 
   def saveDelivery

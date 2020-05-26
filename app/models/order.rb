@@ -8,9 +8,6 @@ class Order < ApplicationRecord
 	#plusieur commande dans un pays
 	belongs_to :country
   
-  # relation codePromo 1-N order
-	belongs_to :code_promo, optional: true
-
 	# relation N - N entre Order et Service
 	has_many :order_services, dependent: :destroy
 	has_many :services, through: :order_services
