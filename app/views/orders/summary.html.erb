@@ -74,7 +74,9 @@
 											<div class="reservationSpa">
 												<strong style="font-family: Quicksand; text-transform: uppercase;color: black;">Massage pour <%= massage["ca"] %></strong>	<br>
 												<i>Type de massage : </i> <%= massage["su"] %><br>
-												<i>Type de praticien : </i><%= session[:otherInfo]["praticien"]%><br>
+
+												
+												<i>Type de praticien : </i><%= @order.praticien == "all" ? "peu importe" : @order.praticien %><br>
 												<i>Prix : </i><%= massage["price"][1].to_i %>€<br>
 												<i>Acompte : </i> <%= massage["price"][2].to_i %>€
 											</div>
