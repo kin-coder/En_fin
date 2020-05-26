@@ -121,9 +121,11 @@ Rails.application.configure do
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'spamandona.fr',
-    user_name:            'ctrlfaly@gmail.com',
-    password:             'tduoesxegsoxecoq',
+    user_name:            'michael77rakotovao@gmail.com',
+    password:             'zzadaorgdtcibfti',
     authentication:       'plain',
     enable_starttls_auto: true 
   }
 end
+
+
