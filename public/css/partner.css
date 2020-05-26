@@ -1,6 +1,20 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+	.bnt{
+margin-left: 0px !important;
+	}
+	.revolution{
+		position: relative;
+		top: -30px;
+	}
+	.infoQSN{
+margin-top: 30px;
+	}
+	.infoQSNS{
+margin-bottom: 30px !important;
+
+	}
 	.hida{
 		position: absolute;
 		top: 20px;
