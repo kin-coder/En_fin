@@ -762,8 +762,9 @@
 	<% @order.order_spas.each do |o_spa| %>
 		Location spa <%= o_spa.spa.duration %>h : 
 		<% ambiance_price = 0 %>
-		<% unless o_spa.product.nil? %>
-			<% ambiance_price = o_spa.product.price.to_i %>
+
+		<% unless o_spa.spa_ambiance.nil? %>
+			<% ambiance_price = o_spa.spa_ambiance.price.to_i %>
 		<% end %>
 
 		<% if @order.isExceptional? %>
@@ -777,12 +778,13 @@
 			<% priceSpa += o_spa.spa.ordinary_price %>
 			<% acompteSpa += o_spa.spa.ordinary_acompte %>
 		<% end %>
+
 		&nbsp;&nbsp;&nbsp;&nbsp;~ Ambiance:
-		<% if o_spa.product.nil? %>
+		<% if o_spa.spa_ambiance.nil? %>
 			aucun selectionné <br>
 		<% else %>
 			<%= o_spa.product.name %><br>
-			<% priceSpa += o_spa.product.price %>
+			<% priceSpa += ambiance_price %>
 		<% end %>
 		<ul>
 			<li><strong>Type de logement :</strong> <%= o_spa.logement %></li>
@@ -888,25 +890,30 @@
                                     <td valign="top" class="mcnTextContent" style="padding: 18px;color: #F2F2F2;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: center;">
                                         <div style="text-align: left;"><span style="font-size:13px"><span style="color:#000000"><strong>Date :</strong> <%= @date %><br>
 <strong>Heure (modifiable avec le client):</strong> <%= @heurs[1] %><br>
-<strong>Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peu importe" : @order.praticien %>"</span>
-<br><br>
-
+<strong>Type de praticien :</strong><span>"<%= @order.praticien == "all" ? "peu importe" : @order.praticien %>"</span><br>
+<ul>
 <% @order.order_massages.each do |o_massage| %>
-	<strong><%= o_massage.massage_ca.name %></strong><br>
-	<strong><%= o_massage.massage_su.name %></strong> <%= o_massage.massage_su_price.duration %>mn :
-	<% if @order.isExceptional? %>
-		<%= o_massage.massage_su_price.exceptional_price.to_i %>€<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_massage.massage_su_price.exceptional_acompte.to_i %>€<br>
-		<% priceMassage += o_massage.massage_su_price.exceptional_price %>
-		<% acompteMassage += o_massage.massage_su_price.exceptional_acompte %>
-	<% else %>
-		<%= o_massage.massage_su_price.ordinary_price.to_i %>€<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_massage.massage_su_price.ordinary_acompte.to_i %>€<br>
-		<% priceMassage += o_massage.massage_su_price.ordinary_price %>
-		<% acompteMassage += o_massage.massage_su_price.ordinary_acompte %>
+	<li><strong><%= o_massage.massage.name %></strong>
+	<ul>
+	<% o_massage.order_massage_types.each do |o_type| %>
+		<% if @order.isExceptional? %>
+			<% price_massage = o_type.massage_duration_price.exceptional_price.to_i %>
+			<% acompte_massage = o_type.massage_duration_price.exceptional_acompte.to_i %>
+		<% else %>
+			<% price_massage = o_type.massage_duration_price.ordinary_price.to_i %>
+			<% acompte_massage = o_type.massage_duration_price.ordinary_acompte.to_i %>
+		<% end %>
+		<% priceMassage +=  price_massage %>
+		<% acompteMassage +=  acompte_massage %>
+		<li>
+			<strong><%= o_type.massage_type.name %></strong> <%= o_type.massage_duration_price.duration %>mn: <%= price_massage %>€<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= acompte_massage %>€
+		</li>
 	<% end %>
+	</ul>
+	</li>
 <% end %>
-
+</ul>
 <% if @number_service == 1 %>
 	<br>
 	<br>

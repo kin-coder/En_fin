@@ -14,7 +14,8 @@
 			<section class="clearfix orderSection padding">
 				<div class="col-xs-12">
 					<div class="innerWrapper">
-						<% unless session[:myPrestation]["spa"].empty? %>
+
+						<% if @order.is_spa %>
 						<div class="table-responsive">
 							<table class="table">
 								<thead>
@@ -25,65 +26,92 @@
 								<tbody>
 									<tr>
 										<td>
-											<% session[:myPrestation]["spa"].each do |spa| %> 
+											<% @order.order_spas.each do |o_spa| %> 
 											<div class="reservationSpa">
-												<strong style="font-family: Quicksand; text-transform: uppercase;color: black;">spa pour <%= spa["time"] %>h </strong><br>
+												<strong style="font-family: Quicksand; text-transform: uppercase;color: black;">spa pour <%= o_spa.spa.duration %>h </strong><br>
 												<ul>
-													<li><i>Type de logement :</i> <%= spa["type"][0] %></li>
-													<li><i>Type d'installation :</i> <%= spa["type"][1] %></li>
-													<li><i>Système d'eau : </i><%= spa["type"][2] %></li>
+													<li><i>Type de logement :</i> <%= o_spa.logement %></li>
+													<li><i>Type d'installation :</i> <%= o_spa.installation %></li>
+													<li><i>Système d'eau : </i><%= o_spa.syteme_eau %></li>
 												</ul>
+												<% price_spa = 0 %>
+												<% acompte_spa = 0 %>
 
-												<% if spa["option"] %>
-												<i>Option :</i> <%= spa["option"][0][0] %> à <%= spa["option"][0][1] %> € <br>
+												<% if @order.isExceptional? %>
+													<% price_spa = o_spa.spa.exceptional_price.to_i %>
+													<% acompte_spa = o_spa.spa.exceptional_acompte.to_i %>
+												<% else %>
+													<% price_spa = o_spa.spa.ordinary_price.to_i %>
+													<% acompte_spa = o_spa.spa.ordinary_acompte.to_i %>
 												<% end %>
 
-												<i>Prix : </i><%= spa["price"][0] - @code_promo %> €<br>
-												<i>Acompte :</i><%= spa["price"][1] - @code_promo %> €<br>
-												<div>
-													<i>Date et heure de livraison : </i>le <%= session[:otherInfo]["date"] %> à <%= session[:otherInfo]["heureSpa"] %>
-												</div>
+												<% unless o_spa.spa_ambiance.nil? %>
+													<i>Option :</i> <%= o_spa.spa_ambiance.name %><br>
+													<i>Prix : </i><%= price_spa + o_spa.spa_ambiance.price.to_i %>€<br>
+												<% else %>
+													<i>Prix : </i><%= price_spa %>€<br>
+												<% end %>
+												<i>Acompte : </i><%= acompte_spa %>€
 											</div>
 											<hr style="">
 											<% end %>
-
+											<div class="reservationSpa">
+												<i>Date et heure de livraison : </i>le <%= @order.prestation_date %> à <%= @time_spa %>
+											</div>
+											<hr style="">
 										</td>
 									</tr>
-									
 								</tbody>
 							</table>
 						</div>
 						<% end %>
-						
-						<% unless session[:myPrestation]["massage"].empty? %>
-						<div class="table-responsive">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>MASSAGE</th>
 
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
+						<% if @order.is_massage %>
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>MASSAGE</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<% price_massage = 0 %>
+												<% acompte_massage = 0 %>
+												<% @order.order_massages.each do |o_massage| %>
+													<div class="reservationSpa">
+														<strong style="font-family: Quicksand; text-transform: uppercase;color: black;">Massage pour <%= o_massage.massage.name %></strong>	<br>
+														<dl>
+															<dt><i>Type de massage : </i></dt>
+														<% o_massage.order_massage_types.each do |o_type| %>
+															<% if @order.isExceptional? %>
+																<% price_massage = o_type.massage_duration_price.exceptional_price.to_i %>
+																<% acompte_massage = o_type.massage_duration_price.exceptional_acompte.to_i %>
+															<% else %>
+																<% price_massage = o_type.massage_duration_price.ordinary_price.to_i %>
+																<% acompte_massage = o_type.massage_duration_price.ordinary_acompte.to_i %>
+															<% end %>
 
-										<td>
-											<% session[:myPrestation]["massage"].each do |massage| %>
-											<div class="reservationSpa">
-												<strong style="font-family: Quicksand; text-transform: uppercase;color: black;">Massage pour <%= massage["ca"] %></strong>	<br>
-												<i>Type de massage : </i> <%= massage["su"] %><br>
-												<i>Prix : </i><%= massage["price"][1] - @code_promo %> €<br>
-												<i>Acompte : </i> <%= massage["price"][2] - @code_promo %> €
-											</div>
-											<hr style="">
-
-											<% end %>
-										</td>
-									</tr>
-									
-								</tbody>
-							</table>
-						</div>
+															<dd><%= o_type.massage_type.name %>
+																<li><i>Prix : </i><%= price_massage %>€</li>
+																<li><i>Acompte : </i> <%= acompte_massage %>€</li>
+															</dd>
+														<% end %>
+														</dl>
+													</div>
+												<hr style="">
+												<% end %>
+												<div class="reservationSpa">
+													<i>Date et heure de livraison : </i>le <%= @order.prestation_date %> à <%= @time_massage %>
+												</div>
+												<hr style="">
+											</td>
+										</tr>
+										
+									</tbody>
+								</table>
+							</div>
 						<% end %>
 
 						<div class="table-responsive">
@@ -119,9 +147,12 @@
 
 		<div class="col-sm-4">
 			<div class="alert alert-success">
-				Prix Total : <strong><%= @totalAcompte + @totalPrice %> € </strong><br>
-								<span>Acompte à régler en ligne : <strong><%= @totalAcompte %> €</strong></span> <br>
-				Montant à régler sur place (CB ou éspèces uniquement) : <strong><%= @totalPrice %> €</strong><br>
+				<% unless @order.code_promo.nil? %>
+					Code promo : reduction de <b><%= @order.code_promo.split("-|-")[1].to_i %>€</b> sur l'acompte.<br>
+				<% end %>
+				Prix Total : <strong><%= @totalPrice %>€</strong><br>
+				<span>Acompte à régler en ligne : <strong><%= @totalAcompte %>€</strong></span><br>
+				Montant à régler sur place (CB ou éspèces uniquement) : <strong><%= @totalPrice - @totalAcompte %>€</strong><br>
 				<form method="post" action="https://payment-webinit.simu.mercanet.bnpparibas.net/paymentInit">
 					<input type="hidden" name="Data" value="<%=@data%>">
 					<input type="hidden" name="InterfaceVersion" value="HP_2.20">
