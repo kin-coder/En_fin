@@ -4,7 +4,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   # configuration en production localhost a changé
   
-  config.action_mailer.default_url_options = { :host => 'spamandona.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'spamandonabe.herokuapp.com' }
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -121,9 +121,11 @@ Rails.application.configure do
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'spamandona.fr',
-    user_name:            'ctrlfaly@gmail.com',
-    password:             'tduoesxegsoxecoq',
+    user_name:            'michael77rakotovao@gmail.com',
+    password:             'zzadaorgdtcibfti',
     authentication:       'plain',
     enable_starttls_auto: true 
   }
 end
+
+
