@@ -59,6 +59,9 @@ class Order < ApplicationRecord
     			priceTotal += o_spa.spa.ordinary_price
 					acompteTotal += o_spa.spa.ordinary_acompte
     		end
+    		unless o_spa.spa_ambiance.nil?
+    			priceTotal += o_spa.spa_ambiance.price
+    		end
     	end
     end
     if self.is_massage
