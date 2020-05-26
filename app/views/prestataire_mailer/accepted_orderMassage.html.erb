@@ -753,21 +753,29 @@
 	<span style="color:#000000">
 <% price = 0.0 %>
 <% acompte = 0.0 %>
+	<ul>
 	<% @order.order_massages.each do |o_massage| %>
-		<%= o_massage.massage_ca.name %>&nbsp;<br>
-		<%= o_massage.massage_su.name %> <%= o_massage.massage_su_price.duration %>mn :
-		<% if @order.isExceptional? %>
-			<%= o_massage.massage_su_price.exceptional_price.to_i %>€<br>
-			acompte: <%= o_massage.massage_su_price.exceptional_acompte.to_i %>€<br>
-			<% price += o_massage.massage_su_price.exceptional_price %>
-			<% acompte += o_massage.massage_su_price.exceptional_acompte %>
-		<% else %>
-			<%= o_massage.massage_su_price.ordinary_price.to_i %>€<br>
-			acompte: <%= o_massage.massage_su_price.ordinary_acompte.to_i %>€<br>
-			<% price += o_massage.massage_su_price.ordinary_price %>
-			<% acompte += o_massage.massage_su_price.ordinary_acompte %>
+		<li><strong><%= o_massage.massage.name %></strong>
+		<ul>
+		<% o_massage.order_massage_types.each do |o_type| %>
+			<% if @order.isExceptional? %>
+				<% price_massage = o_type.massage_duration_price.exceptional_price.to_i %>
+				<% acompte_massage = o_type.massage_duration_price.exceptional_acompte.to_i %>
+			<% else %>
+				<% price_massage = o_type.massage_duration_price.ordinary_price.to_i %>
+				<% acompte_massage = o_type.massage_duration_price.ordinary_acompte.to_i %>
+			<% end %>
+			<% price +=  price_massage %>
+			<% acompte +=  acompte_massage %>
+			<li>
+				<strong><%= o_type.massage_type.name %></strong> <%= o_type.massage_duration_price.duration %>mn: <%= price_massage %>€<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= acompte_massage %>€
+			</li>
 		<% end %>
+		</ul>
+		</li>
 	<% end %>
+	</ul>
 <br>
 <strong>Prix total : <%= price.to_i %>€ </strong><br>
 <strong>Acompte versé par le client (commission CCSPA) : <%= acompte.to_i %>€</strong><br>

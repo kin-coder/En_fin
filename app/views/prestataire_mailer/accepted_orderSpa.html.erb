@@ -750,35 +750,34 @@
 <div style="text-align: left;">
 <div style="text-align: left;">
 	<span style="color:#000000">
-
 <% price = 0.0 %>
 <% acompte = 0.0 %>
-
 <% @order.order_spas.each do |o_spa| %>
-	Location spa <%= o_spa.spa.duration %>h :
+	Location spa <%= o_spa.spa.duration %>h : 
 	<% ambiance_price = 0 %>
-	<% unless o_spa.product.nil? %>
-		<% ambiance_price = o_spa.product.price.to_i %>
+
+	<% unless o_spa.spa_ambiance.nil? %>
+		<% ambiance_price = o_spa.spa_ambiance.price.to_i %>
 	<% end %>
 
 	<% if @order.isExceptional? %>
 		<%= o_spa.spa.exceptional_price.to_i + ambiance_price %>€<br>
-		acompte: <%= o_spa.spa.exceptional_acompte.to_i %>€<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_spa.spa.exceptional_acompte.to_i %>€<br>
 		<% price += o_spa.spa.exceptional_price %>
 		<% acompte += o_spa.spa.exceptional_acompte %>
 	<% else %>
 		<%= o_spa.spa.ordinary_price.to_i + ambiance_price %>€<br>
-		acompte: <%= o_spa.spa.ordinary_acompte.to_i %>€<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_spa.spa.ordinary_acompte.to_i %>€<br>
 		<% price += o_spa.spa.ordinary_price %>
 		<% acompte += o_spa.spa.ordinary_acompte %>
 	<% end %>
 
-	Ambiance:
-	<% if o_spa.product.nil? %>
+	&nbsp;&nbsp;&nbsp;&nbsp;~ Ambiance:
+	<% if o_spa.spa_ambiance.nil? %>
 		aucun selectionné <br>
 	<% else %>
-		<%= o_spa.product.name %><br>
-		<% price += o_spa.product.price %>
+		<%= o_spa.spa_ambiance.name %><br>
+		<% price += ambiance_price %>
 	<% end %>
 	<ul>
 		<li><strong>Type de logement :</strong> <%= o_spa.logement %></li>
