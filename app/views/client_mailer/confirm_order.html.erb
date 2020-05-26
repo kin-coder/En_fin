@@ -768,12 +768,12 @@
 
 		<% if @order.isExceptional? %>
 			<%= o_spa.spa.exceptional_price.to_i + ambiance_price %>€<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_spa.spa.exceptional_acompte.to_i %>€<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<span style="display:none;">~ acompte: <%= o_spa.spa.exceptional_acompte.to_i %>€</span><br>
 			<% priceSpa += o_spa.spa.exceptional_price %>
 			<% acompteSpa += o_spa.spa.exceptional_acompte %>
 		<% else %>
 			<%= o_spa.spa.ordinary_price.to_i + ambiance_price %>€<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;<span style="display:none;"> ~ acompte : </span> <%= o_spa.spa.ordinary_acompte.to_i %>€<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<span style="display:none;"> ~ acompte :  <%= o_spa.spa.ordinary_acompte.to_i %>€</span><br>
 			<% priceSpa += o_spa.spa.ordinary_price %>
 			<% acompteSpa += o_spa.spa.ordinary_acompte %>
 		<% end %>
@@ -901,7 +901,7 @@
 		<% acompteMassage += o_massage.massage_su_price.exceptional_acompte %>
 	<% else %>
 		<%= o_massage.massage_su_price.ordinary_price.to_i %>€<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;~ acompte: <%= o_massage.massage_su_price.ordinary_acompte.to_i %>€<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<span style="display:none;">~ acompte: <%= o_massage.massage_su_price.ordinary_acompte.to_i %>€</span><br>
 		<% priceMassage += o_massage.massage_su_price.ordinary_price %>
 		<% acompteMassage += o_massage.massage_su_price.ordinary_acompte %>
 	<% end %>

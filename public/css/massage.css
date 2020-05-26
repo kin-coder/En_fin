@@ -997,6 +997,19 @@
 	and (min-device-width : 768px) 
 	and (max-device-width : 1024px) 
 	and (orientation : landscape) { 
+
+				.reviewinfocontact2 {
+			width: 450px !important;
+			position: absolute;
+			left: -95px;
+		}
+
+		.reviewinfocontact {
+			width: 450px !important;
+		}
+		.text-p-index-ok{
+			margin-left: -16px !important;
+		}
 		.textccm img {
 
 			width: 45px;
