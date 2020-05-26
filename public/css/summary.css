@@ -5,7 +5,9 @@ text-align: left;
  color: #9d9696;
  font-size: 15px;
 }
-
+.adresses{
+margin-left: 8%;
+}
 .padding {
     padding: 10px 0 10px !important;
 }

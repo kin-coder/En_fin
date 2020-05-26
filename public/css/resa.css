@@ -1752,3 +1752,23 @@ max-width: 100px;
       overflow: hidden;
       white-space: initial;
     }
+
+    @media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
+.label-selected {
+    position: absolute;
+    left: 100px !important;
+    font-family: Lato, 'Open Sans', sans-serif;
+}
+
+.questionMarkSpa {
+    position: relative;
+    left: 20%;
+  }
+
+  .selectElement {
+    max-width: 110px;
+  }
+  }

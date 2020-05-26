@@ -1,13 +1,13 @@
 <% content_for :head do %>
-	<title>Devenez partenaire - Location de Spa à domicile - Cocooning Spa</title>
-	<meta name="description" content="En tant qu’entreprise spécialisée dans la location de Jacuzzi/Spa à domicile, nous vous proposons de nous rejoindre en tant que partenaire"/>
+<title>Devenez partenaire - Location de Spa à domicile - Cocooning Spa</title>
+<meta name="description" content="En tant qu’entreprise spécialisée dans la location de Jacuzzi/Spa à domicile, nous vous proposons de nous rejoindre en tant que partenaire"/>
 <% end %>
 
 <% content_for :h1 do %>
-	<h1 style="position: absolute;opacity: 0;z-index: -1">
+<h1 style="position: absolute;opacity: 0;z-index: -1">
 	Rejoignez l’aventure Cocooning Spa
-	</h1>
-  <% end %>
+</h1>
+<% end %>
 <link href="/css/partner.css" rel="stylesheet">
 <link href="/css/page-devise.css" rel="stylesheet">
 <style>
@@ -83,7 +83,41 @@
 		top: 0px;
 		left: 10px;
 	}
+	@media only screen 
+	and (min-device-width : 768px) 
+	and (max-device-width : 1024px) 
+	and (orientation : landscape) { 
 
+		.formPartner{
+			min-width: 440px !important;
+		}
+
+		.form-controldate {
+
+			min-width: 400px !important;
+
+		}
+		.switch {
+			margin-left: -1px;
+			margin-right: 10px;
+		}
+		.domaine {
+			margin-right: 2px;
+		}
+		.choix{
+			max-width: 480px; 
+		}
+		label[for="massages"], label[for="spa"]{
+			margin-left: -5px;
+		}
+		#dropZone {
+
+
+			padding-left: 400px !important;
+
+
+		}
+	}
 </style>
 <body onload="scrollWin();">
 	
@@ -115,17 +149,17 @@
 			<h2 class="police_massage"><span>Les Plus du partenariat</span></h2>
 		</div>
 		<div class="row">
-			<center class="col-sm-3">
+			<center class="col-sm-3 pluspartner">
 				<div class="ccm-index">
 					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/Gratuit.png" alt="Image Partner"></i><br></span>Gratuit</b>
 				</div>
 			</center>
-			<center class="col-sm-3">
+			<center class="col-sm-3 pluspartner">
 				<div class="ccm-index">
 					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/remuneration.png" alt="Image Partner"></i><br></span>Rémunération attractive </b>
 				</div>
 			</center>
-			<center class="col-sm-3">
+			<center class="col-sm-3 pluspartner">
 				<div class="ccm-index">
 					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/relation.png" alt="Image Partner"></i><br></span>Mise en relation clients</b>
 				</div>
@@ -143,22 +177,22 @@
 		</div>
 
 		<div class="row">
-			<center class="col-sm-4">
+			<center class="col-sm-4 pluspartner">
 				<div class="ccm-index">
 					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/1.png" alt="Image Partner"></i><br></span>Être majeur et avoir un statut d’indépendant</b>
 				</div>
 			</center>
-			<center class="col-sm-4">
+			<center class="col-sm-4 pluspartner">
 				<div class="ccm-index">
 					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/2.png" alt="Image Partner"></i><br></span>Posséder une assurance RC professionnelle </b>
 				</div>
 			</center>
-			<center class="col-sm-4">
+			<center class="col-sm-4 pluspartner">
 				<div class="ccm-index">
 					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/3.png" alt="Image Partner"></i><br></span>Être diplôme ou formé dans votre domaine d’activité</b>
 				</div>
 			</center>
-			<center class="col-sm-4">
+			<center class="col-sm-4 pluspartner">
 				<div class="ccm-index">
 					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/4.png" alt="Image Partner"></i><br></span>Avoir la matériel et équipement nécessaire pour effectuer les prestations de votre domaine d’activité</b>
 				</div>
@@ -175,17 +209,17 @@
 			<h2 class="police_massage"><span>Comment ça marche ?</span></h2>
 		</div>
 		<div class="row">
-			<center class="col-sm-4">
+			<center class="col-sm-4 pluspartner">
 				<div class="ccm-index">
 					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/inscription.png" alt="Image Partner"></i><br></span>Je m’inscris sur la plateforme</b>
 				</div>
 			</center>
-			<center class="col-sm-4">
+			<center class="col-sm-4 pluspartner">
 				<div class="ccm-index">
 					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/activite-zoneaction.png" alt="Image Partner"></i><br></span>Je choisis mon activité & définis mes zones d’action</b>
 				</div>
 			</center>
-			<center class="col-sm-4">
+			<center class="col-sm-4 ">
 				<div class="ccm-index">
 					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/proposition.png" alt="Image Partner"></i><br></span>Je reçois des propositions de commande <br>que je suis libre d’accepter ou de refuser</b>
 				</div>
