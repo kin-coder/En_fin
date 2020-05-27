@@ -15,6 +15,9 @@ function main(){
 	let zone = sessionStorage.getItem("zone");
 	if (zone != null) {
 		zone = JSON.parse(zone);
+		$("#inpdepartment").val(zone.department);
+		$("#inpdate").val(zone.date)
+		$("#inppays").val(zone.country)
 		$("#heure-spa").val(zone.time_spa);
 		$("#heure-massage").val(zone.time_massage);
 		$(".praticien-list").each(function(index,element){
