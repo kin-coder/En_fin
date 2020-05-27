@@ -133,16 +133,11 @@ function refreachListCommandeSpa($parentNode = -1){
 			session_spas.push(a);
 		}
 	});
-
 	sessionStorage.setItem("spas",JSON.stringify(session_spas));
-
 	zone.nbr_spa = count_spa;
 	zone.price_spa = totalPrice;
-	
-	$("#number-cart-ok").html(zone.nbr_spa + zone.nbr_massage)
-
+	$("#number-cart-ok").html(zone.nbr_spa + zone.nbr_massage);
 	sessionStorage.setItem("zone",JSON.stringify(zone));
-
 	$(".presta-spa-list")[0].dataset.price = "["+totalPrice+","+totalAcompte+"]";
 	if (innerHTML.length > 0){
 		$(".presta-spa-list").html(innerHTML);
@@ -152,7 +147,6 @@ function refreachListCommandeSpa($parentNode = -1){
 		$("#totalPriceSpa").addClass("hidden");
 		$(".presta-spa-list").html(innerHTML);
 	}
-
 	$(".basket-group-spa").click(function() {
 		let $this = $("#basket-group-"+$(this).data().list+"-spa");
 		if ($this.hasClass("hidden")){
@@ -161,20 +155,17 @@ function refreachListCommandeSpa($parentNode = -1){
 			$this.addClass("hidden");
 		}
 	});
-
 	let massagePrice = JSON.parse($(".presta-list")[0].dataset.price);
 	if (massagePrice.length === 2) {
 		totalPrice += massagePrice[0];
 		totalAcompte += massagePrice[1];
 	}
-
 	if (totalPrice > 0) {
  		totalPrice -= price_promo
 	}
 	if (totalAcompte > 0) {
  		totalAcompte -= price_promo
 	}
-
 	$("#totalPricePrestation").html(totalPrice);
 	$("#totalAcomptePrestation").html(totalAcompte);
 	hideMessageShow(totalPrice);
@@ -253,6 +244,8 @@ $(".remove-massage").click(function() {
 	$parentsGroup.remove();
 	refreachListCommande();
 	numberOfPrestationMassage($(this).data().category);
+	$(".add-massage").removeAttr("data-target");
+	$(".add-massage").removeAttr("data-toggle");
 });
 
 $(".add-massage").click(function() {
@@ -277,6 +270,10 @@ $(".add-massage").click(function() {
 	$("#select-list-massage").append($prestationGroups);
 	numberOfPrestationMassage(category);
 	scrollTo($prestationGroups);
+	if ($(".prestation-group").length > 1) {
+		$(".add-massage").attr("data-target", "#pushMassage2");
+		$(".add-massage").attr("data-toggle", "modal");
+	}
 });
 
 /*-----------------------------ACTUALISE DOM MASSAGE ----------------------------- */
