@@ -3,7 +3,7 @@ class AdminsController < Application2Controller
     before_action :set_client, only: [:show, :edit, :update, :destroy]
     
     def allcandidate
-        @candidates = Candidate.all
+      @candidates = Candidate.all
     end
 
     # gestion candidature
@@ -135,7 +135,7 @@ class AdminsController < Application2Controller
 
     # Only allow a list of trusted parameters through.
     def client_params
-      params.require(:client).permit(:first_name, :last_name, :adresse, :tel, :sexe, :country, :zip_code, :email, :password, :password_confirmation)
+      params.require(:client).permit(:first_name, :last_name, :adresse, :tel, :sexe, :country, :town, :zip_code, :email, :password, :password_confirmation)
     end
 
 end

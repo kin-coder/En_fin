@@ -209,6 +209,9 @@ ActiveRecord::Schema.define(version: 2020_05_20_075640) do
     t.string "delivery_adresse_complet"
     t.string "praticien"
     t.text "message"
+    t.string "paymentMeanBrand"
+    t.string "transactionDateTime"
+    t.string "acompte_amount"
     t.boolean "is_validate", default: false
     t.string "status_order", default: "en cours"
     t.bigint "client_id"

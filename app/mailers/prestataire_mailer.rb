@@ -26,8 +26,7 @@ class PrestataireMailer < ApplicationMailer
     @prestataire = Prestataire.find(id)
     @oService = OrderService.find(order_service)
     @order = @oService.order
-    @date = @order.prestation_date.split("/")
-    @date = "#{@date[1]}/#{@date[0]}/#{@date[2]}"
+    @date = @order.prestation_date
     mail(to: @prestataire.email, subject: 'Votre commande Cocooning Spa acceptée !')
   end
 
@@ -35,8 +34,7 @@ class PrestataireMailer < ApplicationMailer
     @prestataire = Prestataire.find(id)
     @oService = OrderService.find(order_service)
     @order = @oService.order
-    @date = @order.prestation_date.split("/")
-    @date = "#{@date[1]}/#{@date[0]}/#{@date[2]}"
+    @date = @order.prestation_date
     mail(to: @prestataire.email, subject: 'Votre commande Cocooning Spa acceptée !')
   end
 
