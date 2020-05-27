@@ -179,7 +179,7 @@
 															<table class="table">
 																<thead>
 																	<tr>
-																		<th>Date <small>(MM/JJ/AAAA)</small></th>
+																		<th>Date de livraison</th>
 																		<th>Prix</th>
 																		<th>Prestation</th>
 																		<th>Action</th>
@@ -190,7 +190,7 @@
 																	<% prixAcompte = order.totalPrice %>
 																	<tr>
 																		<td><%= order.prestation_date %></td>
-																		<td><%= prixAcompte[0] %> €</td>
+																		<td><%= prixAcompte[0].to_i %> €</td>
 																		<td>
 																			<ul>
 																				<% order.order_services.each do |o_s| %>
@@ -218,7 +218,7 @@
 																<table class="table">
 																	<thead>
 																		<tr>
-																			<th>Date <small>(MM/JJ/AAAA)</small></th>
+																			<th>Date de livraison</th>
 																			<th>Prix</th>
 																			<th>Prestation</th>
 																			<th>Action</th>
@@ -229,7 +229,7 @@
 																		<% prixAcompte = order.totalPrice %>
 																		<tr>
 																			<td><%= order.prestation_date %></td>
-																			<td><%= prixAcompte[0] + prixAcompte[1] %> €</td>
+																			<td><%= prixAcompte[0].to_i %> €</td>
 																			<td>
 																				<ul>
 																					<% order.order_services.each do |o_s| %>
@@ -258,7 +258,7 @@
 																<table class="table">
 																	<thead>
 																		<tr>
-																			<th>Date <small>(MM/JJ/AAAA)</small></th>
+																			<th>Date de livraison</th>
 																			<th>Prix</th>
 																			<th>Prestation</th>
 																			<th>Action</th>
@@ -269,7 +269,7 @@
 																		<% prixAcompte = order.totalPrice %>
 																		<tr>
 																			<td><%= order.prestation_date %></td>
-																			<td><%= prixAcompte[0] + prixAcompte[1] %> €</td>
+																			<td><%= prixAcompte[0].to_i %> €</td>
 																			<td>
 																				<ul>
 																					<% order.order_services.each do |o_s| %>

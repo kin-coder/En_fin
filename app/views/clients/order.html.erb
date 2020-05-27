@@ -80,11 +80,11 @@ margin-bottom: 3%;
 												</td>
 												<td style="text-align:left;">
 													<% if @order.isExceptional? %>
-													<li><%= o_massage.massage_su_price.exceptional_price %>€</li>
-													<li>~ acompte: <%= o_massage.massage_su_price.exceptional_acompte %>€</li>
+													<li><%= o_massage.massage_su_price.exceptional_price.to_i %>€</li>
+													<li>~ acompte: <%= o_massage.massage_su_price.exceptional_acompte.to_i %>€</li>
 													<% else %>
-													<li><%= o_massage.massage_su_price.ordinary_price %>€</li>
-													<li>~ acompte: <%= o_massage.massage_su_price.ordinary_acompte %>€</li>
+													<li><%= o_massage.massage_su_price.ordinary_price.to_i %>€</li>
+													<li>~ acompte: <%= o_massage.massage_su_price.ordinary_acompte.to_i %>€</li>
 													<% end %>
 												</td>
 											</tr>
@@ -116,15 +116,15 @@ margin-bottom: 3%;
 												<td style="text-align:left;margin-left: 20px;">
 													<% ambiance_price = 0 %>
 													<% unless o_spa.product.nil? %>
-														 <% ambiance_price = o_spa.product.price %>
+														 <% ambiance_price = o_spa.product.price.to_i %>
 													<% end %>
 
 													<% if @order.isExceptional? %>
-														<li><%= o_spa.spa.exceptional_price+ambiance_price %>€</li>
-														<li>~ acompte: <%= o_spa.spa.exceptional_acompte %>€</li>
+														<li><%= o_spa.spa.exceptional_price.to_i + ambiance_price %>€</li>
+														<li>~ acompte: <%= o_spa.spa.exceptional_acompte.to_i %>€</li>
 													<% else %>
-														<li><%= o_spa.spa.ordinary_price+ambiance_price %>€</li>
-														<li>~ acompte: <%= o_spa.spa.ordinary_acompte %>€</li>
+														<li><%= o_spa.spa.ordinary_price.to_i + ambiance_price %>€</li>
+														<li>~ acompte: <%= o_spa.spa.ordinary_acompte.to_i %>€</li>
 													<% end %>
 												</td>
 											</tr>

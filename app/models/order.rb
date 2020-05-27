@@ -97,6 +97,6 @@ class Order < ApplicationRecord
 				end 
 			end
 		end
-		return [price-code_promo,acompte-code_promo]
+		return [price.to_i-code_promo.to_i,acompte.to_i-code_promo.to_i]
   end
 end
