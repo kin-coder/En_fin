@@ -514,7 +514,7 @@ class OrdersController < ApplicationController
   end
 
   def validate_value_in_session
-    exceptionalDate = [["02","14"],["12","24"],["12","25"],["12","31"]]
+    exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
     @code_promo = 0
     
     code = session[:otherInfo]["code_promo"]
