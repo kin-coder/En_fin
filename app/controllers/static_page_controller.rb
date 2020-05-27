@@ -5,7 +5,7 @@ class StaticPageController < ApplicationController
   end
 #Differents service {+ Page Service Par Departement}
   def massage
-    @massages = MassageSu.all
+    @massages = MassageType.all
     @commentsMassage = Comment.where(comment_for:"massage")
   end
 
