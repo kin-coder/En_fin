@@ -123,23 +123,24 @@
 							<tr>
 								<th data-field="state" data-checkbox="true"></th>
 								<th data-field="commandeID" data-filter-control="input" data-sortable="true">N°</th>
-								<th data-field="date" data-filter-control="input" data-sortable="true">Date (MM/JJ/AAAA)</th>
+								<th data-field="date" data-filter-control="input" data-sortable="true">Date de livraison</th>
 								<th data-field="presta" data-filter-control="input">Prestataire associé</th>
 								<th data-field="nom" data-filter-control="input">Nom du client</th>
 								<th>Montant</th>
+								<th>Acompte</th>
+								<th>Date du paiement de l'acompte</th>
+								<th>Mode de paiement</th>
+								<th>Ville </th>
 								<th data-field="zip_code" data-filter-control="input">Code Postal</th>
+								<th>Adresse de facturation</th>
+								<th>Complément d'adresse de facturation</th>
 								<th>Type de service</th>
-
 								<th class="actionTableAdmin" data-field="note"> <center style="line-height: 35px;">Actions
 								</center>  
 							</th>
 						</tr>
 					</thead>
-
-
 					<tbody id="myTable">
-						
-
 						<% @orders_in_progress.each do |order| %>
 						<% prestataires = order.prestataires %>
 						<% prixAcompte = order.totalPrice %>
@@ -158,12 +159,17 @@
 							</td>
 							<td><%= order.client.first_name %> <%= order.client.last_name %></td>
 							<td><%= prixAcompte[0] %> €</td>
+							<td><%= order.acompte_amount.to_i / 100 %> €</td>
+							<td><%= order.transactionDateTime %></td>
+							<td><%= order.paymentMeanBrand %></td>
+							<td><%= order.billing_ville %></td>
 							<td><%= order.client.zip_code %></td>
+							<td><%= order.billing_adresse %></td>
+							<td><%= order.billing_adresse_complet %></td>
 							<td>
 								<% order.services.each do |service|%>
 								<li> <%= service.name %> </li>
 								<% end %>
-
 							</td>
 							<td><a href="<%= admin_order_show_path(order.id) %>" class="btn btn-default">Afficher</a></td>
 						</tr>
