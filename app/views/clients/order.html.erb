@@ -1,5 +1,41 @@
 
-<section class="clearfix homeGallery padding">
+<style>
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+
+.innerWrapper {
+    width: 121%;
+    display: block;
+    margin-left: -30px;
+}
+
+.table-responsive {
+    min-height: .01%;
+    overflow-x: auto;
+}
+
+.theadelse h4{
+text-align: left;
+
+position: absolute;
+
+left: 35%;
+
+}
+
+.isotopeSelector{
+max-width: 100% !important;
+}
+}
+
+.homegalerysho .comandes{
+margin-bottom: 3%;
+}
+</style>
+
+
+
+<section class="clearfix homeGallery homegalerysho">
 	<div class="container">
 		<div class="pageTitle" style="background: white;">
 			<h1 style="  color: #ec5598;">Commande N° <%= @order.id %></h1>
@@ -9,7 +45,7 @@
 
 			<div id="classRemove" class="hiden">
 				<div class="col-sm-12 isotopeSelector massage">
-					<div class="row">
+					<div class="row comandes">
 						<div class="col-xs-12">
 							<div class="innerWrapper">
 
@@ -17,7 +53,7 @@
 									<table class="table">
 										<thead>
 											<tr>
-												<th colspan="3" style="border-bottom: 1px solid white;"> <h4><center>Prestations</center></h4></th>
+												<th colspan="3" style="border-bottom: 1px solid white;" class='theadelse'> <h4><center>Prestations</center></h4></th>
 											</tr>
 											<tr>
 												<th>Services</th>
@@ -44,11 +80,11 @@
 												</td>
 												<td style="text-align:left;">
 													<% if @order.isExceptional? %>
-													<li><%= o_massage.massage_su_price.exceptional_price %>€</li>
-													<li>~ acompte: <%= o_massage.massage_su_price.exceptional_acompte %>€</li>
+													<li><%= o_massage.massage_su_price.exceptional_price.to_i %>€</li>
+													<li>~ acompte: <%= o_massage.massage_su_price.exceptional_acompte.to_i %>€</li>
 													<% else %>
-													<li><%= o_massage.massage_su_price.ordinary_price %>€</li>
-													<li>~ acompte: <%= o_massage.massage_su_price.ordinary_acompte %>€</li>
+													<li><%= o_massage.massage_su_price.ordinary_price.to_i %>€</li>
+													<li>~ acompte: <%= o_massage.massage_su_price.ordinary_acompte.to_i %>€</li>
 													<% end %>
 												</td>
 											</tr>
@@ -80,15 +116,15 @@
 												<td style="text-align:left;margin-left: 20px;">
 													<% ambiance_price = 0 %>
 													<% unless o_spa.product.nil? %>
-														 <% ambiance_price = o_spa.product.price %>
+														 <% ambiance_price = o_spa.product.price.to_i %>
 													<% end %>
 
 													<% if @order.isExceptional? %>
-														<li><%= o_spa.spa.exceptional_price+ambiance_price %>€</li>
-														<li>~ acompte: <%= o_spa.spa.exceptional_acompte %>€</li>
+														<li><%= o_spa.spa.exceptional_price.to_i + ambiance_price %>€</li>
+														<li>~ acompte: <%= o_spa.spa.exceptional_acompte.to_i %>€</li>
 													<% else %>
-														<li><%= o_spa.spa.ordinary_price+ambiance_price %>€</li>
-														<li>~ acompte: <%= o_spa.spa.ordinary_acompte %>€</li>
+														<li><%= o_spa.spa.ordinary_price.to_i + ambiance_price %>€</li>
+														<li>~ acompte: <%= o_spa.spa.ordinary_acompte.to_i %>€</li>
 													<% end %>
 												</td>
 											</tr>
@@ -106,7 +142,7 @@
 									<table class="table">
 										<thead>
 											<tr>
-												<th colspan="3" style="border-bottom: 1px solid white;"> <h4><center>Livraison</center></h4></th>
+												<th colspan="3" style="border-bottom: 1px solid white;" class='theadelse'> <h4><center>Livraison</center></h4></th>
 											</tr>
 										</thead>
 										<tbody>

@@ -504,7 +504,7 @@
       border-top: 2px solid #eee !important;
     }
 
-    #select-list-spa{
+    #spa-input{
       letter-spacing: 2px;
     }
 
@@ -583,7 +583,7 @@
 
 
 
-   .label-time-spa {
+   .label-spa {
     display: inline-block;
     max-width: 100%;
     margin-bottom: 0px;
@@ -778,7 +778,7 @@ margin-top: -18px;
 }
 
 
-#totalPriceSpa, #totalPriceMassage{
+#spa-price-total, #massage-price-total, #cadeau-price-total{
   color: black;
 }
 
@@ -1499,7 +1499,7 @@ max-width: 100px;
     position: relative;
     left: 0px !important;
   }
-  .prestation-group-spa{
+  .spa-list-prestations{
     max-height: 380px;
   }
 
@@ -1598,7 +1598,7 @@ max-width: 100px;
       text-align: left;
 
     }
-    #spa-order, #massage-order{
+    #spa-order, #massage-order, #cadeau-order{
       margin-bottom: 25px;
       max-width: 100%;
     }
@@ -1752,3 +1752,23 @@ max-width: 100px;
       overflow: hidden;
       white-space: initial;
     }
+
+    @media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
+.label-selected {
+    position: absolute;
+    left: 100px !important;
+    font-family: Lato, 'Open Sans', sans-serif;
+}
+
+.questionMarkSpa {
+    position: relative;
+    left: 20%;
+  }
+
+  .selectElement {
+    max-width: 110px;
+  }
+  }

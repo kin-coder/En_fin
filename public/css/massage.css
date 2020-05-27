@@ -10,326 +10,338 @@
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .secotionTitle h2 span {
+	.secotionTitle h2 span {
 
-    display: block;
-    letter-spacing: normal;
-    color: #ec5598;
-    font-size: 40px !important;
-    letter-spacing: 4px;
-    line-height: 42px;
-    text-transform: capitalize;
-    font-weight: bold;
-    font-family: 'Quicksand', 'Open Sans' !important;
-    padding-bottom: 25px;
+		display: block;
+		letter-spacing: normal;
+		color: #ec5598;
+		font-size: 40px !important;
+		letter-spacing: 4px;
+		line-height: 42px;
+		text-transform: capitalize;
+		font-weight: bold;
+		font-family: 'Quicksand', 'Open Sans' !important;
+		padding-bottom: 25px;
 
-  }
-
-
-  .produtImage img{
-    display: inline-block;
-    transition: all 0.8s ease-in-out;
-    width: 150px;
-  }
-  .elsebgMassage{
-    /*width: 700px;*/
-  }
-  .areserver{
-    position: fixed;
-    right: 8px;
-    z-index: 100;
-    top: 20%;
-  }
-  .form-control {
-    height: 43px;
-    box-shadow: none;
-    border-radius: 0;
-    padding-left: 18px;
-    border-color: #dedede;
-    color: #666666;
-    margin-left: 10px;
-    border-radius: 8px;
-    width: 400px;
-  }
-  #contact-submit-btn{
-    width: 172px;
-    text-align: center;
-    position: absolute;
-    left: 79%;
-    border-radius: 50px;
-  }
+	}
 
 
-  .reviewImageMassage1spa {
-    position: absolute;
-    top: 80px;
-    width: 165px;
-    height: 160px;
-    border: 5px solid 
-    rgba(255, 255, 255, 0.7);
-    left: -150px;
-  }
-  .form-group {
-    position: relative;
-    width: 50%;
-    textarea.form-control {
-      height: 95px;
-
-    }
-  }
-  .colipad{
-    position: absolute;
-    right: 1px;
-  }
-
-  .flechespa-left{
-    position: absolute;
-
-    top: 20%;
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 100px;
-    text-rendering: auto;
-    color:
-    rgb(238, 17, 190) !important;
-    padding: 10px;
-  }
-  .flechemassage-left{
-    position: absolute;
-    right:585px !important;
-    top: 20%;
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 100px;
-    text-rendering: auto;
-    color:
-    rgb(238, 17, 190) !important;
-    padding: 10px;
-  }
-  .productImageMassage{
-    width: 100px;
-    position: relative;
-    top: 40px;
-    height: 200px;
-  }
-  #flechemassage-left{
-    position: absolute;
-    right:648px;
-    top: 20%;
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 50px;
-    text-rendering: auto;
-    color:
-    rgb(238, 17, 190) !important;
-    padding: 10px;
-  }
-  #flechemassage-right{
-    position: absolute;
-    right:0px;
-    top: 20%;
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 50px;
-    text-rendering: auto;
-    color: rgb(238, 17, 190) !important;
-    padding: 10px;
-  }
-  .flechemassage-right{
-    position: absolute;
-    right:0px!important ;
-    top: 20%;
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 100px;
-    text-rendering: auto;
-    color: rgb(238, 17, 190) !important;
-    padding: 10px;
-  }
-  .massage-type{
-    width: 100%;
-    margin-left: 40px;
-    margin-bottom: 100px;
-  }
-
-  .text-p-massage-slide{
-    position: fixed;
-    left: 110px;
-    text-align: justify;
-    margin-top: 20px !important;
-    max-width: 525px;
-    font-size: 12px !important;
-    line-height: 26px;
-    color: #222222 !important;
-    font-family: Lato, 'Open Sans' !important;
-  }
-
-  .h3-massage-slide{
-    position: relative;
-    font-weight: bold !important;
-    font-size: 10px;
-    left: -100px;
-    font-family: Lato, 'Open Sans' !important;
-  }
-  .intru{
-    text-align: left !important;
-  }
-
-  .col-massage-slide{
-    max-width: 400px;
-  }
-
-  .engagements{
-    text-align: center;
-    position: relative;
-    left: -15px;
-  }
+	.produtImage img{
+		display: inline-block;
+		transition: all 0.8s ease-in-out;
+		width: 150px;
+	}
+	.elsebgMassage{
+		/*width: 700px;*/
+	}
+	.areserver{
+		position: fixed;
+		right: 8px;
+		z-index: 100;
+		top: 20%;
+	}
+	.form-control {
+		height: 43px;
+		box-shadow: none;
+		border-radius: 0;
+		padding-left: 18px;
+		border-color: #dedede;
+		color: #666666;
+		margin-left: 10px;
+		border-radius: 8px;
+		width: 400px;
+	}
+	#contact-submit-btn{
+		width: 172px;
+		text-align: center;
+		position: absolute;
+		left: 79%;
+		border-radius: 50px;
+	}
 
 
+	.reviewImageMassage1spa {
+		position: absolute;
+		top: 80px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left: -150px;
+	}
+	.form-group {
+		position: relative;
+		width: 50%;
+		textarea.form-control {
+			height: 95px;
 
-  .productInfoindex{
+		}
+	}
+	.colipad{
+		position: absolute;
+		right: 1px;
+	}
 
-    background: white;
-  }
-  #flecheindex{
-    position: absolute;
-    right:4px;
-    top: 40%;
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 14px;
-    font-size: xxx-large;
-    text-rendering: auto;
-    color:
-    rgb(238, 17, 190) !important;
-    padding: 10px;
-  }
-  .username{
-    position: relative;
-    left: 300px;
-    top: -25px;
-  }
+	.flechespa-left{
+		position: absolute;
 
+		top: 20%;
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: 100px;
+		text-rendering: auto;
+		color:
+		rgb(238, 17, 190) !important;
+		padding: 10px;
+	}
+	.flechemassage-left{
+		position: absolute;
+		right:585px !important;
+		top: 20%;
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: 100px;
+		text-rendering: auto;
+		color:
+		rgb(238, 17, 190) !important;
+		padding: 10px;
+	}
+	.productImageMassage{
+		width: 100px;
+		position: relative;
+		top: 40px;
+		height: 200px;
+	}
+	#flechemassage-left{
+		position: absolute;
+		right:648px;
+		top: 20%;
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: 50px;
+		text-rendering: auto;
+		color:
+		rgb(238, 17, 190) !important;
+		padding: 10px;
+	}
+	#flechemassage-right{
+		position: absolute;
+		right:0px;
+		top: 20%;
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: 50px;
+		text-rendering: auto;
+		color: rgb(238, 17, 190) !important;
+		padding: 10px;
+	}
+	.flechemassage-right{
+		position: absolute;
+		right:0px!important ;
+		top: 20%;
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: 100px;
+		text-rendering: auto;
+		color: rgb(238, 17, 190) !important;
+		padding: 10px;
+	}
+	.massage-type{
+		width: 100%;
+		margin-left: 40px;
+		margin-bottom: 100px;
+	}
 
-  .p-slider{
-    position: relative;
-    max-width: 550px !important;
-    left: 10%;
-    padding-bottom: 30px;
-    font-family: Lato, 'Open Sans' !important;
+	.text-p-massage-slide{
+		position: fixed;
+		left: 110px;
+		text-align: justify;
+		margin-top: 20px !important;
+		max-width: 525px;
+		font-size: 12px !important;
+		line-height: 26px;
+		color: #222222 !important;
+		font-family: Lato, 'Open Sans' !important;
+	}
 
+	.h3-massage-slide{
+		position: relative;
+		font-weight: bold !important;
+		font-size: 10px;
+		left: -100px;
+		font-family: Lato, 'Open Sans' !important;
+	}
+	.intru{
+		text-align: left !important;
+	}
 
-  }
-  .productInfo p {
-    font-size: 16px;
-    line-height: 26px;
-    color: #666666;
-    margin: 0 0 0px 0 !important;
-    font-family: Lato, 'Open Sans' !important;
-  }
+	.col-massage-slide{
+		max-width: 400px;
+	}
 
-  .productSection{
-    background-image: linear-gradient(white, white);
-    border-radius: 10px;
-  }
-
-
-  #productSlider .carousel-control.left i.fa-arrow-circle-left {
-    text-shadow: none;
-    position: absolute;
-    right: 630px;
-    top: 40%;
-  }
-
-  #fleche{
-    position: absolute;
-    right:0px;
-    top: 40%;
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 14px;
-    font-size: xxx-large;
-    text-rendering: auto;
-    color:
-    rgb(238, 17, 190) !important;
-    padding: 10px;
-  }
-
-  #iconetitle{
-    margin-top: 20px;
-    font-size: xx-large;
-  }
-  .slide0{
-    font-size: 20px;
-    text-transform: none;
-  }
-  .slide1{
-    color: #48D1CC;
-    font-size: 20px;
-    text-transform: none;
-  }
-  .slide2{
-    color: black;
-    font-size: 20px;
-    text-transform: none;
-  }
-
-  .slide3{
-    color: #9400D3;
-    font-size: 20px;
-    text-transform: none;
-  }
-  .slide4{
-    color: deeppink;
-    font-size: 20px;
-    text-transform: none;
-  }
-  .slide5{
-    color: #0000FF;
-    font-size: 20px;
-    text-transform: none;
-  }
-
-  .reviewImageMassage1 {
-    position: absolute;
-    top: 170px;
-    width: 165px;
-    height: 160px;
-    border: 5px solid 
-    rgba(255, 255, 255, 0.7);
-    left:-150px;
-  }
-  .reviewImageMassage2 {
-    position: absolute;
-    top: 80px;
-    width: 165px;
-    height: 160px;
-    border: 5px solid 
-    rgba(255, 255, 255, 0.7);
-    left:-150px;
-  }
-  .reviewImageMassage3 {
-    position: absolute;
-    top: 50px;
-    width: 165px;
-    height: 160px;
-    border: 5px solid 
-    rgba(255, 255, 255, 0.7);
-    left:-150px;
-  }
+	.engagements{
+		text-align: center;
+		position: relative;
+		left: -15px;
+	}
 
 
-  .text-p-massage{
-    position: relative;
-    left: 0px;
-    text-align: justify
-  }
+
+	.productInfoindex{
+
+		background: white;
+	}
+	#flecheindex{
+		position: absolute;
+		right:4px;
+		top: 40%;
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: 14px;
+		font-size: xxx-large;
+		text-rendering: auto;
+		color:
+		rgb(238, 17, 190) !important;
+		padding: 10px;
+	}
+	.username{
+		position: relative;
+		left: 300px;
+		top: -25px;
+	}
+
+
+	.p-slider{
+		position: relative;
+		max-width: 550px !important;
+		left: 10%;
+		padding-bottom: 30px;
+		font-family: Lato, 'Open Sans' !important;
+
+
+	}
+	.productInfo p {
+		font-size: 16px;
+		line-height: 26px;
+		color: #666666;
+		margin: 0 0 0px 0 !important;
+		font-family: Lato, 'Open Sans' !important;
+	}
+
+	.productSection{
+		background-image: linear-gradient(white, white);
+		border-radius: 10px;
+	}
+
+
+	#productSlider .carousel-control.left i.fa-arrow-circle-left {
+		text-shadow: none;
+		position: absolute;
+		right: 630px;
+		top: 40%;
+	}
+
+	#fleche{
+		position: absolute;
+		right:0px;
+		top: 40%;
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: 14px;
+		font-size: xxx-large;
+		text-rendering: auto;
+		color:
+		rgb(238, 17, 190) !important;
+		padding: 10px;
+	}
+
+	#iconetitle{
+		margin-top: 20px;
+		font-size: xx-large;
+	}
+	.slide0{
+		font-size: 20px;
+		text-transform: none;
+	}
+	.slide1{
+		color: #48D1CC;
+		font-size: 20px;
+		text-transform: none;
+	}
+	.slide2{
+		color: black;
+		font-size: 20px;
+		text-transform: none;
+	}
+
+	.slide3{
+		color: #9400D3;
+		font-size: 20px;
+		text-transform: none;
+	}
+	.slide4{
+		color: deeppink;
+		font-size: 20px;
+		text-transform: none;
+	}
+	.slide5{
+		color: #0000FF;
+		font-size: 20px;
+		text-transform: none;
+	}
+
+	.reviewImageMassage1 {
+		position: absolute;
+		top: 170px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+	.reviewImageMassage2 {
+		position: absolute;
+		top: 80px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+	.reviewImageMassage3 {
+		position: absolute;
+		top: 50px;
+		width: 165px;
+		height: 160px;
+		border: 5px solid 
+		rgba(255, 255, 255, 0.7);
+		left:-150px;
+	}
+
+
+	.text-p-massage{
+		position: relative;
+		left: 0px;
+		text-align: justify
+	}
 }
 
 
 
 @media only screen and (max-width: 600px) {
 
+	.engagement-spa, .ccm-spa{
+		margin-bottom: 30px;
+	}
+	.textccm b .textas {
+		font-size: small;
+		font-family: open sans;
+		position: relative;
+		top: -5px;
+	}
+	.ccmspamassageok{
+		padding-top: 50px ;
+	}
 	.textMassages {
 		color: black;
 		position: relative;
@@ -436,19 +448,19 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-.text-p-index{
-left: 0px !important;
-    }
-    .textExtras{
-font-size: 17px;
-color: black;
-letter-spacing: 1px;
-text-align: center;
-margin-bottom: 35px;
-    }
+	.text-p-index{
+		left: 0px !important;
+	}
+	.textExtras{
+		font-size: 17px;
+		color: black;
+		letter-spacing: 1px;
+		text-align: center;
+		margin-bottom: 35px;
+	}
 	.textNospa{
-font-size: 16px;
-margin-bottom: 35px;
+		font-size: 16px;
+		margin-bottom: 35px;
 	}
 	.btn-spa{
 		margin-left: 0px !important;
@@ -508,6 +520,10 @@ margin-bottom: 35px;
 		height: 400px;
 	}
 
+	.productImageMassage img{
+		width: 600px;
+		height: 375px;
+	}
 	.h3-massage-slide{
 		position: relative;
 		font-weight: bold !important;
@@ -524,7 +540,7 @@ margin-bottom: 35px;
 		width: 172px;
 		text-align: center;
 		position: absolute;
-		left: 79%;
+		left: 40%;
 		top: 38px;
 		border-radius: 50px;
 	}
@@ -674,311 +690,485 @@ margin-bottom: 35px;
 		color:
 		rgb(238, 17, 190) !important;
 		padding: 10px;
-	}*/
+		}*/
 
 
-	.btn-teme{
-		margin-left: 150px;
+		.btn-teme{
+			margin-left: 150px;
+		}
+
+		.p-slider{
+			position: relative;
+			max-width:900px !important;
+			left: 10%;
+			padding-bottom: 30px;
+			font-family: Lato, 'Open Sans' !important;
+		}
+		.productInfo p {
+			font-size: 16px;
+			line-height: 26px;
+			color: #666666;
+			margin: 0 0 0px 0 !important;
+			font-family: Lato, 'Open Sans' !important;
+		}
+
+		.productSectionMassage{
+			background-image: linear-gradient(white, white);
+			width: 1140px;
+			border-radius: 10px;
+		}
+
+		#productSlider .carousel-control.left i.fa-arrow-circle-left {
+			text-shadow: none;
+			position: absolute;
+			right: 1130px;
+			top: 33px;
+		}
+
+		#fleche{
+			position: absolute;
+			right:0px;
+			top: 33px;
+			display: inline-block;
+			font: normal normal normal 14px/1 FontAwesome;
+			font-size: 14px;
+			font-size: xxx-large;
+			text-rendering: auto;
+			color:
+			rgb(238, 17, 190) !important;
+			padding: 10px;
+		}
+
+		#iconetitle{
+			margin-top: 20px;
+			font-size: xx-large;
+		}
+		.slide0{
+			font-size: 20px;
+			text-transform: none;
+		}
+		.slide1{
+			color: #48D1CC;
+			font-size: 20px;
+			text-transform: none;
+		}
+		.username{
+			position: relative;
+			left: 800px;
+			top: -20px;
+		}
+		.slide2{
+			color: black;
+			font-size: 20px;
+			text-transform: none;
+		}
+
+		.slide3{
+			color: #9400D3;
+			font-size: 20px;
+			text-transform: none;
+		}
+		.slide4{
+			color: deeppink;
+			font-size: 20px;
+			text-transform: none;
+		}
+		.slide5{
+			color: #0000FF;
+			font-size: 20px;
+			text-transform: none;
+		}
+		.reviewImageMassage1spa {
+			position: absolute;
+			top: 80px;
+			width: 165px;
+			height: 160px;
+			border: 5px solid 
+			rgba(255, 255, 255, 0.7);
+			left:-150px;
+		}
+
+		.reviewImageMassage1 {
+			position: absolute;
+			top: 170px;
+			width: 165px;
+			height: 160px;
+			border: 5px solid 
+			rgba(255, 255, 255, 0.7);
+			left:-150px;
+		}
+		.reviewImageMassage2 {
+			position: absolute;
+			top: 80px;
+			width: 165px;
+			height: 160px;
+			border: 5px solid 
+			rgba(255, 255, 255, 0.7);
+			left:-150px;
+		}
+		.reviewImageMassage3 {
+			position: absolute;
+			top: 50px;
+			width: 165px;
+			height: 160px;
+			border: 5px solid 
+			rgba(255, 255, 255, 0.7);
+			left:-150px;
+		}
+
+
+		.text-p-massage{
+			position: relative;
+			left: 0px;
+			text-align: justify;
+			margin-top: 20px !important;
+			max-width: 715px;
+			letter-spacing: 1px;
+			font-size: 17px !important;
+		}
 	}
 
-	.p-slider{
-		position: relative;
-		max-width:900px !important;
-		left: 10%;
-		padding-bottom: 30px;
-		font-family: Lato, 'Open Sans' !important;
-	}
-	.productInfo p {
-		font-size: 16px;
-		line-height: 26px;
-		color: #666666;
-		margin: 0 0 0px 0 !important;
-		font-family: Lato, 'Open Sans' !important;
+	@-webkit-keyframes clignote {
+		0%{box-shadow:0px 0px 15px #4183C4;}
+		50%{box-shadow:0px 0px 0px #4183C4;}
+		100%{box-shadow:0px 0px 15px #4183C4;}
 	}
 
-	.productSectionMassage{
-		background-image: linear-gradient(white, white);
-		width: 1140px;
+	.btn-full-roundd {
+
+		border-radius: 25px;
+		width: 100px;
+		font-size: 10px;
+
+		padding-left: 10px;
+
+		box-shadow:0px 0px 15px #4183C4;
+		-webkit-animation-name: clignote; /*on affecte l'animation clignote à notre bouton*/
+		-webkit-animation-duration: 1s; /*on définit la durée de l'animation à 1s*/
+		-webkit-animation-iteration-count:infinite; /*on dit que l'animation se répétera à l'infini.*/
+	}
+	.spa-suppl{
+		border: 3px white solid;
+		padding: 20px;
 		border-radius: 10px;
+		padding-top: 55px;
+	}
+	.optionnal-texte{
+		position: relative;
+		top: 100px;
 	}
 
-	#productSlider .carousel-control.left i.fa-arrow-circle-left {
-		text-shadow: none;
-		position: absolute;
-		right: 1130px;
-		top: 33px;
+	.offerContent{
+		margin-bottom:40px;
+	}
+	.offerContent .offerTitle h4 {
+		margin: 0;
+		color: 
+		white;
 	}
 
-	#fleche{
-		position: absolute;
-		right:0px;
-		top: 33px;
-		display: inline-block;
-		font: normal normal normal 14px/1 FontAwesome;
-		font-size: 14px;
-		font-size: xxx-large;
-		text-rendering: auto;
-		color:
-		rgb(238, 17, 190) !important;
-		padding: 10px;
-	}
-
-	#iconetitle{
+	#iconetitle1, #iconetitle2, #iconetitle3, #iconetitle4,#iconetitle5 {
 		margin-top: 20px;
 		font-size: xx-large;
 	}
-	.slide0{
-		font-size: 20px;
-		text-transform: none;
+
+	.btn-theme{
+		margin-left: 40px;
+
 	}
-	.slide1{
-		color: #48D1CC;
-		font-size: 20px;
-		text-transform: none;
+	.elsebg{
+		background-color: white;
+		padding: 50px;
+		border-radius:8px;
 	}
-	.username{
+
+	.btn-teme{
+		height: 30px;
+		padding: 7px !important;
 		position: relative;
-		left: 800px;
-		top: -20px;
+		left: 150px;
+		top: -5px;
 	}
-	.slide2{
-		color: black;
-		font-size: 20px;
-		text-transform: none;
-	}
-
-	.slide3{
-		color: #9400D3;
-		font-size: 20px;
-		text-transform: none;
-	}
-	.slide4{
-		color: deeppink;
-		font-size: 20px;
-		text-transform: none;
-	}
-	.slide5{
-		color: #0000FF;
-		font-size: 20px;
-		text-transform: none;
-	}
-	.reviewImageMassage1spa {
-		position: absolute;
-		top: 80px;
-		width: 165px;
-		height: 160px;
-		border: 5px solid 
-		rgba(255, 255, 255, 0.7);
-		left:-150px;
-	}
-
-	.reviewImageMassage1 {
-		position: absolute;
-		top: 170px;
-		width: 165px;
-		height: 160px;
-		border: 5px solid 
-		rgba(255, 255, 255, 0.7);
-		left:-150px;
-	}
-	.reviewImageMassage2 {
-		position: absolute;
-		top: 80px;
-		width: 165px;
-		height: 160px;
-		border: 5px solid 
-		rgba(255, 255, 255, 0.7);
-		left:-150px;
-	}
-	.reviewImageMassage3 {
-		position: absolute;
-		top: 50px;
-		width: 165px;
-		height: 160px;
-		border: 5px solid 
-		rgba(255, 255, 255, 0.7);
-		left:-150px;
-	}
-
-
-	.text-p-massage{
+	.btn-temeintru{
+		height: 30px;
+		padding: 7px !important;
 		position: relative;
-		left: 0px;
-		text-align: justify;
-		margin-top: 20px !important;
-		max-width: 715px;
-		letter-spacing: 1px;
-		font-size: 17px !important;
+		left: -20px;
+		top: 0px;
 	}
-}
-
-@-webkit-keyframes clignote {
-	0%{box-shadow:0px 0px 15px #4183C4;}
-	50%{box-shadow:0px 0px 0px #4183C4;}
-	100%{box-shadow:0px 0px 15px #4183C4;}
-}
-
-.btn-full-roundd {
-
-	border-radius: 25px;
-	width: 100px;
-	font-size: 10px;
-
-	padding-left: 10px;
-
-	box-shadow:0px 0px 15px #4183C4;
-	-webkit-animation-name: clignote; /*on affecte l'animation clignote à notre bouton*/
-	-webkit-animation-duration: 1s; /*on définit la durée de l'animation à 1s*/
-	-webkit-animation-iteration-count:infinite; /*on dit que l'animation se répétera à l'infini.*/
-}
-.spa-suppl{
-	border: 3px white solid;
-	padding: 20px;
-	border-radius: 10px;
-	padding-top: 55px;
-}
-.optionnal-texte{
-	position: relative;
-	top: 100px;
-}
-
-.offerContent{
-	margin-bottom:40px;
-}
-.offerContent .offerTitle h4 {
-	margin: 0;
-	color: 
-	white;
-}
-
-#iconetitle1, #iconetitle2, #iconetitle3, #iconetitle4,#iconetitle5 {
-	margin-top: 20px;
-	font-size: xx-large;
-}
-
-.btn-theme{
-	margin-left: 40px;
-
-}
-.elsebg{
-	background-color: white;
-	padding: 50px;
-	border-radius:8px;
-}
-
-.btn-teme{
-	height: 30px;
-	padding: 7px !important;
-	position: relative;
-	left: 150px;
-	top: -5px;
-}
-.btn-temeintru{
-	height: 30px;
-	padding: 7px !important;
-	position: relative;
-	left: -20px;
-	top: 0px;
-}
 
 
 
-@media only screen and (min-width: 1200px) {
-	.areserver {
-		position: fixed;
-		right: 4px;
-		z-index: 100;
-		top: 50%;
+	@media only screen and (min-width: 1200px) {
+		.areserver {
+			position: fixed;
+			right: 4px;
+			z-index: 100;
+			top: 50%;
+		}
+		.secotionTitle h2 .span {
+			display: block;
+			letter-spacing: normal;
+			color: #ec5598;
+			font-family: 'Quicksand', 'Open Sans';
+			font-size: 60px !important;
+			line-height: 70px;
+			text-transform: none;
+			font-weight: bold;
+			padding-bottom: 25px;
+			padding-top: 25px;
+		}
+		.secotionTitle h2 .spa {
+			display: block;
+			letter-spacing: normal;
+			color: #ec5598;
+			font-family: 'Quicksand', 'Open Sans';
+			font-size: 59px !important;
+			line-height: 70px;
+			text-transform: none;
+			font-weight: bold;
+			padding-bottom: 25px;
+			padding-top: 25px;
+			text-align: left;
+		}
+
+		.textMassages{
+			color:black;
+			position: relative;
+			top: -30px;
+			font-size: 20px;
+			letter-spacing: 1px;
+		}
+		.secotionTitle {
+			margin-top: -38px;
+		}
+		.section1 {
+
+			width: 75% !important;
+		}
+		.sectionSpa {
+
+			width: 100% !important;
+		}
+		.priceInfo {
+			padding: 60px 0 0px 0;
+		}
+		.priceInfo ul li {
+			font-size: 17px;
+			letter-spacing: 1px;
+		}
+
+		.produtImage img{
+			display: inline-block;
+			transition: all 0.8s ease-in-out;
+			width: 200px;
+		}
+		.textccm{
+			font-size: 17px !important;
+			letter-spacing: 1px;
+		}
+		.pourqui{
+			font-size: 17px !important;
+			letter-spacing: 1px;
+		}
 	}
-	.secotionTitle h2 .span {
-		display: block;
-		letter-spacing: normal;
-		color: #ec5598;
-		font-family: 'Quicksand', 'Open Sans';
-		font-size: 60px !important;
-		line-height: 70px;
-		text-transform: none;
-		font-weight: bold;
-		padding-bottom: 25px;
-		padding-top: 25px;
-	}
-	.secotionTitle h2 .spa {
-    display: block;
-    letter-spacing: normal;
-    color: #ec5598;
-    font-family: 'Quicksand', 'Open Sans';
-    font-size: 59px !important;
-    line-height: 70px;
-    text-transform: none;
-    font-weight: bold;
-    padding-bottom: 25px;
-    padding-top: 25px;
-    text-align: left;
-}
 
-	.textMassages{
-		color:black;
+	.textccm img {
+		width: 50px;
+		margin-bottom: -10px;
 		position: relative;
-		top: -30px;
-		font-size: 20px;
-		letter-spacing: 1px;
+		top: -15px;
 	}
-	.secotionTitle {
-		margin-top: -38px;
-	}
-	.section1 {
-
-		width: 75% !important;
-	}
-	.sectionSpa {
-
-		width: 100% !important;
-	}
-	.priceInfo {
-		padding: 60px 0 0px 0;
-	}
-	.priceInfo ul li {
-		font-size: 17px;
-		letter-spacing: 1px;
-	}
-
-	.produtImage img{
-		display: inline-block;
-		transition: all 0.8s ease-in-out;
-		width: 200px;
-	}
-	.textccm{
+	.textsectioncontact{
 		font-size: 17px !important;
+		margin-top: 50px;
 		letter-spacing: 1px;
+		line-height: 1.8;
 	}
-	.pourqui{
-		font-size: 17px !important;
-		letter-spacing: 1px;
+
+	.modal-titleSpa{
+		position: relative;
+		left: 0% !important;
 	}
-}
-
-.textccm img {
-	width: 50px;
-	margin-bottom: -10px;
-	position: relative;
-	top: -15px;
-}
-.textsectioncontact{
-	font-size: 17px !important;
-	margin-top: 50px;
-	letter-spacing: 1px;
-	line-height: 1.8;
-}
-
-.modal-titleSpa{
-position: relative;
-left: 0% !important;
-}
 
 
 
+	@media only screen 
+	and (min-device-width : 768px) 
+	and (max-device-width : 1024px) 
+	and (orientation : landscape) { 
+
+				.reviewinfocontact2 {
+			width: 450px !important;
+			position: absolute;
+			left: -95px;
+		}
+
+		.reviewinfocontact {
+			width: 450px !important;
+		}
+		.text-p-index-ok{
+			margin-left: -16px !important;
+		}
+		.textccm img {
+
+			width: 45px;
+			margin-bottom: -10px;
+			position: relative;
+			top: -15px;
+			height: 45px;
+
+		}
+		.produtSingle {
+
+			width: 100%;
+			height: 500px;
+		}
 
 
+		.h3-massage-slide{
+			position: relative;
+			left: -22%;
+		}
+		.text-p-massage-slide{
+			position: fixed;
+			left: 380px;
+		}
+		#flechemassage-left {
+
+			position: absolute;
+			right: 833px;
+
+		}
 
 
+		.productImageMassage img {
 
+			width: 370px;
+			height: 250px;
+			margin-left: -10px;
+
+		}
+		.productSectionMassage {
+
+			background-image: linear-gradient(white, white);
+			width: 100%;
+			border-radius: 10px;
+
+		}
+		.elsebgMassage {
+			width: 100% ;
+			margin-top: 10px;
+		}
+
+		.reviewInnerOk{
+			margin-left: 17%;
+		}
+		.reviewInfoMassage {
+			width: 110.5% !important;
+		}
+
+		.engagements, .text-p-ccmspa {
+
+			text-align: justify;
+			position: relative;
+			font-size: 17px !important;
+			letter-spacing: 1px;
+			max-width: 92%;
+		}
+
+		#productSlider .carousel-control.left i.fa-arrow-circle-left {
+
+			text-shadow: none;
+			position: absolute;
+			right: 849px !important;
+			top: 33px;
+
+		}
+		.productInfo p {
+
+			font-size: 16px;
+			line-height: 26px;
+			color: 
+			#666666;
+			margin: 0 0 0px 0 !important;
+			font-family: Lato, 'Open Sans' !important;
+
+		}
+		.productInfo p {
+
+			font-size: 16px;
+			line-height: 26px;
+			color: #666666;
+			margin: 0 0 0px 0 !important;
+
+		}
+		.productInfo p {
+
+			font-size: 16px;
+			line-height: 26px;
+			color: #666666;
+			margin: 0 0 0px 0 !important;
+			font-family: Lato, 'Open Sans' !important;
+
+		}
+		.productInfo p {
+
+			font-size: 16px;
+			line-height: 26px;
+			color: #666666;
+			margin: 0 0 0px 0 !important;
+			font-family: Lato, 'Open Sans' !important;
+
+		}
+		.productInfo p {
+
+			font-size: 14px;
+			line-height: 26px;
+			color: #666666;
+			margin: 0 0 25px 0;
+
+		}
+		.p-slider {
+
+			position: relative;
+			max-width: 900px !important;
+			left: 3%;
+			padding-bottom: 30px;
+			font-family: Lato, 'Open Sans' !important;
+
+		}
+
+		.isotopeContainer {
+
+			width: 800px !important;
+
+		}
+
+		#slider  {
+			max-width: 920px !important;
+		}
+		.comments {
+
+			position: absolute;
+			top: 60px !important;
+			left: 10% !important;
+			font-size: 17px;
+			letter-spacing: 2px;
+			width: 100%;
+			max-width: 73% !important;
+
+		}
+		.form-control {
+			max-width: 620px;
+		}
+		.areserver {
+
+			position: fixed;
+			right: 4.5px;
+			z-index: 100;
+			top: 30%;
+
+		}
+
+	}

@@ -14,10 +14,13 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.string :delivery_code_postal
       t.string :delivery_adresse
       t.string :delivery_adresse_complet
+      
       t.string :code_promo
-
       t.string :praticien
       t.text :message
+      t.string :paymentMeanBrand
+      t.string :transactionDateTime
+      t.string :acompte_amount
 
       t.boolean :is_validate, default:false #verifi si la commande est payer ou non
       

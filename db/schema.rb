@@ -233,6 +233,9 @@ ActiveRecord::Schema.define(version: 2020_05_20_075640) do
     t.string "code_promo"
     t.string "praticien"
     t.text "message"
+    t.string "paymentMeanBrand"
+    t.string "transactionDateTime"
+    t.string "acompte_amount"
     t.boolean "is_validate", default: false
     t.boolean "is_spa", default: false
     t.boolean "is_massage", default: false
