@@ -403,7 +403,6 @@ class OrdersController < ApplicationController
         @code_promo = code[1]
       end
     end
-
     @order = current_client.orders.order('id ASC').last
     @amount = (@totalAcompte*100).to_i
     # Génère un numéro de transaction aléatoire
@@ -422,10 +421,24 @@ class OrdersController < ApplicationController
 
   # 4 Le Payement
   def payment
+    @order = current_client.orders.order('id ASC').last
     data = params['Data'].split('|')
+    data.each do |params|
+      if params.include?("paymentMeanBrand")
+        @order.update(paymentMeanBrand:params.split("=")[1])
+      end
+
+      if params.include?("transactionDateTime")
+        @order.update(transactionDateTime:params.split("=")[1])
+      end
+
+      if params.include?("amount")
+        @order.update(acompte_amount:params.split("=")[1])
+      end
+    end
+
     if data.include?("responseCode=00")
       # =============================== Enregistrement des commandes si payer Mila amboarina ny mailer
-      @order = current_client.orders.order('id ASC').last
       @order.update(is_validate:true)
       current_client.update(is_client:true)
       @order.services.each do |service|
@@ -440,7 +453,7 @@ class OrdersController < ApplicationController
               @prestataires = Prestataire.joins(:services).where(services:{name:service.name}).joins(:departments).where(departments:{name:@order.department.name})
             end
             @prestataires.each do |prestataire|
-              PrestataireMailer.new_orderSpa(mailToOrderServiceSpa.id,prestataire.id).deliver_now
+              #PrestataireMailer.new_orderSpa(mailToOrderServiceSpa.id,prestataire.id).deliver_now
             end
           when "Massage"
             mailToOrderServiceMassage = @order.order_services.find_by(service_id:service.id)
@@ -453,13 +466,13 @@ class OrdersController < ApplicationController
             end
             @prestataires.each do |prestataire|
               if prestataire.sexe == @order.praticien || @order.praticien == "all"
-                PrestataireMailer.new_orderMassage(mailToOrderServiceMassage.id,prestataire.id).deliver_now
+                #PrestataireMailer.new_orderMassage(mailToOrderServiceMassage.id,prestataire.id).deliver_now
               end
             end
           else
         end
       end
-      ClientMailer.confirm_order(@order.id,current_client.id).deliver_now
+      #ClientMailer.confirm_order(@order.id,current_client.id).deliver_now
       redirect_to payedsuccess_path
       # =====================================================================
     else
