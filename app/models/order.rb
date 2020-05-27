@@ -69,8 +69,8 @@ class Order < ApplicationRecord
       code_promo = self.code_promo.reduction
     end
 
-  	acompte = 0.0
-  	price = 0.0
+  	acompte = 0
+  	price = 0
 		self.order_services.each do |o_s|
 			if o_s.service.name == "Massage"
 				self.order_massages.each do |o_massage| 
