@@ -1,4 +1,3 @@
-
 increment = 0
 
 Admin.create(email:'myadmin@gmail.com',password:'myadmin@gmail.com',first_name: "Vincent",last_name: "lae")
@@ -134,5 +133,3 @@ end
 	puts "Code promoe -#{code}"
 	CodePromo.create(code:code,reduction:10)
 end
-
-
