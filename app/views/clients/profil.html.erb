@@ -91,10 +91,8 @@
 			<div class="col-xs-12">
 				<div class="filter-container isotopeFilters">
 					<ul class="list-inline filter">
-
 						<li class="active"><a href="#" data-filter=".infos">Infos personnelles</a></li>
 						<li id="commande"><a href="#commande" data-filter=".commande">Historique de vos commandes</a></li>
-						
 					</ul>
 				</div>
 			</div>
@@ -179,7 +177,7 @@
 															<table class="table">
 																<thead>
 																	<tr>
-																		<th>Date <small>(MM/JJ/AAAA)</small></th>
+																		<th>Date</th>
 																		<th>Prix</th>
 																		<th>Prestation</th>
 																		<th>Action</th>
@@ -190,7 +188,7 @@
 																	<% prixAcompte = order.totalPrice %>
 																	<tr>
 																		<td><%= order.prestation_date %></td>
-																		<td><%= prixAcompte[0] %> €</td>
+																		<td><%= prixAcompte[0].to_i %> €</td>
 																		<td>
 																			<ul>
 																				<% order.order_services.each do |o_s| %>
@@ -218,7 +216,7 @@
 																<table class="table">
 																	<thead>
 																		<tr>
-																			<th>Date <small>(MM/JJ/AAAA)</small></th>
+																			<th>Date</th>
 																			<th>Prix</th>
 																			<th>Prestation</th>
 																			<th>Action</th>
@@ -229,7 +227,7 @@
 																		<% prixAcompte = order.totalPrice %>
 																		<tr>
 																			<td><%= order.prestation_date %></td>
-																			<td><%= prixAcompte[0] + prixAcompte[1] %> €</td>
+																			<td><%= prixAcompte[0].to_i %> €</td>
 																			<td>
 																				<ul>
 																					<% order.order_services.each do |o_s| %>
@@ -258,7 +256,7 @@
 																<table class="table">
 																	<thead>
 																		<tr>
-																			<th>Date <small>(MM/JJ/AAAA)</small></th>
+																			<th>Date</th>
 																			<th>Prix</th>
 																			<th>Prestation</th>
 																			<th>Action</th>
@@ -269,7 +267,7 @@
 																		<% prixAcompte = order.totalPrice %>
 																		<tr>
 																			<td><%= order.prestation_date %></td>
-																			<td><%= prixAcompte[0] + prixAcompte[1] %> €</td>
+																			<td><%= prixAcompte[0].to_i %> €</td>
 																			<td>
 																				<ul>
 																					<% order.order_services.each do |o_s| %>
@@ -284,18 +282,12 @@
 																</table>
 															</div>
 														</div>
-
 														<% else %>
-														
-														<div class=" confirmation">
-
-
-															<div class="alert alert-success alert-common alert-dismissible" role="alert">
-
-																<center>Vos commandes sont toutes traitées</center>
+															<div class=" confirmation">
+																<div class="alert alert-success alert-common alert-dismissible" role="alert">
+																	<center>Vos commandes sont toutes traitées</center>
+																</div>
 															</div>
-
-														</div>
 														<% end %>
 													</div>
 
@@ -305,20 +297,18 @@
 
 									</div>
 								</div>
-
 								<% else %>
-								<div class="table-responsive">
-									<table class="table">
-										<thead>
-
-										</thead>
-										<tbody>
-											<p>
-												Vous n'avez pas encore commandé sur notre site. Veuillez <a href="<%= reservation_path %>">commander </a>maintenant!!!	
-											</p>
-										</tbody>
-									</table>
-								</div>
+									<div class="table-responsive">
+										<table class="table">
+											<thead>
+											</thead>
+											<tbody>
+												<p>
+													Vous n'avez pas encore commandé sur notre site. Veuillez <a href="<%= reservation_path %>">commander </a>maintenant!!!	
+												</p>
+											</tbody>
+										</table>
+									</div>
 								<% end %>
 							</div>
 						</div>
@@ -344,7 +334,8 @@
 <script data-turbolinks-track = "reload" src="/plugins/syotimer/jquery.syotimer.min.js"></script>
 <script data-turbolinks-track = "reload" src="/js/custom.js"></script>
 <script>
-	var $grid = $('.grid').isotope({
+
+var $grid = $('.grid').isotope({
   // options
   itemSelector: '.grid-item',
   layoutMode: 'fitRows',

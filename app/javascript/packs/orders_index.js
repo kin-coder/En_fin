@@ -15,6 +15,9 @@ function main(){
 	let zone = sessionStorage.getItem("zone");
 	if (zone != null) {
 		zone = JSON.parse(zone);
+		$("#inpdepartment").val(zone.department);
+		$("#inpdate").val(zone.date)
+		$("#inppays").val(zone.country)
 		$("#heure-spa").val(zone.time_spa);
 		$("#heure-massage").val(zone.time_massage);
 		$(".praticien-list").each(function(index,element){
@@ -25,7 +28,7 @@ function main(){
 		});
 		if (zone.code != null) {
 			$("#inpcode").val(zone.code[0]);
-			$("#alert-code").html("Votre code promo "+zone.code[0]+" est validé avec succès. Vous avez gagné un reduction de " +zone.code[1]+"€ pour chaque prix et acompte à payer!");
+			$("#alert-code").html("Votre code promo "+zone.code[0]+" est validé avec succès. Vous avez gagné un reduction de "+zone.code[1]+"€ pour l'acompte total à payer");
 			$("#alert-code").removeClass("hidden");
 			$("#form-promo-code").addClass("hidden");
 		}
@@ -105,7 +108,7 @@ function refreachListCommandeSpa($parentNode = -1){
 				a.ambiance = $ambianceList.val();
 			}
 			// [exceptional_price,exceptional_acompte,ordinary_price,ordinary_acompte]
-	    	if(isExeptionelPrice()){ // is exeptiona true
+	    	if(isExeptionelPrice(zone)){ // is exeptiona true
 	    		price += $timeList.data().price[0];
 				totalPrice += $timeList.data().price[0];
 	    		totalAcompte += $timeList.data().price[1];
@@ -133,16 +136,11 @@ function refreachListCommandeSpa($parentNode = -1){
 			session_spas.push(a);
 		}
 	});
-
 	sessionStorage.setItem("spas",JSON.stringify(session_spas));
-
 	zone.nbr_spa = count_spa;
 	zone.price_spa = totalPrice;
-	
-	$("#number-cart-ok").html(zone.nbr_spa + zone.nbr_massage)
-
+	$("#number-cart-ok").html(zone.nbr_spa + zone.nbr_massage);
 	sessionStorage.setItem("zone",JSON.stringify(zone));
-
 	$(".presta-spa-list")[0].dataset.price = "["+totalPrice+","+totalAcompte+"]";
 	if (innerHTML.length > 0){
 		$(".presta-spa-list").html(innerHTML);
@@ -152,7 +150,6 @@ function refreachListCommandeSpa($parentNode = -1){
 		$("#totalPriceSpa").addClass("hidden");
 		$(".presta-spa-list").html(innerHTML);
 	}
-
 	$(".basket-group-spa").click(function() {
 		let $this = $("#basket-group-"+$(this).data().list+"-spa");
 		if ($this.hasClass("hidden")){
@@ -161,20 +158,17 @@ function refreachListCommandeSpa($parentNode = -1){
 			$this.addClass("hidden");
 		}
 	});
-
 	let massagePrice = JSON.parse($(".presta-list")[0].dataset.price);
 	if (massagePrice.length === 2) {
 		totalPrice += massagePrice[0];
 		totalAcompte += massagePrice[1];
 	}
-
 	if (totalPrice > 0) {
  		totalPrice -= price_promo
 	}
 	if (totalAcompte > 0) {
  		totalAcompte -= price_promo
 	}
-
 	$("#totalPricePrestation").html(totalPrice);
 	$("#totalAcomptePrestation").html(totalAcompte);
 	hideMessageShow(totalPrice);
@@ -201,9 +195,9 @@ function addGroupLocationSpaInDom(number,$prestationSpa,time="",ambiance="",type
 			$(element).prop("checked",true);
 		}
 		if (time === "") {
-			$(element).prop("disabled",false);
+			$(element).prop("disabled",true);
 		}else{
-			console.log("fmldskfjqsdfpoaji azpdfoi")
+			$(element).prop("disabled",false);
 		}
 	});
 	$prestationSpa.find('.label-info-spa').each(function(index,element){
@@ -253,6 +247,8 @@ $(".remove-massage").click(function() {
 	$parentsGroup.remove();
 	refreachListCommande();
 	numberOfPrestationMassage($(this).data().category);
+	$(".add-massage").removeAttr("data-target");
+	$(".add-massage").removeAttr("data-toggle");
 });
 
 $(".add-massage").click(function() {
@@ -277,6 +273,10 @@ $(".add-massage").click(function() {
 	$("#select-list-massage").append($prestationGroups);
 	numberOfPrestationMassage(category);
 	scrollTo($prestationGroups);
+	if ($(".prestation-group").length > 1) {
+		$(".add-massage").attr("data-target", "#pushMassage2");
+		$(".add-massage").attr("data-toggle", "modal");
+	}
 });
 
 /*-----------------------------ACTUALISE DOM MASSAGE ----------------------------- */
@@ -343,7 +343,7 @@ function refreachListCommande(arrayIndex = "") {
 		    $inputList.each(function(i,elm){
 				ul += '<li>'+ $(elm).data().title +'</li>';
 				// [exceptional_price,exceptional_acompte,ordinary_price,ordinary_acompte]
-		    	if(isExeptionelPrice()){ // is exeptiona true
+		    	if(isExeptionelPrice(zone)){ // is exeptiona true
 		    		price += $(elm).data().price[0];
 					totalPrice += $(elm).data().price[0];
 		    		totalAcompte += $(elm).data().price[1];
@@ -440,9 +440,9 @@ function hideMessageShow(value){
 	}
 }
 
-function isExeptionelPrice(){
+function isExeptionelPrice(zone){
 	let exceptionalDate = [["14","02"],["24","12"],["25","12"],["31","12"]]
-	current_date = $("#inpdate").val().split("/") // MM - DD - YYYY
+	current_date = zone.date.split("/")
 	let exceptionalPrice = false
 	for (var i = exceptionalDate.length - 1; i >= 0; i--) {
 		if (exceptionalDate[i][0] == current_date[0] && exceptionalDate[i][1] == current_date[1]){

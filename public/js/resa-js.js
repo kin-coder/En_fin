@@ -1,38 +1,41 @@
-initialize();
+initialize()
+
+function on(){
+  document.getElementById("overlay").style.display = "block";
+}
+
 function initialize(){
-	let zone = JSON.parse(sessionStorage.getItem("zone"));
+	let zone = JSON.parse(sessionStorage.getItem("zone"))
 	if (zone != null && zone.country != undefined) {
 		if (zone.country != "") {
-			let $valueCountry = $('#zode-and-date-selected');
-			let nameDepart = "";
+			let valueCountry = document.getElementById('zode-and-date-selected')
+			let nameDepart = ""
 			if (zone.department) {
-				nameDepart = "<i><strong class=\"label-selected\">Departement : </strong></i>"+zone.department;
+				nameDepart = "<i><strong class=\"label-selected\">Departement : </strong></i>"+zone.department
 			}
-			$valueCountry.html("<div class=\"pays-selected\"><i><strong class=\"label-selected\">Pays : </strong></i>"+zone.country+" &nbsp;&nbsp; <br>"+nameDepart+" <br><i><strong  class=\"label-selected\">Date de livraison : </strong></i>"+zone.date+" <br><button class=\"btn btn-primary btn-pays\" id=\"openZoneChoice\">Modifier</button></div>");			
-			$("#openZoneChoice").click(function(){
-				$("#errorInZone").addClass("hidden");
-				$("#overlay").css("display","block");
-			});
+			valueCountry.innerHTML = "<div class=\"pays-selected\"><i><strong class=\"label-selected\">Pays : </strong></i>"+zone.country+" &nbsp;&nbsp; <br>"+nameDepart+" <br><i><strong  class=\"label-selected\">Date de livraison : </strong></i>"+zone.date+" <br><button class=\"btn btn-primary btn-pays\" id=\"openZoneChoice\">Modifier</button></div>"
+			document.getElementById("openZoneChoice").addEventListener('click',openZone);
+		
 			if (zone.services.includes("Massage")){
-				$("#massage-fafana").removeClass("hidden");
+				document.getElementById("massage-fafana").classList.remove("hidden")
 			}else{
-				$("#massage-fafana").addClass("hidden");
+				document.getElementById("massage-fafana").classList.add("hidden")
 			}
+
 			if (zone.services.includes("Location spa")){
-				$("#loc-spa-fafana").removeClass("hidden");
+				document.getElementById("loc-spa-fafana").classList.remove("hidden")
 			}else{
-				$("#loc-spa-fafana").addClass("hidden");
+				document.getElementById("loc-spa-fafana").classList.add("hidden")
 			}
-			$("#inpdepartment").val(zone.department);
-			$("#inpdate").val(zone.date);
-			$("#inppays").val(zone.country);
+
 		}else{
-			window.onload = choseZoneAndDate();
+			window.onload = on();
 		}
 	}else{
-		window.onload = choseZoneAndDate();
+		window.onload = on();
 	}
 }
-function choseZoneAndDate(){
-  document.getElementById("overlay").style.display = "block";
+function openZone(){
+	document.getElementById("errorInZone").classList.add("hidden")
+	document.getElementById("overlay").style.display = "block"
 }

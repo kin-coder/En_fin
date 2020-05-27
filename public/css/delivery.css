@@ -119,8 +119,8 @@
 	.messages{
 		background:white;
 		position: relative;
-		top: 12px;
-		left: 55px;
+		top: 1px;
+		left: 50px;
 	}
 
 	.paysList:checked + label,
@@ -178,8 +178,8 @@
 	.messages{
 		background:white;
 		position: relative;
-		top: -215px;
-		left: 190px;
+		top: -225px;
+		left: 170px;
 	}
 
 	.paysList:checked + label,
@@ -278,7 +278,7 @@
 }
 
 .adresseTitleFac{
-margin-left: 50px;
+	margin-left: 50px;
 }
 
 
@@ -346,4 +346,37 @@ margin-left: 50px;
 	width: 30%;
 	margin-bottom: 100px;
 	margin-top: 20px;
+}
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
+
+	.messages {
+		background: 
+		white;
+		position: relative;
+		top: 0px;
+		left: 50px;
+	}
+
+	.small_label {
+		position: relative;
+		left: 80px;
+
+	}
+
+	.paysList:checked + label, .paysList:not(:checked) + label {
+		position: relative;
+		padding-left: 28px;
+		cursor: pointer;
+		line-height: 20px;
+		display: inline-block;
+		color: 
+		#666;
+		margin-right: 20px;
+
+		margin-left: -15px;
+	}
 }

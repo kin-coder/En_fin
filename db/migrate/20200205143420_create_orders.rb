@@ -14,9 +14,13 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.string :delivery_code_postal
       t.string :delivery_adresse
       t.string :delivery_adresse_complet
-
+      
+      t.string :code_promo
       t.string :praticien
       t.text :message
+      t.string :paymentMeanBrand
+      t.string :transactionDateTime
+      t.string :acompte_amount
 
       t.boolean :is_validate, default:false #verifi si la commande est payer ou non
       
@@ -29,7 +33,6 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.belongs_to :client, index:true
       t.belongs_to :department, index:true
       t.belongs_to :country, index:true
-      t.belongs_to :code_promo, index:true
 
       t.timestamps
     end

@@ -33,47 +33,55 @@
 											</tr>
 										</thead>
 										<tbody>
-											<% unless @order.order_massages.empty? %>
+										<% if @order.is_massage %>
 											<% @order.order_massages.each do |o_massage| %>
+											<% totalPrice = 0 %>
+											<% totalAcompte = 0 %>
 											<tr>
-												<td> Massage pour <%= o_massage.massage_ca.name %> </td>
+												<td> Massage pour <%= o_massage.massage.name %> </td>
+
 												<td> 
-													<li>Type  de massage: <%= o_massage.massage_su.name %></li>
-													<li>Durée: <%= o_massage.massage_su_price.duration %> mn</li>
-
-
-													<li>
-														Type de praticien: <i>"<%= @order.praticien == "all" ? "Peu importe" : @order.praticien %>"</i><br>
-														<% presta =  @order.order_massages.first.prestataire %>
-														<li><strong>Prestataire associé:</strong> 
-															<% if presta.nil? %>
-															<i>"Aucun prestataire affecté pour le moment"</i>
-															<% else %>
-															<i><a href="<%= show_prestataires_path(presta.id) %>" title="Afficher">"<%= presta.first_name %> <%= presta.last_name %>"</a>
-
-
-
-																<%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_prestataire_to_order_path("massage",@order.id,presta.id), method: :delete, data: { confirm: 'Etes vous sur de retirer ce prestataire à cette commande ?' }, title:"Enlever ce prestataire de cette commande",class:"btn btn-default" %> </li></td>
-															</i>
-															<% end %>
-														</li>
-
-
-
-													</td>
-													<td>
+													<dt>Type  de massage: </dt>
+													<% o_massage.order_massage_types.each do |o_type| %>
 														<% if @order.isExceptional? %>
-														<li class="liPrix"><%= o_massage.massage_su_price.exceptional_price - @code_promo %>€</li>
-														<li class="liPrix">~ acompte: <%= o_massage.massage_su_price.exceptional_acompte - @code_promo %>€</li>
+															<% price_massage = o_type.massage_duration_price.exceptional_price.to_i %>
+															<% acompte_massage = o_type.massage_duration_price.exceptional_acompte.to_i %>
 														<% else %>
-														<li class="liPrix"><%= o_massage.massage_su_price.ordinary_price - @code_promo %>€</li>
-														<li class="liPrix">~ acompte: <%= o_massage.massage_su_price.ordinary_acompte - @code_promo %>€</li>
+															<% price_massage = o_type.massage_duration_price.ordinary_price.to_i %>
+															<% acompte_massage = o_type.massage_duration_price.ordinary_acompte.to_i %>
 														<% end %>
-													</td>
-												</tr>
-												<% end %>
-												<% end %>
-												<% unless @order.order_spas.empty? %>
+														<li><%= o_type.massage_type.name %> <%= o_type.massage_duration_price.duration %>mn<br>
+															<i>~ acompte: </i><%= acompte_massage %>€ <br>
+															<i>~ prix : </i><%= price_massage %>€
+														</li>
+														<% totalPrice += price_massage %>
+														<% totalAcompte += acompte_massage %>
+													<% end %>
+												</td>
+												<td>
+													<li class="liPrix"><%= totalPrice %>€</li>
+													<li class="liPrix">~ acompte: <%= totalAcompte %>€</li>
+												</td>
+											</tr>
+											<% end %>
+											<tr>
+												<td colspan="3"  style="color: black; font-weight: bold;">
+												Type de praticien: <i>"<%= @order.praticien == "all" ? "Peu importe" : @order.praticien %>"</i><br>
+												<% presta =  @order.order_massages.first.prestataire %>
+												<li><strong>Prestataire associé:</strong> 
+													<% if presta.nil? %>
+													<i>"Aucun prestataire affecté pour le moment"</i>
+													<% else %>
+													<i><a href="<%= show_prestataires_path(presta.id) %>" title="Afficher">"<%= presta.first_name %> <%= presta.last_name %>"</a>
+														<%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_prestataire_to_order_path("massage",@order.id,presta.id), method: :delete, data: { confirm: 'Etes vous sur de retirer ce prestataire à cette commande ?' }, title:"Enlever ce prestataire de cette commande",class:"btn btn-default" %>
+													</i>
+													<% end %>
+												</li>
+												</td>
+											</tr>
+										<% end %>
+
+												<% if @order.is_spa %>
 												<% @order.order_spas.each do |o_spa| %>
 												<tr>
 													<td> Location Spa pour <%= o_spa.spa.duration %>H</td>
@@ -82,40 +90,45 @@
 														<li>Type d'installation: <%= o_spa.installation %></li>
 														<li>Système d'eau: <%= o_spa.syteme_eau %></li>
 														<li>Ambiance:
-															<% if o_spa.product.nil? %>
-															Aucun produit selectionné
+															<% unless o_spa.spa_ambiance.nil? %>
+																<%= o_spa.spa_ambiance.name %>
 															<% else %>
-															<%= o_spa.product.name %> à <%= o_spa.product.price %>€<br>
+																Aucun selectionné
 															<% end %>
 														</li>
-
-														<li>
-
-															<% presta =  @order.order_spas.first.prestataire %>
-															Prestataire associé: 
-															<% if presta.nil? %>
-															<i>"Aucun prestataire affecté pour le moment"</i>
-															<% else %>
-															<i><a href="<%=show_prestataires_path(presta.id)%>" title="Afficher">"<%= presta.first_name %> <%= presta.last_name %>"</a>
-
-
-																<%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_prestataire_to_order_path("spa",@order.id,presta.id), method: :delete, data: { confirm: 'Etes vous sur de retirer ce prestataire à cette commande ?' }, title:"Enlever ce prestataire de cette commande",class:"btn btn-default" %> 
-																<% end %>
-
-															</li>
-														</td>
-														<td>
-															<% if @order.isExceptional? %>
-															<li class="liPrix"><%= o_spa.spa.exceptional_price - @code_promo%>€</li>
-															<li class="liPrix">~ acompte: <%= o_spa.spa.exceptional_acompte - @code_promo %>€</li>
-															<% else %>
-															<li class="liPrix"><%= o_spa.spa.ordinary_price - @code_promo %>€</li>
-															<li class="liPrix">~ acompte: <%= o_spa.spa.ordinary_acompte - @code_promo %>€</li>
+													</td>
+													<td>
+															<% ambiance_price = 0 %>
+															<% unless o_spa.spa_ambiance.nil? %>
+																 <% ambiance_price = o_spa.spa_ambiance.price.to_i %>
 															<% end %>
-														</td>
-													</tr>
-													<% end %>
-													<% end %>
+
+															<% if @order.isExceptional? %>
+															<li class="liPrix"><%= o_spa.spa.exceptional_price.to_i + ambiance_price.to_i %>€</li>
+															<li class="liPrix">~ acompte: <%= o_spa.spa.exceptional_acompte.to_i %>€</li>
+															<% else %>
+															<li class="liPrix"><%= o_spa.spa.ordinary_price.to_i + ambiance_price.to_i %>€</li>
+															<li class="liPrix">~ acompte: <%= o_spa.spa.ordinary_acompte.to_i %>€</li>
+															<% end %>
+
+													</td>
+												</tr>
+											<% end %>
+												<tr>
+													<td colspan="3" style="color: black; font-weight: bold;">
+														<li>
+														<% presta =  @order.order_spas.first.prestataire %>
+														Prestataire associé: 
+														<% if presta.nil? %>
+														<i>"Aucun prestataire affecté pour le moment"</i>
+														<% else %>
+														<i><a href="<%=show_prestataires_path(presta.id)%>" title="Afficher">"<%= presta.first_name %> <%= presta.last_name %>"</a>
+															<%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, delete_prestataire_to_order_path("spa",@order.id,presta.id), method: :delete, data: { confirm: 'Etes vous sur de retirer ce prestataire à cette commande ?' }, title:"Enlever ce prestataire de cette commande",class:"btn btn-default" %> 
+															<% end %>
+															</li>
+													</td>
+												</tr>
+										<% end %>
 
 												</tbody>
 											</table>

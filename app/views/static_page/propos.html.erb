@@ -1,3 +1,7 @@
+<% content_for :head do %>
+	<title>Qui sommes-nous - Cocooning Spa</title>
+	<meta name="description" content="Qui sommes-nous ? Pour en savoir plus sur notre activité."/>
+<% end %>
 <link href="/css/partner.css" rel="stylesheet">
 <link href="/css/page-devise.css" rel="stylesheet">
 <link href="/css/accordeon-index.css" rel="stylesheet">
@@ -173,7 +177,7 @@
           </div>
           <div class="col-sm-6 col-xs-12">
             <div class="aboutInfo">
-              <h2>Nous révolutionnons l’univers du bien-être</h2>
+              <h2 class='revolution'>Nous révolutionnons l’univers du bien-être</h2>
               <p class="p-QSN">
                 Notre jeune start-up française a été lancée en 2016, nous sommes des pionniers dans la location de spa/jacuzzi à domicile et bénéficions d’une forte expérience dans les prestations de massage à domicile. Nous entendons bien, à travers ce concept totalement novateur, révolutionner l’univers du bien-être. En quelques clics, il est désormais possible de réserver le massage de son choix à domicile ou une location de spa/jacuzzi à domicile , si besoin dans l’heure et à un prix tout-à-fait accessible. Mais le vrai avantage est que vous n’avez plus besoin de vous déplacer et de perdre votre temps ! Et oui, c’est nous qui venons à vous, et non l’inverse !
               </p>
@@ -200,7 +204,7 @@
 
           <div class="col-sm-6 col-xs-12" >
             <div class="aboutInfo">
-              <h2 class="infoQSN">Inspirer le bien-être pour permettre aux gens de se reconnecter avec eux-mêmes</h2>
+              <h2 class="infoQSN infoQSNS">Inspirer le bien-être pour permettre aux gens de se reconnecter avec eux-mêmes</h2>
               <p class="p-QSN">
                 Nous nous sommes entretenus avec nos employés, nos clients et la communauté des professionnels afin de leur parler de l’impact du bien-être en général. L'avis est unanime : lorsque vous accordez la priorité à votre bien-être, vous êtes plus épanoui. Plus d'énergie, de confiance, de détente, c’est différent pour chacun. Pour certains, un spa ou un massage font l'affaire. Pour d'autres, une promenade au grand air aide à lâcher prise. Et pourtant, ce n'est pas toujours évident de prendre du temps pour soi. Nous sommes confrontés à de longues heures de travail et souvent beaucoup de pression pour donner le meilleur de nous-même. <br> <br>
                 Notre mission est donc d'inciter les gens à faire de leur bien-être une priorité. Mais surtout de les aider à cultiver un sentiment de confiance, de détente et d'ambition qui leur permettent alors d'affronter les aléas de la vie.
@@ -238,7 +242,7 @@
           </div>
           <div class="col-sm-6 col-xs-12">
             <div class="aboutInfo">
-              <h2>Réserver sur Cocooning Spa, c’est soutenir l’entrepreneuriat à taille humaine</h2>
+              <h2 class='infoQSNS'>Réserver sur Cocooning Spa, c’est soutenir l’entrepreneuriat à taille humaine</h2>
               <p class="p-QSN">
                 Nous avons créé Cocooning Spa avec l’envie de mettre en lumière le talent individuel des artisans. En commandant une prestation sur Cocooning Spa, vous soutenez des entrepreneurs indépendants qui ont choisi de mettre leur savoir-faire à votre service.
                 Leur principale motivation est de gérer leur vie comme ils/elles le souhaitent, en choisissant leurs horaires de travail pour concilier au mieux leur vie personnelle et professionnelle. <br><br>
@@ -272,9 +276,9 @@
         Vous êtes déjà professionnels dans le domaine du massage ou de la location de spa ? Vous n’êtes pas encore en activité et vous souhaitez vous lancer, devenir indépendant ? Cocooning Spa est le tremplin qu’il vous faut. Nous avons besoin de partenaires comme vous ! <br>
         Alors rejoignez vous aussi l’aventure Cocooning Spa.
       </p>
-    </div>
+    </div> <br>
     <p style="text-align: center">
-      <%= link_to  "Nous rejoindre", partner_path, 'data-method':"GET", style:"padding: 14px !important;", class:"btn btn-full-round btn-theme"%>
+      <%= link_to  "Nous rejoindre", partner_path, 'data-method':"GET", style:"padding: 14px !important;", class:"btn btn-full-round btn-theme bnt"%>
     </P>
 
 

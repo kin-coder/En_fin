@@ -15,7 +15,7 @@ class ClientMailer < ApplicationMailer
     end
     @code_promo = 0
     if @order.code_promo
-      @code_promo = @order.code_promo.reduction
+      @code_promo = @order.code_promo.split("-|-")[1].to_i
     end
     mail(to: @client.email, subject: 'Votre commande Cocooning Spa !')
   end

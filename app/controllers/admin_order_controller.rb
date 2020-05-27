@@ -23,7 +23,7 @@ class AdminOrderController < Application2Controller
     @order = Order.find(params[:id])
     @code_promo = 0
     if @order.code_promo
-      @code_promo = @order.code_promo.reduction
+      @code_promo = @order.code_promo.split("-|-")[1].to_i
     end
     # list des prestataire invité
     @massage_prestataires = []
