@@ -170,12 +170,16 @@ a.control_next {
 }
 .comments{
 position: absolute;
-top: 60px;
+top: 10%;
 left: 30px;
 font-size: 15px;
 letter-spacing: 2px;
 width: 100%;
 max-width: 28%;
+}
+.commentselse{
+position: absolute;
+top: 30% !important;
 }
 .comments .commentataire{
   color: #48D1CC;

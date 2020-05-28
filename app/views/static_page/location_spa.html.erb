@@ -175,7 +175,7 @@ and (orientation : landscape) {
               <img src="img/home/Photo1.jpg" alt="Image review" class="img-responsive" alt="Massage">
             </div>
             <div class="reviewInfo reviewInfoMassage">
-              <center><i class="sansfa" aria-hidden="true">Innovez avec un jacuzzi privatif à domicile</i></center>
+              <center class="titreSansFA"><i class="sansfa" aria-hidden="true">Innovez avec un jacuzzi privatif à domicile</i></center>
               <p class="text-p-massage">Cocooning Spa vous propose un service complet afin de rendre exceptionnels votre soirée, journée ou week-end : commandez votre spa à domicile pour la durée de votre choix et personnalisez votre événement avec nos différentes options afin de passer un pur moment de détente. Plus besoin de se déplacer, nos prestations vous permettront de vivre un instant magique chez vous.</p>
             </div>
           </div>
@@ -191,7 +191,7 @@ and (orientation : landscape) {
               <img src="img/home/Photo2.jpg" alt="Image review" class="img-responsive" alt="Massage">
             </div>
             <div class="reviewInfo reviewInfoMassage">
-              <center><i class="sansfa" aria-hidden="true">Profitez d’un moment de détente <br>à la maison en toute intimité : quel luxe !</i></center>
+              <center class="titreSansFA"><i class="sansfa" aria-hidden="true">Profitez d’un moment de détente <br>à la maison en toute intimité : quel luxe !</i></center>
               <p class="text-p-massage">
                 Pas de stress, vous ne vous occupez de rien, nous nous chargeons de tout, vous aurez seulement à profiter de votre instant jacuzzi ! Un professionnel sélectionné et formé se charge d’installer un spa dans la pièce de votre choix (salon, terrasse, jardin, etc…), en intérieur ou extérieur, en appartement ou maison. N’attendez plus, transformez et réinventez votre chez-vous le temps de 24H ou plus grâce à nos spas !
               </p>
@@ -210,7 +210,7 @@ and (orientation : landscape) {
               <img src="img/home/Photo3.jpg" alt="Image review" class="img-responsive" alt="Massage">
             </div>
             <div class="reviewInfo reviewInfoMassage">
-              <center><i class="sansfa" aria-hidden="true">Surprenez avec un spa à domicile et offrez  le<br>cadeau parfait qui fera plaisir à vos proches</i></center>
+              <center class="titreSansFA"><i class="sansfa" aria-hidden="true">Surprenez avec un spa à domicile et offrez  le<br>cadeau parfait qui fera plaisir à vos proches</i></center>
               <p class="text-p-massage">
                 Un jacuzzi à domicile pour une journée, une soirée ou un week-end, c’est maintenant possible avec Cocooning Spa ! Toutes les raisons sont bonnes pour s’offrir un instant spa à domicile : Fêtes, Anniversaires, Relaxation-détente, EVJF, Journée Girly, Occasions spéciales, Moment romantique en amoureux, etc…
               </p>
@@ -866,19 +866,33 @@ and (orientation : landscape) {
 </section>
 
 <div id="slider">
-  <a href="javascript:void(0)" class="control_next">></a>
-  <a href="javascript:void(0)" class="control_prev"><</a>
+  <a href="javascript:void(0)" class="control_next nexts">></a>
+  <a href="javascript:void(0)" class="control_prev prevs"><</a>
 
   <ul>
     <% @commentsSpa.each do |comment| %>
-    <li>
-     <p class='comments'>
+        <% if comment.user_name === "Charlotte" %>
+            
+    <li class='commentSpa'>
+     <p class='comments commentselse commentsSpas'>
       <i class="stars" aria-hidden="true" id="iconetitle1"></i> <br>
-      <%=comment.content%> <br>
+      <span> <%=comment.content%></span> <br>
       <i class="commentataire"><%=comment.user_name%></i>
     </p>
   </li>
+            <% else %>
+
+
+    <li class='commentSpa'>
+     <p class='comments commentsSpas'>
+      <i class="stars" aria-hidden="true" id="iconetitle1"></i> <br>
+      <span> <%=comment.content%></span> <br>
+      <i class="commentataire"><%=comment.user_name%></i>
+    </p>
+  </li>
+  <% end %>
   <%end%>
+
 </ul>  
 </div>
 
