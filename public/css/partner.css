@@ -15,7 +15,7 @@
 		position: absolute;
 
 		top: 9.8%;
-		left: 20%;
+	
 		margin-bottom: -500px;
 	}
 	.secotionQuisommes{
@@ -741,6 +741,9 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+	#communauté{
+width: 700px;
+	}
 	.aboutInfo h2 {
 		font-size: 24px !important;
 	}
