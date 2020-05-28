@@ -25,30 +25,27 @@
 								<tbody>
 									<tr>
 										<td>
-											<% session[:myPrestation]["spa"].each do |spa| %> 
-											<div class="reservationSpa">
-												<strong style="font-family: Quicksand; text-transform: uppercase;color: black;">spa pour <%= spa["time"] %>h </strong><br>
-												<ul>
-													<li><i>Type de logement :</i> <%= spa["type"][0] %></li>
-													<li><i>Type d'installation :</i> <%= spa["type"][1] %></li>
-													<li><i>Système d'eau : </i><%= spa["type"][2] %></li>
-												</ul>
-
-												<% if spa["option"] %>
-												<i>Ambiance :</i> <%= spa["option"][0][0] %><br>
-												<i>Prix du spa : </i><%= spa["price"][0].to_i + spa["option"][0][1].to_i %>€<br>
-												<% else %>
-												<i>Prix du spa : </i><%= spa["price"][0].to_i %>€<br>
-												<% end %>
-
-												<i>Acompte : </i><%= spa["price"][1].to_i %>€<br>
-												<div>
-													<i>Date et heure de livraison : </i>le <%= session[:otherInfo]["date"] %> à <%= session[:otherInfo]["heureSpa"] %>
-												</div>
-											</div>
-											<hr style="">
+										<% session[:myPrestation]["spa"].each do |spa| %> 
+										<div class="reservationSpa">
+											<strong style="font-family: Quicksand; text-transform: uppercase;color: black;">spa pour <%= spa["time"] %>H : <%= spa["price"][0].to_i %> € </strong><br>
+											<% if spa["option"] %>
+												<i>Ambiance <%= spa["option"][0][0] %> : </i><%= spa["option"][0][1].to_i %> €<br>
+												<i>Prix : </i><%= spa["price"][0].to_i + spa["option"][0][1].to_i %> €<br>
+											<% else %>
+												<i>Prix : </i><%= spa["price"][0].to_i %> €<br>
 											<% end %>
-
+											<i>Acompte : </i><%= spa["price"][1].to_i %> €<br>
+											<ul>
+												<li><i>Type de logement :</i> <%= spa["type"][0] %></li>
+												<li><i>Type d'installation :</i> <%= spa["type"][1] %></li>
+												<li><i>Système d'eau : </i><%= spa["type"][2] %></li>
+											</ul>
+											<div>
+											<i>Date et heure de livraison : </i>le <%= session[:otherInfo]["date"] %> à <%= session[:otherInfo]["heureSpa"] %>
+											</div>
+										</div>
+										<hr style="">
+										<% end %>
 										</td>
 									</tr>
 									
@@ -79,6 +76,9 @@
 												<i>Type de praticien : </i><%= @order.praticien == "all" ? "peu importe" : @order.praticien %><br>
 												<i>Prix : </i><%= massage["price"][1].to_i %>€<br>
 												<i>Acompte : </i> <%= massage["price"][2].to_i %>€
+											<div>
+											<i>Date et heure de livraison : </i>le <%= session[:otherInfo]["date"] %> à <%= session[:otherInfo]["heureMassage"] %>
+											</div>
 											</div>
 											<hr style="">
 
@@ -136,7 +136,7 @@
 		<div class="col-sm-4">
 			<div class="alert alert-success">
 				<% unless @code_promo == 0 %>
-				Code promo : reduction de <b><%= @code_promo.to_i %>€</b> sur l'acompte.<br>
+				Code promo : reduction de <b><%= @code_promo.to_i %>€</b><br>
 				<% end %>
 				Prix Total : <strong><%= @totalPrice %>€</strong><br>
 				<span>Acompte à régler en ligne : <strong><%= @totalAcompte %>€</strong></span><br>

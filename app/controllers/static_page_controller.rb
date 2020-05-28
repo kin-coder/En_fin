@@ -57,7 +57,7 @@ class StaticPageController < ApplicationController
 
     if @candidate.save
       flash[:notice] = "Merci pour votre inscription! un message vous est envoyé dans à votre email pour poursuivre l'inscription veuillez bien le lire s'il vous plaît!"
-      redirect_back(fallback_location: root_path)
+      redirect_to cgu_path
     else
       flash[:list_message_errors] = @candidate.errors.full_messages
       redirect_back(fallback_location: root_path)
