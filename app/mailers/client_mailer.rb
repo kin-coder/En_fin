@@ -28,3 +28,7 @@ class ClientMailer < ApplicationMailer
     mail(to: @client.email, subject: 'Votre compte client a bien été créé !')
   end
 end
+
+#unless admin_id.nil?
+#mail(to: "cocooningspa@outlook.com", subject: 'Votre commande Cocooning Spa !')
+#else
