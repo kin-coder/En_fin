@@ -911,6 +911,9 @@ and (orientation : landscape) {
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : portrait) { 
+    .spaengagement{
+margin-top: 10px;
+  }
   .sm6-index {
     margin-top: 80px;
   }
@@ -940,6 +943,9 @@ max-width: 300px;
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : landscape) { 
+  .spaengagement{
+margin-top: 10px;
+  }
 .textelsespa{
 text-align: center !important;
 }
