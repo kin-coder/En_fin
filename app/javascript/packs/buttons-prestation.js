@@ -45,7 +45,7 @@ function numberOrder(){
 
 	if (prestations.code_promo) {
 		code_promo = prestations.code_promo[1]
-		document.getElementById("promo-code").innerHTML = "Réduction de "+code_promo+"€ sur le total de l'acompte à payer"
+		document.getElementById("promo-code").innerHTML = "Réduction de "+code_promo+"€"
 	}else{
 		document.getElementById("promo-code").innerHTML = "<ul class=\"ul-btn\">Vous n'avez pas inseré un code promo</ul>"
 	}
