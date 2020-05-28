@@ -716,9 +716,30 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+		.infoQSNelse{
+margin-left: 20px;
+
+	}
+
 	.aboutSectionQSN {
 		padding: 0 0 50px 0;
 		height: auto !important;
+
+	}
+			.secotionQuisommes{
+width : 768px;
+position: absolute;
+left: 18%;
+	}
+		.specialrow{
+margin-top: -60px;
+	}
+	.infoQSNipad {
+    margin-left: 30px;
+    margin-top: -60px;
+}
+		.aboutSectionSN{
+		margin-top:-38px;
 	}
 	/*dropdown zone action*/
 	.hida{
@@ -1240,7 +1261,7 @@ margin-left: -75px;
 	}
 		.infoQSNelse{
 		margin-left: 0px;
-		margin-top: 25px;
+		margin-top: 70px;
 	}
 }
 
@@ -1303,7 +1324,7 @@ and (orientation : portrait) {
 
 	}
 	.div {
-		margin-top: -385px;
+		margin-top: -330px;
 	}
 	.div .infoQSN {
 		margin-left: 0px;
@@ -1317,6 +1338,14 @@ and (orientation : portrait) {
 	}
 	.infoQSNelse{
 		margin-left: 0px;
-		margin-top: -240px;
+		margin-top: -210px;
 	}
+}
+
+	.wrapper li{
+z-index: 1000;
+	}
+
+		.aboutInfo h2 {
+    font-size: 24px !important;
 }
