@@ -969,7 +969,68 @@ and (orientation : landscape) {
 @media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
-and (orientation : portrait) { 
+and (orientation : portrait) {
+  .productSectionIpad {
+    background-image: linear-gradient(
+      white,
+      white);
+    height: 500px;
+  }
+  .caroucInnerIpad{
+    height: 360px;
+    overflow: hidden;
+  }
+
+  .text-p-massage-slide {
+    position: relative;
+    left: -110px;
+    width: 375px;
+    font-size: 13px !important;
+  }
+  .intru {
+
+    position: relative;
+    left: -15px !important;
+
+}
+  #flechemassage-right{
+position: absolute;
+right: -7px;
+  }
+  .h3-massage-slide{
+position: relative;
+left: 10px;
+margin-bottom: 35px !important;
+font-size: 12px;
+  }
+  .productImageMassage img {
+
+    width: 250px;
+    height: 250px;
+    margin-top: -40px;
+    max-width: max-content !important;
+
+  }
+  .titreSansFaMas{
+    margin-bottom: 20px;
+  }
+
+
+  .secotionTitle h2 .span {
+    font-size: 55px !important;
+    line-height: 1.3;
+    margin-top: -45px;
+    padding-bottom: 0px;
+    text-transform: none;
+
+  }
+  .section1-massage{
+
+    text-align: justify;
+  }
+
+
+
   .comments {
     position: absolute;
     top: 10% !important;
@@ -987,6 +1048,8 @@ and (orientation : portrait) {
     text-align: left;
     padding-bottom: 0px;
     margin-top: -45px;
+    text-transform: none;
+
   }
 
   .textSpasResponsive{
@@ -995,6 +1058,7 @@ and (orientation : portrait) {
     letter-spacing: 2px;
     line-height: 1.2;
     color: black;
+    text-align: justify;
   }
   .text-p-ccmspa-responsive{
     text-align: justify;
@@ -1007,6 +1071,22 @@ and (orientation : portrait) {
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : landscape) { 
+  .titreSansFaMas{
+    margin-bottom: 20px;
+  }
+
+  .secotionTitle h2 .span {
+    font-size: 70px !important;
+    line-height: 1;
+    margin-top: -45px;
+    padding-bottom: 0px;
+    text-transform: none;
+  }
+  .section1-massage{
+
+    text-align: justify;
+  }
+
   .spaengagement{
     margin-top: 10px;
   }
@@ -1022,6 +1102,8 @@ and (orientation : landscape) {
     text-align: left;
     padding-bottom: 0px;
     margin-top: -45px;
+    text-transform: none;
+
   }
   .textSpasResponsive{
     font-size: 22px;
