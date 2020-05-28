@@ -929,6 +929,10 @@ letter-spacing: 2px;
 line-height: 1.2;
 color: black;
   }
+  .text-p-ccmspa-responsive{
+text-align: justify;
+max-width: 300px;
+  }
 }
 
 /*ipad landscape*/
@@ -936,7 +940,9 @@ color: black;
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : landscape) { 
-
+.textelsespa{
+text-align: center !important;
+}
   .sm6-index {
     margin-top: 1px;
   }
