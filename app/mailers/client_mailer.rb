@@ -1,5 +1,5 @@
 class ClientMailer < ApplicationMailer
-  def confirm_order(order_id,client_id,admin_id=nil)
+  def confirm_order(order_id,client_id)
     @client = Client.find(client_id)
     @order = Order.find(order_id)
     @date = @order.prestation_date
