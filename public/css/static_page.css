@@ -412,8 +412,146 @@ left: 250px;*/
 
 
   /* Extra small devices (phones, 600px and down) */
-  @media only screen and (max-width: 600px) {
+  @media only screen 
+  and (min-device-width : 376px) 
+  and (max-device-width : 420px)  {
+    #title-spas-responsive{
+      font-size: 2em !important;
+      text-align: justify;
+      margin-top: -40px;
+      text-transform: none;
+    }
+  }
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen 
+  and (min-device-width : 361px) 
+  and (max-device-width : 375px)  {
+    #title-spas-responsive{
+      font-size: 1.8em !important;
+      text-align: justify;
+      margin-top: -40px;
+      text-transform: none;
+    }
+  }
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen 
+  and (max-device-width : 360px)  {
+    #title-spas-responsive{
+      font-size: 1.65em !important;
+      text-align: justify;
+      margin-top: -40px;
+      text-transform: none;
+    }
+  }
 
+  @media only screen 
+  and (min-device-width : 376px) 
+  and (max-device-width : 420px)  {
+    #title-massage-responsive{
+      font-size: 2.08em !important;
+      text-align: justify;
+      margin-top: -40px;
+      text-transform: none;
+      line-height: 1.3;
+
+    }
+  }
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen 
+  and (min-device-width : 361px) 
+  and (max-device-width : 375px)  {
+    #title-massage-responsive{
+      font-size: 1.79em !important;
+      text-align: justify;
+      margin-top: -40px;
+      text-transform: none;
+      line-height: 1.3;
+    }
+  }
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen 
+  and (max-device-width : 360px)  {
+    #title-massage-responsive{
+      font-size: 1.688em !important;
+      text-align: justify;
+      margin-top: -40px;
+      text-transform: none;
+      line-height: 1.3;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .engagements-mobile{
+      text-align: justify;
+      max-width: 300px;
+    }
+    .titreSansFaMas{
+      position: relative;
+      left: -5%;
+    }
+    #iconetitle1{
+      position: relative;
+      left: 6.5%;
+    }
+    .comments .commentataire {
+      color: 
+      #48D1CC;
+      position: absolute;
+      left: 40%;
+    }
+
+
+    #slider ul .commentSpa{
+      min-height: 400px;
+    }
+    #slider .nexts,#slider .prevs {
+      position: absolute;
+      top: 47%;
+    }
+    .commentsSpas{
+      text-align: justify;
+      max-width: 25% !important;
+      margin-left: 1.2%;
+    }
+    #productSlider{
+      border-radius: 10px;
+    }
+    #productSlider .carousel-control.left i.fa-arrow-circle-left {
+
+      text-shadow: none;
+      position: absolute;
+      right: 130px !important;
+      top: 45px !important;
+      font-size: 20px;
+
+    }
+    .p-slider-responsive{
+      padding-bottom: 20px;
+    }
+    .productSectionSpaResponsive{
+      border-radius: 10px;
+    }
+    #fleche {
+
+      position: absolute;
+      right: -160px;
+      top: 45px !important;
+      font-size: 20px !important;
+    }
+    .zoneActionText{
+      text-align: justify;
+    }
+
+    .text-p-ccmspa-responsive{
+      text-align: justify;
+      max-width: 300px;
+    }
+    .titreSansFA {
+      margin-bottom: 20px;
+    }
+    .sm6-index-mobile {
+      margin-top: 72px;
+    }
     .btn-block {
       display: block;
       width: 240px !important;
@@ -863,5 +1001,167 @@ left: 250px;*/
  }
 
 }
+/*ipad landscape*/
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
 
+}
+
+/*ipad portrait*/
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+  .productSectionIpad {
+    background-image: linear-gradient(
+      white,
+      white);
+    height: 500px;
+  }
+  .caroucInnerIpad{
+    height: 360px;
+    overflow: hidden;
+  }
+
+  .text-p-massage-slide {
+    position: relative;
+    left: -110px;
+    width: 375px;
+    font-size: 13px !important;
+  }
+  .intru {
+
+    position: relative;
+    left: -15px !important;
+
+  }
+  #flechemassage-right{
+    position: absolute;
+    right: -7px;
+  }
+  .h3-massage-slide{
+    position: relative;
+    left: 10px;
+    margin-bottom: 35px !important;
+    font-size: 12px;
+  }
+  .productImageMassage img {
+
+    width: 250px;
+    height: 250px;
+    margin-top: -40px;
+    max-width: max-content !important;
+
+  }
+  .titreSansFaMas{
+    margin-bottom: 20px;
+  }
+
+
+  .secotionTitle h2 .span {
+    font-size: 55px !important;
+    line-height: 1.3;
+    margin-top: -45px;
+    padding-bottom: 0px;
+    text-transform: none;
+
+  }
+  .section1-massage{
+
+    text-align: justify;
+  }
+
+
+
+  .comments {
+    position: absolute;
+    top: 10% !important;
+  }
+
+  .spaengagement{
+    margin-top: 10px;
+  }
+  .sm6-index {
+    margin-top: 80px;
+  }
+
+  #title-spas-responsive{
+    font-size: 26.5px !important;
+    text-align: left;
+    padding-bottom: 0px;
+    margin-top: -45px;
+    text-transform: none;
+
+  }
+
+  .textSpasResponsive{
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    color: black;
+    text-align: justify;
+  }
+  .text-p-ccmspa-responsive{
+    text-align: justify;
+    max-width: 300px;
+  }
+}
+
+/*ipad landscape*/
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
+  .text-p-ccmspa-responsive {
+
+    text-align: justify;
+    max-width: 400px;
+
+}
+  .titreSansFaMas{
+    margin-bottom: 20px;
+  }
+
+  .secotionTitle h2 .span {
+    font-size: 70px !important;
+    line-height: 1;
+    margin-top: -45px;
+    padding-bottom: 0px;
+    text-transform: none;
+  }
+  .section1-massage{
+
+    text-align: justify;
+  }
+
+  .spaengagement{
+    margin-top: 10px;
+  }
+  .textelsespa{
+    text-align: center !important;
+  }
+  .sm6-index {
+    margin-top: 1px;
+  }
+
+  #title-spas-responsive{
+    font-size: 38px !important;
+    text-align: left;
+    padding-bottom: 0px;
+    margin-top: -45px;
+    text-transform: none;
+
+  }
+  .textSpasResponsive{
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    color: black;
+  }
+}
 
