@@ -1,5 +1,5 @@
 class ClientMailer < ApplicationMailer
-  def confirm_order(order_id,client_id)
+  def confirm_order(order_id,client_id,admin_id=nil)
     @client = Client.find(client_id)
     @order = Order.find(order_id)
     @date = @order.prestation_date
@@ -28,3 +28,7 @@ class ClientMailer < ApplicationMailer
     mail(to: @client.email, subject: 'Votre compte client a bien été créé !')
   end
 end
+
+#unless admin_id.nil?
+#mail(to: "cocooningspa@outlook.com", subject: 'Votre commande Cocooning Spa !')
+#else
