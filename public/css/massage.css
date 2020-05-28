@@ -349,6 +349,12 @@
 		font-size: 15px;
 		letter-spacing: 1px;
 	}
+
+	.textSpasResponsive{
+		text-align: justify;
+		width: 250px !important;
+		display: block;
+	}
 	.secotionTitle h2 .span {
 		display: block;
 		letter-spacing: normal;
@@ -998,7 +1004,7 @@
 	and (max-device-width : 1024px) 
 	and (orientation : landscape) { 
 
-				.reviewinfocontact2 {
+		.reviewinfocontact2 {
 			width: 450px !important;
 			position: absolute;
 			left: -95px;
