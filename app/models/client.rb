@@ -1,5 +1,4 @@
 class Client < ApplicationRecord
-	after_update :send_email_to_self
   has_many :orders, dependent: :destroy # un client 1 ---- N  commande
 
 	validates :first_name, presence: true
@@ -14,9 +13,4 @@ class Client < ApplicationRecord
   # :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-	def send_email_to_self
-		unless self.confirmed_at.nil?
-			ClientMailer.welcome_client(self).deliver_now
-		end
-	end
 end
