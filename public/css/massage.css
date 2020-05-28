@@ -354,6 +354,9 @@
 		text-align: justify;
 		width: 250px !important;
 		display: block;
+		font-size: 20px;
+		letter-spacing: 1.2px;
+		font-weight: 500;
 	}
 	.secotionTitle h2 .span {
 		display: block;
