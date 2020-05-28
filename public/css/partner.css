@@ -99,6 +99,9 @@
 		font-style: normal;
 		margin-left: 25px;
 		color: white !important;
+		display: block;
+text-align: justify;
+max-width: 90%;
 	}
 
 	.pageTitleArea {
@@ -130,7 +133,7 @@
 	.policeBaniere{
 		text-align: left;
 		position: relative;
-		top: -120px;
+		top: -135px;
 	}
 	.p-partner{
 		margin-top: 3%;
@@ -1214,6 +1217,25 @@
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : landscape) { 
+	.policeBaniere {
+
+		text-align: left;
+		position: absolute;
+		top: -30px;
+		left: -30px;
+
+	}
+	.secotionTitle h2 .titlePartner {
+		font-family: Quicksand !important;
+		font-style: normal;
+		margin-left: 80px;
+		color: 
+		white !important;
+		position: relative;
+		left: -10px;
+		max-width: 1000px;
+		display: block;
+	}
 	.aboutSectionSN{
 		margin-top:-50px;
 	}
@@ -1291,6 +1313,24 @@ and (orientation : landscape) {
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : portrait) {
+
+	.policeBaniere span{
+		margin-left: 11% !important;
+	}
+	.secotionTitle h2 .titlePartner {
+
+		font-family: Quicksand !important;
+		font-style: normal;
+		margin-left: 30px;
+		color: 
+
+		white !important;
+		position: relative;
+		left: 7%;
+		max-width: 635px;
+		display: block;
+
+	}
 	.secotionQuisommes{
 		position: absolute;
 		z-index: 1000;
@@ -1364,7 +1404,7 @@ and (orientation : portrait) {
 		font-size: 24px !important;
 	}
 	#aproposnous{
-margin-top: -20px;
+		margin-top: -20px;
 	}
 }
 
