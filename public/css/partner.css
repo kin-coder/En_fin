@@ -109,6 +109,7 @@
 		display: block;
 		text-align: justify;
 		max-width: 90%;
+
 	}
 
 	.pageTitleArea {
@@ -484,7 +485,7 @@
 		font-family: Quicksand !important;
 		font-style: normal;
 		margin-left: 30px;
-		color: white !important;
+		color: #101010 !important;
 
 	}
 	.pageTitleArea {
@@ -872,7 +873,7 @@
 		font-family: Quicksand !important;
 		font-style: normal;
 		margin-left: 80px;
-		color: white !important;
+		color: #101010 !important;
 
 	}
 	.pageTitleArea {
