@@ -1,6 +1,13 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+			.policeBanierApropos{
+
+		text-align: left;
+		position: relative;
+		top: -80px;
+
+	}
 	.aboutInfo h2, h2{
 		font-size: 18px !important;
 	}
@@ -853,6 +860,13 @@
 		top: -130px;
 
 	}
+	.policeBanierApropos{
+
+		text-align: left;
+		position: relative;
+		top: -80px;
+
+	}
 
 	.secotionTitle h2 .titlePartner {
 		font-family: Quicksand !important;
@@ -1217,6 +1231,13 @@
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : landscape) { 
+	.policeBanierApropos{
+
+		text-align: left;
+		position: relative;
+		top: -80px;
+
+	}
 	.policeBaniere {
 
 		text-align: left;
@@ -1313,7 +1334,13 @@ and (orientation : landscape) {
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : portrait) {
+	.policeBanierApropos{
 
+		text-align: left;
+		position: relative;
+		top: -80px;
+
+	}
 	.policeBaniere span{
 		margin-left: 11% !important;
 	}
