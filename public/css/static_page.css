@@ -413,7 +413,9 @@ left: 250px;*/
 
   /* Extra small devices (phones, 600px and down) */
   @media only screen and (max-width: 600px) {
-
+.sm6-index-mobile {
+    margin-top: 72px;
+}
     .btn-block {
       display: block;
       width: 240px !important;
@@ -863,5 +865,34 @@ left: 250px;*/
  }
 
 }
+/*ipad landscape*/
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
 
+.sm6-index {
+}
+}
 
+/*ipad portrait*/
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) { 
+.sm6-index {
+    margin-top: 80px;
+}
+ }
+
+ /*ipad landscape*/
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
+
+.sm6-index {
+  margin-top: 1px;
+}
+}
