@@ -921,6 +921,13 @@ and (orientation : portrait) {
     padding-bottom: 0px;
     margin-top: -45px;
   }
+
+    .textSpasResponsive{
+font-size: 22px;
+font-weight: bold;
+letter-spacing: 2px;
+line-height: 1.2;
+  }
 }
 
 /*ipad landscape*/
@@ -938,6 +945,12 @@ and (orientation : landscape) {
     text-align: left;
     padding-bottom: 0px;
     margin-top: -45px;
+  }
+      .textSpasResponsive{
+font-size: 22px;
+font-weight: bold;
+letter-spacing: 2px;
+line-height: 1.2;
   }
 }
 
