@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
 	def after_sign_in_path_for(resource_or_scope)
 		session.fetch 'user_return_to', client_profil_path
 	end
+
+	def after_inactive_sign_up_path_for(resource)
+    cgu_path # <- Path you want to redirect the user to.
+  end
+
 end
