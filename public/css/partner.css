@@ -1,6 +1,20 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+	.aboutInfo h2, h2{
+		font-size: 18px !important;
+	}
+	#aproposnous{
+		position: absolute;
+
+		top: 9.8%;
+		left: 20%;
+		margin-bottom: -500px;
+	}
+	.secotionQuisommes{
+		margin-bottom: -100px;
+		padding: 0px;
+	}
 	#ok{
 		padding: 0px;
 	}
@@ -716,8 +730,11 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-		.infoQSNelse{
-margin-left: 20px;
+	.aboutInfo h2 {
+		font-size: 24px !important;
+	}
+	.infoQSNelse{
+		margin-left: 20px;
 
 	}
 
@@ -726,19 +743,19 @@ margin-left: 20px;
 		height: auto !important;
 
 	}
-			.secotionQuisommes{
-width : 768px;
-position: absolute;
-left: 18%;
+	.secotionQuisommes{
+		width : 768px;
+		position: absolute;
+		left: 18%;
 	}
-		.specialrow{
-margin-top: -60px;
+	.specialrow{
+		margin-top: -60px;
 	}
 	.infoQSNipad {
-    margin-left: 30px;
-    margin-top: -60px;
-}
-		.aboutSectionSN{
+		margin-left: 30px;
+		margin-top: -60px;
+	}
+	.aboutSectionSN{
 		margin-top:-38px;
 	}
 	/*dropdown zone action*/
@@ -1200,38 +1217,38 @@ and (orientation : landscape) {
 	.aboutSectionSN{
 		margin-top:-50px;
 	}
-		.secotionQuisommes{
-width : 768px;
-position: absolute;
-left: 7.5%;
+	.secotionQuisommes{
+		width : 768px;
+		position: absolute;
+		left: 7.5%;
 	}
 
 	.wrapper li{
-z-index: 1000;
+		z-index: 1000;
 	}
 
 	.specialrow{
-margin-top: -60px;
+		margin-top: -60px;
 	}
-		.infoQSNipad {
+	.infoQSNipad {
 		margin-top: -140px;
 		margin-left: 0px;
 
 	}
 	#notrebut{
-padding: 20px 0 30px 0;
-margin-top: -65px;
-margin-bottom: -20px;
-width: 768px;
+		padding: 20px 0 30px 0;
+		margin-top: -65px;
+		margin-bottom: -20px;
+		width: 768px;
 	}
-		#communauté{
-padding: 0;
-margin-top: -60px;
-margin-bottom: 20px;
-width: 990px;
-margin-left: -75px;
+	#communauté{
+		padding: 0;
+		margin-top: -60px;
+		margin-bottom: 20px;
+		width: 990px;
+		margin-left: -75px;
 	}
-		#contacteznous {
+	#contacteznous {
 		padding: 0;
 		margin-top: 0px;
 		margin-left: -10px;
@@ -1242,26 +1259,29 @@ margin-left: -75px;
 		margin-top: -50px;
 		margin-bottom: 20px;
 	}
-		#zoneaction {
+	#zoneaction {
 		padding: 0;
 		margin-top: -40px;
 		margin-left: -10px;
 	}
 
-		.infoQSNS-1{
+	.infoQSNS-1{
 		margin-top: 15px;
 		margin-left: 10px;
 	}
-		.insp .p-QSN{
+	.insp .p-QSN{
 		margin-left: 10px;
 	}
-		.div .infoQSN {
+	.div .infoQSN {
 		margin-left: 0px;
 		margin-top: 32px;
 	}
-		.infoQSNelse{
+	.infoQSNelse{
 		margin-left: 0px;
 		margin-top: 70px;
+	}
+	.aboutInfo h2 {
+		font-size: 24px !important;
 	}
 }
 
@@ -1340,12 +1360,15 @@ and (orientation : portrait) {
 		margin-left: 0px;
 		margin-top: -210px;
 	}
-}
-
-	.wrapper li{
-z-index: 1000;
+	.aboutInfo h2 {
+		font-size: 24px !important;
 	}
-
-		.aboutInfo h2 {
-    font-size: 24px !important;
+	#aproposnous{
+margin-top: -20px;
+	}
 }
+
+.wrapper li{
+	z-index: 1000;
+}
+
