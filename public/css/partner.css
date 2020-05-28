@@ -1,6 +1,16 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+		#cgu{
+position: absolute;
+left: -8%;
+top: -15%;
+	}
+	.cgucase{
+position: relative;
+top: -5px;
+left: 11%;
+	}
 			.policeBanierApropos{
 
 		text-align: left;
@@ -15,7 +25,7 @@
 		position: absolute;
 
 		top: 9.8%;
-		left: 20%;
+	
 		margin-bottom: -500px;
 	}
 	.secotionQuisommes{
@@ -741,6 +751,19 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+		#cgu{
+position: absolute;
+left: -8%;
+top: -15%;
+	}
+	.cgucase{
+position: relative;
+top: -20px;
+left: 11%;
+	}
+	#communauté{
+width: 700px;
+	}
 	.aboutInfo h2 {
 		font-size: 24px !important;
 	}
@@ -1109,6 +1132,13 @@
 		margin-bottom: 50px;
 		left: 36%;
 	}
+	.actionpartner{
+		position: relative;
+		width: 400px;
+		top: 40px;
+		margin-bottom: 50px;
+		left: 42% !important;
+	}
 	.actions .btn{
 		position: relative;
 		top: 10px;
@@ -1122,7 +1152,7 @@
 		border-radius: 50px !important;
 		padding: 10px !important;
 		position: relative !important;
-		left: 45% !important;
+		left: 0% !important;
 	}
 	.p-part{
 		width: 100%;
@@ -1232,6 +1262,16 @@
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : landscape) { 
+		#cgu{
+position: absolute;
+left: -8%;
+top: -15%;
+	}
+	.cgucase{
+position: relative;
+top: -20px;
+left: 11%;
+	}
 	.policeBanierApropos{
 
 		text-align: left;
@@ -1433,6 +1473,16 @@ and (orientation : portrait) {
 	}
 	#aproposnous{
 		margin-top: -20px;
+	}
+		#cgu{
+position: absolute;
+left: -8%;
+top: -15%;
+	}
+	.cgucase{
+position: relative;
+top: -10px;
+left: 11%;
 	}
 }
 
