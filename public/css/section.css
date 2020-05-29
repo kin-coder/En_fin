@@ -8,6 +8,10 @@ and (orientation : portrait) {
 	.section-spa1{
 		margin-top: -75px;
 	}
+	.textExtras{
+font-size: 14px;
+letter-spacing: 1.3px;
+	}
 }
 
 @media only screen and (min-width: 992px) {
