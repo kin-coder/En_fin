@@ -6,6 +6,9 @@ and (max-device-width : 600px) {
 		.section-spa1mobil{
 		margin-top: -150px;
 	}
+			.section-spa2{
+		margin-top: -150px;
+	}
 }
 
 @media only screen 
