@@ -1,7 +1,14 @@
+
+
 @media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
-and (orientation : portrait) { 
+and (orientation : portrait) {
+.lireBtn {
+    position: relative;
+    top: 20px;
+    left: 36.5% !important;
+    } 
 	.section-spa0{
 		margin-top: -55px;
 	}
@@ -16,6 +23,15 @@ font-size: 14px;
 letter-spacing: 1.3px;
 	}
 }
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+.lireBtn {
+margin-left:-5%;
+    } 
+}
+
 
 @media only screen and (min-width: 992px) {
 	.section-index1{
@@ -75,17 +91,6 @@ letter-spacing: 1.3px;
 	.section-legal{
 		margin-top: 60px !important;
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 
 
