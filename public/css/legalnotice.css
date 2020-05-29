@@ -1,27 +1,37 @@
 .noticeTitle{
-font-family: Quicksand, "Open Sans", "sans-serif" !important;
-margin-top: 30px;
-color: #8aec8a;
+	font-family: Quicksand, "Open Sans", "sans-serif" !important;
+	margin-top: 30px;
+	color: #8aec8a;
 }
 .noticeTitle1{
-font-family: Quicksand, "Open Sans", "sans-serif" !important;
-margin-top: 30px;
-margin-left: 11%;
-color: #8aec8a;
+	font-family: Quicksand, "Open Sans", "sans-serif" !important;
+	margin-top: 30px;
+	margin-left: 11%;
+	color: #8aec8a;
 }
 
 .textNotice{
-text-align: justify;
-letter-spacing: 1px;
-font-size: 17px !important;
+	text-align: justify;
+	letter-spacing: 1px;
+	font-size: 17px !important;
 }
 
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
+
+	.textNoticeIpad{
+		max-width: 700px;
+		width: 390px;
+	}
+}
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-.colReduit{
-width: 90%;
-margin-left: -25px;
-}
+	.colReduit{
+		width: 90%;
+		margin-left: -25px;
+	}
 }
 
 

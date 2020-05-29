@@ -2,12 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,600,700|Roboto:100,300,400,500,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,700&display=swap');
 
-<!-- media query -->
-
-
-
-
-
+/*<!-- media query -->*/
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
 	.secotionTitle h2 span {
@@ -905,8 +900,6 @@
 		left: -20px;
 		top: 0px;
 	}
-
-
 
 	@media only screen and (min-width: 1200px) {
 		.areserver {
