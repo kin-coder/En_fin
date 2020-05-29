@@ -104,6 +104,8 @@
 		letter-spacing: 1px;
 		font-size: 17px !important;
 		line-height: 1.8;
+		max-width: 95%;
+    		margin-left: 3%;
 	}
 	.phone{
 		background: white;
