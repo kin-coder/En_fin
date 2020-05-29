@@ -5,7 +5,9 @@ and (orientation : portrait) {
 	.section-spa0{
 		margin-top: -55px;
 	}
-
+	.section-spa1{
+		margin-top: -75px;
+	}
 }
 
 @media only screen and (min-width: 992px) {
