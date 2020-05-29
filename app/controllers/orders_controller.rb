@@ -390,6 +390,7 @@ class OrdersController < ApplicationController
         @order.praticien = session[:otherInfo]["praticien"]
         @order.save
       end
+      AdminMailer.new_order_relance_client(@order.id,current_client.id).deliver_now
       redirect_to summary_path
     end
   end
@@ -473,7 +474,6 @@ class OrdersController < ApplicationController
         end
       end
       ClientMailer.confirm_order(@order.id,current_client.id).deliver_now
-      AdminMailer.new_order_relance_client(@order.id,current_client.id).deliver_now
       redirect_to payedsuccess_path
       # =====================================================================
     else
