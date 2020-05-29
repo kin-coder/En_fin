@@ -8,6 +8,9 @@ and (orientation : portrait) {
 	.section-spa1{
 		margin-top: -75px;
 	}
+		.section-spa2{
+		margin-top: -150px;
+	}
 	.textExtras{
 font-size: 14px;
 letter-spacing: 1.3px;
