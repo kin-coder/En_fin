@@ -312,7 +312,7 @@ function valueToHtmlMassage(name,id,sub=null,time=null){
 		}
 		htmlTime += "</ul></div>"
 	}
-	return "<div class=\"row\"><div class=\"col-sm-12 sm-9-spa\"><div class=\"innerWrapper\"><div class=\"table-responsive table-responsiveInfos\"><table class=\"table tableInfos\"><thead><tr class=\"tr\"><th id=\"tableHead\">"+name+"</th></tr></thead></table></div></div></div></div><div class=\"row\"><div class=\"col-sm-10\"><h4><center class=\"titleMassage\">Type de massages</center></h4><div class=\"sm-6-massage\">"+ htmlSub +"</div></div><div class=\"col-sm-2 col-sm2Duree\"><h4>Durée(min)</h4>"+htmlTime+"</div></div>"
+	return "<div class=\"row\"><div class=\"col-sm-12 sm-9-spa\"><div class=\"innerWrapper\"><div class=\"table-responsive table-responsiveInfos\"><table class=\"table tableInfos\"><thead><tr class=\"tr\"><th id=\"tableHead\">"+name+"</th></tr></thead></table></div></div></div></div><div class=\"row\"><div class=\"col-sm-10\"><h4><center class=\"titleMassage\">Types de massage</center></h4><div class=\"sm-6-massage\">"+ htmlSub +"</div></div><div class=\"col-sm-2 col-sm2Duree\"><h4>Durée(min)</h4>"+htmlTime+"</div></div>"
 }
 
 

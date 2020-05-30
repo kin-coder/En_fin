@@ -1,24 +1,55 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+		#cgu{
+position: absolute;
+left: -8%;
+top: -15%;
+	}
+	.cgucase{
+position: relative;
+top: -5px;
+left: 11%;
+	}
+			.policeBanierApropos{
+
+		text-align: left;
+		position: relative;
+		top: -80px;
+
+	}
+	.aboutInfo h2, h2{
+		font-size: 18px !important;
+	}
+	#aproposnous{
+		position: absolute;
+
+		top: 9.8%;
+	
+		margin-bottom: -500px;
+	}
+	.secotionQuisommes{
+		margin-bottom: -100px;
+		padding: 0px;
+	}
 	#ok{
-padding: 0px;
+		padding: 0px;
 	}
 	.pluspartner{
-margin-bottom: 40px;
+		margin-bottom: 40px;
 	}
 	.bnt{
-margin-left: 0px !important;
+		margin-left: 0px !important;
 	}
 	.revolution{
 		position: relative;
 		top: -30px;
 	}
 	.infoQSN{
-margin-top: 30px;
+		margin-top: 30px;
 	}
 	.infoQSNS{
-margin-bottom: 30px !important;
+		margin-bottom: 30px !important;
 
 	}
 	.hida{
@@ -85,6 +116,10 @@ margin-bottom: 30px !important;
 		font-style: normal;
 		margin-left: 25px;
 		color: white !important;
+		display: block;
+		text-align: justify;
+		max-width: 90%;
+
 	}
 
 	.pageTitleArea {
@@ -116,7 +151,7 @@ margin-bottom: 30px !important;
 	.policeBaniere{
 		text-align: left;
 		position: relative;
-		top: -120px;
+		top: -135px;
 	}
 	.p-partner{
 		margin-top: 3%;
@@ -460,7 +495,7 @@ margin-bottom: 30px !important;
 		font-family: Quicksand !important;
 		font-style: normal;
 		margin-left: 30px;
-		color: white !important;
+		color: #101010 !important;
 
 	}
 	.pageTitleArea {
@@ -716,9 +751,46 @@ margin-bottom: 30px !important;
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+		#cgu{
+position: absolute;
+left: -8%;
+top: -15%;
+	}
+	.cgucase{
+position: relative;
+top: -20px;
+left: 11%;
+	}
+	#communauté{
+width: 700px;
+	}
+	.aboutInfo h2 {
+		font-size: 24px !important;
+	}
+	.infoQSNelse{
+		margin-left: 20px;
+
+	}
+
 	.aboutSectionQSN {
 		padding: 0 0 50px 0;
 		height: auto !important;
+
+	}
+	.secotionQuisommes{
+		width : 768px;
+		position: absolute;
+		left: 18%;
+	}
+	.specialrow{
+		margin-top: -60px;
+	}
+	.infoQSNipad {
+		margin-left: 30px;
+		margin-top: -60px;
+	}
+	.aboutSectionSN{
+		margin-top:-38px;
 	}
 	/*dropdown zone action*/
 	.hida{
@@ -809,6 +881,13 @@ margin-bottom: 30px !important;
 
 		text-align: left;
 		position: relative;
+		top: -130px;
+
+	}
+	.policeBanierApropos{
+
+		text-align: left;
+		position: relative;
 		top: -80px;
 
 	}
@@ -817,7 +896,7 @@ margin-bottom: 30px !important;
 		font-family: Quicksand !important;
 		font-style: normal;
 		margin-left: 80px;
-		color: white !important;
+		color: #101010 !important;
 
 	}
 	.pageTitleArea {
@@ -1053,6 +1132,13 @@ margin-bottom: 30px !important;
 		margin-bottom: 50px;
 		left: 36%;
 	}
+	.actionpartner{
+		position: relative;
+		width: 400px;
+		top: 40px;
+		margin-bottom: 50px;
+		left: 42% !important;
+	}
 	.actions .btn{
 		position: relative;
 		top: 10px;
@@ -1066,7 +1152,7 @@ margin-bottom: 30px !important;
 		border-radius: 50px !important;
 		padding: 10px !important;
 		position: relative !important;
-		left: 45% !important;
+		left: 0% !important;
 	}
 	.p-part{
 		width: 100%;
@@ -1169,3 +1255,238 @@ margin-bottom: 30px !important;
 .departements label{
 	font-size: 12px;
 }
+
+
+/*ipad landscape*/
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
+		#cgu{
+position: absolute;
+left: -8%;
+top: -15%;
+	}
+	.cgucase{
+position: relative;
+top: -20px;
+left: 11%;
+	}
+	.policeBanierApropos{
+
+		text-align: left;
+		position: relative;
+		top: -80px;
+
+	}
+	.policeBaniere {
+
+		text-align: left;
+		position: absolute;
+		top: -30px;
+		left: -30px;
+
+	}
+	.secotionTitle h2 .titlePartner {
+		font-family: Quicksand !important;
+		font-style: normal;
+		margin-left: 80px;
+		color: 
+		white !important;
+		position: relative;
+		left: -10px;
+		max-width: 1000px;
+		display: block;
+	}
+	.aboutSectionSN{
+		margin-top:-50px;
+	}
+	.secotionQuisommes{
+		width : 768px;
+		position: absolute;
+		left: 7.5%;
+	}
+
+	.wrapper li{
+		z-index: 1000;
+	}
+
+	.specialrow{
+		margin-top: -60px;
+	}
+	.infoQSNipad {
+		margin-top: -140px;
+		margin-left: 0px;
+
+	}
+	#notrebut{
+		padding: 20px 0 30px 0;
+		margin-top: -65px;
+		margin-bottom: -20px;
+		width: 768px;
+	}
+	#communauté{
+		padding: 0;
+		margin-top: -60px;
+		margin-bottom: 20px;
+		width: 990px;
+		margin-left: -75px;
+	}
+	#contacteznous {
+		padding: 0;
+		margin-top: 0px;
+		margin-left: -10px;
+		margin-bottom: -40px;
+	}
+	#rejoigneznous{
+		padding: 0;
+		margin-top: -50px;
+		margin-bottom: 20px;
+	}
+	#zoneaction {
+		padding: 0;
+		margin-top: -40px;
+		margin-left: -10px;
+	}
+
+	.infoQSNS-1{
+		margin-top: 15px;
+		margin-left: 10px;
+	}
+	.insp .p-QSN{
+		margin-left: 10px;
+	}
+	.div .infoQSN {
+		margin-left: 0px;
+		margin-top: 32px;
+	}
+	.infoQSNelse{
+		margin-left: 0px;
+		margin-top: 70px;
+	}
+	.aboutInfo h2 {
+		font-size: 24px !important;
+	}
+}
+
+/*ipad portrait*/
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+	.policeBanierApropos{
+
+		text-align: left;
+		position: relative;
+		top: -80px;
+
+	}
+	.policeBaniere span{
+		margin-left: 11% !important;
+	}
+	.secotionTitle h2 .titlePartner {
+
+		font-family: Quicksand !important;
+		font-style: normal;
+		margin-left: 30px;
+		color: 
+
+		white !important;
+		position: relative;
+		left: 7%;
+		max-width: 635px;
+		display: block;
+
+	}
+	.secotionQuisommes{
+		position: absolute;
+		z-index: 1000;
+		left: 15%;
+		margin:0;
+	}
+	.aboutSectionSN{
+		margin-top:-130px;
+	}
+	#notrebut{
+		padding: 20px 0 30px 0;
+		margin-top: -100px;
+		margin-bottom: -100px;
+		position: absolute;
+		z-index: 1000;
+		left: 15%;
+	}
+
+	#communauté{
+		padding: 0;
+		margin-top: -90px;
+		margin-bottom: 20px;
+		position: absolute;
+		z-index: 100;
+		width: 700px;
+	}
+
+	#rejoigneznous{
+		padding: 0;
+		margin-top: -90px;
+		margin-bottom: 20px;
+	}
+
+	#zoneaction {
+		padding: 0;
+		margin-top: -40px;
+		margin-left: -10px;
+	}
+	#contacteznous {
+		padding: 0;
+		margin-top: 0px;
+		margin-left: -10px;
+		margin-bottom: -40px;
+	}
+	.aboutInfo .infoQSNS{
+		margin-top: 8px;
+	}
+	.infoQSNipad {
+		margin-top: -50px;
+		margin-left: 0px;
+
+	}
+	.div {
+		margin-top: -330px;
+	}
+	.div .infoQSN {
+		margin-left: 0px;
+	}
+	.infoQSNS-1{
+		margin-top: 20px;
+		margin-left: 10px;
+	}
+	.insp .p-QSN{
+		margin-left: 10px;
+	}
+	.infoQSNelse{
+		margin-left: 0px;
+		margin-top: -210px;
+	}
+	.aboutInfo h2 {
+		font-size: 24px !important;
+	}
+	#aproposnous{
+		margin-top: -20px;
+	}
+		#cgu{
+position: absolute;
+left: -8%;
+top: -15%;
+	}
+	.cgucase{
+position: relative;
+top: -10px;
+left: 11%;
+	}
+}
+
+.wrapper li{
+	z-index: 1000;
+}
+

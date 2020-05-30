@@ -14,6 +14,10 @@
 
 	/* Extra small devices (phones, 600px and down) */
 	@media only screen and (min-width: 992px) {
+
+		.secotionTitle h2 span {
+			font-size: 40px !important;
+		}
 		#dropZone {
 
 			width: 100px !important;
@@ -66,7 +70,7 @@
 		}
 
 		.ed-datepicker{
-			width: 350px !important;
+			width: 98%!important;
 		}
 
 	}
@@ -117,6 +121,9 @@
 
 
 		}
+	}
+	.suivez{
+		margin-left: 8%;
 	}
 </style>
 <body onload="scrollWin();">
@@ -189,17 +196,17 @@
 			</center>
 			<center class="col-sm-4 pluspartner">
 				<div class="ccm-index">
-					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/3.png" alt="Image Partner"></i><br></span>Être diplôme ou formé dans votre domaine d’activité</b>
+					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/3.png" alt="Image Partner"></i><br></span>Être diplômé ou formé dans votre domaine d’activité</b>
 				</div>
 			</center>
 			<center class="col-sm-4 pluspartner">
 				<div class="ccm-index">
-					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/4.png" alt="Image Partner"></i><br></span>Avoir la matériel et équipement nécessaire pour effectuer les prestations de votre domaine d’activité</b>
+					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/4.png" alt="Image Partner"></i><br></span>Avoir le matériel et équipement nécessaire pour effectuer les prestations de votre domaine d’activité</b>
 				</div>
 			</center>
 			<center class="col-sm-4">
 				<div class="ccm-index">
-					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/5.png" alt="Image Partner"></i><br></span>Être prêt a vous déplacer dans des zones prédéfinies</b>
+					<b><span><i class="fa fa-cl" aria-hidden="true" id="ok"><img src="img/home/5.png" alt="Image Partner"></i><br></span>Être prêt à vous déplacer dans des zones prédéfinies</b>
 				</div>
 			</center>
 		</div>
@@ -361,12 +368,12 @@
 
 			</div>
 			<div class="col-sm-10">
-				<div class="actions">
+				<div class="actions actionpartner">
 
 
-
-					<input id="cgu" type="checkbox" required> <label for="cgu"> J'accepte les <a href="<%=cgu_path%>">conditions générales d'utilisation</a></label>
-
+					<span class="cgucase">
+						<input id="cgu" type="checkbox" required> <label for="cgu" class="label-cgu"> J'accepte les <a href="<%=cgu_path%>">conditions générales d'utilisation</a></label>
+					</span>
 					<%= submit_tag("Je m'inscris", class:"btn btn-primary btn-block")%>	
 
 				</div>
@@ -436,16 +443,16 @@
 
 						<div class="holdingInfo patternbg">
 							<div class="contactTitle">
-								<h3><center>Suivez-nous</center></h3>
+								<h3><center class="suivez">Suivez-nous</center></h3>
 							</div>
 							<ul>
-								<a href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa icon" aria-hidden="true">
+								<a target="_blank" href="https://www.facebook.com/cocooningspaev/" class="btn"><li><i class="fa icon" aria-hidden="true">
 									<img src="/img/icon-reseau-social/facebook.png" alt="">
 								</i> Cocooning Spa officiel </li></a>
-								<a href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa icon" aria-hidden="true"> 
+								<a target="_blank" href="https://www.instagram.com/cocooningspaev/?hl=fr" class="btn"><li><i class="fa icon" aria-hidden="true"> 
 									<img src="/img/icon-reseau-social/instagram.png" alt="">
 								</i> Cocooning Spa </li></a>
-								<a href="https://www.snapchat.com/add/cocooningspaev" class="btn"> <li><i class="fa icon" aria-hidden="true">
+								<a target="_blank" href="https://www.snapchat.com/add/cocooningspaev" class="btn"> <li><i class="fa icon" aria-hidden="true">
 									<img src="/img/icon-reseau-social/snapchat.png" alt="">
 								</i> Cocooning Spa snapchat</li> </a>
 							</ul>

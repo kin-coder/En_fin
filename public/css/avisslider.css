@@ -96,7 +96,19 @@ a.control_next {
 }
 .comments .commentataire{
   color: #48D1CC;
+}
 
+.commentsMassage{
+  position: absolute;
+  top: 80px;
+  left: 50px;
+  font-size: 17px;
+  letter-spacing: 2px;
+  width: 100%;
+  max-width: 50%;
+}
+.commentsMassage .commentataire{
+  color: #48D1CC;
 }
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -123,6 +135,20 @@ a.control_next {
   color: #48D1CC;
 
 }
+
+.commentsMassage{
+  position: absolute;
+  top: 80px;
+  left: 100px;
+  font-size: 17px;
+  letter-spacing: 2px;
+  width: 100%;
+  max-width: 50%;
+}
+.commentsMassage .commentataire{
+  color: #48D1CC;
+
+}
 }
 
 
@@ -146,12 +172,24 @@ a.control_next {
   width: 100%;
   max-width: 80%;
 }
-
+.commentsMassage{
+  position: absolute;
+  top: 60px;
+  left: 100px;
+  font-size: 17px;
+  letter-spacing: 2px;
+  width: 100%;
+  max-width: 80%;
+}
 .comIntru{
  position: absolute;
   top: 70px !important;
 }
 .comments .commentataire{
+  color: #48D1CC;
+
+}
+.commentsMassage .commentataire{
   color: #48D1CC;
 
 }
@@ -170,14 +208,90 @@ a.control_next {
 }
 .comments{
 position: absolute;
-top: 60px;
+top: 10%;
 left: 30px;
 font-size: 15px;
 letter-spacing: 2px;
 width: 100%;
 max-width: 28%;
 }
+
+.commentsMassage{
+position: absolute;
+top: 10%;
+left: 37px;
+font-size: 15px;
+letter-spacing: 2px;
+width: 100%;
+max-width: 26%;
+text-align: justify;
+}
+.commentselse{
+position: absolute;
+top: 30% !important;
+}
 .comments .commentataire{
   color: #48D1CC;
+}
+.commentsMassage .commentataire{
+  color: #48D1CC;
+  margin-left: 40%;
+}
+}
+
+/*ipad landscape*/
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
+.commentsMassage {
+
+    position: absolute;
+    top: 10%;
+    left: 9%;
+    font-size: 17px;
+    letter-spacing: 2px;
+    width: 100%;
+    max-width: 75%;
 
 }
+.commentselse{
+position: absolute;
+top: 30% !important;
+}
+.comments .commentataire{
+  color: #48D1CC;
+}
+.commentsMassage .commentataire{
+  color: #48D1CC;
+  margin-left: 0%;
+}
+}
+
+/*ipad portrait*/
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+.commentsMassage{
+position: absolute;
+top: 10%;
+left: 115px;
+font-size: 17px;
+letter-spacing: 2px;
+width: 100%;
+max-width: 50%;
+}
+.commentselse{
+position: absolute;
+top: 30% !important;
+}
+.comments .commentataire{
+  color: #48D1CC;
+}
+.commentsMassage .commentataire{
+  color: #48D1CC;
+  margin-left: 0%;
+}
+  }

@@ -1,266 +1,278 @@
 
 .contactTitle{
-background: white !important;
-text-transform: none !important;
+	background: white !important;
+	text-transform: none !important;
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-.expertSection {
-    padding: 0 0 10px 0;
-}
+	.div-contact{
+		text-align: justify;
+		max-width: 90%;
 
-	.phone{
-	background: white;
-	width: 100%;
-	margin-top: 50px;
-}
-.phonetext{
-	position: relative;
-	top: -45px;
-	left: 75px;
-}
-.fatext{
-	position:relative;
-left: 5%;
-	top: 10px;
-	width: 200px;
-}
-.zone{
-	position: relative;
-	top: -36px;
-	left: 100px;
-	width: 200px;
-}
-.zone1{
-	position: relative;
-	top: 0px;
-	left: 5px;
-	width: 100%;
-}
+		margin-left: 5%;
+	}
+	.expertSection {
+		padding: 0 0 10px 0;
+	}
 
-.firstlabel{
-	margin-top: 14px;
-}
+	.phone {
+		background: 
+		white;
+		width: 108.5%;
+		margin-top: 50px;
+		margin-left: -4.5%;
+		border-radius: 10px;
+	}
+	.phonetext{
+		position: relative;
+		top: -45px;
+		left: 75px;
+	}
+	.fatext{
+		position:relative;
+		left: 5%;
+		top: 10px;
+		width: 200px;
+	}
+	.zone{
+		position: relative;
+		top: -36px;
+		left: 100px;
+		width: 200px;
+	}
+	.zone1{
+		position: relative;
+		top: 0px;
+		left: 5px;
+		width: 100%;
+	}
 
-.textearea{
-	width:80%;
-	margin-left:25px;
-}
-.texteareabutton{
-	position: relative;
-	left: 120px;
-	bottom: 10px;
-	background: #ec5598;
-	padding: 8px;
-	color:white;
-	font-weight: bold; 
+	.firstlabel{
+		margin-top: 14px;
+	}
 
-}
+	.textearea{
+		width:80%;
+		margin-left:25px;
+	}
+	.texteareabutton{
+		position: relative;
+		left: 120px;
+		bottom: 10px;
+		background: #ec5598;
+		padding: 8px;
+		color:white;
+		font-weight: bold; 
 
-.secotionTitle h2 span {
-    display: block;
-    letter-spacing: normal;
-    color: #ec5598;
-    font-family: 'Quicksand', 'Open Sans';
-    font-size: 30px !important;
-    line-height: 15px;
-    text-transform: none;
-    font-weight: bold;
-    padding-bottom: 25px;
-    padding-top: 25px;
-    margin-left: 8%;
-}
+	}
 
-.p-contact{
-margin-top: 3%;
-margin-left: 3%;
-margin-right: 3%;
-width: 94%;
-max-width: 100%;
-text-align: justify;
-}
-.police_massage{
-text-align: left;
-}
+	.secotionTitle h2 span {
+		display: block;
+		letter-spacing: normal;
+		color: #ec5598;
+		font-family: 'Quicksand', 'Open Sans';
+		font-size: 30px !important;
+		line-height: 15px;
+		text-transform: none;
+		font-weight: bold;
+		padding-bottom: 25px;
+		padding-top: 25px;
+		margin-left: 8%;
+	}
+
+	.p-contact{
+		padding-top: 11%;
+		margin-left: 3%;
+		margin-right: 3%;
+		width: 94%;
+		max-width: 100%;
+		text-align: justify;
+	}
+	.police_massage{
+		text-align: left;
+	}
 
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
 	.expertSection {
-    padding: 0 0 10px 0;
-}
-	.div-contact{
-padding-top: 25px;
-letter-spacing: 1px;
-font-size: 17px !important;
-line-height: 1.8;
+		padding: 0 0 10px 0;
 	}
-.phone{
-	background: white;
-	width: 100%;
-	margin-top: 50px;
-	margin-bottom: 100px;
-}
-.phonetext{
-	position: relative;
-	top: -45px;
-	left: 100px;
-	letter-spacing: 3px;
-}
-.fatext{
-	position:relative;
-	left: 33%;
-	top: 10px;
-	width: 300px;
-}
-.zone{
-	position: relative;
-	top: -36px;
-	left: 100px;
-	width: 200px;
-}
-.zone1{
-	position: relative;
-	top: -36px;
-	left: 150px;
-}
+	.div-contact{
+		padding-top: 25px;
+		letter-spacing: 1px;
+		font-size: 17px !important;
+		line-height: 1.8;
+		max-width: 95%;
+    		margin-left: 3%;
+	}
+	.phone{
+		background: white;
+		width: 100%;
+		margin-top: 50px;
+		margin-bottom: 100px;
+		border-radius: 10px;
+	}
+	.phonetext{
+		position: relative;
+		top: -45px;
+		left: 100px;
+		letter-spacing: 3px;
+	}
+	.fatext{
+		position:relative;
+		left: 33%;
+		top: 10px;
+		width: 300px;
+	}
+	.zone{
+		position: relative;
+		top: -36px;
+		left: 100px;
+		width: 200px;
+	}
+	.zone1{
+		position: relative;
+		top: -36px;
+		left: 150px;
+	}
 
-.firstlabel{
-	margin-top: 30px;
-}
+	.firstlabel{
+		margin-top: 30px;
+	}
 
-.textearea{
-	width:80%;
-}
-.texteareabutton{
-	position: relative;
-	left: 20px;
-	top: 100px;
-	background: #ec5598;
-	padding: 8px;
-	color:white;
-	font-weight: bold; 
-}
+	.textearea{
+		width:80%;
+	}
+	.texteareabutton{
+		position: relative;
+		left: 20px;
+		top: 100px;
+		background: #ec5598;
+		padding: 8px;
+		color:white;
+		font-weight: bold; 
+	}
 
 
-.secotionTitle h2 span {
-    display: block;
-    letter-spacing: normal;
-    color: #ec5598;
-    font-family: 'Quicksand', 'Open Sans' !important;
- font-size: 50px !important;
-line-height: 25px;
-    text-transform: none;
-    font-weight: bold;
-    padding-bottom: 25px;
-    padding-top: 25px;
-    margin-left: 8%;
-}
+	.secotionTitle h2 span {
+		display: block;
+		letter-spacing: normal;
+		color: #ec5598;
+		font-family: 'Quicksand', 'Open Sans' !important;
+		font-size: 50px !important;
+		line-height: 25px;
+		text-transform: none;
+		font-weight: bold;
+		padding-bottom: 25px;
+		padding-top: 25px;
+		margin-left: 8%;
+	}
 
-.p-contact{
-margin-top: 3%;
-margin-left: 3%;
-margin-right: 3%;
-width: 94%;
-max-width: 100%;
-text-align: justify;
-}
-.police_massage{
-text-align: center !important;
-}
+	.p-contact{
+		margin-top: 3%;
+		margin-left: 3%;
+		margin-right: 3%;
+		width: 94%;
+		max-width: 100%;
+		text-align: justify;
+	}
+	.police_massage{
+		text-align: center !important;
+	}
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
 	#contact-submit-btn {
-    width: 172px;
-    text-align: center;
-    position: absolute;
-    left: 79%;
-    top: 38px;
-    border-radius: 50px;
-}
+		width: 172px;
+		text-align: center;
+		position: absolute;
+		left: 40%;
+		top: 38px;
+		border-radius: 50px;
+	}
 
-.secotionTitle {
+	.secotionTitle {
 
-    padding: 0px 0 0px 0;
+		padding: 0px 0 0px 0;
 
-}
-.phone{
-	background: white;
-	width: 100%;
-	margin-top: 50px;
-	border-radius: 10px;
-}
-.phonetext{
-	position: relative;
-	top: -45px;
-	left: 75px;
-	letter-spacing: 3px;
-}
-.fatext{
-	position:relative;
-	left: 40%;
-	top: 10px;
-	width: 300px;
-}
-.zonePartner{
-	position: relative;
-	top: -36px;
-	left: 100px;
-	width: 400px;
-}
-.zone1{
-	position: relative;
-	top: -36px;
-	left: 150px;
-}
+	}
+	.phone{
+		background: white;
+		width: 100%;
+		margin-top: 50px;
+		border-radius: 10px;
+	}
+	.phonetext{
+		position: relative;
+		top: -45px;
+		left: 75px;
+		letter-spacing: 3px;
+	}
+	.fatext{
+		position:relative;
+		left: 40%;
+		top: 10px;
+		width: 300px;
+	}
+	.zonePartner{
+		position: relative;
+		top: -36px;
+		left: 100px;
+		width: 400px;
+	}
+	.zone1{
+		position: relative;
+		top: -36px;
+		left: 150px;
+	}
 
-.firstlabel{
-	margin-top: 30px;
-}
+	.firstlabel{
+		margin-top: 30px;
+	}
 
-.textearea{
-	width:90%;
-}
-.texteareabutton{
-	position: relative;
-	left: 40px;
-	top: 45px;
-	background: #ec5598;
-	padding: 8px;
-	color:white;
-	font-weight: bold; 
-	border-radius: 10px
-}
-.secotionTitle h2 span {
-    display: block;
-    letter-spacing: normal;
-    color: #ec5598;
-    font-family: 'Quicksand', 'Open Sans';
-    font-size: 60px !important;
-    line-height: 42px;
-    text-transform: none;
-    font-weight: bold;
-    padding-bottom: 25px;
-    padding-top: 25px;
-    margin-left: 8%;
-}
+	.textearea{
+		width:90%;
+	}
+	.texteareabutton{
+		position: relative;
+		left: 40px;
+		top: 45px;
+		background: #ec5598;
+		padding: 8px;
+		color:white;
+		font-weight: bold; 
+		border-radius: 10px
+	}
+	.secotionTitle h2 span {
+		display: block;
+		letter-spacing: normal;
+		color: #ec5598;
+		font-family: 'Quicksand', 'Open Sans';
+		font-size: 60px !important;
+		line-height: 42px;
+		text-transform: none;
+		font-weight: bold;
+		padding-bottom: 25px;
+		padding-top: 25px;
+		margin-left: 8%;
+	}
 
-.p-contact{
-margin-top: 3%;
-margin-left: 3%;
-margin-right: 3%;
-width: 94%;
-max-width: 100%;
-text-align: center;
-letter-spacing: 1px;
-font-size: 17px !important;
-}
-.police_massage{
-text-align: left;
-}
+	.p-contact{
+		margin-top: 3%;
+		margin-left: 3%;
+		margin-right: 3%;
+		width: 94%;
+		max-width: 100%;
+		text-align: center;
+		letter-spacing: 1px;
+		font-size: 17px !important;
+	}
+	.police_massage{
+		text-align: left;
+	}
 }
 
 

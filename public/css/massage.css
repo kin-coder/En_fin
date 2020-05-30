@@ -2,12 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,600,700|Roboto:100,300,400,500,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,700&display=swap');
 
-<!-- media query -->
-
-
-
-
-
+/*<!-- media query -->*/
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
 	.secotionTitle h2 span {
@@ -348,6 +343,15 @@
 		top: -30px;
 		font-size: 15px;
 		letter-spacing: 1px;
+	}
+
+	.textSpasResponsive{
+		text-align: justify;
+		width: 250px !important;
+		display: block;
+		font-size: 20px;
+		letter-spacing: 1.2px;
+		font-weight: 500;
 	}
 	.secotionTitle h2 .span {
 		display: block;
@@ -897,8 +901,6 @@
 		top: 0px;
 	}
 
-
-
 	@media only screen and (min-width: 1200px) {
 		.areserver {
 			position: fixed;
@@ -998,7 +1000,7 @@
 	and (max-device-width : 1024px) 
 	and (orientation : landscape) { 
 
-				.reviewinfocontact2 {
+		.reviewinfocontact2 {
 			width: 450px !important;
 			position: absolute;
 			left: -95px;

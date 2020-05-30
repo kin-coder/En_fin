@@ -2,11 +2,10 @@ Rails.application.routes.draw do
   get 'notification/index'
   get 'notification/show'
   # Lien pour l'authentification du client, Logign, ...
-  devise_for :clients, path: 'clients'
+  devise_for :clients, controllers: { registrations: "registrations",confirmations: 'confirmations' }
   # page pour le profil du client
   get '/client-profil', to: 'clients#profil', as: "client_profil"
   get '/client-profil/info', to: 'clients#personalInfo', as: "client_personal_info"
-  
   get '/client/order/:id', to: 'clients#order', as: "client_order"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
   # Lien pour authentification admin

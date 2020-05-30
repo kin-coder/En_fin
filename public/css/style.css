@@ -4,6 +4,10 @@
   color: #ec5598 !important;
   margin-top: 30px;
 }
+#promo-code{
+  margin-top: -5%;
+  margin-left: 7%;
+}
 .inscript{
   margin-left: 100px;
 }
@@ -117,10 +121,10 @@
     padding-top: 5px;
     }}
     @media only screen and (max-width: 600px) {
-        .text-index-ok {
+      .text-index-ok {
 
-    margin-left: -6.5% !important;
-}
+        margin-left: -6.5% !important;
+      }
 
       #flechindex{
         position: absolute;

@@ -1,73 +1,107 @@
+@media only screen 
+and (max-device-width : 600px) {
+	.section-spa0,.section-spaccmmobil{
+		margin-top: -55px;
+	}
+		.section-spa1mobil{
+		margin-top: -150px;
+	}
+			.section-spa2{
+		margin-top: -150px;
+	}
+}
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+.lireBtn {
+    position: relative;
+    top: 20px;
+    left: 36.5% !important;
+    } 
+	.section-spa0{
+		margin-top: -55px;
+	}
+	.section-spa1{
+		margin-top: -75px;
+	}
+		.section-spa2{
+		margin-top: -150px;
+	}
+	.textExtras{
+font-size: 14px;
+letter-spacing: 1.3px;
+	}
+}
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+.lireBtn {
+margin-left:-5%;
+    } 
+}
+
 
 @media only screen and (min-width: 992px) {
 	.section-index1{
 		margin-top: -30px !important;
 	}
 
-		.section-index2{
+	.section-index2{
 		margin-top: 0px !important;
 	}
-			.section-index3{
+	.section-index3{
 		margin-top: -15px !important;
 	}
 
-.section-massage1{
-margin-top: 0px !important;
-}
-.section-massage2{
-margin-top: -60px !important;
-}
-.section-massage3{
-margin-top: -20px !important;
-}
+	.section-massage1{
+		margin-top: 0px !important;
+	}
+	.section-massage2{
+		margin-top: -60px !important;
+	}
+	.section-massage3{
+		margin-top: -20px !important;
+	}
 
-.section-spa1{
-margin-top: -85px !important;
-}
-.section-spa2{
-margin-top: -150px !important;
-margin-bottom: 20px;
-}
-.section-spa3{
-margin-top: -15px !important;
-}
-.section-spa4{
-margin-top: 8px !important;
-}
+	.section-spa1{
+		margin-top: -85px !important;
+	}
+	.section-spa2{
+		margin-top: -150px !important;
+		margin-bottom: 20px;
+	}
+	.section-spa3{
+		margin-top: -15px !important;
+	}
+	.section-spa4{
+		margin-top: 8px !important;
+	}
 
-.section-propos1{
-margin-top: -130px !important;
-}
-.section-propos2{
-margin-top: -100px !important;
-}
-.section-propos3{
-margin-top: -50px !important;
-margin-bottom: -30px;
-}
+	.section-propos1{
+		margin-top: -130px !important;
+	}
+	.section-propos2{
+		margin-top: -100px !important;
+	}
+	.section-propos3{
+		margin-top: -50px !important;
+		margin-bottom: -30px;
+	}
 
-.section-partner1{
-margin-top: -60px !important;
-}
+	.section-partner1{
+		margin-top: -30px !important;
+	}
 
-.section-partner2{
-margin-top: -50px !important;
-}
+	.section-partner2{
+		margin-top: -20px !important;
+	}
 
-.section-legal{
-margin-top: 60px !important;
-}
-
-
-
-
-
-
-
-
-
-
-
+	.section-legal{
+		margin-top: 60px !important;
+	}
 
 
 
