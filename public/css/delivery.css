@@ -178,7 +178,7 @@
 	.messages{
 		background:white;
 		position: relative;
-		top: -225px;
+		top: -250px;
 		left: 170px;
 	}
 
@@ -199,24 +199,33 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-
+	.btn-resa {
+		position: relative;
+		left: 33% !important;
+	}
 	.small_label{
 		position: relative;
-		left: -15px;
+		left: 0px;
 		top: 12px;
 		font-size: 1em;
 		font-weight: 40;
 		letter-spacing: 1.2px;
 	}
 	.input{
-		position: absolute;
-		left: 170px;
+		position: relative;
+		left: 0%;
 		font-size: 1.2em;
 		font-weight: 40;
 		text-align: justify;
 		letter-spacing: 1.2px;
-		width: 50%;
+		width: 100%;
+		height: 35px;
+		top: 22px;
+		border: solid 1px #bcbcbc;
+		border-radius: 5px;
+		padding-left: 5px;
 	}
+
 
 	.pays_label{
 		position: relative;
@@ -239,8 +248,8 @@
 	.messages{
 		background:white;
 		position: relative;
-		top: 15px;
-		left: -10px;
+		top: 0%;
+		left: -5%;
 	}
 	.paysList:checked + label,
 	.paysList:not(:checked) + label
@@ -256,15 +265,6 @@
 	}
 
 }
-
-
-
-
-
-
-
-
-
 
 .livraison{
 	margin-top: 75px;
@@ -363,7 +363,7 @@ and (orientation : landscape) {
 
 	.small_label {
 		position: relative;
-		left: 80px;
+		left: 45px;
 
 	}
 
@@ -379,4 +379,8 @@ and (orientation : landscape) {
 
 		margin-left: -15px;
 	}
+}
+
+.small_textarea{
+	padding: 10px;
 }
