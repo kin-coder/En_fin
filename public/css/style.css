@@ -3631,9 +3631,19 @@ textarea.form-control {
 
 @media (min-width: 320px) {
   .offerContent {
-    width: 254px;
-    height: 254px;
-    margin: 0 auto 30px auto;
+    /* width: 254px;
+    height: 254px; */
+    /*##################### MoDIF ITOKIANA ######################### */
+    width: 175px;
+    height: 175px;
+    margin: 0 auto 90px auto;
+    /* ############################################################ */
+    /* margin: 0 auto 30px auto; */
+  }
+
+  /* ########################################## MODIF ITOKIANA ###################################### */
+  .offerContent .offerTitle h4 {
+    font-size: 13px;
   }
 }
 
@@ -3943,6 +3953,7 @@ textarea.form-control {
 
 .reviewInner {
   position: relative;
+  padding: 0
 }
 
 .reviewImage {
@@ -3953,6 +3964,45 @@ textarea.form-control {
   border: 5px solid rgba(255, 255, 255, 0.7);
 }
 
+/******** MODIF ITOKIANA **************/
+#massage-order {
+  margin-top: 50px!important;
+}
+/* @media (min-width: 376px) and (max-width: 768px) {
+  .reviewinfocontact2 {
+    position: relative;
+    left: -65px
+  }
+  .contactSectionEngagement{
+    padding-top: 65px!important;
+  }
+
+  .secotionTitle h2 .spa {
+    font-size: 24px!important;
+    padding: 0;
+  }
+
+  .textMassages{
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: bold;
+  }
+
+  .contactSectionEngagementMassage {
+    padding-top: 60px !important;
+    padding-left: 25px!important;
+    padding-right: 25px!important;
+  }
+
+  .text-p-ccmspa{
+    text-align: justify;
+  }
+
+  .ccm-spa{
+    padding: 25px;
+  }
+} */
+/* -------------------------------- */
 @media (min-width: 768px) {
   .reviewImage {
     left: -125px;

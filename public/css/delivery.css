@@ -8,9 +8,10 @@
 @media only screen and (max-width: 600px) {
 
 	.small_label{
-		position: relative;
+		/* MODIF ITOKIANA */
+		/* position: relative;
 		left: -15px;
-		top: 12px;
+		top: 12px; */
 		font-size: 1em;
 		font-weight: 40;
 		letter-spacing: 1.2px;
@@ -201,16 +202,21 @@
 @media only screen and (max-width: 600px) {
 
 	.small_label{
-		position: relative;
+		/* MODIF ITOKIANA */
+		/* position: relative;
 		left: -15px;
-		top: 12px;
+		top: 12px; */
 		font-size: 1em;
 		font-weight: 40;
 		letter-spacing: 1.2px;
 	}
 	.input{
-		position: absolute;
-		left: 170px;
+		/* MODIF ITOKIANA */
+		/* position: absolute;
+		left: 170px; */
+		display: block;
+		width: 100%!important;
+		/* END MODIF ITOKIANA */
 		font-size: 1.2em;
 		font-weight: 40;
 		text-align: justify;

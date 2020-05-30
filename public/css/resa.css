@@ -1530,6 +1530,9 @@ max-width: 100px;
       margin-left: 84px;
       list-style-type: inherit;
       color: #685f5f !important;
+      /* MODIF ITOKIANA */
+      text-align: left;
+      /* END MODIF ITOKIANA */
 
     }
     .ambianceresponsive{
@@ -1604,7 +1607,7 @@ max-width: 100px;
     }
     .li-msgType , .li-msgPrix, .li-msgAcompte{
       position: relative;
-      margin-left: 60px;
+      margin-left: 38px;
       list-style-type: inherit;
       color: #685f5f !important;
       max-width: 100%;
