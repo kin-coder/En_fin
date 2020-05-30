@@ -676,7 +676,7 @@
 		letter-spacing: 1px;
 	}
 	.productInfoindex{
-		border-radius: 8px;
+		border-radius: 10px;
 		border: 3px white solid;
 		z-index: 100;
 		width: 96%;
@@ -883,7 +883,7 @@
 	.elsebg{
 		background-color: white;
 		padding: 50px;
-		border-radius:8px;
+		border-radius:10px;
 	}
 
 	.btn-teme{
@@ -999,7 +999,6 @@
 	and (min-device-width : 768px) 
 	and (max-device-width : 1024px) 
 	and (orientation : landscape) { 
-
 		.reviewinfocontact2 {
 			width: 450px !important;
 			position: absolute;
@@ -1173,4 +1172,7 @@
 
 		}
 
+	}
+	.elsebgMassage {
+		margin-top: 5%;
 	}

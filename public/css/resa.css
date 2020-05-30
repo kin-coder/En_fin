@@ -91,6 +91,31 @@
       }
 
     }
+    @media only screen and (max-width: 321px) {
+
+      .label-selected {
+    position: absolute;
+    left: 10px !important;
+    font-family: Lato, 'Open Sans', sans-serif;
+}
+
+    .dureTitle {
+      font-weight: 700;
+      font-size: 15px;
+      position: relative;
+      left: 0px !important;
+      max-width: 100px;
+    }
+    .spa-list-prestations {
+    max-height: 450px !important;
+
+    }
+    .list-ambiance {
+    margin-bottom: 20px;
+    margin-left: -40px;
+    max-width: 180px;
+}
+}
 
     /* Extra small devices (phones, 600px and down) */
     @media only screen and (max-width: 600px) {
