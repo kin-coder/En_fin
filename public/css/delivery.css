@@ -199,7 +199,10 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-
+	.btn-resa {
+		position: relative;
+		left: 33% !important;
+	}
 	.small_label{
 		position: relative;
 		left: 0px;
@@ -262,15 +265,6 @@
 	}
 
 }
-
-
-
-
-
-
-
-
-
 
 .livraison{
 	margin-top: 75px;
@@ -387,6 +381,6 @@ and (orientation : landscape) {
 	}
 }
 
-	.small_textarea{
-		padding: 10px;
-	}
+.small_textarea{
+	padding: 10px;
+}
