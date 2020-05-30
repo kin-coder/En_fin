@@ -1772,4 +1772,18 @@ and (orientation : landscape) {
   .selectElement {
     max-width: 110px;
   }
+  .infoSpa {
+    margin-bottom: 26px;
+    position: relative;
+    top: -28px;
+    left: 5px;
+}
+.spa-suppl{
+
+max-width: 103%;
   }
+  .offerContent {
+    width: 150px;
+    height: 150px;
+}
+}
