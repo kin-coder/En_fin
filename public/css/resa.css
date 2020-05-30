@@ -96,8 +96,8 @@
     @media only screen and (max-width: 600px) {
 
       .offerContentRes{
-        width: 50%;
-        height: 50%;
+        width: 150px;
+        height: 150px;
         margin: 0 auto 30px auto;
       }
       .offerContentRes .offerTitle h4 {
@@ -1548,18 +1548,27 @@ max-width: 100px;
       text-transform: uppercase;
       margin-left: -28%;
     }
-#codeP{
-width: 50%;
-margin-bottom: 4%;
-margin-top: 3%;
-border: solid 1px #9b8787;
-border-radius: 5px;
-text-align: center;
-}
-::-webkit-input-placeholder { text-align:center; }
-::-moz-placeholder { text-align:center; } /* firefox 19+ */
-:-ms-input-placeholder { text-align:center; } /* ie */
-input:-moz-placeholder { text-align:center; }
+    #codeP{
+      width: 50%;
+      margin-bottom: 4%;
+      margin-top: 3%;
+      border: solid 1px #9b8787;
+      border-radius: 5px;
+      text-align: center;
+      height: 30px;
+    }
+    input[value="valider"]{
+      padding: 2px;
+      border-radius: 5px;
+      border: solid 1px #9b8787;
+      color: #9b8787;
+      background: #c8f1ef;
+
+    }
+    ::-webkit-input-placeholder { text-align:center; }
+    ::-moz-placeholder { text-align:center; } /* firefox 19+ */
+    :-ms-input-placeholder { text-align:center; } /* ie */
+    input:-moz-placeholder { text-align:center; }
     #spa-order, #massage-order{
       margin-bottom: 8%;
     }
@@ -1579,15 +1588,18 @@ input:-moz-placeholder { text-align:center; }
     }
     .li-ambiance{
       position: relative;
-      margin-left: 10%;
+      margin-left: 35%;
       list-style-type: inherit;
       color: #685f5f !important;
+      width: 100px;
     }
+
     .li-msgType{
       position: relative;
-      margin-left: -4%;
+      margin-left: 30.5%;
       list-style-type: inherit;
       color: #685f5f !important;
+      max-width: 100px;
 
     }
     .ambianceresponsive{
