@@ -375,7 +375,7 @@
 											<div id="code-promo">
 												<div id="alert-code" class="hidden alert alert-success" role="alert"></div>
 												<%= form_tag(code_promo_path, remote: true, id:"form-promo-code") do %>
-													<label for="codeP">Code promo ?</label><br><input type="text" name="code" id="codeP", placeholder="Code promo" required="required">
+													<label for="codeP">Code promo ?</label><br><input type="text" name="code" id="codeP", placeholder="  Code promo" required="required"> <br>
 													<%= submit_tag("valider") %>	
 												<% end %>
 											</div>

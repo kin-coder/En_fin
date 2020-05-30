@@ -6,7 +6,7 @@
       position: -webkit-sticky;
       top: 0px;
     }
- 
+
     .container{
       background: white;
     }
@@ -96,509 +96,356 @@
     @media only screen and (max-width: 600px) {
 
       .offerContentRes{
-width: 50%;
-height: 50%;
-margin: 0 auto 30px auto;
+        width: 50%;
+        height: 50%;
+        margin: 0 auto 30px auto;
       }
       .offerContentRes .offerTitle h4 {
- font-size: 14px;
-}
-      .textExtras {
-        color: black;
-        letter-spacing: 1px;
-        text-align: center;
-        margin-bottom: 35px;
-        white-space: initial;
-        overflow: hidden;
+       font-size: 14px;
+     }
+     .textExtras {
+      color: black;
+      letter-spacing: 1px;
+      text-align: center;
+      margin-bottom: 35px;
+      white-space: initial;
+      overflow: hidden;
 
-      }
-      td .police_spa{
-        white-space: initial;
-        overflow: hidden;
-      }
-      #text{
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        /*  font-size: 50px;*/
+    }
+    td .police_spa{
+      white-space: initial;
+      overflow: hidden;
+    }
+    #text{
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      /*  font-size: 50px;*/
 
-        transform: translate(-50%,-50%);
-        -ms-transform: translate(-50%,-50%);
-      }
-      .pays_dep{
-        position: relative;
-        left: -80px;
-      }
-      .field {
+      transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+    }
+    .pays_dep{
+      position: relative;
+      left: -80px;
+    }
+    .field {
 
-        position: absolute;
-        left: 190px;
-        width: 140px;
-        margin-top: -1.6px;
-        border-radius: 5px;
-        text-align: center;
+      position: absolute;
+      left: 190px;
+      width: 140px;
+      margin-top: -1.6px;
+      border-radius: 5px;
+      text-align: center;
 
-      }
-      .titregeog{
-        font-size: 15px;
-        width: 400px;
-      }
-
-      .je-valide{
-        position: relative;
-        left: 65%;
-        font-size: 15px;
-        font-weight: bold;
-      }
+    }
+    .titregeog{
+      font-size: 15px;
+      width: 400px;
     }
 
-
-
-
-
-    #overlay {
-      position: fixed;
-      display: none;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0,0,0,0.5);
-      z-index: 2;
-      cursor: pointer;
+    .je-valide{
+      position: relative;
+      left: 65%;
+      font-size: 15px;
+      font-weight: bold;
     }
+  }
 
 
-    /* ==================ACCORDEON================= */
+
+
+
+  #overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+  }
+
+
+  /* ==================ACCORDEON================= */
+
+  .accordion {
+    font-size: 1rem;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 5px;
+    background: white;
+    margin-bottom: 20px;
+  }
+
+  .accordion-header,
+  .accordion-body {
+    background: white;
+  }
+  .titleAccordion{
+    margin-top: -10px;
+    height: 10px;
+  }
+
+
+  .accordion__item {
+    border-bottom: 1px solid white;
+  }
+
+  .accordion__item .accordion__item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .accordion-header:hover {
+    background: deeppink;
+    position: relative;
+    z-index: 5;
+  }
+
+
+
+  .accordion-body__contents {
+    padding: 1.5em 1.5em;
+    font-size: .85em;
+    border: 2px solid #eee;
+    border-radius: 20px;
+  }
+
+  .accordion__item.active:last-child .accordion-header {
+    border-radius: none;
+  }
+
+  .accordion:first-child > .accordion__item > .accordion-header {
+    border-bottom: 1px solid transparent;
+    border-radius: 20px;
+  }
+
+  .accordion__item>.accordion-header:after {
+    font-family: FontAwesome;
+    font-size: 1.2em;
+    float: right;
+    position: relative;
+    top: -2px;
+    transition: .3s all;
+    transform: rotate(0deg);
+    content: "\f103";
+  }
+
+  .accordion__item.active > .accordion-header:after {
+    transform: rotate(-180deg);
+  }
+
+  .accordion__item.active .accordion-header {
+    background: deeppink;
+  }
+
+  .accordion__item .accordion__item .accordion-header {
+    background: white;
+    color: #353535;
+  }
+
+  @media screen and (max-width: 1000px) {
+    body {
+      padding: 1em;
+    }
 
     .accordion {
-      font-size: 1rem;
       width: 100%;
-      margin: 0 auto;
-      border-radius: 5px;
-      background: white;
-      margin-bottom: 20px;
     }
-
-    .accordion-header,
-    .accordion-body {
-      background: white;
-    }
-    .titleAccordion{
-      margin-top: -10px;
-      height: 10px;
-    }
+  }
 
 
-    .accordion__item {
-      border-bottom: 1px solid white;
-    }
+  .allfaq{
+    padding-top: 100px;
+    margin-bottom: 100px;
+    position: relative;
+    left: -15px;
+  }
 
-    .accordion__item .accordion__item {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    }
 
-    .accordion-header:hover {
+  /* ==================custom================= */
+
+  <!-- media query -->
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .set-zones{
       background: deeppink;
-      position: relative;
-      z-index: 5;
-    }
-
-
-
-    .accordion-body__contents {
-      padding: 1.5em 1.5em;
-      font-size: .85em;
-      border: 2px solid #eee;
-      border-radius: 20px;
-    }
-
-    .accordion__item.active:last-child .accordion-header {
-      border-radius: none;
-    }
-
-    .accordion:first-child > .accordion__item > .accordion-header {
-      border-bottom: 1px solid transparent;
-      border-radius: 20px;
-    }
-
-    .accordion__item>.accordion-header:after {
-      font-family: FontAwesome;
-      font-size: 1.2em;
-      float: right;
-      position: relative;
-      top: -2px;
-      transition: .3s all;
-      transform: rotate(0deg);
-      content: "\f103";
-    }
-
-    .accordion__item.active > .accordion-header:after {
-      transform: rotate(-180deg);
-    }
-
-    .accordion__item.active .accordion-header {
-      background: deeppink;
-    }
-
-    .accordion__item .accordion__item .accordion-header {
-      background: white;
-      color: #353535;
-    }
-
-    @media screen and (max-width: 1000px) {
-      body {
-        padding: 1em;
-      }
-
-      .accordion {
-        width: 100%;
-      }
-    }
-
-
-    .allfaq{
-      padding-top: 100px;
-      margin-bottom: 100px;
-      position: relative;
-      left: -15px;
-    }
-
-
-    /* ==================custom================= */
-
-    <!-- media query -->
-
-    /* Large devices (laptops/desktops, 992px and up) */
-    @media only screen and (min-width: 992px) {
-      .set-zones{
-        background: deeppink;
-        opacity: 0.8;
-        padding: 50px;
-        border-radius: 8px;
-      }
-      .innerWrapper .table-responsive .table thead tr th:last-child {
-        border: none;
-        height: 100px;
-        font-size: x-large;
-      }
-      .accordion-header {
-        height: 10px;
-        padding: 1.5em 1.5em;
-        background: #ec5598;
-        color: white;
-        cursor: pointer;
-        font-size: x-large;
-        letter-spacing: .1em;
-        transition: all .3s;
-        text-transform: uppercase;
-        margin-top:20px;
-        font-family: Lato, "Open Sans";
-        font-weight: bold;
-      }
-      .accordion-body {
-        background: #fcfcfc;
-        color: #353535;
-        display: none;
-
-      }
-      .p-resa-spa{
-        letter-spacing: 2px;
-        font-family: Lato, "Open Sans";
-        font-size: large;
-        font-weight: bold;
-      }
-      .titleSpa{
-        font-weight: 700;
-      }
-    }
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media only screen and (min-width: 600px) {
-      .offerContent {
-        width: 115px;
-        height: 115px;
-      }
-
-      .offerContent .offerTitle h4 {
-        margin: 0;
-        font-size: 14px;
-      }
-
-
-      .textExtras {
-
-        font-size: 17px;
-        color: 
-
-        black;
-        letter-spacing: 1px;
-        text-align: center;
-        margin-bottom: 35px;
-
-      }
-      .set-zones{
-        background: deeppink;
-        opacity: 0.8;
-        padding: 50px;
-        border-radius: 8px;
-        width: 500px;
-      }
-      .innerWrapper .table-responsive .table thead tr th:last-child {
-        border: none;
-        height: 100px;
-        font-size: x-large;
-      }
-      .accordion-header {
-        height: 10px;
-        padding: 1.5em 1.5em;
-        background: #ec5598;
-        color: white;
-        cursor: pointer;
-        font-size: x-large;
-        letter-spacing: .1em;
-        transition: all .3s;
-        text-transform: uppercase;
-        margin-top:20px;
-        font-family: Lato, "Open Sans";
-        font-weight: bold;
-      }
-      .accordion-body {
-        background: #fcfcfc;
-        color: #353535;
-        display: none;
-
-      }
-      .p-resa-spa{
-        letter-spacing: 2px;
-        font-family: Lato, "Open Sans";
-        font-size: large;
-        font-weight: bold;
-      }
-      .titleSpa{
-        font-weight: 700;
-      }
-    }
-    /* Extra small devices (phones, 600px and down) */
-    @media only screen and (max-width: 600px) {
-      .set-zones{
-        background: deeppink;
-        opacity: 0.8;
-        padding: 50px;
-        border-radius: 8px;
-        width: 350px;
-      }
-      .table-responsive {
-        margin-top: 20px;
-        border-radius: 20px;
-        position: relative;
-        left: -28px;
-        width: 128%;
-      }
-      .innerWrapper .table-responsive .table thead tr th:last-child {
-        border: none;
-        height: 100px;
-        font-size: small;
-      }
-      .accordion-header {
-        height: 10px;
-        width: 128.5%;
-        padding: 1.5em 1.5em;
-        background: #ec5598;
-        color: white;
-        cursor: pointer;
-        font-size: x-large;
-        letter-spacing: .1em;
-        transition: all .3s;
-        text-transform: uppercase;
-        margin-top:20px;
-        font-family: Lato, "Open Sans";
-        font-weight: bold;
-      }
-      .js-accordion-header{
-        position: relative;
-        left: -28px;
-      }
-      .titleAccordion {
-        margin-top: -10px;
-        height: 10px;
-        font-size: small;
-      }
-      .accordion-body {
-        background: #fcfcfc;
-        color: #353535;
-        display: none;
-        width: 128.5%;
-        position: relative;
-        left: -28px;
-      }
-      .p-resa-spa {
-        letter-spacing: 2px;
-        font-family: Lato, "Open Sans";
-        font-size: small;
-        font-weight: bold;
-      }
-      .titleSpa {
-        font-weight: 700;
-        font-size: 15px;
-        position: relative;
-        left: -90px;
-      }
-
-    }
-
-
-
-
-
-
-
-
-    .dateSelect .calendar-icone {
-      background-color: white;
-      border-color:#dedede;
+      opacity: 0.8;
+      padding: 50px;
       border-radius: 8px;
     }
-
-    .labelle{
-      position: relative;
-      left: 95px;
-      margin-bottom: 20px;
-      color:white;
-      font-weight: bold;
-      font-size: 15px;
-    }
-
-
-    .input-calendar{
-      position: relative;
-      display: table;
-      border-collapse: separate;
-      left: 180px;
-      width: 150px;
-      top: -51px;
-    }
-    .select-date{
-      margin-right: 4%;
-      height: 25px !important;
-    }
-
-
-    .image-produit{
-      width: 100px;
+    .innerWrapper .table-responsive .table thead tr th:last-child {
+      border: none;
       height: 100px;
-    }
-
-
-
-
-    .sm-9-spa{
-      margin-bottom: 15px;
-    }
-
-
-
-
-
-    #number-spa{
-      color: #ec5598;
-      padding: 5px;
-    }
-    #add-spa, #remove-spa, .remove-massage, .add-massage{
-      color: #ec5598;
       font-size: x-large;
     }
-    .interligne{
-      margin-top: 15px !important;
-      border-top: 2px solid #eee !important;
-    }
-
-    #spa-input{
-      letter-spacing: 2px;
-    }
-
-
-
-
-
-
-
-    /* hide input */
-    input.time-spa-list:empty {
-      margin-left: -999px;
-    }
-
-    /* style label */
-    input.time-spa-list:empty ~ label {
-      float: left;
-      line-height: 2.5em;
-      text-indent: 3.25em;
-      /*margin-top: 2em;*/
+    .accordion-header {
+      height: 10px;
+      padding: 1.5em 1.5em;
+      background: #ec5598;
+      color: white;
       cursor: pointer;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+      font-size: x-large;
+      letter-spacing: .1em;
+      transition: all .3s;
+      text-transform: uppercase;
+      margin-top:20px;
+      font-family: Lato, "Open Sans";
+      font-weight: bold;
+    }
+    .accordion-body {
+      background: #fcfcfc;
+      color: #353535;
+      display: none;
+
+    }
+    .p-resa-spa{
+      letter-spacing: 2px;
+      font-family: Lato, "Open Sans";
+      font-size: large;
+      font-weight: bold;
+    }
+    .titleSpa{
+      font-weight: 700;
+    }
+  }
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    .offerContent {
+      width: 115px;
+      height: 115px;
+    }
+
+    .offerContent .offerTitle h4 {
+      margin: 0;
+      font-size: 14px;
+    }
+
+
+    .textExtras {
+
+      font-size: 17px;
+      color: 
+
+      black;
+      letter-spacing: 1px;
+      text-align: center;
+      margin-bottom: 35px;
+
+    }
+    .set-zones{
+      background: deeppink;
+      opacity: 0.8;
+      padding: 50px;
+      border-radius: 8px;
+      width: 500px;
+    }
+    .innerWrapper .table-responsive .table thead tr th:last-child {
+      border: none;
+      height: 100px;
+      font-size: x-large;
+    }
+    .accordion-header {
+      height: 10px;
+      padding: 1.5em 1.5em;
+      background: #ec5598;
+      color: white;
+      cursor: pointer;
+      font-size: x-large;
+      letter-spacing: .1em;
+      transition: all .3s;
+      text-transform: uppercase;
+      margin-top:20px;
+      font-family: Lato, "Open Sans";
+      font-weight: bold;
+    }
+    .accordion-body {
+      background: #fcfcfc;
+      color: #353535;
+      display: none;
+
+    }
+    .p-resa-spa{
+      letter-spacing: 2px;
+      font-family: Lato, "Open Sans";
+      font-size: large;
+      font-weight: bold;
+    }
+    .titleSpa{
+      font-weight: 700;
+    }
+  }
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+    .set-zones{
+      background: deeppink;
+      opacity: 0.8;
+      padding: 50px;
+      border-radius: 8px;
+      width: 350px;
+    }
+    .table-responsive {
+      margin-top: 20px;
       border-radius: 20px;
+      position: relative;
+      left: -28px;
+      width: 128%;
+    }
+    .innerWrapper .table-responsive .table thead tr th:last-child {
+      border: none;
+      height: 100px;
+      font-size: small;
+    }
+    .accordion-header {
+      height: 10px;
+      width: 128.5%;
+      padding: 1.5em 1.5em;
+      background: #ec5598;
+      color: white;
+      cursor: pointer;
+      font-size: x-large;
+      letter-spacing: .1em;
+      transition: all .3s;
+      text-transform: uppercase;
+      margin-top:20px;
+      font-family: Lato, "Open Sans";
+      font-weight: bold;
+    }
+    .js-accordion-header{
+      position: relative;
+      left: -28px;
+    }
+    .titleAccordion {
+      margin-top: -10px;
+      height: 10px;
+      font-size: small;
+    }
+    .accordion-body {
+      background: #fcfcfc;
+      color: #353535;
+      display: none;
+      width: 128.5%;
+      position: relative;
+      left: -28px;
+    }
+    .p-resa-spa {
+      letter-spacing: 2px;
+      font-family: Lato, "Open Sans";
+      font-size: small;
+      font-weight: bold;
+    }
+    .titleSpa {
+      font-weight: 700;
+      font-size: 15px;
+      position: relative;
+      left: -90px;
     }
 
-    input.time-spa-list:empty ~ label:before {
-      position: absolute;
-      display: block;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      content: '';
-      width: 2.5em;
-      background: #D1D3D4;
-      border-radius: 20px;
-
-    }
-
-    /* toggle hover */
-    input.time-spa-list:hover:not(:checked) ~ label:before {
-      content:'\2714';
-      text-indent: .9em;
-      color: #C2C2C2;
-      border-radius: 20px;
-    }
-
-    input.time-spa-list:hover:not(:checked) ~ label {
-      color: #ec5598;
-    }
-
-    /* toggle on */
-    input.time-spa-list:checked ~ label:before {
-      content:'\2714';
-      text-indent: .9em;
-      color: #9CE2AE;
-      background-color: #ec5598;
-      border-radius: 20px;
-
-    }
-
-    input.time-spa-list:checked ~ label {
-      color: #777;
-    }
-
-    /* time-spa-list focus */
-    input.time-spa-list:focus ~ label:before {
-      box-shadow: 0 0 0 3px none;
-    }
-
-    .time-spa-list{
-     width: 30px;
-   }
-
-
-
-   .label-spa {
-    display: inline-block;
-    max-width: 100%;
-    margin-bottom: 0px;
-    font-weight: 700;
-    position :relative;
   }
 
 
@@ -606,10 +453,163 @@ margin: 0 auto 30px auto;
 
 
 
-  .label-info-spa, .label-heure{
-    font-size: small;
+
+
+  .dateSelect .calendar-icone {
+    background-color: white;
+    border-color:#dedede;
+    border-radius: 8px;
+  }
+
+  .labelle{
+    position: relative;
+    left: 95px;
+    margin-bottom: 20px;
+    color:white;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+
+  .input-calendar{
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    left: 180px;
+    width: 150px;
+    top: -51px;
+  }
+  .select-date{
+    margin-right: 4%;
+    height: 25px !important;
+  }
+
+
+  .image-produit{
+    width: 100px;
+    height: 100px;
+  }
+
+
+
+
+  .sm-9-spa{
+    margin-bottom: 15px;
+  }
+
+
+
+
+
+  #number-spa{
+    color: #ec5598;
+    padding: 5px;
+  }
+  #add-spa, #remove-spa, .remove-massage, .add-massage{
+    color: #ec5598;
+    font-size: x-large;
+  }
+  .interligne{
+    margin-top: 15px !important;
+    border-top: 2px solid #eee !important;
+  }
+
+  #spa-input{
     letter-spacing: 2px;
-    margin-right: 5px;
+  }
+
+
+
+
+
+
+
+  /* hide input */
+  input.time-spa-list:empty {
+    margin-left: -999px;
+  }
+
+  /* style label */
+  input.time-spa-list:empty ~ label {
+    float: left;
+    line-height: 2.5em;
+    text-indent: 3.25em;
+    /*margin-top: 2em;*/
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 20px;
+  }
+
+  input.time-spa-list:empty ~ label:before {
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    content: '';
+    width: 2.5em;
+    background: #D1D3D4;
+    border-radius: 20px;
+
+  }
+
+  /* toggle hover */
+  input.time-spa-list:hover:not(:checked) ~ label:before {
+    content:'\2714';
+    text-indent: .9em;
+    color: #C2C2C2;
+    border-radius: 20px;
+  }
+
+  input.time-spa-list:hover:not(:checked) ~ label {
+    color: #ec5598;
+  }
+
+  /* toggle on */
+  input.time-spa-list:checked ~ label:before {
+    content:'\2714';
+    text-indent: .9em;
+    color: #9CE2AE;
+    background-color: #ec5598;
+    border-radius: 20px;
+
+  }
+
+  input.time-spa-list:checked ~ label {
+    color: #777;
+  }
+
+  /* time-spa-list focus */
+  input.time-spa-list:focus ~ label:before {
+    box-shadow: 0 0 0 3px none;
+  }
+
+  .time-spa-list{
+   width: 30px;
+ }
+
+
+
+ .label-spa {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 0px;
+  font-weight: 700;
+  position :relative;
+}
+
+
+
+
+
+
+.label-info-spa, .label-heure{
+  font-size: small;
+  letter-spacing: 2px;
+  margin-right: 5px;
 /*position: absolute;
 left: 70px;*/
 margin-top: -18px;
@@ -1537,25 +1537,46 @@ max-width: 100px;
       color: blue !important;
     }
     #spa-price-total, #massage-price-total, #cadeau-price-total {
-    color: blue;
+      color: blue;
+    }
+    #code-promo label{
+      font-family: Quicksand, 'Open Sans', sans-serif !important;
+      font-weight: bold !important;
+      font-size: 1em !important;
+      color:
+      blue !important;
+      text-transform: uppercase;
+      margin-left: -28%;
+    }
+#codeP{
+width: 50%;
+margin-bottom: 4%;
+margin-top: 3%;
+border: solid 1px #9b8787;
+border-radius: 5px;
+text-align: center;
 }
-#spa-order{
-margin-bottom: 8%;
-}
-.msg-duration {
-    font-size: 1.2em;
-    font-weight: bold;
-    position: relative;
-    left: -16%;
-}
+::-webkit-input-placeholder { text-align:center; }
+::-moz-placeholder { text-align:center; } /* firefox 19+ */
+:-ms-input-placeholder { text-align:center; } /* ie */
+input:-moz-placeholder { text-align:center; }
+    #spa-order, #massage-order{
+      margin-bottom: 8%;
+    }
+    .msg-duration {
+      font-size: 1.2em;
+      font-weight: bold;
+      position: relative;
+      left: -16%;
+    }
 
-.spa-duration {
+    .spa-duration {
 
-    font-size: 1.2em;
-    font-weight: bold;
-    position: relative;
-   left: -10%;
-}
+      font-size: 1.2em;
+      font-weight: bold;
+      position: relative;
+      left: -10%;
+    }
     .li-ambiance{
       position: relative;
       margin-left: 10%;
@@ -1791,35 +1812,35 @@ margin-bottom: 8%;
     }
 
     @media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : landscape) { 
-.label-selected {
-    position: absolute;
-    left: 100px !important;
-    font-family: Lato, 'Open Sans', sans-serif;
-}
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px) 
+    and (orientation : landscape) { 
+      .label-selected {
+        position: absolute;
+        left: 100px !important;
+        font-family: Lato, 'Open Sans', sans-serif;
+      }
 
-.questionMarkSpa {
-    position: relative;
-    left: 20%;
-  }
+      .questionMarkSpa {
+        position: relative;
+        left: 20%;
+      }
 
-  .selectElement {
-    max-width: 110px;
-  }
-  .infoSpa {
-    margin-bottom: 26px;
-    position: relative;
-    top: -28px;
-    left: 5px;
-}
-.spa-suppl{
+      .selectElement {
+        max-width: 110px;
+      }
+      .infoSpa {
+        margin-bottom: 26px;
+        position: relative;
+        top: -28px;
+        left: 5px;
+      }
+      .spa-suppl{
 
-max-width: 103%;
-  }
-  .offerContent {
-    width: 150px;
-    height: 150px;
-}
-}
+        max-width: 103%;
+      }
+      .offerContent {
+        width: 150px;
+        height: 150px;
+      }
+    }
