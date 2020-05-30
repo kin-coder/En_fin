@@ -94,6 +94,15 @@
 
     /* Extra small devices (phones, 600px and down) */
     @media only screen and (max-width: 600px) {
+
+      .offerContentRes{
+width: 50%;
+height: 50%;
+margin: 0 auto 30px auto;
+      }
+      .offerContentRes .offerTitle h4 {
+ font-size: 14px;
+}
       .textExtras {
         color: black;
         letter-spacing: 1px;
@@ -1525,10 +1534,37 @@ max-width: 100px;
       font-family: Quicksand, 'Open Sans', sans-serif !important;
       font-weight: bold !important;
       font-size: 1em !important;
+      color: blue !important;
     }
+    #spa-price-total, #massage-price-total, #cadeau-price-total {
+    color: blue;
+}
+#spa-order{
+margin-bottom: 8%;
+}
+.msg-duration {
+    font-size: 1.2em;
+    font-weight: bold;
+    position: relative;
+    left: -16%;
+}
+
+.spa-duration {
+
+    font-size: 1.2em;
+    font-weight: bold;
+    position: relative;
+   left: -10%;
+}
     .li-ambiance{
       position: relative;
-      margin-left: 84px;
+      margin-left: 10%;
+      list-style-type: inherit;
+      color: #685f5f !important;
+    }
+    .li-msgType{
+      position: relative;
+      margin-left: -4%;
       list-style-type: inherit;
       color: #685f5f !important;
 
