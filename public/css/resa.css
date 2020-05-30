@@ -91,13 +91,38 @@
       }
 
     }
+    @media only screen and (max-width: 321px) {
+
+      .label-selected {
+    position: absolute;
+    left: 10px !important;
+    font-family: Lato, 'Open Sans', sans-serif;
+}
+
+    .dureTitle {
+      font-weight: 700;
+      font-size: 15px;
+      position: relative;
+      left: 0px !important;
+      max-width: 100px;
+    }
+    .spa-list-prestations {
+    max-height: 450px !important;
+
+    }
+    .list-ambiance {
+    margin-bottom: 20px;
+    margin-left: -40px;
+    max-width: 180px;
+}
+}
 
     /* Extra small devices (phones, 600px and down) */
     @media only screen and (max-width: 600px) {
 
       .offerContentRes{
-        width: 50%;
-        height: 50%;
+        width: 150px;
+        height: 150px;
         margin: 0 auto 30px auto;
       }
       .offerContentRes .offerTitle h4 {
@@ -1068,7 +1093,23 @@ margin-top: -18px;
     margin-left: 15px;
     max-width: 100px;
   }
+    #codeP{
+      width: 50%;
+      margin-bottom: 4%;
+      margin-top: 3%;
+      border: solid 1px #9b8787;
+      border-radius: 5px;
+      text-align: center;
+      height: 30px;
+    }
+    input[value="valider"]{
+      padding: 2px;
+      border-radius: 5px;
+      border: solid 1px #9b8787;
+      color: #9b8787;
+      background: #c8f1ef;
 
+    }
   .prestation-message {
     position: relative;
     max-width: 200px;
@@ -1548,18 +1589,27 @@ max-width: 100px;
       text-transform: uppercase;
       margin-left: -28%;
     }
-#codeP{
-width: 50%;
-margin-bottom: 4%;
-margin-top: 3%;
-border: solid 1px #9b8787;
-border-radius: 5px;
-text-align: center;
-}
-::-webkit-input-placeholder { text-align:center; }
-::-moz-placeholder { text-align:center; } /* firefox 19+ */
-:-ms-input-placeholder { text-align:center; } /* ie */
-input:-moz-placeholder { text-align:center; }
+    #codeP{
+      width: 50%;
+      margin-bottom: 4%;
+      margin-top: 3%;
+      border: solid 1px #9b8787;
+      border-radius: 5px;
+      text-align: center;
+      height: 30px;
+    }
+    input[value="valider"]{
+      padding: 2px;
+      border-radius: 5px;
+      border: solid 1px #9b8787;
+      color: #9b8787;
+      background: #c8f1ef;
+
+    }
+    ::-webkit-input-placeholder { text-align:center; }
+    ::-moz-placeholder { text-align:center; } /* firefox 19+ */
+    :-ms-input-placeholder { text-align:center; } /* ie */
+    input:-moz-placeholder { text-align:center; }
     #spa-order, #massage-order{
       margin-bottom: 8%;
     }
@@ -1579,15 +1629,18 @@ input:-moz-placeholder { text-align:center; }
     }
     .li-ambiance{
       position: relative;
-      margin-left: 10%;
+      margin-left: 35%;
       list-style-type: inherit;
       color: #685f5f !important;
+      width: 100px;
     }
+
     .li-msgType{
       position: relative;
-      margin-left: -4%;
+      margin-left: 30.5%;
       list-style-type: inherit;
       color: #685f5f !important;
+      max-width: 100px;
 
     }
     .ambianceresponsive{
@@ -1843,4 +1896,47 @@ input:-moz-placeholder { text-align:center; }
         width: 150px;
         height: 150px;
       }
+    }
+
+
+
+      @media only screen 
+  and (min-device-width : 768px) 
+  and (max-device-width : 1024px) 
+  and (orientation : portrait) { 
+    .li-msgType , .li-msgPrix, .li-msgAcompte{
+      position: relative;
+      margin-left: 0px;
+      list-style-type: inherit;
+      color: #685f5f !important;
+      max-width: 80%;
+    }
+.li-ambiance {
+    position: relative;
+    margin-left: 40px;
+    list-style-type: inherit;
+    color: #685f5f !important;
+    max-width: 100px;
+}
+    }
+
+
+          @media only screen 
+  and (min-device-width : 768px) 
+  and (max-device-width : 1024px) 
+  and (orientation : landscape) { 
+    .li-msgType , .li-msgPrix, .li-msgAcompte{
+      position: relative;
+      margin-left: 0px;
+      list-style-type: inherit;
+      color: #685f5f !important;
+      max-width: 80%;
+    }
+.li-ambiance {
+    position: relative;
+    margin-left: 40px;
+    list-style-type: inherit;
+    color: #685f5f !important;
+    max-width: 100px;
+}
     }

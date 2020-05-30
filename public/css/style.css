@@ -16,7 +16,9 @@
 
 
 }
-
+  .reviewInfo {
+    border-radius: 10px;
+  }
 
 .h4 .from-bottom{
  color:green !important;
@@ -4109,6 +4111,7 @@ textarea.form-control {
 @media (min-width: 320px) {
   .priceImage {
     height: 190px;
+    border-radius: 10px;
   }
 }
 
@@ -4309,7 +4312,7 @@ textarea.form-control {
 .contactSection {
   padding: 0 0 80px 0;
   background-color: #ffffff;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 28px;
   /*width: 1155px;*/
 }
@@ -6691,6 +6694,7 @@ input[type=number]::-webkit-inner-spin-button {
   height: 430px;
   border: 1px solid #dedede;
   background-color: #ffffff;
+  border-radius: 10px;
 }
 
 @media (min-width: 320px) {
@@ -8673,7 +8677,17 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 
-
+  @media only screen 
+  and (min-device-width : 768px) 
+  and (max-device-width : 1024px) 
+  and (orientation : landscape) { 
+.text-p-bienvenu {
+    text-align: justify;
+    position: relative;
+    left: -10px;
+    letter-spacing: 1px;
+    font-size: 17px !important;
+}
 
 
 

@@ -231,7 +231,7 @@ left: 250px;*/
  position: relative;
  border-style: initial;
 
- border-radius: 12px;
+ border-radius: 10px;
  background-color: white;
  color: #ec5598 !important;
 
@@ -671,6 +671,7 @@ left: 250px;*/
 
 .productSection{
   background-image: linear-gradient(white, white);
+  border-radius: 10px;
 }
 
 
@@ -875,7 +876,14 @@ left: 250px;*/
   }
 
 }
-
+/*ipad landscape*/
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
+  .propos-ok{
+margin-left: -15px !important;
+  }}
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .ccm-index{
@@ -976,6 +984,8 @@ left: 250px;*/
       letter-spacing: 1px;
       font-size: 17px !important;
     }
+
+
     .modalText {
       text-align: center;
       margin-top: -35px !important;
@@ -1001,6 +1011,7 @@ left: 250px;*/
  }
 
 }
+/*ipad landscape*/
 /*ipad landscape*/
 @media only screen 
 and (min-device-width : 768px) 
@@ -1116,6 +1127,7 @@ and (orientation : portrait) {
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : landscape) { 
+
   .text-p-ccmspa-responsive {
 
     text-align: justify;
