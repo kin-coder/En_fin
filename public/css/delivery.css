@@ -178,7 +178,7 @@
 	.messages{
 		background:white;
 		position: relative;
-		top: -225px;
+		top: -250px;
 		left: 170px;
 	}
 
@@ -248,8 +248,8 @@
 	.messages{
 		background:white;
 		position: relative;
-		top: 15px;
-		left: -10px;
+		top: 0%;
+		left: -5%;
 	}
 	.paysList:checked + label,
 	.paysList:not(:checked) + label
@@ -363,7 +363,7 @@ and (orientation : landscape) {
 
 	.small_label {
 		position: relative;
-		left: 80px;
+		left: 45px;
 
 	}
 
