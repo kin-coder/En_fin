@@ -1065,7 +1065,7 @@ and (orientation : portrait) {
   }
   .h3-massage-slide{
     position: relative;
-    left: 10px;
+    left: 10px !important;
     margin-bottom: 35px !important;
     font-size: 12px;
   }
