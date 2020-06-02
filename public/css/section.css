@@ -108,6 +108,10 @@ and (orientation : landscape) {
 	.section-partner2{
 		margin-top: -50px !important;
 	}
+	
+	.specialWidth {
+    margin-bottom: -70px;
+}
 
 	.section-legal{
 		margin-top: 60px !important;
