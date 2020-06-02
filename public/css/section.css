@@ -1,13 +1,35 @@
 @media only screen 
 and (max-device-width : 600px) {
-	.section-spa0,.section-spaccmmobil{
-		margin-top: -55px;
+	.section-spaccmmobil{
+		margin-top: -25%;
+	}
+	.section-spa0{
+		margin-top: -18%;
 	}
 	.section-spa1mobil{
 		margin-top: -150px;
 	}
 	.section-spa2{
-		margin-top: -150px;
+		margin-top: -45%;
+	}
+	.section-spa3Mobil{
+		margin-top: -10%;
+	}
+	.sectionIndexSpecialResponsive{
+		margin-top: -18%;
+	}
+	.sectionIndexSpecialApropos, .section-index1{
+		margin-top: -8.5%;
+	}
+	.section-specialMas{
+		margin-top: -15%;
+	}
+	.section-specialMasQui{
+		margin-top: -10%;
+		margin-bottom: -5%;
+	}
+	.sectionMasSpecial{
+		margin-top: -10%;
 	}
 }
 
