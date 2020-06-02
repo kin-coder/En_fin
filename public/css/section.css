@@ -24,7 +24,7 @@ and (orientation : portrait) {
 		margin-top: -55px;
 	}
 	.section-spa1{
-		margin-top: -75px;
+		margin-top: -90px;
 	}
 	.section-spa2{
 		margin-top: -150px;
@@ -38,6 +38,24 @@ and (orientation : portrait) {
 		position: relative;
 		left: 15%;
 	}
+
+	.sectionIndexSpecial{
+		margin-top: -50px;
+	}
+
+	.section-massage2{
+		margin-top: -45px;
+	}
+	.section-specialMas{
+		margin-top: -10px;
+	}
+	.section-specialMasQui{
+		margin-top: -40px;
+		margin-bottom: -40px;
+	}
+	.section-spa3{
+		margin-top: -25px;
+	}
 }
 @media only screen 
 and (min-device-width : 768px) 
@@ -48,9 +66,9 @@ and (orientation : landscape) {
 	} 
 
 	.section-specialMasQui {
-    margin-bottom: -50px;
-    margin-top: -30px;
-}
+		margin-bottom: -50px;
+		margin-top: -30px;
+	}
 }
 
 
@@ -110,8 +128,8 @@ and (orientation : landscape) {
 	}
 	
 	.specialWidth {
-    margin-bottom: -70px;
-}
+		margin-bottom: -70px;
+	}
 
 	.section-legal{
 		margin-top: 60px !important;

@@ -53,6 +53,12 @@
       position: absolute;
       left: 48%;
     }
+
+    .adressComplement{
+position: relative;
+left: 1% !important;
+max-width: 150px;
+    }
     .profilUser li{
       margin-bottom: 20px;
     }
