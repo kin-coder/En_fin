@@ -548,6 +548,8 @@ left: 250px;*/
     }
     .titreSansFA {
       margin-bottom: 20px;
+      position: relative;
+      right: 20px;
     }
     .sm6-index-mobile {
       margin-top: 72px;
@@ -872,7 +874,7 @@ left: 250px;*/
   }
   .btn-a{
     position:relative;
-    top: 53px;
+    /* top: 53px; */
   }
 
 }

@@ -1,4 +1,13 @@
-    .questionMarkSpa{
+  @media only screen and (max-width: 320px) {
+    .praticiens{
+      margin-right: 42px!important;
+    }
+
+    .label-no-fa{
+      left: -40px!important
+    }
+  }
+   .questionMarkSpa{
       z-index: 100;
     }
     #panierTable{
