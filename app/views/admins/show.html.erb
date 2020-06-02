@@ -66,15 +66,16 @@
                             <li><strong>Prenom : </strong><span class="paramsuser"><%= @client.first_name %></span></li>
                             <li><strong> Sexe: </strong><span class="paramsuser"><%= @client.sexe %></span></li>
                             <li><strong>Mail : </strong><span class="paramsuser"><%= @client.email %></span></li>
+                               <li><strong>Téléphone : </strong><span class="paramsuser"><%= @client.tel %></span></li>
                           </ul>
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="UserInfos">
                           <ul class="profilUser">
-                            <li><strong>Téléphone : </strong><span class="paramsuser"><%= @client.tel %></span></li>
+                         
                             <li><strong>Adresse : </strong><span class="paramsuser"><%= @client.adresse %></span></li>
-                            <li><strong>Complement d'adresse : </strong><span class="paramsuser"><%= @client.adresse_complet %></span></li>
+                            <li><strong>Complement d'adresse : </strong><span class="paramsuser adressComplement"><%= @client.adresse_complet %></span></li>
                             <li><strong>Code Postal : </strong><span class="paramsuser"><%= @client.zip_code %></span></li>
                             <li><strong>Pays : </strong><span class="paramsuser"><%= @client.country %></span></li>
                             <li><strong>Ville : </strong><span class="paramsuser"><%= @client.town %></span></li>

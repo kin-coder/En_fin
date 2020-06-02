@@ -8746,10 +8746,17 @@ top: 42px !important;
     width: 375px;
     font-size: 13px !important;
 }
-
-
 .titleSectionPartner{
 margin-left: 0% !important;
+}
+
+.propos-ok{
+width: 320px;
+margin-left: -50px !important;
+}
+
+.tilePropos{
+margin-left: -30px;
 }
 }
 
