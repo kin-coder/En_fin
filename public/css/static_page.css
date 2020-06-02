@@ -903,6 +903,10 @@ margin-left: -15px !important;
   .reviewinfocontact{
     width: 500px !important;
   }
+  .reviewQui{
+    width: 500px !important;
+min-height: 448px;
+  }
   .reviewinfocontact2{
     width: 500px !important;
     position:absolute;
@@ -966,6 +970,10 @@ margin-left: -15px !important;
 
     .a-btn{
       text-align: center;
+    }
+
+    .savoirPlus{
+top: 25.5px;
     }
     .reviewInfo .sansfa {
       font-size: 30px;
@@ -1129,7 +1137,9 @@ and (orientation : portrait) {
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : landscape) { 
-
+.savoirPlus {
+    top: 0px;
+}
   .text-p-ccmspa-responsive {
 
     text-align: justify;

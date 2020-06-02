@@ -1,17 +1,17 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-		#cgu{
-position: absolute;
-left: -8%;
-top: -15%;
+	#cgu{
+		position: absolute;
+		left: -8%;
+		top: -15%;
 	}
 	.cgucase{
-position: relative;
-top: -5px;
-left: 11%;
+		position: relative;
+		top: -5px;
+		left: 11%;
 	}
-			.policeBanierApropos{
+	.policeBanierApropos{
 
 		text-align: left;
 		position: relative;
@@ -25,7 +25,7 @@ left: 11%;
 		position: absolute;
 
 		top: 9.8%;
-	
+
 		margin-bottom: -500px;
 	}
 	.secotionQuisommes{
@@ -756,18 +756,29 @@ left: 11%;
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-		#cgu{
-position: absolute;
-left: -8%;
-top: -15%;
+	#notrebut{
+		min-width: 600px;
+	}
+	#cgu{
+		position: absolute;
+		left: -8%;
+		top: -15%;
 	}
 	.cgucase{
-position: relative;
-top: -20px;
-left: 11%;
+		position: relative;
+		top: -20px;
+		left: 11%;
 	}
 	#communauté{
-width: 700px;
+		min-width: 800px;
+	}
+
+	#zoneaction{
+min-width: 800px;
+	}
+
+	#contacteznous{
+min-width: 1000px;
 	}
 	.aboutInfo h2 {
 		font-size: 24px !important;
@@ -848,6 +859,23 @@ width: 700px;
 	}
 	.p-QSN{
 		font-size: 17px !important;
+		
+	}
+	.qsnElse{
+		max-width: 100%;
+		margin-left: 30px;
+	}
+.imagecommunaute img{
+margin: 5px 0 60px 32px !important;
+max-width: 96%;
+}
+	.infoQSNS-1{
+		margin-left: 40px !important;
+		width: 550px;
+		margin-top: 15px;
+	}
+	.qsnfin{
+		max-width: 97%;
 	}
 	.autrediv{
 		margin-top: -32px;
@@ -1274,15 +1302,15 @@ width: 700px;
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : landscape) { 
-		#cgu{
-position: absolute;
-left: -8%;
-top: -15%;
+	#cgu{
+		position: absolute;
+		left: -8%;
+		top: -15%;
 	}
 	.cgucase{
-position: relative;
-top: -20px;
-left: 11%;
+		position: relative;
+		top: -20px;
+		left: 11%;
 	}
 	.policeBanierApropos{
 
@@ -1333,7 +1361,7 @@ left: 11%;
 	}
 	#notrebut{
 		padding: 20px 0 30px 0;
-		margin-top: -65px;
+		margin-top: -20px;
 		margin-bottom: -20px;
 		width: 768px;
 	}
@@ -1363,7 +1391,8 @@ left: 11%;
 
 	.infoQSNS-1{
 		margin-top: 15px;
-		margin-left: 10px;
+		margin-left: 10px !important;
+		max-width: 500px;
 	}
 	.insp .p-QSN{
 		margin-left: 10px;
@@ -1379,7 +1408,17 @@ left: 11%;
 	.aboutInfo h2 {
 		font-size: 24px !important;
 	}
+	.qsnElse{
+margin-left: 10px;
+width: 485px;
+max-width: 700px;
+	}
+	.imageboxright img {
+    width: 95% !important;
+    margin-top: 20px !important;
 }
+}
+
 
 /*ipad portrait*/
 
@@ -1486,15 +1525,15 @@ and (orientation : portrait) {
 	#aproposnous{
 		margin-top: -20px;
 	}
-		#cgu{
-position: absolute;
-left: -8%;
-top: -15%;
+	#cgu{
+		position: absolute;
+		left: -8%;
+		top: -15%;
 	}
 	.cgucase{
-position: relative;
-top: -10px;
-left: 11%;
+		position: relative;
+		top: -10px;
+		left: 11%;
 	}
 }
 
