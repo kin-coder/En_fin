@@ -8736,10 +8736,15 @@ position: relative;
 top: 42px !important;
 }
 
-.text-p-massage-slide{
-position: relative;
-left: 260px !important;
+
+.text-p-massage-slide {
+    position: relative !important;
+    left: -110px !important;
+    width: 375px;
+    font-size: 13px !important;
 }
+
+
 .titleSectionPartner{
 margin-left: 0% !important;
 }
