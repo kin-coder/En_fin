@@ -8738,8 +8738,12 @@ top: -10px !important;
 position: relative;
 top: 42px !important;
 }
+.decouvreSpa,.decouvreMas
+{
+      position: relative;
+    left: -16px;
 
-
+  }
 .text-p-massage-slide {
     position: relative !important;
     left: -110px !important;
