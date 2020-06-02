@@ -245,7 +245,7 @@ class OrdersController < ApplicationController
         orderSpa.push(tmp)
       end
       if params[:heureSpa] == ""
-        flash[:notice] = "Velliez indiquer l'heur de votre réservation de spa"
+        flash[:notice] = "Veulliez indiquer l'heure de votre réservation de spa"
         redirect_back(fallback_location: root_path)
         return
       end
@@ -295,7 +295,7 @@ class OrdersController < ApplicationController
         orderMassage.push(tmp)
       end
       if params[:heureMassage] == ""
-        flash[:notice] = "Velliez indiquer l'heur de votre réservation de massage"
+        flash[:notice] = "Veulliez indiquer l'heure de votre réservation de massage"
         redirect_back(fallback_location: root_path)
         return
       end

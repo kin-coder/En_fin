@@ -495,7 +495,7 @@ left: 11%;
 		font-family: Quicksand !important;
 		font-style: normal;
 		margin-left: 30px;
-		color: #101010 !important;
+		color: #ffffff !important;
 
 	}
 	.pageTitleArea {
@@ -896,7 +896,7 @@ width: 700px;
 		font-family: Quicksand !important;
 		font-style: normal;
 		margin-left: 80px;
-		color: #101010 !important;
+		color: #ffffff !important;
 
 	}
 	.pageTitleArea {
@@ -1177,6 +1177,13 @@ width: 700px;
 
 }
 
+.revolution + p {
+	margin: 0;
+}
+
+.infoQSNS + p {
+	margin: 0;
+}
 .imagebox img {
 
 	margin: 10px 0 60px 0px;

@@ -149,7 +149,7 @@ Status de commande {
       <div class="col-sm-12">
         <div class="crenaux">
           <h2>Choix du créneaux horaire</h2>
-          <p>choisir ici la date et l'heur pour la prestation</p>
+          <p>choisir ici la date et l'heure pour la prestation</p>
           <br><br><br>
         </div>
       </div>
@@ -292,7 +292,7 @@ Status de commande {
           </div>
         </div>
         <div class="timeSelect form-half form-right" >
-          <%= select_tag "Heurs", options_for_select([["Choisisser l'heur", ""], "06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"]), class:"select-drop",id:'guiest_id1' %>
+          <%= select_tag "Heurs", options_for_select([["Choisissez l'heure", ""], "06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"]), class:"select-drop",id:'guiest_id1' %>
         </div>
 
         <h3>Coordonnée</h3>
@@ -315,7 +315,7 @@ Status de commande {
       <div class="col-sm-3">
         <h2>Panier</h2>
         <div id="panier">
-          <h4>List de vos spa selon l'heur de location : </h4>
+          <h4>List de vos spa selon l'heure de location : </h4>
           <div id="list-prestation-spa">
             <% unless @params.empty? %>
             <% @params.uniq.each do |param| %>
