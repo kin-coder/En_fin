@@ -331,6 +331,18 @@ p {
   margin-bottom: 15px;
 }
 
+.ccm-index .fa{
+  font-size: 55px!important;
+}
+.textccm .fa{
+  font-size: 55px!important;
+}
+.carousel-inner .fa{
+  font-size: 50px!important;
+}
+.carousel-control .fa{
+  font-size: 50px!important;
+}
 @media (min-width: 320px) {
   p {
     font-size: 13px;
