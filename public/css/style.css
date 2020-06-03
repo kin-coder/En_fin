@@ -8913,6 +8913,21 @@ left: 5% !important;
   .ctrlPro{
 max-width: 630px;
   }
+
+  .areserver {
+    position: fixed;
+    right: 5px !important;
+    z-index: 100;
+    top: 30% !important;
+}
+
+#slider{
+max-width: 900px;
+}
+.comments{
+max-width: 70% !important;
+left: 100px !important;
+}
 }
 
 /* landscape iPad Pro*/
