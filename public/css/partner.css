@@ -1572,7 +1572,89 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
 }
 
+
+
+/*Portrait and landscape iPad Pro*/
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (orientation: portrait){
+.secotionTitle h2 .titlePartner {
+    font-family: Quicksand !important;
+    font-style: normal;
+    margin-left: 80px;
+    display: block;
+}
+.formPartner {
+    min-width: 500px !important;
+}
+.infoQSNS-1 {
+    margin-left: 40px !important;
+    width: 450px;
+    margin-top: 15px;
+}
+.div .infoQSN {
+    margin-left: 30px;
+    margin-top: 5%;
+}
+.infoQSNelse {
+    margin-left: 20px;
+    margin-top: 8%;
+}
+
+.aboutSectionSN {
+    margin-top: -38px !important;
+}
+#notrebut {
+    padding: 20px 0 30px 0;
+    margin-top: -50px;
+    margin-bottom: -50px;
+    position: relative;
+    z-index: 1000;
+    left: 0%;
+}
+.div {
+    margin-top: -150px;
+}
+
+
+.divpro {
+    margin-top: -100px;
+}
+#communauté {
+    padding: 0;
+    margin-top: -40px;
+    margin-bottom: 0px;
+    position: relative;
+    z-index: 100;
+    width: 700px;
+}
+#rejoigneznous {
+    padding: 0;
+    margin-top: -30px;
+    margin-bottom: 20px;
+}
+}
+/* landscape iPad Pro*/
+@media only screen 
+  and (min-device-width: 1366px) 
+  and (max-device-width: 1366px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (orientation: landscape){
+
+
+  }
+
+
+
+
+
+
+
+
 .wrapper li{
 	z-index: 1000;
 }
+
 
