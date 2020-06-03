@@ -1407,7 +1407,8 @@ DateRangePicker.prototype = {
     startView: 0,
     todayBtn: false,
     todayHighlight: false,
-    weekStart: 0
+    weekStart: 0,
+    autoclose: true
   };
   var locale_opts = $.fn.datepicker.locale_opts = [
   'format',
