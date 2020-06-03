@@ -1,4 +1,6 @@
 
+
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 	#cgu{
@@ -1544,6 +1546,16 @@ and (min-device-width: 1112px)
 and (max-device-width: 1112px) 
 and (orientation: landscape) 
 and (-webkit-min-device-pixel-ratio: 2) {
+
+.secotionTitle h2 .titlePartner {
+    font-family: Quicksand !important;
+    font-style: normal;
+    margin-left: 80px;
+    display: block;
+}
+.formPartner {
+    min-width: 500px !important;
+}
 .infoQSNS-1 {
     margin-left: 40px !important;
     width: 450px;
@@ -1557,6 +1569,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
     margin-left: 20px;
     margin-top: 8%;
 }
+
 }
 
 .wrapper li{
