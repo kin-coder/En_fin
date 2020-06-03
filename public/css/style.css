@@ -8782,6 +8782,9 @@ and (min-device-width: 1112px)
 and (max-device-width: 1112px) 
 and (orientation: landscape) 
 and (-webkit-min-device-pixel-ratio: 2) {
+  .ctrlPro{
+max-width: 630px;
+  }
   .reviewQuiPro {
     max-width: 430px; 
   }
@@ -8884,6 +8887,31 @@ margin-left: 100px;
 }
 .savoirPartner{
   top: 26px;
+  }
+
+  /*spa*/
+
+  .elsebgMassage {
+    width: 100% !important;
+    margin-top: 10px;
+}
+.reviewInfoMassage {
+    max-width: 100% !important;
+}
+#productSlider .carousel-control.left i.flechespa-left {
+    position: absolute;
+    right: 850px !important;  
+}
+
+.p-slider-responsive{
+position: relative;
+left: 5% !important;
+}
+.isotopeContainer {
+    max-width: 800px !important;
+}
+  .ctrlPro{
+max-width: 630px;
   }
 }
 
