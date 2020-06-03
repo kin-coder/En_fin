@@ -1369,7 +1369,7 @@ and (orientation : landscape) {
 	}
 	#communauté{
 		padding: 0;
-		margin-top: -60px;
+		margin-top: -25px;
 		margin-bottom: 20px;
 		width: 990px;
 		margin-left: -75px;
@@ -1635,6 +1635,45 @@ and (-webkit-min-device-pixel-ratio: 2) {
     margin-top: -30px;
     margin-bottom: 20px;
 }
+
+
+.formPartner {
+			min-width: 450px !important;
+		}
+		#dropZone {
+			width: 100px !important;
+			height: 50px;
+			padding-left: 400px !important;
+			padding-right: 50px !important;
+			padding-top: 20px !important;
+						margin-left: 0px !important;
+
+		}
+
+				.switch {
+			margin-left: -1px;
+			margin-right: 10px;
+		}
+		.domaine {
+			margin-right: 2px;
+		}
+		.choix{
+			max-width: 480px; 
+		}
+		label[for="massages"], label[for="spa"]{
+			margin-left: -5px;
+		}
+				.form-controldate {
+
+			min-width: 400px !important;
+
+		}
+
+		.specialWidth {
+max-width: 700px !important;
+position: relative;
+left: 0%;
+		}
 }
 /* landscape iPad Pro*/
 @media only screen 
