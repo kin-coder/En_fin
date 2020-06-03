@@ -523,7 +523,7 @@ left: 250px;*/
 
       text-shadow: none;
       position: absolute;
-      right: 130px !important;
+      /* right: 130px !important; */
       top: 45px !important;
       font-size: 20px;
 
@@ -539,7 +539,7 @@ left: 250px;*/
       position: absolute;
       right: -160px;
       top: 45px !important;
-      font-size: 20px !important;
+      /* font-size: 20px !important; */
     }
     .zoneActionText{
       text-align: justify;
@@ -552,7 +552,7 @@ left: 250px;*/
     .titreSansFA {
       margin-bottom: 20px;
       position: relative;
-      right: 20px;
+      /* right: 20px; */
     }
     .sm6-index-mobile {
       margin-top: 72px;
