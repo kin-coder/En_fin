@@ -8726,55 +8726,144 @@ and (orientation : portrait) {
   .secotionTitle .apropofin span{
     padding-left: 10px;
   }
-.about-us{
-margin-left: 0%;
-width: 380px; 
-}
+  .about-us{
+    margin-left: 0%;
+    width: 380px; 
+  }
 
-#contact-submit-btn {
+  #contact-submit-btn {
     width: 172px;
     text-align: center;
     position: absolute;
     left: 3% !important;
     border-radius: 50px;
-}
+  }
 
-.nosServicesMas, .reviewInfoMas{
-height: 855px;
-}
-.decouvreMas{
-position: relative;
-top: -10px !important;
-}
-.decouvreSpa{
-position: relative;
-top: 42px !important;
-}
-.decouvreSpa,.decouvreMas
-{
-      position: relative;
+  .nosServicesMas, .reviewInfoMas{
+    height: 855px;
+  }
+  .decouvreMas{
+    position: relative;
+    top: -10px !important;
+  }
+  .decouvreSpa{
+    position: relative;
+    top: 42px !important;
+  }
+  .decouvreSpa,.decouvreMas
+  {
+    position: relative;
     left: -16px;
 
   }
-.text-p-massage-slide {
+  .text-p-massage-slide {
     position: relative !important;
     left: -110px !important;
     width: 375px;
     font-size: 13px !important;
+  }
+  .titleSectionPartner{
+    margin-left: 0% !important;
+  }
+
+  .propos-ok{
+    width: 320px;
+    margin-left: -50px !important;
+  }
+
+  .tilePropos{
+    margin-left: -30px;
+  }
 }
-.titleSectionPartner{
-margin-left: 0% !important;
+/*ipad 10.5 landscape*/
+
+@media only screen 
+and (min-device-width: 1112px) 
+and (max-device-width: 1112px) 
+and (orientation: landscape) 
+and (-webkit-min-device-pixel-ratio: 2) {
+  .reviewQuiPro {
+    max-width: 430px; 
+  }
+  .savoirPlus {
+    top: 0px !important;
+  }
+
+  /*Massage*/
+
+  .reviewInfoMassage {
+    max-width: 100%;
+  }
+  .elsebgMassage {
+    width: 100% !important;
+    margin-top: 10px;
+  }
+  .productSectionMassage {
+    background-image: linear-gradient(
+      white,
+      white);
+    width: 100% !important;
+    border-radius: 10px;
+  }
+  #flechemassage-left {
+    position: absolute;
+    right: 830px !important;
+  }
+
+.productImageMassage img {
+    width: 375px !important;
+    height: 300px !important;
 }
 
-.propos-ok{
-width: 320px;
-margin-left: -50px !important;
+.text-p-massage-slide {
+    position: fixed;
+    left: 390px !important;
+    max-width: 385px !important;
+    }
+.h3-massage-slide {
+    position: relative;
+    left: -100px !important;
+  }
+  .areserver {
+    position: fixed;
+    z-index: 100;
+    top: 30% !important;
 }
 
-.tilePropos{
-margin-left: -30px;
+/*location spa*/
+.text-p-ccmspa-responsive{
+max-width: 400px;
 }
+
+#productSlider .carousel-control.left i.fa-arrow-circle-left {
+  right: 850px !important;
+  }
+
+  .p-slider-responsive{
+left: 2% !important;
+  }
 }
+
+
+
+@media only screen 
+and (min-device-width: 1024px) 
+and (max-device-width: 1366px) 
+and (-webkit-min-device-pixel-ratio: 2) 
+and (orientation: portrait){
+  .reviewQui {
+    width: 500px !important;
+    min-height: 448px;
+  }
+
+}
+
+
+@media only screen 
+and (min-device-width: 1024px) 
+and (max-device-width: 1366px) 
+and (-webkit-min-device-pixel-ratio: 2) 
+and (orientation: landscape)
 
 
 
