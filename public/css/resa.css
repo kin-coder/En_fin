@@ -1985,3 +1985,45 @@ and (-webkit-min-device-pixel-ratio: 2) {
     height: 150px;
 }
 }
+
+
+/*Portrait and landscape iPad Pro*/
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (orientation: portrait){
+.label-selected {
+    position: absolute;
+    left: 150px;
+    font-family: Lato, 'Open Sans', sans-serif;
+}
+.label-option-spa {
+    position: relative;
+    left: 32px;
+    font-size: small;
+    top: -10px;
+}
+.list-ambiance {
+    margin-bottom: 10px;
+    position: relative;
+    top: 15px;
+}
+.ambianceresponsive, .fin-spa{
+    position: relative;
+    left: -8%;
+}
+.offerContent {
+    width: 150px;
+    height: 150px;
+}
+}
+/* landscape iPad Pro*/
+@media only screen 
+  and (min-device-width: 1366px) 
+  and (max-device-width: 1366px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (orientation: landscape){
+
+
+  }
