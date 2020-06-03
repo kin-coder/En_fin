@@ -8808,26 +8808,6 @@ and (-webkit-min-device-pixel-ratio: 2) {
     left: 390px !important;
     max-width: 385px !important;
     }
-
-    élément {
-}
-.productInfo h3 {
-    font-weight: 400;
-    margin: 0 0 18px 0;
-}
-.h3-massage-slide {
-    text-align: center;
-    position: relative;
-    font-weight: bold !important;
-    font-family: Lato, 'Open Sans' !important;
-}
-.h3-massage-slide {
-    position: relative;
-    font-weight: bold !important;
-    font-size: 16px;
-    left: 0px;
-    font-family: Lato, 'Open Sans' !important;
-}
 .h3-massage-slide {
     position: relative;
     left: -100px !important;
@@ -8837,6 +8817,19 @@ and (-webkit-min-device-pixel-ratio: 2) {
     z-index: 100;
     top: 30% !important;
 }
+
+/*location spa*/
+.text-p-ccmspa-responsive{
+max-width: 400px;
+}
+
+#productSlider .carousel-control.left i.fa-arrow-circle-left {
+  right: 850px !important;
+  }
+
+  .p-slider-responsive{
+left: 2% !important;
+  }
 }
 
 
