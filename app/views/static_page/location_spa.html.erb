@@ -142,7 +142,17 @@ and (orientation : landscape) {
     }
 }
 
+/*ipad 10.5 landscape*/
 
+@media only screen 
+and (min-device-width: 1112px) 
+and (max-device-width: 1112px) 
+and (orientation: landscape) 
+and (-webkit-min-device-pixel-ratio: 2) {
+      .isotopeContainer{
+      width: 900px !important;
+    }
+  }
 
 </style>
 <!-- SERVICES SECTION -->
@@ -691,7 +701,7 @@ and (orientation : landscape) {
                       </div>
                     </div>
                   </div>
-                  <div class="row isotopeContainer" id="container">
+                  <div class="row isotopeContainer isotopeContainerSpa" id="container">
                     <%for n_tout in (1..4) do%>
                     <div class="col-sm-3 isotopeSelector tout">
                       <div class="card">

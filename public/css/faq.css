@@ -291,6 +291,21 @@ and (max-device-width : 1024px)
 and (orientation : landscape) { 
 
   .p-faq {
-max-width: 840px !important;
+    max-width: 840px !important;
   }
+}
+
+/*ipad 10.5 landscape*/
+
+@media only screen 
+and (min-device-width: 1112px) 
+and (max-device-width: 1112px) 
+and (orientation: landscape) 
+and (-webkit-min-device-pixel-ratio: 2) {
+
+
+  .p-faq, .ol-faq li {
+    max-width: 800px !important;
+  }
+
 }
