@@ -8857,16 +8857,47 @@ and (orientation: portrait){
   }
 
 }
-
-
+/*Portrait and landscape iPad Pro*/
 @media only screen 
-and (min-device-width: 1024px) 
-and (max-device-width: 1366px) 
-and (-webkit-min-device-pixel-ratio: 2) 
-and (orientation: landscape)
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (orientation: portrait){
+ .reviewInfoMas {
+    height: 805px;
+}
+.decouvreSpa {
+    position: relative;
+    top: 0px !important;
+}
 
+  .reviewQuiPro {
+max-width: 350px;
+margin-left: 100px;  
+}
+.reviewQui {
+    height: 476px;
+}
 
+.savoirPlus {
+    top: 0px !important;
+}
+.savoirPartner{
+  top: 26px;
+  }
+}
 
+/* landscape iPad Pro*/
+@media only screen 
+  and (min-device-width: 1366px) 
+  and (max-device-width: 1366px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (orientation: landscape){
+ .reviewInfoMas {
+    height: 651px;
+}
+
+  }
 
 /*APPLICATION ADMIN*/
 
