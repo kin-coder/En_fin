@@ -8928,6 +8928,48 @@ max-width: 900px;
 max-width: 70% !important;
 left: 100px !important;
 }
+
+/*massage*/
+.productSectionMassage {
+    background-image: linear-gradient(
+white,
+    white);
+    max-width: 100% !important;
+    border-radius: 10px;
+    min-height: 600px !important;
+}
+
+
+.productImageMassage img {
+    width: 400px !important;
+    height: 375px !important;
+    margin-top: -40px;
+    margin-left: -5%;
+    max-width: max-content !important;
+}
+#flechemassage-left {
+    position: absolute;
+    right: 865px !important;
+    }
+
+    .text-p-massage-slide {
+position: relative !important;
+left: -90px !important;
+top: -5px !important;
+min-width: 400px !important;
+    }
+    .h3-massage-slide {
+    position: relative;
+    margin-left: -200px !important;
+  }
+  #intruElse {
+    position: relative;
+    margin-left: -40px !important;
+  }
+  .commentsMassage{
+max-width: 70% !important;
+left: 100px !important;
+}
 }
 
 /* landscape iPad Pro*/
