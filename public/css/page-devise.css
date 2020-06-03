@@ -446,3 +446,20 @@ and (-webkit-min-device-pixel-ratio: 2) {
     left: -15px;
 }
 }
+
+/*Portrait and landscape iPad Pro*/
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (orientation: portrait){
+.inscri {
+    background: 
+    white;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 1000px;
+    position: relative;
+    left: -15px;
+}
+}

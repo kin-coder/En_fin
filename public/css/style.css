@@ -8782,6 +8782,9 @@ and (min-device-width: 1112px)
 and (max-device-width: 1112px) 
 and (orientation: landscape) 
 and (-webkit-min-device-pixel-ratio: 2) {
+  .ctrlPro{
+max-width: 630px;
+  }
   .reviewQuiPro {
     max-width: 430px; 
   }
@@ -8857,16 +8860,129 @@ and (orientation: portrait){
   }
 
 }
-
-
+/*Portrait and landscape iPad Pro*/
 @media only screen 
-and (min-device-width: 1024px) 
-and (max-device-width: 1366px) 
-and (-webkit-min-device-pixel-ratio: 2) 
-and (orientation: landscape)
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (orientation: portrait){
+ .reviewInfoMas {
+    height: 805px;
+}
+.decouvreSpa {
+    position: relative;
+    top: 0px !important;
+}
+
+  .reviewQuiPro {
+max-width: 350px;
+margin-left: 100px;  
+}
+.reviewQui {
+    height: 476px;
+}
+
+.savoirPlus {
+    top: 0px !important;
+}
+.savoirPartner{
+  top: 26px;
+  }
+
+  /*spa*/
+
+  .elsebgMassage {
+    width: 100% !important;
+    margin-top: 10px;
+}
+.reviewInfoMassage {
+    max-width: 100% !important;
+}
+#productSlider .carousel-control.left i.flechespa-left {
+    position: absolute;
+    right: 850px !important;  
+}
+
+.p-slider-responsive{
+position: relative;
+left: 5% !important;
+}
+.isotopeContainer {
+    max-width: 800px !important;
+}
+  .ctrlPro{
+max-width: 630px;
+  }
+
+  .areserver {
+    position: fixed;
+    right: 5px !important;
+    z-index: 100;
+    top: 30% !important;
+}
+
+#slider{
+max-width: 900px;
+}
+.comments{
+max-width: 70% !important;
+left: 100px !important;
+}
+
+/*massage*/
+.productSectionMassage {
+    background-image: linear-gradient(
+white,
+    white);
+    max-width: 100% !important;
+    border-radius: 10px;
+    min-height: 600px !important;
+}
 
 
+.productImageMassage img {
+    width: 400px !important;
+    height: 375px !important;
+    margin-top: -40px;
+    margin-left: -5%;
+    max-width: max-content !important;
+}
+#flechemassage-left {
+    position: absolute;
+    right: 865px !important;
+    }
 
+    .text-p-massage-slide {
+position: relative !important;
+left: -90px !important;
+top: -5px !important;
+min-width: 400px !important;
+    }
+    .h3-massage-slide {
+    position: relative;
+    margin-left: -200px !important;
+  }
+  #intruElse {
+    position: relative;
+    margin-left: -40px !important;
+  }
+  .commentsMassage{
+max-width: 70% !important;
+left: 100px !important;
+}
+}
+
+/* landscape iPad Pro*/
+@media only screen 
+  and (min-device-width: 1366px) 
+  and (max-device-width: 1366px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (orientation: landscape){
+ .reviewInfoMas {
+    height: 651px;
+}
+
+  }
 
 /*APPLICATION ADMIN*/
 

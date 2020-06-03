@@ -601,7 +601,7 @@
 	}
 	#flechemassage-right{
 		position: absolute;
-		right:0px;
+		right:35px;
 		top: 20%;
 		display: inline-block;
 		font: normal normal normal 14px/1 FontAwesome;

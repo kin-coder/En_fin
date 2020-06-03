@@ -41,3 +41,39 @@
 
 
     .error {border: 1px red solid;}
+/*Portrait and landscape iPad Pro*/
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (orientation: portrait){
+#client_country {
+    width: 435px !important;
+    margin-left: 10px;
+    height: 42px;
+}
+}
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
+
+#client_country {
+    width: 435px !important;
+    margin-left: 10px;
+    height: 42px;
+}
+}
+/*ipad 10.5 landscape*/
+
+@media only screen 
+and (min-device-width: 1112px) 
+and (max-device-width: 1112px) 
+and (orientation: landscape) 
+and (-webkit-min-device-pixel-ratio: 2) {
+#client_country {
+    width: 435px !important;
+    margin-left: 10px;
+    height: 42px;
+}
+  }
