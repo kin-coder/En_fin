@@ -15,6 +15,7 @@
 		font-weight: 40;
 		letter-spacing: 1.2px;
 	}
+
 }
 
 
@@ -199,6 +200,14 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+	.adresseTitleFac {
+		margin-left: 1% !important;
+		margin-top: -15%;
+	}
+
+	.livraison .adresseTitle{
+		margin-top: -10%;
+	}
 	.btn-resa {
 		position: relative;
 		left: 33% !important;

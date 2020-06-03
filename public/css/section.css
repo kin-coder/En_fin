@@ -31,6 +31,10 @@ and (max-device-width : 600px) {
 	.sectionMasSpecial{
 		margin-top: -10%;
 	}
+
+	.list-inline .liSection{
+		margin-left: -43%;
+	}
 }
 
 @media only screen 
