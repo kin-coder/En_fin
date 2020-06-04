@@ -671,6 +671,7 @@ margin-top: -18px;
   position: relative;
   left: 8%;
   font-size: 17px;
+  z-index: 1000;
 }
 
 
@@ -1259,6 +1260,7 @@ margin-top: -18px;
     left: 36%;
     top: -8px;
     font-size: 17px;
+    z-index: 1000;
   }
   .list-ambiance{
     margin-bottom: -10px;
@@ -1529,6 +1531,7 @@ max-width: 100px;
     left: 1%;
     top: -8px;
     font-size: 17px;
+    z-index: 1000;
   }
   .selectElement {
     width: 150px;
@@ -1812,6 +1815,7 @@ max-width: 100px;
       left: 17%;
       top: -8px;
       font-size: 17px;
+      z-index: 1000;
     }
     .selectElement{
       width: 150px;
@@ -1897,6 +1901,7 @@ max-width: 100px;
       .questionMarkSpa {
         position: relative;
         left: 20%;
+        z-index: 1000;
       }
 
       .selectElement {
