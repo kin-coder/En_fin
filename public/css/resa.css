@@ -1656,10 +1656,19 @@ max-width: 100px;
     }
     .ambianceresponsive{
       position: relative;
-      top: -195px;
+      top: -180px;
+      right: -160px;
+      width: 208px;
+    }
+
+    @-moz-document url-prefix() {
+        .ambianceresponsive{
+      position: relative;
+      top: -195px !important;
       right: -150px;
       width: 208px;
     }
+}
     .ambianceresponsive h4{
       margin-left: 120px;
       margin-bottom: 35px;
